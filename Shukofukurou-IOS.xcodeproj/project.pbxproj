@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
+		596240AD2155622E001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240AC2155622E001995AD /* ViewController.m */; };
+		596240B02155622E001995AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596240AE2155622E001995AD /* Main.storyboard */; };
+		596240B32155622E001995AD /* Shukofukurou_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 596240B12155622E001995AD /* Shukofukurou_IOS.xcdatamodeld */; };
+		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
+		596240B82155622F001995AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596240B62155622F001995AD /* LaunchScreen.storyboard */; };
+		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
+		596240C52155622F001995AD /* Shukofukurou_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240C42155622F001995AD /* Shukofukurou_IOSTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		596240C12155622F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962409D2155622E001995AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 596240A42155622E001995AD;
+			remoteInfo = "Shukofukurou-IOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		596240A92155622E001995AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		596240AB2155622E001995AD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		596240AC2155622E001995AD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		596240AF2155622E001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		596240B22155622E001995AD /* Shukofukurou_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shukofukurou_IOS.xcdatamodel; sourceTree = "<group>"; };
+		596240B42155622F001995AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		596240B72155622F001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		596240B92155622F001995AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		596240BA2155622F001995AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shukofukurou-IOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		596240C42155622F001995AD /* Shukofukurou_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shukofukurou_IOSTests.m; sourceTree = "<group>"; };
+		596240C62155622F001995AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		596240A22155622E001995AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596240BD2155622F001995AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5962409C2155622E001995AD = {
+			isa = PBXGroup;
+			children = (
+				596240A72155622E001995AD /* Shukofukurou-IOS */,
+				596240C32155622F001995AD /* Shukofukurou-IOSTests */,
+				596240A62155622E001995AD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		596240A62155622E001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				596240A52155622E001995AD /* Shukofukurou-IOS.app */,
+				596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		596240A72155622E001995AD /* Shukofukurou-IOS */ = {
+			isa = PBXGroup;
+			children = (
+				596240A82155622E001995AD /* AppDelegate.h */,
+				596240A92155622E001995AD /* AppDelegate.m */,
+				596240AB2155622E001995AD /* ViewController.h */,
+				596240AC2155622E001995AD /* ViewController.m */,
+				596240AE2155622E001995AD /* Main.storyboard */,
+				596240B42155622F001995AD /* Assets.xcassets */,
+				596240B62155622F001995AD /* LaunchScreen.storyboard */,
+				596240B92155622F001995AD /* Info.plist */,
+				596240BA2155622F001995AD /* main.m */,
+				596240B12155622E001995AD /* Shukofukurou_IOS.xcdatamodeld */,
+			);
+			path = "Shukofukurou-IOS";
+			sourceTree = "<group>";
+		};
+		596240C32155622F001995AD /* Shukofukurou-IOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				596240C42155622F001995AD /* Shukofukurou_IOSTests.m */,
+				596240C62155622F001995AD /* Info.plist */,
+			);
+			path = "Shukofukurou-IOSTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		596240A42155622E001995AD /* Shukofukurou-IOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 596240C92155622F001995AD /* Build configuration list for PBXNativeTarget "Shukofukurou-IOS" */;
+			buildPhases = (
+				596240A12155622E001995AD /* Sources */,
+				596240A22155622E001995AD /* Frameworks */,
+				596240A32155622E001995AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Shukofukurou-IOS";
+			productName = "Shukofukurou-IOS";
+			productReference = 596240A52155622E001995AD /* Shukofukurou-IOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		596240BF2155622F001995AD /* Shukofukurou-IOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 596240CC2155622F001995AD /* Build configuration list for PBXNativeTarget "Shukofukurou-IOSTests" */;
+			buildPhases = (
+				596240BC2155622F001995AD /* Sources */,
+				596240BD2155622F001995AD /* Frameworks */,
+				596240BE2155622F001995AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				596240C22155622F001995AD /* PBXTargetDependency */,
+			);
+			name = "Shukofukurou-IOSTests";
+			productName = "Shukofukurou-IOSTests";
+			productReference = 596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5962409D2155622E001995AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "MAL Updater OS X Group";
+				TargetAttributes = {
+					596240A42155622E001995AD = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					596240BF2155622F001995AD = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 596240A42155622E001995AD;
+					};
+				};
+			};
+			buildConfigurationList = 596240A02155622E001995AD /* Build configuration list for PBXProject "Shukofukurou-IOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5962409C2155622E001995AD;
+			productRefGroup = 596240A62155622E001995AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				596240A42155622E001995AD /* Shukofukurou-IOS */,
+				596240BF2155622F001995AD /* Shukofukurou-IOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		596240A32155622E001995AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				596240B82155622F001995AD /* LaunchScreen.storyboard in Resources */,
+				596240B52155622F001995AD /* Assets.xcassets in Resources */,
+				596240B02155622E001995AD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596240BE2155622F001995AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		596240A12155622E001995AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				596240AD2155622E001995AD /* ViewController.m in Sources */,
+				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
+				596240BB2155622F001995AD /* main.m in Sources */,
+				596240B32155622E001995AD /* Shukofukurou_IOS.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596240BC2155622F001995AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				596240C52155622F001995AD /* Shukofukurou_IOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		596240C22155622F001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 596240A42155622E001995AD /* Shukofukurou-IOS */;
+			targetProxy = 596240C12155622F001995AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		596240AE2155622E001995AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596240AF2155622E001995AD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		596240B62155622F001995AD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596240B72155622F001995AD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		596240C72155622F001995AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		596240C82155622F001995AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		596240CA2155622F001995AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		596240CB2155622F001995AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		596240CD2155622F001995AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = "Shukofukurou-IOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shukofukurou-IOS.app/Shukofukurou-IOS";
+			};
+			name = Debug;
+		};
+		596240CE2155622F001995AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = "Shukofukurou-IOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shukofukurou-IOS.app/Shukofukurou-IOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		596240A02155622E001995AD /* Build configuration list for PBXProject "Shukofukurou-IOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596240C72155622F001995AD /* Debug */,
+				596240C82155622F001995AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		596240C92155622F001995AD /* Build configuration list for PBXNativeTarget "Shukofukurou-IOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596240CA2155622F001995AD /* Debug */,
+				596240CB2155622F001995AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		596240CC2155622F001995AD /* Build configuration list for PBXNativeTarget "Shukofukurou-IOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596240CD2155622F001995AD /* Debug */,
+				596240CE2155622F001995AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		596240B12155622E001995AD /* Shukofukurou_IOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				596240B22155622E001995AD /* Shukofukurou_IOS.xcdatamodel */,
+			);
+			currentVersion = 596240B22155622E001995AD /* Shukofukurou_IOS.xcdatamodel */;
+			path = Shukofukurou_IOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5962409D2155622E001995AD /* Project object */;
+}
