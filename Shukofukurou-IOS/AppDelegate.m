@@ -1,12 +1,13 @@
 //
 //  AppDelegate.m
-//  Shukofukurou-IOS
+//  Hiyoko
 //
-//  Created by 香風智乃 on 9/21/18.
+//  Created by 天々座理世 on 2018/08/14.
 //  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "listservice.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +15,37 @@
 
 @implementation AppDelegate
 
++ (void)initialize {
+    //Create a Dictionary
+    NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+    defaultValues[@"selectedmainview"] = @"anime-list";
+    defaultValues[@"refreshlistonstart"] = @(0);
+    defaultValues[@"refreshautomatically"] = @(1);
+    defaultValues[@"donated"] = @(1);
+    defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
+    defaultValues[@"stream_region"] = @(0);
+    defaultValues[@"currentservice"] = @(3);
+    defaultValues[@"seasonselect"] = @"Winter";
+    // Viewed List
+    defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
+    defaultValues[@"myanimelist-selectedmangalist"] = @"reading";
+    defaultValues[@"kitsu-selectedanimelist"] = @"watching";
+    defaultValues[@"kitsu-selectedmangalist"] = @"reading";
+    defaultValues[@"anilist-selectedanimelist"] = @"watching";
+    defaultValues[@"anilist-selectedmangalist"] = @"reading";
+    defaultValues[@"anilist-selectedlistcustomlistanime"] = @NO;
+    defaultValues[@"anilist-selectedlistcustomlistmanga"] = @NO;
+    [[NSUserDefaults standardUserDefaults]
+     registerDefaults:defaultValues];
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self checkaccountinformation];
     return YES;
 }
 
@@ -53,12 +82,14 @@
 #pragma mark - Core Data stack
 
 @synthesize persistentContainer = _persistentContainer;
-
+- (NSManagedObjectContext *)managedObjectContext {
+    return self.persistentContainer.viewContext;
+}
 - (NSPersistentContainer *)persistentContainer {
     // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
     @synchronized (self) {
         if (_persistentContainer == nil) {
-            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"Shukofukurou_IOS"];
+            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"Hiyoko"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
                     // Replace this implementation with code to handle the error appropriately.
@@ -95,4 +126,57 @@
     }
 }
 
+#pragma mark other
+- (ViewControllerManager *)getvcmanager {
+    if (!_vcmanager) {
+        _vcmanager = [ViewControllerManager new];
+    }
+    return _vcmanager;
+}
+
+- (void)checkaccountinformation {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if ([Kitsu getFirstAccount]) {
+        bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
+        if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
+            [Kitsu saveuserinfoforcurrenttoken];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
+        }
+    }
+    if ([AniList getFirstAccount]) {
+        bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
+        if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
+            [AniList saveuserinfoforcurrenttoken];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
+        }
+    }
+}
+
+#pragma mark AuthViewController Delegate
+- (void)authSuccessful:(int)service {
+    // Login Prep
+    [_vcmanager.mainsidebar setLoggedinUser];
+    [_vcmanager.getAnimeListRootViewController.lvc retrieveList:YES completion:^(bool success) {}];
+    [_vcmanager.getMangaListRootViewController.lvc retrieveList:YES completion:^(bool success) {}];
+    [_vcmanager.mvc loadfromdefaults];
+}
+
+#pragma mark ServiceSwitcherView Delegate
+- (void)listserviceDidChange:(int)oldservice newService:(int)newservice {
+    NSLog(@"New Service: %i oldserivce: %i", newservice, oldservice);
+    [_vcmanager.mainsidebar setLoggedinUser];
+    [_vcmanager.getAnimeListRootViewController.lvc switchlistservice];
+    [_vcmanager.getMangaListRootViewController.lvc switchlistservice];
+    [_vcmanager.getSearchTabView.animesearchrootvc.animesearchvc resetSearchUI];
+    [_vcmanager.getSearchTabView.mangasearchrootvc.mangasearchvc resetSearchUI];
+    [_vcmanager.mvc loadfromdefaults];
+}
+
+#pragma mark MainSideBarView Delegate
+- (void)accountRemovedForService:(int)service {
+    NSLog(@"Logged out of: %i", service);
+    [_vcmanager.getAnimeListRootViewController.lvc clearlists];
+    [_vcmanager.getMangaListRootViewController.lvc clearlists];
+    [_vcmanager.mvc loadfromdefaults];
+}
 @end

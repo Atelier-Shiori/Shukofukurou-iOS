@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Scv-et-0S8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Season Name-->
+        <scene sceneID="rKX-tS-wM2">
+            <objects>
+                <collectionViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="yMZ-2q-2B3" customClass="SeasonsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="PAj-pk-APB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I7a-V4-aAT">
+                            <size key="itemSize" width="119" height="180"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="seasoncell" id="67x-v8-jQ6" customClass="SeasonCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="119" height="180"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="119" height="180"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xgF-bm-sHE">
+                                            <rect key="frame" x="3" y="3" width="113" height="149"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRh-yA-90e">
+                                            <rect key="frame" x="3" y="159" width="113" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="QXW-Hl-yyo"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="sRh-yA-90e" secondAttribute="bottom" id="2yn-ev-1ZX"/>
+                                    <constraint firstItem="xgF-bm-sHE" firstAttribute="top" secondItem="67x-v8-jQ6" secondAttribute="top" id="BfQ-bm-dqU"/>
+                                    <constraint firstItem="sRh-yA-90e" firstAttribute="leading" secondItem="xgF-bm-sHE" secondAttribute="leading" id="DUD-wo-glr"/>
+                                    <constraint firstAttribute="trailing" secondItem="sRh-yA-90e" secondAttribute="trailing" id="eC6-nc-RFR"/>
+                                    <constraint firstItem="sRh-yA-90e" firstAttribute="leading" secondItem="67x-v8-jQ6" secondAttribute="leading" id="rIL-bv-ZFi"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="xgF-bm-sHE" secondAttribute="bottom" constant="20" id="thb-Bh-3KT"/>
+                                    <constraint firstItem="sRh-yA-90e" firstAttribute="trailing" secondItem="xgF-bm-sHE" secondAttribute="trailing" id="u7Y-kR-uCN"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="posterimage" destination="xgF-bm-sHE" id="1WW-EE-Ynq"/>
+                                    <outlet property="title" destination="sRh-yA-90e" id="m9r-tD-1yB"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="yMZ-2q-2B3" id="2N5-ro-97u"/>
+                            <outlet property="delegate" destination="yMZ-2q-2B3" id="2eW-pc-IsT"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Season Name" id="NTZ-Hq-irf">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="E5s-2Z-50A">
+                            <connections>
+                                <action selector="showLeftViewAnimated:" destination="yMZ-2q-2B3" id="nKt-u5-S32"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="season" id="IJi-RG-Tba">
+                                <connections>
+                                    <action selector="selectseason:" destination="yMZ-2q-2B3" id="eZy-Ls-ZIf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="day" id="Tur-TE-v0H">
+                                <connections>
+                                    <action selector="selectyear:" destination="yMZ-2q-2B3" id="hu2-9c-GND"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="navationitem" destination="NTZ-Hq-irf" id="dc1-3O-eTc"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Kq-Ha-uOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-154.40000000000001" y="214.54272863568218"/>
+        </scene>
+        <!--Seasons Root View Controller-->
+        <scene sceneID="7wm-uE-x8c">
+            <objects>
+                <navigationController storyboardIdentifier="SeasonsRootView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Scv-et-0S8" customClass="SeasonsRootViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zJt-G3-gKc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yMZ-2q-2B3" kind="relationship" relationship="rootViewController" id="D02-Fi-M7x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sNy-xd-v9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-983" y="215"/>
+        </scene>
+        <!--Select a Day-->
+        <scene sceneID="Twb-U7-657">
+            <objects>
+                <tableViewController storyboardIdentifier="seasonselector" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RQ4-vv-cmc" customClass="SeasonSelectorTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EsV-gn-Z6U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="daycell" textLabel="qbH-9l-gIN" style="IBUITableViewCellStyleDefault" id="aeu-gV-gfA">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aeu-gV-gfA" id="n3N-dX-FbI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qbH-9l-gIN">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RQ4-vv-cmc" id="jax-AZ-P0B"/>
+                            <outlet property="delegate" destination="RQ4-vv-cmc" id="032-yO-I5o"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select a Day" id="Ff1-qS-nSn">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tfc-in-O81">
+                            <connections>
+                                <action selector="cancel:" destination="RQ4-vv-cmc" id="7Av-xj-pkG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="navigationitem" destination="Ff1-qS-nSn" id="CyA-Ih-BXe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b74-mB-ei4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="-543"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Menu" width="50" height="50"/>
+        <image name="day" width="45" height="45"/>
+        <image name="season" width="45" height="45"/>
+    </resources>
+</document>

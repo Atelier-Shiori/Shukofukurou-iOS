@@ -8,13 +8,95 @@
 
 /* Begin PBXBuildFile section */
 		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
-		596240AD2155622E001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240AC2155622E001995AD /* ViewController.m */; };
-		596240B02155622E001995AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596240AE2155622E001995AD /* Main.storyboard */; };
-		596240B32155622E001995AD /* Shukofukurou_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 596240B12155622E001995AD /* Shukofukurou_IOS.xcdatamodeld */; };
 		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
-		596240B82155622F001995AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596240B62155622F001995AD /* LaunchScreen.storyboard */; };
 		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
 		596240C52155622F001995AD /* Shukofukurou_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240C42155622F001995AD /* Shukofukurou_IOSTests.m */; };
+		596240E821556310001995AD /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240E721556310001995AD /* XMLReader.m */; };
+		596241562155638D001995AD /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241532155638C001995AD /* ClientConstants.m */; };
+		596241572155638D001995AD /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241552155638D001995AD /* AniListConstants.m */; };
+		596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */; };
+		596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */; };
+		596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */; };
+		596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415F21556399001995AD /* AtarashiiDataObjects.m */; };
+		5962416C215563AF001995AD /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624164215563AA001995AD /* AiringSchedule.m */; };
+		5962416D215563AF001995AD /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624165215563AB001995AD /* AniList.m */; };
+		5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624168215563AD001995AD /* AniListSeasonListGenerator.m */; };
+		5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624169215563AE001995AD /* AniListScoreConvert.m */; };
+		59624174215563B5001995AD /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624170215563B3001995AD /* Base64Category.m */; };
+		59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624172215563B5001995AD /* AtarashiiListCoreData.m */; };
+		59624188215563D2001995AD /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624176215563C9001995AD /* Keychain.m */; };
+		59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */; };
+		5962418A215563D2001995AD /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417B215563CB001995AD /* Utility.m */; };
+		5962418B215563D2001995AD /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417E215563CD001995AD /* Kitsu.m */; };
+		5962418C215563D2001995AD /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624180215563CE001995AD /* listservice.m */; };
+		5962418D215563D2001995AD /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624183215563D0001995AD /* TitleIdConverter.m */; };
+		5962418E215563D2001995AD /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
+		5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624185215563D1001995AD /* RatingTwentyConvert.m */; };
+		59624190215563D2001995AD /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624186215563D2001995AD /* KitsuListRetriever.m */; };
+		5962419921556406001995AD /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419221556402001995AD /* AuthViewController.m */; };
+		5962419A21556406001995AD /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419721556405001995AD /* OAuthViewController.m */; };
+		5962419B21556406001995AD /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419821556405001995AD /* AuthWebView.m */; };
+		596241A72155642E001995AD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A12155642B001995AD /* RootViewController.m */; };
+		596241A82155642E001995AD /* SideBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A22155642B001995AD /* SideBarCell.m */; };
+		596241A92155642E001995AD /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A32155642C001995AD /* SideBarViewController.m */; };
+		596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A52155642D001995AD /* MainSideBarViewController.m */; };
+		596241DF215564D1001995AD /* TitleInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D5215564CA001995AD /* TitleInfoTableViewCell.m */; };
+		596241E0215564D1001995AD /* AnimeEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D6215564CB001995AD /* AnimeEntryTableViewCell.m */; };
+		596241E1215564D1001995AD /* EntryCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D8215564CC001995AD /* EntryCellInfo.m */; };
+		596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DB215564CF001995AD /* MangaEntryTableViewCell.m */; };
+		596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DC215564D0001995AD /* SeasonCollectionViewCell.m */; };
+		596241E4215564D1001995AD /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DD215564D0001995AD /* SearchTableViewCell.m */; };
+		5962421421556514001995AD /* SearchTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E6215564FA001995AD /* SearchTabViewController.m */; };
+		5962421521556514001995AD /* ListRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E7215564FB001995AD /* ListRootViewController.m */; };
+		5962421621556514001995AD /* AiringDayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E9215564FC001995AD /* AiringDayTableViewController.m */; };
+		5962421721556514001995AD /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EB215564FD001995AD /* ListViewController.m */; };
+		5962421821556514001995AD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EC215564FE001995AD /* MainViewController.m */; };
+		5962421921556514001995AD /* AiringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EF215564FF001995AD /* AiringViewController.m */; };
+		5962421A21556514001995AD /* SeasonsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F321556502001995AD /* SeasonsRootViewController.m */; };
+		5962421B21556514001995AD /* ListSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F421556502001995AD /* ListSelectorViewController.m */; };
+		5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F521556503001995AD /* ServiceSwitcherViewController.m */; };
+		5962421D21556514001995AD /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F621556503001995AD /* SettingsViewController.m */; };
+		5962421E21556514001995AD /* ViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FA21556506001995AD /* ViewControllerManager.m */; };
+		5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FC21556507001995AD /* SeasonSelectorTableViewController.m */; };
+		5962422021556514001995AD /* SettingsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FD21556507001995AD /* SettingsRootViewController.m */; };
+		5962422121556514001995AD /* AnimeSearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FE21556508001995AD /* AnimeSearchRootViewController.m */; };
+		5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */; };
+		5962422321556514001995AD /* AiringRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242032155650B001995AD /* AiringRootViewController.m */; };
+		5962422421556514001995AD /* TitleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242042155650B001995AD /* TitleInfoViewController.m */; };
+		5962422521556514001995AD /* SeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242062155650C001995AD /* SeasonsViewController.m */; };
+		5962422621556514001995AD /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420C21556510001995AD /* LoadViewController.m */; };
+		5962422721556514001995AD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
+		5962422821556514001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
+		5962422921556514001995AD /* MangaSearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421321556514001995AD /* MangaSearchRootViewController.m */; };
+		5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
+		5962422F21556591001995AD /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962422E21556591001995AD /* NSString_stripHtml.m */; };
+		59624230215565C7001995AD /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; };
+		59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
+		59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
+		5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; };
+		5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59624241215565DC001995AD /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962413E2155633E001995AD /* CocoaOniguruma.framework */; };
+		59624242215565DC001995AD /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962413E2155633E001995AD /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; };
+		59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59624249215565E9001995AD /* MGSwipeTableCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; };
+		5962424A215565E9001995AD /* MGSwipeTableCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5962424D2155660C001995AD /* Airing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BB21556481001995AD /* Airing.storyboard */; };
+		5962424E2155660F001995AD /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BD21556486001995AD /* Auth.storyboard */; };
+		5962424F21556612001995AD /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BF21556489001995AD /* InfoView.storyboard */; };
+		5962425021556614001995AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C12155648D001995AD /* LaunchScreen.storyboard */; };
+		5962425121556617001995AD /* Lists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C321556493001995AD /* Lists.storyboard */; };
+		596242522155661A001995AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C521556497001995AD /* Main.storyboard */; };
+		596242532155661D001995AD /* OAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C72155649C001995AD /* OAuth.storyboard */; };
+		596242542155661F001995AD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C9215564A1001995AD /* Profile.storyboard */; };
+		5962425521556622001995AD /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CB215564A5001995AD /* Search.storyboard */; };
+		5962425621556624001995AD /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
+		5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
+		596242582155662A001995AD /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
+		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,23 +107,419 @@
 			remoteGlobalIDString = 596240A42155622E001995AD;
 			remoteInfo = "Shukofukurou-IOS";
 		};
+		596240F221556317001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53761325155AD0D5005750A4;
+			remoteInfo = "SDWebImage iOS static";
+		};
+		596240F421556317001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4314D1991D0E0E3B004B36C9;
+			remoteInfo = "SDWebImage watchOS static";
+		};
+		596240F621556317001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4A2CADFF1AB4BB5300B6BC39;
+			remoteInfo = "SDWebImage iOS";
+		};
+		596240F821556317001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 00733A4C1BC487C000A5A117;
+			remoteInfo = "SDWebImage tvOS";
+		};
+		596240FA21556317001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 431BB7031D06D2C1006A3455;
+			remoteInfo = "SDWebImage watchOS";
+		};
+		596240FC21556317001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4397D2F21D0DDD8C00BB2784;
+			remoteInfo = "SDWebImage OSX";
+		};
+		596241082155631F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A666341A844CC400287CA3;
+			remoteInfo = "SAMKeychain-iOS";
+		};
+		5962410A2155631F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A666551A844D3A00287CA3;
+			remoteInfo = "SAMKeychainTests-iOS";
+		};
+		5962410C2155631F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A6666F1A844E4100287CA3;
+			remoteInfo = "SAMKeychain-macOS";
+		};
+		5962410E2155631F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A666791A844E4100287CA3;
+			remoteInfo = "SAMKeychainTests-macOS";
+		};
+		596241102155631F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21632D981C925A3C00C40D7D;
+			remoteInfo = "SAMKeychain-tvOS";
+		};
+		596241122155631F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21632DA11C925A3C00C40D7D;
+			remoteInfo = "SAMKeychainTests-tvOS";
+		};
+		596241142155631F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21632DBC1C925B1F00C40D7D;
+			remoteInfo = "SAMKeychain-watchOS";
+		};
+		5962411B21556329001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CCA90431AE0EFB000368F5E;
+			remoteInfo = CoreActionSheetPicker;
+		};
+		5962411D21556329001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CCA904E1AE0EFB000368F5E;
+			remoteInfo = CoreActionSheetPickerTests;
+		};
+		5962412921556336001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522391BBF104D00859F49;
+			remoteInfo = "AFNetworking iOS";
+		};
+		5962412B21556336001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522651BBF129200859F49;
+			remoteInfo = "AFNetworking watchOS";
+		};
+		5962412D21556336001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522771BBF136400859F49;
+			remoteInfo = "AFNetworking macOS";
+		};
+		5962412F21556336001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2987B0A51BC408A200179A4C;
+			remoteInfo = "AFNetworking tvOS";
+		};
+		5962413121556336001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 298D7C3B1BC2C79500FD3B3E;
+			remoteInfo = "AFNetworking iOS Tests";
+		};
+		5962413321556336001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 298D7C4A1BC2C7B200FD3B3E;
+			remoteInfo = "AFNetworking macOS Tests";
+		};
+		5962413521556336001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2987B0AE1BC408A200179A4C;
+			remoteInfo = "AFNetworking tvOS Tests";
+		};
+		5962413D2155633E001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CocoaOniguruma;
+		};
+		5962413F2155633E001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78C5E1B10E39CDCE00F62F5D;
+			remoteInfo = UnitTest;
+		};
+		596241412155633E001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78C5E3A90E39E37F00F62F5D;
+			remoteInfo = TestCommand;
+		};
+		596241472155634A001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4AF139C01BF384DA0037B073;
+			remoteInfo = LGSideMenuController;
+		};
+		5962414D2155634F001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C63EE56B1BBA07ED008F46BB;
+			remoteInfo = MGSwipeTableCell;
+		};
+		59624232215565C7001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
+			remoteInfo = "SDWebImage iOS";
+		};
+		59624237215565CC001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E8A666331A844CC400287CA3;
+			remoteInfo = "SAMKeychain-iOS";
+		};
+		5962423B215565D2001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CCA90421AE0EFB000368F5E;
+			remoteInfo = CoreActionSheetPicker;
+		};
+		5962423F215565D7001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 299522381BBF104D00859F49;
+			remoteInfo = "AFNetworking iOS";
+		};
+		59624243215565DC001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CocoaOniguruma;
+		};
+		59624247215565E3001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AF139BF1BF384DA0037B073;
+			remoteInfo = LGSideMenuController;
+		};
+		5962424B215565E9001995AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C63EE56A1BBA07ED008F46BB;
+			remoteInfo = MGSwipeTableCell;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		59624234215565C7001995AD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5962424A215565E9001995AD /* MGSwipeTableCell.framework in Embed Frameworks */,
+				5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */,
+				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
+				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
+				59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */,
+				59624242215565DC001995AD /* CocoaOniguruma.framework in Embed Frameworks */,
+				59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		596240A92155622E001995AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		596240AB2155622E001995AD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		596240AC2155622E001995AD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		596240AF2155622E001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		596240B22155622E001995AD /* Shukofukurou_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shukofukurou_IOS.xcdatamodel; sourceTree = "<group>"; };
 		596240B42155622F001995AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		596240B72155622F001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		596240B92155622F001995AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596240BA2155622F001995AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shukofukurou-IOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240C42155622F001995AD /* Shukofukurou_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shukofukurou_IOSTests.m; sourceTree = "<group>"; };
 		596240C62155622F001995AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		596240E62155630F001995AD /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		596240E721556310001995AD /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		596240E921556317001995AD /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
+		596240FE2155631F001995AD /* SAMKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SAMKeychain.xcodeproj; sourceTree = "<group>"; };
+		5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreActionSheetPicker.xcodeproj; path = CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj; sourceTree = "<group>"; };
+		5962411F21556336001995AD /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AFNetworking.xcodeproj; sourceTree = "<group>"; };
+		596241372155633E001995AD /* CocoaOniguruma.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CocoaOniguruma.xcodeproj; sourceTree = "<group>"; };
+		596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = LGSideMenuControllerFramework.xcodeproj; sourceTree = "<group>"; };
+		596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MGSwipeTableCell.xcodeproj; sourceTree = "<group>"; };
+		596241522155638B001995AD /* AniListConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
+		596241532155638C001995AD /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
+		596241542155638C001995AD /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
+		596241552155638D001995AD /* AniListConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
+		5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIKitsuStaffFormat.m; sourceTree = "<group>"; };
+		5962415921556396001995AD /* AtarashiiAPIListFormatKitsu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatKitsu.h; sourceTree = "<group>"; };
+		5962415A21556396001995AD /* AtarashiiAPIKitsuStaffFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIKitsuStaffFormat.h; sourceTree = "<group>"; };
+		5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatAniList.m; sourceTree = "<group>"; };
+		5962415C21556398001995AD /* AtarashiiAPIListFormatAniList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatAniList.h; sourceTree = "<group>"; };
+		5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatKitsu.m; sourceTree = "<group>"; };
+		5962415E21556399001995AD /* AtarashiiDataObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiDataObjects.h; sourceTree = "<group>"; };
+		5962415F21556399001995AD /* AtarashiiDataObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiDataObjects.m; sourceTree = "<group>"; };
+		59624164215563AA001995AD /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
+		59624165215563AB001995AD /* AniList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniList.m; sourceTree = "<group>"; };
+		59624166215563AC001995AD /* AniList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
+		59624167215563AD001995AD /* AniListSeasonListGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListSeasonListGenerator.h; sourceTree = "<group>"; };
+		59624168215563AD001995AD /* AniListSeasonListGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListSeasonListGenerator.m; sourceTree = "<group>"; };
+		59624169215563AE001995AD /* AniListScoreConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListScoreConvert.m; sourceTree = "<group>"; };
+		5962416A215563AF001995AD /* AiringSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringSchedule.h; sourceTree = "<group>"; };
+		5962416B215563AF001995AD /* AniListScoreConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListScoreConvert.h; sourceTree = "<group>"; };
+		59624170215563B3001995AD /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
+		59624171215563B4001995AD /* AtarashiiListCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiListCoreData.h; sourceTree = "<group>"; };
+		59624172215563B5001995AD /* AtarashiiListCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiListCoreData.m; sourceTree = "<group>"; };
+		59624173215563B5001995AD /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
+		59624176215563C9001995AD /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
+		59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
+		59624178215563CA001995AD /* MyAnimeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimeList.h; sourceTree = "<group>"; };
+		59624179215563CA001995AD /* KitsuListRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KitsuListRetriever.h; sourceTree = "<group>"; };
+		5962417A215563CB001995AD /* listservice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listservice.h; sourceTree = "<group>"; };
+		5962417B215563CB001995AD /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		5962417C215563CC001995AD /* TitleIdConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleIdConverter.h; sourceTree = "<group>"; };
+		5962417D215563CD001995AD /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		5962417E215563CD001995AD /* Kitsu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kitsu.m; sourceTree = "<group>"; };
+		5962417F215563CE001995AD /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
+		59624180215563CE001995AD /* listservice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listservice.m; sourceTree = "<group>"; };
+		59624181215563CF001995AD /* NSString+HTMLtoNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLtoNSAttributedString.h"; sourceTree = "<group>"; };
+		59624182215563CF001995AD /* Kitsu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kitsu.h; sourceTree = "<group>"; };
+		59624183215563D0001995AD /* TitleIdConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleIdConverter.m; sourceTree = "<group>"; };
+		59624184215563D0001995AD /* MyAnimeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimeList.m; sourceTree = "<group>"; };
+		59624185215563D1001995AD /* RatingTwentyConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
+		59624186215563D2001995AD /* KitsuListRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KitsuListRetriever.m; sourceTree = "<group>"; };
+		59624187215563D2001995AD /* RatingTwentyConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
+		5962419221556402001995AD /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		5962419321556403001995AD /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		5962419421556403001995AD /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewController.h; sourceTree = "<group>"; };
+		5962419521556404001995AD /* OAuthViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewControllerDelegate.h; sourceTree = "<group>"; };
+		5962419621556404001995AD /* AuthWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthWebView.h; sourceTree = "<group>"; };
+		5962419721556405001995AD /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthViewController.m; sourceTree = "<group>"; };
+		5962419821556405001995AD /* AuthWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthWebView.m; sourceTree = "<group>"; };
+		5962419D21556428001995AD /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		5962419E21556429001995AD /* MainSideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSideBarViewController.h; sourceTree = "<group>"; };
+		5962419F21556429001995AD /* MainSideBarViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSideBarViewDelegate.h; sourceTree = "<group>"; };
+		596241A02155642A001995AD /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
+		596241A12155642B001995AD /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		596241A22155642B001995AD /* SideBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarCell.m; sourceTree = "<group>"; };
+		596241A32155642C001995AD /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
+		596241A42155642D001995AD /* SideBarMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarMenuDelegate.h; sourceTree = "<group>"; };
+		596241A52155642D001995AD /* MainSideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSideBarViewController.m; sourceTree = "<group>"; };
+		596241A62155642E001995AD /* SideBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarCell.h; sourceTree = "<group>"; };
+		596241BA21556481001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Airing.storyboard; sourceTree = "<group>"; };
+		596241BC21556486001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Auth.storyboard; sourceTree = "<group>"; };
+		596241BE21556489001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/InfoView.storyboard; sourceTree = "<group>"; };
+		596241C02155648D001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		596241C221556493001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Lists.storyboard; sourceTree = "<group>"; };
+		596241C421556497001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		596241C62155649C001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OAuth.storyboard; sourceTree = "<group>"; };
+		596241C8215564A1001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		596241CA215564A5001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
+		596241CC215564A9001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seasons.storyboard; sourceTree = "<group>"; };
+		596241CE215564AD001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ServiceSwitcher.storyboard; sourceTree = "<group>"; };
+		596241D0215564B4001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		596241D3215564C8001995AD /* SeasonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonCollectionViewCell.h; sourceTree = "<group>"; };
+		596241D4215564C9001995AD /* MangaEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaEntryTableViewCell.h; sourceTree = "<group>"; };
+		596241D5215564CA001995AD /* TitleInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleInfoTableViewCell.m; sourceTree = "<group>"; };
+		596241D6215564CB001995AD /* AnimeEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeEntryTableViewCell.m; sourceTree = "<group>"; };
+		596241D7215564CC001995AD /* TitleInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleInfoTableViewCell.h; sourceTree = "<group>"; };
+		596241D8215564CC001995AD /* EntryCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCellInfo.m; sourceTree = "<group>"; };
+		596241D9215564CD001995AD /* EntryCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCellInfo.h; sourceTree = "<group>"; };
+		596241DA215564CE001995AD /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		596241DB215564CF001995AD /* MangaEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangaEntryTableViewCell.m; sourceTree = "<group>"; };
+		596241DC215564D0001995AD /* SeasonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonCollectionViewCell.m; sourceTree = "<group>"; };
+		596241DD215564D0001995AD /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		596241DE215564D1001995AD /* AnimeEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeEntryTableViewCell.h; sourceTree = "<group>"; };
+		596241E6215564FA001995AD /* SearchTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTabViewController.m; sourceTree = "<group>"; };
+		596241E7215564FB001995AD /* ListRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListRootViewController.m; sourceTree = "<group>"; };
+		596241E8215564FB001995AD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		596241E9215564FC001995AD /* AiringDayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringDayTableViewController.m; sourceTree = "<group>"; };
+		596241EA215564FD001995AD /* SearchTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTabViewController.h; sourceTree = "<group>"; };
+		596241EB215564FD001995AD /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		596241EC215564FE001995AD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		596241ED215564FE001995AD /* MangaSearchRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaSearchRootViewController.h; sourceTree = "<group>"; };
+		596241EE215564FF001995AD /* AiringRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringRootViewController.h; sourceTree = "<group>"; };
+		596241EF215564FF001995AD /* AiringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringViewController.m; sourceTree = "<group>"; };
+		596241F021556500001995AD /* ListRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListRootViewController.h; sourceTree = "<group>"; };
+		596241F121556501001995AD /* SeasonSelectorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonSelectorTableViewController.h; sourceTree = "<group>"; };
+		596241F221556501001995AD /* SeasonsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonsRootViewController.h; sourceTree = "<group>"; };
+		596241F321556502001995AD /* SeasonsRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonsRootViewController.m; sourceTree = "<group>"; };
+		596241F421556502001995AD /* ListSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListSelectorViewController.m; sourceTree = "<group>"; };
+		596241F521556503001995AD /* ServiceSwitcherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSwitcherViewController.m; sourceTree = "<group>"; };
+		596241F621556503001995AD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		596241F721556504001995AD /* TitleInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleInfoViewController.h; sourceTree = "<group>"; };
+		596241F821556505001995AD /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		596241F921556505001995AD /* ServiceSwitcherRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSwitcherRootViewController.h; sourceTree = "<group>"; };
+		596241FA21556506001995AD /* ViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerManager.m; sourceTree = "<group>"; };
+		596241FB21556506001995AD /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		596241FC21556507001995AD /* SeasonSelectorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonSelectorTableViewController.m; sourceTree = "<group>"; };
+		596241FD21556507001995AD /* SettingsRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsRootViewController.m; sourceTree = "<group>"; };
+		596241FE21556508001995AD /* AnimeSearchRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeSearchRootViewController.m; sourceTree = "<group>"; };
+		596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSwitcherRootViewController.m; sourceTree = "<group>"; };
+		5962420021556509001995AD /* SeasonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonsViewController.h; sourceTree = "<group>"; };
+		5962420121556509001995AD /* SettingsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsRootViewController.h; sourceTree = "<group>"; };
+		596242022155650A001995AD /* ServiceSwitcherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSwitcherViewController.h; sourceTree = "<group>"; };
+		596242032155650B001995AD /* AiringRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringRootViewController.m; sourceTree = "<group>"; };
+		596242042155650B001995AD /* TitleInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleInfoViewController.m; sourceTree = "<group>"; };
+		596242052155650C001995AD /* AiringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringViewController.h; sourceTree = "<group>"; };
+		596242062155650C001995AD /* SeasonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonsViewController.m; sourceTree = "<group>"; };
+		596242072155650D001995AD /* ServiceSwitcherViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSwitcherViewDelegate.h; sourceTree = "<group>"; };
+		596242082155650D001995AD /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		596242092155650E001995AD /* ViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerManager.h; sourceTree = "<group>"; };
+		5962420A2155650E001995AD /* AnimeSearchRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeSearchRootViewController.h; sourceTree = "<group>"; };
+		5962420B2155650F001995AD /* SearchViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewControllers.h; sourceTree = "<group>"; };
+		5962420C21556510001995AD /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
+		5962420D21556510001995AD /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		5962420E21556511001995AD /* AiringDayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringDayTableViewController.h; sourceTree = "<group>"; };
+		5962420F21556511001995AD /* ListSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSelectorViewController.h; sourceTree = "<group>"; };
+		5962421021556512001995AD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5962421121556512001995AD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5962421221556513001995AD /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
+		5962421321556514001995AD /* MangaSearchRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangaSearchRootViewController.m; sourceTree = "<group>"; };
+		5962422B2155653D001995AD /* Hiyoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hiyoko.xcdatamodel; sourceTree = "<group>"; };
+		5962422D2155658D001995AD /* NSString_stripHtml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
+		5962422E21556591001995AD /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
+		596242742155D2C9001995AD /* OnePasswordExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
+		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +527,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59624249215565E9001995AD /* MGSwipeTableCell.framework in Frameworks */,
+				59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */,
+				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
+				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
+				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
+				59624241215565DC001995AD /* CocoaOniguruma.framework in Frameworks */,
+				59624230215565C7001995AD /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +550,7 @@
 		5962409C2155622E001995AD = {
 			isa = PBXGroup;
 			children = (
+				596240D82155625C001995AD /* Dependencies */,
 				596240A72155622E001995AD /* Shukofukurou-IOS */,
 				596240C32155622F001995AD /* Shukofukurou-IOSTests */,
 				596240A62155622E001995AD /* Products */,
@@ -85,14 +571,16 @@
 			children = (
 				596240A82155622E001995AD /* AppDelegate.h */,
 				596240A92155622E001995AD /* AppDelegate.m */,
-				596240AB2155622E001995AD /* ViewController.h */,
-				596240AC2155622E001995AD /* ViewController.m */,
-				596240AE2155622E001995AD /* Main.storyboard */,
 				596240B42155622F001995AD /* Assets.xcassets */,
-				596240B62155622F001995AD /* LaunchScreen.storyboard */,
+				59624191215563E8001995AD /* Auth View Controllers */,
+				5962414F21556362001995AD /* Backend */,
+				5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */,
 				596240B92155622F001995AD /* Info.plist */,
 				596240BA2155622F001995AD /* main.m */,
-				596240B12155622E001995AD /* Shukofukurou_IOS.xcdatamodeld */,
+				5962419C21556413001995AD /* Navigation */,
+				596241AB21556443001995AD /* Storyboards */,
+				596241D2215564BD001995AD /* Table View Cells */,
+				596241E5215564E2001995AD /* View Controllers */,
 			);
 			path = "Shukofukurou-IOS";
 			sourceTree = "<group>";
@@ -106,6 +594,369 @@
 			path = "Shukofukurou-IOSTests";
 			sourceTree = "<group>";
 		};
+		596240D82155625C001995AD /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				596240E2215562DB001995AD /* XMLReader */,
+				596240E1215562D2001995AD /* SDWebImage-master */,
+				596240E0215562CB001995AD /* SAMKeychain */,
+				596240D921556282001995AD /* 1Password */,
+				596240DA2155628C001995AD /* ActionSheetPicker */,
+				596240DB21556296001995AD /* AFNetworking */,
+				596240DC2155629D001995AD /* CocoaOniguruma */,
+				596240DD215562A8001995AD /* LGSideMenuControllerFramework */,
+				596240DE215562B0001995AD /* MGSwipeTableCell */,
+				596240DF215562B6001995AD /* NSString stripHTML */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		596240D921556282001995AD /* 1Password */ = {
+			isa = PBXGroup;
+			children = (
+				596242742155D2C9001995AD /* OnePasswordExtension.h */,
+				596242752155D2CF001995AD /* OnePasswordExtension.m */,
+			);
+			path = 1Password;
+			sourceTree = "<group>";
+		};
+		596240DA2155628C001995AD /* ActionSheetPicker */ = {
+			isa = PBXGroup;
+			children = (
+				5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */,
+			);
+			path = ActionSheetPicker;
+			sourceTree = "<group>";
+		};
+		596240DB21556296001995AD /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				5962411F21556336001995AD /* AFNetworking.xcodeproj */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		596240DC2155629D001995AD /* CocoaOniguruma */ = {
+			isa = PBXGroup;
+			children = (
+				596241372155633E001995AD /* CocoaOniguruma.xcodeproj */,
+			);
+			path = CocoaOniguruma;
+			sourceTree = "<group>";
+		};
+		596240DD215562A8001995AD /* LGSideMenuControllerFramework */ = {
+			isa = PBXGroup;
+			children = (
+				596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */,
+			);
+			path = LGSideMenuControllerFramework;
+			sourceTree = "<group>";
+		};
+		596240DE215562B0001995AD /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */,
+			);
+			path = MGSwipeTableCell;
+			sourceTree = "<group>";
+		};
+		596240DF215562B6001995AD /* NSString stripHTML */ = {
+			isa = PBXGroup;
+			children = (
+				5962422D2155658D001995AD /* NSString_stripHtml.h */,
+				5962422E21556591001995AD /* NSString_stripHtml.m */,
+			);
+			path = "NSString stripHTML";
+			sourceTree = "<group>";
+		};
+		596240E0215562CB001995AD /* SAMKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				596240FE2155631F001995AD /* SAMKeychain.xcodeproj */,
+			);
+			path = SAMKeychain;
+			sourceTree = "<group>";
+		};
+		596240E1215562D2001995AD /* SDWebImage-master */ = {
+			isa = PBXGroup;
+			children = (
+				596240E921556317001995AD /* SDWebImage.xcodeproj */,
+			);
+			path = "SDWebImage-master";
+			sourceTree = "<group>";
+		};
+		596240E2215562DB001995AD /* XMLReader */ = {
+			isa = PBXGroup;
+			children = (
+				596240E62155630F001995AD /* XMLReader.h */,
+				596240E721556310001995AD /* XMLReader.m */,
+			);
+			path = XMLReader;
+			sourceTree = "<group>";
+		};
+		596240EA21556317001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				596240F321556317001995AD /* libSDWebImage iOS static.a */,
+				596240F521556317001995AD /* libSDWebImage watchOS static.a */,
+				596240F721556317001995AD /* SDWebImage.framework */,
+				596240F921556317001995AD /* SDWebImage.framework */,
+				596240FB21556317001995AD /* SDWebImage.framework */,
+				596240FD21556317001995AD /* SDWebImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		596240FF2155631F001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				596241092155631F001995AD /* SAMKeychain.framework */,
+				5962410B2155631F001995AD /* SAMKeychainTests-iOS.xctest */,
+				5962410D2155631F001995AD /* SAMKeychain.framework */,
+				5962410F2155631F001995AD /* SAMKeychainTests-macOS.xctest */,
+				596241112155631F001995AD /* SAMKeychain.framework */,
+				596241132155631F001995AD /* SAMKeychainTests.xctest */,
+				596241152155631F001995AD /* SAMKeychain.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5962411721556329001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5962411C21556329001995AD /* CoreActionSheetPicker.framework */,
+				5962411E21556329001995AD /* CoreActionSheetPickerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5962412021556336001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5962412A21556336001995AD /* AFNetworking.framework */,
+				5962412C21556336001995AD /* AFNetworking.framework */,
+				5962412E21556336001995AD /* AFNetworking.framework */,
+				5962413021556336001995AD /* AFNetworking.framework */,
+				5962413221556336001995AD /* AFNetworking iOS Tests.xctest */,
+				5962413421556336001995AD /* AFNetworking macOS Tests.xctest */,
+				5962413621556336001995AD /* AFNetworking tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		596241382155633E001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5962413E2155633E001995AD /* CocoaOniguruma.framework */,
+				596241402155633E001995AD /* UnitTest.xctest */,
+				596241422155633E001995AD /* TestCommand */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		596241442155634A001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				596241482155634A001995AD /* LGSideMenuController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5962414A2155634F001995AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5962414E2155634F001995AD /* MGSwipeTableCell.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5962414F21556362001995AD /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				59624171215563B4001995AD /* AtarashiiListCoreData.h */,
+				59624172215563B5001995AD /* AtarashiiListCoreData.m */,
+				59624173215563B5001995AD /* Base64Category.h */,
+				59624170215563B3001995AD /* Base64Category.m */,
+				5962416A215563AF001995AD /* AiringSchedule.h */,
+				59624164215563AA001995AD /* AiringSchedule.m */,
+				59624166215563AC001995AD /* AniList.h */,
+				59624165215563AB001995AD /* AniList.m */,
+				5962416B215563AF001995AD /* AniListScoreConvert.h */,
+				59624169215563AE001995AD /* AniListScoreConvert.m */,
+				59624167215563AD001995AD /* AniListSeasonListGenerator.h */,
+				59624168215563AD001995AD /* AniListSeasonListGenerator.m */,
+				5962417F215563CE001995AD /* Keychain.h */,
+				59624176215563C9001995AD /* Keychain.m */,
+				59624182215563CF001995AD /* Kitsu.h */,
+				5962417E215563CD001995AD /* Kitsu.m */,
+				59624179215563CA001995AD /* KitsuListRetriever.h */,
+				59624186215563D2001995AD /* KitsuListRetriever.m */,
+				5962417A215563CB001995AD /* listservice.h */,
+				59624180215563CE001995AD /* listservice.m */,
+				59624178215563CA001995AD /* MyAnimeList.h */,
+				59624184215563D0001995AD /* MyAnimeList.m */,
+				59624181215563CF001995AD /* NSString+HTMLtoNSAttributedString.h */,
+				59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */,
+				59624187215563D2001995AD /* RatingTwentyConvert.h */,
+				59624185215563D1001995AD /* RatingTwentyConvert.m */,
+				5962417C215563CC001995AD /* TitleIdConverter.h */,
+				59624183215563D0001995AD /* TitleIdConverter.m */,
+				5962417D215563CD001995AD /* Utility.h */,
+				5962417B215563CB001995AD /* Utility.m */,
+				5962415121556378001995AD /* Constants */,
+				596241502155636D001995AD /* AtarashiiDataFormatters */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		596241502155636D001995AD /* AtarashiiDataFormatters */ = {
+			isa = PBXGroup;
+			children = (
+				5962415A21556396001995AD /* AtarashiiAPIKitsuStaffFormat.h */,
+				5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */,
+				5962415C21556398001995AD /* AtarashiiAPIListFormatAniList.h */,
+				5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */,
+				5962415921556396001995AD /* AtarashiiAPIListFormatKitsu.h */,
+				5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */,
+				5962415E21556399001995AD /* AtarashiiDataObjects.h */,
+				5962415F21556399001995AD /* AtarashiiDataObjects.m */,
+			);
+			path = AtarashiiDataFormatters;
+			sourceTree = "<group>";
+		};
+		5962415121556378001995AD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				596241522155638B001995AD /* AniListConstants.h */,
+				596241552155638D001995AD /* AniListConstants.m */,
+				596241542155638C001995AD /* ClientConstants.h */,
+				596241532155638C001995AD /* ClientConstants.m */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		59624191215563E8001995AD /* Auth View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5962419321556403001995AD /* AuthViewController.h */,
+				5962419221556402001995AD /* AuthViewController.m */,
+				5962419621556404001995AD /* AuthWebView.h */,
+				5962419821556405001995AD /* AuthWebView.m */,
+				5962419421556403001995AD /* OAuthViewController.h */,
+				5962419721556405001995AD /* OAuthViewController.m */,
+				5962419521556404001995AD /* OAuthViewControllerDelegate.h */,
+			);
+			path = "Auth View Controllers";
+			sourceTree = "<group>";
+		};
+		5962419C21556413001995AD /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				5962419E21556429001995AD /* MainSideBarViewController.h */,
+				596241A52155642D001995AD /* MainSideBarViewController.m */,
+				5962419F21556429001995AD /* MainSideBarViewDelegate.h */,
+				5962419D21556428001995AD /* RootViewController.h */,
+				596241A12155642B001995AD /* RootViewController.m */,
+				596241A62155642E001995AD /* SideBarCell.h */,
+				596241A22155642B001995AD /* SideBarCell.m */,
+				596241A42155642D001995AD /* SideBarMenuDelegate.h */,
+				596241A02155642A001995AD /* SideBarViewController.h */,
+				596241A32155642C001995AD /* SideBarViewController.m */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		596241AB21556443001995AD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				596241BB21556481001995AD /* Airing.storyboard */,
+				596241BD21556486001995AD /* Auth.storyboard */,
+				596241BF21556489001995AD /* InfoView.storyboard */,
+				596241C12155648D001995AD /* LaunchScreen.storyboard */,
+				596241C321556493001995AD /* Lists.storyboard */,
+				596241C521556497001995AD /* Main.storyboard */,
+				596241C72155649C001995AD /* OAuth.storyboard */,
+				596241C9215564A1001995AD /* Profile.storyboard */,
+				596241CB215564A5001995AD /* Search.storyboard */,
+				596241CD215564A9001995AD /* Seasons.storyboard */,
+				596241CF215564AD001995AD /* ServiceSwitcher.storyboard */,
+				596241D1215564B4001995AD /* Settings.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		596241D2215564BD001995AD /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				596241DE215564D1001995AD /* AnimeEntryTableViewCell.h */,
+				596241D6215564CB001995AD /* AnimeEntryTableViewCell.m */,
+				596241D9215564CD001995AD /* EntryCellInfo.h */,
+				596241D8215564CC001995AD /* EntryCellInfo.m */,
+				596241D4215564C9001995AD /* MangaEntryTableViewCell.h */,
+				596241DB215564CF001995AD /* MangaEntryTableViewCell.m */,
+				596241DA215564CE001995AD /* SearchTableViewCell.h */,
+				596241DD215564D0001995AD /* SearchTableViewCell.m */,
+				596241D3215564C8001995AD /* SeasonCollectionViewCell.h */,
+				596241DC215564D0001995AD /* SeasonCollectionViewCell.m */,
+				596241D7215564CC001995AD /* TitleInfoTableViewCell.h */,
+				596241D5215564CA001995AD /* TitleInfoTableViewCell.m */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		596241E5215564E2001995AD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5962420E21556511001995AD /* AiringDayTableViewController.h */,
+				596241E9215564FC001995AD /* AiringDayTableViewController.m */,
+				596241EE215564FF001995AD /* AiringRootViewController.h */,
+				596242032155650B001995AD /* AiringRootViewController.m */,
+				596242052155650C001995AD /* AiringViewController.h */,
+				596241EF215564FF001995AD /* AiringViewController.m */,
+				5962420A2155650E001995AD /* AnimeSearchRootViewController.h */,
+				596241FE21556508001995AD /* AnimeSearchRootViewController.m */,
+				596241F021556500001995AD /* ListRootViewController.h */,
+				596241E7215564FB001995AD /* ListRootViewController.m */,
+				5962420F21556511001995AD /* ListSelectorViewController.h */,
+				596241F421556502001995AD /* ListSelectorViewController.m */,
+				596242082155650D001995AD /* ListViewController.h */,
+				596241EB215564FD001995AD /* ListViewController.m */,
+				5962421221556513001995AD /* LoadViewController.h */,
+				5962420C21556510001995AD /* LoadViewController.m */,
+				596241E8215564FB001995AD /* MainViewController.h */,
+				596241EC215564FE001995AD /* MainViewController.m */,
+				596241ED215564FE001995AD /* MangaSearchRootViewController.h */,
+				5962421321556514001995AD /* MangaSearchRootViewController.m */,
+				596241EA215564FD001995AD /* SearchTabViewController.h */,
+				596241E6215564FA001995AD /* SearchTabViewController.m */,
+				596241FB21556506001995AD /* SearchViewController.h */,
+				5962420D21556510001995AD /* SearchViewController.m */,
+				5962420B2155650F001995AD /* SearchViewControllers.h */,
+				596241F121556501001995AD /* SeasonSelectorTableViewController.h */,
+				596241FC21556507001995AD /* SeasonSelectorTableViewController.m */,
+				596241F221556501001995AD /* SeasonsRootViewController.h */,
+				596241F321556502001995AD /* SeasonsRootViewController.m */,
+				5962420021556509001995AD /* SeasonsViewController.h */,
+				596242062155650C001995AD /* SeasonsViewController.m */,
+				596241F921556505001995AD /* ServiceSwitcherRootViewController.h */,
+				596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */,
+				596242022155650A001995AD /* ServiceSwitcherViewController.h */,
+				596241F521556503001995AD /* ServiceSwitcherViewController.m */,
+				596242072155650D001995AD /* ServiceSwitcherViewDelegate.h */,
+				5962420121556509001995AD /* SettingsRootViewController.h */,
+				596241FD21556507001995AD /* SettingsRootViewController.m */,
+				5962421121556512001995AD /* SettingsViewController.h */,
+				596241F621556503001995AD /* SettingsViewController.m */,
+				596241F721556504001995AD /* TitleInfoViewController.h */,
+				596242042155650B001995AD /* TitleInfoViewController.m */,
+				596241F821556505001995AD /* ViewController.h */,
+				5962421021556512001995AD /* ViewController.m */,
+				596242092155650E001995AD /* ViewControllerManager.h */,
+				596241FA21556506001995AD /* ViewControllerManager.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,10 +967,18 @@
 				596240A12155622E001995AD /* Sources */,
 				596240A22155622E001995AD /* Frameworks */,
 				596240A32155622E001995AD /* Resources */,
+				59624234215565C7001995AD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				59624233215565C7001995AD /* PBXTargetDependency */,
+				59624238215565CC001995AD /* PBXTargetDependency */,
+				5962423C215565D2001995AD /* PBXTargetDependency */,
+				59624240215565D7001995AD /* PBXTargetDependency */,
+				59624244215565DC001995AD /* PBXTargetDependency */,
+				59624248215565E3001995AD /* PBXTargetDependency */,
+				5962424C215565E9001995AD /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou-IOS";
 			productName = "Shukofukurou-IOS";
@@ -173,6 +1032,36 @@
 			mainGroup = 5962409C2155622E001995AD;
 			productRefGroup = 596240A62155622E001995AD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5962412021556336001995AD /* Products */;
+					ProjectRef = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+				},
+				{
+					ProductGroup = 596241382155633E001995AD /* Products */;
+					ProjectRef = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
+				},
+				{
+					ProductGroup = 5962411721556329001995AD /* Products */;
+					ProjectRef = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
+				},
+				{
+					ProductGroup = 596241442155634A001995AD /* Products */;
+					ProjectRef = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
+				},
+				{
+					ProductGroup = 5962414A2155634F001995AD /* Products */;
+					ProjectRef = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
+				},
+				{
+					ProductGroup = 596240FF2155631F001995AD /* Products */;
+					ProjectRef = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+				},
+				{
+					ProductGroup = 596240EA21556317001995AD /* Products */;
+					ProjectRef = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				596240A42155622E001995AD /* Shukofukurou-IOS */,
@@ -181,14 +1070,216 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		596240F321556317001995AD /* libSDWebImage iOS static.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImage iOS static.a";
+			remoteRef = 596240F221556317001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596240F521556317001995AD /* libSDWebImage watchOS static.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImage watchOS static.a";
+			remoteRef = 596240F421556317001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596240F721556317001995AD /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 596240F621556317001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596240F921556317001995AD /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 596240F821556317001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596240FB21556317001995AD /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 596240FA21556317001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596240FD21556317001995AD /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 596240FC21556317001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596241092155631F001995AD /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = 596241082155631F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962410B2155631F001995AD /* SAMKeychainTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SAMKeychainTests-iOS.xctest";
+			remoteRef = 5962410A2155631F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962410D2155631F001995AD /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = 5962410C2155631F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962410F2155631F001995AD /* SAMKeychainTests-macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SAMKeychainTests-macOS.xctest";
+			remoteRef = 5962410E2155631F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596241112155631F001995AD /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = 596241102155631F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596241132155631F001995AD /* SAMKeychainTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SAMKeychainTests.xctest;
+			remoteRef = 596241122155631F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596241152155631F001995AD /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = 596241142155631F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962411C21556329001995AD /* CoreActionSheetPicker.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CoreActionSheetPicker.framework;
+			remoteRef = 5962411B21556329001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962411E21556329001995AD /* CoreActionSheetPickerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CoreActionSheetPickerTests.xctest;
+			remoteRef = 5962411D21556329001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962412A21556336001995AD /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = 5962412921556336001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962412C21556336001995AD /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = 5962412B21556336001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962412E21556336001995AD /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = 5962412D21556336001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962413021556336001995AD /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = 5962412F21556336001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962413221556336001995AD /* AFNetworking iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking iOS Tests.xctest";
+			remoteRef = 5962413121556336001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962413421556336001995AD /* AFNetworking macOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking macOS Tests.xctest";
+			remoteRef = 5962413321556336001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962413621556336001995AD /* AFNetworking tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking tvOS Tests.xctest";
+			remoteRef = 5962413521556336001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962413E2155633E001995AD /* CocoaOniguruma.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaOniguruma.framework;
+			remoteRef = 5962413D2155633E001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596241402155633E001995AD /* UnitTest.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTest.xctest;
+			remoteRef = 5962413F2155633E001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596241422155633E001995AD /* TestCommand */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TestCommand;
+			remoteRef = 596241412155633E001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		596241482155634A001995AD /* LGSideMenuController.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LGSideMenuController.framework;
+			remoteRef = 596241472155634A001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5962414E2155634F001995AD /* MGSwipeTableCell.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MGSwipeTableCell.framework;
+			remoteRef = 5962414D2155634F001995AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		596240A32155622E001995AD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596240B82155622F001995AD /* LaunchScreen.storyboard in Resources */,
+				596242532155661D001995AD /* OAuth.storyboard in Resources */,
+				596242522155661A001995AD /* Main.storyboard in Resources */,
+				5962425121556617001995AD /* Lists.storyboard in Resources */,
+				5962424E2155660F001995AD /* Auth.storyboard in Resources */,
+				5962425521556622001995AD /* Search.storyboard in Resources */,
+				5962424F21556612001995AD /* InfoView.storyboard in Resources */,
+				5962424D2155660C001995AD /* Airing.storyboard in Resources */,
+				5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */,
+				596242542155661F001995AD /* Profile.storyboard in Resources */,
+				5962425021556614001995AD /* LaunchScreen.storyboard in Resources */,
 				596240B52155622F001995AD /* Assets.xcassets in Resources */,
-				596240B02155622E001995AD /* Main.storyboard in Resources */,
+				596242582155662A001995AD /* Settings.storyboard in Resources */,
+				5962425621556624001995AD /* Seasons.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,10 +1297,68 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596240AD2155622E001995AD /* ViewController.m in Sources */,
+				5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */,
+				5962422421556514001995AD /* TitleInfoViewController.m in Sources */,
+				5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */,
+				596241A82155642E001995AD /* SideBarCell.m in Sources */,
 				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
+				5962421E21556514001995AD /* ViewControllerManager.m in Sources */,
+				5962421921556514001995AD /* AiringViewController.m in Sources */,
+				5962418A215563D2001995AD /* Utility.m in Sources */,
+				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
+				5962422721556514001995AD /* SearchViewController.m in Sources */,
+				5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */,
+				59624188215563D2001995AD /* Keychain.m in Sources */,
+				5962421421556514001995AD /* SearchTabViewController.m in Sources */,
+				5962422021556514001995AD /* SettingsRootViewController.m in Sources */,
+				596241E4215564D1001995AD /* SearchTableViewCell.m in Sources */,
+				596241A72155642E001995AD /* RootViewController.m in Sources */,
+				5962421821556514001995AD /* MainViewController.m in Sources */,
+				596241DF215564D1001995AD /* TitleInfoTableViewCell.m in Sources */,
+				5962419921556406001995AD /* AuthViewController.m in Sources */,
+				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
+				5962422F21556591001995AD /* NSString_stripHtml.m in Sources */,
+				5962422921556514001995AD /* MangaSearchRootViewController.m in Sources */,
+				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
+				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
+				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
+				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
+				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
+				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
+				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */,
 				596240BB2155622F001995AD /* main.m in Sources */,
-				596240B32155622E001995AD /* Shukofukurou_IOS.xcdatamodeld in Sources */,
+				5962418B215563D2001995AD /* Kitsu.m in Sources */,
+				5962416D215563AF001995AD /* AniList.m in Sources */,
+				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
+				5962419B21556406001995AD /* AuthWebView.m in Sources */,
+				5962421521556514001995AD /* ListRootViewController.m in Sources */,
+				5962422621556514001995AD /* LoadViewController.m in Sources */,
+				5962422121556514001995AD /* AnimeSearchRootViewController.m in Sources */,
+				596240E821556310001995AD /* XMLReader.m in Sources */,
+				5962421721556514001995AD /* ListViewController.m in Sources */,
+				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
+				5962418C215563D2001995AD /* listservice.m in Sources */,
+				59624174215563B5001995AD /* Base64Category.m in Sources */,
+				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
+				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
+				596241562155638D001995AD /* ClientConstants.m in Sources */,
+				5962421D21556514001995AD /* SettingsViewController.m in Sources */,
+				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
+				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,
+				596241572155638D001995AD /* AniListConstants.m in Sources */,
+				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
+				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
+				596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */,
+				5962419A21556406001995AD /* OAuthViewController.m in Sources */,
+				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
+				59624190215563D2001995AD /* KitsuListRetriever.m in Sources */,
+				5962422821556514001995AD /* ViewController.m in Sources */,
+				5962421B21556514001995AD /* ListSelectorViewController.m in Sources */,
+				5962422321556514001995AD /* AiringRootViewController.m in Sources */,
+				5962421621556514001995AD /* AiringDayTableViewController.m in Sources */,
+				596241E0215564D1001995AD /* AnimeEntryTableViewCell.m in Sources */,
+				5962421A21556514001995AD /* SeasonsRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,23 +1378,138 @@
 			target = 596240A42155622E001995AD /* Shukofukurou-IOS */;
 			targetProxy = 596240C12155622F001995AD /* PBXContainerItemProxy */;
 		};
+		59624233215565C7001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SDWebImage iOS";
+			targetProxy = 59624232215565C7001995AD /* PBXContainerItemProxy */;
+		};
+		59624238215565CC001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SAMKeychain-iOS";
+			targetProxy = 59624237215565CC001995AD /* PBXContainerItemProxy */;
+		};
+		5962423C215565D2001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CoreActionSheetPicker;
+			targetProxy = 5962423B215565D2001995AD /* PBXContainerItemProxy */;
+		};
+		59624240215565D7001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "AFNetworking iOS";
+			targetProxy = 5962423F215565D7001995AD /* PBXContainerItemProxy */;
+		};
+		59624244215565DC001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaOniguruma;
+			targetProxy = 59624243215565DC001995AD /* PBXContainerItemProxy */;
+		};
+		59624248215565E3001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LGSideMenuController;
+			targetProxy = 59624247215565E3001995AD /* PBXContainerItemProxy */;
+		};
+		5962424C215565E9001995AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MGSwipeTableCell;
+			targetProxy = 5962424B215565E9001995AD /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		596240AE2155622E001995AD /* Main.storyboard */ = {
+		596241BB21556481001995AD /* Airing.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				596240AF2155622E001995AD /* Base */,
+				596241BA21556481001995AD /* Base */,
+			);
+			name = Airing.storyboard;
+			sourceTree = "<group>";
+		};
+		596241BD21556486001995AD /* Auth.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241BC21556486001995AD /* Base */,
+			);
+			name = Auth.storyboard;
+			sourceTree = "<group>";
+		};
+		596241BF21556489001995AD /* InfoView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241BE21556489001995AD /* Base */,
+			);
+			name = InfoView.storyboard;
+			sourceTree = "<group>";
+		};
+		596241C12155648D001995AD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241C02155648D001995AD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		596241C321556493001995AD /* Lists.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241C221556493001995AD /* Base */,
+			);
+			name = Lists.storyboard;
+			sourceTree = "<group>";
+		};
+		596241C521556497001995AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241C421556497001995AD /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		596240B62155622F001995AD /* LaunchScreen.storyboard */ = {
+		596241C72155649C001995AD /* OAuth.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				596240B72155622F001995AD /* Base */,
+				596241C62155649C001995AD /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = OAuth.storyboard;
+			sourceTree = "<group>";
+		};
+		596241C9215564A1001995AD /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241C8215564A1001995AD /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		596241CB215564A5001995AD /* Search.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241CA215564A5001995AD /* Base */,
+			);
+			name = Search.storyboard;
+			sourceTree = "<group>";
+		};
+		596241CD215564A9001995AD /* Seasons.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241CC215564A9001995AD /* Base */,
+			);
+			name = Seasons.storyboard;
+			sourceTree = "<group>";
+		};
+		596241CF215564AD001995AD /* ServiceSwitcher.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241CE215564AD001995AD /* Base */,
+			);
+			name = ServiceSwitcher.storyboard;
+			sourceTree = "<group>";
+		};
+		596241D1215564B4001995AD /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596241D0215564B4001995AD /* Base */,
+			);
+			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -367,15 +1631,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -384,15 +1651,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -468,13 +1738,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		596240B12155622E001995AD /* Shukofukurou_IOS.xcdatamodeld */ = {
+		5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				596240B22155622E001995AD /* Shukofukurou_IOS.xcdatamodel */,
+				5962422B2155653D001995AD /* Hiyoko.xcdatamodel */,
 			);
-			currentVersion = 596240B22155622E001995AD /* Shukofukurou_IOS.xcdatamodel */;
-			path = Shukofukurou_IOS.xcdatamodeld;
+			currentVersion = 5962422B2155653D001995AD /* Hiyoko.xcdatamodel */;
+			path = Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
