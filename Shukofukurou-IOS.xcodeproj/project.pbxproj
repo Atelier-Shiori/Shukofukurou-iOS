@@ -99,6 +99,8 @@
 		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 		59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9E72156A014005D99D5 /* MSWeakTimer.m */; };
 		59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */; };
+		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
+		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -526,6 +528,9 @@
 		59AEE9E72156A014005D99D5 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		59AEE9E92156A108005D99D5 /* AutoRefreshTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoRefreshTimer.h; sourceTree = "<group>"; };
 		59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoRefreshTimer.m; sourceTree = "<group>"; };
+		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
+		59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyViewController.h; sourceTree = "<group>"; };
+		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -589,6 +594,7 @@
 				596241E5215564E2001995AD /* View Controllers */,
 				59AEE9E92156A108005D99D5 /* AutoRefreshTimer.h */,
 				59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */,
+				59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */,
 			);
 			path = "Shukofukurou-IOS";
 			sourceTree = "<group>";
@@ -962,6 +968,8 @@
 				5962421021556512001995AD /* ViewController.m */,
 				596242092155650E001995AD /* ViewControllerManager.h */,
 				596241FA21556506001995AD /* ViewControllerManager.m */,
+				59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */,
+				59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1298,6 +1306,7 @@
 				596240B52155622F001995AD /* Assets.xcassets in Resources */,
 				596242582155662A001995AD /* Settings.storyboard in Resources */,
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
+				59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1351,6 +1360,7 @@
 				5962416D215563AF001995AD /* AniList.m in Sources */,
 				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
 				5962419B21556406001995AD /* AuthWebView.m in Sources */,
+				59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */,
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,
 				5962422621556514001995AD /* LoadViewController.m in Sources */,
 				5962422121556514001995AD /* AnimeSearchRootViewController.m in Sources */,
@@ -1586,7 +1596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1639,7 +1649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
