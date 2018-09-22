@@ -185,6 +185,7 @@
                     </refreshControl>
                     <connections>
                         <outlet property="navigationitem" destination="NEs-jJ-IkG" id="bgI-5Z-zPd"/>
+                        <outlet property="refreshcontrol" destination="ZNU-5w-ohl" id="9Yd-PS-N2K"/>
                         <outlet property="searchDisplayController" destination="WTn-hm-v5v" id="V9n-7s-AdQ"/>
                         <outlet property="searchbar" destination="y4F-rY-9Uv" id="QV4-fE-Cwl"/>
                     </connections>

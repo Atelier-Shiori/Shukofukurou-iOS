@@ -18,6 +18,7 @@ typedef NS_ENUM(unsigned int, ListMediaType) {
 @property (strong) NSMutableArray *listArray;
 @property int listtype;
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationitem;
+@property (weak, nonatomic) IBOutlet UIRefreshControl *refreshcontrol;
 - (void)setViewTitle;
 - (void)reloadList;
 - (void)retrieveList:(bool)refresh completion:(void (^)(bool success)) completionHandler;

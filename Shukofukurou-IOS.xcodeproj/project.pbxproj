@@ -97,6 +97,8 @@
 		5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
 		596242582155662A001995AD /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
 		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
+		59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9E72156A014005D99D5 /* MSWeakTimer.m */; };
+		59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -520,6 +522,10 @@
 		5962422E21556591001995AD /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		596242742155D2C9001995AD /* OnePasswordExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
+		59AEE9E62156A014005D99D5 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
+		59AEE9E72156A014005D99D5 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
+		59AEE9E92156A108005D99D5 /* AutoRefreshTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoRefreshTimer.h; sourceTree = "<group>"; };
+		59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoRefreshTimer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,6 +587,8 @@
 				596241AB21556443001995AD /* Storyboards */,
 				596241D2215564BD001995AD /* Table View Cells */,
 				596241E5215564E2001995AD /* View Controllers */,
+				59AEE9E92156A108005D99D5 /* AutoRefreshTimer.h */,
+				59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */,
 			);
 			path = "Shukofukurou-IOS";
 			sourceTree = "<group>";
@@ -597,6 +605,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				59AEE9D12156A007005D99D5 /* MSWeakTimer */,
 				596240E2215562DB001995AD /* XMLReader */,
 				596240E1215562D2001995AD /* SDWebImage-master */,
 				596240E0215562CB001995AD /* SAMKeychain */,
@@ -955,6 +964,15 @@
 				596241FA21556506001995AD /* ViewControllerManager.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		59AEE9D12156A007005D99D5 /* MSWeakTimer */ = {
+			isa = PBXGroup;
+			children = (
+				59AEE9E62156A014005D99D5 /* MSWeakTimer.h */,
+				59AEE9E72156A014005D99D5 /* MSWeakTimer.m */,
+			);
+			path = MSWeakTimer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1319,6 +1337,7 @@
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				5962422F21556591001995AD /* NSString_stripHtml.m in Sources */,
 				5962422921556514001995AD /* MangaSearchRootViewController.m in Sources */,
+				59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */,
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
@@ -1349,6 +1368,7 @@
 				596241572155638D001995AD /* AniListConstants.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
+				59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */,
 				596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				5962419A21556406001995AD /* OAuthViewController.m in Sources */,
 				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
@@ -1631,7 +1651,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
@@ -1651,7 +1670,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
