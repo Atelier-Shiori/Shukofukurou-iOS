@@ -45,5 +45,16 @@
     [NSUserDefaults.standardUserDefaults setInteger:_streamregion.selectedSegmentIndex forKey:@"stream_region"];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if ([cell.textLabel.text isEqualToString:@"Online Manual"]) {
+        [self openManual];
+        [cell setSelected:NO animated:YES];
+    }
+}
+
+- (void)openManual {
+        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"] options:@{} completionHandler:^(BOOL success) {}];
+}
 
 @end
