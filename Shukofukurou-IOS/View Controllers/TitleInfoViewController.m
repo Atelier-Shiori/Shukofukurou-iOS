@@ -33,9 +33,39 @@
 
 @implementation TitleInfoViewController
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedIn" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+}
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"UserLoggedIn"]) {
+        if (notification.object) {
+            if (((ListViewController *)notification.object).listtype == _currenttype) {
+                _sections = @[@"Your Entry", @"Synopsis" ,@"Title Details"];
+                [self updateUserEntry];
+            }
+        }
+    }
+    else if ([notification.name isEqualToString:@"UserLoggedOut"]) {
+        // Remove Your Entry section
+        _sections = @[@"Synopsis", @"Title Details"];
+        [_items removeObjectForKey:@"Your Entry"];
+        [_tableview reloadData];
+    }
+    else if ([notification.name isEqualToString:@"ServiceChanged"]) {
+        // Leave Title Information
+        self.navigationItem.hidesBackButton = NO;
+        _loadingview.hidden = YES;
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /*
@@ -98,8 +128,65 @@
         [self populateWithInfowithDictionary:titleinfo withType:type];
     });
 }
-
+#pragma mark options
 - (IBAction)presentoptions:(id)sender {
+    UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performViewOnListSite];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performShare];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [self
+     presentViewController:options
+     animated:YES
+     completion:nil];
+}
+
+- (void)performViewOnListSite {
+    NSString *URL = [self getTitleURL];
+    [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
+}
+
+- (void)performShare {
+    NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL]]];
+    UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityViewControntroller.excludedActivityTypes = @[];
+    [self presentViewController:activityViewControntroller animated:true completion:nil];
+}
+
+- (NSString *)getTitleURL {
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (_currenttype == Anime){
+                return [NSString stringWithFormat:@"https://myanimelist.net/anime/%i",_titleid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://myanimelist.net/manga/%i",_titleid];
+            }
+        }
+        case 2: {
+            if (_currenttype == Anime) {
+                return [NSString stringWithFormat:@"https://kitsu.io/anime/%i",_titleid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://kitsu.io/manga/%i",_titleid];
+            }
+
+        }
+        case 3: {
+            if (_currenttype == Anime) {
+                return [NSString stringWithFormat:@"https://anilist.co/anime/%i",_titleid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://anilist.co/manga/%i",_titleid];
+            }
+        }
+        default:
+            return @"";
+    }
 }
 
 #pragma mark - Table view data source
@@ -319,23 +406,25 @@
 #pragma mark Data Source Dictionary Generators
 - (void)populateWithInfowithDictionary:(NSDictionary *)titleinfo withType:(int)type {
     NSMutableDictionary *tmpdictionary = [NSMutableDictionary new];
-    NSDictionary *userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:((NSNumber *)titleinfo[@"id"]).intValue withService:[listservice getCurrentServiceID] withType:type];
-    _navigationitem.title = titleinfo[@"title"];
-    if (!userentry) {
-        // Generate blank user entry
-        if (type == 0) {
-            userentry = @{@"watched_episodes" : @(0), @"watched_status" : @"watching", @"score" : @(0) , @"episodes" : titleinfo[@"episodes"]};
+    NSDictionary *userentry;
+    if ([listservice checkAccountForCurrentService]) {
+        userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:((NSNumber *)titleinfo[@"id"]).intValue withService:[listservice getCurrentServiceID] withType:type];
+        _navigationitem.title = titleinfo[@"title"];
+        if (!userentry) {
+            // Generate blank user entry
+            if (type == 0) {
+                userentry = @{@"watched_episodes" : @(0), @"watched_status" : @"watching", @"score" : @(0) , @"episodes" : titleinfo[@"episodes"]};
+            }
+            else {
+                userentry = @{@"chapters_read" : @(0), @"volumes_read" : @(0), @"read_status" : @"reading", @"score" : @(0), @"chapters" : titleinfo[@"chapters"], @"volumes" : titleinfo[@"volumes"]};
+            }
+            _entryid = 0;
         }
         else {
-            userentry = @{@"chapters_read" : @(0), @"volumes_read" : @(0), @"read_status" : @"reading", @"score" : @(0), @"chapters" : titleinfo[@"chapters"], @"volumes" : titleinfo[@"volumes"]};
+            _entryid = ((NSNumber *)userentry[@"entryid"]).intValue;
+            _selectedreconsuming = _currenttype == 0 ? ((NSNumber *)userentry[@"rewatching"]).boolValue : ((NSNumber *)userentry[@"rereading"]).boolValue;
         }
-        _entryid = 0;
     }
-    else {
-        _entryid = ((NSNumber *)userentry[@"entryid"]).intValue;
-        _selectedreconsuming = _currenttype == 0 ? ((NSNumber *)userentry[@"rewatching"]).boolValue : ((NSNumber *)userentry[@"rereading"]).boolValue;
-    }
-    
     // Set Title, Poster Image and Synopsis
     if (((NSString *)titleinfo[@"image_url"]).length > 0) {
         [_posterImage sd_setImageWithURL:[NSURL URLWithString:(NSString *)titleinfo[@"image_url"]]];
@@ -343,12 +432,17 @@
     else {
         _posterImage.image = [UIImage new];
     }
-    tmpdictionary[@"Synopsis"] = @[[[EntryCellInfo alloc] initCellWithTitle:@"" withValue:titleinfo[@"synopsis"] withCellType:cellTypeSynopsis]];
     // Generate Cell Array
-    tmpdictionary[@"Your Entry"] = type == 0 ? [self generateUserEntryAnimeArray:userentry] : [self generateUserEntryMangaArray:userentry];
+    tmpdictionary[@"Synopsis"] = @[[[EntryCellInfo alloc] initCellWithTitle:@"" withValue:titleinfo[@"synopsis"] withCellType:cellTypeSynopsis]];
     tmpdictionary[@"Title Details"] = type == 0 ? [self generateAnimeTitleArray:titleinfo] : [self generateMangaTitleArray:titleinfo];
+    if (userentry) {
+        tmpdictionary[@"Your Entry"] = type == 0 ? [self generateUserEntryAnimeArray:userentry] : [self generateUserEntryMangaArray:userentry];
+        _sections = @[@"Your Entry", @"Synopsis" ,@"Title Details"];
+    }
+    else {
+        _sections = @[@"Synopsis", @"Title Details"];
+    }
     _items = tmpdictionary;
-    _sections = @[@"Your Entry", @"Synopsis" ,@"Title Details"];
     [_tableview reloadData];
 }
 
@@ -384,6 +478,19 @@
 - (void)updateUserEntry {
     int currentService = [listservice getCurrentServiceID];
     NSDictionary *userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:_titleid withService:currentService withType:_currenttype];
+    if (!userentry) {
+        // Generate blank user entry
+        if (_currenttype == 0) {
+            userentry = @{@"watched_episodes" : @(0), @"watched_status" : @"watching", @"score" : @(0) , @"episodes" : @([self getSegmentInfo:@"episodes"])};
+        }
+        else {
+            userentry = @{@"chapters_read" : @(0), @"volumes_read" : @(0), @"read_status" : @"reading", @"score" : @(0), @"chapters" : @([self getSegmentInfo:@"chapters"]), @"volumes" : @([self getSegmentInfo:@"volumes"])};
+        }
+        _entryid = 0;
+    }
+    else {
+        _selectedreconsuming = _currenttype == 0 ? ((NSNumber *)userentry[@"rewatching"]).boolValue : ((NSNumber *)userentry[@"rereading"]).boolValue;
+    }
     _items[@"Your Entry"] = _currenttype == 0 ? [self generateUserEntryAnimeArray:userentry] : [self generateUserEntryMangaArray:userentry];
     switch (currentService) {
         case 2:
@@ -609,7 +716,7 @@
         }
         // Reload List
             dispatch_async(dispatch_get_main_queue(), ^{
-        [[ViewControllerManager getAppDelegateViewControllerManager].getAnimeListRootViewController.lvc reloadList];
+                [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
         [updatecell setEnabled: YES];
         weakSelf.loadingview.hidden = YES;
         weakSelf.navigationitem.hidesBackButton = NO;
@@ -662,7 +769,7 @@
         }
         // Reload List
         dispatch_async(dispatch_get_main_queue(), ^{
-        [[ViewControllerManager getAppDelegateViewControllerManager].getMangaListRootViewController.lvc reloadList];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
         [updatecell setEnabled: YES];
         weakSelf.loadingview.hidden = YES;
         weakSelf.navigationitem.hidesBackButton = NO;
@@ -771,5 +878,14 @@
         }
     }
     return info.copy;
+}
+
+- (int)getSegmentInfo:(NSString *)segmentname {
+    for (EntryCellInfo *cell in _items[@"Title Details"]) {
+        if ([cell.cellTitle caseInsensitiveCompare:segmentname] == NSOrderedSame) {
+            return ((NSString *)cell.cellValue).intValue;
+        }
+    }
+    return -1;
 }
 @end

@@ -28,6 +28,10 @@
 
 @implementation ListViewController
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -52,7 +56,27 @@
         [weakSelf populateOwnList];
         [weakSelf setViewTitle];
     };
+    // Set Observer
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:_listtype == Anime ? @"AnimeRefreshList" : @"MangaRefreshList" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:_listtype == Anime ? @"AnimeReloadList" : @"MangaReloadList" object:nil];
 }
+
+- (void)recieveNotification:(NSNotification *)notification {
+    bool refresh = YES;
+    if (notification.object && [notification.object isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *userinfo = notification.object;
+        refresh = ((NSNumber *)userinfo[@"refresh"]).boolValue;
+    }
+    if (([notification.name isEqualToString:@"AnimeRefreshList"] && _listtype == Anime) || ([notification.name isEqualToString:@"MangaRefreshList"] && _listtype == Manga)) {
+        NSLog(@"Refreshing List");
+        [self retrieveList:refresh completion:^(bool success) {}];
+    }
+    else if (([notification.name isEqualToString:@"AnimeReloadList"] && _listtype == Anime) || ([notification.name isEqualToString:@"MangaReloadList"] && _listtype == Manga)) {
+        NSLog(@"Reloading List");
+        [self reloadList];
+    }
+}
+
 
 /*
 #pragma mark - Navigation

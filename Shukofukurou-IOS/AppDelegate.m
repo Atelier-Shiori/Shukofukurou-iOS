@@ -159,9 +159,18 @@
 #pragma mark AuthViewController Delegate
 - (void)authSuccessful:(int)service {
     // Login Prep
+    __weak AppDelegate *weakSelf = self;
     [_vcmanager.mainsidebar setLoggedinUser];
-    [_vcmanager.getAnimeListRootViewController.lvc retrieveList:YES completion:^(bool success) {}];
-    [_vcmanager.getMangaListRootViewController.lvc retrieveList:YES completion:^(bool success) {}];
+    [_vcmanager.getAnimeListRootViewController.lvc retrieveList:YES completion:^(bool success) {
+        if (success) {
+            [NSNotificationCenter.defaultCenter postNotificationName:@"UserLoggedIn" object:weakSelf.vcmanager.getAnimeListRootViewController.lvc];
+        }
+    }];
+    [_vcmanager.getMangaListRootViewController.lvc retrieveList:YES completion:^(bool success) {
+        if (success) {
+            [NSNotificationCenter.defaultCenter postNotificationName:@"UserLoggedIn" object:weakSelf.vcmanager.getMangaListRootViewController.lvc];
+        }
+    }];
     [_vcmanager.mvc loadfromdefaults];
 }
 
@@ -174,6 +183,7 @@
     [_vcmanager.getSearchTabView.animesearchrootvc.animesearchvc resetSearchUI];
     [_vcmanager.getSearchTabView.mangasearchrootvc.mangasearchvc resetSearchUI];
     [_vcmanager.mvc loadfromdefaults];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"ServiceChanged" object:nil];
 }
 
 #pragma mark MainSideBarView Delegate
@@ -182,5 +192,6 @@
     [_vcmanager.getAnimeListRootViewController.lvc clearlists];
     [_vcmanager.getMangaListRootViewController.lvc clearlists];
     [_vcmanager.mvc loadfromdefaults];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"UserLoggedOut" object:nil];
 }
 @end

@@ -77,19 +77,7 @@
 }
 
 - (void)fireTimer {
-    __weak AutoRefreshTimer *weakSelf = self;
-    [_vcm.getAnimeListRootViewController.lvc.refreshControl beginRefreshing];
-    [_vcm.getAnimeListRootViewController.lvc retrieveList:YES completion:^(bool success) {
-        if (success) {
-            [weakSelf.vcm.getAnimeListRootViewController.lvc reloadList];
-            [weakSelf.vcm.getMangaListRootViewController.lvc retrieveList:YES completion:^(bool success) {
-                if (success) {
-                    [weakSelf.vcm.getMangaListRootViewController.lvc reloadList];
-                }
-                [weakSelf.vcm.getMangaListRootViewController.lvc.refreshControl endRefreshing];
-            }];
-        }
-        [weakSelf.vcm.getAnimeListRootViewController.lvc.refreshControl endRefreshing];
-    }];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeRefreshList" object:nil];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"MangaRefreshList" object:nil];
 }
 @end
