@@ -59,6 +59,8 @@
     // Set Observer
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:_listtype == Anime ? @"AnimeRefreshList" : @"MangaRefreshList" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:_listtype == Anime ? @"AnimeReloadList" : @"MangaReloadList" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
 }
 
 - (void)recieveNotification:(NSNotification *)notification {
@@ -74,6 +76,16 @@
     else if (([notification.name isEqualToString:@"AnimeReloadList"] && _listtype == Anime) || ([notification.name isEqualToString:@"MangaReloadList"] && _listtype == Manga)) {
         NSLog(@"Reloading List");
         [self reloadList];
+    }
+    else if ([notification.name isEqualToString:@"ServiceChanged"]) {
+        // Reload List
+        NSLog(@"Switching Lists");
+        [self switchlistservice];
+    }
+    else if ([notification.name isEqualToString:@"UserLoggedOut"]) {
+        // Clear List
+        NSLog(@"Clearing Lists");
+        
     }
 }
 
@@ -352,7 +364,7 @@
     else if (_listtype == Manga) {
         return [self generateMangaEntryCellAtIndexPath:indexPath tableView:tableView];
     }
-    return nil;
+    return [UITableViewCell new];
 }
 
 - (UITableViewCell *)generateAnimeEntryCellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
@@ -782,6 +794,64 @@
 }
 
 - (void)showOtherOptions:(NSDictionary *)entry {
-    
+    int titleid = ((NSNumber *)entry[@"id"]).intValue;
+    UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performViewOnListSite:titleid];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performShare:titleid];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [self
+     presentViewController:options
+     animated:YES
+     completion:nil];
+}
+
+- (void)performViewOnListSite:(int)titleid {
+    NSString *URL = [self getTitleURL:titleid];
+    [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
+}
+
+- (void)performShare:(int)titleid {
+    NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL:titleid]]];
+    UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityViewControntroller.excludedActivityTypes = @[];
+    [self presentViewController:activityViewControntroller animated:true completion:nil];
+}
+
+# pragma mark helpers
+- (NSString *)getTitleURL:(int)titleid {
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (_listtype == Anime){
+                return [NSString stringWithFormat:@"https://myanimelist.net/anime/%i",titleid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://myanimelist.net/manga/%i",titleid];
+            }
+        }
+        case 2: {
+            if (_listtype == Anime) {
+                return [NSString stringWithFormat:@"https://kitsu.io/anime/%i",titleid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://kitsu.io/manga/%i",titleid];
+            }
+            
+        }
+        case 3: {
+            if (_listtype == Anime) {
+                return [NSString stringWithFormat:@"https://anilist.co/anime/%i",titleid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://anilist.co/manga/%i",titleid];
+            }
+        }
+        default:
+            return @"";
+    }
 }
 @end

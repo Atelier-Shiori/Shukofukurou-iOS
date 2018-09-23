@@ -962,14 +962,14 @@
 				596241FD21556507001995AD /* SettingsRootViewController.m */,
 				5962421121556512001995AD /* SettingsViewController.h */,
 				596241F621556503001995AD /* SettingsViewController.m */,
+				59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */,
+				59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */,
 				596241F721556504001995AD /* TitleInfoViewController.h */,
 				596242042155650B001995AD /* TitleInfoViewController.m */,
 				596241F821556505001995AD /* ViewController.h */,
 				5962421021556512001995AD /* ViewController.m */,
 				596242092155650E001995AD /* ViewControllerManager.h */,
 				596241FA21556506001995AD /* ViewControllerManager.m */,
-				59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */,
-				59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

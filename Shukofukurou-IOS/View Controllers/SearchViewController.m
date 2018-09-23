@@ -21,6 +21,11 @@
 @end
 
 @implementation SearchViewController
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,7 +35,18 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     _searchArray = [NSMutableArray new];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
 }
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ServiceChanged"]) {
+        // Reload Search Results
+        if (_searchbar.text.length > 0) {
+            [self performSearch:_searchbar.text];
+        }
+    }
+}
+
 
 - (void)setTitle {
     if (_searchtype == AnimeSearchType) {
@@ -82,7 +98,7 @@
      else if (_searchtype == MangaSearchType) {
          return [self generateSearchMangaEntryCellAtIndexPath:indexPath tableView:tableView];
      }
-     return nil;
+     return [UITableViewCell new];
  }
 
 - (UITableViewCell *)generateAnimeSearchEntryCellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {

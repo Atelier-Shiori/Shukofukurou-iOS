@@ -90,7 +90,7 @@
 }
 
 - (IBAction)findLoginFrom1Password:(id)sender {
-    NSString *URLString;
+    NSString *URLString = @"";
     switch ([listservice getCurrentServiceID]) {
         case 1:
             URLString = @"https://www.myanimelist.net/";

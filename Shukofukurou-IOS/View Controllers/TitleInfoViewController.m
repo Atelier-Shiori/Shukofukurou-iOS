@@ -17,7 +17,6 @@
 #import "AniListScoreConvert.h"
 #import "RatingTwentyConvert.h"
 #import "ViewControllerManager.h"
-#import "ListViewController.h"
 
 @interface TitleInfoViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
@@ -161,27 +160,27 @@
     switch ([listservice getCurrentServiceID]) {
         case 1: {
             if (_currenttype == Anime){
-                return [NSString stringWithFormat:@"https://myanimelist.net/anime/%i",_titleid];
+                return [NSString stringWithFormat:@"https://myanimelist.net/anime/%i" ,_titleid];
             }
             else {
-                return [NSString stringWithFormat:@"https://myanimelist.net/manga/%i",_titleid];
+                return [NSString stringWithFormat:@"https://myanimelist.net/manga/%i", _titleid];
             }
         }
         case 2: {
             if (_currenttype == Anime) {
-                return [NSString stringWithFormat:@"https://kitsu.io/anime/%i",_titleid];
+                return [NSString stringWithFormat:@"https://kitsu.io/anime/%i", _titleid];
             }
             else {
-                return [NSString stringWithFormat:@"https://kitsu.io/manga/%i",_titleid];
+                return [NSString stringWithFormat:@"https://kitsu.io/manga/%i", _titleid];
             }
 
         }
         case 3: {
             if (_currenttype == Anime) {
-                return [NSString stringWithFormat:@"https://anilist.co/anime/%i",_titleid];
+                return [NSString stringWithFormat:@"https://anilist.co/anime/%i", _titleid];
             }
             else {
-                return [NSString stringWithFormat:@"https://anilist.co/manga/%i",_titleid];
+                return [NSString stringWithFormat:@"https://anilist.co/manga/%i", _titleid];
             }
         }
         default:
@@ -240,7 +239,7 @@
     else if (cellEntry.type == cellTypeAction) {
         return [self generateActionCell:cellEntry withTableView:tableView cellForRowAtIndexPath:indexPath];
     }
-    return nil;
+    return [UITableViewCell new];
 }
 
 - (UITableViewCell *)generateEntryCell:(EntryCellInfo *)cellInfo withTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

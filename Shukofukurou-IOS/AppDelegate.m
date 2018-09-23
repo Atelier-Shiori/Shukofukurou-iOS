@@ -178,10 +178,6 @@
 - (void)listserviceDidChange:(int)oldservice newService:(int)newservice {
     NSLog(@"New Service: %i oldserivce: %i", newservice, oldservice);
     [_vcmanager.mainsidebar setLoggedinUser];
-    [_vcmanager.getAnimeListRootViewController.lvc switchlistservice];
-    [_vcmanager.getMangaListRootViewController.lvc switchlistservice];
-    [_vcmanager.getSearchTabView.animesearchrootvc.animesearchvc resetSearchUI];
-    [_vcmanager.getSearchTabView.mangasearchrootvc.mangasearchvc resetSearchUI];
     [_vcmanager.mvc loadfromdefaults];
     [NSNotificationCenter.defaultCenter postNotificationName:@"ServiceChanged" object:nil];
 }
