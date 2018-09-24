@@ -162,7 +162,7 @@
     }
     if (reloadeduserdata) {
         // Reload user data on sidebar
-        [_vcmanager.mvc loadfromdefaults];
+        [_vcmanager.mainsidebar setLoggedinUser];
     }
 }
 

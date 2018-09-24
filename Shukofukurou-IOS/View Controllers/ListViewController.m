@@ -15,6 +15,7 @@
 #import "AniListScoreConvert.h"
 #import "ListSelectorViewController.h"
 #import "TitleInfoViewController.h"
+#import "CustomListTableViewController.h"
 
 @interface ListViewController ()
 @property (strong) NSMutableArray *list;
@@ -795,10 +796,22 @@
 
 - (void)showOtherOptions:(NSDictionary *)entry {
     int titleid = ((NSNumber *)entry[@"id"]).intValue;
+    int currentservice = [listservice getCurrentServiceID];
+    __weak ListViewController *weakSelf = self;
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self performViewOnListSite:titleid];
     }]];
+    if (currentservice == 3) {
+        [options addAction:[UIAlertAction actionWithTitle:@"Manage Custom Lists" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UINavigationController *navcontroller = [UINavigationController new];
+            CustomListTableViewController *clvc = [[UIStoryboard storyboardWithName:@"CustomList" bundle:nil] instantiateViewControllerWithIdentifier:@"customlistedit"];
+            [navcontroller setViewControllers:@[clvc]];
+            [self presentViewController:navcontroller animated:YES completion:nil];
+            [clvc viewDidLoad];
+            [clvc populateCustomLists:entry withCurrentType:weakSelf.listtype withSelectedId:((NSNumber *)entry[@"entryid"]).intValue];
+        }]];
+    }
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self performShare:titleid];
     }]];

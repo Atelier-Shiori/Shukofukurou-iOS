@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
+		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
+		59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D89215953C1003CE863 /* CustomListTableViewController.m */; };
 		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
 		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
 		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
@@ -375,6 +377,9 @@
 /* Begin PBXFileReference section */
 		59481D6B21591F44003CE863 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
 		59481D8021591F44003CE863 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
+		59481D8321594078003CE863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomList.storyboard; sourceTree = "<group>"; };
+		59481D88215953C1003CE863 /* CustomListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListTableViewController.h; sourceTree = "<group>"; };
+		59481D89215953C1003CE863 /* CustomListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListTableViewController.m; sourceTree = "<group>"; };
 		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		596240A92155622E001995AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -901,6 +906,7 @@
 				596241CD215564A9001995AD /* Seasons.storyboard */,
 				596241CF215564AD001995AD /* ServiceSwitcher.storyboard */,
 				596241D1215564B4001995AD /* Settings.storyboard */,
+				59481D8221594078003CE863 /* CustomList.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -975,6 +981,8 @@
 				5962421021556512001995AD /* ViewController.m */,
 				596242092155650E001995AD /* ViewControllerManager.h */,
 				596241FA21556506001995AD /* ViewControllerManager.m */,
+				59481D88215953C1003CE863 /* CustomListTableViewController.h */,
+				59481D89215953C1003CE863 /* CustomListTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1312,6 +1320,7 @@
 				596242582155662A001995AD /* Settings.storyboard in Resources */,
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
 				59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */,
+				59481D8421594078003CE863 /* CustomList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1375,6 +1384,7 @@
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,
+				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
 				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
 				596241562155638D001995AD /* ClientConstants.m in Sources */,
@@ -1452,6 +1462,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		59481D8221594078003CE863 /* CustomList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59481D8321594078003CE863 /* Base */,
+			);
+			name = CustomList.storyboard;
+			sourceTree = "<group>";
+		};
 		596241BB21556481001995AD /* Airing.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
