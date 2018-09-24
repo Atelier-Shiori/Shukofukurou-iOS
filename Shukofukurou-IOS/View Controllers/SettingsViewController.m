@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "StreamDataRetriever.h"
 
 @interface SettingsViewController ()
 
@@ -43,6 +44,8 @@
 }
 - (IBAction)setstreamregion:(id)sender {
     [NSUserDefaults.standardUserDefaults setInteger:_streamregion.selectedSegmentIndex forKey:@"stream_region"];
+    [StreamDataRetriever removeAllStreamEntries];
+    [StreamDataRetriever performrestrieveStreamData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

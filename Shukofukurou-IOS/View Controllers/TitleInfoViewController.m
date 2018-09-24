@@ -17,6 +17,7 @@
 #import "AniListScoreConvert.h"
 #import "RatingTwentyConvert.h"
 #import "ViewControllerManager.h"
+#import "StreamDataRetriever.h"
 
 @interface TitleInfoViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
@@ -48,14 +49,14 @@
     if ([notification.name isEqualToString:@"UserLoggedIn"]) {
         if (notification.object) {
             if (((ListViewController *)notification.object).listtype == _currenttype) {
-                _sections = @[@"Your Entry", @"Synopsis" ,@"Title Details"];
+                _sections = [self generateSections];
                 [self updateUserEntry];
             }
         }
     }
     else if ([notification.name isEqualToString:@"UserLoggedOut"]) {
         // Remove Your Entry section
-        _sections = @[@"Synopsis", @"Title Details"];
+        _sections = [self generateSections];
         [_items removeObjectForKey:@"Your Entry"];
         [_tableview reloadData];
     }
@@ -239,6 +240,9 @@
     else if (cellEntry.type == cellTypeAction) {
         return [self generateActionCell:cellEntry withTableView:tableView cellForRowAtIndexPath:indexPath];
     }
+    else if (cellEntry.type == cellTypeStreamSite) {
+        return [self generateStreamSiteCell:cellEntry withTableView:tableView cellForRowAtIndexPath:indexPath];
+    }
     return [UITableViewCell new];
 }
 
@@ -380,6 +384,17 @@
     return cell;
 }
 
+- (UITableViewCell *)generateStreamSiteCell:(EntryCellInfo *)cellInfo withTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *reusableIdentifier = @"streamsitecell";
+    TitleInfoStreamSiteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reusableIdentifier];
+    if (!cell && tableView != self.tableview) {
+        cell = [self.tableview dequeueReusableCellWithIdentifier:reusableIdentifier];
+    }
+    cell.textLabel.text = cellInfo.cellTitle;
+    cell.siteURL = cellInfo.cellValue;
+    return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
     id cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -398,6 +413,9 @@
     }
     else if ([cell isKindOfClass:[TitleInfoAdvScoreEntryTableViewCell class]]) {
         [(TitleInfoAdvScoreEntryTableViewCell *)cell selectAction];
+    }
+    else if ([cell isKindOfClass:[TitleInfoStreamSiteTableViewCell class]]) {
+        [(TitleInfoStreamSiteTableViewCell *)cell selectAction];
     }
     ((UITableViewCell *)cell).selected = NO;
 }
@@ -436,12 +454,20 @@
     tmpdictionary[@"Title Details"] = type == 0 ? [self generateAnimeTitleArray:titleinfo] : [self generateMangaTitleArray:titleinfo];
     if (userentry) {
         tmpdictionary[@"Your Entry"] = type == 0 ? [self generateUserEntryAnimeArray:userentry] : [self generateUserEntryMangaArray:userentry];
-        _sections = @[@"Your Entry", @"Synopsis" ,@"Title Details"];
     }
-    else {
-        _sections = @[@"Synopsis", @"Title Details"];
+    if (_currenttype == Anime) {
+        NSDictionary *streamsites = @{};
+        NSArray *titles = [self aggregateTitles:titleinfo];
+        for (NSString *stitle in titles) {
+            streamsites = [StreamDataRetriever retrieveSitesForTitle:stitle];
+            if (streamsites.allKeys.count > 0) {
+                tmpdictionary[@"Stream Sites"] = [self generateStreamSitesCellArray:streamsites];
+                break;
+            }
+        }
     }
     _items = tmpdictionary;
+    _sections = [self generateSections];
     [_tableview reloadData];
 }
 
@@ -613,6 +639,14 @@
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Favorited" withValue:favorites.stringValue withCellType:cellTypeInfo]];
     }
     return detailarray.copy;
+}
+
+- (NSArray *)generateStreamSitesCellArray:(NSDictionary *)sitesDictionary {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSString *sitename in [sitesDictionary.allKeys sortedArrayUsingSelector: @selector(compare:)]) {
+        [tmparray addObject:[[EntryCellInfo alloc] initCellWithTitle:sitename withValue:[NSURL URLWithString:sitesDictionary[sitename]] withCellType:cellTypeStreamSite]];
+    }
+    return tmparray;
 }
 
 #pragma mark updating
@@ -886,5 +920,47 @@
         }
     }
     return -1;
+}
+
+- (NSArray *)aggregateTitles:(NSDictionary *)titleinfo {
+    NSMutableArray *titles = [NSMutableArray new];
+    [titles addObject:titleinfo[@"title"]];
+    NSDictionary *dtitles =  titleinfo[@"other_titles"];
+    if (dtitles[@"english"] != nil){
+        NSArray *e = dtitles[@"english"];
+        for (NSString *etitle in e){
+            [titles addObject:etitle];
+        }
+    }
+    if (dtitles[@"japanese"] != nil){
+        NSArray *j = dtitles[@"japanese"];
+        for (NSString *jtitle in j){
+            [titles addObject:jtitle];
+        }
+    }
+    if (dtitles[@"synonyms"] != nil){
+        NSArray *syn = dtitles[@"synonyms"];
+        for (NSString *stitle in syn){
+            [titles addObject:stitle];
+        }
+    }
+    return titles.copy;
+}
+
+- (NSArray *)generateSections {
+    NSMutableArray *sections = [NSMutableArray new];
+    if (_items[@"Your Entry"]) {
+        [sections addObject:@"Your Entry"];
+    }
+    if (_items[@"Synopsis"]) {
+        [sections addObject:@"Synopsis"];
+    }
+    if (_items[@"Title Details"]) {
+        [sections addObject:@"Title Details"];
+    }
+    if (_items[@"Stream Sites"] && _currenttype == Anime) {
+        [sections addObject:@"Stream Sites"];
+    }
+    return sections;
 }
 @end

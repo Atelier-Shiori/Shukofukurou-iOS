@@ -17,7 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TitleInfoBasicExpandTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@end
 
+@interface TitleInfoStreamSiteTableViewCell : UITableViewCell
+@property (strong) NSURL *siteURL;
+- (void)selectAction;
 @end
 
 @interface TitleInfoSynopsisTableViewCell : UITableViewCell

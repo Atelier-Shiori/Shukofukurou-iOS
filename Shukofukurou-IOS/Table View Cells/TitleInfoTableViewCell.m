@@ -34,6 +34,23 @@
 }
 @end
 
+@implementation TitleInfoStreamSiteTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:false animated:animated];
+}
+
+- (void)selectAction {
+    // Open URL
+    [UIApplication.sharedApplication openURL:_siteURL options:@{} completionHandler:^(BOOL success) {}];
+    self.selected = NO;
+}
+@end
+
 @implementation TitleInfoSynopsisTableViewCell
 
 - (void)awakeFromNib {

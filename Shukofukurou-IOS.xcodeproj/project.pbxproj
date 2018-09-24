@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
 		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
 		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
@@ -372,6 +373,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		59481D6B21591F44003CE863 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
+		59481D8021591F44003CE863 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
 		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		596240A92155622E001995AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -788,10 +791,6 @@
 		5962414F21556362001995AD /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				59624171215563B4001995AD /* AtarashiiListCoreData.h */,
-				59624172215563B5001995AD /* AtarashiiListCoreData.m */,
-				59624173215563B5001995AD /* Base64Category.h */,
-				59624170215563B3001995AD /* Base64Category.m */,
 				5962416A215563AF001995AD /* AiringSchedule.h */,
 				59624164215563AA001995AD /* AiringSchedule.m */,
 				59624166215563AC001995AD /* AniList.h */,
@@ -800,6 +799,12 @@
 				59624169215563AE001995AD /* AniListScoreConvert.m */,
 				59624167215563AD001995AD /* AniListSeasonListGenerator.h */,
 				59624168215563AD001995AD /* AniListSeasonListGenerator.m */,
+				596241502155636D001995AD /* AtarashiiDataFormatters */,
+				59624171215563B4001995AD /* AtarashiiListCoreData.h */,
+				59624172215563B5001995AD /* AtarashiiListCoreData.m */,
+				59624173215563B5001995AD /* Base64Category.h */,
+				59624170215563B3001995AD /* Base64Category.m */,
+				5962415121556378001995AD /* Constants */,
 				5962417F215563CE001995AD /* Keychain.h */,
 				59624176215563C9001995AD /* Keychain.m */,
 				59624182215563CF001995AD /* Kitsu.h */,
@@ -814,12 +819,12 @@
 				59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */,
 				59624187215563D2001995AD /* RatingTwentyConvert.h */,
 				59624185215563D1001995AD /* RatingTwentyConvert.m */,
+				59481D6B21591F44003CE863 /* StreamDataRetriever.h */,
+				59481D8021591F44003CE863 /* StreamDataRetriever.m */,
 				5962417C215563CC001995AD /* TitleIdConverter.h */,
 				59624183215563D0001995AD /* TitleIdConverter.m */,
 				5962417D215563CD001995AD /* Utility.h */,
 				5962417B215563CB001995AD /* Utility.m */,
-				5962415121556378001995AD /* Constants */,
-				596241502155636D001995AD /* AtarashiiDataFormatters */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1366,6 +1371,7 @@
 				5962422121556514001995AD /* AnimeSearchRootViewController.m in Sources */,
 				596240E821556310001995AD /* XMLReader.m in Sources */,
 				5962421721556514001995AD /* ListViewController.m in Sources */,
+				59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */,
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,

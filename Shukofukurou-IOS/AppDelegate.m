@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "listservice.h"
 #import "AutoRefreshTimer.h"
+#import "StreamDataRetriever.h"
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
@@ -48,6 +49,7 @@
     // Override point for customization after application launch.
     [self checkaccountinformation];
     _autorefresh = [AutoRefreshTimer new];
+    [StreamDataRetriever retrieveStreamData];
     return YES;
 }
 
@@ -139,12 +141,15 @@
 }
 
 - (void)checkaccountinformation {
+    // Retrieves updated user data
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    bool reloadeduserdata = false;
     if ([Kitsu getFirstAccount]) {
         bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
         if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
             [Kitsu saveuserinfoforcurrenttoken];
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
+            reloadeduserdata = true;
         }
     }
     if ([AniList getFirstAccount]) {
@@ -152,7 +157,12 @@
         if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
             [AniList saveuserinfoforcurrenttoken];
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
+             reloadeduserdata = true;
         }
+    }
+    if (reloadeduserdata) {
+        // Reload user data on sidebar
+        [_vcmanager.mvc loadfromdefaults];
     }
 }
 

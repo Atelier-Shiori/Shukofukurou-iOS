@@ -17,7 +17,8 @@ typedef NS_ENUM(unsigned int, cellType) {
     cellTypeProgressEntry = 2,
     cellTypeAction = 3,
     cellTypeInfoExpand = 4,
-    cellTypeSynopsis = 5
+    cellTypeSynopsis = 5,
+    cellTypeStreamSite = 6
 };
 typedef NS_ENUM(unsigned int, cellAction) {
     updateEntry = 0,
