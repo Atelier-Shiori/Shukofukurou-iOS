@@ -17,6 +17,7 @@
 @interface AdvEditTableViewController ()
 @property (strong) NSArray *cellEntries;
 @property int currenttype;
+@property int titleid;
 @property int entryid;
 @property bool selectedaired;
 @property bool selectedaircompleted;
@@ -43,6 +44,7 @@
 
 - (void)populateTableViewWithID:(int)titleid withEntryDictionary:(nullable NSDictionary *)uentry withType:(int)type {
     _currenttype = type;
+    _titleid = titleid;
     NSDictionary *userentry = uentry ? uentry : nil;
     int currentservice = [listservice getCurrentServiceID];
     if (!userentry) {
@@ -198,18 +200,6 @@
     };
     return cell;
 }
-
-/*
- - (UITableViewCell *)generateTitleInfoCell:(EntryCellInfo *)cellInfo withTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- NSString *reusableIdentifier = @"titleinfocell";
- TitleInfoBasicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reusableIdentifier];
- if (!cell && tableView != self.tableView) {
- cell = [self.tableView dequeueReusableCellWithIdentifier:reusableIdentifier];
- }
- cell.textLabel.text = cellInfo.cellTitle;
- cell.detailTextLabel.text = cellInfo.cellValue;
- return cell;
- }*/
 
 - (UITableViewCell *)generateTitleSwitchCell:(EntryCellInfo *)cellInfo withTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *reusableIdentifier = @"switchcell";
@@ -370,12 +360,344 @@
     }
     return datedict.copy;
 }
+
+- (bool)validateCells {
+    switch (_currenttype) {
+        case 0: {
+            EntryCellInfo *episodecell;
+            EntryCellInfo *statuscell;
+            for (EntryCellInfo *cellInfo in _cellEntries) {
+                if (cellInfo.type == cellTypeAction) {
+                    continue;
+                }
+                else {
+                    if ([cellInfo.cellTitle isEqualToString:@"Episode"]) {
+                        episodecell = cellInfo;
+                    }
+                    else if ([cellInfo.cellTitle isEqualToString:@"Status"]) {
+                        statuscell = cellInfo;
+                    }
+                }
+            }
+            if (!_selectedaired && (![(NSString *)statuscell.cellValue isEqual:@"plan to watch"] || ((NSNumber *)episodecell.cellValue).intValue > 0)) {
+                // Invalid input, mark it as such
+                return false;
+            }
+            if (((NSNumber *)episodecell.cellValue).intValue == episodecell.cellValueMax && episodecell.cellValueMax != 0 && _selectedaircompleted && _selectedaired) {
+                statuscell.cellValue = @"completed";
+                episodecell.cellValue = @(episodecell.cellValueMax);
+                _selectedreconsuming = false;
+            }
+            if ([(NSString *)statuscell.cellValue isEqual:@"completed"] && episodecell.cellValueMax != 0 && ((NSNumber *)episodecell.cellValue).intValue != episodecell.cellValueMax && _selectedaircompleted) {
+                episodecell.cellValue = @(episodecell.cellValueMax);
+                _selectedreconsuming = false;
+            }
+            if (![(NSString *)statuscell.cellValue isEqual:@"completed"] && ((NSNumber *)episodecell.cellValue).intValue == episodecell.cellValueMax && _selectedaircompleted) {
+                statuscell.cellValue = @"completed";
+                _selectedreconsuming = false;
+            }
+            return true;
+        }
+        case 1: {
+            EntryCellInfo *chaptercell;
+            EntryCellInfo *volumecell;
+            EntryCellInfo *statuscell;
+            for (EntryCellInfo *cellInfo in _cellEntries) {
+                if (cellInfo.type == cellTypeAction) {
+                    continue;
+                }
+                else {
+                    if ([cellInfo.cellTitle isEqualToString:@"Chapter"]) {
+                        chaptercell = cellInfo;
+                    }
+                    else if ([cellInfo.cellTitle isEqualToString:@"Volume"]) {
+                        volumecell = cellInfo;
+                    }
+                    else if ([cellInfo.cellTitle isEqualToString:@"Status"]) {
+                        statuscell = cellInfo;
+                    }
+                }
+            }
+            if(!_selectedpublished && (![(NSString *)statuscell.cellValue isEqual:@"plan to read"] ||((NSNumber *)chaptercell.cellValue).intValue  > 0 || ((NSNumber *)volumecell.cellValue).intValue  > 0)) {
+                // Invalid input, mark it as such
+                return false;
+            }
+            if (((((NSNumber *)chaptercell.cellValue).intValue  == chaptercell.cellValueMax && chaptercell.cellValueMax != 0) || (((NSNumber *)volumecell.cellValue).intValue == volumecell.cellValueMax && volumecell.cellValueMax != 0)) && _selectedfinished && _selectedpublished) {
+                statuscell.cellValue = @"completed";
+                chaptercell.cellValue = @(chaptercell.cellValueMax);
+                volumecell.cellValue= @(volumecell.cellValueMax);
+                _selectedreconsuming = false;
+            }
+            if ([(NSString *)statuscell.cellValue isEqual:@"completed"] && ((((NSNumber *)chaptercell.cellValue).intValue != chaptercell.cellValueMax && chaptercell.cellValueMax != 0) || (((NSNumber *)volumecell.cellValue).intValue != volumecell.cellValueMax && volumecell.cellValueMax != 0)) && _selectedfinished) {
+                chaptercell.cellValue = @(chaptercell.cellValueMax);
+                volumecell.cellValue = @(volumecell.cellValueMax);
+                _selectedreconsuming = false;
+            }
+            if (![(NSString *)statuscell.cellValue isEqual:@"completed"] && ((NSNumber *)chaptercell.cellValue).intValue  == chaptercell.cellValueMax && ((NSNumber *)volumecell.cellValue).intValue  == volumecell.cellValueMax   && _selectedfinished) {
+                statuscell.cellValue = @"completed";
+                _selectedreconsuming = false;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+- (NSDictionary *)generateUpdateDictionary {
+    NSMutableDictionary *info = [NSMutableDictionary new];
+    for (EntryCellInfo *cellInfo in _cellEntries) {
+        if (cellInfo.type == cellTypeAction) {
+            continue;
+        }
+        else {
+            info[cellInfo.cellTitle.lowercaseString] = cellInfo.cellValue;
+        }
+    }
+    return info;
+}
+
+- (NSDictionary *)generateExtraFieldsWithType:(int)type withUpdateDictionary:(NSDictionary *)udict{
+    NSMutableDictionary *extrafields = [NSMutableDictionary new];
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateFormat = @"yyyy-MM-dd";
+    //NSString *tags = @"";
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            /*
+             if (((NSArray *)_tagsfield.objectValue).count > 0){
+             tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
+             extrafields[@"tags"] = tags;
+             }
+             */
+            if (((NSNumber *)udict[@"set start date"]).boolValue) {
+                extrafields[@"start"] = [df stringFromDate:(NSDate *)udict[@"start"]];
+            }
+            if (((NSNumber *)udict[@"set end date"]).boolValue) {
+                extrafields[@"end"] = [df stringFromDate:(NSDate *)udict[@"end"]];
+            }
+            if (type == 0) {
+                extrafields[@"is_rewatching"] = udict[@"rewatching"];
+                extrafields[@"rewatch_count"] = udict[@"# rewatch"];
+            }
+            else {
+                extrafields[@"is_rereading"] = udict[@"rereading"];
+                extrafields[@"reread_count"] = udict[@"# reread"];
+            }
+            break;
+        }
+        case 2: {
+            if (((NSString *)udict[@"notes"]).length > 0) {
+                extrafields[@"notes"] = udict[@"notes"];
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            if (((NSNumber *)udict[@"set start date"]).boolValue) {
+                extrafields[@"startedAt"] = [df stringFromDate:(NSDate *)udict[@"start"]];
+            }
+            if (((NSNumber *)udict[@"set end date"]).boolValue) {
+                extrafields[@"finishedAt"] = [df stringFromDate:(NSDate *)udict[@"end"]];
+            }
+            extrafields[@"private"] = udict[@"private"];
+            extrafields[@"reconsuming"] = type == 0 ? udict[@"rewatching"] : udict[@"rereading"];
+            extrafields[@"reconsumeCount"] = type == 0 ? udict[@"# rewatch"] : udict[@"# reread"];
+            break;
+        }
+        case 3:{
+            if (((NSString *)udict[@"notes"]).length > 0) {
+                extrafields[@"notes"] = udict[@"notes"];
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            if (((NSNumber *)udict[@"set start date"]).boolValue) {
+                NSString *tmpstr = [df stringFromDate:(NSDate *)udict[@"start"]];
+                extrafields[@"startedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"startedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
+            }
+            if (((NSNumber *)udict[@"set end date"]).boolValue) {
+                NSString *tmpstr = [df stringFromDate:(NSDate *)udict[@"end"]];
+                extrafields[@"completedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
+            }
+            extrafields[@"private"] = udict[@"private"];
+            extrafields[@"reconsuming"] = type == 0 ? udict[@"rewatching"] : udict[@"rereading"];
+            extrafields[@"reconsumeCount"] = type == 0 ? udict[@"# rewatch"] : udict[@"# reread"];
+            break;
+        }
+        default:
+            break;
+    }
+    return extrafields;
+}
+
+- (NSDictionary *)generateExtraFieldsUpdateEntryWithType:(int)type withUpdateDictionary:(NSDictionary *)udict {
+    NSMutableDictionary *extrafields = [NSMutableDictionary new];
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateFormat = @"yyyy-MM-dd";
+    //NSString *tags = @"";
+    int currentService = [listservice getCurrentServiceID];
+    /*
+     if (currentService == 1) {
+     if (((NSArray *)_tagsfield.objectValue).count > 0){
+     tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
+     extrafields[@"tags"] = tags;
+     }
+     }
+     */
+    if (((NSNumber *)udict[@"set start date"]).boolValue) {
+        if (_currenttype == 0) {
+            extrafields[@"watching_start"] = [df stringFromDate:(NSDate *)udict[@"start"]];
+        }
+        else {
+            extrafields[@"reading_start"] = [df stringFromDate:(NSDate *)udict[@"start"]];
+        }
+    }
+    if (((NSNumber *)udict[@"set end date"]).boolValue) {
+        if (_currenttype == 0) {
+            extrafields[@"watching_end"] = [df stringFromDate:(NSDate *)udict[@"end"]];
+        }
+        else {
+            extrafields[@"reading_end"] = [df stringFromDate:(NSDate *)udict[@"end"]];
+        }
+    }
+    if (type == 0) {
+        extrafields[@"rewatching"] = udict[@"rewatching"];
+        extrafields[@"rewatch_count"] = udict[@"# rewatch"];
+    }
+    else {
+        extrafields[@"rereading"] = udict[@"rereading"];
+        extrafields[@"reread_count"] = udict[@"# reread"];
+    }
+    if (currentService == 2 || currentService == 3) {
+        if (((NSString *)udict[@"notes"]).length > 0) {
+            extrafields[@"personal_comments"] = udict[@"notes"];
+        }
+        else {
+            extrafields[@"personal_comments"] = [NSNull null];
+        }
+        extrafields[@"private"] = udict[@"private"];
+    }
+    return extrafields;
+}
+
 #pragma mark Cancel/Save Action
 
 - (IBAction)saveentry:(id)sender {
+    [self.view endEditing:YES];
+    if ([self validateCells]) {
+        if (_currenttype == 0) {
+            [self updateAnime];
+        }
+        else {
+            [self updateManga];
+        }
+    }
+}
+
+- (void)updateAnime {
+    NSDictionary *entry = [self generateUpdateDictionary];
+    NSDictionary * extraparameters = [self generateExtraFieldsWithType:_currenttype withUpdateDictionary:entry];
+    int selectededitid = 0;
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            selectededitid = self.titleid;
+            break;
+        }
+        case 2:
+        case 3: {
+            selectededitid = self.entryid;
+            break;
+        }
+        default:
+            break;
+    }
+    __weak AdvEditTableViewController *weakSelf = self;
+    _savebtn.enabled = NO;
+    _cancelbtn.enabled = NO;
+    [listservice updateAnimeTitleOnList:selectededitid withEpisode:((NSNumber *)entry[@"episode"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
+        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"]}];
+        [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:weakSelf.titleid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:0 withId:weakSelf.entryid withIdType:1];
+                break;
+        }
+        weakSelf.entryUpdated(weakSelf.currenttype);
+        // Reload List
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.savebtn.enabled = YES;
+            weakSelf.cancelbtn.enabled = YES;
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        });
+    }
+                                  error:^(NSError * error) {
+                                      NSLog(@"%@", error.localizedDescription);
+                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                          weakSelf.savebtn.enabled = YES;
+                                          weakSelf.cancelbtn.enabled = YES;
+                                      });
+                                  }];
+}
+
+- (void)updateManga {
+    NSDictionary *entry = [self generateUpdateDictionary];
+    NSDictionary * extraparameters = [self generateExtraFieldsWithType:_currenttype withUpdateDictionary:entry];
+    int selectededitid = 0;
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            selectededitid = self.titleid;
+            break;
+        }
+        case 2:
+        case 3: {
+            selectededitid = self.entryid;
+            break;
+        }
+        default:
+            break;
+    }
+    __weak AdvEditTableViewController *weakSelf = self;
+    _savebtn.enabled = NO;
+    _cancelbtn.enabled = NO;
+    [listservice updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
+        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"]}];
+        [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:selectededitid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:1 withId:selectededitid withIdType:1];
+                break;
+        }
+        weakSelf.entryUpdated(weakSelf.currenttype);
+        // Reload List
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.savebtn.enabled = YES;
+            weakSelf.cancelbtn.enabled = YES;
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        });
+    }error:^(NSError * error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"%@", error.localizedDescription);
+            weakSelf.savebtn.enabled = YES;
+            weakSelf.cancelbtn.enabled = YES;
+        });
+    }];
 }
 
 - (IBAction)canceledit:(id)sender {
+    [self.view endEditing:YES];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
