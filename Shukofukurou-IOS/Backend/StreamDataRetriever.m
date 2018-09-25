@@ -78,6 +78,7 @@
             }
         }
         [moc save:&error];
+        [moc reset];
     }
 }
 
@@ -102,11 +103,13 @@
             NSError *error;
             NSDictionary *jsondata = [NSJSONSerialization JSONObjectWithData:[(NSString *)[streamentry valueForKey:@"sites"] dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
             if (jsondata) {
+                [[self managedObjectContext] reset];
                 return jsondata;
             }
         }
         @catch (NSException *ex) {
             NSLog(@"Unable to deserialize stream site data with exception: %@", ex);
+            [[self managedObjectContext] reset];
             return @{};
         }
     }
@@ -132,6 +135,7 @@
         [moc deleteObject:mobject];
     }
     [moc save:nil];
+    [moc reset];
 }
 
 + (NSString *)sanitizetitle:(NSString *)title {

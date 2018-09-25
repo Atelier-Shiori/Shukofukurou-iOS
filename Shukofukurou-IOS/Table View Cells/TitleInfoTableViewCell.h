@@ -49,9 +49,27 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TitleInfoListEntryTableViewCell : UITableViewCell
 @property (nonatomic, copy) void (^valueChanged)(NSString *newvalue, NSString *fieldname);
 @property (nonatomic, copy) void (^scoreChanged)(int newvalue, NSString *fieldname);
+@property (nonatomic, copy) void (^dateChanged)(NSDate *date, NSString *fieldname);
 @property int entrytype;
 @property int rawValue;
+@property (strong) NSDate *dateValue;
 - (void)selectAction;
+- (void)setEnabled:(bool)enabled;
+@end
+
+@interface TitleInfoNotesEntryTableViewCell : UITableViewCell <UITextViewDelegate>
+@property (nonatomic, copy) void (^notesChanged)(NSString* newvalue, NSString *fieldname);
+@property (weak, nonatomic) IBOutlet UITextView *notes;
+- (void)selectAction;
+@end
+
+@interface TitleInfoSwitchEntryTableViewCell : UITableViewCell
+@property (nonatomic, copy) void (^switchChanged)(bool switchstate, NSString *fieldname, bool dateToggle);
+@property (weak, nonatomic) IBOutlet UISwitch *toggleswitch;
+@property (weak, nonatomic) IBOutlet UILabel *cellTitle;
+@property bool dateToggle;
+- (void)selectAction;
+- (void)setEnabled:(bool)enabled;
 @end
 
 @interface TitleInfoUpdateTableViewCell : UITableViewCell

@@ -18,6 +18,16 @@
     return self;
 }
 
+- (instancetype)initDateCellWithTitle:(NSString *)title withValue:(id)value withCellType:(cellType)celltype withDateExists:(bool)dateexist {
+    if ([super init]) {
+        _cellTitle = title;
+        _cellValue = value;
+        _type = celltype;
+        _dateExists = dateexist;
+    }
+    return self;
+}
+
 - (instancetype)initCellWithTitle:(NSString *)title withValue:(id)value withMaximumCellValue:(int)cellvalueMax withCellType:(cellType)celltype {
     if ([super init]) {
         _cellTitle = title;

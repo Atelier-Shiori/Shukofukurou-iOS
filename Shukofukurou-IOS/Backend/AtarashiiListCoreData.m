@@ -59,7 +59,9 @@
         NSArray *keys = obj.entity.attributesByName.allKeys;
         [tmplist addObject:[obj dictionaryWithValuesForKeys:keys]];
     }
-    return tmplist.copy;
+    NSArray *uentries = tmplist.copy;
+    [[self managedObjectContext] reset];
+    return uentries;
 }
 
 + (NSArray *)retrieveEntriesForUserName:(NSString *)username withService:(int)service withType:(int)type withPredicate:(NSPredicate *)filterpredicate {
@@ -69,7 +71,9 @@
         NSArray *keys = obj.entity.attributesByName.allKeys;
         [tmplist addObject:[obj dictionaryWithValuesForKeys:keys]];
     }
-    return tmplist.copy;
+    NSArray *uentries = tmplist.copy;
+    [[self managedObjectContext] reset];
+    return uentries;
 }
 
 + (void)insertorupdateentriesWithDictionary:(NSDictionary *)data withUserId:(int)userid withService:(int)service withType:(int)type {

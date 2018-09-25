@@ -18,7 +18,9 @@ typedef NS_ENUM(unsigned int, cellType) {
     cellTypeAction = 3,
     cellTypeInfoExpand = 4,
     cellTypeSynopsis = 5,
-    cellTypeStreamSite = 6
+    cellTypeStreamSite = 6,
+    cellTypeSwitch = 7,
+    cellTypeNotes = 8,
 };
 typedef NS_ENUM(unsigned int, cellAction) {
     updateEntry = 0,
@@ -29,7 +31,10 @@ typedef NS_ENUM(unsigned int, cellAction) {
 @property int cellValueMax;
 @property cellType type;
 @property cellAction action;
+@property bool dateExists;
+
 - (instancetype)initCellWithTitle:(NSString *)title withValue:(id)value withCellType:(cellType)celltype;
+- (instancetype)initDateCellWithTitle:(NSString *)title withValue:(id)value withCellType:(cellType)celltype withDateExists:(bool)dateexist;
 - (instancetype)initCellWithTitle:(NSString *)title withValue:(id)value withMaximumCellValue:(int)cellvalueMax withCellType:(cellType)celltype;
 - (instancetype)initActionCellWithTitle:(NSString *)title withCellAction:(cellAction)action;
 - (Class)getValueClassName;

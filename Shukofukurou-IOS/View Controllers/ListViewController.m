@@ -16,6 +16,7 @@
 #import "ListSelectorViewController.h"
 #import "TitleInfoViewController.h"
 #import "CustomListTableViewController.h"
+#import "AdvEditTableViewController.h"
 
 @interface ListViewController ()
 @property (strong) NSMutableArray *list;
@@ -801,6 +802,16 @@
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self performViewOnListSite:titleid];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UINavigationController *navController = [UINavigationController new];
+        AdvEditTableViewController *advedit = [[UIStoryboard storyboardWithName:@"AdvancedEdit" bundle:nil] instantiateViewControllerWithIdentifier:@"advedit"];
+        [advedit populateTableViewWithID:((NSNumber *)entry[@"id"]).intValue withEntryDictionary:entry withType:weakSelf.listtype];
+        advedit.entryUpdated = ^(int listtype) {
+            [weakSelf reloadList];
+        };
+        navController.viewControllers = @[advedit];
+        [self presentViewController:navController animated:YES completion:^{}];
     }]];
     if (currentservice == 3) {
         [options addAction:[UIAlertAction actionWithTitle:@"Manage Custom Lists" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

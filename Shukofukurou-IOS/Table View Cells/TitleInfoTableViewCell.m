@@ -167,6 +167,9 @@
     else if ([self.textLabel.text isEqualToString:@"Score"]) {
         [self showScorePicker];
     }
+    else if ([self.textLabel.text isEqualToString:@"Start"] || [self.textLabel.text isEqualToString:@"End"]) {
+        [self showDatePicker];
+    }
 }
 
 - (void)showStatusPicker {
@@ -281,6 +284,79 @@
         index++;
     }
     return -1;
+}
+
+- (void)showDatePicker {
+    __weak TitleInfoListEntryTableViewCell *weakSelf = self;
+    [ActionSheetDatePicker showPickerWithTitle:[NSString stringWithFormat:@"Set %@ Date", self.textLabel.text] datePickerMode:UIDatePickerModeDate selectedDate:_dateValue doneBlock:^(ActionSheetDatePicker *picker, id selectedDate, id origin) {
+        weakSelf.dateValue = selectedDate;
+        weakSelf.dateChanged(selectedDate, weakSelf.textLabel.text);
+        NSDateFormatter *df = [NSDateFormatter new];
+        df.dateFormat = @"yyyy-MM-dd";
+        weakSelf.detailTextLabel.text = [df stringFromDate:weakSelf.dateValue];
+    } cancelBlock:^(ActionSheetDatePicker *picker) {
+        
+    } origin:self];
+}
+
+- (void)setEnabled:(bool)enabled {
+    self.userInteractionEnabled = enabled;
+    self.textLabel.enabled = enabled;
+    self.detailTextLabel.enabled = enabled;
+}
+
+@end
+
+@implementation TitleInfoNotesEntryTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    // Configure the view for the selected state
+    
+}
+
+- (void)selectAction {
+    [_notes becomeFirstResponder];
+    self.selected = NO;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    self.notesChanged(_notes.text, @"Notes");
+}
+
+@end
+
+@implementation TitleInfoSwitchEntryTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    // Configure the view for the selected state
+    
+}
+- (IBAction)valueChanged:(id)sender {
+    NSLog(@"Value Changed");
+    self.switchChanged(_toggleswitch.on, _cellTitle.text, _dateToggle);
+}
+
+- (void)selectAction {
+    self.selected = NO;
+    [_toggleswitch setOn:!_toggleswitch.on animated:YES];
+}
+
+- (void)setEnabled:(bool)enabled {
+    self.userInteractionEnabled = enabled;
+    self.cellTitle.enabled = enabled;
+    self.toggleswitch.enabled = enabled;
 }
 
 @end
