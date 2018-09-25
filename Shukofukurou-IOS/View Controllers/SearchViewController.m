@@ -1,5 +1,5 @@
 //
-//  AnimeSearchViewController.m
+//  SearchViewController.m
 //  Hiyoko
 //
 //  Created by 天々座理世 on 2018/08/30.
@@ -8,7 +8,6 @@
 
 #import "SearchViewController.h"
 #import "ViewControllerManager.h"
-#import "SearchTabViewController.h"
 #import "SearchTableViewCell.h"
 #import "listservice.h"
 #import "RatingTwentyConvert.h"
@@ -17,6 +16,7 @@
 
 @interface SearchViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchbar;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *searchselector;
 
 @end
 
@@ -36,6 +36,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     _searchArray = [NSMutableArray new];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    _searchselector.selectedSegmentIndex = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
 }
 
 - (void)recieveNotification:(NSNotification *)notification {
@@ -48,14 +49,12 @@
 }
 
 
-- (void)setTitle {
-    if (_searchtype == AnimeSearchType) {
-        _navitem.title = @"Anime Search";
-    }
-    else if (_searchtype == MangaSearchType) {
-        _navitem.title = @"Manga Search";
-    }
+- (IBAction)searchchanged:(id)sender {
+    _searchtype = (int)_searchselector.selectedSegmentIndex;
+    [NSUserDefaults.standardUserDefaults setInteger:_searchselector.selectedSegmentIndex forKey:@"selectedsearchtype"];
+    [self resetSearchUI];
 }
+
 
 - (void)performSearch:(NSString *)searchtext {
     __weak SearchViewController *weakSelf = self;

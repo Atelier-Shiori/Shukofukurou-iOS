@@ -10,6 +10,8 @@
 #import "StreamDataRetriever.h"
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
+#import <CocoaOniguruma/OnigRegexp.h>
+#import <CocoaOniguruma/OnigRegexpUtility.h>
 
 @implementation StreamDataRetriever
 + (NSManagedObjectContext *)managedObjectContext {
@@ -84,7 +86,7 @@
     NSError *error = nil;
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"StreamSites" inManagedObjectContext:moc];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"showTitle ==[c] %@", title];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"showTitle ==[c] %@", [self sanitizetitle:title]];
     NSArray *streamentries =  [moc executeFetchRequest:fetchRequest error:&error];
     if (streamentries.count > 0) {
         return streamentries[0];
@@ -130,5 +132,13 @@
         [moc deleteObject:mobject];
     }
     [moc save:nil];
+}
+
++ (NSString *)sanitizetitle:(NSString *)title {
+    NSString *tmpstr = title;
+    // Remove seasons
+    OnigRegexp *regex = [OnigRegexp compile:@"\\s(((\\d+(st|nd|rd|th)|first|second|third|fourth|fifth|sixth|seventh|eighth|nineth|tenth) season) | \\(TV\\)|\\d+|(X|VIII|VII|VI|V|IV|III|II|I))" options:OnigOptionIgnorecase];
+    tmpstr = [tmpstr replaceByRegexp:regex with:@""];
+    return tmpstr;
 }
 @end

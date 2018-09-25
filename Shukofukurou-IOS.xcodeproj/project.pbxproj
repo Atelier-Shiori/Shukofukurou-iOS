@@ -49,7 +49,6 @@
 		596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DB215564CF001995AD /* MangaEntryTableViewCell.m */; };
 		596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DC215564D0001995AD /* SeasonCollectionViewCell.m */; };
 		596241E4215564D1001995AD /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DD215564D0001995AD /* SearchTableViewCell.m */; };
-		5962421421556514001995AD /* SearchTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E6215564FA001995AD /* SearchTabViewController.m */; };
 		5962421521556514001995AD /* ListRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E7215564FB001995AD /* ListRootViewController.m */; };
 		5962421621556514001995AD /* AiringDayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E9215564FC001995AD /* AiringDayTableViewController.m */; };
 		5962421721556514001995AD /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EB215564FD001995AD /* ListViewController.m */; };
@@ -62,7 +61,7 @@
 		5962421E21556514001995AD /* ViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FA21556506001995AD /* ViewControllerManager.m */; };
 		5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FC21556507001995AD /* SeasonSelectorTableViewController.m */; };
 		5962422021556514001995AD /* SettingsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FD21556507001995AD /* SettingsRootViewController.m */; };
-		5962422121556514001995AD /* AnimeSearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FE21556508001995AD /* AnimeSearchRootViewController.m */; };
+		5962422121556514001995AD /* SearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FE21556508001995AD /* SearchRootViewController.m */; };
 		5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */; };
 		5962422321556514001995AD /* AiringRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242032155650B001995AD /* AiringRootViewController.m */; };
 		5962422421556514001995AD /* TitleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242042155650B001995AD /* TitleInfoViewController.m */; };
@@ -70,7 +69,6 @@
 		5962422621556514001995AD /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420C21556510001995AD /* LoadViewController.m */; };
 		5962422721556514001995AD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
 		5962422821556514001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
-		5962422921556514001995AD /* MangaSearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421321556514001995AD /* MangaSearchRootViewController.m */; };
 		5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
 		5962422F21556591001995AD /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962422E21556591001995AD /* NSString_stripHtml.m */; };
 		59624230215565C7001995AD /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; };
@@ -481,14 +479,11 @@
 		596241DC215564D0001995AD /* SeasonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonCollectionViewCell.m; sourceTree = "<group>"; };
 		596241DD215564D0001995AD /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		596241DE215564D1001995AD /* AnimeEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeEntryTableViewCell.h; sourceTree = "<group>"; };
-		596241E6215564FA001995AD /* SearchTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTabViewController.m; sourceTree = "<group>"; };
 		596241E7215564FB001995AD /* ListRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListRootViewController.m; sourceTree = "<group>"; };
 		596241E8215564FB001995AD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		596241E9215564FC001995AD /* AiringDayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringDayTableViewController.m; sourceTree = "<group>"; };
-		596241EA215564FD001995AD /* SearchTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTabViewController.h; sourceTree = "<group>"; };
 		596241EB215564FD001995AD /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		596241EC215564FE001995AD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		596241ED215564FE001995AD /* MangaSearchRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaSearchRootViewController.h; sourceTree = "<group>"; };
 		596241EE215564FF001995AD /* AiringRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringRootViewController.h; sourceTree = "<group>"; };
 		596241EF215564FF001995AD /* AiringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringViewController.m; sourceTree = "<group>"; };
 		596241F021556500001995AD /* ListRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListRootViewController.h; sourceTree = "<group>"; };
@@ -505,7 +500,7 @@
 		596241FB21556506001995AD /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		596241FC21556507001995AD /* SeasonSelectorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonSelectorTableViewController.m; sourceTree = "<group>"; };
 		596241FD21556507001995AD /* SettingsRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsRootViewController.m; sourceTree = "<group>"; };
-		596241FE21556508001995AD /* AnimeSearchRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeSearchRootViewController.m; sourceTree = "<group>"; };
+		596241FE21556508001995AD /* SearchRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRootViewController.m; sourceTree = "<group>"; };
 		596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSwitcherRootViewController.m; sourceTree = "<group>"; };
 		5962420021556509001995AD /* SeasonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonsViewController.h; sourceTree = "<group>"; };
 		5962420121556509001995AD /* SettingsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsRootViewController.h; sourceTree = "<group>"; };
@@ -517,8 +512,7 @@
 		596242072155650D001995AD /* ServiceSwitcherViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSwitcherViewDelegate.h; sourceTree = "<group>"; };
 		596242082155650D001995AD /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		596242092155650E001995AD /* ViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerManager.h; sourceTree = "<group>"; };
-		5962420A2155650E001995AD /* AnimeSearchRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeSearchRootViewController.h; sourceTree = "<group>"; };
-		5962420B2155650F001995AD /* SearchViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewControllers.h; sourceTree = "<group>"; };
+		5962420A2155650E001995AD /* SearchRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRootViewController.h; sourceTree = "<group>"; };
 		5962420C21556510001995AD /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
 		5962420D21556510001995AD /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		5962420E21556511001995AD /* AiringDayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringDayTableViewController.h; sourceTree = "<group>"; };
@@ -526,7 +520,6 @@
 		5962421021556512001995AD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5962421121556512001995AD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5962421221556513001995AD /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
-		5962421321556514001995AD /* MangaSearchRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangaSearchRootViewController.m; sourceTree = "<group>"; };
 		5962422B2155653D001995AD /* Hiyoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hiyoko.xcdatamodel; sourceTree = "<group>"; };
 		5962422D2155658D001995AD /* NSString_stripHtml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
 		5962422E21556591001995AD /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
@@ -939,8 +932,8 @@
 				596242032155650B001995AD /* AiringRootViewController.m */,
 				596242052155650C001995AD /* AiringViewController.h */,
 				596241EF215564FF001995AD /* AiringViewController.m */,
-				5962420A2155650E001995AD /* AnimeSearchRootViewController.h */,
-				596241FE21556508001995AD /* AnimeSearchRootViewController.m */,
+				5962420A2155650E001995AD /* SearchRootViewController.h */,
+				596241FE21556508001995AD /* SearchRootViewController.m */,
 				596241F021556500001995AD /* ListRootViewController.h */,
 				596241E7215564FB001995AD /* ListRootViewController.m */,
 				5962420F21556511001995AD /* ListSelectorViewController.h */,
@@ -951,13 +944,8 @@
 				5962420C21556510001995AD /* LoadViewController.m */,
 				596241E8215564FB001995AD /* MainViewController.h */,
 				596241EC215564FE001995AD /* MainViewController.m */,
-				596241ED215564FE001995AD /* MangaSearchRootViewController.h */,
-				5962421321556514001995AD /* MangaSearchRootViewController.m */,
-				596241EA215564FD001995AD /* SearchTabViewController.h */,
-				596241E6215564FA001995AD /* SearchTabViewController.m */,
 				596241FB21556506001995AD /* SearchViewController.h */,
 				5962420D21556510001995AD /* SearchViewController.m */,
-				5962420B2155650F001995AD /* SearchViewControllers.h */,
 				596241F121556501001995AD /* SeasonSelectorTableViewController.h */,
 				596241FC21556507001995AD /* SeasonSelectorTableViewController.m */,
 				596241F221556501001995AD /* SeasonsRootViewController.h */,
@@ -1350,7 +1338,6 @@
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
 				5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */,
 				59624188215563D2001995AD /* Keychain.m in Sources */,
-				5962421421556514001995AD /* SearchTabViewController.m in Sources */,
 				5962422021556514001995AD /* SettingsRootViewController.m in Sources */,
 				596241E4215564D1001995AD /* SearchTableViewCell.m in Sources */,
 				596241A72155642E001995AD /* RootViewController.m in Sources */,
@@ -1359,7 +1346,6 @@
 				5962419921556406001995AD /* AuthViewController.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				5962422F21556591001995AD /* NSString_stripHtml.m in Sources */,
-				5962422921556514001995AD /* MangaSearchRootViewController.m in Sources */,
 				59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */,
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
@@ -1377,7 +1363,7 @@
 				59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */,
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,
 				5962422621556514001995AD /* LoadViewController.m in Sources */,
-				5962422121556514001995AD /* AnimeSearchRootViewController.m in Sources */,
+				5962422121556514001995AD /* SearchRootViewController.m in Sources */,
 				596240E821556310001995AD /* XMLReader.m in Sources */,
 				5962421721556514001995AD /* ListViewController.m in Sources */,
 				59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */,

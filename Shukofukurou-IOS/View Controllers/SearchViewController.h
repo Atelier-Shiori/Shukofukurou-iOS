@@ -18,7 +18,6 @@ typedef NS_ENUM(unsigned int, SearchMediaType) {
 @property (weak, nonatomic) IBOutlet UINavigationItem *navitem;
 @property (strong) NSMutableArray *searchArray;
 @property int searchtype;
-- (void)setTitle;
 - (void)resetSearchUI;
 @end
 

@@ -28,6 +28,7 @@
     defaultValues[@"stream_region"] = @(0);
     defaultValues[@"currentservice"] = @(3);
     defaultValues[@"seasonselect"] = @"Winter";
+    defaultValues[@"selectedsearchtype"] = @(0);
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";

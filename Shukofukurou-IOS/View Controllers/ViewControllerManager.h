@@ -13,7 +13,7 @@
 #import "SettingsViewController.h"
 #import "ListRootViewController.h"
 #import "ListViewController.h"
-#import "SearchViewControllers.h"
+#import "SearchRootViewController.h"
 #import "SeasonsRootViewController.h"
 #import "AiringRootViewController.h"
 #import "AiringViewController.h"
@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (SettingsRootViewController *)getSettingsRootViewController;
 - (ListRootViewController *)getAnimeListRootViewController;
 - (ListRootViewController *)getMangaListRootViewController;
-- (SearchTabViewController *)getSearchTabView;
+- (SearchRootViewController *)getSearchView;
 - (SeasonsRootViewController *)getSeasonRootViewController;
 - (AiringRootViewController *)getAiringRootViewController;
 - (ServiceSwitcherRootViewController *)getServiceSwitcherRootViewController;

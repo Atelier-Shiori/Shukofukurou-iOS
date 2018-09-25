@@ -68,7 +68,7 @@
 }
 
 - (void)showSearchViewController {
-    self.rootViewController = [_vcm getSearchTabView];
+    self.rootViewController = [_vcm getSearchView];
 }
 
 - (void)showSeasonViewController {

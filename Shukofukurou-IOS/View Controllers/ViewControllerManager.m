@@ -16,7 +16,7 @@
 @property (strong) ListRootViewController *animelistrootview;
 @property (strong) ListViewController *mangalistview;
 @property (strong) ListRootViewController *mangalistrootview;
-@property (strong) SearchTabViewController *searchview;
+@property (strong) SearchRootViewController *searchvc;
 @property (strong) SeasonsRootViewController *seasonsrootview;
 @property (strong) AiringRootViewController *airingrootview;
 @property (strong) ServiceSwitcherRootViewController *serviceswitcherrootvc;
@@ -64,12 +64,12 @@
     return _mangalistrootview;
 }
 
-- (SearchTabViewController *)getSearchTabView {
-    if (!_searchview) {
+- (SearchRootViewController *)getSearchView {
+    if (!_searchvc) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
-        _searchview = (SearchTabViewController *)[storyboard instantiateViewControllerWithIdentifier:@"TitleSearch"];
+        _searchvc = (SearchRootViewController *)[storyboard instantiateViewControllerWithIdentifier:@"searchroot"];
     }
-    return _searchview;
+    return _searchvc;
 }
 
 - (SeasonsRootViewController *)getSeasonRootViewController {
