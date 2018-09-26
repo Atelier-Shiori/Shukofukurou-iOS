@@ -60,7 +60,6 @@
         [tmplist addObject:[obj dictionaryWithValuesForKeys:keys]];
     }
     NSArray *uentries = tmplist.copy;
-    [[self managedObjectContext] reset];
     return uentries;
 }
 
@@ -72,7 +71,6 @@
         [tmplist addObject:[obj dictionaryWithValuesForKeys:keys]];
     }
     NSArray *uentries = tmplist.copy;
-    [[self managedObjectContext] reset];
     return uentries;
 }
 

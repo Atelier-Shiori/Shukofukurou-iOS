@@ -78,7 +78,6 @@
             }
         }
         [[self managedObjectContext] save:nil];
-        [[self managedObjectContext] reset];
     }
 }
 
@@ -134,7 +133,6 @@
             [finalarray addObject:newdict.copy];
         }
     }
-    [[self managedObjectContext] reset];
     return finalarray.copy;
 }
 
