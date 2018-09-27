@@ -100,6 +100,7 @@
 		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 		59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
 		59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
+		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
 		59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9E72156A014005D99D5 /* MSWeakTimer.m */; };
 		59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */; };
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
@@ -530,6 +531,8 @@
 		59A0C6F3215A883E00B15F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdvancedEdit.storyboard; sourceTree = "<group>"; };
 		59A0C6F5215A983600B15F9F /* AdvEditTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvEditTableViewController.h; sourceTree = "<group>"; };
 		59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvEditTableViewController.m; sourceTree = "<group>"; };
+		59A75816215D3A8800B36F9C /* TitleInfoCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleInfoCache.h; sourceTree = "<group>"; };
+		59A75817215D3A8800B36F9C /* TitleInfoCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
 		59AEE9E62156A014005D99D5 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
 		59AEE9E72156A014005D99D5 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		59AEE9E92156A108005D99D5 /* AutoRefreshTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoRefreshTimer.h; sourceTree = "<group>"; };
@@ -828,6 +831,8 @@
 				59624183215563D0001995AD /* TitleIdConverter.m */,
 				5962417D215563CD001995AD /* Utility.h */,
 				5962417B215563CB001995AD /* Utility.m */,
+				59A75816215D3A8800B36F9C /* TitleInfoCache.h */,
+				59A75817215D3A8800B36F9C /* TitleInfoCache.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1387,6 +1392,7 @@
 				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,
 				596241572155638D001995AD /* AniListConstants.m in Sources */,
+				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
 				59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */,

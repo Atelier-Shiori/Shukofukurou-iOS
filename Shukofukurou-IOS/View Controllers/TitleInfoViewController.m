@@ -18,6 +18,7 @@
 #import "RatingTwentyConvert.h"
 #import "ViewControllerManager.h"
 #import "StreamDataRetriever.h"
+#import "TitleInfoCache.h"
 
 @interface TitleInfoViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
@@ -28,6 +29,7 @@
 @property int currenttype;
 @property int entryid;
 @property int titleid;
+@property bool forcerefresh;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *loadingview;
 @end
 
@@ -79,11 +81,26 @@
 */
 - (void)loadTitleInfo:(int)titleid withType:(int)type {
     _titleid = titleid;
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !_forcerefresh) {
+        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type];
+        if (titleinfo) {
+            [self populateInfoWithType:type withDictionary:titleinfo];
+            [self view];
+            self.loadingview.hidden = YES;
+            return;
+        }
+    }
     __weak TitleInfoViewController *weakSelf = self;
     self.navigationItem.hidesBackButton = YES;
     self.loadingview.hidden = NO;
     [listservice retrieveTitleInfo:titleid withType:type useAccount:NO completion:^(id responseObject) {
-        [weakSelf populateInfoWithType:type withDictionary:responseObject];
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
+            [weakSelf populateInfoWithType:type withDictionary:[TitleInfoCache saveTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type withResponseObject:responseObject]];
+            weakSelf.forcerefresh = false;
+        }
+        else {
+            [weakSelf populateInfoWithType:type withDictionary:responseObject];
+        }
         weakSelf.navigationItem.hidesBackButton = NO;
         weakSelf.loadingview.hidden = YES;
     } error:^(NSError *error) {
@@ -131,12 +148,19 @@
 #pragma mark options
 - (IBAction)presentoptions:(id)sender {
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    __weak TitleInfoViewController *weakSelf = self;
     [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self performViewOnListSite];
+        [weakSelf performViewOnListSite];
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self performShare];
+        [weakSelf performShare];
     }]];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
+        [options addAction:[UIAlertAction actionWithTitle:@"Refresh Title Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            weakSelf.forcerefresh = true;
+            [weakSelf loadTitleInfo:weakSelf.titleid withType:weakSelf.currenttype];
+        }]];
+    }
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     [self

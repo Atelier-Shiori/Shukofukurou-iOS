@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "StreamDataRetriever.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "TitleInfoCache.h"
 
 @interface SettingsViewController ()
     @property (weak, nonatomic) IBOutlet UITableViewCell *imagecachesize;
@@ -59,6 +60,13 @@
     [NSUserDefaults.standardUserDefaults setInteger:_streamregion.selectedSegmentIndex forKey:@"stream_region"];
     [StreamDataRetriever removeAllStreamEntries];
     [StreamDataRetriever performrestrieveStreamData];
+}
+
+- (IBAction)setTitleCache:(id)sender {
+    [NSUserDefaults.standardUserDefaults setBool:_cachetitleinfo.on forKey:@"cachetitleinfo"];
+    if (!_cachetitleinfo.on) {
+        [TitleInfoCache cleanupcacheShouldRemoveAll:YES];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

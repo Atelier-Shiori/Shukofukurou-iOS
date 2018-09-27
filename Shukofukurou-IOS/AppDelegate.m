@@ -29,6 +29,7 @@
     defaultValues[@"currentservice"] = @(3);
     defaultValues[@"seasonselect"] = @"Winter";
     defaultValues[@"selectedsearchtype"] = @(0);
+    defaultValues[@"cachetitleinfo"] = @YES;
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";
