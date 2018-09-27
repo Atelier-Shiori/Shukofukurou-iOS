@@ -250,9 +250,6 @@
     else if ([cell isKindOfClass:[TitleInfoAdvScoreEntryTableViewCell class]]) {
         [(TitleInfoAdvScoreEntryTableViewCell *)cell selectAction];
     }
-    else if ([cell isKindOfClass:[TitleInfoSwitchEntryTableViewCell class]]) {
-        [(TitleInfoSwitchEntryTableViewCell *)cell selectAction];
-    }
     else if ([cell isKindOfClass:[TitleInfoNotesEntryTableViewCell class]]) {
         [(TitleInfoNotesEntryTableViewCell *)cell selectAction];
     }

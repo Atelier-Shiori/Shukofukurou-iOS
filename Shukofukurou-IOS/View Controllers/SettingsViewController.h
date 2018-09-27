@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) IBOutlet UISwitch *refreshlistautomatically;
 @property (strong) IBOutlet UISwitch *darkmode;
 @property (strong) IBOutlet UISegmentedControl *streamregion;
+- (void)loadImageCacheSize;
 @end
 
 NS_ASSUME_NONNULL_END

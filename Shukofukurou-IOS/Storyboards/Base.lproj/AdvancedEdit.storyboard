@@ -176,7 +176,7 @@
                                     <outlet property="notes" destination="Tk4-J2-LPb" id="9Z9-31-VX2"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="switchcell" id="rxt-6x-0b0" customClass="TitleInfoSwitchEntryTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="switchcell" id="rxt-6x-0b0" customClass="TitleInfoSwitchEntryTableViewCell">
                                 <rect key="frame" x="0.0" y="364" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rxt-6x-0b0" id="vVG-5N-6vW" customClass="TitleInfoAdvScoreEntryTableViewCell">

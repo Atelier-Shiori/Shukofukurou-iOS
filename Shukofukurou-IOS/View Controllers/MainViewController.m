@@ -81,6 +81,7 @@
 
 - (void)showSettingsViewController {
     self.rootViewController = [_vcm getSettingsRootViewController];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"SettingsViewLoaded" object:nil];
 }
 
 - (void)showNotLoggedIn {
