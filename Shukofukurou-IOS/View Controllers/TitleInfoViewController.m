@@ -82,7 +82,7 @@
 - (void)loadTitleInfo:(int)titleid withType:(int)type {
     _titleid = titleid;
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !_forcerefresh) {
-        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type];
+        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type ignoreLastUpdated:NO];
         if (titleinfo) {
             [self populateInfoWithType:type withDictionary:titleinfo];
             [self view];
@@ -104,6 +104,16 @@
         weakSelf.navigationItem.hidesBackButton = NO;
         weakSelf.loadingview.hidden = YES;
     } error:^(NSError *error) {
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
+            NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type ignoreLastUpdated:NO];
+            if (titleinfo) {
+                [self populateInfoWithType:type withDictionary:titleinfo];
+                [self view];
+                self.loadingview.hidden = YES;
+                weakSelf.forcerefresh = false;
+                return;
+            }
+        }
         weakSelf.navigationItem.hidesBackButton = NO;
         weakSelf.loadingview.hidden = YES;
         [weakSelf.navigationController popViewControllerAnimated:YES];

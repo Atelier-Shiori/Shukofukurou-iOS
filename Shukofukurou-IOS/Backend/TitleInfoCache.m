@@ -15,12 +15,12 @@
     return ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
 }
 
-+ (NSDictionary *)getTitleInfoWithTitleID:(int)titleid withServiceID:(int)serviceid withType:(int)type {
++ (NSDictionary *)getTitleInfoWithTitleID:(int)titleid withServiceID:(int)serviceid withType:(int)type ignoreLastUpdated:(bool)ignorelastupdated {
     [self cleanupcacheShouldRemoveAll:NO];
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSManagedObject *entry = [self getTitleInfoManagedObjectTitleID:titleid withServiceID:serviceid withType:type];
     if (entry) {
-        if ([(NSDate *)[entry valueForKey:@"lastupdated"] timeIntervalSinceNow] < 172800) {
+        if ([(NSDate *)[entry valueForKey:@"lastupdated"] timeIntervalSinceNow] < 172800 || ignorelastupdated) {
             [entry setValue:[NSDate date] forKey:@"lastaccessed"];
             [moc save:nil];
             NSError *error;

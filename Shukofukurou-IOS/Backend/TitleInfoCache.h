@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TitleInfoCache : NSObject
-+ (NSDictionary *)getTitleInfoWithTitleID:(int)titleid withServiceID:(int)serviceid withType:(int)type;
++ (NSDictionary *)getTitleInfoWithTitleID:(int)titleid withServiceID:(int)serviceid withType:(int)type ignoreLastUpdated:(bool)ignorelastupdated ;
 + (NSDictionary *)saveTitleInfoWithTitleID:(int)titleid withServiceID:(int)serviceid withType:(int)type withResponseObject:(id)responseObject;
 + (void)cleanupcacheShouldRemoveAll:(bool)removeall;
 @end
