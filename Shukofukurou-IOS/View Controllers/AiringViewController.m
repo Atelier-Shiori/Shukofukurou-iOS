@@ -91,7 +91,6 @@
         default:
             break;
     }
-    aentrycell.score.text = [NSString stringWithFormat:@"%@",score];
     [aentrycell loadimage:entry[@"image_url"]];
     return aentrycell;
 }

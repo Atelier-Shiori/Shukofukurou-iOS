@@ -96,41 +96,17 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UQf-Hu-Ptc">
-                                            <rect key="frame" x="298" y="85" width="58" height="24"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="zYH-qq-hJg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="df5-3n-ctZ"/>
-                                                        <constraint firstAttribute="height" constant="24" id="mFC-Jb-fWa"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycz-ek-gA3">
-                                                    <rect key="frame" x="32" y="0.0" width="26" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="58" id="34r-D7-mhw"/>
-                                            </constraints>
-                                        </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="8FE-Ak-Odv" firstAttribute="centerY" secondItem="Btu-5W-Cd9" secondAttribute="centerY" id="34t-g7-ttK"/>
                                         <constraint firstItem="8FE-Ak-Odv" firstAttribute="leading" secondItem="Btu-5W-Cd9" secondAttribute="leadingMargin" constant="-4" id="5ji-Hl-N3E"/>
-                                        <constraint firstAttribute="trailing" secondItem="ycz-ek-gA3" secondAttribute="trailing" constant="20" id="EHq-Xf-At0"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8FE-Ak-Odv" secondAttribute="trailing" id="LOy-Nb-x2x"/>
-                                        <constraint firstAttribute="bottom" secondItem="UQf-Hu-Ptc" secondAttribute="bottom" constant="10.666666666666671" id="f9e-7J-NTq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="posterimage" destination="ezi-jk-YQV" id="zzn-pW-Emv"/>
                                     <outlet property="progress" destination="7tS-i1-ObA" id="etO-2I-bC9"/>
                                     <outlet property="progressVolumes" destination="Lal-VK-hg2" id="P27-Kd-hVP"/>
-                                    <outlet property="score" destination="ycz-ek-gA3" id="0CF-rI-SP6"/>
                                     <outlet property="title" destination="V8l-bo-rMP" id="pVZ-DN-JvN"/>
                                     <outlet property="type" destination="hq7-AX-EHP" id="eFM-g8-ndL"/>
                                 </connections>
@@ -183,6 +159,5 @@
     </scenes>
     <resources>
         <image name="Menu" width="50" height="50"/>
-        <image name="favorite" width="67.5" height="67.5"/>
     </resources>
 </document>

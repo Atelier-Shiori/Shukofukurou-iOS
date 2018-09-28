@@ -31,6 +31,8 @@
 @property int titleid;
 @property bool forcerefresh;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *loadingview;
+@property (weak, nonatomic) IBOutlet UILabel *titlestatus;
+@property (weak, nonatomic) IBOutlet UILabel *titletype;
 @end
 
 @implementation TitleInfoViewController
@@ -124,6 +126,8 @@
         self.currenttype = type;
         if (type == 0) {
             NSString *airingstatus = titleinfo[@"status"];
+            self.titlestatus.text = airingstatus;
+            self.titletype.text = titleinfo[@"type"];
             if ([airingstatus isEqualToString:@"finished airing"]) {
                 self.selectedaircompleted = true;
             }
@@ -139,6 +143,8 @@
         }
         else {
             NSString *publishtatus = titleinfo[@"status"];
+            self.titlestatus.text = publishtatus;
+            self.titletype.text = titleinfo[@"type"];
             if ([publishtatus isEqualToString:@"finished"]) {
                 self.selectedfinished = true;
             }
@@ -608,7 +614,7 @@
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Producers" withValue:[Utility appendstringwithArray:(NSArray *)titleinfo[@"producers"]] withCellType:cellTypeInfoExpand]];
     }
     if (titleinfo[@"members_score"] != nil || ((NSNumber *)titleinfo[@"members_score"]).intValue > 0) {
-        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:((NSNumber *)titleinfo[@"members_score"]).stringValue withCellType:cellTypeInfo]];
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:[NSString stringWithFormat:@"%.2f", ((NSNumber *)titleinfo[@"members_score"]).floatValue] withCellType:cellTypeInfo]];
     }
     NSNumber *popularity = titleinfo[@"popularity_rank"];
     if (popularity.intValue > 0) {
@@ -662,7 +668,7 @@
     }
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Genres" withValue:genres withCellType:cellTypeInfoExpand]];
     if (titleinfo[@"members_score"] != nil || ((NSNumber *)titleinfo[@"members_score"]).intValue > 0) {
-        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:((NSNumber *)titleinfo[@"members_score"]).stringValue withCellType:cellTypeInfo]];
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:[NSString stringWithFormat:@"%.2f", ((NSNumber *)titleinfo[@"members_score"]).floatValue] withCellType:cellTypeInfo]];
     }
     NSNumber *popularity = titleinfo[@"popularity_rank"];
     if (popularity.intValue > 0) {

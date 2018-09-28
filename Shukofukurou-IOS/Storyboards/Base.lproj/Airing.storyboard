@@ -75,33 +75,10 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JSL-Gm-lz8">
-                                            <rect key="frame" x="263" y="85" width="58" height="24"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="jEq-8y-shR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="pnU-RZ-iVX"/>
-                                                        <constraint firstAttribute="height" constant="24" id="psH-Wz-Vks"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIJ-oI-ooE">
-                                                    <rect key="frame" x="32" y="0.0" width="26" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="58" id="hJ2-XP-CUh"/>
-                                            </constraints>
-                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="HIJ-oI-ooE" secondAttribute="trailing" constant="20" id="04y-N5-GIh"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Mh3-xg-NA7" secondAttribute="trailing" id="NJv-t9-kua"/>
                                         <constraint firstItem="Mh3-xg-NA7" firstAttribute="centerY" secondItem="bJY-TH-x1y" secondAttribute="centerY" id="Qus-lH-wll"/>
-                                        <constraint firstAttribute="bottom" secondItem="JSL-Gm-lz8" secondAttribute="bottom" constant="10.666666666666671" id="a9S-nX-fxn"/>
                                         <constraint firstItem="Mh3-xg-NA7" firstAttribute="leading" secondItem="bJY-TH-x1y" secondAttribute="leadingMargin" constant="-4" id="hVl-7n-gkv"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -109,7 +86,6 @@
                                     <outlet property="posterimage" destination="ndp-Cb-eS7" id="E9i-xs-BMa"/>
                                     <outlet property="progress" destination="Uph-EB-B37" id="h4u-bs-KdW"/>
                                     <outlet property="progressVolumes" destination="V5q-NV-iEh" id="aA5-zo-dgY"/>
-                                    <outlet property="score" destination="HIJ-oI-ooE" id="uj0-cx-ep6"/>
                                     <outlet property="title" destination="skA-u4-5KF" id="jSd-SK-076"/>
                                     <outlet property="type" destination="DAk-Ck-41Q" id="Ce5-6e-K91"/>
                                 </connections>
@@ -212,6 +188,5 @@
     <resources>
         <image name="Menu" width="50" height="50"/>
         <image name="day" width="45" height="45"/>
-        <image name="favorite" width="45" height="45"/>
     </resources>
 </document>

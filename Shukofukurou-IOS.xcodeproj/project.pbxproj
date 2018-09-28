@@ -897,8 +897,10 @@
 		596241AB21556443001995AD /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */,
 				596241BB21556481001995AD /* Airing.storyboard */,
 				596241BD21556486001995AD /* Auth.storyboard */,
+				59481D8221594078003CE863 /* CustomList.storyboard */,
 				596241BF21556489001995AD /* InfoView.storyboard */,
 				596241C12155648D001995AD /* LaunchScreen.storyboard */,
 				596241C321556493001995AD /* Lists.storyboard */,
@@ -909,8 +911,6 @@
 				596241CD215564A9001995AD /* Seasons.storyboard */,
 				596241CF215564AD001995AD /* ServiceSwitcher.storyboard */,
 				596241D1215564B4001995AD /* Settings.storyboard */,
-				59481D8221594078003CE863 /* CustomList.storyboard */,
-				59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";

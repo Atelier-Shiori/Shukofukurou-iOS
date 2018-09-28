@@ -123,7 +123,6 @@
         default:
             break;
     }
-    aentrycell.score.text = [NSString stringWithFormat:@"%@",score];
     [aentrycell loadimage:entry[@"image_url"]];
     return aentrycell;
 }
@@ -152,7 +151,6 @@
         default:
             break;
     }
-    mentrycell.score.text = [NSString stringWithFormat:@" %@",score];
     [mentrycell loadimage:entry[@"image_url"]];
     return mentrycell;
 }
