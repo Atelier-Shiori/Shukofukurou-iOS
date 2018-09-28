@@ -164,10 +164,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)collectionViewLayout;
-    double totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right + (flowLayout.minimumInteritemSpacing * (3 - 1));
-    double size = rint((collectionView.bounds.size.width - totalSpace) / 3);
-    return CGSizeMake(size, 180);
+    return CGSizeMake(113, 180);
 }
 
 #pragma mark selectors
