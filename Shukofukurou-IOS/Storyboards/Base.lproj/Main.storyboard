@@ -49,21 +49,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zqy-Vi-U5T">
-                                <rect key="frame" x="0.0" y="83" width="250" height="581"/>
+                                <rect key="frame" x="0.0" y="106" width="250" height="558"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <segue destination="e1U-ul-rkf" kind="embed" id="fpt-2U-Ibn"/>
                                 </connections>
                             </containerView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Tx-im-l7b">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="85"/>
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="aAj-Pz-RQV">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="85"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="105"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcP-De-Esy">
-                                            <rect key="frame" x="8" y="24" width="230" height="50"/>
+                                            <rect key="frame" x="12" y="34" width="230" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qud-OI-ghi">
@@ -95,9 +95,11 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLa-1n-UEk">
-                                <rect key="frame" x="0.0" y="623" width="250" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLa-1n-UEk">
+                                <rect key="frame" x="0.0" y="621" width="250" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="AaS-DT-OTQ"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Login" id="vt3-WL-ZAV">
                                         <connections>
@@ -114,6 +116,11 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hLa-1n-UEk" firstAttribute="trailing" secondItem="5c1-Ch-XQv" secondAttribute="trailing" id="0CR-iG-iuJ"/>
+                            <constraint firstItem="hLa-1n-UEk" firstAttribute="bottom" secondItem="5c1-Ch-XQv" secondAttribute="bottom" id="U2l-jX-9nX"/>
+                            <constraint firstItem="hLa-1n-UEk" firstAttribute="leading" secondItem="5c1-Ch-XQv" secondAttribute="leading" id="pwY-QD-yho"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5c1-Ch-XQv"/>
                     </view>
                     <size key="freeformSize" width="250" height="667"/>
@@ -126,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2K-g6-A8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-531.8840579710145" y="844.15760869565224"/>
+            <point key="canvasLocation" x="-532.79999999999995" y="843.32833583208401"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="aH5-dj-raG">
@@ -153,7 +160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="knO-xc-GEB">
-                                <rect key="frame" x="83" y="290" width="207.5" height="92.5"/>
+                                <rect key="frame" x="83" y="290" width="207" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not logged In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdH-xS-VCu">
@@ -276,6 +283,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
+        <image name="Menu" width="25" height="25"/>
     </resources>
 </document>

@@ -207,6 +207,8 @@
     _listselector.selectedlist = _selectedlist;
     [navcontroller setViewControllers:@[_listselector]];
     [_listselector.tableView reloadData];
+    navcontroller.modalPresentationStyle = UIModalPresentationPopover;
+    navcontroller.popoverPresentationController.barButtonItem = sender;
     [self presentViewController:navcontroller animated:YES completion:nil];
 }
 
@@ -408,7 +410,7 @@
     NSMutableArray *rightbuttons = [NSMutableArray new];
     [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
         NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-        [weakSelf showOtherOptions:entry];
+        [weakSelf showOtherOptions:entry withIndexPath:indexPath];
         return true;
     }]];
     if ([self canIncrement:entry]) {
@@ -463,7 +465,7 @@
     NSMutableArray *rightbuttons = [NSMutableArray new];
     [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
         NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-        [weakSelf showOtherOptions:entry];
+        [weakSelf showOtherOptions:entry withIndexPath:indexPath];
         return true;
     }]];
     if ([self canIncrement:entry]) {
@@ -795,11 +797,15 @@
     }
 }
 
-- (void)showOtherOptions:(NSDictionary *)entry {
+- (void)showOtherOptions:(NSDictionary *)entry withIndexPath:(NSIndexPath *)indexpath {
     int titleid = ((NSNumber *)entry[@"id"]).intValue;
     int currentservice = [listservice getCurrentServiceID];
     __weak ListViewController *weakSelf = self;
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexpath];
+    options.popoverPresentationController.sourceView = cell;
+    options.popoverPresentationController.sourceRect = cell.bounds;
+    options.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
     [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self performViewOnListSite:titleid];
     }]];
@@ -811,12 +817,14 @@
             [weakSelf reloadList];
         };
         navController.viewControllers = @[advedit];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:navController animated:YES completion:^{}];
     }]];
     if (currentservice == 3) {
         [options addAction:[UIAlertAction actionWithTitle:@"Manage Custom Lists" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UINavigationController *navcontroller = [UINavigationController new];
             CustomListTableViewController *clvc = [[UIStoryboard storyboardWithName:@"CustomList" bundle:nil] instantiateViewControllerWithIdentifier:@"customlistedit"];
+            navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
             [navcontroller setViewControllers:@[clvc]];
             [self presentViewController:navcontroller animated:YES completion:nil];
             [clvc viewDidLoad];
@@ -824,10 +832,11 @@
         }]];
     }
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self performShare:titleid];
+        [self performShare:titleid withCell:cell];
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
+
     [self
      presentViewController:options
      animated:YES
@@ -839,10 +848,13 @@
     [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
 }
 
-- (void)performShare:(int)titleid {
+- (void)performShare:(int)titleid withCell:(UITableViewCell *)cell{
     NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL:titleid]]];
     UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     activityViewControntroller.excludedActivityTypes = @[];
+    activityViewControntroller.popoverPresentationController.sourceView = cell;
+    activityViewControntroller.popoverPresentationController.sourceRect = cell.bounds;
+    activityViewControntroller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
     [self presentViewController:activityViewControntroller animated:true completion:nil];
 }
 

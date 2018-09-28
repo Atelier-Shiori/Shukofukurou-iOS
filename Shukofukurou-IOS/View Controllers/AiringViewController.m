@@ -140,6 +140,8 @@
     [_airingdaycontroller.tableView reloadData];
     UINavigationController *navcontroller = [UINavigationController new];
     navcontroller.viewControllers = @[_airingdaycontroller];
+    navcontroller.modalPresentationStyle = UIModalPresentationPopover;
+    navcontroller.popoverPresentationController.barButtonItem = sender;
     [self presentViewController:navcontroller animated:YES completion:nil];
 }
 

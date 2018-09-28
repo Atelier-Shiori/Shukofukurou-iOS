@@ -169,7 +169,7 @@
         [weakSelf performViewOnListSite];
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf performShare];
+        [weakSelf performShare:sender];
     }]];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
         [options addAction:[UIAlertAction actionWithTitle:@"Refresh Title Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -179,6 +179,10 @@
     }
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
+    
+    options.popoverPresentationController.barButtonItem = sender;
+    options.popoverPresentationController.sourceView = self.view;
+    
     [self
      presentViewController:options
      animated:YES
@@ -190,10 +194,12 @@
     [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
 }
 
-- (void)performShare {
+- (void)performShare:(id)sender {
     NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL]]];
     UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     activityViewControntroller.excludedActivityTypes = @[];
+    activityViewControntroller.popoverPresentationController.barButtonItem = sender;
+    activityViewControntroller.popoverPresentationController.sourceView = self.view;
     [self presentViewController:activityViewControntroller animated:true completion:nil];
 }
 

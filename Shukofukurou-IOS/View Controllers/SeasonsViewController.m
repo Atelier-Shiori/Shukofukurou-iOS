@@ -172,18 +172,20 @@ static NSString * const reuseIdentifier = @"Cell";
 - (IBAction)selectyear:(id)sender {
     _seasonselector.year = _currentyear;
     [_seasonselector generateselectionitems:yearselect];
-    [self startselector];
+    [self startselector:sender];
 }
 
 - (IBAction)selectseason:(id)sender {
     _seasonselector.selectedseason = _currentseason;
     [_seasonselector generateselectionitems:seasonselect];
-    [self startselector];
+    [self startselector:sender];
 }
 
-- (void)startselector {
+- (void)startselector:(id)sender {
     UINavigationController *navcontroller = [UINavigationController new];
     navcontroller.viewControllers = @[_seasonselector];
+    navcontroller.modalPresentationStyle = UIModalPresentationPopover;
+    navcontroller.popoverPresentationController.barButtonItem = sender;
     [self presentViewController:navcontroller animated:YES completion:nil];
 }
 
