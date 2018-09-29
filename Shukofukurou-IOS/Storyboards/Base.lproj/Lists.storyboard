@@ -242,6 +242,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHx-Xw-CeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,7 +266,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
-        <image name="listsort" width="50" height="50"/>
+        <image name="Menu" width="25" height="25"/>
+        <image name="listsort" width="25" height="25"/>
     </resources>
 </document>

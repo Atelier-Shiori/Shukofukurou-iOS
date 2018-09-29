@@ -141,12 +141,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select a Day" id="Ff1-qS-nSn">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tfc-in-O81">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="tfc-in-O81">
                             <connections>
                                 <action selector="cancel:" destination="RQ4-vv-cmc" id="7Av-xj-pkG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="navigationitem" destination="Ff1-qS-nSn" id="CyA-Ih-BXe"/>
                     </connections>
@@ -157,8 +158,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
-        <image name="day" width="45" height="45"/>
-        <image name="season" width="45" height="45"/>
+        <image name="Menu" width="25" height="25"/>
+        <image name="day" width="30" height="30"/>
+        <image name="season" width="30" height="30"/>
     </resources>
 </document>

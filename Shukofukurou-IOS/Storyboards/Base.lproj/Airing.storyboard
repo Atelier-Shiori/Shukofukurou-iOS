@@ -157,12 +157,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select a Day" id="iaN-gg-NEk">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="RrB-US-NaI">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="RrB-US-NaI">
                             <connections>
                                 <action selector="cancel:" destination="Vgq-RE-9wl" id="rcB-we-6f1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qch-03-K2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,7 +187,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
-        <image name="day" width="45" height="45"/>
+        <image name="Menu" width="25" height="25"/>
+        <image name="day" width="30" height="30"/>
     </resources>
 </document>

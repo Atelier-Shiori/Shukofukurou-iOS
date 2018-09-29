@@ -92,7 +92,6 @@
 		5962425121556617001995AD /* Lists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C321556493001995AD /* Lists.storyboard */; };
 		596242522155661A001995AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C521556497001995AD /* Main.storyboard */; };
 		596242532155661D001995AD /* OAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C72155649C001995AD /* OAuth.storyboard */; };
-		596242542155661F001995AD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C9215564A1001995AD /* Profile.storyboard */; };
 		5962425521556622001995AD /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CB215564A5001995AD /* Search.storyboard */; };
 		5962425621556624001995AD /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
 		5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
@@ -465,7 +464,6 @@
 		596241C221556493001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Lists.storyboard; sourceTree = "<group>"; };
 		596241C421556497001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		596241C62155649C001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OAuth.storyboard; sourceTree = "<group>"; };
-		596241C8215564A1001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		596241CA215564A5001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
 		596241CC215564A9001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seasons.storyboard; sourceTree = "<group>"; };
 		596241CE215564AD001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ServiceSwitcher.storyboard; sourceTree = "<group>"; };
@@ -906,7 +904,6 @@
 				596241C321556493001995AD /* Lists.storyboard */,
 				596241C521556497001995AD /* Main.storyboard */,
 				596241C72155649C001995AD /* OAuth.storyboard */,
-				596241C9215564A1001995AD /* Profile.storyboard */,
 				596241CB215564A5001995AD /* Search.storyboard */,
 				596241CD215564A9001995AD /* Seasons.storyboard */,
 				596241CF215564AD001995AD /* ServiceSwitcher.storyboard */,
@@ -1315,7 +1312,6 @@
 				5962424F21556612001995AD /* InfoView.storyboard in Resources */,
 				5962424D2155660C001995AD /* Airing.storyboard in Resources */,
 				5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */,
-				596242542155661F001995AD /* Profile.storyboard in Resources */,
 				5962425021556614001995AD /* LaunchScreen.storyboard in Resources */,
 				59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */,
 				596240B52155622F001995AD /* Assets.xcassets in Resources */,
@@ -1526,14 +1522,6 @@
 				596241C62155649C001995AD /* Base */,
 			);
 			name = OAuth.storyboard;
-			sourceTree = "<group>";
-		};
-		596241C9215564A1001995AD /* Profile.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				596241C8215564A1001995AD /* Base */,
-			);
-			name = Profile.storyboard;
 			sourceTree = "<group>";
 		};
 		596241CB215564A5001995AD /* Search.storyboard */ = {
