@@ -13,7 +13,8 @@
 
 @interface SettingsViewController ()
     @property (weak, nonatomic) IBOutlet UITableViewCell *imagecachesize;
-    
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
+
 @end
 
 @implementation SettingsViewController
@@ -31,6 +32,25 @@
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"SettingsViewLoaded" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [self hidemenubtn];
+}
+
+- (void)orientationChanged:(NSNotification *)notification {
+    [self hidemenubtn];
+}
+
+- (void)hidemenubtn {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
+            [self.menubtn setEnabled:NO];
+            [self.menubtn setTintColor: [UIColor clearColor]];
+        }
+        else {
+            [self.menubtn setEnabled:YES];
+            [self.menubtn setTintColor:nil];
+        }
+    }
 }
     
 - (void)recieveNotification:(NSNotification *)notification {

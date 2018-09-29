@@ -85,6 +85,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="menubtn" destination="E5s-2Z-50A" id="Hvg-aT-jwS"/>
                         <outlet property="navationitem" destination="NTZ-Hq-irf" id="dc1-3O-eTc"/>
                     </connections>
                 </collectionViewController>

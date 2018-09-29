@@ -228,6 +228,7 @@
                         <outlet property="cachetitleinfo" destination="Kvk-9c-gyo" id="bCG-eg-Cv3"/>
                         <outlet property="darkmode" destination="Rke-dF-a1m" id="VdI-OW-6fT"/>
                         <outlet property="imagecachesize" destination="HqN-IW-tY5" id="hqs-hp-utT"/>
+                        <outlet property="menubtn" destination="SIF-Oy-M9t" id="Ks1-GT-uQH"/>
                         <outlet property="refreshlistautomatically" destination="D6W-rY-Gxv" id="zdJ-7Q-jx4"/>
                         <outlet property="refreshlistonstart" destination="pj9-Wm-kuj" id="Jap-hy-2hk"/>
                         <outlet property="streamregion" destination="bWJ-WL-MV8" id="AXp-Sq-gMt"/>
@@ -304,6 +305,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
+        <image name="Menu" width="25" height="25"/>
     </resources>
 </document>

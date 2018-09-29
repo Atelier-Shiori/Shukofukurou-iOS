@@ -116,6 +116,7 @@
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="menubtn" destination="156-I8-6Ao" id="je3-JA-f0J"/>
                         <outlet property="navcontroller" destination="nca-O2-dI7" id="0r8-4b-hUA"/>
                         <outlet property="refreshcontrol" destination="0xI-Jh-dcx" id="kAb-fh-88W"/>
                     </connections>

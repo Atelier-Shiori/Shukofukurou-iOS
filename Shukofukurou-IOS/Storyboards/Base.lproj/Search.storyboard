@@ -138,6 +138,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="menubtn" destination="I2X-5t-HXG" id="bTl-Ui-jim"/>
                         <outlet property="navitem" destination="FQd-Jp-2Gg" id="vIt-0o-VRK"/>
                         <outlet property="searchDisplayController" destination="fgt-rV-hPh" id="M68-TQ-ORT"/>
                         <outlet property="searchbar" destination="ng5-HO-Fzz" id="el7-Z5-yko"/>
@@ -158,6 +159,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
+        <image name="Menu" width="25" height="25"/>
     </resources>
 </document>

@@ -23,10 +23,16 @@
 @property (strong) NSArray *airinglist;
 @property (strong) NSString *currentday;
 @property (weak, nonatomic) IBOutlet UIRefreshControl *refreshcontrol;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
+
 @property (strong) AiringDayTableViewController *airingdaycontroller;
 @end
 
 @implementation AiringViewController
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,6 +63,24 @@
         weakSelf.airinglist = [[AiringSchedule retrieveAiringDataForDay:weakSelf.currentday.lowercaseString] sortedArrayUsingDescriptors:@[sort]];
         [weakSelf.tableView reloadData];
     };
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [self hidemenubtn];
+}
+
+- (void)orientationChanged:(NSNotification *)notification {
+    [self hidemenubtn];
+}
+- (void)hidemenubtn {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
+            [self.menubtn setEnabled:NO];
+            [self.menubtn setTintColor: [UIColor clearColor]];
+        }
+        else {
+            [self.menubtn setEnabled:YES];
+            [self.menubtn setTintColor:nil];
+        }
+    }
 }
 
 #pragma mark - Table view data source

@@ -124,6 +124,7 @@
 - (void)populateInfoWithType:(int)type withDictionary:(NSDictionary *)titleinfo {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.currenttype = type;
+        self.navigationitem.title = titleinfo[@"title"];
         if (type == 0) {
             NSString *airingstatus = titleinfo[@"status"];
             self.titlestatus.text = airingstatus;
@@ -472,7 +473,6 @@
     NSDictionary *userentry;
     if ([listservice checkAccountForCurrentService]) {
         userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:((NSNumber *)titleinfo[@"id"]).intValue withService:[listservice getCurrentServiceID] withType:type];
-        _navigationitem.title = titleinfo[@"title"];
         if (!userentry) {
             // Generate blank user entry
             if (type == 0) {

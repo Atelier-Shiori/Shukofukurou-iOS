@@ -17,6 +17,7 @@
 @interface SearchViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchbar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *searchselector;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 
 @end
 
@@ -37,6 +38,26 @@
     _searchArray = [NSMutableArray new];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
     _searchselector.selectedSegmentIndex = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [self hidemenubtn];
+}
+
+- (void)orientationChanged:(NSNotification *)notification {
+    [self hidemenubtn];
+}
+
+- (void)hidemenubtn {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
+            [self.menubtn setEnabled:NO];
+            [self.menubtn setTintColor: [UIColor clearColor]];
+        }
+        else {
+            [self.menubtn setEnabled:YES];
+            [self.menubtn setTintColor:nil];
+        }
+    }
 }
 
 - (void)recieveNotification:(NSNotification *)notification {

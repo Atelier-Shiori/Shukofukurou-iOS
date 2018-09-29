@@ -21,12 +21,17 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navationitem;
 @property (strong) SeasonSelectorTableViewController *seasonselector;
 @property (strong) NSString *currentseason;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @property int currentyear;
 @end
 
 @implementation SeasonsViewController
 
 static NSString * const reuseIdentifier = @"Cell";
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,6 +72,25 @@ static NSString * const reuseIdentifier = @"Cell";
     // Refresh Control
     self.collectionView.refreshControl = [UIRefreshControl new];
     [self.collectionView.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [self hidemenubtn];
+}
+
+- (void)orientationChanged:(NSNotification *)notification {
+    [self hidemenubtn];
+}
+- (void)hidemenubtn {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
+            [self.menubtn setEnabled:NO];
+            [self.menubtn setTintColor: [UIColor clearColor]];
+        }
+        else {
+            [self.menubtn setEnabled:YES];
+            [self.menubtn setTintColor:nil];
+        }
+    }
 }
 
 - (void)reloadData:(bool)refresh {
