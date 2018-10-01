@@ -23,8 +23,11 @@ typedef NS_ENUM(unsigned int, cellType) {
     cellTypeNotes = 8
 };
 typedef NS_ENUM(unsigned int, cellAction) {
-    updateEntry = 0,
-    addEntry = 1
+    cellActionUpdateEntry = 0,
+    cellActionAddEntry = 1,
+    cellActionViewRelated = 2,
+    cellActionViewReviews = 3,
+    cellActionViewStaff = 4
 };
 @property (strong) NSString *cellTitle;
 @property (strong) id cellValue;

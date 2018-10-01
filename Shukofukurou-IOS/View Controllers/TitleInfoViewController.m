@@ -7,6 +7,7 @@
 //
 
 #import "TitleInfoViewController.h"
+#import "RelatedTableViewController.h"
 #import "TitleInfoTableViewCell.h"
 #import "Utility.h"
 #import "NSString+HTMLtoNSAttributedString.h"
@@ -33,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *loadingview;
 @property (weak, nonatomic) IBOutlet UILabel *titlestatus;
 @property (weak, nonatomic) IBOutlet UILabel *titletype;
+@property (strong) RelatedTableViewController *relatedtvc;
 @end
 
 @implementation TitleInfoViewController
@@ -47,6 +49,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedIn" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
 }
 
 - (void)recieveNotification:(NSNotification *)notification {
@@ -125,6 +128,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.currenttype = type;
         self.navigationitem.title = titleinfo[@"title"];
+        [self.relatedtvc generateRelated:titleinfo withType:self.currenttype];
         if (type == 0) {
             NSString *airingstatus = titleinfo[@"status"];
             self.titlestatus.text = airingstatus;
@@ -399,16 +403,31 @@
     }
     cell.textLabel.text = cellInfo.cellTitle;
     cell.actiontype = cellInfo.action;
+    switch (cell.actiontype) {
+        case cellActionAddEntry:
+        case cellActionUpdateEntry:
+            break;
+        case cellActionViewStaff:
+        case cellActionViewReviews:
+        case cellActionViewRelated:
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        default:
+            break;
+    }
     __weak TitleInfoViewController *weakSelf = self;
     cell.cellPressed = ^(int actiontype, TitleInfoUpdateTableViewCell * _Nonnull cell) {
         if ([weakSelf validateCells]) {
             if (weakSelf.currenttype == 0) {
                 switch (actiontype) {
-                    case addEntry:
+                    case cellActionAddEntry:
                         [self addAnimeEntry:cell];
                         break;
-                    case updateEntry:
+                    case cellActionUpdateEntry:
                         [self updateAnime:cell];
+                        break;
+                    case cellActionViewRelated:
+                        [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
                         break;
                     default:
                         break;
@@ -416,11 +435,14 @@
             }
             else {
                 switch (actiontype) {
-                    case addEntry:
+                    case cellActionAddEntry:
                         [self addMangaEntry:cell];
                         break;
-                    case updateEntry:
+                    case cellActionUpdateEntry:
                         [self updateManga:cell];
+                        break;
+                    case cellActionViewRelated:
+                        [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
                         break;
                     default:
                         break;
@@ -523,10 +545,10 @@
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Status" withValue:entry[@"watched_status"] withCellType:cellTypeEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:entry[@"score"] withCellType:cellTypeEntry]];
     if (entry[@"entryid"]) {
-        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Update Entry" withCellAction:updateEntry]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Update Entry" withCellAction:cellActionUpdateEntry]];
     }
     else {
-        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Add Entry" withCellAction:addEntry]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Add Entry" withCellAction:cellActionAddEntry]];
     }
     return entrycellarray;
 }
@@ -538,10 +560,10 @@
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Status" withValue:entry[@"read_status"] withCellType:cellTypeEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:entry[@"score"] withCellType:cellTypeEntry]];
     if (entry[@"entryid"]) {
-        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Update Entry" withCellAction:updateEntry]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Update Entry" withCellAction:cellActionUpdateEntry]];
     }
     else {
-        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Add Entry" withCellAction:addEntry]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Add Entry" withCellAction:cellActionAddEntry]];
     }
     return entrycellarray;
 }
@@ -630,6 +652,16 @@
     if (favorites.intValue > 0) {
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Favorited" withValue:favorites.stringValue withCellType:cellTypeInfo]];
     }
+    [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Related" withCellAction:cellActionViewRelated]];
+    [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:[listservice getCurrentServiceID] == 2 ? @"Reactions" : @"Reviews" withCellAction:cellActionViewReviews]];
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+        case 3:
+            [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Characters/Staff" withCellAction:cellActionViewStaff]];
+            break;
+        default:
+            break;
+    }
     return detailarray.copy;
 }
 
@@ -684,6 +716,8 @@
     if (favorites.intValue > 0) {
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Favorited" withValue:favorites.stringValue withCellType:cellTypeInfo]];
     }
+    [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Related" withCellAction:cellActionViewRelated]];
+    [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:[listservice getCurrentServiceID] == 2 ? @"Reactions" : @"Reviews" withCellAction:cellActionViewReviews]];
     return detailarray.copy;
 }
 
