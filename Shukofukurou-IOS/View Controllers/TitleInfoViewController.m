@@ -71,7 +71,7 @@
         // Leave Title Information
         self.navigationItem.hidesBackButton = NO;
         _loadingview.hidden = YES;
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 

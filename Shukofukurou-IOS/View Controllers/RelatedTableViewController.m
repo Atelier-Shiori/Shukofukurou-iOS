@@ -92,8 +92,13 @@
     }
     if (titleinfo[@"manga_adaptations"]) {
          if (((NSArray *)titleinfo[@"manga_adaptations"]).count > 0){
-             _items[@"Adaptations"] = titleinfo[@"manga_adaptations"];
+             _items[@"Manga Adaptations"] = titleinfo[@"manga_adaptations"];
          }
+    }
+    if (titleinfo[@"anime_adaptations"]) {
+        if (((NSArray *)titleinfo[@"anime_adaptations"]).count > 0){
+            _items[@"Anime Adaptations"] = titleinfo[@"anime_adaptations"];
+        }
     }
     if (titleinfo[@"recommendations"]) {
         if (((NSArray *)titleinfo[@"recommendations"]).count > 0) {
