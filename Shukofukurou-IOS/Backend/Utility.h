@@ -21,6 +21,7 @@
 + (NSString *)statusFromDateRange:(NSString *)start toDate:(NSString *)end;
 + (NSString *)convertNameFormat:(NSString *)string;
 + (NSDate *)stringDatetoDate:(NSString *)stringdate;
++ (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
 + (AFHTTPSessionManager*)jsonmanager;
 + (AFHTTPSessionManager*)httpmanager;
 + (AFHTTPSessionManager*)syncmanager;

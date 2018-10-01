@@ -108,6 +108,7 @@
 		59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */; };
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
+		59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -550,6 +551,8 @@
 		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
 		59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyViewController.h; sourceTree = "<group>"; };
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
+		59D9156A2162B4CA00B5A61B /* ReviewDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailTableViewController.h; sourceTree = "<group>"; };
+		59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1000,6 +1003,8 @@
 				598AB4D32162658700979C19 /* RelatedTableViewController.m */,
 				598AB4EF2162976100979C19 /* ReviewTableViewController.h */,
 				598AB4F02162976100979C19 /* ReviewTableViewController.m */,
+				59D9156A2162B4CA00B5A61B /* ReviewDetailTableViewController.h */,
+				59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1388,6 +1393,7 @@
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
 				5962422F21556591001995AD /* NSString_stripHtml.m in Sources */,
 				59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */,
+				59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */,
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,

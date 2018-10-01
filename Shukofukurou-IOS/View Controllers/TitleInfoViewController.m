@@ -407,6 +407,7 @@
     switch (cell.actiontype) {
         case cellActionAddEntry:
         case cellActionUpdateEntry:
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         case cellActionViewStaff:
         case cellActionViewReviews:

@@ -219,7 +219,9 @@
         self.detailTextLabel.text = displayscore;
         self.rawValue = actualscore;
         self.scoreChanged(actualscore, self.textLabel.text);
+        [self setSelected:NO animated:YES];
     } cancelBlock:^(ActionSheetStringPicker *picker) {
+        [self setSelected:NO animated:YES];
     } origin:self];
 
 }
@@ -377,7 +379,7 @@
 
 - (void)selectAction {
     self.cellPressed(_actiontype, self);
-    self.selected = NO;
+    [self setSelected:NO animated:YES];
 }
 
 - (void)setEnabled:(bool)enabled {

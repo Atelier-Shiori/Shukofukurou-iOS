@@ -24,6 +24,31 @@
 
 @end
 
+@implementation ReviewInfoTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
+}
+
+- (void)loadimage:(NSString *)imageurl {
+    if (imageurl.length > 0) {
+        [_avatar sd_setImageWithURL:[NSURL URLWithString:imageurl]];
+    }
+    else {
+        _avatar.image = [UIImage new];
+    }
+}
+
+
+@end
+
 @implementation ReactionTableViewCell
 
 - (void)awakeFromNib {
