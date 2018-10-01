@@ -99,6 +99,14 @@
         [self clearImages];
         [cell setSelected:NO animated:YES];
     }
+    else if ([cell.textLabel.text isEqualToString:@"Follow us on Twitter"]) {
+        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://twitter.com/maluosxdev"] options:@{} completionHandler:^(BOOL success) {}];
+        [cell setSelected:NO animated:YES];
+    }
+    else if ([cell.textLabel.text isEqualToString:@"Follow us on Mastodon"]) {
+        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://mastodon.social/@malupdaterosxdev"] options:@{} completionHandler:^(BOOL success) {}];
+        [cell setSelected:NO animated:YES];
+    }
 }
 
 - (void)openManual {
