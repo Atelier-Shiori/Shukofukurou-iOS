@@ -98,6 +98,9 @@
 		596242582155662A001995AD /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
 		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
+		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
+		598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
+		5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */; };
 		59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
 		59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
@@ -529,6 +532,12 @@
 		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		598AB4D22162658700979C19 /* RelatedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedTableViewController.h; sourceTree = "<group>"; };
 		598AB4D32162658700979C19 /* RelatedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedTableViewController.m; sourceTree = "<group>"; };
+		598AB4EC216296F500979C19 /* ReviewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewTableViewCell.h; sourceTree = "<group>"; };
+		598AB4ED216296F500979C19 /* ReviewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewTableViewCell.m; sourceTree = "<group>"; };
+		598AB4EF2162976100979C19 /* ReviewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewTableViewController.h; sourceTree = "<group>"; };
+		598AB4F02162976100979C19 /* ReviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewTableViewController.m; sourceTree = "<group>"; };
+		5997B4BD2162A6AA005E894A /* TopAlignedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopAlignedLabel.h; sourceTree = "<group>"; };
+		5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopAlignedLabel.m; sourceTree = "<group>"; };
 		59A0C6F3215A883E00B15F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdvancedEdit.storyboard; sourceTree = "<group>"; };
 		59A0C6F5215A983600B15F9F /* AdvEditTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvEditTableViewController.h; sourceTree = "<group>"; };
 		59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvEditTableViewController.m; sourceTree = "<group>"; };
@@ -621,6 +630,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				5997B4A82162A68C005E894A /* TopAlignedLabel */,
 				59AEE9D12156A007005D99D5 /* MSWeakTimer */,
 				596240E2215562DB001995AD /* XMLReader */,
 				596240E1215562D2001995AD /* SDWebImage-master */,
@@ -930,6 +940,8 @@
 				596241DC215564D0001995AD /* SeasonCollectionViewCell.m */,
 				596241D7215564CC001995AD /* TitleInfoTableViewCell.h */,
 				596241D5215564CA001995AD /* TitleInfoTableViewCell.m */,
+				598AB4EC216296F500979C19 /* ReviewTableViewCell.h */,
+				598AB4ED216296F500979C19 /* ReviewTableViewCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -986,8 +998,19 @@
 				59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */,
 				598AB4D22162658700979C19 /* RelatedTableViewController.h */,
 				598AB4D32162658700979C19 /* RelatedTableViewController.m */,
+				598AB4EF2162976100979C19 /* ReviewTableViewController.h */,
+				598AB4F02162976100979C19 /* ReviewTableViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5997B4A82162A68C005E894A /* TopAlignedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				5997B4BD2162A6AA005E894A /* TopAlignedLabel.h */,
+				5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */,
+			);
+			path = TopAlignedLabel;
 			sourceTree = "<group>";
 		};
 		59AEE9D12156A007005D99D5 /* MSWeakTimer */ = {
@@ -1347,6 +1370,7 @@
 				596241A82155642E001995AD /* SideBarCell.m in Sources */,
 				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
 				5962421E21556514001995AD /* ViewControllerManager.m in Sources */,
+				598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */,
 				5962421921556514001995AD /* AiringViewController.m in Sources */,
 				5962418A215563D2001995AD /* Utility.m in Sources */,
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
@@ -1359,6 +1383,7 @@
 				5962421821556514001995AD /* MainViewController.m in Sources */,
 				596241DF215564D1001995AD /* TitleInfoTableViewCell.m in Sources */,
 				5962419921556406001995AD /* AuthViewController.m in Sources */,
+				5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
 				5962422F21556591001995AD /* NSString_stripHtml.m in Sources */,
@@ -1377,6 +1402,7 @@
 				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
 				5962419B21556406001995AD /* AuthWebView.m in Sources */,
 				59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */,
+				598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */,
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,
 				5962422621556514001995AD /* LoadViewController.m in Sources */,
 				5962422121556514001995AD /* SearchRootViewController.m in Sources */,

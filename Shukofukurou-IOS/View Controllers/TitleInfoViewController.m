@@ -8,6 +8,7 @@
 
 #import "TitleInfoViewController.h"
 #import "RelatedTableViewController.h"
+#import "ReviewTableViewController.h"
 #import "TitleInfoTableViewCell.h"
 #import "Utility.h"
 #import "NSString+HTMLtoNSAttributedString.h"
@@ -429,6 +430,9 @@
                     case cellActionViewRelated:
                         [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
                         break;
+                    case cellActionViewReviews:
+                        [self showReviews];
+                        break;
                     default:
                         break;
                 }
@@ -443,6 +447,9 @@
                         break;
                     case cellActionViewRelated:
                         [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
+                        break;
+                    case cellActionViewReviews:
+                        [self showReviews];
                         break;
                     default:
                         break;
@@ -1042,5 +1049,12 @@
         [sections addObject:@"Stream Sites"];
     }
     return sections;
+}
+
+#pragma mark other view controllers
+- (void)showReviews {
+    ReviewTableViewController *reviewtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"reviewtablevc"];
+    [self.navigationController pushViewController:reviewtvc animated:YES];
+    [reviewtvc retrieveReviewsForTitleID:_titleid withType:_currenttype];
 }
 @end
