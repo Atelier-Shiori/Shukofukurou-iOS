@@ -11,6 +11,7 @@
 #import "listservice.h"
 #import "AniListScoreConvert.h"
 #import "RatingTwentyConvert.h"
+#import "UILabel+Copyable.h"
 
 @implementation TitleInfoBasicTableViewCell
 
@@ -56,6 +57,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _valueText.copyingEnabled = YES;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:false animated:animated];

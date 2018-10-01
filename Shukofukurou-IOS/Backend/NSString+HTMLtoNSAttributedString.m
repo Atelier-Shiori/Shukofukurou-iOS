@@ -10,7 +10,7 @@
 
 @implementation NSString (HTMLtoNSAttributedString)
 - (NSAttributedString *)convertHTMLtoAttStr{
-    NSString *style = @"<meta charset=\"UTF-8\"><style> body { font-family: -apple-system; }</style>";
+    NSString *style = @"<meta charset=\"UTF-8\"><style> body { font-family: -apple-system; font-size: 12pt;}</style>";
     // Convert HTML to attributed string
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType };
     

@@ -109,6 +109,7 @@
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */; };
+		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -553,6 +554,8 @@
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
 		59D9156A2162B4CA00B5A61B /* ReviewDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailTableViewController.h; sourceTree = "<group>"; };
 		59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailTableViewController.m; sourceTree = "<group>"; };
+		59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
+		59D9159E2162C1B800B5A61B /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -633,6 +636,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				59D915882162C1A600B5A61B /* UILabel+Copyable */,
 				5997B4A82162A68C005E894A /* TopAlignedLabel */,
 				59AEE9D12156A007005D99D5 /* MSWeakTimer */,
 				596240E2215562DB001995AD /* XMLReader */,
@@ -1025,6 +1029,15 @@
 				59AEE9E72156A014005D99D5 /* MSWeakTimer.m */,
 			);
 			path = MSWeakTimer;
+			sourceTree = "<group>";
+		};
+		59D915882162C1A600B5A61B /* UILabel+Copyable */ = {
+			isa = PBXGroup;
+			children = (
+				59D9159E2162C1B800B5A61B /* UILabel+Copyable.h */,
+				59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */,
+			);
+			path = "UILabel+Copyable";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1422,6 +1435,7 @@
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
 				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
 				596241562155638D001995AD /* ClientConstants.m in Sources */,
+				59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */,
 				5962421D21556514001995AD /* SettingsViewController.m in Sources */,
 				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "ReviewTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UILabel+Copyable.h"
 
 @implementation ReviewTableViewCell
 
@@ -54,6 +55,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _reaction.copyingEnabled = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
