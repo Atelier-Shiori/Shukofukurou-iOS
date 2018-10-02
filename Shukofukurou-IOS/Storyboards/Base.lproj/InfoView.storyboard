@@ -965,7 +965,7 @@
                                     <outlet property="delegate" destination="6Tr-Ep-oQe" id="fIg-gx-ybF"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu" translatesAutoresizingMaskIntoConstraints="NO" id="Koy-mR-IoV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Koy-mR-IoV">
                                 <rect key="frame" x="16" y="70" width="92" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="D2x-Ua-uNm"/>
@@ -1042,7 +1042,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
         <image name="favorite" width="45" height="45"/>
         <image name="option" width="50" height="50"/>
     </resources>

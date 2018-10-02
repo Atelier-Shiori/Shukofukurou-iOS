@@ -91,7 +91,9 @@
     _personid = ((NSNumber *)data[@"id"]).intValue;
     _persontype = personTypeCharacter;
     self.navigationItem.title = data[@"name"];
-    [self loadimage:(NSString *)data[@"image"]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self loadimage:(NSString *)data[@"image"]];
+    });
     [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"description"], @"type" : @"longdetail"}];
     [detailsArray addObject:@{@"title" : @"Role", @"value" : data[@"role"], @"type" : @"detail"}];
     persondetails[@"Details"] = detailsArray;
