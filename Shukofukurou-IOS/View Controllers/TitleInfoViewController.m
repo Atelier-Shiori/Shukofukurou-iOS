@@ -8,6 +8,7 @@
 
 #import "TitleInfoViewController.h"
 #import "RelatedTableViewController.h"
+#import "CharacterTableViewController.h"
 #import "ReviewTableViewController.h"
 #import "TitleInfoTableViewCell.h"
 #import "Utility.h"
@@ -110,6 +111,7 @@
         weakSelf.navigationItem.hidesBackButton = NO;
         weakSelf.loadingview.hidden = YES;
     } error:^(NSError *error) {
+        NSLog(@"%@",error);
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
             NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type ignoreLastUpdated:NO];
             if (titleinfo) {
@@ -433,6 +435,9 @@
                         break;
                     case cellActionViewReviews:
                         [self showReviews];
+                        break;
+                    case cellActionViewStaff:
+                        [self showStaff];
                         break;
                     default:
                         break;
@@ -1057,5 +1062,11 @@
     ReviewTableViewController *reviewtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"reviewtablevc"];
     [self.navigationController pushViewController:reviewtvc animated:YES];
     [reviewtvc retrieveReviewsForTitleID:_titleid withType:_currenttype];
+}
+
+- (void)showStaff {
+    CharacterTableViewController *charactervc = [self.storyboard instantiateViewControllerWithIdentifier:@"StaffTbVC"];
+    [self.navigationController pushViewController:charactervc animated:YES];
+    [charactervc retrievePersonList:_titleid];
 }
 @end

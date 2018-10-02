@@ -97,6 +97,9 @@
 		5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
 		596242582155662A001995AD /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
 		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
+		596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B32163D11E0005A60F /* CharacterTableViewController.m */; };
+		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
+		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
 		598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
@@ -532,6 +535,12 @@
 		5962422E21556591001995AD /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		596242742155D2C9001995AD /* OnePasswordExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
+		596A01B22163D11E0005A60F /* CharacterTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterTableViewController.h; sourceTree = "<group>"; };
+		596A01B32163D11E0005A60F /* CharacterTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterTableViewController.m; sourceTree = "<group>"; };
+		596A01B52163D1330005A60F /* CharacterDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterDetailViewController.h; sourceTree = "<group>"; };
+		596A01B62163D1330005A60F /* CharacterDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterDetailViewController.m; sourceTree = "<group>"; };
+		596A01B82163F4570005A60F /* PersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonTableViewCell.h; sourceTree = "<group>"; };
+		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		598AB4D22162658700979C19 /* RelatedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedTableViewController.h; sourceTree = "<group>"; };
 		598AB4D32162658700979C19 /* RelatedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedTableViewController.m; sourceTree = "<group>"; };
 		598AB4EC216296F500979C19 /* ReviewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -949,6 +958,8 @@
 				596241D5215564CA001995AD /* TitleInfoTableViewCell.m */,
 				598AB4EC216296F500979C19 /* ReviewTableViewCell.h */,
 				598AB4ED216296F500979C19 /* ReviewTableViewCell.m */,
+				596A01B82163F4570005A60F /* PersonTableViewCell.h */,
+				596A01B92163F4570005A60F /* PersonTableViewCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -956,14 +967,16 @@
 		596241E5215564E2001995AD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				59A0C6F5215A983600B15F9F /* AdvEditTableViewController.h */,
+				59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */,
 				5962420E21556511001995AD /* AiringDayTableViewController.h */,
 				596241E9215564FC001995AD /* AiringDayTableViewController.m */,
 				596241EE215564FF001995AD /* AiringRootViewController.h */,
 				596242032155650B001995AD /* AiringRootViewController.m */,
 				596242052155650C001995AD /* AiringViewController.h */,
 				596241EF215564FF001995AD /* AiringViewController.m */,
-				5962420A2155650E001995AD /* SearchRootViewController.h */,
-				596241FE21556508001995AD /* SearchRootViewController.m */,
+				59481D88215953C1003CE863 /* CustomListTableViewController.h */,
+				59481D89215953C1003CE863 /* CustomListTableViewController.m */,
 				596241F021556500001995AD /* ListRootViewController.h */,
 				596241E7215564FB001995AD /* ListRootViewController.m */,
 				5962420F21556511001995AD /* ListSelectorViewController.h */,
@@ -974,6 +987,14 @@
 				5962420C21556510001995AD /* LoadViewController.m */,
 				596241E8215564FB001995AD /* MainViewController.h */,
 				596241EC215564FE001995AD /* MainViewController.m */,
+				598AB4D22162658700979C19 /* RelatedTableViewController.h */,
+				598AB4D32162658700979C19 /* RelatedTableViewController.m */,
+				59D9156A2162B4CA00B5A61B /* ReviewDetailTableViewController.h */,
+				59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */,
+				598AB4EF2162976100979C19 /* ReviewTableViewController.h */,
+				598AB4F02162976100979C19 /* ReviewTableViewController.m */,
+				5962420A2155650E001995AD /* SearchRootViewController.h */,
+				596241FE21556508001995AD /* SearchRootViewController.m */,
 				596241FB21556506001995AD /* SearchViewController.h */,
 				5962420D21556510001995AD /* SearchViewController.m */,
 				596241F121556501001995AD /* SeasonSelectorTableViewController.h */,
@@ -999,16 +1020,10 @@
 				5962421021556512001995AD /* ViewController.m */,
 				596242092155650E001995AD /* ViewControllerManager.h */,
 				596241FA21556506001995AD /* ViewControllerManager.m */,
-				59481D88215953C1003CE863 /* CustomListTableViewController.h */,
-				59481D89215953C1003CE863 /* CustomListTableViewController.m */,
-				59A0C6F5215A983600B15F9F /* AdvEditTableViewController.h */,
-				59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */,
-				598AB4D22162658700979C19 /* RelatedTableViewController.h */,
-				598AB4D32162658700979C19 /* RelatedTableViewController.m */,
-				598AB4EF2162976100979C19 /* ReviewTableViewController.h */,
-				598AB4F02162976100979C19 /* ReviewTableViewController.m */,
-				59D9156A2162B4CA00B5A61B /* ReviewDetailTableViewController.h */,
-				59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */,
+				596A01B22163D11E0005A60F /* CharacterTableViewController.h */,
+				596A01B32163D11E0005A60F /* CharacterTableViewController.m */,
+				596A01B52163D1330005A60F /* CharacterDetailViewController.h */,
+				596A01B62163D1330005A60F /* CharacterDetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1437,6 +1452,7 @@
 				596241562155638D001995AD /* ClientConstants.m in Sources */,
 				59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */,
 				5962421D21556514001995AD /* SettingsViewController.m in Sources */,
+				596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */,
 				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,
 				596241572155638D001995AD /* AniListConstants.m in Sources */,
@@ -1446,10 +1462,12 @@
 				59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */,
 				596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				5962419A21556406001995AD /* OAuthViewController.m in Sources */,
+				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,
 				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
 				59624190215563D2001995AD /* KitsuListRetriever.m in Sources */,
 				5962422821556514001995AD /* ViewController.m in Sources */,
+				596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */,
 				5962421B21556514001995AD /* ListSelectorViewController.m in Sources */,
 				5962422321556514001995AD /* AiringRootViewController.m in Sources */,
 				5962421621556514001995AD /* AiringDayTableViewController.m in Sources */,
