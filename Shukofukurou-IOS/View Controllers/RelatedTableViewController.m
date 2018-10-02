@@ -100,6 +100,16 @@
             _items[@"Anime Adaptations"] = titleinfo[@"anime_adaptations"];
         }
     }
+    if (titleinfo[@"prequels"]) {
+        if (((NSArray *)titleinfo[@"prequels"]).count > 0){
+            _items[@"Prequels"] = titleinfo[@"prequels"];
+        }
+    }
+    if (titleinfo[@"sequels"]) {
+        if (((NSArray *)titleinfo[@"sequels"]).count > 0){
+            _items[@"Sequels"] = titleinfo[@"sequels"];
+        }
+    }
     if (titleinfo[@"recommendations"]) {
         if (((NSArray *)titleinfo[@"recommendations"]).count > 0) {
             _items[@"Recommendations"] = titleinfo[@"recommendations"];
