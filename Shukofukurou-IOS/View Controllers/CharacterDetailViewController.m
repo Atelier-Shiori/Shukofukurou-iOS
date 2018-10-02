@@ -102,6 +102,71 @@
     _sections = @[@"Details", @"Voice Actors"];
     [self.tableView reloadData];
 }
+- (IBAction)showoptions:(id)sender {
+    UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    __weak CharacterDetailViewController *weakSelf = self;
+    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf performViewOnListSite];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf performShare:sender];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    
+    options.popoverPresentationController.barButtonItem = sender;
+    options.popoverPresentationController.sourceView = self.view;
+    
+    [self
+     presentViewController:options
+     animated:YES
+     completion:nil];
+}
+
+- (void)performViewOnListSite {
+    NSString *URL = [self getTitleURL];
+    [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
+}
+
+- (void)performShare:(id)sender {
+    NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL]]];
+    UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityViewControntroller.excludedActivityTypes = @[];
+    activityViewControntroller.popoverPresentationController.barButtonItem = sender;
+    activityViewControntroller.popoverPresentationController.sourceView = self.view;
+    [self presentViewController:activityViewControntroller animated:true completion:nil];
+}
+
+- (NSString *)getTitleURL {
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (_persontype == personTypeStaff){
+                return [NSString stringWithFormat:@"https://myanimelist.net/people/%i" ,_personid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://myanimelist.net/character/%i", _personid];
+            }
+        }
+        case 2: {
+            if (_persontype == personTypeStaff) {
+                return [NSString stringWithFormat:@"https://kitsu.io/people/%i", _personid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://kitsu.io/character/%i", _personid];
+            }
+        }
+        case 3: {
+            if (_persontype == personTypeStaff) {
+                return [NSString stringWithFormat:@"https://anilist.co/staff/%i", _personid];
+            }
+            else {
+                return [NSString stringWithFormat:@"https://anilist.co/character/%i", _personid];
+            }
+        }
+        default:
+            return @"";
+    }
+}
 
 #pragma mark - Table view data source
 

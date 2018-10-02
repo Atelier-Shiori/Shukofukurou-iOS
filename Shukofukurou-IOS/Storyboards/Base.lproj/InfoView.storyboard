@@ -1027,7 +1027,11 @@
                     <navigationItem key="navigationItem" title="Name" id="WHO-HK-v79">
                         <rightBarButtonItems>
                             <barButtonItem id="rYj-Tz-4lj"/>
-                            <barButtonItem title="Item" image="option" id="DSp-XX-8hF"/>
+                            <barButtonItem title="Item" image="option" id="DSp-XX-8hF">
+                                <connections>
+                                    <action selector="showoptions:" destination="6Tr-Ep-oQe" id="cXp-Bt-hg0"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
