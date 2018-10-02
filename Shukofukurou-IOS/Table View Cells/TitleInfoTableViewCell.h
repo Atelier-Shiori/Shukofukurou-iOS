@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface TitleInfoSynopsisTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *valueText;
+@property (weak, nonatomic) IBOutlet UITextView *valueText;
 
 @end
 

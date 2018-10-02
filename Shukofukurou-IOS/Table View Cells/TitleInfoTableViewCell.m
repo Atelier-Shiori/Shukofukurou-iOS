@@ -57,7 +57,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    _valueText.copyingEnabled = YES;
+    _valueText.textContainer.heightTracksTextView = true;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:false animated:animated];
