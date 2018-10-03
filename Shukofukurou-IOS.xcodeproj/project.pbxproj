@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
 		59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D89215953C1003CE863 /* CustomListTableViewController.m */; };
@@ -384,6 +385,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
+		5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
 		59481D6B21591F44003CE863 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
 		59481D8021591F44003CE863 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
 		59481D8321594078003CE863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomList.storyboard; sourceTree = "<group>"; };
@@ -860,6 +863,8 @@
 				5962417B215563CB001995AD /* Utility.m */,
 				59A75816215D3A8800B36F9C /* TitleInfoCache.h */,
 				59A75817215D3A8800B36F9C /* TitleInfoCache.m */,
+				5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */,
+				5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1469,6 +1474,7 @@
 				5962422821556514001995AD /* ViewController.m in Sources */,
 				596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */,
 				5962421B21556514001995AD /* ListSelectorViewController.m in Sources */,
+				5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */,
 				5962422321556514001995AD /* AiringRootViewController.m in Sources */,
 				5962421621556514001995AD /* AiringDayTableViewController.m in Sources */,
 				596241E0215564D1001995AD /* AnimeEntryTableViewCell.m in Sources */,

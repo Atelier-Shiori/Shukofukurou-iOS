@@ -12,7 +12,7 @@
 #import "Utility.h"
 #import "ReviewTableViewCell.h"
 #import "TitleInfoTableViewCell.h"
-#import "NSString+HTMLtoNSAttributedString.h"
+#import "UITextView+SetHTMLAttributedText.h"
 
 @interface ReviewDetailTableViewController ()
 @property (strong) NSArray *reviewData;
@@ -78,7 +78,12 @@
     }
     else {
         TitleInfoSynopsisTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reviewcell" forIndexPath:indexPath];
-        cell.valueText.attributedText = [(NSString *)reviewentry[@"content"] convertHTMLtoAttStr];
+        self.navigationItem.hidesBackButton = YES;
+        [cell.valueText setTextToHTML:(NSString *)reviewentry[@"content"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
+            [self.tableView beginUpdates];
+            [self.tableView endUpdates];
+            self.navigationItem.hidesBackButton = NO;
+        }];
         return cell;
     }
     return [UITableViewCell new];
