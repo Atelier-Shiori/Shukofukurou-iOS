@@ -49,7 +49,11 @@
     NSSortDescriptor *namesort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     for (NSDictionary *character in (NSArray *)finaldict[@"Characters"]) {
         if (character[@"actors"] && [character[@"actors"] isKindOfClass:[NSArray class]]) {
-            [voiceactors addObjectsFromArray:(NSArray *)character[@"actors"]];
+            for (NSDictionary *entry in (NSArray *)character[@"actors"]) {
+                if ([voiceactors filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name ==[c] %@", entry[@"name"]]].count == 0) {
+                        [voiceactors addObject:entry];
+                }
+            }
         }
     }
     finaldict[@"Characters"] = [finaldict[@"Characters"] sortedArrayUsingDescriptors:@[rolesort,namesort]];
