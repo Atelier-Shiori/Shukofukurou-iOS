@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--List View Controller-->
         <scene sceneID="TTZ-bg-tqS">
             <objects>
                 <tableViewController storyboardIdentifier="ListView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fTu-H4-28K" customClass="ListViewController" sceneMemberID="viewController">
@@ -184,7 +184,7 @@
                             <outlet property="delegate" destination="fTu-H4-28K" id="jOd-rh-12T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="NEs-jJ-IkG">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="NEs-jJ-IkG">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="NN4-Z1-A4i">
                             <connections>
                                 <action selector="showLeftViewAnimated:" destination="fTu-H4-28K" id="18N-r5-plC"/>

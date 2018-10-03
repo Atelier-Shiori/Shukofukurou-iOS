@@ -122,18 +122,7 @@
 }
 */
 - (void)setViewTitle {
-    NSString *viewtype;
-    switch (_listtype) {
-        case Anime:
-            viewtype = @"Anime";
-            break;
-        case Manga:
-            viewtype = @"Manga";
-            break;
-        default:
-            break;
-    }
-    _navigationitem.title = [NSString stringWithFormat:@"%@ - %@", viewtype, !_isCustomList ? _selectedlist.capitalizedString : _selectedlist];
+    _navigationitem.title =  !_isCustomList ? _selectedlist.capitalizedString : _selectedlist;
 }
 - (void)retrieveList:(bool)refresh completion:(void (^)(bool success)) completionHandler {
     bool refreshlist = refresh;
