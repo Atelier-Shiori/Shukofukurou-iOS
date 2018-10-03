@@ -80,7 +80,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Service Selector" id="4Af-F4-hRS">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ggK-4J-URY">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="ggK-4J-URY">
                             <connections>
                                 <action selector="cancel:" destination="eHo-13-xaP" id="FK5-Fu-d2K"/>
                             </connections>

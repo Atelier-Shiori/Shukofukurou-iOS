@@ -34,6 +34,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username/Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d48-gH-B0B">
                                         <rect key="frame" x="60" y="41.5" width="200" height="31.5"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="31.5" id="0O7-Wz-vwE"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="fJe-e1-ym8"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -44,6 +45,7 @@
                                         <rect key="frame" x="60" y="83" width="200" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Grq-kr-qU0"/>
+                                            <constraint firstAttribute="height" constant="32" id="esL-60-GCu"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

@@ -96,6 +96,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Auth" bundle:nil];
     AuthViewController *authvc = (AuthViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
     [navcontroller setViewControllers:@[authvc]];
+    navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
     [_mainvc presentViewController:navcontroller animated:YES completion:nil];
 }
 
@@ -104,6 +105,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OAuth" bundle:nil];
     OAuthViewController *oauthvc = (OAuthViewController *)[storyboard instantiateViewControllerWithIdentifier:@"OAuthViewController"];
     [navcontroller setViewControllers:@[oauthvc]];
+    //navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
     [_mainvc presentViewController:navcontroller animated:YES completion:nil];
 }
 
@@ -161,6 +163,16 @@
     [self hideLeftViewAnimated:self];
     [self setMainViewController];
     ServiceSwitcherRootViewController *serviceswitcher = [[ViewControllerManager getAppDelegateViewControllerManager] getServiceSwitcherRootViewController];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (_mainvc.view.bounds.size.width > _mainvc.view.bounds.size.height) {
+            serviceswitcher.modalPresentationStyle = UIModalPresentationPopover;
+            serviceswitcher.popoverPresentationController.barButtonItem = sender;
+            serviceswitcher.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+        }
+        else {
+            serviceswitcher.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
+    }
     [_mainvc presentViewController:serviceswitcher animated:YES completion:nil];
 }
 
