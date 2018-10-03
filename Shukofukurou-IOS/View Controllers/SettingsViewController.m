@@ -32,17 +32,18 @@
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"SettingsViewLoaded" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    [self hidemenubtn];
+    [self hidemenubtn:self.view.bounds.size];
 }
 
-- (void)orientationChanged:(NSNotification *)notification {
-    [self hidemenubtn];
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self hidemenubtn:size];
 }
 
-- (void)hidemenubtn {
+- (void)hidemenubtn:(CGSize)size {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
+        if (size.width > size.height) {
             [self.menubtn setEnabled:NO];
             [self.menubtn setTintColor: [UIColor clearColor]];
         }

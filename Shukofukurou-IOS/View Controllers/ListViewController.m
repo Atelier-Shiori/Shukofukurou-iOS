@@ -64,17 +64,19 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:_listtype == Anime ? @"AnimeReloadList" : @"MangaReloadList" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
-    
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    [self hidemenubtn];
+
+    [self hidemenubtn:self.view.bounds.size];
 }
 
-- (void)orientationChanged:(NSNotification *)notification {
-    [self hidemenubtn];
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self hidemenubtn:size];
 }
-- (void)hidemenubtn {
+
+- (void)hidemenubtn:(CGSize)size {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
+        if (size.width > size.height) {
             [self.menubtn setEnabled:NO];
             [self.menubtn setTintColor: [UIColor clearColor]];
         }
