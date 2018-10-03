@@ -415,7 +415,7 @@
     }
     aentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
     [aentrycell loadimage:entry[@"image_url"]];
-    
+    aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
     // Geneerate Swipe Cells
     // Left
     __weak ListViewController *weakSelf = self;
@@ -470,6 +470,7 @@
     }
     mentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
     [mentrycell loadimage:entry[@"image_url"]];
+    mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
     
     // Geneerate Swipe Cells
     // Left

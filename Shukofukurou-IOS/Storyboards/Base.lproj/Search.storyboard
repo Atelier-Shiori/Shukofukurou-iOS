@@ -96,14 +96,24 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" translatesAutoresizingMaskIntoConstraints="NO" id="Sjt-8D-MWp">
+                                            <rect key="frame" x="343" y="84" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="687-ko-y3W"/>
+                                                <constraint firstAttribute="height" constant="25" id="pDi-sD-QII"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Sjt-8D-MWp" secondAttribute="bottom" id="1mI-Ug-L5U"/>
                                         <constraint firstItem="8FE-Ak-Odv" firstAttribute="centerY" secondItem="Btu-5W-Cd9" secondAttribute="centerY" id="34t-g7-ttK"/>
                                         <constraint firstItem="8FE-Ak-Odv" firstAttribute="leading" secondItem="Btu-5W-Cd9" secondAttribute="leadingMargin" constant="-4" id="5ji-Hl-N3E"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8FE-Ak-Odv" secondAttribute="trailing" id="LOy-Nb-x2x"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Sjt-8D-MWp" secondAttribute="trailing" id="cy5-Pb-GuO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="active" destination="Sjt-8D-MWp" id="c4J-c0-MzR"/>
                                     <outlet property="posterimage" destination="ezi-jk-YQV" id="zzn-pW-Emv"/>
                                     <outlet property="progress" destination="7tS-i1-ObA" id="etO-2I-bC9"/>
                                     <outlet property="progressVolumes" destination="Lal-VK-hg2" id="P27-Kd-hVP"/>
@@ -159,6 +169,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="25" height="25"/>
+        <image name="Menu" width="75" height="75"/>
+        <image name="status-active" width="90" height="90"/>
     </resources>
 </document>

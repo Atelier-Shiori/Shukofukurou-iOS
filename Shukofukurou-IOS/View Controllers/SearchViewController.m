@@ -145,6 +145,7 @@
             break;
     }
     [aentrycell loadimage:entry[@"image_url"]];
+    aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
     return aentrycell;
 }
 
@@ -173,6 +174,7 @@
             break;
     }
     [mentrycell loadimage:entry[@"image_url"]];
+    mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
     return mentrycell;
 }
 

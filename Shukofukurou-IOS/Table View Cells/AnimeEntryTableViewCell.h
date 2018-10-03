@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *score;
 @property (weak, nonatomic) IBOutlet UILabel *progress;
+@property (weak, nonatomic) IBOutlet UIImageView *active;
 - (void)loadimage:(NSString *)imageurl;
 @end
 

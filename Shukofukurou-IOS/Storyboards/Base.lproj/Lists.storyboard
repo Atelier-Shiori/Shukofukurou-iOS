@@ -72,17 +72,27 @@
                                                 <constraint firstAttribute="bottom" secondItem="6gO-27-Tmc" secondAttribute="bottom" id="TvT-WF-xEY"/>
                                             </constraints>
                                         </stackView>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" translatesAutoresizingMaskIntoConstraints="NO" id="G1J-oz-bwm">
+                                            <rect key="frame" x="308" y="84" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="9Sb-ut-24H"/>
+                                                <constraint firstAttribute="height" constant="25" id="dwB-ub-bF4"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="cf5-c4-MAQ" firstAttribute="leading" secondItem="baZ-mA-QYw" secondAttribute="leadingMargin" id="3jS-o5-cgK"/>
                                         <constraint firstItem="cf5-c4-MAQ" firstAttribute="bottom" secondItem="baZ-mA-QYw" secondAttribute="bottomMargin" id="8dz-6y-tOR"/>
                                         <constraint firstItem="cf5-c4-MAQ" firstAttribute="top" secondItem="baZ-mA-QYw" secondAttribute="topMargin" id="Ggq-2Y-zup"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ldw-hN-WuJ" secondAttribute="trailing" id="Qqz-jx-MMY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="G1J-oz-bwm" secondAttribute="trailing" id="aCw-iw-bC4"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="J5k-Ar-oSC" secondAttribute="trailing" id="iLD-Js-hyg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="G1J-oz-bwm" secondAttribute="bottom" id="jmA-ff-pSu"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ovl-08-WQc" secondAttribute="trailing" id="yU7-f3-NJe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="active" destination="G1J-oz-bwm" id="2Eg-xt-dZ9"/>
                                     <outlet property="posterimage" destination="6gO-27-Tmc" id="gRD-wY-VYH"/>
                                     <outlet property="progress" destination="J5k-Ar-oSC" id="0Tf-aL-svq"/>
                                     <outlet property="score" destination="Ldw-hN-WuJ" id="aiv-CY-Cik"/>
@@ -143,14 +153,24 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" translatesAutoresizingMaskIntoConstraints="NO" id="S7Y-Ms-2Cs">
+                                            <rect key="frame" x="308" y="84" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="84g-gd-a9J"/>
+                                                <constraint firstAttribute="height" constant="25" id="xCc-H7-5uT"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="O9E-1X-lHf" firstAttribute="leading" secondItem="6Q8-es-YFH" secondAttribute="leadingMargin" constant="-1" id="1Us-Vt-vuo"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O9E-1X-lHf" secondAttribute="trailing" id="2eJ-qp-MVP"/>
                                         <constraint firstItem="O9E-1X-lHf" firstAttribute="top" secondItem="6Q8-es-YFH" secondAttribute="topMargin" id="GYL-cw-ZKr"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="S7Y-Ms-2Cs" secondAttribute="bottom" id="HBb-Jn-1Ef"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="S7Y-Ms-2Cs" secondAttribute="trailing" id="VEH-Nx-AZw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="active" destination="S7Y-Ms-2Cs" id="58N-lg-f73"/>
                                     <outlet property="posterimage" destination="lcD-QO-iEC" id="ItS-Fq-R6f"/>
                                     <outlet property="progress" destination="kz3-gw-wgP" id="KR9-ds-7ex"/>
                                     <outlet property="progressVolumes" destination="r3r-YN-hTI" id="Nvm-Dh-K1h"/>
@@ -267,7 +287,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="25" height="25"/>
-        <image name="listsort" width="25" height="25"/>
+        <image name="Menu" width="50" height="50"/>
+        <image name="listsort" width="50" height="50"/>
+        <image name="status-active" width="60" height="60"/>
     </resources>
 </document>
