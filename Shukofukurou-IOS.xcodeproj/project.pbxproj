@@ -80,8 +80,6 @@
 		5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; };
 		5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		59624241215565DC001995AD /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962413E2155633E001995AD /* CocoaOniguruma.framework */; };
-		59624242215565DC001995AD /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962413E2155633E001995AD /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; };
 		59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624249215565E9001995AD /* MGSwipeTableCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; };
@@ -278,27 +276,6 @@
 			remoteGlobalIDString = 2987B0AE1BC408A200179A4C;
 			remoteInfo = "AFNetworking tvOS Tests";
 		};
-		5962413D2155633E001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = CocoaOniguruma;
-		};
-		5962413F2155633E001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 78C5E1B10E39CDCE00F62F5D;
-			remoteInfo = UnitTest;
-		};
-		596241412155633E001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 78C5E3A90E39E37F00F62F5D;
-			remoteInfo = TestCommand;
-		};
 		596241472155634A001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
@@ -341,13 +318,6 @@
 			remoteGlobalIDString = 299522381BBF104D00859F49;
 			remoteInfo = "AFNetworking iOS";
 		};
-		59624243215565DC001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = CocoaOniguruma;
-		};
 		59624247215565E3001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
@@ -376,7 +346,6 @@
 				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
 				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
 				59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */,
-				59624242215565DC001995AD /* CocoaOniguruma.framework in Embed Frameworks */,
 				59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -407,7 +376,6 @@
 		596240FE2155631F001995AD /* SAMKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SAMKeychain.xcodeproj; sourceTree = "<group>"; };
 		5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreActionSheetPicker.xcodeproj; path = CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj; sourceTree = "<group>"; };
 		5962411F21556336001995AD /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AFNetworking.xcodeproj; sourceTree = "<group>"; };
-		596241372155633E001995AD /* CocoaOniguruma.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CocoaOniguruma.xcodeproj; sourceTree = "<group>"; };
 		596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = LGSideMenuControllerFramework.xcodeproj; sourceTree = "<group>"; };
 		596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MGSwipeTableCell.xcodeproj; sourceTree = "<group>"; };
 		596241522155638B001995AD /* AniListConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
@@ -580,7 +548,6 @@
 				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
 				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
-				59624241215565DC001995AD /* CocoaOniguruma.framework in Frameworks */,
 				59624230215565C7001995AD /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,7 +624,6 @@
 				596240D921556282001995AD /* 1Password */,
 				596240DA2155628C001995AD /* ActionSheetPicker */,
 				596240DB21556296001995AD /* AFNetworking */,
-				596240DC2155629D001995AD /* CocoaOniguruma */,
 				596240DD215562A8001995AD /* LGSideMenuControllerFramework */,
 				596240DE215562B0001995AD /* MGSwipeTableCell */,
 				596240DF215562B6001995AD /* NSString stripHTML */,
@@ -688,14 +654,6 @@
 				5962411F21556336001995AD /* AFNetworking.xcodeproj */,
 			);
 			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		596240DC2155629D001995AD /* CocoaOniguruma */ = {
-			isa = PBXGroup;
-			children = (
-				596241372155633E001995AD /* CocoaOniguruma.xcodeproj */,
-			);
-			path = CocoaOniguruma;
 			sourceTree = "<group>";
 		};
 		596240DD215562A8001995AD /* LGSideMenuControllerFramework */ = {
@@ -794,16 +752,6 @@
 				5962413221556336001995AD /* AFNetworking iOS Tests.xctest */,
 				5962413421556336001995AD /* AFNetworking macOS Tests.xctest */,
 				5962413621556336001995AD /* AFNetworking tvOS Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		596241382155633E001995AD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5962413E2155633E001995AD /* CocoaOniguruma.framework */,
-				596241402155633E001995AD /* UnitTest.xctest */,
-				596241422155633E001995AD /* TestCommand */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1079,7 +1027,6 @@
 				59624238215565CC001995AD /* PBXTargetDependency */,
 				5962423C215565D2001995AD /* PBXTargetDependency */,
 				59624240215565D7001995AD /* PBXTargetDependency */,
-				59624244215565DC001995AD /* PBXTargetDependency */,
 				59624248215565E3001995AD /* PBXTargetDependency */,
 				5962424C215565E9001995AD /* PBXTargetDependency */,
 			);
@@ -1139,10 +1086,6 @@
 				{
 					ProductGroup = 5962412021556336001995AD /* Products */;
 					ProjectRef = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-				},
-				{
-					ProductGroup = 596241382155633E001995AD /* Products */;
-					ProjectRef = 596241372155633E001995AD /* CocoaOniguruma.xcodeproj */;
 				},
 				{
 					ProductGroup = 5962411721556329001995AD /* Products */;
@@ -1328,27 +1271,6 @@
 			remoteRef = 5962413521556336001995AD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5962413E2155633E001995AD /* CocoaOniguruma.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CocoaOniguruma.framework;
-			remoteRef = 5962413D2155633E001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		596241402155633E001995AD /* UnitTest.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UnitTest.xctest;
-			remoteRef = 5962413F2155633E001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		596241422155633E001995AD /* TestCommand */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = TestCommand;
-			remoteRef = 596241412155633E001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		596241482155634A001995AD /* LGSideMenuController.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1517,11 +1439,6 @@
 			isa = PBXTargetDependency;
 			name = "AFNetworking iOS";
 			targetProxy = 5962423F215565D7001995AD /* PBXContainerItemProxy */;
-		};
-		59624244215565DC001995AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CocoaOniguruma;
-			targetProxy = 59624243215565DC001995AD /* PBXContainerItemProxy */;
 		};
 		59624248215565E3001995AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -19,7 +19,6 @@
 + (NSString *)urlEncodeString:(NSString *)string;
 + (NSString *)appendstringwithArray:(NSArray *) a;
 + (NSString *)statusFromDateRange:(NSString *)start toDate:(NSString *)end;
-+ (NSString *)convertNameFormat:(NSString *)string;
 + (NSDate *)stringDatetoDate:(NSString *)stringdate;
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
 + (AFHTTPSessionManager*)jsonmanager;

@@ -10,8 +10,6 @@
 #import "StreamDataRetriever.h"
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
-#import <CocoaOniguruma/OnigRegexp.h>
-#import <CocoaOniguruma/OnigRegexpUtility.h>
 
 @implementation StreamDataRetriever
 + (NSManagedObjectContext *)managedObjectContext {
@@ -138,8 +136,11 @@
 + (NSString *)sanitizetitle:(NSString *)title {
     NSString *tmpstr = title;
     // Remove seasons
-    OnigRegexp *regex = [OnigRegexp compile:@"\\s(((\\d+(st|nd|rd|th)|first|second|third|fourth|fifth|sixth|seventh|eighth|nineth|tenth) season) | \\(TV\\)|\\d+|(X|VIII|VII|VI|V|IV|III|II|I))" options:OnigOptionIgnorecase];
-    tmpstr = [tmpstr replaceByRegexp:regex with:@""];
+    NSError *errRegex = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\s(\\d+(st|nd|rd|th) season|(first|second|third|fourth|fifth|sixth|seventh|eighth|nineth|tenth) season)" options:NSRegularExpressionCaseInsensitive error:&errRegex];
+    tmpstr = [regex stringByReplacingMatchesInString:tmpstr options:0 range:NSMakeRange(0, [tmpstr length]) withTemplate:@""];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"\\s(\\(TV\\)|\\d+|X|VIII|VII|VI|V|IV|III|II|I)" options:NSRegularExpressionCaseInsensitive error:&errRegex];
+    tmpstr = [regex stringByReplacingMatchesInString:tmpstr options:0 range:NSMakeRange(0, [tmpstr length]) withTemplate:@""];
     return tmpstr;
 }
 @end

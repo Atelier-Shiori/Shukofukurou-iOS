@@ -17,7 +17,6 @@ There is no plans for a macOS release since there is a macOS version, but anyone
 All the frameworks are included. Just build! Here are the frameworks that are used in this app so far:
 * ActionSheetPicker.framework
 * AFNetworking.framework
-* CocoaOniguruma.framework
 * LGSideMenuController.framework
 * MGSwipeTableCell.framework
 * SAMKeychain.framework
