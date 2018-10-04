@@ -8,8 +8,7 @@
 
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
-#import <CocoaOniguruma/OnigRegexp.h>
-#import <CocoaOniguruma/OnigRegexpUtility.h>
+
 @implementation Utility
 + (NSString *)urlEncodeString:(NSString *)string {
     return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
