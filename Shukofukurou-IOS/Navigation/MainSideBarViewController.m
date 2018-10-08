@@ -12,7 +12,7 @@
 #import "ViewControllerManager.h"
 #import "MainViewController.h"
 #import "ListService.h"
-#import "OAuthViewController.h"
+#import "OAuthLogin.h"
 #import "AuthViewController.h"
 #import "AppDelegate.h"
 #import "Keychain.h"
@@ -101,12 +101,8 @@
 }
 
 - (void)performOAuthLogin {
-    UINavigationController *navcontroller = [UINavigationController new];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OAuth" bundle:nil];
-    OAuthViewController *oauthvc = (OAuthViewController *)[storyboard instantiateViewControllerWithIdentifier:@"OAuthViewController"];
-    [navcontroller setViewControllers:@[oauthvc]];
-    //navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
-    [_mainvc presentViewController:navcontroller animated:YES completion:nil];
+    OAuthLogin *login = [OAuthLogin new];
+    [login startAniListOAuthSession];
 }
 
 - (void)performlogout {

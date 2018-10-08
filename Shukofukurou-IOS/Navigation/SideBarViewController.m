@@ -9,7 +9,6 @@
 #import "SideBarViewController.h"
 #import "SideBarCell.h"
 #import "MainViewController.h"
-#import "OAuthViewController.h"
 #import "ViewController.h"
 #import <LGSideMenuController/UIViewController+LGSideMenuController.h>
 #import "ViewControllerManager.h"

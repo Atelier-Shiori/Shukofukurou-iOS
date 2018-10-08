@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59325ED5216BBF1F00430ED7 /* OAuthLogin.m */; };
 		5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
@@ -38,8 +39,6 @@
 		5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624185215563D1001995AD /* RatingTwentyConvert.m */; };
 		59624190215563D2001995AD /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624186215563D2001995AD /* KitsuListRetriever.m */; };
 		5962419921556406001995AD /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419221556402001995AD /* AuthViewController.m */; };
-		5962419A21556406001995AD /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419721556405001995AD /* OAuthViewController.m */; };
-		5962419B21556406001995AD /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419821556405001995AD /* AuthWebView.m */; };
 		596241A72155642E001995AD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A12155642B001995AD /* RootViewController.m */; };
 		596241A82155642E001995AD /* SideBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A22155642B001995AD /* SideBarCell.m */; };
 		596241A92155642E001995AD /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A32155642C001995AD /* SideBarViewController.m */; };
@@ -354,6 +353,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		59325ED4216BBF1F00430ED7 /* OAuthLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAuthLogin.h; sourceTree = "<group>"; };
+		59325ED5216BBF1F00430ED7 /* OAuthLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAuthLogin.m; sourceTree = "<group>"; };
 		5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
 		59481D6B21591F44003CE863 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
@@ -422,11 +423,7 @@
 		59624187215563D2001995AD /* RatingTwentyConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
 		5962419221556402001995AD /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
 		5962419321556403001995AD /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
-		5962419421556403001995AD /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewController.h; sourceTree = "<group>"; };
 		5962419521556404001995AD /* OAuthViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewControllerDelegate.h; sourceTree = "<group>"; };
-		5962419621556404001995AD /* AuthWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthWebView.h; sourceTree = "<group>"; };
-		5962419721556405001995AD /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthViewController.m; sourceTree = "<group>"; };
-		5962419821556405001995AD /* AuthWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthWebView.m; sourceTree = "<group>"; };
 		5962419D21556428001995AD /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		5962419E21556429001995AD /* MainSideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSideBarViewController.h; sourceTree = "<group>"; };
 		5962419F21556429001995AD /* MainSideBarViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSideBarViewDelegate.h; sourceTree = "<group>"; };
@@ -848,11 +845,9 @@
 			children = (
 				5962419321556403001995AD /* AuthViewController.h */,
 				5962419221556402001995AD /* AuthViewController.m */,
-				5962419621556404001995AD /* AuthWebView.h */,
-				5962419821556405001995AD /* AuthWebView.m */,
-				5962419421556403001995AD /* OAuthViewController.h */,
-				5962419721556405001995AD /* OAuthViewController.m */,
 				5962419521556404001995AD /* OAuthViewControllerDelegate.h */,
+				59325ED4216BBF1F00430ED7 /* OAuthLogin.h */,
+				59325ED5216BBF1F00430ED7 /* OAuthLogin.m */,
 			);
 			path = "Auth View Controllers";
 			sourceTree = "<group>";
@@ -1361,7 +1356,7 @@
 				5962418B215563D2001995AD /* Kitsu.m in Sources */,
 				5962416D215563AF001995AD /* AniList.m in Sources */,
 				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
-				5962419B21556406001995AD /* AuthWebView.m in Sources */,
+				59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */,
 				59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */,
 				598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */,
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,
@@ -1388,7 +1383,6 @@
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
 				59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */,
 				596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */,
-				5962419A21556406001995AD /* OAuthViewController.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,
 				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
@@ -1679,7 +1673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1698,7 +1692,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
