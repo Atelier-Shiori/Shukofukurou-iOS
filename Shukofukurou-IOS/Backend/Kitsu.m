@@ -230,7 +230,7 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
             dataarray = responseObject[@"data"];
             includearray = responseObject[@"included"];
         }
-        NSDictionary *page = @{};
+        NSDictionary *page;
         if (responseObject[@"links"][@"next"]) {
             int newoffset = offset + 20;
             page = @{@"nextOffset" : @(newoffset), @"nextPage" : @YES};

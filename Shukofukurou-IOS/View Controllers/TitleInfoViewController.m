@@ -537,7 +537,7 @@
         tmpdictionary[@"Your Entry"] = type == 0 ? [self generateUserEntryAnimeArray:userentry] : [self generateUserEntryMangaArray:userentry];
     }
     if (_currenttype == Anime) {
-        NSDictionary *streamsites = @{};
+        NSDictionary *streamsites;
         NSArray *titles = [self aggregateTitles:titleinfo];
         for (NSString *stitle in titles) {
             streamsites = [StreamDataRetriever retrieveSitesForTitle:stitle];

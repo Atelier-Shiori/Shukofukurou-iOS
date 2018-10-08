@@ -167,7 +167,6 @@
         filterpredicate = [NSPredicate predicateWithFormat:@"custom_lists CONTAINS[c] %@", [NSString stringWithFormat:@"%@[true]",_selectedlist]];
     }
     else {
-        
         switch (_listtype) {
             case Anime:
                 filterpredicate = [NSPredicate predicateWithFormat:@"watched_status ==[c] %@", _selectedlist];
@@ -175,6 +174,8 @@
             case Manga:
                 filterpredicate = [NSPredicate predicateWithFormat:@"read_status ==[c] %@", _selectedlist];
                 break;
+            default:
+                return;
         }
     }
     if (filterpredicates) {
@@ -763,6 +764,9 @@
             if (watchedepisodes > episodes && episodes > 0) {
                 return false;
             }
+            if (((watchedepisodes == episodes && episodes > 0) || [watchstatus isEqual:@"completed"])  && !selectedaircompleted) {
+                return false;
+            }
             return true;
         }
         case 1: {
@@ -773,6 +777,7 @@
             int readchapters = ((NSNumber *)entry[@"chapters_read"]).intValue+1;
             int readvolumes = ((NSNumber *)entry[@"volumes_read"]).intValue;
             int chapters = ((NSNumber *)entry[@"chapters"]).intValue;
+            int volumes = ((NSNumber *)entry[@"volumes"]).intValue;
             if ([publishstatus isEqualToString:@"finished"]) {
                 selectedfinished = true;
             }
@@ -790,6 +795,9 @@
                 return false;
             }
             if (readchapters > chapters && chapters > 0) {
+                return false;
+            }
+            if (((readchapters == chapters && chapters > 0) || (readvolumes == volumes && volumes > 0) || [readstatus isEqual:@"completed"])  && !selectedfinished) {
                 return false;
             }
             return true;

@@ -125,6 +125,9 @@ static NSString * const reuseIdentifier = @"Cell";
     if (cell == nil && collectionView != self.collectionView) {
         cell = (SeasonCollectionViewCell *)[self.collectionView dequeueReusableCellWithReuseIdentifier:@"seasoncell" forIndexPath:indexPath];
     }
+    else {
+        return [UICollectionViewCell new];
+    }
     // Configure the cell
     cell.title.text = entry[@"title"];
     [cell loadimage:entry[@"image_url"]];

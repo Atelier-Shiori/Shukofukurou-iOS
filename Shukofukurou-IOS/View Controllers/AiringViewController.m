@@ -100,23 +100,12 @@
     if (aentrycell == nil && tableView != self.tableView) {
         aentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"airingcell"];
     }
+    else {
+        return [UITableViewCell new];
+    }
     aentrycell.title.text = entry[@"title"];
     aentrycell.progress.text = [NSString stringWithFormat:@"Episodes: %@", entry[@"episodes"]];
     aentrycell.type.text = [NSString stringWithFormat:@"Type: %@", entry[@"type"]];
-    NSString *score = @"";
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-            score = entry[@"score"];
-            break;
-        case 2:
-            score = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)entry[@"score"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
-            break;
-        case 3:
-            score = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)entry[@"score"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
-            break;
-        default:
-            break;
-    }
     [aentrycell loadimage:entry[@"image_url"]];
     return aentrycell;
 }

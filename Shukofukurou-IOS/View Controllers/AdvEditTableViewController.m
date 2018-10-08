@@ -161,7 +161,7 @@
         cell.dateValue = (NSDate *)cellInfo.cellValue;
         NSDateFormatter *df = [NSDateFormatter new];
         df.dateFormat = @"yyyy-MM-dd";
-        cell.detailTextLabel.text = [df stringFromDate:cell.dateValue];
+        cell.detailTextLabel.text = [df stringFromDate:cell.dateValue ? cell.dateValue : [NSDate date]];
         cell.dateChanged = ^(NSDate * _Nonnull date, NSString * _Nonnull fieldname) {
             cellInfo.cellValue = date;
         };

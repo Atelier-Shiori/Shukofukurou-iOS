@@ -129,20 +129,6 @@
     aentrycell.title.text = entry[@"title"];
     aentrycell.progress.text = [NSString stringWithFormat:@"Episodes: %@", entry[@"episodes"]];
     aentrycell.type.text = [NSString stringWithFormat:@"Type: %@", entry[@"type"]];
-    NSString *score = @"";
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-            score = entry[@"score"];
-            break;
-        case 2:
-            score = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)entry[@"score"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
-            break;
-        case 3:
-            score = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)entry[@"score"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
-            break;
-        default:
-            break;
-    }
     [aentrycell loadimage:entry[@"image_url"]];
     aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
     return aentrycell;
@@ -158,20 +144,6 @@
     mentrycell.progress.text = [NSString stringWithFormat:@"Chapters: %@", entry[@"chapters"]];
     mentrycell.progressVolumes.text = [NSString stringWithFormat:@"Volumes: %@", entry[@"volumes"]];
     mentrycell.type.text = [NSString stringWithFormat:@"Type: %@", entry[@"type"]];
-    NSString *score = @"";
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-            score = entry[@"score"];
-            break;
-        case 2:
-            score = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)entry[@"score"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
-            break;
-        case 3:
-            score = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)entry[@"score"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
-            break;
-        default:
-            break;
-    }
     [mentrycell loadimage:entry[@"image_url"]];
     mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
     return mentrycell;

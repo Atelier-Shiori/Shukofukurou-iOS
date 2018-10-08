@@ -10,7 +10,7 @@
 
 @implementation EntryCellInfo
 - (instancetype)initCellWithTitle:(NSString *)title withValue:(id)value withCellType:(cellType)celltype {
-    if ([super init]) {
+    if (self = [super init]) {
         _cellTitle = title;
         _cellValue = value;
         _type = celltype;
@@ -19,7 +19,7 @@
 }
 
 - (instancetype)initDateCellWithTitle:(NSString *)title withValue:(id)value withCellType:(cellType)celltype withDateExists:(bool)dateexist {
-    if ([super init]) {
+    if (self = [super init]) {
         _cellTitle = title;
         _cellValue = value;
         _type = celltype;
@@ -29,7 +29,7 @@
 }
 
 - (instancetype)initCellWithTitle:(NSString *)title withValue:(id)value withMaximumCellValue:(int)cellvalueMax withCellType:(cellType)celltype {
-    if ([super init]) {
+    if (self = [super init]) {
         _cellTitle = title;
         _cellValue = value;
         _cellValueMax = cellvalueMax;
@@ -39,7 +39,7 @@
 }
 
 - (instancetype)initActionCellWithTitle:(NSString *)title withCellAction:(cellAction)action {
-    if ([super init]) {
+    if (self = [super init]) {
         _cellTitle = title;
         _type = cellTypeAction;
         _action = action;

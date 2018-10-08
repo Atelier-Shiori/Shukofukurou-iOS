@@ -66,7 +66,9 @@ struct {
     if ([type isEqualToString:@"cell"]) {
         cell = [self generateNormalCell:cellinfo cellForRowAtIndexPath:indexPath withTableView:tableView];
     }
-    //cell.userInteractionEnabled = (indexPath.row != 1 && indexPath.row != 3);
+    else {
+        cell = [UITableViewCell new];
+    }
     return cell;
     
 }

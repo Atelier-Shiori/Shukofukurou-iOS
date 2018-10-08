@@ -11,7 +11,6 @@
 #import "Utility.h"
 #import "listservice.h"
 #import "AppDelegate.h"
-#import "XMLReader.h"
 #import "Keychain.h"
 
 @implementation TitleIdConverter
@@ -250,7 +249,7 @@ static BOOL importing;
         lookingupid = false;
     }];
 }
-+ (void)getMALIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type fromServiceID:(int)fromservice completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+/*+ (void)getMALIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type fromServiceID:(int)fromservice completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (lookingupid && !importing)  {
         return;
     }
@@ -276,7 +275,7 @@ static BOOL importing;
         errorHandler(error);
         lookingupid = false;
     }];
-}
+}*/
 
 + (void)getserviceTitleIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (lookingupid && !importing)  {
@@ -590,7 +589,7 @@ static BOOL importing;
     }];
 }
 
-+ (void)retrieveMALIDwithTitle:(NSString *)searchterm withMediaType:(int)mediatype withType:(NSString *)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+/*+ (void)retrieveMALIDwithTitle:(NSString *)searchterm withMediaType:(int)mediatype withType:(NSString *)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility httpmanager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     NSString *searchurl = [NSString stringWithFormat:@"https://myanimelist.net/api/%@/search.xml?q=%@", mediatype == MALAnime ? @"anime" : @"manga" , [Utility urlEncodeString:searchterm]];
@@ -615,9 +614,9 @@ static BOOL importing;
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);
     }];
-}
+ }*/
 
-+ (NSArray *)MALSearchXMLToAtarashiiDataFormat:(NSString *)xml withType:(int)type {
+/*+ (NSArray *)MALSearchXMLToAtarashiiDataFormat:(NSString *)xml withType:(int)type {
     NSError *error = nil;
     NSDictionary *d = [XMLReader dictionaryForXMLString:xml options:XMLReaderOptionsProcessNamespaces error:&error];
     NSArray *searchresults;
@@ -650,7 +649,7 @@ static BOOL importing;
         }
     }
     return output;
-}
+}*/
 
 + (void)setImportStatus:(bool)isImporting {
     importing = isImporting;

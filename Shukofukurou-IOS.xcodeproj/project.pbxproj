@@ -17,7 +17,6 @@
 		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
 		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
 		596240C52155622F001995AD /* Shukofukurou_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240C42155622F001995AD /* Shukofukurou_IOSTests.m */; };
-		596240E821556310001995AD /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240E721556310001995AD /* XMLReader.m */; };
 		596241562155638D001995AD /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241532155638C001995AD /* ClientConstants.m */; };
 		596241572155638D001995AD /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241552155638D001995AD /* AniListConstants.m */; };
 		596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */; };
@@ -373,8 +372,6 @@
 		596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shukofukurou-IOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240C42155622F001995AD /* Shukofukurou_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shukofukurou_IOSTests.m; sourceTree = "<group>"; };
 		596240C62155622F001995AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		596240E62155630F001995AD /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
-		596240E721556310001995AD /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		596240E921556317001995AD /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		596240FE2155631F001995AD /* SAMKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SAMKeychain.xcodeproj; sourceTree = "<group>"; };
 		5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreActionSheetPicker.xcodeproj; path = CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj; sourceTree = "<group>"; };
@@ -616,7 +613,6 @@
 				59D915882162C1A600B5A61B /* UILabel+Copyable */,
 				5997B4A82162A68C005E894A /* TopAlignedLabel */,
 				59AEE9D12156A007005D99D5 /* MSWeakTimer */,
-				596240E2215562DB001995AD /* XMLReader */,
 				596240E1215562D2001995AD /* SDWebImage-master */,
 				596240E0215562CB001995AD /* SAMKeychain */,
 				596240D921556282001995AD /* 1Password */,
@@ -693,15 +689,6 @@
 				596240E921556317001995AD /* SDWebImage.xcodeproj */,
 			);
 			path = "SDWebImage-master";
-			sourceTree = "<group>";
-		};
-		596240E2215562DB001995AD /* XMLReader */ = {
-			isa = PBXGroup;
-			children = (
-				596240E62155630F001995AD /* XMLReader.h */,
-				596240E721556310001995AD /* XMLReader.m */,
-			);
-			path = XMLReader;
 			sourceTree = "<group>";
 		};
 		596240EA21556317001995AD /* Products */ = {
@@ -1363,7 +1350,6 @@
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,
 				5962422621556514001995AD /* LoadViewController.m in Sources */,
 				5962422121556514001995AD /* SearchRootViewController.m in Sources */,
-				596240E821556310001995AD /* XMLReader.m in Sources */,
 				5962421721556514001995AD /* ListViewController.m in Sources */,
 				59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */,
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
