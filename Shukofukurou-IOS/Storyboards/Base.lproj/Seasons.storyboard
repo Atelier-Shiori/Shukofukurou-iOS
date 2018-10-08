@@ -31,13 +31,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="113" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xgF-bm-sHE">
-                                            <rect key="frame" x="0.0" y="3" width="113" height="149"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xgF-bm-sHE">
+                                            <rect key="frame" x="8" y="8" width="97" height="145"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="145" id="lB8-W3-RVt"/>
+                                                <constraint firstAttribute="width" constant="97" id="yae-hn-Ax0"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRh-yA-90e">
-                                            <rect key="frame" x="3" y="159" width="113" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRh-yA-90e">
+                                            <rect key="frame" x="8" y="151" width="97" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="QXW-Hl-yyo"/>
+                                                <constraint firstAttribute="width" constant="97" id="sQE-nL-QdZ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                             <nil key="textColor"/>
@@ -46,13 +51,12 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="sRh-yA-90e" secondAttribute="bottom" id="2yn-ev-1ZX"/>
-                                    <constraint firstItem="xgF-bm-sHE" firstAttribute="top" secondItem="67x-v8-jQ6" secondAttribute="top" id="BfQ-bm-dqU"/>
-                                    <constraint firstItem="sRh-yA-90e" firstAttribute="leading" secondItem="xgF-bm-sHE" secondAttribute="leading" id="DUD-wo-glr"/>
-                                    <constraint firstAttribute="trailing" secondItem="sRh-yA-90e" secondAttribute="trailing" id="eC6-nc-RFR"/>
-                                    <constraint firstItem="sRh-yA-90e" firstAttribute="leading" secondItem="67x-v8-jQ6" secondAttribute="leading" id="rIL-bv-ZFi"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="xgF-bm-sHE" secondAttribute="bottom" constant="20" id="thb-Bh-3KT"/>
-                                    <constraint firstItem="sRh-yA-90e" firstAttribute="trailing" secondItem="xgF-bm-sHE" secondAttribute="trailing" id="u7Y-kR-uCN"/>
+                                    <constraint firstItem="sRh-yA-90e" firstAttribute="leading" secondItem="67x-v8-jQ6" secondAttribute="leadingMargin" id="9dI-TL-zeF"/>
+                                    <constraint firstItem="xgF-bm-sHE" firstAttribute="leading" secondItem="67x-v8-jQ6" secondAttribute="leadingMargin" id="Qus-zQ-yyM"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="sRh-yA-90e" secondAttribute="bottom" id="Ys6-38-jLr"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="sRh-yA-90e" secondAttribute="trailing" id="afR-Yl-P07"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="xgF-bm-sHE" secondAttribute="trailing" id="kCG-zB-doX"/>
+                                    <constraint firstItem="xgF-bm-sHE" firstAttribute="top" secondItem="67x-v8-jQ6" secondAttribute="topMargin" id="khD-fd-CFy"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="posterimage" destination="xgF-bm-sHE" id="1WW-EE-Ynq"/>
@@ -159,8 +163,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="25" height="25"/>
-        <image name="day" width="30" height="30"/>
-        <image name="season" width="30" height="30"/>
+        <image name="Menu" width="50" height="50"/>
+        <image name="day" width="60" height="60"/>
+        <image name="season" width="50" height="50"/>
     </resources>
 </document>
