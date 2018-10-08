@@ -30,6 +30,10 @@
 
 @implementation AiringViewController
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -60,18 +64,17 @@
         [weakSelf.tableView reloadData];
     };
     
-    [self hidemenubtn:self.view.bounds.size];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
+    [self hidemenubtn];
 }
 
-
-- (void)viewWillTransitionToSize:(CGSize)size
-       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [self hidemenubtn:size];
+- (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
+    [self hidemenubtn];
 }
 
-- (void)hidemenubtn:(CGSize)size {
+- (void)hidemenubtn {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        if (size.width > size.height) {
+        if ([ViewControllerManager getAppDelegateViewControllerManager].mvc.shouldHideMenuButton) {
             [self.menubtn setEnabled:NO];
             [self.menubtn setTintColor: [UIColor clearColor]];
         }

@@ -29,7 +29,26 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
-    self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
+    [self setsidebar:self.view.bounds.size];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self setsidebar:size];
+}
+
+- (void)setsidebar:(CGSize)size {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (size.width/size.height >= 1) {
+            self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
+            _shouldHideMenuButton = YES;
+        }
+        else {
+            self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
+            _shouldHideMenuButton = NO;
+        }
+        [NSNotificationCenter.defaultCenter postNotificationName:@"sidebarStateDidChange" object:@(_shouldHideMenuButton)];
+    }
 }
 - (void)applicationDidEnterBackground:(NSNotification *)notification {
     self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
@@ -37,7 +56,7 @@
     
 }
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
-    self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
+    [self setsidebar:self.view.bounds.size];
     [super viewDidLayoutSubviews];
 }
 - (void)loadfromdefaults {

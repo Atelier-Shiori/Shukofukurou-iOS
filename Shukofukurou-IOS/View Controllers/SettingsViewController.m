@@ -10,6 +10,7 @@
 #import "StreamDataRetriever.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TitleInfoCache.h"
+#import "ViewControllerManager.h"
 
 @interface SettingsViewController ()
     @property (weak, nonatomic) IBOutlet UITableViewCell *imagecachesize;
@@ -32,18 +33,17 @@
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"SettingsViewLoaded" object:nil];
-    [self hidemenubtn:self.view.bounds.size];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
+    [self hidemenubtn];
 }
 
-
-- (void)viewWillTransitionToSize:(CGSize)size
-       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [self hidemenubtn:size];
+- (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
+    [self hidemenubtn];
 }
 
-- (void)hidemenubtn:(CGSize)size {
+- (void)hidemenubtn {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        if (size.width > size.height) {
+        if ([ViewControllerManager getAppDelegateViewControllerManager].mvc.shouldHideMenuButton) {
             [self.menubtn setEnabled:NO];
             [self.menubtn setTintColor: [UIColor clearColor]];
         }
@@ -53,7 +53,6 @@
         }
     }
 }
-    
 - (void)recieveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"SettingsViewLoaded"]) {
         [self loadImageCacheSize];

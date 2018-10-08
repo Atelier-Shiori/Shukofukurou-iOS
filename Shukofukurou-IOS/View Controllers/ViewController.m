@@ -10,6 +10,7 @@
 #import "ViewControllerManager.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 
 @end
 
@@ -18,6 +19,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
+    [self hidemenubtn];
+}
+
+- (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
+    [self hidemenubtn];
+}
+
+- (void)hidemenubtn {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if ([ViewControllerManager getAppDelegateViewControllerManager].mvc.shouldHideMenuButton) {
+            [self.menubtn setEnabled:NO];
+            [self.menubtn setTintColor: [UIColor clearColor]];
+        }
+        else {
+            [self.menubtn setEnabled:YES];
+            [self.menubtn setTintColor:nil];
+        }
+    }
 }
 
 

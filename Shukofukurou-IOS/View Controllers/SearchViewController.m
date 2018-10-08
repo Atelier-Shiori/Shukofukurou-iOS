@@ -38,19 +38,17 @@
     _searchArray = [NSMutableArray new];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
     _searchselector.selectedSegmentIndex = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
-    
-    [self hidemenubtn:self.view.bounds.size];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
+    [self hidemenubtn];
 }
 
-
-- (void)viewWillTransitionToSize:(CGSize)size
-       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [self hidemenubtn:size];
+- (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
+    [self hidemenubtn];
 }
 
-- (void)hidemenubtn:(CGSize)size {
+- (void)hidemenubtn {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        if (size.width > size.height) {
+        if ([ViewControllerManager getAppDelegateViewControllerManager].mvc.shouldHideMenuButton) {
             [self.menubtn setEnabled:NO];
             [self.menubtn setTintColor: [UIColor clearColor]];
         }

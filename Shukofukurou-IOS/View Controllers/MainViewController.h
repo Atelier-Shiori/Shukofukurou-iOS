@@ -13,5 +13,6 @@
 @interface MainViewController : LGSideMenuController <SideBarMenuDelegate>
 
 @property (strong) UINavigationController *mainnavcontroller;
+@property (readonly) bool shouldHideMenuButton;
 - (void)loadfromdefaults;
 @end

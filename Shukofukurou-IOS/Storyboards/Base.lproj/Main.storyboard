@@ -227,6 +227,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="menubtn" destination="AFQ-vZ-Fd4" id="Zsw-lA-ecN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKv-IS-TOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
