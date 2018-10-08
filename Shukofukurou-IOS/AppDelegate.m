@@ -39,6 +39,11 @@
     defaultValues[@"anilist-selectedmangalist"] = @"reading";
     defaultValues[@"anilist-selectedlistcustomlistanime"] = @NO;
     defaultValues[@"anilist-selectedlistcustomlistmanga"] = @NO;
+    // Library Sort
+    defaultValues[@"anime-sortby"] = @"Title";
+    defaultValues[@"anime-accending"] = @YES;
+    defaultValues[@"manga-sortby"] = @"Title";
+    defaultValues[@"manga-accending"] = @YES;
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
 }

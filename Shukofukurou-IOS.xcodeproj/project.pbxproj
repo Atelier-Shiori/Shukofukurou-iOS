@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592DA184216BCE88008C99B3 /* SortTableViewController.m */; };
 		59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59325ED5216BBF1F00430ED7 /* OAuthLogin.m */; };
 		5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
@@ -89,7 +90,6 @@
 		5962425021556614001995AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C12155648D001995AD /* LaunchScreen.storyboard */; };
 		5962425121556617001995AD /* Lists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C321556493001995AD /* Lists.storyboard */; };
 		596242522155661A001995AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C521556497001995AD /* Main.storyboard */; };
-		596242532155661D001995AD /* OAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C72155649C001995AD /* OAuth.storyboard */; };
 		5962425521556622001995AD /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CB215564A5001995AD /* Search.storyboard */; };
 		5962425621556624001995AD /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
 		5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
@@ -353,6 +353,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		592DA183216BCE88008C99B3 /* SortTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTableViewController.h; sourceTree = "<group>"; };
+		592DA184216BCE88008C99B3 /* SortTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
 		59325ED4216BBF1F00430ED7 /* OAuthLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAuthLogin.h; sourceTree = "<group>"; };
 		59325ED5216BBF1F00430ED7 /* OAuthLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAuthLogin.m; sourceTree = "<group>"; };
 		5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
@@ -440,7 +442,6 @@
 		596241C02155648D001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		596241C221556493001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Lists.storyboard; sourceTree = "<group>"; };
 		596241C421556497001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		596241C62155649C001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OAuth.storyboard; sourceTree = "<group>"; };
 		596241CA215564A5001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
 		596241CC215564A9001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seasons.storyboard; sourceTree = "<group>"; };
 		596241CE215564AD001995AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ServiceSwitcher.storyboard; sourceTree = "<group>"; };
@@ -880,7 +881,6 @@
 				596241C12155648D001995AD /* LaunchScreen.storyboard */,
 				596241C321556493001995AD /* Lists.storyboard */,
 				596241C521556497001995AD /* Main.storyboard */,
-				596241C72155649C001995AD /* OAuth.storyboard */,
 				596241CB215564A5001995AD /* Search.storyboard */,
 				596241CD215564A9001995AD /* Seasons.storyboard */,
 				596241CF215564AD001995AD /* ServiceSwitcher.storyboard */,
@@ -923,6 +923,10 @@
 				596242032155650B001995AD /* AiringRootViewController.m */,
 				596242052155650C001995AD /* AiringViewController.h */,
 				596241EF215564FF001995AD /* AiringViewController.m */,
+				596A01B52163D1330005A60F /* CharacterDetailViewController.h */,
+				596A01B62163D1330005A60F /* CharacterDetailViewController.m */,
+				596A01B22163D11E0005A60F /* CharacterTableViewController.h */,
+				596A01B32163D11E0005A60F /* CharacterTableViewController.m */,
 				59481D88215953C1003CE863 /* CustomListTableViewController.h */,
 				59481D89215953C1003CE863 /* CustomListTableViewController.m */,
 				596241F021556500001995AD /* ListRootViewController.h */,
@@ -960,6 +964,8 @@
 				596241FD21556507001995AD /* SettingsRootViewController.m */,
 				5962421121556512001995AD /* SettingsViewController.h */,
 				596241F621556503001995AD /* SettingsViewController.m */,
+				592DA183216BCE88008C99B3 /* SortTableViewController.h */,
+				592DA184216BCE88008C99B3 /* SortTableViewController.m */,
 				59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */,
 				59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */,
 				596241F721556504001995AD /* TitleInfoViewController.h */,
@@ -968,10 +974,6 @@
 				5962421021556512001995AD /* ViewController.m */,
 				596242092155650E001995AD /* ViewControllerManager.h */,
 				596241FA21556506001995AD /* ViewControllerManager.m */,
-				596A01B22163D11E0005A60F /* CharacterTableViewController.h */,
-				596A01B32163D11E0005A60F /* CharacterTableViewController.m */,
-				596A01B52163D1330005A60F /* CharacterDetailViewController.h */,
-				596A01B62163D1330005A60F /* CharacterDetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1287,7 +1289,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596242532155661D001995AD /* OAuth.storyboard in Resources */,
 				596242522155661A001995AD /* Main.storyboard in Resources */,
 				5962425121556617001995AD /* Lists.storyboard in Resources */,
 				5962424E2155660F001995AD /* Auth.storyboard in Resources */,
@@ -1367,6 +1368,7 @@
 				59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */,
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
+				592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
@@ -1501,14 +1503,6 @@
 				596241C421556497001995AD /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		596241C72155649C001995AD /* OAuth.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				596241C62155649C001995AD /* Base */,
-			);
-			name = OAuth.storyboard;
 			sourceTree = "<group>";
 		};
 		596241CB215564A5001995AD /* Search.storyboard */ = {

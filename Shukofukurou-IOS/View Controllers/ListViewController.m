@@ -18,6 +18,7 @@
 #import "CustomListTableViewController.h"
 #import "AdvEditTableViewController.h"
 #import "ViewControllerManager.h"
+#import "SortTableViewController.h"
 
 @interface ListViewController ()
 @property (strong) NSMutableArray *list;
@@ -112,16 +113,6 @@
     }
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (void)setViewTitle {
     _navigationitem.title =  !_isCustomList ? _selectedlist.capitalizedString : _selectedlist;
 }
@@ -189,7 +180,7 @@
     if (filterpredicates) {
         filterpredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[filterpredicate.copy, filterpredicates]];
     }
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:[self getSortBy] ascending:[self getAccending]];
     _filteredlist = [[self retrieveEntriesWithType:_listtype withFilterPredicate:filterpredicate] sortedArrayUsingDescriptors:@[sort]];
     [self.tableView reloadData];
 }
@@ -900,5 +891,72 @@
         default:
             return @"";
     }
+}
+#pragma mark sort
+- (NSString *)getSortBy {
+    NSString *sortbystr = @"";
+    NSUserDefaults *userdefaults = NSUserDefaults.standardUserDefaults;
+    switch (_listtype) {
+        case Anime:
+            sortbystr = [userdefaults valueForKey:@"anime-sortby"];
+            break;
+        case Manga:
+            sortbystr = [userdefaults valueForKey:@"manga-sortby"];
+            break;
+        default:
+            return sortbystr;
+    }
+    sortbystr = [sortbystr lowercaseString];
+    sortbystr = [sortbystr stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    return sortbystr;
+}
+- (bool)getAccending {
+    NSUserDefaults *userdefaults = NSUserDefaults.standardUserDefaults;
+    switch (_listtype) {
+        case Anime:
+            return [userdefaults boolForKey:@"anime-accending"];
+        case Manga:
+            return [userdefaults boolForKey:@"manga-accending"];
+        default:
+            return false;
+    }
+}
+- (IBAction)showsort:(id)sender {
+    UINavigationController *navcontroller = [UINavigationController new];
+    SortTableViewController *sorttvc = [self.storyboard instantiateViewControllerWithIdentifier:@"sortvc"];
+    NSUserDefaults *userdefaults = NSUserDefaults.standardUserDefaults;
+    NSString *sortbystr = @"";
+    bool accending = false;
+    switch (_listtype) {
+        case Anime:
+            sortbystr = [userdefaults valueForKey:@"anime-sortby"];
+            accending = [userdefaults boolForKey:@"anime-accending"];
+            break;
+        case Manga:
+            sortbystr = [userdefaults valueForKey:@"manga-sortby"];
+            accending = [userdefaults boolForKey:@"manga-accending"];
+            break;
+    }
+    __weak ListViewController *weakSelf = self;
+    sorttvc.listSortChanged = ^(NSString * _Nonnull sortby, bool accending, int type) {
+        NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+        switch (type) {
+            case Anime:
+                [defaults setValue:sortby forKey:@"anime-sortby"];
+                [defaults setBool:accending forKey:@"anime-accending"];
+                break;
+            case Manga:
+                [defaults setValue:sortby forKey:@"manga-sortby"];
+                [defaults setBool:accending forKey:@"manga-accending"];
+                break;
+        }
+        [weakSelf reloadList];
+    };
+    navcontroller.viewControllers = @[sorttvc];
+    navcontroller.modalPresentationStyle = UIModalPresentationPopover;
+    navcontroller.popoverPresentationController.barButtonItem = sender;
+    [sorttvc loadView];
+    [self presentViewController:navcontroller animated:YES completion:nil];
+    [sorttvc loadSort:sortbystr withAccending:accending withType:_listtype];
 }
 @end
