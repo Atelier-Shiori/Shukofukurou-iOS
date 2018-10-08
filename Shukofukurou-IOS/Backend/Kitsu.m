@@ -194,6 +194,57 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
     }];
 }
 
++ (void)retrieveLimitedReviewsForTitle:(int)titleid withType:(int)type withPageOffset:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+#if defined(AppStore) // Do not provide authorization as Mac App Store rating does not allow adult content. Exclude all adult content
+#else
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+        AFOAuthCredential *cred = [Kitsu getFirstAccount];
+        if (cred && cred.expired) {
+            [Kitsu refreshToken:^(bool success) {
+                if (success) {
+                    [self retrieveLimitedReviewsForTitle:titleid withType:type withPageOffset:offset completion:completionHandler error:errorHandler];
+                }
+                else {
+                    errorHandler(nil);
+                }
+            }];
+            return;
+        }
+        if (cred) {
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+        }
+    }
+#endif
+    NSString *reviewurl = @"";
+    if (type == KitsuAnime) {
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[animeId]=%i&include=anime,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar,slug&sort=-upVotesCount&fields[anime]=episodeCount&page[limit]=20&page[offset]=%i", titleid,offset];
+    }
+    else {
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[mangaId]=%i&include=manga,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar,slug&fields[manga]=chapterCount&sort=-upVotesCount&page[limit]=20&page[offset]=%i", titleid, offset];
+    }
+    [manager GET:reviewurl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *dataarray = @[];
+        NSArray *includearray = @[];
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            dataarray = responseObject[@"data"];
+            includearray = responseObject[@"included"];
+        }
+        NSDictionary *page = @{};
+        if (responseObject[@"links"][@"next"]) {
+            int newoffset = offset + 20;
+            page = @{@"nextOffset" : @(newoffset), @"nextPage" : @YES};
+            
+        }
+        else {
+            page = @{@"nextOffset" : [NSNull null], @"nextPage" : @NO};
+        }
+        completionHandler(@{@"pageInfo" : page, @"data" : [AtarashiiAPIListFormatKitsu KitsuReactionstoAtarashii:@{@"data" : dataarray, @"included" : includearray} withType:type]});
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 #pragma mark OAuth Tokens
 + (bool)tokenexpired {
     AFOAuthCredential *cred = [self getFirstAccount];

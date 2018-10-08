@@ -16,7 +16,9 @@
 @interface ReviewTableViewController ()
 @property int type;
 @property int titleid;
-@property (strong) NSArray *reviews;
+@property (strong) NSMutableArray *reviews;
+@property int nextPageOffset;
+@property bool loadingReactions;
 @end
 
 @implementation ReviewTableViewController
@@ -36,33 +38,59 @@
         default:
             break;
     }
+    _reviews = [NSMutableArray new];
 }
 
 - (void)retrieveReviewsForTitleID:(int)titleid withType:(int)type {
+    if (_titleid == 0) {
+        _titleid = titleid;
+        _type = type;
+    }
     self.navigationItem.hidesBackButton = YES;
-    [listservice retrieveReviewsForTitle:titleid withType:type completion:^(id responseObject) {
-        switch ([listservice getCurrentServiceID]) {
-            case 2: {
-                // Sort by liked
-                NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"helpful" ascending:NO];
-                self.reviews = [responseObject sortedArrayUsingDescriptors:@[sort]];
-                break;
+    if ([listservice getCurrentServiceID] == 2) {
+        self.loadingReactions = YES;
+        [Kitsu retrieveLimitedReviewsForTitle:titleid withType:type withPageOffset:_nextPageOffset completion:^(id responseObject) {
+            [self.reviews addObjectsFromArray:responseObject[@"data"]];
+            NSDictionary *pageInfo = responseObject[@"pageInfo"];
+            if (((NSNumber *)pageInfo[@"nextPage"]).boolValue) {
+                self.nextPageOffset = ((NSNumber *)pageInfo[@"nextOffset"]).intValue;
             }
-            case 1:
-            case 3: {
-                self.reviews = responseObject;
-                break;
+            else {
+                self.nextPageOffset = -1;
             }
-            default: {
-                break;
+            [self.tableView reloadData];
+            self.navigationItem.hidesBackButton = NO;
+            self.loadingReactions = NO;
+        } error:^(NSError *error) {
+            NSLog(@"%@",error);
+            if (self.reviews.count > 0) {
+                self.navigationItem.hidesBackButton = NO;
+                self.loadingReactions = NO;
             }
-        }
-        [self.tableView reloadData];
-        self.navigationItem.hidesBackButton = NO;
-    } error:^(NSError *error) {
-        NSLog(@"%@",error);
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+            else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }
+    else {
+        [listservice retrieveReviewsForTitle:titleid withType:type completion:^(id responseObject) {
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                case 3: {
+                    [self.reviews addObjectsFromArray:responseObject];
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+            [self.tableView reloadData];
+            self.navigationItem.hidesBackButton = NO;
+        } error:^(NSError *error) {
+            NSLog(@"%@",error);
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
 }
 
 #pragma mark - Table view data source
@@ -120,6 +148,10 @@
     cell.rating.text = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)review[@"rating"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
     cell.reaction.text = (NSString *)review[@"review"];
     [cell loadimage:review[@"avatar_url"]];
+    // Load more reactions if there is more and the user reaches the last reaction loaded.
+    if (!_loadingReactions && _nextPageOffset >= 0 && indexPath.row == self.reviews.count - 1) {
+        [self retrieveReviewsForTitleID:_titleid withType:_type];
+    }
     return cell;
 }
 
