@@ -44,7 +44,7 @@
                 [self retrieveSeasonDataWithSeason:season withYear:year withPage:newpage withArray:array completion:completionHandler error:errorHandler];
             }
             else {
-                [self processSeasonData:[AtarashiiAPIListFormatAniList normalizeSeasonData:array withSeason:season withYear:year]];
+                [self processSeasonData:[AtarashiiAPIListFormatAniList normalizeSeasonData:array withSeason:season withYear:year] withSeason:season withYear:year];
                 completionHandler([self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i",season, year]]);
             }
         }
@@ -53,16 +53,16 @@
     }];
 }
 
-+ (void)processSeasonData:(NSArray *)seasondata {
++ (void)processSeasonData:(NSArray *)seasondata withSeason:(NSString *)season withYear:(int)year{
     @autoreleasepool {
         // Save new data
         for (NSDictionary *entry in seasondata) {
             [self saveToCoreData:entry];
         }
         // Delete nonexisting entries that was retrieved
-        NSArray *existingseasondata = [self retrieveFromCoreData:nil];
+        NSArray *existingseasondata = [self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i", season, year]];
         for (NSDictionary *seasonentry in existingseasondata) {
-            NSArray *filteredarray = [seasondata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@",seasonentry[@"id"]]];
+            NSArray *filteredarray = [seasondata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@ AND season ==[c] %@ AND year == %@",seasonentry[@"id"], seasonentry[@"season"], seasonentry[@"year"]]];
             if (filteredarray.count == 0) {
                 [self deleteFromCoreData:((NSNumber *)seasonentry[@"id"]).intValue withSeason:seasonentry[@"season"] withYear:((NSNumber *)seasonentry[@"year"]).intValue];
             }
