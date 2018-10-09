@@ -62,7 +62,7 @@
         // Delete nonexisting entries that was retrieved
         NSArray *existingseasondata = [self retrieveFromCoreData:nil];
         for (NSDictionary *seasonentry in existingseasondata) {
-            NSArray *filteredarray = [seasondata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i AND season ==[c] %@ AND year == %i",seasonentry[@"id"], seasonentry[@"season"], seasonentry[@"year"]]];
+            NSArray *filteredarray = [seasondata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@",seasonentry[@"id"]]];
             if (filteredarray.count == 0) {
                 [self deleteFromCoreData:((NSNumber *)seasonentry[@"id"]).intValue withSeason:seasonentry[@"season"] withYear:((NSNumber *)seasonentry[@"year"]).intValue];
             }
