@@ -291,7 +291,7 @@ static BOOL importing;
     }
     lookingupid = true;
     [listservice searchTitle:title withType:MALAnime completion:^(id responseObject) {
-        int newid = [self findTitle:title withType:MALAnime withResponseObject:responseObject];
+        int newid = [self findTitle:title withType:titletype withResponseObject:responseObject];
         if (newid > 0) {
             [self savetitleidtomapping:titleid withNewID:newid withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
             completionHandler(newid);
