@@ -95,9 +95,9 @@
     SearchTableViewCell *aentrycell = [tableView dequeueReusableCellWithIdentifier:@"airingcell"];
     if (aentrycell == nil && tableView != self.tableView) {
         aentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"airingcell"];
-    }
-    else {
-        return [UITableViewCell new];
+        if (!aentrycell) {
+            return [UITableViewCell new];
+        }
     }
     aentrycell.title.text = entry[@"title"];
     aentrycell.progress.text = [NSString stringWithFormat:@"Episodes: %@", entry[@"episodes"]];
