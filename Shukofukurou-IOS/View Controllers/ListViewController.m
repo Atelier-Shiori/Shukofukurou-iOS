@@ -258,7 +258,7 @@
         case 3:
             return [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type withPredicate:predicate];
         default:
-            return false;
+            return nil;
     }
 }
 

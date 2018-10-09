@@ -67,6 +67,7 @@ iOSInjectionProject/
 
 # AppCode
 .idea/.name
+.idea/**
 .idea/MAL-Library.iml
 .idea/codeStyles/Project.xml
 .idea/modules.xml
