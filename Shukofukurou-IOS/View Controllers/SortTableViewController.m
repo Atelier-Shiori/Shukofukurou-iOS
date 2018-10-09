@@ -58,9 +58,11 @@
         [self.sortbycell setSelected:NO animated:YES];
     } origin:_sortbycell];
 }
+
 - (IBAction)cancelaction:(id)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (IBAction)saveaction:(id)sender {
     self.listSortChanged(_sortbycell.detailTextLabel.text, _accendingswitch.on, _type);
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

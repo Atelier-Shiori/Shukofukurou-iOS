@@ -70,7 +70,6 @@
 		5962422721556514001995AD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
 		5962422821556514001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
 		5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
-		5962422F21556591001995AD /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962422E21556591001995AD /* NSString_stripHtml.m */; };
 		59624230215565C7001995AD /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; };
 		59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
@@ -497,8 +496,6 @@
 		5962421121556512001995AD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5962421221556513001995AD /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
 		5962422B2155653D001995AD /* Hiyoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hiyoko.xcdatamodel; sourceTree = "<group>"; };
-		5962422D2155658D001995AD /* NSString_stripHtml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
-		5962422E21556591001995AD /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		596242742155D2C9001995AD /* OnePasswordExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		596A01B22163D11E0005A60F /* CharacterTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterTableViewController.h; sourceTree = "<group>"; };
@@ -620,7 +617,6 @@
 				596240DB21556296001995AD /* AFNetworking */,
 				596240DD215562A8001995AD /* LGSideMenuControllerFramework */,
 				596240DE215562B0001995AD /* MGSwipeTableCell */,
-				596240DF215562B6001995AD /* NSString stripHTML */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -664,15 +660,6 @@
 				596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */,
 			);
 			path = MGSwipeTableCell;
-			sourceTree = "<group>";
-		};
-		596240DF215562B6001995AD /* NSString stripHTML */ = {
-			isa = PBXGroup;
-			children = (
-				5962422D2155658D001995AD /* NSString_stripHtml.h */,
-				5962422E21556591001995AD /* NSString_stripHtml.m */,
-			);
-			path = "NSString stripHTML";
 			sourceTree = "<group>";
 		};
 		596240E0215562CB001995AD /* SAMKeychain */ = {
@@ -1329,7 +1316,6 @@
 				5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
-				5962422F21556591001995AD /* NSString_stripHtml.m in Sources */,
 				59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */,
 				59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */,
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,

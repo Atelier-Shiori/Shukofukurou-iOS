@@ -34,7 +34,6 @@
     _persontype = personTypeStaff;
     self.navigationItem.hidesBackButton = YES;
     [listservice retrievePersonDetails:_personid completion:^(id responseObject) {
-        //NSLog(@"%@",[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingSortedKeys error:nil] encoding:NSUTF8StringEncoding]);
         [self populatePersonData:responseObject];
         self.navigationItem.hidesBackButton = NO;
     } error:^(NSError *error) {
@@ -268,6 +267,7 @@
 
      
 #pragma mark helpers
+
  - (void)loadimage:(NSString *)imageurl {
      if (imageurl.length > 0) {
          [_posterimage sd_setImageWithURL:[NSURL URLWithString:imageurl]];

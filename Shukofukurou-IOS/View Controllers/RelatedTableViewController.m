@@ -23,11 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
@@ -116,7 +111,7 @@
         }
     }
     _items[@"Web"] = [self generateWebArray];
-    _sections = [_items allKeys];
+    _sections = [_items.allKeys sortedArrayUsingSelector: @selector(compare:)];
     _type = type;
     [self.tableView reloadData];
 }
@@ -138,7 +133,7 @@
     return websites.copy;
 }
 
-#pragma mark otheractions
+#pragma mark other actions
 - (void)openSiteWithTag:(int)tag {
     NSURL *openurl;
     switch (tag) {

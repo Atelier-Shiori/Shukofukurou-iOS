@@ -23,8 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.leftViewWidth = 250.0;
-    //self.leftViewBackgroundColor = [UIColor colorWithRed:0.5 green:0.65 blue:0.5 alpha:0.95];
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.mvc = self;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];

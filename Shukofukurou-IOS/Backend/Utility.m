@@ -11,12 +11,7 @@
 
 @implementation Utility
 + (NSString *)urlEncodeString:(NSString *)string {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
-                                                                                 NULL,
-                                                                                 (__bridge CFStringRef)string,
-                                                                                 NULL,
-                                                                                 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                 kCFStringEncodingUTF8 ));
+    return [string stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
 }
 
 + (NSString *)appendstringwithArray:(NSArray *) a {

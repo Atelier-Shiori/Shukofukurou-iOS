@@ -21,18 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)retrievePersonList:(int)titleid {
     self.navigationItem.hidesBackButton = YES;
     [listservice retrieveStaff:titleid completion:^(id responseObject) {
-        //NSLog(@"%@",[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingSortedKeys error:nil] encoding:NSUTF8StringEncoding]);
         [self generateStaffList:responseObject];
         self.navigationItem.hidesBackButton = NO;
     } error:^(NSError *error) {

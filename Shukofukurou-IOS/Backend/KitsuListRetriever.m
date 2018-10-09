@@ -55,9 +55,9 @@
     }
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%i&filter[kind]=%@&include=%@&fields[%@]=%@&page[limit]=500&page[offset]=%i",userID, listtype, listtype, listtype, includes, pagenum] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"]){
-            [_tmplist addObjectsFromArray:responseObject[@"data"]];
+            [self.tmplist addObjectsFromArray:responseObject[@"data"]];
             if (responseObject[@"included"]){
-                [_metadata addObjectsFromArray:responseObject[@"included"]];
+                [self.metadata addObjectsFromArray:responseObject[@"included"]];
             }
             if (responseObject[@"links"][@"next"]) {
                 int nextPage = pagenum+500;

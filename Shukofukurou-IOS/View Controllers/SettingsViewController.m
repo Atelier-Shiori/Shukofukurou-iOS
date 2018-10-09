@@ -13,9 +13,8 @@
 #import "ViewControllerManager.h"
 
 @interface SettingsViewController ()
-    @property (weak, nonatomic) IBOutlet UITableViewCell *imagecachesize;
+@property (weak, nonatomic) IBOutlet UITableViewCell *imagecachesize;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
-
 @end
 
 @implementation SettingsViewController
@@ -59,15 +58,6 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)setrefreshonstart:(id)sender {
     [NSUserDefaults.standardUserDefaults setBool:_refreshlistonstart.on forKey:@"refreshlistonstart"];

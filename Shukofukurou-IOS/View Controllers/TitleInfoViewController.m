@@ -77,15 +77,6 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (void)loadTitleInfo:(int)titleid withType:(int)type {
     _titleid = titleid;
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !_forcerefresh) {
@@ -127,6 +118,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
 }
+
 - (void)populateInfoWithType:(int)type withDictionary:(NSDictionary *)titleinfo {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.currenttype = type;
@@ -169,7 +161,9 @@
         [self populateWithInfowithDictionary:titleinfo withType:type];
     });
 }
+
 #pragma mark options
+
 - (IBAction)presentoptions:(id)sender {
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     __weak TitleInfoViewController *weakSelf = self;
@@ -244,6 +238,7 @@
 }
 
 #pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _sections.count;
 }
@@ -503,6 +498,7 @@
 }
 
 #pragma mark Data Source Dictionary Generators
+
 - (void)populateWithInfowithDictionary:(NSDictionary *)titleinfo withType:(int)type {
     NSMutableDictionary *tmpdictionary = [NSMutableDictionary new];
     NSDictionary *userentry;
@@ -679,7 +675,6 @@
 }
 
 - (NSArray *)generateMangaTitleArray:(NSDictionary *)titleinfo {
-    
     NSMutableArray *detailarray = [NSMutableArray new];
     // Basic Info
     // [detailarray addObject:@{@"title" : @"Type", @"values" : @""}];
@@ -743,6 +738,7 @@
 }
 
 #pragma mark updating
+
 - (void)addAnimeEntry:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
     __weak TitleInfoViewController *weakSelf = self;
