@@ -410,6 +410,8 @@
     personobj.image_url = person[@"image"] != [NSNull null] && person[@"image"][@"large"] ? person[@"image"][@"large"] : @"";
     personobj.native_name = person[@"name"][@"native"] && person[@"name"][@"native"] != [NSNull null] ? person[@"name"][@"native"] : @"";
     personobj.more_details = person[@"description"] != [NSNull null] ? person[@"description"] : @"";
+    personobj.favorited_count = person[@"favourites"] != [NSNull null] ? ((NSNumber *)person[@"favourites"]).intValue : 0;
+    personobj.language = person[@"language"] != [NSNull null] ? ((NSString *)person[@"language"]).capitalizedString : @"";
     NSMutableArray *staffroles = [NSMutableArray new];
     NSMutableArray *mangaroles = [NSMutableArray new];
     for (NSDictionary *staffrole in person[@"staffMedia"][@"edges"]) {

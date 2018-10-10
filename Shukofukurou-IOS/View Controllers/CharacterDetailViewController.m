@@ -48,7 +48,9 @@
     NSMutableArray *detailsArray = [NSMutableArray new];
     self.navigationItem.title = data[@"name"];
     [self loadimage:(NSString *)data[@"image_url"]];
-    [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"more_details"], @"type" : @"longdetail"}];
+    if (((NSString *)data[@"more_details"]).length > 0) {
+        [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"more_details"], @"type" : @"longdetail"}];
+    }
     if (data[@"birthdate"] && ((NSString *)data[@"birthdate"]).length > 0) {
         [detailsArray addObject:@{@"title" : @"Birthdate", @"value" : data[@"birthdate"], @"type" : @"detail"}];
     }
@@ -61,10 +63,15 @@
     if (data[@"native_name"] && ((NSString *)data[@"native_name"]).length > 0) {
         [detailsArray addObject:@{@"title" : @"Native Name", @"value" : data[@"native_name"], @"type" : @"detail"}];
     }
+    if (data[@"language"] && ((NSString *)data[@"language"]).length > 0) {
+        [detailsArray addObject:@{@"title" : @"Primary Language", @"value" : data[@"language"], @"type" : @"detail"}];
+    }
     if (data[@"website_url"] && ((NSString *)data[@"website_url"]).length > 0) {
         _website_url = data[@"website_url"];
     }
-    persondetails[@"Details"] = detailsArray;
+    if (detailsArray.count > 0) {
+        persondetails[@"Details"] = detailsArray;
+    }
     persondetails[@"Anime Staff Positions"] = data[@"anime_staff_positions"];
     persondetails[@"Published Manga"] = data[@"published_manga"];
     persondetails[@"Voice Acting Roles"] = data[@"voice_acting_roles"];

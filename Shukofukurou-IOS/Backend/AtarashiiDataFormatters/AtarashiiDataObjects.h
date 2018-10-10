@@ -126,11 +126,14 @@
 @property (strong) NSString *birthdate;
 @property (strong) NSString *image_url;
 @property (strong) NSString *website_url;
+@property (strong) NSString *language;
 @property (strong) NSString *more_details;
 @property int favorited_count;
 @property (strong) NSArray *voice_acting_roles;
 @property (strong) NSArray *anime_staff_positions;
 @property (strong) NSArray *published_manga;
+@property (strong) NSArray *appeared_anime;
+@property (strong) NSArray *appeared_manga;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
