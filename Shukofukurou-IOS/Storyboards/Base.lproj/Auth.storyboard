@@ -23,48 +23,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zSI-t6-Hi8">
-                                <rect key="frame" x="0.0" y="64" width="320" height="198"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="190"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To login, enter your username and password" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-7U-qb0">
-                                        <rect key="frame" x="8" y="0.0" width="304" height="31.5"/>
+                                        <rect key="frame" x="8.5" y="0.0" width="303" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username/Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d48-gH-B0B">
-                                        <rect key="frame" x="60" y="41.5" width="200" height="31.5"/>
+                                        <rect key="frame" x="60" y="40" width="200" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="31.5" id="0O7-Wz-vwE"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="fJe-e1-ym8"/>
+                                            <constraint firstAttribute="width" constant="200" id="yUT-uL-U6f"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ODB-Ly-KB6">
-                                        <rect key="frame" x="60" y="83" width="200" height="32"/>
+                                        <rect key="frame" x="60" y="80" width="200" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Grq-kr-qU0"/>
-                                            <constraint firstAttribute="height" constant="32" id="esL-60-GCu"/>
+                                            <constraint firstAttribute="width" constant="200" id="cuD-Wi-1XI"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZU-rx-car">
-                                        <rect key="frame" x="146.5" y="125" width="27" height="31.5"/>
+                                        <rect key="frame" x="146.5" y="120" width="27" height="30"/>
                                         <state key="normal" image="1password"/>
                                         <connections>
                                             <action selector="findLoginFrom1Password:" destination="ujW-g1-501" eventType="touchUpInside" id="VOC-6E-lza"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eSB-wl-4kQ">
-                                        <rect key="frame" x="60" y="166.5" width="200" height="31.5"/>
+                                        <rect key="frame" x="110" y="160" width="100" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9u-l1-KTv">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="31.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="ELq-xX-tnO"/>
+                                                    <constraint firstAttribute="width" constant="100" id="bfc-yF-AV6"/>
                                                 </constraints>
                                                 <state key="normal" title="Register"/>
                                                 <connections>
@@ -72,24 +70,15 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="pUi-TK-ARg"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="d48-gH-B0B" firstAttribute="leading" secondItem="k39-pS-zim" secondAttribute="leading" constant="60" id="3RR-Ny-bef"/>
-                            <constraint firstItem="zSI-t6-Hi8" firstAttribute="leading" secondItem="k39-pS-zim" secondAttribute="leading" id="4WK-JN-YlW"/>
-                            <constraint firstItem="k39-pS-zim" firstAttribute="trailing" secondItem="UbO-7U-qb0" secondAttribute="trailing" constant="8" id="Jzl-eK-5g5"/>
-                            <constraint firstItem="zSI-t6-Hi8" firstAttribute="top" secondItem="Cyw-wC-jKM" secondAttribute="bottom" id="XQ7-wN-ucs"/>
-                            <constraint firstItem="k39-pS-zim" firstAttribute="trailing" secondItem="zSI-t6-Hi8" secondAttribute="trailing" id="fcV-yf-Pd7"/>
-                            <constraint firstItem="ODB-Ly-KB6" firstAttribute="leading" secondItem="k39-pS-zim" secondAttribute="leading" constant="60" id="iIS-9X-nGQ"/>
-                            <constraint firstItem="c7l-M3-Dch" firstAttribute="top" secondItem="zSI-t6-Hi8" secondAttribute="bottom" constant="306" id="ize-i2-EV5"/>
-                            <constraint firstItem="d48-gH-B0B" firstAttribute="centerX" secondItem="k39-pS-zim" secondAttribute="centerX" id="jkr-44-RXf"/>
-                            <constraint firstItem="f9u-l1-KTv" firstAttribute="leading" secondItem="k39-pS-zim" secondAttribute="leading" constant="60" id="qbO-OH-yAU"/>
+                            <constraint firstItem="zSI-t6-Hi8" firstAttribute="leading" secondItem="k39-pS-zim" secondAttribute="leading" id="2Q5-ML-NrE"/>
+                            <constraint firstItem="k39-pS-zim" firstAttribute="trailing" secondItem="zSI-t6-Hi8" secondAttribute="trailing" id="aKw-bR-YdN"/>
+                            <constraint firstItem="zSI-t6-Hi8" firstAttribute="top" secondItem="Cyw-wC-jKM" secondAttribute="bottom" id="wab-Wn-4dK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k39-pS-zim"/>
                     </view>
