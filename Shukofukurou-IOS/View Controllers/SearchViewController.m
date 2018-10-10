@@ -15,7 +15,7 @@
 #import "TitleInfoViewController.h"
 
 @interface SearchViewController ()
-@property (weak, nonatomic) IBOutlet UISearchBar *searchbar;
+@property (strong) UISearchController *searchController;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *searchselector;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 
@@ -35,6 +35,17 @@
     _searchselector.selectedSegmentIndex = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
+    [self setupsearch];
+}
+
+- (void)setupsearch {
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    _searchController.searchBar.placeholder = @"Search";
+    _searchController.searchBar.delegate = self;
+    _searchController.obscuresBackgroundDuringPresentation = NO;
+    _searchController.hidesNavigationBarDuringPresentation = NO;
+    self.navigationItem.searchController = _searchController;
+    self.navigationItem.hidesSearchBarWhenScrolling = NO;
 }
 
 - (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
@@ -57,8 +68,8 @@
 - (void)recieveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Reload Search Results
-        if (_searchbar.text.length > 0) {
-            [self performSearch:_searchbar.text];
+        if (_searchController.searchBar.text.length > 0) {
+            [self performSearch:_searchController.searchBar.text];
         }
     }
 }
@@ -88,13 +99,19 @@
 }
 
 - (void)resetSearchUI {
-    _searchbar.showsCancelButton = NO;
-    _searchbar.text = @"";
+    _searchController.searchBar.showsCancelButton = NO;
+    _searchController.searchBar.text = @"";
     [self clearsearch];
-    [_searchbar resignFirstResponder];
+    [_searchController.searchBar resignFirstResponder];
 }
 
 #pragma mark - Table view data source
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return CGFLOAT_MIN;
+    }
+    return tableView.sectionHeaderHeight;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _searchArray.count;
@@ -155,18 +172,18 @@
 #pragma mark UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self performSearch:searchBar.text];
-    _searchbar.showsCancelButton = YES;
+    _searchController.searchBar.showsCancelButton = YES;
     [searchBar resignFirstResponder];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length == 0) {
-        _searchbar.showsCancelButton = NO;
+        _searchController.searchBar.showsCancelButton = NO;
         [self clearsearch];
     }
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    _searchbar.showsCancelButton = NO;
+    _searchController.searchBar.showsCancelButton = NO;
     searchBar.text = @"";
     [self clearsearch];
     [searchBar resignFirstResponder];

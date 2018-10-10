@@ -26,7 +26,7 @@
 @property (strong) NSArray *searchresults;
 @property (strong) NSString *selectedlist;
 @property bool isCustomList;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchbar;
+@property (strong) UISearchController *searchController;
 @property (strong) ListSelectorViewController *listselector;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @end
@@ -71,6 +71,16 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
+    [self setupsearch];
+}
+
+- (void)setupsearch {
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    _searchController.searchBar.placeholder = @"Filter";
+    _searchController.searchBar.delegate = self;
+    _searchController.obscuresBackgroundDuringPresentation = NO;
+    _searchController.hidesNavigationBarDuringPresentation = NO;
+    self.navigationitem.searchController = _searchController;
 }
 
 - (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
@@ -150,8 +160,8 @@
 }
 
 - (void)reloadList {
-    if (_searchbar.text.length > 0) {
-        [self filterWithSearchText:_searchbar.text];
+    if (_searchController.searchBar.text.length > 0) {
+        [self filterWithSearchText:_searchController.searchBar.text];
     }
     else {
         [self populateOwnList];
@@ -368,6 +378,13 @@
     return 120;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return CGFLOAT_MIN;
+    }
+    return tableView.sectionHeaderHeight;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_listtype == Anime) {
         return [self generateAnimeEntryCellAtIndexPath:indexPath tableView:tableView];
@@ -520,12 +537,12 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length == 0) {
-        _searchbar.showsCancelButton = NO;
+        _searchController.searchBar.showsCancelButton = NO;
         [self populateOwnList];
     }
     else {
         [self filterWithSearchText:searchText];
-        _searchbar.showsCancelButton = YES;
+        _searchController.searchBar.showsCancelButton = YES;
     }
 }
 
@@ -534,7 +551,7 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    _searchbar.showsCancelButton = NO;
+    _searchController.searchBar.showsCancelButton = NO;
     searchBar.text = @"";
     [self populateOwnList];
     [searchBar resignFirstResponder];

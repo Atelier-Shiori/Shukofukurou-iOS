@@ -17,17 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Filter" id="y4F-rY-9Uv">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="fTu-H4-28K" id="prd-fU-XHd"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="animeentrycell" rowHeight="120" id="n05-1U-ao9" customClass="AnimeEntryTableViewCell">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n05-1U-ao9" id="baZ-mA-QYw">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="119.5"/>
@@ -100,7 +92,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="mangaentrycell" rowHeight="120" id="lrC-qz-5JZ" customClass="MangaEntryTableViewCell">
-                                <rect key="frame" x="0.0" y="219.5" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="175.5" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lrC-qz-5JZ" id="6Q8-es-YFH">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="119.5"/>
@@ -215,7 +207,6 @@
                         <outlet property="navigationitem" destination="NEs-jJ-IkG" id="bgI-5Z-zPd"/>
                         <outlet property="refreshcontrol" destination="ZNU-5w-ohl" id="9Yd-PS-N2K"/>
                         <outlet property="searchDisplayController" destination="WTn-hm-v5v" id="V9n-7s-AdQ"/>
-                        <outlet property="searchbar" destination="y4F-rY-9Uv" id="QV4-fE-Cwl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgP-eg-FNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,9 +378,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
-        <image name="filter" width="60" height="60"/>
-        <image name="listsort" width="50" height="50"/>
-        <image name="status-active" width="60" height="60"/>
+        <image name="Menu" width="25" height="25"/>
+        <image name="filter" width="30" height="30"/>
+        <image name="listsort" width="25" height="25"/>
+        <image name="status-active" width="30" height="30"/>
     </resources>
 </document>
