@@ -60,6 +60,9 @@
         [weakSelf setSelectedListToDefaults];
         [weakSelf populateOwnList];
         [weakSelf setViewTitle];
+        if (weakSelf.filteredlist.count > 0) {
+            [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        }
     };
     // Set Observer
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:_listtype == Anime ? @"AnimeRefreshList" : @"MangaRefreshList" object:nil];

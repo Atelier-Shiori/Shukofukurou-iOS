@@ -159,13 +159,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *listtype = _listsectionTitles[indexPath.section];
     NSDictionary *listentry = _lists[listtype][indexPath.row];
-    if ([(NSString *)listentry[@"name"] isEqualToString:_selectedlist]) {
-        return;
-    }
-    else {
+    if (![(NSString *)listentry[@"name"] isEqualToString:_selectedlist]) {
         self.listChanged(listentry[@"name"], listtype);
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)closelistselector:(id)sender {

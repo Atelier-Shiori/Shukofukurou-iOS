@@ -58,15 +58,21 @@ static NSString * const reuseIdentifier = @"Cell";
     __weak SeasonsViewController *weakSelf = self;
     _seasonselector = (SeasonSelectorTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"seasonselector"];
     _seasonselector.seasonChanged = ^(NSString * _Nonnull season) {
-        weakSelf.currentseason = season;
-        [NSUserDefaults.standardUserDefaults setValue:season forKey:@"seasonselect"];
-        weakSelf.navationitem.title = [NSString stringWithFormat:@" %i - %@", weakSelf.currentyear, weakSelf.currentseason];
-        [weakSelf reloadData:NO];
+        if (![weakSelf.currentseason isEqualToString:season]) {
+            weakSelf.currentseason = season;
+            [NSUserDefaults.standardUserDefaults setValue:season forKey:@"seasonselect"];
+            weakSelf.navationitem.title = [NSString stringWithFormat:@" %i - %@", weakSelf.currentyear, weakSelf.currentseason];
+            [weakSelf reloadData:NO];
+            [weakSelf.collectionView setContentOffset:CGPointMake(0, -118) animated:NO];
+        }
     };
     _seasonselector.yearChanged = ^(int year) {
-        weakSelf.currentyear = year;
-        weakSelf.navationitem.title = [NSString stringWithFormat:@" %i - %@", weakSelf.currentyear, weakSelf.currentseason];
-        [weakSelf reloadData:NO];
+        if (weakSelf.currentyear != year) {
+            weakSelf.currentyear = year;
+            weakSelf.navationitem.title = [NSString stringWithFormat:@" %i - %@", weakSelf.currentyear, weakSelf.currentseason];
+            [weakSelf reloadData:NO];
+            [weakSelf.collectionView setContentOffset:CGPointZero animated:NO];
+        }
     };
     
     // Retrieve Season Data

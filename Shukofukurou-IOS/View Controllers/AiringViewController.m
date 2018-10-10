@@ -57,6 +57,7 @@
         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
         weakSelf.airinglist = [[AiringSchedule retrieveAiringDataForDay:weakSelf.currentday.lowercaseString] sortedArrayUsingDescriptors:@[sort]];
         [weakSelf.tableView reloadData];
+        [weakSelf.tableView setContentOffset:CGPointMake(0, -25) animated:NO];
     };
     
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
