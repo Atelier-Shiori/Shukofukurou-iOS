@@ -1,4 +1,7 @@
 # Shukofukurou for iOS
+
+![screenshot](https://malupdaterosx.moe/wp-content/uploads/2018/10/Screen-Shot-2018-10-08-at-6.30.46-PM.png)
+
 Shukofukurou for iOS is the iOS port of [Shukofukurou](https://github.com/Atelier-Shiori/Shukofukurou), which is a lightweight multiservice Anime and Manga library management and discovery app that works with [Kitsu](https://kitsu.io/) and [AniList](https://anilist.co/). MyAnimeList and Anime-Planet support will be added in the future when the APIs become available.
 
 Requires the latest SDK (iOS 12), Xcode 10 or later. This app will run on iOS 11 or later.
@@ -21,7 +24,6 @@ All the frameworks are included. Just build! Here are the frameworks that are us
 * MGSwipeTableCell.framework
 * SAMKeychain.framework
 * SDWebImage.framework
-* XMLReader.framework
 
 See Third Party in the Settings view for third-party licenses terms.
 
