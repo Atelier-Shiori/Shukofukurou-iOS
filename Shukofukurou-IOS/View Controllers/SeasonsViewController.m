@@ -47,6 +47,9 @@ static NSString * const reuseIdentifier = @"Cell";
     SeasonsRootViewController *srvc = [vcm getSeasonRootViewController];
     srvc.seasonviewcontroller = self;
     
+    // Collection Items should only populate in the safe area.
+    self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
+    
     // Set Season and Year
     _currentseason = [NSUserDefaults.standardUserDefaults valueForKey:@"seasonselect"];
     _currentyear = (int)[[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian] components:NSCalendarUnitYear fromDate:[NSDate date]].year;
@@ -186,8 +189,10 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)startselector:(id)sender {
     UINavigationController *navcontroller = [UINavigationController new];
     navcontroller.viewControllers = @[_seasonselector];
-    navcontroller.modalPresentationStyle = UIModalPresentationPopover;
-    navcontroller.popoverPresentationController.barButtonItem = sender;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        navcontroller.modalPresentationStyle = UIModalPresentationPopover;
+        navcontroller.popoverPresentationController.barButtonItem = sender;
+    }
     [self presentViewController:navcontroller animated:YES completion:nil];
 }
 

@@ -209,8 +209,10 @@
     _listselector.selectedlist = _selectedlist;
     [navcontroller setViewControllers:@[_listselector]];
     [_listselector.tableView reloadData];
-    navcontroller.modalPresentationStyle = UIModalPresentationPopover;
-    navcontroller.popoverPresentationController.barButtonItem = sender;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        navcontroller.modalPresentationStyle = UIModalPresentationPopover;
+        navcontroller.popoverPresentationController.barButtonItem = sender;
+    }
     [self presentViewController:navcontroller animated:YES completion:nil];
 }
 
@@ -827,14 +829,18 @@
             [weakSelf reloadList];
         };
         navController.viewControllers = @[advedit];
-        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
         [self presentViewController:navController animated:YES completion:^{}];
     }]];
     if (currentservice == 3) {
         [options addAction:[UIAlertAction actionWithTitle:@"Manage Custom Lists" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UINavigationController *navcontroller = [UINavigationController new];
             CustomListTableViewController *clvc = [[UIStoryboard storyboardWithName:@"CustomList" bundle:nil] instantiateViewControllerWithIdentifier:@"customlistedit"];
-            navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+            }
             [navcontroller setViewControllers:@[clvc]];
             [self presentViewController:navcontroller animated:YES completion:nil];
             [clvc viewDidLoad];
@@ -961,8 +967,10 @@
         [weakSelf reloadList];
     };
     navcontroller.viewControllers = @[sorttvc];
-    navcontroller.modalPresentationStyle = UIModalPresentationPopover;
-    navcontroller.popoverPresentationController.barButtonItem = sender;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        navcontroller.modalPresentationStyle = UIModalPresentationPopover;
+        navcontroller.popoverPresentationController.barButtonItem = sender;
+    }
     [sorttvc loadView];
     [self presentViewController:navcontroller animated:YES completion:nil];
     [sorttvc loadSort:sortbystr withAccending:accending withType:_listtype];

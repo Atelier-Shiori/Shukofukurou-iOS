@@ -96,7 +96,9 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Auth" bundle:nil];
     AuthViewController *authvc = (AuthViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
     [navcontroller setViewControllers:@[authvc]];
-    navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
     [_mainvc presentViewController:navcontroller animated:YES completion:nil];
 }
 
