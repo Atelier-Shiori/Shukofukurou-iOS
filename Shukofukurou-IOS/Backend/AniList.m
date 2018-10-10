@@ -412,6 +412,17 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     }];
 }
 
++ (void)retrieveCharacterDetails:(int)characterid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    manager.requestSerializer = [Utility jsonrequestserializer];
+    NSDictionary *parameters = @{@"query" : kAniListcharacterpage , @"variables" : @{@"id" : @(characterid)}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler([AtarashiiAPIListFormatAniList AniListCharactertoAtarashii:responseObject[@"data"][@"Character"]]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 #pragma mark Title ID Retrieval
 + (void)retrieveTitleIdsWithlistType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *tmparray = [NSMutableArray new];

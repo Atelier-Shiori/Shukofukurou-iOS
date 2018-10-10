@@ -105,7 +105,22 @@
     CharacterDetailViewController *characterdetailvc = [self.storyboard instantiateViewControllerWithIdentifier:@"characterdetail"];
     [self.navigationController pushViewController:characterdetailvc animated:YES];
     if ([cellType isEqualToString:@"Characters"]) {
-        [characterdetailvc populateCharacterData:entry];
+        switch ([listservice getCurrentServiceID]) {
+            case 1: {
+                [characterdetailvc populateCharacterData:entry];
+                break;
+            }
+            case 3: {
+                [characterdetailvc retrieveCharacterDetailsForID:((NSNumber *)entry[@"id"]).intValue];
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+        
+        
+        
     }
     else {
         [characterdetailvc retrievePersonDetailsForID:((NSNumber *)entry[@"id"]).intValue];

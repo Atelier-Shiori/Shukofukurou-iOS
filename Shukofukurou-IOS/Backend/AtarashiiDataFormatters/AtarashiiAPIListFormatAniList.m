@@ -437,7 +437,7 @@
     for (NSDictionary *characterrole in person[@"characters"][@"edges"]) {
         @autoreleasepool {
             AtarashiiVoiceActingRoleObject *vaobj = [AtarashiiVoiceActingRoleObject new];
-            vaobj.characterid = ((NSNumber *)characterrole[@"id"]).intValue;
+            vaobj.characterid = ((NSNumber *)characterrole[@"node"][@"id"]).intValue;
             vaobj.name = characterrole[@"node"][@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", characterrole[@"node"][@"name"][@"last"], characterrole[@"node"][@"name"][@"first"]] : characterrole[@"node"][@"name"][@"first"];
             vaobj.image_url = characterrole[@"node"][@"image"] != [NSNull null] && characterrole[@"node"][@"image"][@"large"] ? characterrole[@"node"][@"image"][@"large"] : @"";
             for (NSDictionary *anime in characterrole[@"media"]) {
@@ -447,6 +447,41 @@
         }
     }
     personobj.voice_acting_roles = characterroles;
+    return personobj.NSDictionaryRepresentation;
+}
+
++ (NSDictionary *)AniListCharactertoAtarashii:(NSDictionary *)person {
+    AtarashiiPersonObject *personobj = [AtarashiiPersonObject new];
+    personobj.personid = ((NSNumber *)person[@"id"]).intValue;
+    personobj.name = person[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", person[@"name"][@"last"], person[@"name"][@"first"]] : person[@"name"][@"first"];
+    personobj.image_url = person[@"image"] != [NSNull null] && person[@"image"][@"large"] ? person[@"image"][@"large"] : @"";
+    personobj.native_name = person[@"name"][@"native"] && person[@"name"][@"native"] != [NSNull null] ? person[@"name"][@"native"] : @"";
+    personobj.more_details = person[@"description"] != [NSNull null] ? person[@"description"] : @"";
+    personobj.favorited_count = person[@"favourites"] != [NSNull null] ? ((NSNumber *)person[@"favourites"]).intValue : 0;
+    NSMutableArray *voiceactors = [NSMutableArray new];
+    NSMutableArray *animeappearences = [NSMutableArray new];
+    NSMutableArray *mangaappearences = [NSMutableArray new];
+    if (person[@"media"][@"edges"] && person[@"media"][@"edges"] != [NSNull null]) {
+        for (NSDictionary *media in person[@"media"][@"edges"]) {
+            NSDictionary *mediainfo = @{@"id" : media[@"node"][@"id"], @"title" : media[@"node"][@"title"][@"romaji"], @"image" :  media[@"node"][@"coverImage"] != [NSNull null] && media[@"node"][@"coverImage"][@"medium"] ? media[@"node"][@"coverImage"][@"medium"] : @"", @"role" : ((NSString *)media[@"characterRole"]).capitalizedString};
+            if ([(NSString *)media[@"node"][@"type"] isEqualToString:@"ANIME"]) {
+                [animeappearences addObject:mediainfo];
+                for (NSDictionary *va in media[@"voiceActors"]) {
+                    @autoreleasepool {
+                        if ([voiceactors filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", va[@"id"]]].count == 0) {
+                               [voiceactors addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", va[@"name"][@"last"], va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
+                        }
+                    }
+                }
+            }
+            else {
+                [mangaappearences addObject:mediainfo];
+            }
+        }
+    }
+    personobj.appeared_anime = animeappearences.copy;
+    personobj.appeared_manga = mangaappearences.copy;
+    personobj.voice_actors = voiceactors;
     return personobj.NSDictionaryRepresentation;
 }
 

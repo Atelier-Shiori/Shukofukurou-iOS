@@ -17,6 +17,7 @@ typedef NS_ENUM(unsigned int, personType) {
 };
 @property (strong, nonatomic) IBOutlet UIImageView *posterimage;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (void)retrieveCharacterDetailsForID:(int)personid;
 - (void)populateCharacterData:(NSDictionary *)data;
 - (void)retrievePersonDetailsForID:(int)personid;
 @end

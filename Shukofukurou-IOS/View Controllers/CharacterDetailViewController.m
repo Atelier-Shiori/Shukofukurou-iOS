@@ -29,6 +29,20 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)retrieveCharacterDetailsForID:(int)personid {
+    _personid = personid;
+    _persontype = personTypeCharacter;
+    self.navigationItem.hidesBackButton = YES;
+    [AniList retrieveCharacterDetails:personid completion:^(id responseObject) {
+        [self populateCharacterData:responseObject];
+        self.navigationItem.hidesBackButton = NO;
+    } error:^(NSError *error) {
+        NSLog(@"%@",error);
+        [self.navigationController popViewControllerAnimated:YES];
+        self.navigationItem.hidesBackButton = NO;
+    }];
+}
+
 - (void)retrievePersonDetailsForID:(int)personid {
     _personid = personid;
     _persontype = personTypeStaff;
@@ -57,7 +71,7 @@
     if (data[@"family_name"] && ((NSString *)data[@"family_name"]).length > 0) {
         [detailsArray addObject:@{@"title" : @"Family Name", @"value" : data[@"family_name"], @"type" : @"detail"}];
     }
-    if (((NSNumber *)data[@"favorited_count"]).intValue > 0) {
+    if (data[@"favorited_count"] && ((NSNumber *)data[@"favorited_count"]).intValue > 0) {
         [detailsArray addObject:@{@"title" : @"Favorited", @"value" : ((NSNumber *)data[@"favorited_count"]).stringValue, @"type" : @"detail"}];
     }
     if (data[@"native_name"] && ((NSString *)data[@"native_name"]).length > 0) {
@@ -98,14 +112,43 @@
     _persontype = personTypeCharacter;
     self.navigationItem.title = data[@"name"];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self loadimage:(NSString *)data[@"image"]];
+        if (data[@"image"]) {
+            [self loadimage:(NSString *)data[@"image"]];
+        }
+        else if (data[@"image_url"]) {
+            [self loadimage:data[@"image_url"]];
+        }
     });
-    [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"description"], @"type" : @"longdetail"}];
-    [detailsArray addObject:@{@"title" : @"Role", @"value" : data[@"role"], @"type" : @"detail"}];
+    if (data[@"description"]) {
+        [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"description"], @"type" : @"longdetail"}];
+    }
+    else {
+        [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"more_details"], @"type" : @"longdetail"}];
+    }
+    if (data[@"favorited_count"] && ((NSNumber *)data[@"favorited_count"]).intValue > 0) {
+        [detailsArray addObject:@{@"title" : @"Favorited", @"value" : ((NSNumber *)data[@"favorited_count"]).stringValue, @"type" : @"detail"}];
+    }
+    if (data[@"native_name"] && ((NSString *)data[@"native_name"]).length > 0) {
+        [detailsArray addObject:@{@"title" : @"Native Name", @"value" : data[@"native_name"], @"type" : @"detail"}];
+    }
+    if (data[@"role"]) {
+        [detailsArray addObject:@{@"title" : @"Role", @"value" : data[@"role"], @"type" : @"detail"}];
+    }
     persondetails[@"Details"] = detailsArray;
+    if (data[@"appeared_anime"]) {
+        persondetails[@"Anime Appearences"] = data[@"appeared_anime"];
+    }
+    if (data[@"appeared_manga"]) {
+        persondetails[@"Manga Appearences"] = data[@"appeared_manga"];
+    }
     persondetails[@"Voice Actors"] = data[@"actors"];
     _items = persondetails.copy;
-    _sections = @[@"Details", @"Voice Actors"];
+    if (data[@"appeared_anime"] && data[@"appeared_manga"]) {
+        _sections = @[@"Details",@"Anime Appearences", @"Manga Appearences", @"Voice Actors" ];
+    }
+    else {
+        _sections = @[@"Details", @"Voice Actors"];
+    }
     [self.tableView reloadData];
 }
 - (IBAction)showoptions:(id)sender {
@@ -215,6 +258,13 @@
              return detailcell;
          }
      }
+     else if ([cellType isEqualToString:@"Anime Appearences"] || [cellType isEqualToString:@"Manga Appearences"]) {
+         PersonSubtitleTableViewCell *subtitlecell = [tableView dequeueReusableCellWithIdentifier:@"charactercell" forIndexPath:indexPath];
+         subtitlecell.titlelabel.text = entry[@"title"];
+         subtitlecell.subtitlelabel.text = entry[@"role"];
+         [subtitlecell loadimage:entry[@"image"]];
+         return subtitlecell;
+     }
      else if ([cellType isEqualToString:@"Characters"] || [cellType isEqualToString:@"Voice Actors"]) {
          PersonSubtitleTableViewCell *subtitlecell = [tableView dequeueReusableCellWithIdentifier:@"charactercell" forIndexPath:indexPath];
          subtitlecell.titlelabel.text = entry[@"name"];
@@ -253,11 +303,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellType = _sections[indexPath.section];
     NSDictionary *entry = _items[cellType][indexPath.row];
+    int currentlistservice = [listservice getCurrentServiceID];
     if ([cellType isEqualToString:@"Anime Staff Positions"] || [cellType isEqualToString:@"Voice Acting Roles"]) {
-        int titleid = ((NSNumber *)entry[@"anime"][@"id"]).intValue;
-        TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TitleInfo"];
-        [self.navigationController pushViewController:titleinfovc animated:YES];
-        [titleinfovc loadTitleInfo:titleid withType:0];
+        if (currentlistservice == 3 && [cellType isEqualToString:@"Voice Acting Roles"]) {
+            CharacterDetailViewController *cdetailvc = [self.storyboard instantiateViewControllerWithIdentifier:@"characterdetail"];
+            [self.navigationController pushViewController:cdetailvc animated:YES];
+            [cdetailvc retrieveCharacterDetailsForID:((NSNumber *)entry[@"id"]).intValue];
+        }
+        else {
+            int titleid = ((NSNumber *)entry[@"anime"][@"id"]).intValue;
+            TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TitleInfo"];
+            [self.navigationController pushViewController:titleinfovc animated:YES];
+            [titleinfovc loadTitleInfo:titleid withType:0];
+        }
     }
     else if ([cellType isEqualToString:@"Published Manga"]) {
         int titleid = ((NSNumber *)entry[@"manga"][@"id"]).intValue;
@@ -269,6 +327,19 @@
         CharacterDetailViewController *cdetailvc = [self.storyboard instantiateViewControllerWithIdentifier:@"characterdetail"];
         [self.navigationController pushViewController:cdetailvc animated:YES];
         [cdetailvc retrievePersonDetailsForID:((NSNumber *)entry[@"id"]).intValue];
+    }
+    else if ([cellType isEqualToString:@"Anime Appearences"] || [cellType isEqualToString:@"Manga Appearences"]) {
+        int titletype;
+        if ([cellType isEqualToString:@"Anime Appearences"]) {
+            titletype = 0;
+        }
+        else {
+            titletype = 1;
+        }
+        int titleid = ((NSNumber *)entry[@"id"]).intValue;
+        TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TitleInfo"];
+        [self.navigationController pushViewController:titleinfovc animated:YES];
+        [titleinfovc loadTitleInfo:titleid withType:titletype];
     }
 }
 
