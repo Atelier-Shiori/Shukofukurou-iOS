@@ -72,22 +72,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="250" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zqy-Vi-U5T">
-                                <rect key="frame" x="0.0" y="106" width="250" height="558"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqy-Vi-U5T">
+                                <rect key="frame" x="0.0" y="90" width="250" height="531"/>
                                 <connections>
                                     <segue destination="e1U-ul-rkf" kind="embed" id="fpt-2U-Ibn"/>
                                 </connections>
                             </containerView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Tx-im-l7b">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="105"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="aAj-Pz-RQV">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="105"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Tx-im-l7b">
+                                <rect key="frame" x="0.0" y="20" width="250" height="72"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aAj-Pz-RQV">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="72"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcP-De-Esy">
-                                            <rect key="frame" x="12" y="34" width="230" height="50"/>
+                                            <rect key="frame" x="10" y="8" width="230" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qud-OI-ghi">
@@ -117,6 +115,9 @@
                                         </stackView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="ePl-Uh-uC1"/>
+                                </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLa-1n-UEk">
@@ -142,8 +143,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hLa-1n-UEk" firstAttribute="trailing" secondItem="5c1-Ch-XQv" secondAttribute="trailing" id="0CR-iG-iuJ"/>
+                            <constraint firstItem="1Tx-im-l7b" firstAttribute="trailing" secondItem="5c1-Ch-XQv" secondAttribute="trailing" id="6on-eX-FWK"/>
+                            <constraint firstItem="1Tx-im-l7b" firstAttribute="top" secondItem="KVC-ht-5Ii" secondAttribute="topMargin" id="Ap0-bh-bt8"/>
+                            <constraint firstItem="Zqy-Vi-U5T" firstAttribute="trailing" secondItem="5c1-Ch-XQv" secondAttribute="trailing" id="GoI-uM-iod"/>
                             <constraint firstItem="hLa-1n-UEk" firstAttribute="bottom" secondItem="5c1-Ch-XQv" secondAttribute="bottom" id="U2l-jX-9nX"/>
+                            <constraint firstItem="Zqy-Vi-U5T" firstAttribute="leading" secondItem="5c1-Ch-XQv" secondAttribute="leading" id="hEc-uj-Mfd"/>
+                            <constraint firstItem="1Tx-im-l7b" firstAttribute="leading" secondItem="5c1-Ch-XQv" secondAttribute="leading" id="m9p-UL-4mO"/>
+                            <constraint firstItem="Zqy-Vi-U5T" firstAttribute="top" secondItem="5c1-Ch-XQv" secondAttribute="top" constant="70" id="nNz-gu-sPX"/>
                             <constraint firstItem="hLa-1n-UEk" firstAttribute="leading" secondItem="5c1-Ch-XQv" secondAttribute="leading" id="pwY-QD-yho"/>
+                            <constraint firstItem="hLa-1n-UEk" firstAttribute="top" secondItem="Zqy-Vi-U5T" secondAttribute="bottom" id="rWG-YA-x8R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5c1-Ch-XQv"/>
                     </view>

@@ -38,6 +38,7 @@
 
 - (void)setsidebar:(CGSize)size {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        // Always Shows Sidebar if in Landscape orientation
         if (size.width/size.height >= 1) {
             self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
             _shouldHideMenuButton = YES;
@@ -47,6 +48,20 @@
             _shouldHideMenuButton = NO;
         }
         [NSNotificationCenter.defaultCenter postNotificationName:@"sidebarStateDidChange" object:@(_shouldHideMenuButton)];
+    }
+    else if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+        // Fixes Sidebar Width when in landscape on X models
+        int iPhoneHeight = (int)[[UIScreen mainScreen] nativeBounds].size.height;
+        bool isiPhoneXModel = (iPhoneHeight == 2436 || iPhoneHeight == 2688 || iPhoneHeight == 1792);
+        if (!isiPhoneXModel) {
+            return;
+        }
+        if (size.width/size.height >= 1) {
+            self.leftViewWidth = 295;
+        }
+        else {
+            self.leftViewWidth = 250;
+        }
     }
 }
 - (void)applicationDidEnterBackground:(NSNotification *)notification {
