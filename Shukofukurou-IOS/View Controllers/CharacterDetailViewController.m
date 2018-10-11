@@ -173,6 +173,11 @@
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf performShare:sender];
     }]];
+    if (self.navigationController.viewControllers.count > 3) {
+        [options addAction:[UIAlertAction actionWithTitle:@"Return to Parent" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }]];
+    }
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     
