@@ -10,6 +10,7 @@
 #import "RelatedTableViewController.h"
 #import "CharacterTableViewController.h"
 #import "ReviewTableViewController.h"
+#import "AdvEditTableViewController.h"
 #import "TitleInfoTableViewCell.h"
 #import "Utility.h"
 #import "NSString+HTMLtoNSAttributedString.h"
@@ -172,6 +173,28 @@
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf performShare:sender];
+    }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UINavigationController *navController = [UINavigationController new];
+        AdvEditTableViewController *advedit = [[UIStoryboard storyboardWithName:@"AdvancedEdit" bundle:nil] instantiateViewControllerWithIdentifier:@"advedit"];
+        [advedit populateTableViewWithID:weakSelf.titleid withEntryDictionary:[AtarashiiListCoreData retrieveSingleEntryForTitleID:weakSelf.titleid withService:[listservice getCurrentServiceID] withType:weakSelf.currenttype] withType:weakSelf.currenttype];
+        advedit.entryUpdated = ^(int listtype) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (weakSelf.currenttype == AnimeSearchType) {
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
+                }
+                else {
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
+                }
+                [weakSelf updateUserEntry];
+                [weakSelf.tableview reloadData];
+            });
+        };
+        navController.viewControllers = @[advedit];
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
+        [self presentViewController:navController animated:YES completion:^{}];
     }]];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
         [options addAction:[UIAlertAction actionWithTitle:@"Refresh Title Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
