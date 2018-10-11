@@ -37,6 +37,6 @@ NSString *const kAnilistUpdateMangaListEntryAdvanced = @"mutation ($id : Int, $p
 NSString *const kAnilistDeleteListEntry = @"mutation ($id : Int) {\n  DeleteMediaListEntry (id: $id) {\n    deleted\n  }\n}";
 NSString *const kAnilistModifyCustomLists = @"mutation ($id : Int, $custom_lists : [String] ) {\n    SaveMediaListEntry(id: $id, customLists : $custom_lists) {\n      id\n        customLists(asArray:true)\n  }\n}";
 NSString *const kAnilistRetrieveListTitleIdsOnly = @"query ($id : Int!, $page: Int, $type : MediaType) {\n  List: Page (page: $page) {\n    mediaList(userId: $id, type: $type) {\n      id :media{id, idMal}\n    }\n        pageInfo {\n      total\n      currentPage\n      lastPage\n      hasNextPage\n      perPage\n    }\n  }\n}";
-NSString *const kAnilistCharacterSearch = @"";
-NSString *const kAniListStaffSearch = @"";
+NSString *const kAnilistCharacterSearch = @"query ($query : String) {\n  Page(perPage: 50) {\n     characters(search: $query) {\n      id\n      name {\n        first\n        last\n        native\n      }\n      image {\n        large\n        medium\n      }\n    }\n  } \n}";
+NSString *const kAniListStaffSearch = @"query ($query: String) {\n  Page(perPage: 50) {\n     staff(search: $query) {\n      id\n      name {\n        first\n        last\n        native\n      }\n      image {\n        large\n        medium\n      }\n    }\n  }\n}";
 @end

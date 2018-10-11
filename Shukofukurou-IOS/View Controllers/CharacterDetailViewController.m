@@ -24,9 +24,22 @@
 
 @implementation CharacterDetailViewController
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+}
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ServiceChanged"]) {
+        // Leave Character Information
+        self.navigationItem.hidesBackButton = NO;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)retrieveCharacterDetailsForID:(int)personid {
@@ -313,7 +326,6 @@
         else {
             int titleid = ((NSNumber *)entry[@"anime"][@"id"]).intValue;
             TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TitleInfo"];
-            [self.navigationController popToRootViewControllerAnimated:NO];
             [self.navigationController pushViewController:titleinfovc animated:YES];
             [titleinfovc loadTitleInfo:titleid withType:0];
         }
@@ -339,7 +351,6 @@
         }
         int titleid = ((NSNumber *)entry[@"id"]).intValue;
         TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TitleInfo"];
-        [self.navigationController popToRootViewControllerAnimated:NO];
         [self.navigationController pushViewController:titleinfovc animated:YES];
         [titleinfovc loadTitleInfo:titleid withType:titletype];
     }

@@ -485,6 +485,26 @@
     return personobj.NSDictionaryRepresentation;
 }
 
++ (NSArray *)normalizePersonSearchData:(id)searchdata {
+    // Generate staff list
+    NSMutableArray *tmpstaffarray = [NSMutableArray new];
+    if (searchdata[@"data"][@"Page"] != [NSNull null] && searchdata[@"data"][@"Page"]) {
+        NSArray *dataarray = searchdata[@"data"][@"Page"][@"staff"] ? searchdata[@"data"][@"Page"][@"staff"] : searchdata[@"data"][@"Page"][@"characters"];
+        for (NSDictionary *staffmember in dataarray) {
+            @autoreleasepool {
+                NSNumber *personid = staffmember[@"id"];
+                NSString *personname = staffmember[@"name"][@"last"] != [NSNull null] && ((NSString *)staffmember[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",staffmember[@"name"][@"last"],staffmember[@"name"][@"first"]] : staffmember[@"name"][@"first"];
+                NSString *imageurl = staffmember[@"image"] != [NSNull null] && staffmember[@"image"][@"medium"] ? staffmember[@"image"][@"medium"] : @"";
+                NSString *role = @"";
+                if ([tmpstaffarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name ==[c] %@", personname]].count == 0) {
+                    [tmpstaffarray addObject:@{@"id" : personid.copy, @"name" : personname.copy, @"image" : imageurl.copy, @"role" : role.copy}];
+                }
+            }
+        }
+    }
+    return tmpstaffarray.copy;
+}
+
 + (NSArray *)normalizeSeasonData:(NSArray *)seasonData withSeason:(NSString *)season withYear:(int)year {
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *d in seasonData) {

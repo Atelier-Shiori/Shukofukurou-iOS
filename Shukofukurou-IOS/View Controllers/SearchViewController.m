@@ -13,6 +13,7 @@
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
 #import "TitleInfoViewController.h"
+#import "CharacterDetailViewController.h"
 
 @interface SearchViewController ()
 @property (strong) UISearchController *searchController;
@@ -29,10 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setsegment];
     _searchArray = [NSMutableArray new];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
-    _searchselector.selectedSegmentIndex = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
     [self setupsearch];
@@ -68,8 +68,20 @@
 - (void)recieveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Reload Search Results
-        if (_searchController.searchBar.text.length > 0) {
+        long selectedsegment = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
+        bool loadsearch = true;
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 2:
+                loadsearch = selectedsegment <= 1;
+                break;
+        }
+        [self setsegment];
+        if (_searchController.searchBar.text.length > 0 && loadsearch) {
             [self performSearch:_searchController.searchBar.text];
+        }
+        else {
+            [self resetSearchUI];
         }
     }
 }
@@ -84,13 +96,24 @@
 
 - (void)performSearch:(NSString *)searchtext {
     __weak SearchViewController *weakSelf = self;
-    [listservice searchTitle:searchtext withType:_searchtype completion:^(id responseObject) {
-        [weakSelf clearsearch];
-        [weakSelf.searchArray addObjectsFromArray:responseObject];
-        [weakSelf.tableView reloadData];
-    } error:^(NSError *error) {
-        NSLog(@"Search Failed: %@", error.localizedDescription);
-    }];
+    if (_searchselector.selectedSegmentIndex <= 1) {
+        [listservice searchTitle:searchtext withType:_searchtype completion:^(id responseObject) {
+            [weakSelf clearsearch];
+            [weakSelf.searchArray addObjectsFromArray:responseObject];
+            [weakSelf.tableView reloadData];
+        } error:^(NSError *error) {
+            NSLog(@"Search Failed: %@", error.localizedDescription);
+        }];
+    }
+    else {
+        [AniList searchPeople:searchtext withType:(int)_searchselector.selectedSegmentIndex - 2 completion:^(id responseObject) {
+            [weakSelf clearsearch];
+            [weakSelf.searchArray addObjectsFromArray:responseObject];
+            [weakSelf.tableView reloadData];
+        } error:^(NSError *error) {
+            NSLog(@"Search Failed: %@", error.localizedDescription);
+        }];
+    }
 }
 
 - (void)clearsearch {
@@ -103,6 +126,30 @@
     _searchController.searchBar.text = @"";
     [self clearsearch];
     [_searchController.searchBar resignFirstResponder];
+}
+
+- (void)setsegment {
+    NSArray *segmentitems;
+    long selectedsegment = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
+    [_searchselector removeAllSegments];
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+        case 2:
+            segmentitems = @[@"Anime", @"Manga"];
+            if (selectedsegment > 1) {
+                selectedsegment = 0;
+            }
+            break;
+        case 3:
+            segmentitems = @[@"Anime", @"Manga", @"Characters", @"Staff"];
+            break;
+    }
+    for (NSString *segmentstr in segmentitems) {
+        [_searchselector insertSegmentWithTitle:segmentstr atIndex:_searchselector.numberOfSegments animated:NO];
+    }
+    _searchselector.selectedSegmentIndex = selectedsegment;
+    _searchtype = (int)_searchselector.selectedSegmentIndex;
+    [NSUserDefaults.standardUserDefaults setInteger:selectedsegment forKey:@"selectedsearchtype"];
 }
 
 #pragma mark - Table view data source
@@ -127,6 +174,9 @@
      }
      else if (_searchtype == MangaSearchType) {
          return [self generateSearchMangaEntryCellAtIndexPath:indexPath tableView:tableView];
+     }
+     else if (_searchtype == CharacterSearchType || _searchtype == StaffSearchType) {
+         return [self generateSearchPersonEntryCellAtIndexPath:indexPath tableView:tableView];
      }
      return [UITableViewCell new];
  }
@@ -160,13 +210,40 @@
     return mentrycell;
 }
 
+- (UITableViewCell *)generateSearchPersonEntryCellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
+    NSDictionary *entry = _searchArray[indexPath.row];
+    SearchTableViewCell *mentrycell = [tableView dequeueReusableCellWithIdentifier:@"searchcell"];
+    if (mentrycell == nil && tableView != self.tableView) {
+        mentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"searchcell"];
+    }
+    mentrycell.title.text = entry[@"name"];
+    mentrycell.progress.text = @"";
+    mentrycell.progressVolumes.text = @"";
+    mentrycell.type.text = @"";
+    [mentrycell loadimage:entry[@"image"]];
+    mentrycell.active.hidden = true;
+    return mentrycell;
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *entry = _searchArray[indexPath.row];
     int titleid = ((NSNumber *)entry[@"id"]).intValue;
-    TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[[UIStoryboard storyboardWithName:@"InfoView" bundle:nil] instantiateViewControllerWithIdentifier:@"TitleInfo"];
-    [self.navigationController pushViewController:titleinfovc animated:YES];
-    [titleinfovc loadTitleInfo:titleid withType:_searchtype];
+    if (_searchtype == AnimeSearchType || _searchtype == MangaSearchType) {
+        TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[[UIStoryboard storyboardWithName:@"InfoView" bundle:nil] instantiateViewControllerWithIdentifier:@"TitleInfo"];
+        [self.navigationController pushViewController:titleinfovc animated:YES];
+        [titleinfovc loadTitleInfo:titleid withType:_searchtype];
+    }
+    else if (_searchtype == CharacterSearchType || _searchtype == StaffSearchType) {
+        CharacterDetailViewController *characterdetailvc = (CharacterDetailViewController *)[[UIStoryboard storyboardWithName:@"InfoView" bundle:nil] instantiateViewControllerWithIdentifier:@"characterdetail"];
+        [self.navigationController pushViewController:characterdetailvc animated:YES];
+        if (_searchtype == CharacterSearchType) {
+            [characterdetailvc retrieveCharacterDetailsForID:titleid];
+        }
+        else {
+            [characterdetailvc retrievePersonDetailsForID:titleid];
+        }
+    }
 }
 
 #pragma mark UISearchBarDelegate

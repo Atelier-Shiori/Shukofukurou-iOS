@@ -824,7 +824,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7yI-Xw-XP4">
-                                <rect key="frame" x="0.0" y="206" width="320" height="362"/>
+                                <rect key="frame" x="0.0" y="213" width="320" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="charactercell" rowHeight="88" id="1DL-8U-6By" customClass="PersonSubtitleTableViewCell">
@@ -971,10 +971,10 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Koy-mR-IoV">
-                                <rect key="frame" x="16" y="70" width="92" height="128"/>
+                                <rect key="frame" x="16" y="70" width="92" height="135"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="D2x-Ua-uNm"/>
-                                    <constraint firstAttribute="height" constant="128" id="mkg-ku-rz5"/>
+                                    <constraint firstAttribute="height" constant="135" id="mkg-ku-rz5"/>
                                 </constraints>
                             </imageView>
                         </subviews>

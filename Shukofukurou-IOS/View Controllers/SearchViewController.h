@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SearchViewController : UITableViewController <UISearchBarDelegate>
 typedef NS_ENUM(unsigned int, SearchMediaType) {
     AnimeSearchType = 0,
-    MangaSearchType = 1
+    MangaSearchType = 1,
+    CharacterSearchType = 2,
+    StaffSearchType = 3
 };
 @property (weak, nonatomic) IBOutlet UINavigationItem *navitem;
 @property (strong) NSMutableArray *searchArray;

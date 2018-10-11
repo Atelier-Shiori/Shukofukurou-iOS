@@ -109,6 +109,16 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     }];
 }
 
++ (void)searchPeople:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSDictionary *parameters = @{@"query" : type == AniListCharacter ? kAnilistCharacterSearch : kAniListStaffSearch, @"variables" : @{@"query" : searchterm}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler([AtarashiiAPIListFormatAniList normalizePersonSearchData:responseObject]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 #pragma mark Title Information
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
