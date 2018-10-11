@@ -51,6 +51,10 @@
     // Configure the cell...
     cell.textLabel.text = cellEntry[@"title"];
     
+    if (![cellType isEqualToString:@"Web"]) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
     return cell;
 }
 
