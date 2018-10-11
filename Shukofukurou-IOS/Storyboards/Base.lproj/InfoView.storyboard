@@ -53,9 +53,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axS-cy-5g6">
-                                                    <rect key="frame" x="16" y="11" width="111" height="23"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axS-cy-5g6">
+                                                    <rect key="frame" x="15" y="11" width="61.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -85,7 +84,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="axS-cy-5g6" secondAttribute="bottom" id="DmC-aJ-cIb"/>
+                                                <constraint firstItem="axS-cy-5g6" firstAttribute="leading" secondItem="hI9-2P-Gdj" secondAttribute="leadingMargin" id="QhT-V6-sNp"/>
                                                 <constraint firstItem="ANt-8S-t4u" firstAttribute="top" secondItem="hI9-2P-Gdj" secondAttribute="top" constant="8" id="RdO-eB-gEH"/>
+                                                <constraint firstItem="axS-cy-5g6" firstAttribute="top" secondItem="hI9-2P-Gdj" secondAttribute="topMargin" id="dnW-kz-0P9"/>
                                                 <constraint firstAttribute="trailing" secondItem="ANt-8S-t4u" secondAttribute="trailing" constant="13" id="jQr-3X-lUX"/>
                                                 <constraint firstAttribute="bottom" secondItem="ANt-8S-t4u" secondAttribute="bottom" constant="6.5" id="lnW-7v-ZKy"/>
                                             </constraints>
@@ -103,9 +105,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYf-oA-m9N">
-                                                    <rect key="frame" x="15" y="12" width="45" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYf-oA-m9N">
+                                                    <rect key="frame" x="15" y="11" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -121,6 +122,10 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vYf-oA-m9N" firstAttribute="top" secondItem="HkS-YV-A1S" secondAttribute="topMargin" id="4Df-3F-cpH"/>
+                                                <constraint firstItem="vYf-oA-m9N" firstAttribute="leading" secondItem="HkS-YV-A1S" secondAttribute="leadingMargin" id="hZP-s9-YVx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="scorefield" destination="jdA-JQ-7hV" id="KTw-z4-3fY"/>

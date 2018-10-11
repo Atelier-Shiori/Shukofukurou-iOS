@@ -313,6 +313,7 @@
         else {
             int titleid = ((NSNumber *)entry[@"anime"][@"id"]).intValue;
             TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TitleInfo"];
+            [self.navigationController popToRootViewControllerAnimated:NO];
             [self.navigationController pushViewController:titleinfovc animated:YES];
             [titleinfovc loadTitleInfo:titleid withType:0];
         }
@@ -338,6 +339,7 @@
         }
         int titleid = ((NSNumber *)entry[@"id"]).intValue;
         TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TitleInfo"];
+        [self.navigationController popToRootViewControllerAnimated:NO];
         [self.navigationController pushViewController:titleinfovc animated:YES];
         [titleinfovc loadTitleInfo:titleid withType:titletype];
     }
