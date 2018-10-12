@@ -105,8 +105,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYf-oA-m9N">
-                                                    <rect key="frame" x="15" y="11" width="45" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYf-oA-m9N">
+                                                    <rect key="frame" x="15" y="11" width="45" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -122,10 +123,6 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vYf-oA-m9N" firstAttribute="top" secondItem="HkS-YV-A1S" secondAttribute="topMargin" id="4Df-3F-cpH"/>
-                                                <constraint firstItem="vYf-oA-m9N" firstAttribute="leading" secondItem="HkS-YV-A1S" secondAttribute="leadingMargin" id="hZP-s9-YVx"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="scorefield" destination="jdA-JQ-7hV" id="KTw-z4-3fY"/>
@@ -521,10 +518,10 @@
             </objects>
             <point key="canvasLocation" x="616.875" y="-2094.7183098591549"/>
         </scene>
-        <!--Username-->
+        <!--Review Detail Table View Controller-->
         <scene sceneID="ff1-vm-aUb">
             <objects>
-                <tableViewController storyboardIdentifier="reviewdetail" title="Username" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i5Z-mq-3gA" customClass="ReviewDetailTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="reviewdetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i5Z-mq-3gA" customClass="ReviewDetailTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hiu-IR-Tl3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -815,7 +812,7 @@
             </objects>
             <point key="canvasLocation" x="534.375" y="155.28169014084509"/>
         </scene>
-        <!--Name-->
+        <!--Character Detail View Controller-->
         <scene sceneID="JCU-O1-NC8">
             <objects>
                 <viewController storyboardIdentifier="characterdetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Tr-Ep-oQe" customClass="CharacterDetailViewController" sceneMemberID="viewController">
@@ -1029,7 +1026,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Name" id="WHO-HK-v79">
+                    <navigationItem key="navigationItem" id="WHO-HK-v79">
                         <rightBarButtonItems>
                             <barButtonItem id="rYj-Tz-4lj"/>
                             <barButtonItem title="Item" image="option" id="DSp-XX-8hF">
@@ -1051,7 +1048,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="favorite" width="45" height="45"/>
-        <image name="option" width="50" height="50"/>
+        <image name="favorite" width="30" height="30"/>
+        <image name="option" width="25" height="25"/>
     </resources>
 </document>
