@@ -77,6 +77,14 @@
                         }
                     }];
                 }
+                else if (refreshed) {
+                    NSLog(@"New Data");
+                    completionHandler(UIBackgroundFetchResultNewData);
+                }
+                else {
+                    NSLog(@"No Data");
+                    completionHandler(UIBackgroundFetchResultNoData);
+                }
             }
             else if (refreshed) {
                 NSLog(@"New Data");

@@ -25,7 +25,12 @@
 + (void)autofetchAiringScheduleWithCompletionHandler: (void (^)(bool success, bool refreshed))completionHandler {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     if (![defaults valueForKey:@"airschedulerefreshdate"] || ((NSDate *)[defaults valueForKey:@"airschedulerefreshdate"]).timeIntervalSinceNow < 0) {
-        [self retrieveAiringScheduleShouldRefresh:true completionhandler:completionHandler];
+        [self retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success, bool refreshed) {
+            if (success && refreshed) {
+                [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*72] forKey:@"airschedulerefreshdate"];
+            }
+            completionHandler(success, refreshed);
+        }];
     }
     else {
         completionHandler(true, false);
