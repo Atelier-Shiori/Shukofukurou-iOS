@@ -108,7 +108,8 @@
     }
     if (([notification.name isEqualToString:@"AnimeRefreshList"] && _listtype == Anime) || ([notification.name isEqualToString:@"MangaRefreshList"] && _listtype == Manga)) {
         NSLog(@"Refreshing List");
-        [self retrieveList:refresh completion:^(bool success) {}];
+        [self refreshListWithCompletionHandler:^(bool success) {
+        }];
     }
     else if (([notification.name isEqualToString:@"AnimeReloadList"] && _listtype == Anime) || ([notification.name isEqualToString:@"MangaReloadList"] && _listtype == Manga)) {
         NSLog(@"Reloading List");
@@ -122,13 +123,24 @@
     else if ([notification.name isEqualToString:@"UserLoggedOut"]) {
         // Clear List
         NSLog(@"Clearing Lists");
-        
+        [self clearlists];
     }
 }
 
 - (void)setViewTitle {
     _navigationitem.title =  !_isCustomList ? _selectedlist.capitalizedString : _selectedlist;
 }
+
+- (void)refreshListWithCompletionHandler:(void (^)(bool success)) completionHandler {
+    NSLog(@"Refreshing List");
+    [self retrieveList:true completion:^(bool success) {
+        NSLog(@"Refreshed: %i", success);
+        [self.tableView reloadData];
+        [self.listselector generateLists:[self retrieveEntriesWithType:self.listtype withFilterPredicate:nil] withListType:self.listtype];
+        completionHandler(success);
+    }];
+}
+
 - (void)retrieveList:(bool)refresh completion:(void (^)(bool success)) completionHandler {
     bool refreshlist = refresh;
     bool exists = [self hasListEntriesWithType:_listtype];

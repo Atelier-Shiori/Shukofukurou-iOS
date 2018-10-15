@@ -21,6 +21,7 @@ typedef NS_ENUM(unsigned int, ListMediaType) {
 @property (weak, nonatomic) IBOutlet UIRefreshControl *refreshcontrol;
 - (void)setViewTitle;
 - (void)reloadList;
+- (void)refreshListWithCompletionHandler:(void (^)(bool success)) completionHandler;
 - (void)retrieveList:(bool)refresh completion:(void (^)(bool success)) completionHandler;
 - (void)switchlistservice;
 - (void)clearlists;

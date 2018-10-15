@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AiringSchedule : NSObject
-+ (void)retrieveAiringScheduleShouldRefresh:(bool)refresh completionhandler: (void (^)(bool success))completionHandler;
++ (void)autofetchAiringScheduleWithCompletionHandler: (void (^)(bool success, bool refreshed))completionHandler;
++ (void)retrieveAiringScheduleShouldRefresh:(bool)refresh completionhandler: (void (^)(bool success, bool refreshed))completionHandler;
 + (NSArray *)retrieveAiringDataForDay:(NSString *)day;
 @end
 

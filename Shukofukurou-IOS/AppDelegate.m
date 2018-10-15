@@ -10,6 +10,7 @@
 #import "listservice.h"
 #import "AutoRefreshTimer.h"
 #import "StreamDataRetriever.h"
+#import "AiringSchedule.h"
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
@@ -48,8 +49,49 @@
      registerDefaults:defaultValues];
 }
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
 
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"Fetch Started");
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
+        if (success) {
+            if ([NSUserDefaults.standardUserDefaults boolForKey:@"refreshautomatically"] && [listservice checkAccountForCurrentService]) {
+                if (![defaults valueForKey:@"nextlistrefresh"] || ((NSDate *)[defaults valueForKey:@"nextlistrefresh"]).timeIntervalSinceNow < 0) {
+                    [[self.vcmanager getAnimeListRootViewController].lvc refreshListWithCompletionHandler:^(bool success) {
+                        if (success) {
+                            [[self.vcmanager getMangaListRootViewController].lvc refreshListWithCompletionHandler:^(bool success) {
+                                if (success) {
+                                    NSLog(@"New Data");
+                                    [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*15] forKey:@"nextlistrefresh"];
+                                    completionHandler(UIBackgroundFetchResultNewData);
+                                }
+                                else {
+                                    NSLog(@"Fetch Failed");
+                                    completionHandler(UIBackgroundFetchResultFailed);
+                                }
+                            }];
+                        }
+                        else {
+                            NSLog(@"Fetch Failed");
+                            completionHandler(UIBackgroundFetchResultFailed);
+                        }
+                    }];
+                }
+            }
+            else if (refreshed) {
+                NSLog(@"New Data");
+                completionHandler(UIBackgroundFetchResultNewData);
+            }
+            else {
+                NSLog(@"No Data");
+                completionHandler(UIBackgroundFetchResultNoData);
+            }
+        }
+        else {
+            NSLog(@"Fetch Failed");
+            completionHandler(UIBackgroundFetchResultFailed);
+        }
+    }];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -57,6 +99,7 @@
     [self checkaccountinformation];
     _autorefresh = [AutoRefreshTimer new];
     [StreamDataRetriever retrieveStreamData];
+    [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 

@@ -64,7 +64,9 @@
 }
 - (IBAction)setrefreshautomatically:(id)sender {
     [NSUserDefaults.standardUserDefaults setBool:_refreshlistautomatically.on forKey:@"refreshautomatically"];
-    [NSNotificationCenter.defaultCenter postNotificationName:@"AutoRefreshStateChanged" object:nil];
+    if (!_refreshlistautomatically.on) {
+        [NSUserDefaults.standardUserDefaults setObject:nil forKey:@"nextlistrefresh"];
+    }
 }
 - (IBAction)setstreamregion:(id)sender {
     [NSUserDefaults.standardUserDefaults setInteger:_streamregion.selectedSegmentIndex forKey:@"stream_region"];

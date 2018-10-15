@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592DA184216BCE88008C99B3 /* SortTableViewController.m */; };
 		59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59325ED5216BBF1F00430ED7 /* OAuthLogin.m */; };
+		5933CEC22174F0CA00EAE7E6 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC02174F0CA00EAE7E6 /* MSWeakTimer.m */; };
+		5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */; };
 		5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
@@ -103,8 +105,6 @@
 		59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
 		59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
-		59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9E72156A014005D99D5 /* MSWeakTimer.m */; };
-		59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */; };
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */; };
@@ -355,6 +355,10 @@
 		592DA184216BCE88008C99B3 /* SortTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
 		59325ED4216BBF1F00430ED7 /* OAuthLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAuthLogin.h; sourceTree = "<group>"; };
 		59325ED5216BBF1F00430ED7 /* OAuthLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAuthLogin.m; sourceTree = "<group>"; };
+		5933CEC02174F0CA00EAE7E6 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
+		5933CEC12174F0CA00EAE7E6 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
+		5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutoRefreshTimer.m; path = "Shukofukurou-IOS/AutoRefreshTimer.m"; sourceTree = SOURCE_ROOT; };
+		5933CEC42174F0F000EAE7E6 /* AutoRefreshTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoRefreshTimer.h; path = "Shukofukurou-IOS/AutoRefreshTimer.h"; sourceTree = SOURCE_ROOT; };
 		5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
 		59481D6B21591F44003CE863 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
@@ -517,10 +521,6 @@
 		59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvEditTableViewController.m; sourceTree = "<group>"; };
 		59A75816215D3A8800B36F9C /* TitleInfoCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleInfoCache.h; sourceTree = "<group>"; };
 		59A75817215D3A8800B36F9C /* TitleInfoCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
-		59AEE9E62156A014005D99D5 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
-		59AEE9E72156A014005D99D5 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
-		59AEE9E92156A108005D99D5 /* AutoRefreshTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoRefreshTimer.h; sourceTree = "<group>"; };
-		59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoRefreshTimer.m; sourceTree = "<group>"; };
 		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
 		59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyViewController.h; sourceTree = "<group>"; };
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
@@ -554,6 +554,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5933CEBF2174F0A200EAE7E6 /* MSWeakTimer */ = {
+			isa = PBXGroup;
+			children = (
+				5933CEC12174F0CA00EAE7E6 /* MSWeakTimer.h */,
+				5933CEC02174F0CA00EAE7E6 /* MSWeakTimer.m */,
+			);
+			path = MSWeakTimer;
+			sourceTree = "<group>";
+		};
 		5962409C2155622E001995AD = {
 			isa = PBXGroup;
 			children = (
@@ -588,9 +597,9 @@
 				596241AB21556443001995AD /* Storyboards */,
 				596241D2215564BD001995AD /* Table View Cells */,
 				596241E5215564E2001995AD /* View Controllers */,
-				59AEE9E92156A108005D99D5 /* AutoRefreshTimer.h */,
-				59AEE9EA2156A108005D99D5 /* AutoRefreshTimer.m */,
 				59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */,
+				5933CEC42174F0F000EAE7E6 /* AutoRefreshTimer.h */,
+				5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */,
 			);
 			path = "Shukofukurou-IOS";
 			sourceTree = "<group>";
@@ -607,9 +616,9 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				5933CEBF2174F0A200EAE7E6 /* MSWeakTimer */,
 				59D915882162C1A600B5A61B /* UILabel+Copyable */,
 				5997B4A82162A68C005E894A /* TopAlignedLabel */,
-				59AEE9D12156A007005D99D5 /* MSWeakTimer */,
 				596240E1215562D2001995AD /* SDWebImage-master */,
 				596240E0215562CB001995AD /* SAMKeychain */,
 				596240D921556282001995AD /* 1Password */,
@@ -961,15 +970,6 @@
 			path = TopAlignedLabel;
 			sourceTree = "<group>";
 		};
-		59AEE9D12156A007005D99D5 /* MSWeakTimer */ = {
-			isa = PBXGroup;
-			children = (
-				59AEE9E62156A014005D99D5 /* MSWeakTimer.h */,
-				59AEE9E72156A014005D99D5 /* MSWeakTimer.m */,
-			);
-			path = MSWeakTimer;
-			sourceTree = "<group>";
-		};
 		59D915882162C1A600B5A61B /* UILabel+Copyable */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,6 +1035,11 @@
 				TargetAttributes = {
 					596240A42155622E001995AD = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					596240BF2155622F001995AD = {
 						CreatedOnToolsVersion = 10.0;
@@ -1301,6 +1306,7 @@
 				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
 				5962421E21556514001995AD /* ViewControllerManager.m in Sources */,
 				598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */,
+				5933CEC22174F0CA00EAE7E6 /* MSWeakTimer.m in Sources */,
 				5962421921556514001995AD /* AiringViewController.m in Sources */,
 				5962418A215563D2001995AD /* Utility.m in Sources */,
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
@@ -1316,7 +1322,6 @@
 				5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
-				59AEE9EB2156A108005D99D5 /* AutoRefreshTimer.m in Sources */,
 				59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */,
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
@@ -1343,6 +1348,7 @@
 				592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
+				5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */,
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
 				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
 				596241562155638D001995AD /* ClientConstants.m in Sources */,
@@ -1355,7 +1361,6 @@
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
-				59AEE9E82156A014005D99D5 /* MSWeakTimer.m in Sources */,
 				596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,

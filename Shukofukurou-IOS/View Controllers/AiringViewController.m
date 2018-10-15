@@ -42,13 +42,15 @@
     airingvc.airingviewcontroller = self;
     [self autoselectday];
     __weak AiringViewController *weakSelf = self;
-    [AiringSchedule retrieveAiringScheduleShouldRefresh:[NSUserDefaults.standardUserDefaults boolForKey:@"refreshlistonstart"] completionhandler:^(bool success) {
-        if (success) {
-            NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-            weakSelf.airinglist = [[AiringSchedule retrieveAiringDataForDay:weakSelf.currentday.lowercaseString] sortedArrayUsingDescriptors:@[sort]];
-            [weakSelf.tableView reloadData];
-        }
-    }];
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if (![defaults valueForKey:@"airschedulerefreshdate"] || ((NSDate *)[defaults valueForKey:@"airschedulerefreshdate"]).timeIntervalSinceNow < 0) {
+        [AiringSchedule retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success, bool refreshed) {
+            if (success && refreshed) {
+                [self reloadData];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*72] forKey:@"airschedulerefreshdate"];
+            }
+        }];
+    }
     // Set Block
     _airingdaycontroller = (AiringDayTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"dayselector"];
     _airingdaycontroller.listChanged = ^(NSString * _Nonnull day) {
@@ -61,7 +63,7 @@
             [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         }
     };
-    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(airScheduleHasNewDataNotification:) name:@"airscheduleHasNewData" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
 }
@@ -81,6 +83,10 @@
             [self.menubtn setTintColor:nil];
         }
     }
+}
+
+- (void)airScheduleHasNewDataNotification:(NSNotification *)notification {
+    [self reloadData];
 }
 
 #pragma mark - Table view data source
@@ -139,14 +145,18 @@
 
 - (IBAction)refresh:(id)sender {
     __weak AiringViewController *weakSelf = self;
-    [AiringSchedule retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success) {
-        if (success) {
-            NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-            weakSelf.airinglist = [[AiringSchedule retrieveAiringDataForDay:weakSelf.currentday] sortedArrayUsingDescriptors:@[sort]];
+    [AiringSchedule retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success, bool refreshed) {
+        if (success && refreshed) {
+            [weakSelf reloadData];
         }
-        [weakSelf.tableView reloadData];
         [sender endRefreshing];
     }];
+}
+
+- (void)reloadData {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    self.airinglist = [[AiringSchedule retrieveAiringDataForDay:self.currentday.lowercaseString] sortedArrayUsingDescriptors:@[sort]];
+    [self.tableView reloadData];
 }
 
 - (IBAction)selectday:(id)sender {

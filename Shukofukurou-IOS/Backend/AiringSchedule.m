@@ -22,18 +22,28 @@
     return [self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"day ==[c] %@", day]];
 }
 
-+ (void)retrieveAiringScheduleShouldRefresh:(bool)refresh completionhandler: (void (^)(bool success))completionHandler {
++ (void)autofetchAiringScheduleWithCompletionHandler: (void (^)(bool success, bool refreshed))completionHandler {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if (![defaults valueForKey:@"airschedulerefreshdate"] || ((NSDate *)[defaults valueForKey:@"airschedulerefreshdate"]).timeIntervalSinceNow < 0) {
+        [self retrieveAiringScheduleShouldRefresh:true completionhandler:completionHandler];
+    }
+    else {
+        completionHandler(true, false);
+    }
+}
+
++ (void)retrieveAiringScheduleShouldRefresh:(bool)refresh completionhandler: (void (^)(bool success, bool refreshed))completionHandler {
     bool shouldrefresh = refresh || [self retrieveFromCoreData:nil].count == 0;
     if (shouldrefresh) {
         [self retrieveAiringSchedule:^(id responseobject) {
             [self processAiringData:responseobject];
-            completionHandler(true);
+            completionHandler(true , true);
         } error:^(NSError *error) {
-            completionHandler(false);
+            completionHandler(false, false);
         }];
     }
     else {
-        completionHandler(true);
+        completionHandler(true, false);
     }
 }
 

@@ -9,6 +9,8 @@
 #import "AutoRefreshTimer.h"
 #import "ViewControllerManager.h"
 #import "MSWeakTimer.h"
+#import "AiringSchedule.h"
+#import "listservice.h"
 
 @interface AutoRefreshTimer ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -17,9 +19,6 @@
 @end
 
 @implementation AutoRefreshTimer
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
 
 - (instancetype)init {
     self = [super init];
@@ -28,15 +27,8 @@
     }
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukurou-iOS", DISPATCH_QUEUE_CONCURRENT);
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AutoRefreshStateChanged" object:nil];
     [self toggleTimer];
     return self;
-}
-
-- (void)recieveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"AutoRefreshStateChanged"]) {
-        [self toggleTimer];
-    }
 }
 
 - (void)toggleTimer {
@@ -77,7 +69,17 @@
 }
 
 - (void)fireTimer {
-    [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeRefreshList" object:nil];
-    [NSNotificationCenter.defaultCenter postNotificationName:@"MangaRefreshList" object:nil];
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
+        if (success) {
+            if ([defaults boolForKey:@"refreshautomatically"] && [listservice checkAccountForCurrentService]) {
+                if (![defaults valueForKey:@"nextlistrefresh"] || ((NSDate *)[defaults valueForKey:@"nextlistrefresh"]).timeIntervalSinceNow < 0) {
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeRefreshList" object:nil];
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"MangaRefreshList" object:nil];
+                    [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*15] forKey:@"nextlistrefresh"];
+                }
+            }
+        }
+    }];
 }
 @end
