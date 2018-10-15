@@ -13,8 +13,8 @@
         <scene sceneID="ae7-k9-YkQ">
             <objects>
                 <navigationController storyboardIdentifier="searchroot" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nix-WS-sLn" customClass="SearchRootViewController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fkz-OH-Gh5">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="fkz-OH-Gh5">
+                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-554" y="-42"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="Kyv-Z8-dbR">
             <objects>
                 <tableViewController storyboardIdentifier="SearchView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mYk-uX-dIE" customClass="SearchViewController" sceneMemberID="viewController">
@@ -119,15 +119,14 @@
                             <outlet property="delegate" destination="mYk-uX-dIE" id="z6T-EY-nic"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="FQd-Jp-2Gg">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="Search" id="FQd-Jp-2Gg">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="I2X-5t-HXG">
                             <connections>
                                 <action selector="showLeftViewAnimated:" destination="mYk-uX-dIE" id="5TG-r4-QCe"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="1J1-YA-Klo">
-                            <rect key="frame" x="83" y="7" width="229" height="30"/>
+                            <rect key="frame" x="58" y="7" width="254" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Anime"/>
@@ -162,7 +161,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
-        <image name="status-active" width="60" height="60"/>
+        <image name="Menu" width="25" height="25"/>
+        <image name="status-active" width="30" height="30"/>
     </resources>
 </document>

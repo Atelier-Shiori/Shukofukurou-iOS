@@ -364,8 +364,8 @@
         <scene sceneID="TLY-Bn-CoK">
             <objects>
                 <navigationController storyboardIdentifier="ListViewRoot" title="ListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bnb-Qg-Z8N" customClass="ListRootViewController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zvb-xt-jhv">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Zvb-xt-jhv">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
