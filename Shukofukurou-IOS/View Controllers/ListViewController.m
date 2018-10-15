@@ -450,7 +450,7 @@
         return true;
     }]];
     if ([self canIncrement:entry]) {
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ep +" backgroundColor:UIColor.greenColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ep +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf incrementProgress:entry];
             return true;
@@ -506,12 +506,12 @@
         return true;
     }]];
     if ([self canIncrement:entry]) {
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Vol +" backgroundColor:UIColor.blueColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Vol +" backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf performMangaIncrement:entry volumeIncrement:YES];
             return true;
         }]];
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ch +" backgroundColor:UIColor.greenColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ch +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf performMangaIncrement:entry volumeIncrement:NO];
             return true;

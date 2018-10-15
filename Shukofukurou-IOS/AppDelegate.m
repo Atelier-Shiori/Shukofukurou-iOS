@@ -11,6 +11,7 @@
 #import "AutoRefreshTimer.h"
 #import "StreamDataRetriever.h"
 #import "AiringSchedule.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
@@ -107,7 +108,10 @@
     [self checkaccountinformation];
     _autorefresh = [AutoRefreshTimer new];
     [StreamDataRetriever retrieveStreamData];
+    // Set Background Fetch
     [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    // Set Image Disk Cache Size
+    SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 32;
     return YES;
 }
 
