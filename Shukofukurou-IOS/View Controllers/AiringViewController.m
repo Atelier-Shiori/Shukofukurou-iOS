@@ -51,6 +51,9 @@
             }
         }];
     }
+    else {
+        [self reloadData];
+    }
     // Set Block
     _airingdaycontroller = (AiringDayTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"dayselector"];
     _airingdaycontroller.listChanged = ^(NSString * _Nonnull day) {
