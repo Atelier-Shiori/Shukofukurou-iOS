@@ -11,7 +11,7 @@
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
 #import "listservice.h"
-#import "ReviewDetailTableViewController.h"
+#import "ReviewDetailViewController.h"
 
 @interface ReviewTableViewController ()
 @property int type;
@@ -157,7 +157,8 @@
         return;
     }
     NSDictionary *reviewData = _reviews[indexPath.row];
-    ReviewDetailTableViewController *reviewdetailvc = [self.storyboard instantiateViewControllerWithIdentifier:@"reviewdetail"];
+    ReviewDetailViewController *reviewdetailvc = (ReviewDetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"reviewdetail"];
+    [reviewdetailvc loadView];
     [self.navigationController pushViewController:reviewdetailvc animated:YES];
     [reviewdetailvc populateReviewData:reviewData withType:_type];
 }

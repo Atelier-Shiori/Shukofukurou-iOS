@@ -43,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
+        <image name="Menu" width="25" height="25"/>
     </resources>
 </document>

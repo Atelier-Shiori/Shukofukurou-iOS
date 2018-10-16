@@ -14,15 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ReviewInfoTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *avatar;
-@property (weak, nonatomic) IBOutlet UILabel *helpful;
-@property (weak, nonatomic) IBOutlet UILabel *score;
-@property (weak, nonatomic) IBOutlet UILabel *reviewdate;
-@property (weak, nonatomic) IBOutlet UILabel *progress;
-- (void)loadimage:(NSString *)imageurl;
-@end
-
 @interface ReactionTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *likes;

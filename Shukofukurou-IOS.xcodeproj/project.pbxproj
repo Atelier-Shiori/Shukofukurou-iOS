@@ -107,8 +107,8 @@
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
-		59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
+		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -524,10 +524,10 @@
 		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
 		59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyViewController.h; sourceTree = "<group>"; };
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
-		59D9156A2162B4CA00B5A61B /* ReviewDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailTableViewController.h; sourceTree = "<group>"; };
-		59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailTableViewController.m; sourceTree = "<group>"; };
 		59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
 		59D9159E2162C1B800B5A61B /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
+		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
+		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -924,8 +924,8 @@
 				596241EC215564FE001995AD /* MainViewController.m */,
 				598AB4D22162658700979C19 /* RelatedTableViewController.h */,
 				598AB4D32162658700979C19 /* RelatedTableViewController.m */,
-				59D9156A2162B4CA00B5A61B /* ReviewDetailTableViewController.h */,
-				59D9156B2162B4CA00B5A61B /* ReviewDetailTableViewController.m */,
+				F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */,
+				F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */,
 				598AB4EF2162976100979C19 /* ReviewTableViewController.h */,
 				598AB4F02162976100979C19 /* ReviewTableViewController.m */,
 				5962420A2155650E001995AD /* SearchRootViewController.h */,
@@ -1302,6 +1302,7 @@
 				5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */,
 				5962422421556514001995AD /* TitleInfoViewController.m in Sources */,
 				5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */,
+				F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */,
 				596241A82155642E001995AD /* SideBarCell.m in Sources */,
 				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
 				5962421E21556514001995AD /* ViewControllerManager.m in Sources */,
@@ -1322,7 +1323,6 @@
 				5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
-				59D9156C2162B4CA00B5A61B /* ReviewDetailTableViewController.m in Sources */,
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
