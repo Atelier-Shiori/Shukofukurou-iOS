@@ -70,6 +70,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+    if ([anilistscoretype isEqualToString:@"POINT_100"]) {
+        self.scorefield.keyboardType = UIKeyboardTypeNumberPad;
+    }
+    else if ([anilistscoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+        self.scorefield.keyboardType = UIKeyboardTypeDecimalPad;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -85,24 +92,45 @@
 
 - (IBAction)scoreeditdidend:(id)sender {
     NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+    if (![self checkNumberString:_scorefield.text]) {
+        [self resetScore];
+        return;
+    }
     if ([anilistscoretype isEqualToString:@"POINT_100"]) {
         if (_scorefield.text.intValue <= 100 && _scorefield.text.intValue >= 0) {
             _rawscore = _scorefield.text.intValue;
+            _scorefield.text = @(_rawscore).stringValue;
             self.scoreChanged(_rawscore, @"Score");
         }
         else {
-            _scorefield.text = @(_rawscore).stringValue;
+            [self resetScore];
         }
     }
     else if ([anilistscoretype isEqualToString:@"POINT_10_DECIMAL"]) {
-        if (_scorefield.text.intValue <= 10 && _scorefield.text.intValue >= 0) {
-            _rawscore = _scorefield.text.intValue * 10;
+        if (_scorefield.text.floatValue <= 10 && _scorefield.text.floatValue >= 0) {
+            _rawscore = (int)(_scorefield.text.floatValue * 10);
             self.scoreChanged(_rawscore, @"Score");
         }
         else {
-            _scorefield.text = @(_rawscore/10).stringValue;
+            [self resetScore];
         }
     }
+}
+
+- (bool)checkNumberString:(NSString *)numstr {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+    formatter.numberStyle = [anilistscoretype isEqualToString:@"POINT_100"] ? NSNumberFormatterNoStyle : NSNumberFormatterDecimalStyle;
+    NSNumber *number = [formatter numberFromString:numstr];
+    if (number != nil) {
+        return true;
+    }
+    return false;
+}
+
+- (void)resetScore {
+    NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+    _scorefield.text = [anilistscoretype isEqualToString:@"POINT_100"] ? @(_rawscore).stringValue : @(_rawscore/10).stringValue;
 }
 
 @end

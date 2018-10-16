@@ -17,17 +17,11 @@
 
 @implementation MainViewController
 
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.mvc = self;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
-    
     [self setsidebar:self.view.bounds.size];
 }
 
@@ -64,14 +58,11 @@
         }
     }
 }
-- (void)applicationDidEnterBackground:(NSNotification *)notification {
+- (void)hidetoolbarstate {
     self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
-    [super viewWillLayoutSubviews];
-    
 }
-- (void)applicationDidBecomeActive:(NSNotification *)notification {
+- (void)showtoolbarstate {
     [self setsidebar:self.view.bounds.size];
-    [super viewDidLayoutSubviews];
 }
 - (void)loadfromdefaults {
     NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
