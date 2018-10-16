@@ -34,6 +34,14 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+    if (indexPath) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
+    }
+}
+
 - (void)recieveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Leave Character Information

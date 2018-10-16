@@ -55,6 +55,14 @@
     _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSIndexPath *indexPath = self.tableview.indexPathForSelectedRow;
+    if (indexPath) {
+        [self.tableview deselectRowAtIndexPath:indexPath animated:animated];
+    }
+}
+
 - (void)recieveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"UserLoggedIn"]) {
         if (notification.object) {
@@ -522,7 +530,6 @@
     else if ([cell isKindOfClass:[TitleInfoStreamSiteTableViewCell class]]) {
         [(TitleInfoStreamSiteTableViewCell *)cell selectAction];
     }
-    ((UITableViewCell *)cell).selected = NO;
 }
 
 #pragma mark Data Source Dictionary Generators

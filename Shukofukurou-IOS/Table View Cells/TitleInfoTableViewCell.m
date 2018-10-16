@@ -195,7 +195,9 @@
     [ActionSheetStringPicker showPickerWithTitle:@"Select a Status" rows:status initialSelection:selectedstatus doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
         self.valueChanged(status[selectedIndex], self.textLabel.text);
         self.detailTextLabel.text = status[selectedIndex];
+        [self setSelected:NO animated:YES];
     } cancelBlock:^(ActionSheetStringPicker *picker) {
+        [self setSelected:NO animated:YES];
     } origin:self];
 }
 
