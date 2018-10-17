@@ -117,7 +117,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" textLabel="iSZ-Ui-isE" style="IBUITableViewCellStyleDefault" id="B6s-b4-zX9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="iSZ-Ui-isE" style="IBUITableViewCellStyleDefault" id="B6s-b4-zX9">
                                         <rect key="frame" x="0.0" y="243.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B6s-b4-zX9" id="XDK-ZR-7bw">
@@ -365,6 +365,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="25" height="25"/>
+        <image name="Menu" width="50" height="50"/>
     </resources>
 </document>
