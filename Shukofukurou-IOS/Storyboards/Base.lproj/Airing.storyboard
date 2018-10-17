@@ -39,11 +39,11 @@
                                                     <rect key="frame" x="79" y="0.0" width="69" height="98"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skA-u4-5KF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="33.5" height="25"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="36.5" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="TEr-Lz-86s"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -188,7 +188,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="25" height="25"/>
-        <image name="day" width="30" height="30"/>
+        <image name="Menu" width="50" height="50"/>
+        <image name="day" width="60" height="60"/>
     </resources>
 </document>

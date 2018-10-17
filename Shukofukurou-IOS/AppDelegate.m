@@ -260,6 +260,18 @@
 #pragma mark MainSideBarView Delegate
 - (void)accountRemovedForService:(int)service {
     NSLog(@"Logged out of: %i", service);
+    if (service == 3) {
+        // Reset Selected List for AniList
+        NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+        if ([defaults boolForKey:@"anilist-selectedlistcustomlistanime"]) {
+            [defaults setValue:@"watching" forKey:@"anilist-selectedanimelist"];
+            [defaults setBool:NO forKey:@"anilist-selectedlistcustomlistanime"];
+        }
+        if ([defaults boolForKey:@"anilist-selectedlistcustomlistmanga"]) {
+            [defaults setValue:@"reading" forKey:@"anilist-selectedmangalist"];
+            [defaults setBool:NO forKey:@"anilist-selectedlistcustomlistmanga"];
+        }
+    }
     [_vcmanager.getAnimeListRootViewController.lvc clearlists];
     [_vcmanager.getMangaListRootViewController.lvc clearlists];
     [_vcmanager.mvc loadfromdefaults];
