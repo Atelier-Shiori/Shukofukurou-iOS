@@ -379,7 +379,7 @@
             NSString *imageurl = acharacter[@"node"][@"image"] != [NSNull null] && acharacter[@"node"][@"image"][@"large"] ? acharacter[@"node"][@"image"][@"large"] : @"";
             NSMutableArray *castingsarray = [NSMutableArray new];
             for (NSDictionary *va in acharacter[@"voiceActors"]) {
-                [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", va[@"name"][@"last"], va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
+                [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] && ((NSString *)va[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",va[@"name"][@"last"],va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
             }
             [tmpcharacterarray addObject:@{@"id" : characterid.copy, @"name" : charactername.copy, @"role" : role.copy, @"image" : imageurl.copy, @"description" : description.copy,  @"actors" : castingsarray.copy}];
         }
@@ -406,7 +406,7 @@
 + (NSDictionary *)AniListPersontoAtarashii:(NSDictionary *)person {
     AtarashiiPersonObject *personobj = [AtarashiiPersonObject new];
     personobj.personid = ((NSNumber *)person[@"id"]).intValue;
-    personobj.name = person[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", person[@"name"][@"last"], person[@"name"][@"first"]] : person[@"name"][@"first"];
+    personobj.name = person[@"name"][@"last"] != [NSNull null] && ((NSString *)person[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",person[@"name"][@"last"],person[@"name"][@"first"]] : person[@"name"][@"first"];
     personobj.image_url = person[@"image"] != [NSNull null] && person[@"image"][@"large"] ? person[@"image"][@"large"] : @"";
     personobj.native_name = person[@"name"][@"native"] && person[@"name"][@"native"] != [NSNull null] ? person[@"name"][@"native"] : @"";
     personobj.more_details = person[@"description"] != [NSNull null] ? person[@"description"] : @"";
@@ -438,7 +438,7 @@
         @autoreleasepool {
             AtarashiiVoiceActingRoleObject *vaobj = [AtarashiiVoiceActingRoleObject new];
             vaobj.characterid = ((NSNumber *)characterrole[@"node"][@"id"]).intValue;
-            vaobj.name = characterrole[@"node"][@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", characterrole[@"node"][@"name"][@"last"], characterrole[@"node"][@"name"][@"first"]] : characterrole[@"node"][@"name"][@"first"];
+            vaobj.name = characterrole[@"node"][@"name"][@"last"] != [NSNull null] && ((NSString *)characterrole[@"node"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",characterrole[@"node"][@"name"][@"last"],characterrole[@"node"][@"name"][@"first"]] : characterrole[@"node"][@"name"][@"first"];
             vaobj.image_url = characterrole[@"node"][@"image"] != [NSNull null] && characterrole[@"node"][@"image"][@"large"] ? characterrole[@"node"][@"image"][@"large"] : @"";
             for (NSDictionary *anime in characterrole[@"media"]) {
                 vaobj.anime = @{@"id" : anime[@"id"], @"title" : anime[@"title"][@"romaji"]};
@@ -453,7 +453,7 @@
 + (NSDictionary *)AniListCharactertoAtarashii:(NSDictionary *)person {
     AtarashiiPersonObject *personobj = [AtarashiiPersonObject new];
     personobj.personid = ((NSNumber *)person[@"id"]).intValue;
-    personobj.name = person[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", person[@"name"][@"last"], person[@"name"][@"first"]] : person[@"name"][@"first"];
+    personobj.name = person[@"name"][@"last"] != [NSNull null] && ((NSString *)person[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",person[@"name"][@"last"],person[@"name"][@"first"]] : person[@"name"][@"first"];
     personobj.image_url = person[@"image"] != [NSNull null] && person[@"image"][@"large"] ? person[@"image"][@"large"] : @"";
     personobj.native_name = person[@"name"][@"native"] && person[@"name"][@"native"] != [NSNull null] ? person[@"name"][@"native"] : @"";
     personobj.more_details = person[@"description"] != [NSNull null] ? person[@"description"] : @"";
