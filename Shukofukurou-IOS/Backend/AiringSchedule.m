@@ -41,9 +41,7 @@
     bool shouldrefresh = refresh || [self retrieveFromCoreData:nil].count == 0;
     if (shouldrefresh) {
         [self retrieveAiringSchedule:^(id responseobject) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self processAiringData:responseobject];
-            });
+            [self processAiringData:responseobject];
             completionHandler(true , true);
         } error:^(NSError *error) {
             completionHandler(false, false);
