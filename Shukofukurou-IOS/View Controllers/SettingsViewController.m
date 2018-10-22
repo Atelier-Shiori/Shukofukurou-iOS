@@ -87,8 +87,12 @@
         [self openManual];
         [cell setSelected:NO animated:YES];
     }
-    else if ([cell.textLabel.text isEqual:@"Clear Image Cache"]) {
+    else if ([cell.textLabel.text isEqualToString:@"Clear Image Cache"]) {
         [self clearImages];
+        [cell setSelected:NO animated:YES];
+    }
+    else if ([cell.textLabel.text isEqualToString:@"File a Bug Report"]) {
+        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/Shukofukurou-iOS/issues"] options:@{} completionHandler:^(BOOL success) {}];
         [cell setSelected:NO animated:YES];
     }
     else if ([cell.textLabel.text isEqualToString:@"Follow us on Twitter"]) {

@@ -38,8 +38,9 @@
     _helpful.text = ((NSNumber *)review[@"helpful"] ).stringValue;
     [self loadimage:review[@"avatar_url"]];
     self.navigationItem.hidesBackButton = YES;
+    __weak ReviewDetailViewController *weakSelf = self;
     [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
-        self.navigationItem.hidesBackButton = NO;
+        weakSelf.navigationItem.hidesBackButton = NO;
     }];
 }
 
