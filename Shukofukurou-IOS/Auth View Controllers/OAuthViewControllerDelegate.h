@@ -12,5 +12,5 @@
 
 @optional
 - (void)authSuccessful:(int)service;
-
+- (void)authCanceled;
 @end

@@ -247,6 +247,11 @@
         }
     }];
     [_vcmanager.mvc loadfromdefaults];
+    [_vcmanager.mvc showtoolbarstate];
+}
+- (void)authCanceled {
+    NSLog(@"Auth canceled!");
+    [_vcmanager.mvc showtoolbarstate];
 }
 
 #pragma mark ServiceSwitcherView Delegate

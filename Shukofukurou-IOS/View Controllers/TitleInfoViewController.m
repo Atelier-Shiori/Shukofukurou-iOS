@@ -28,6 +28,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationitem;
+@property (strong) NSDictionary *blankentry;
+@property bool isNewEntry;
 @property (strong) NSMutableDictionary *items;
 @property (strong) NSArray *sections;
 @property int currenttype;
@@ -67,15 +69,16 @@
     if ([notification.name isEqualToString:@"UserLoggedIn"]) {
         if (notification.object) {
             if (((ListViewController *)notification.object).listtype == _currenttype) {
-                _sections = [self generateSections];
                 [self updateUserEntry];
+                _sections = [self generateSections];
+                [_tableview reloadData];
             }
         }
     }
     else if ([notification.name isEqualToString:@"UserLoggedOut"]) {
         // Remove Your Entry section
-        _sections = [self generateSections];
         [_items removeObjectForKey:@"Your Entry"];
+        _sections = [self generateSections];
         [_tableview reloadData];
     }
     else if ([notification.name isEqualToString:@"ServiceChanged"]) {
@@ -182,28 +185,30 @@
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf performShare:sender];
     }]];
-    [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UINavigationController *navController = [UINavigationController new];
-        AdvEditTableViewController *advedit = [[UIStoryboard storyboardWithName:@"AdvancedEdit" bundle:nil] instantiateViewControllerWithIdentifier:@"advedit"];
-        [advedit populateTableViewWithID:weakSelf.titleid withEntryDictionary:[AtarashiiListCoreData retrieveSingleEntryForTitleID:weakSelf.titleid withService:[listservice getCurrentServiceID] withType:weakSelf.currenttype] withType:weakSelf.currenttype];
-        advedit.entryUpdated = ^(int listtype) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (weakSelf.currenttype == AnimeSearchType) {
-                    [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
-                }
-                else {
-                    [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
-                }
-                [weakSelf updateUserEntry];
-                [weakSelf.tableview reloadData];
-            });
-        };
-        navController.viewControllers = @[advedit];
-        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-            navController.modalPresentationStyle = UIModalPresentationFormSheet;
-        }
-        [self presentViewController:navController animated:YES completion:^{}];
-    }]];
+    if ([listservice checkAccountForCurrentService] && !_isNewEntry) {
+        [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UINavigationController *navController = [UINavigationController new];
+            AdvEditTableViewController *advedit = [[UIStoryboard storyboardWithName:@"AdvancedEdit" bundle:nil] instantiateViewControllerWithIdentifier:@"advedit"];
+            [advedit populateTableViewWithID:weakSelf.titleid withEntryDictionary:[AtarashiiListCoreData retrieveSingleEntryForTitleID:weakSelf.titleid withService:[listservice getCurrentServiceID] withType:weakSelf.currenttype] withType:weakSelf.currenttype];
+            advedit.entryUpdated = ^(int listtype) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (weakSelf.currenttype == AnimeSearchType) {
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
+                    }
+                    else {
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
+                    }
+                    [weakSelf updateUserEntry];
+                    [weakSelf.tableview reloadData];
+                });
+            };
+            navController.viewControllers = @[advedit];
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                navController.modalPresentationStyle = UIModalPresentationFormSheet;
+            }
+            [self presentViewController:navController animated:YES completion:^{}];
+        }]];
+    }
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
         [options addAction:[UIAlertAction actionWithTitle:@"Refresh Title Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             weakSelf.forcerefresh = true;
@@ -536,24 +541,14 @@
 
 - (void)populateWithInfowithDictionary:(NSDictionary *)titleinfo withType:(int)type {
     NSMutableDictionary *tmpdictionary = [NSMutableDictionary new];
-    NSDictionary *userentry;
-    if ([listservice checkAccountForCurrentService]) {
-        userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:((NSNumber *)titleinfo[@"id"]).intValue withService:[listservice getCurrentServiceID] withType:type];
-        if (!userentry) {
-            // Generate blank user entry
-            if (type == 0) {
-                userentry = @{@"watched_episodes" : @(0), @"watched_status" : @"watching", @"score" : @(0) , @"episodes" : titleinfo[@"episodes"]};
-            }
-            else {
-                userentry = @{@"chapters_read" : @(0), @"volumes_read" : @(0), @"read_status" : @"reading", @"score" : @(0), @"chapters" : titleinfo[@"chapters"], @"volumes" : titleinfo[@"volumes"]};
-            }
-            _entryid = 0;
-        }
-        else {
-            _entryid = ((NSNumber *)userentry[@"entryid"]).intValue;
-            _selectedreconsuming = _currenttype == 0 ? ((NSNumber *)userentry[@"rewatching"]).boolValue : ((NSNumber *)userentry[@"rereading"]).boolValue;
-        }
+    // Generate blank user entry
+    if (type == 0) {
+        _blankentry = @{@"watched_episodes" : @(0), @"watched_status" : @"watching", @"score" : @(0) , @"episodes" : titleinfo[@"episodes"]};
     }
+    else {
+        _blankentry = @{@"chapters_read" : @(0), @"volumes_read" : @(0), @"read_status" : @"reading", @"score" : @(0), @"chapters" : titleinfo[@"chapters"], @"volumes" : titleinfo[@"volumes"]};
+    }
+    NSDictionary *userentry = [self retrieveEntry:((NSNumber *)titleinfo[@"id"]).intValue withType:type];
     // Set Title, Poster Image and Synopsis
     if (((NSString *)titleinfo[@"image_url"]).length > 0) {
         [_posterImage sd_setImageWithURL:[NSURL URLWithString:(NSString *)titleinfo[@"image_url"]]];
@@ -581,6 +576,25 @@
     _items = tmpdictionary;
     _sections = [self generateSections];
     [_tableview reloadData];
+}
+
+- (NSDictionary *)retrieveEntry:(int)titleid withType:(int)type {
+    if ([listservice checkAccountForCurrentService]) {
+        NSDictionary *userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:titleid withService:[listservice getCurrentServiceID] withType:_currenttype];
+        if (userentry) {
+            _entryid = ((NSNumber *)userentry[@"entryid"]).intValue;
+            _selectedreconsuming = type == 0 ? ((NSNumber *)userentry[@"rewatching"]).boolValue : ((NSNumber *)userentry[@"rereading"]).boolValue;
+            _isNewEntry = false;
+        }
+        else {
+            userentry = _blankentry;
+            _selectedreconsuming = false;
+            _entryid = 0;
+            _isNewEntry = true;
+        }
+        return userentry;
+    }
+    return nil;
 }
 
 - (NSArray *)generateUserEntryAnimeArray:(NSDictionary *)entry {
@@ -614,20 +628,7 @@
 
 - (void)updateUserEntry {
     int currentService = [listservice getCurrentServiceID];
-    NSDictionary *userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:_titleid withService:currentService withType:_currenttype];
-    if (!userentry) {
-        // Generate blank user entry
-        if (_currenttype == 0) {
-            userentry = @{@"watched_episodes" : @(0), @"watched_status" : @"watching", @"score" : @(0) , @"episodes" : @([self getSegmentInfo:@"episodes"])};
-        }
-        else {
-            userentry = @{@"chapters_read" : @(0), @"volumes_read" : @(0), @"read_status" : @"reading", @"score" : @(0), @"chapters" : @([self getSegmentInfo:@"chapters"]), @"volumes" : @([self getSegmentInfo:@"volumes"])};
-        }
-        _entryid = 0;
-    }
-    else {
-        _selectedreconsuming = _currenttype == 0 ? ((NSNumber *)userentry[@"rewatching"]).boolValue : ((NSNumber *)userentry[@"rereading"]).boolValue;
-    }
+    NSDictionary *userentry = [self retrieveEntry:_titleid withType:_currenttype];
     _items[@"Your Entry"] = _currenttype == 0 ? [self generateUserEntryAnimeArray:userentry] : [self generateUserEntryMangaArray:userentry];
     switch (currentService) {
         case 2:

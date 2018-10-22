@@ -74,9 +74,11 @@
         if (success) {
             if ([defaults boolForKey:@"refreshautomatically"] && [listservice checkAccountForCurrentService]) {
                 if (![defaults valueForKey:@"nextlistrefresh"] || ((NSDate *)[defaults valueForKey:@"nextlistrefresh"]).timeIntervalSinceNow < 0) {
-                    [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeRefreshList" object:nil];
-                    [NSNotificationCenter.defaultCenter postNotificationName:@"MangaRefreshList" object:nil];
-                    [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*15] forKey:@"nextlistrefresh"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeRefreshList" object:nil];
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"MangaRefreshList" object:nil];
+                        [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*15] forKey:@"nextlistrefresh"];
+                    });
                 }
             }
         }
