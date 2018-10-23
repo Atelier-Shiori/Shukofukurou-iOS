@@ -14,7 +14,7 @@ However, the source code will remain free for anyone who want it., However, you 
 No support will be given to self-built copies. You need to specify the OAuth Client and Secret before you can compile your own version.
 
 ## Compiling Instructions
-**Note: Self-compiling is meant for developers and advanced users only. Apple limits provisioning profile that allows you to run your apps on your iOS device for 7 days without a paid Apple Developer membership. If you want to use the app for 7 days without having to reinstall it, consider downloading it from the App Store. You can support dvelopment for our App and you don't have to buy a $99 a year Apple Developer Program membership, unless you already have one.:*:**
+**Note: Self-compiling is meant for developers and advanced users only. Apple limits provisioning profile that allows you to run your apps on your iOS device for 7 days without a paid Apple Developer membership. If you want to use the app for more than 7 days without having to reinstall it, consider downloading it from the App Store. You can support dvelopment for our App and you don't have to buy a $99 a year Apple Developer Program membership, unless you already have one.**
 
 1. Download or clone this repo.
 2. Go into the repo folder, open Shukofukurou-IOS > Backend > Constants in finder. Copy the "ClientConstants-sample.m" file and rename it to "ClientConstants.m".
