@@ -119,24 +119,29 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *entry = _airinglist[indexPath.row];
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-            if (entry[@"idMal"] != [NSNull null]) {
-                [self showTitleView:((NSNumber *)entry[@"idMal"]).intValue];
-            }
-            break;
-        case 2:
-            if (entry[@"idMal"] != [NSNull null]) {
-                [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)entry[@"idMal"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:0 completionHandler:^(int kitsuid) {
-                    [self showTitleView:kitsuid];
-                } error:^(NSError *error) {
-                }];
-            }
-            break;
-        case 3:
-            [self showTitleView:((NSNumber *)entry[@"id"]).intValue];
-            break;
+    if (!self.tableView.refreshControl.refreshing) {
+        NSDictionary *entry = _airinglist[indexPath.row];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                if (entry[@"idMal"] != [NSNull null]) {
+                    [self showTitleView:((NSNumber *)entry[@"idMal"]).intValue];
+                }
+                break;
+            case 2:
+                if (entry[@"idMal"] != [NSNull null]) {
+                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)entry[@"idMal"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:0 completionHandler:^(int kitsuid) {
+                        [self showTitleView:kitsuid];
+                    } error:^(NSError *error) {
+                    }];
+                }
+                break;
+            case 3:
+                [self showTitleView:((NSNumber *)entry[@"id"]).intValue];
+                break;
+        }
+    }
+    else {
+        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:NO];
     }
 }
 

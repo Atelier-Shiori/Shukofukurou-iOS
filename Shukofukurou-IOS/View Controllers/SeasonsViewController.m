@@ -141,26 +141,29 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *entry = _seasonlist[indexPath.row];
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-            if (entry[@"idMal"] != [NSNull null]) {
-                [self showTitleView:((NSNumber *)entry[@"idMal"]).intValue];
-            }
-            break;
-        case 2:
-            if (entry[@"idMal"] != [NSNull null]) {
-                [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)entry[@"idMal"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:0 completionHandler:^(int kitsuid) {
-                    [self showTitleView:kitsuid];
-                } error:^(NSError *error) {
-                }];
-            }
-            break;
-        case 3:
-            [self showTitleView:((NSNumber *)entry[@"id"]).intValue];
-            break;
+    if (!self.collectionView.refreshControl.refreshing) {
+        NSDictionary *entry = _seasonlist[indexPath.row];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                if (entry[@"idMal"] != [NSNull null]) {
+                    [self showTitleView:((NSNumber *)entry[@"idMal"]).intValue];
+                }
+                break;
+            case 2:
+                if (entry[@"idMal"] != [NSNull null]) {
+                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)entry[@"idMal"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:0 completionHandler:^(int kitsuid) {
+                        [self showTitleView:kitsuid];
+                    } error:^(NSError *error) {
+                    }];
+                }
+                break;
+            case 3:
+                [self showTitleView:((NSNumber *)entry[@"id"]).intValue];
+                break;
+        }
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 

@@ -440,6 +440,7 @@
             vaobj.characterid = ((NSNumber *)characterrole[@"node"][@"id"]).intValue;
             vaobj.name = characterrole[@"node"][@"name"][@"last"] != [NSNull null] && ((NSString *)characterrole[@"node"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",characterrole[@"node"][@"name"][@"last"],characterrole[@"node"][@"name"][@"first"]] : characterrole[@"node"][@"name"][@"first"];
             vaobj.image_url = characterrole[@"node"][@"image"] != [NSNull null] && characterrole[@"node"][@"image"][@"large"] ? characterrole[@"node"][@"image"][@"large"] : @"";
+            vaobj.main_role = [(NSString *)characterrole[@"role"] isEqualToString:@"MAIN"];
             for (NSDictionary *anime in characterrole[@"media"]) {
                 vaobj.anime = @{@"id" : anime[@"id"], @"title" : anime[@"title"][@"romaji"]};
                 [characterroles addObject:vaobj.NSDictionaryRepresentation];
@@ -469,7 +470,7 @@
                 for (NSDictionary *va in media[@"voiceActors"]) {
                     @autoreleasepool {
                         if ([voiceactors filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", va[@"id"]]].count == 0) {
-                               [voiceactors addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", va[@"name"][@"last"], va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
+                               [voiceactors addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] && ((NSString *)va[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",va[@"name"][@"last"],va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
                         }
                     }
                 }

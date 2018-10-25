@@ -133,10 +133,12 @@
 
 - (void)refreshListWithCompletionHandler:(void (^)(bool success)) completionHandler {
     NSLog(@"Refreshing List");
+    [_refreshcontrol beginRefreshing];
     [self retrieveList:true completion:^(bool success) {
         NSLog(@"Refreshed: %i", success);
         [self.tableView reloadData];
         [self.listselector generateLists:[self retrieveEntriesWithType:self.listtype withFilterPredicate:nil] withListType:self.listtype];
+        [self.refreshControl endRefreshing];
         completionHandler(success);
     }];
 }
@@ -149,14 +151,16 @@
         completionHandler(true);
     }
     else {
-        __weak ListViewController *weakSelf = self;
+        [_refreshcontrol beginRefreshing];
         [listservice retrieveownListWithType:_listtype completion:^(id responseObject) {
-            [weakSelf saveEntriesWithDictionary:responseObject withType:weakSelf.listtype];
+            [self saveEntriesWithDictionary:responseObject withType:self.listtype];
             // populate list
             [self reloadList];
+            [self.refreshControl endRefreshing];
             completionHandler(true);
         } error:^(NSError *error) {
             NSLog(@"%@", error.userInfo);
+            [self.refreshControl endRefreshing];
             completionHandler(false);
         }];
     }
@@ -408,127 +412,144 @@
 }
 
 - (UITableViewCell *)generateAnimeEntryCellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    NSDictionary *entry = _filteredlist[indexPath.row];
-    AnimeEntryTableViewCell *aentrycell = [tableView dequeueReusableCellWithIdentifier:@"animeentrycell"];
-    if (aentrycell == nil && tableView != self.tableView) {
-        aentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"animeentrycell"];
-    }
-    aentrycell.title.text = entry[@"title"];
-    aentrycell.progress.text = [NSString stringWithFormat:@"Episode: %@/%@", entry[@"watched_episodes"], entry[@"episodes"]];
-    NSString *score = @"";
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-            score = entry[@"score"];
-            break;
-        case 2:
-            score = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)entry[@"score"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
-            break;
-        case 3:
-            score = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)entry[@"score"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
-            break;
-        default:
-            break;
-    }
-    aentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
-    [aentrycell loadimage:entry[@"image_url"]];
-    aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
-    // Geneerate Swipe Cells
-    // Left
-    __weak ListViewController *weakSelf = self;
-    aentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
-        NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-        [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
-        return true;
-    }]];
-    aentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
-    
-    //Right
-    NSMutableArray *rightbuttons = [NSMutableArray new];
-    [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
-        NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-        [weakSelf showOtherOptions:entry withIndexPath:indexPath];
-        return true;
-    }]];
-    if ([self canIncrement:entry]) {
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ep +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+    if (indexPath.row < _filteredlist.count) {
+        NSDictionary *entry = _filteredlist[indexPath.row];
+        AnimeEntryTableViewCell *aentrycell = [tableView dequeueReusableCellWithIdentifier:@"animeentrycell"];
+        if (aentrycell == nil && tableView != self.tableView) {
+            aentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"animeentrycell"];
+        }
+        aentrycell.title.text = entry[@"title"];
+        aentrycell.progress.text = [NSString stringWithFormat:@"Episode: %@/%@", entry[@"watched_episodes"], entry[@"episodes"]];
+        NSString *score = @"";
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                score = entry[@"score"];
+                break;
+            case 2:
+                score = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)entry[@"score"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
+                break;
+            case 3:
+                score = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)entry[@"score"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
+                break;
+            default:
+                break;
+        }
+        aentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
+        [aentrycell loadimage:entry[@"image_url"]];
+        aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
+        // Geneerate Swipe Cells
+        // Left
+        __weak ListViewController *weakSelf = self;
+        aentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-            [weakSelf incrementProgress:entry];
+            [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
             return true;
         }]];
+        aentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
+        
+        //Right
+        NSMutableArray *rightbuttons = [NSMutableArray new];
+        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+            [weakSelf showOtherOptions:entry withIndexPath:indexPath];
+            return true;
+        }]];
+        if ([self canIncrement:entry]) {
+            [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ep +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf incrementProgress:entry];
+                return true;
+            }]];
+        }
+        aentrycell.rightButtons = rightbuttons.copy;
+        aentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+        return aentrycell;
     }
-    aentrycell.rightButtons = rightbuttons.copy;
-    aentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-    return aentrycell;
+    else {
+        return [UITableViewCell new];
+    }
 }
 
 - (UITableViewCell *)generateMangaEntryCellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    NSDictionary *entry = _filteredlist[indexPath.row];
-    MangaEntryTableViewCell *mentrycell = [tableView dequeueReusableCellWithIdentifier:@"mangaentrycell"];
-    if (mentrycell == nil && tableView != self.tableView) {
-        mentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"mangaentrycell"];
-    }
-    mentrycell.title.text = entry[@"title"];
-    mentrycell.progress.text = [NSString stringWithFormat:@"Chapters: %@/%@", entry[@"chapters_read"], entry[@"chapters"]];
-    mentrycell.progressVolumes.text = [NSString stringWithFormat:@"Volumes: %@/%@", entry[@"volumes_read"], entry[@"volumes"]];
-    NSString *score = @"";
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-            score = entry[@"score"];
-            break;
-        case 2:
-            score = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)entry[@"score"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
-            break;
-        case 3:
-            score = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)entry[@"score"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
-            break;
-        default:
-            break;
-    }
-    mentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
-    [mentrycell loadimage:entry[@"image_url"]];
-    mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
-    
-    // Geneerate Swipe Cells
-    // Left
-    __weak ListViewController *weakSelf = self;
-    mentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
-        NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-        [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
-        return true;
-    }]];
-    mentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
-    
-    //Right
-    NSMutableArray *rightbuttons = [NSMutableArray new];
-    [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
-        NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-        [weakSelf showOtherOptions:entry withIndexPath:indexPath];
-        return true;
-    }]];
-    if ([self canIncrement:entry]) {
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Vol +" backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+    if (indexPath.row < _filteredlist.count) {
+        NSDictionary *entry = _filteredlist[indexPath.row];
+        MangaEntryTableViewCell *mentrycell = [tableView dequeueReusableCellWithIdentifier:@"mangaentrycell"];
+        if (mentrycell == nil && tableView != self.tableView) {
+            mentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"mangaentrycell"];
+        }
+        mentrycell.title.text = entry[@"title"];
+        mentrycell.progress.text = [NSString stringWithFormat:@"Chapters: %@/%@", entry[@"chapters_read"], entry[@"chapters"]];
+        mentrycell.progressVolumes.text = [NSString stringWithFormat:@"Volumes: %@/%@", entry[@"volumes_read"], entry[@"volumes"]];
+        NSString *score = @"";
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                score = entry[@"score"];
+                break;
+            case 2:
+                score = [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)entry[@"score"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
+                break;
+            case 3:
+                score = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)entry[@"score"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
+                break;
+            default:
+                break;
+        }
+        mentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
+        [mentrycell loadimage:entry[@"image_url"]];
+        mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
+        
+        // Geneerate Swipe Cells
+        // Left
+        __weak ListViewController *weakSelf = self;
+        mentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-            [weakSelf performMangaIncrement:entry volumeIncrement:YES];
+            [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
             return true;
         }]];
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ch +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        mentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
+        
+        //Right
+        NSMutableArray *rightbuttons = [NSMutableArray new];
+        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
-            [weakSelf performMangaIncrement:entry volumeIncrement:NO];
+            [weakSelf showOtherOptions:entry withIndexPath:indexPath];
             return true;
         }]];
+        if ([self canIncrement:entry]) {
+            [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Vol +" backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performMangaIncrement:entry volumeIncrement:YES];
+                return true;
+            }]];
+            [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ch +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performMangaIncrement:entry volumeIncrement:NO];
+                return true;
+            }]];
+        }
+        mentrycell.rightButtons = rightbuttons.copy;
+        mentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+        return mentrycell;
     }
-    mentrycell.rightButtons = rightbuttons.copy;
-    mentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-    return mentrycell;
+    else {
+        return [UITableViewCell new];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *entry = _filteredlist[indexPath.row];
-    int titleid = ((NSNumber *)entry[@"id"]).intValue;
-    TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[[UIStoryboard storyboardWithName:@"InfoView" bundle:nil] instantiateViewControllerWithIdentifier:@"TitleInfo"];
-    [self.navigationController pushViewController:titleinfovc animated:YES];
-    [titleinfovc loadTitleInfo:titleid withType:_listtype];
-
+    id cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[AnimeEntryTableViewCell class]] || [cell isKindOfClass:[MangaEntryTableViewCell class]]) {
+        if (indexPath.row < _filteredlist.count && !_refreshcontrol.refreshing) {
+            NSDictionary *entry = _filteredlist[indexPath.row];
+            int titleid = ((NSNumber *)entry[@"id"]).intValue;
+            TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[[UIStoryboard storyboardWithName:@"InfoView" bundle:nil] instantiateViewControllerWithIdentifier:@"TitleInfo"];
+            [self.navigationController pushViewController:titleinfovc animated:YES];
+            [titleinfovc loadTitleInfo:titleid withType:_listtype];
+        }
+    }
+    else {
+        [(UITableViewCell *)cell setSelected:NO animated:NO];
+    }
 }
 
 - (IBAction)refresh:(UIRefreshControl *)sender {

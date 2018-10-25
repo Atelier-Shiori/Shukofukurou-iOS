@@ -141,10 +141,14 @@
         }
     });
     if (data[@"description"]) {
-        [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"description"], @"type" : @"longdetail"}];
+        if (((NSString *)data[@"description"]).length > 0) {
+            [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"description"], @"type" : @"longdetail"}];
+        }
     }
     else {
-        [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"more_details"], @"type" : @"longdetail"}];
+        if (((NSString *)data[@"more_details"]).length > 0) {
+            [detailsArray addObject:@{@"title" : @"Details", @"value" : data[@"more_details"], @"type" : @"longdetail"}];
+        }
     }
     if (data[@"favorited_count"] && ((NSNumber *)data[@"favorited_count"]).intValue > 0) {
         [detailsArray addObject:@{@"title" : @"Favorited", @"value" : ((NSNumber *)data[@"favorited_count"]).stringValue, @"type" : @"detail"}];
