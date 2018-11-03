@@ -91,7 +91,7 @@
     NSArray *entries = [self getAllTitleEntries];
     NSManagedObjectContext *moc = [self managedObjectContext];
     for (NSManagedObject *entry in entries) {
-        if ([(NSDate *)[entry valueForKey:@"lastaccessed"] timeIntervalSinceNow] > 259200 || removeall) {
+        if ([(NSDate *)[entry valueForKey:@"lastaccessed"] timeIntervalSinceNow] > 1209600 || removeall) {
             [moc deleteObject:entry];
         }
     }

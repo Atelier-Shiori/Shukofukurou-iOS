@@ -111,7 +111,7 @@
     // Set Background Fetch
     [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     // Set Image Disk Cache Size
-    SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 32;
+    SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 96;
     return YES;
 }
 
