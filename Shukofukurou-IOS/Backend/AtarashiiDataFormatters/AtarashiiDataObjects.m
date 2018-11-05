@@ -254,6 +254,22 @@
 }
 @end
 
+@implementation AtarashiiEpisodeObject
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.episodeTitle = @"";
+        self.airDate = @"";
+        self.thumbnail = @"";
+        self.synopsis = @"";
+    }
+    return self;
+}
+- (NSDictionary *)NSDictionaryRepresentation {
+    return @{@"titleId" : @(_titleId), @"episodeId" : @(_episodeId), @"episodeTitle" : _episodeTitle, @"episodeNumber" : @(_episodeNumber), @"airDate" : _airDate, @"episodeLength" : @(_episodeLength), @"thumbnail" : _thumbnail, @"synopsis" : _synopsis};
+}
+@end
+
 @implementation AtarashiiUserObject
 - (id)init {
     self = [super init];

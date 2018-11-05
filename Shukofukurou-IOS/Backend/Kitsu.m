@@ -511,6 +511,44 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
 }
 
+#pragma mark Episodes
++ (void)retrieveEpisodesList:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    [self retrieveEpisodesList:titleid withDataArray:tmparray withPageOffet:0 completion:completionHandler error:errorHandler];
+}
+
++ (void)retrieveEpisodesList:(int)titleid withDataArray:(NSMutableArray *)darray withPageOffet:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime/%i/episodes?fields[episodes]=titles,canonicalTitle,seasonNumber,number,thumbnail,airdate&page[limit]=20&page[offset]=%i", titleid, offset] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            [darray addObjectsFromArray:responseObject[@"data"]];
+        }
+        if (responseObject[@"links"][@"next"]) {
+            int newoffset = offset + 20;
+            [self retrieveEpisodesList:titleid withDataArray:darray withPageOffet:newoffset completion:completionHandler error:errorHandler];
+        }
+        else {
+            completionHandler([AtarashiiAPIListFormatKitsu KitsuEpisodesListtoAtarashii:@{@"data":darray} withTitleId:titleid]);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
++ (void)retrieveEpisodeDetails:(int)episodeId completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/episodes/%i", episodeId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            completionHandler([AtarashiiAPIListFormatKitsu KitsuEpisodeDetailtoAtarashii:responseObject]);
+        }
+        else {
+            errorHandler(nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 #pragma mark helpers
 + (AFOAuthCredential *)getFirstAccount {
     return [AFOAuthCredential retrieveCredentialWithIdentifier:kKeychainIdentifier];

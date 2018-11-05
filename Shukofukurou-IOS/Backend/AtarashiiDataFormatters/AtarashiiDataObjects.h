@@ -178,6 +178,18 @@
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
+@interface AtarashiiEpisodeObject : NSObject
+@property int titleId;
+@property int episodeId;
+@property (strong) NSString *episodeTitle;
+@property int episodeNumber;
+@property (strong) NSString *airDate;
+@property int episodeLength;
+@property (strong) NSString *thumbnail;
+@property (strong) NSString *synopsis;
+- (NSDictionary *)NSDictionaryRepresentation;
+@end
+
 @interface AtarashiiUserObject : NSObject
 @property (strong) NSString *avatar_url;
 @property (strong) NSString *last_online;

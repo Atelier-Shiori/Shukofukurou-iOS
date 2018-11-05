@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */; };
 		592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592DA184216BCE88008C99B3 /* SortTableViewController.m */; };
 		59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59325ED5216BBF1F00430ED7 /* OAuthLogin.m */; };
 		5933CEC22174F0CA00EAE7E6 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC02174F0CA00EAE7E6 /* MSWeakTimer.m */; };
@@ -15,6 +16,7 @@
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
 		59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D89215953C1003CE863 /* CustomListTableViewController.m */; };
+		595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595C1F78218DF4B000953793 /* Trending.storyboard */; };
 		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
 		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
 		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
@@ -95,6 +97,8 @@
 		5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
 		596242582155662A001995AD /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
 		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
+		596890032190AC6C0029F0FC /* EpisodesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */; };
+		596890182190ADF30029F0FC /* EpisodesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890172190ADF30029F0FC /* EpisodesTableViewController.m */; };
 		596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B32163D11E0005A60F /* CharacterTableViewController.m */; };
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
@@ -351,6 +355,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
+		592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailViewController.m; sourceTree = "<group>"; };
 		592DA183216BCE88008C99B3 /* SortTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTableViewController.h; sourceTree = "<group>"; };
 		592DA184216BCE88008C99B3 /* SortTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
 		59325ED4216BBF1F00430ED7 /* OAuthLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAuthLogin.h; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 		59481D8321594078003CE863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomList.storyboard; sourceTree = "<group>"; };
 		59481D88215953C1003CE863 /* CustomListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListTableViewController.h; sourceTree = "<group>"; };
 		59481D89215953C1003CE863 /* CustomListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListTableViewController.m; sourceTree = "<group>"; };
+		595C1F79218DF4B000953793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trending.storyboard; sourceTree = "<group>"; };
 		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		596240A92155622E001995AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -502,6 +509,10 @@
 		5962422B2155653D001995AD /* Hiyoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hiyoko.xcdatamodel; sourceTree = "<group>"; };
 		596242742155D2C9001995AD /* OnePasswordExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
+		596890012190AC6C0029F0FC /* EpisodesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodesTableViewCell.h; sourceTree = "<group>"; };
+		596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodesTableViewCell.m; sourceTree = "<group>"; };
+		596890162190ADF30029F0FC /* EpisodesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodesTableViewController.h; sourceTree = "<group>"; };
+		596890172190ADF30029F0FC /* EpisodesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodesTableViewController.m; sourceTree = "<group>"; };
 		596A01B22163D11E0005A60F /* CharacterTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterTableViewController.h; sourceTree = "<group>"; };
 		596A01B32163D11E0005A60F /* CharacterTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterTableViewController.m; sourceTree = "<group>"; };
 		596A01B52163D1330005A60F /* CharacterDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterDetailViewController.h; sourceTree = "<group>"; };
@@ -868,6 +879,7 @@
 				596241CD215564A9001995AD /* Seasons.storyboard */,
 				596241CF215564AD001995AD /* ServiceSwitcher.storyboard */,
 				596241D1215564B4001995AD /* Settings.storyboard */,
+				595C1F78218DF4B000953793 /* Trending.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -891,6 +903,8 @@
 				598AB4ED216296F500979C19 /* ReviewTableViewCell.m */,
 				596A01B82163F4570005A60F /* PersonTableViewCell.h */,
 				596A01B92163F4570005A60F /* PersonTableViewCell.m */,
+				596890012190AC6C0029F0FC /* EpisodesTableViewCell.h */,
+				596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -957,6 +971,10 @@
 				5962421021556512001995AD /* ViewController.m */,
 				596242092155650E001995AD /* ViewControllerManager.h */,
 				596241FA21556506001995AD /* ViewControllerManager.m */,
+				596890162190ADF30029F0FC /* EpisodesTableViewController.h */,
+				596890172190ADF30029F0FC /* EpisodesTableViewController.m */,
+				592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */,
+				592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1277,6 +1295,7 @@
 				5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */,
 				5962425021556614001995AD /* LaunchScreen.storyboard in Resources */,
 				59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */,
+				595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */,
 				596240B52155622F001995AD /* Assets.xcassets in Resources */,
 				596242582155662A001995AD /* Settings.storyboard in Resources */,
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
@@ -1334,6 +1353,7 @@
 				596240BB2155622F001995AD /* main.m in Sources */,
 				5962418B215563D2001995AD /* Kitsu.m in Sources */,
 				5962416D215563AF001995AD /* AniList.m in Sources */,
+				592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */,
 				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
 				59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */,
 				59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */,
@@ -1351,7 +1371,9 @@
 				5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */,
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
 				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
+				596890182190ADF30029F0FC /* EpisodesTableViewController.m in Sources */,
 				596241562155638D001995AD /* ClientConstants.m in Sources */,
+				596890032190AC6C0029F0FC /* EpisodesTableViewCell.m in Sources */,
 				59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */,
 				5962421D21556514001995AD /* SettingsViewController.m in Sources */,
 				596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */,
@@ -1432,6 +1454,14 @@
 				59481D8321594078003CE863 /* Base */,
 			);
 			name = CustomList.storyboard;
+			sourceTree = "<group>";
+		};
+		595C1F78218DF4B000953793 /* Trending.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				595C1F79218DF4B000953793 /* Base */,
+			);
+			name = Trending.storyboard;
 			sourceTree = "<group>";
 		};
 		596241BB21556481001995AD /* Airing.storyboard */ = {

@@ -9,6 +9,7 @@
 #import "TitleInfoViewController.h"
 #import "RelatedTableViewController.h"
 #import "CharacterTableViewController.h"
+#import "EpisodesTableViewController.h"
 #import "ReviewTableViewController.h"
 #import "AdvEditTableViewController.h"
 #import "TitleInfoTableViewCell.h"
@@ -450,6 +451,7 @@
         case cellActionViewStaff:
         case cellActionViewReviews:
         case cellActionViewRelated:
+        case cellActionViewEpisodes:
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         default:
@@ -474,6 +476,9 @@
                         break;
                     case cellActionViewStaff:
                         [self showStaff];
+                        break;
+                    case cellActionViewEpisodes:
+                        [self showEpisodes];
                         break;
                     default:
                         break;
@@ -703,6 +708,9 @@
         case 1:
         case 3:
             [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Characters/Staff" withCellAction:cellActionViewStaff]];
+            break;
+        case 2:
+            [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Episodes" withCellAction:cellActionViewEpisodes]];
             break;
         default:
             break;
@@ -1100,5 +1108,11 @@
     CharacterTableViewController *charactervc = [self.storyboard instantiateViewControllerWithIdentifier:@"StaffTbVC"];
     [self.navigationController pushViewController:charactervc animated:YES];
     [charactervc retrievePersonList:_titleid];
+}
+
+- (void)showEpisodes {
+    EpisodesTableViewController *episodesvc = [self.storyboard instantiateViewControllerWithIdentifier:@"episodestbvc"];
+    [self.navigationController pushViewController:episodesvc animated:YES];
+    [episodesvc loadEpisodeListForTitleId:_titleid];
 }
 @end

@@ -305,6 +305,39 @@
     return tmparray;
 }
 
++ (NSArray *)KitsuEpisodesListtoAtarashii:(NSDictionary *)data withTitleId:(int)titleid {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *episodeEntry in data[@"data"]) {
+        if (episodeEntry[@"attributes"][@"airdate"] == [NSNull null]) {
+            // Skip unaired episodes
+            continue;
+        }
+        @autoreleasepool {
+            AtarashiiEpisodeObject *episode = [AtarashiiEpisodeObject new];
+            episode.titleId = titleid;
+            episode.episodeId = ((NSNumber *)episodeEntry[@"id"]).intValue;
+            episode.episodeTitle = episodeEntry[@"attributes"][@"canonicalTitle"];
+            episode.episodeNumber = ((NSNumber *)episodeEntry[@"attributes"][@"number"]).intValue;
+            episode.thumbnail = episodeEntry[@"attributes"][@"thumbnail"][@"original"] ? episodeEntry[@"attributes"][@"thumbnail"][@"original"] : @"";
+            episode.airDate = episodeEntry[@"attributes"][@"airdate"] != [NSNull null] ? episodeEntry[@"attributes"][@"airdate"] : @"";
+            [tmparray addObject:episode.NSDictionaryRepresentation];
+        }
+    }
+    return tmparray;
+}
+
++ (NSDictionary *)KitsuEpisodeDetailtoAtarashii:(NSDictionary *)data {
+    AtarashiiEpisodeObject *episode = [AtarashiiEpisodeObject new];
+    episode.episodeId = ((NSNumber *)data[@"data"][@"id"]).intValue;
+    episode.episodeTitle = data[@"data"][@"attributes"][@"canonicalTitle"];
+    episode.episodeNumber = ((NSNumber *)data[@"data"][@"attributes"][@"number"]).intValue;
+    episode.thumbnail = data[@"data"][@"attributes"][@"thumbnail"][@"original"] ? data[@"data"][@"attributes"][@"thumbnail"][@"original"] : @"";
+    episode.airDate = data[@"data"][@"attributes"][@"airdate"] != [NSNull null] ? data[@"data"][@"attributes"][@"airdate"] : @"";
+    episode.synopsis = data[@"data"][@"attributes"][@"synopsis"] != [NSNull null] ? data[@"data"][@"attributes"][@"synopsis"] : @"";
+    episode.episodeLength = data[@"data"][@"attributes"][@"length"] != [NSNull null] ? ((NSNumber *)data[@"data"][@"attributes"][@"length"]).intValue : -1;
+    return episode.NSDictionaryRepresentation;
+}
+
 + (NSArray *)KitsuReactionstoAtarashii:(NSDictionary *)data withType:(int)type {
     NSMutableArray *reactionsarray = [NSMutableArray new];
     NSArray *dataarray = data[@"data"];
