@@ -357,6 +357,7 @@
 /* Begin PBXFileReference section */
 		592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
 		592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailViewController.m; sourceTree = "<group>"; };
+		592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 2.xcdatamodel"; sourceTree = "<group>"; };
 		592DA183216BCE88008C99B3 /* SortTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTableViewController.h; sourceTree = "<group>"; };
 		592DA184216BCE88008C99B3 /* SortTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
 		59325ED4216BBF1F00430ED7 /* OAuthLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAuthLogin.h; sourceTree = "<group>"; };
@@ -1779,9 +1780,10 @@
 		5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */,
 				5962422B2155653D001995AD /* Hiyoko.xcdatamodel */,
 			);
-			currentVersion = 5962422B2155653D001995AD /* Hiyoko.xcdatamodel */;
+			currentVersion = 592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */;
 			path = Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
