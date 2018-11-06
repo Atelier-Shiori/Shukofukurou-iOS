@@ -710,7 +710,9 @@
             [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Characters/Staff" withCellAction:cellActionViewStaff]];
             break;
         case 2:
-            [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Episodes" withCellAction:cellActionViewEpisodes]];
+            if ([(NSString *)titleinfo[@"type"] isEqualToString:@"TV"]) {
+                [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Episodes" withCellAction:cellActionViewEpisodes]];
+            }
             break;
         default:
             break;

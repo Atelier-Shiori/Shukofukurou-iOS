@@ -32,7 +32,12 @@
         case 2: {
             [Kitsu retrieveEpisodesList:titleid completion:^(id responseObject) {
                 self.episodes = responseObject;
-                [self.tableView reloadData];
+                if (self.episodes.count > 0) {
+                    [self.tableView reloadData];
+                }
+                else {
+                    [self showNoEpisodesAlert];
+                }
             } error:^(NSError *error) {
                 NSLog(@"%@", error);
                 [self.navigationController popViewControllerAnimated:YES];
@@ -45,7 +50,14 @@
         }
     }
 }
-
+- (void)showNoEpisodesAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Episode Information" message:@"There is no episode information for this title." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 #pragma mark - Table view data source
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 88;

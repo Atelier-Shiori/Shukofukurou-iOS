@@ -19,6 +19,7 @@
 @property (strong) SearchRootViewController *searchvc;
 @property (strong) SeasonsRootViewController *seasonsrootview;
 @property (strong) AiringRootViewController *airingrootview;
+@property (strong) TrendingViewController *trendrootview;
 @property (strong) ServiceSwitcherRootViewController *serviceswitcherrootvc;
 @property (strong) ViewController *vc;
 @end
@@ -86,6 +87,14 @@
         _airingrootview = (AiringRootViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AiringRootView"];
     }
     return _airingrootview;
+}
+
+- (TrendingViewController *)getTrendingRootViewController {
+    if (!_trendrootview) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Trending" bundle:nil];
+        _trendrootview = (TrendingViewController *)[storyboard instantiateViewControllerWithIdentifier:@"TrendingRootView"];
+    }
+    return _trendrootview;
 }
 
 - (ServiceSwitcherRootViewController *)getServiceSwitcherRootViewController {

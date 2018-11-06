@@ -45,6 +45,7 @@ struct {
     [items addObject:@{@"image" : @"search" , @"title" : @"Search", @"identifier" : @"search", @"type" : @"cell"}];
     [items addObject:@{@"image" : @"seasons" , @"title" : @"Seasons", @"identifier" : @"seasons", @"type" : @"cell"}];
     [items addObject:@{@"image" : @"airing" , @"title" : @"Airing", @"identifier" : @"airing", @"type" : @"cell"}];
+    [items addObject:@{@"image" : @"trending" , @"title" : @"Trending", @"identifier" : @"trending", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"profilebrowser" , @"title" : @"Profile Browser", @"identifier" : @"profiles", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"export" , @"title" : @"Export List", @"identifier" : @"export", @"type" : @"cell"}];
     [items addObject:@{@"image" : @"settings" , @"title" : @"Settings", @"identifier" : @"settings", @"type" : @"cell"}];

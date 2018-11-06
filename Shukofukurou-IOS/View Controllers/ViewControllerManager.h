@@ -18,6 +18,7 @@
 #import "AiringRootViewController.h"
 #import "AiringViewController.h"
 #import "ServiceSwitcherRootViewController.h"
+#import "TrendingViewController.h"
 #import "MainViewController.h"
 #import "ViewController.h"
 
@@ -35,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (SearchRootViewController *)getSearchView;
 - (SeasonsRootViewController *)getSeasonRootViewController;
 - (AiringRootViewController *)getAiringRootViewController;
+- (TrendingViewController *)getTrendingRootViewController;
 - (ServiceSwitcherRootViewController *)getServiceSwitcherRootViewController;
 - (ViewController *)getViewController;
 @end

@@ -95,6 +95,9 @@
     else if ([identifier isEqualToString:@"airing"]) {
         [self showAiringViewController];
     }
+    else if ([identifier isEqualToString:@"trending"]) {
+        [self showTrendingViewController];
+    }
     else if ([identifier isEqualToString:@"settings"]) {
         [self showSettingsViewController];
     }
@@ -118,6 +121,10 @@
 
 - (void)showAiringViewController {
     self.rootViewController = [_vcm getAiringRootViewController];
+}
+
+- (void)showTrendingViewController {
+    self.rootViewController = [_vcm getTrendingRootViewController];
 }
 
 - (void)showSettingsViewController {

@@ -1,0 +1,19 @@
+//
+//  TrendingCollectionHeaderView.h
+//  Shukofukurou-IOS
+//
+//  Created by 香風智乃 on 11/6/18.
+//  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "TopAlignedLabel.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface TrendingCollectionHeaderView : UICollectionReusableView
+@property (strong, nonatomic) IBOutlet TopAlignedLabel *sectionLabel;
+
+@end
+
+NS_ASSUME_NONNULL_END

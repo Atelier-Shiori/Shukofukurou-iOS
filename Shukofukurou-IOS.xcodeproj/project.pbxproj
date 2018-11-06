@@ -13,6 +13,10 @@
 		5933CEC22174F0CA00EAE7E6 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC02174F0CA00EAE7E6 /* MSWeakTimer.m */; };
 		5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */; };
 		5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
+		594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810D92191D645000C4B5C /* TrendingRetriever.m */; };
+		594810EF219214BA000C4B5C /* TrendingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */; };
+		594810F221921713000C4B5C /* TrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F121921713000C4B5C /* TrendingViewController.m */; };
+		594810F521921FD0000C4B5C /* TrendingCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */; };
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
 		59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D89215953C1003CE863 /* CustomListTableViewController.m */; };
@@ -368,6 +372,14 @@
 		5933CEC42174F0F000EAE7E6 /* AutoRefreshTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoRefreshTimer.h; path = "Shukofukurou-IOS/AutoRefreshTimer.h"; sourceTree = SOURCE_ROOT; };
 		5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
+		594810D82191D645000C4B5C /* TrendingRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingRetriever.h; sourceTree = "<group>"; };
+		594810D92191D645000C4B5C /* TrendingRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingRetriever.m; sourceTree = "<group>"; };
+		594810ED219214BA000C4B5C /* TrendingCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingCollectionViewController.h; sourceTree = "<group>"; };
+		594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingCollectionViewController.m; sourceTree = "<group>"; };
+		594810F021921713000C4B5C /* TrendingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingViewController.h; sourceTree = "<group>"; };
+		594810F121921713000C4B5C /* TrendingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingViewController.m; sourceTree = "<group>"; };
+		594810F321921FCF000C4B5C /* TrendingCollectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingCollectionHeaderView.h; sourceTree = "<group>"; };
+		594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingCollectionHeaderView.m; sourceTree = "<group>"; };
 		59481D6B21591F44003CE863 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
 		59481D8021591F44003CE863 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
 		59481D8321594078003CE863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomList.storyboard; sourceTree = "<group>"; };
@@ -806,6 +818,8 @@
 				59A75817215D3A8800B36F9C /* TitleInfoCache.m */,
 				5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */,
 				5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */,
+				594810D82191D645000C4B5C /* TrendingRetriever.h */,
+				594810D92191D645000C4B5C /* TrendingRetriever.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -906,6 +920,8 @@
 				596A01B92163F4570005A60F /* PersonTableViewCell.m */,
 				596890012190AC6C0029F0FC /* EpisodesTableViewCell.h */,
 				596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */,
+				594810F321921FCF000C4B5C /* TrendingCollectionHeaderView.h */,
+				594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -976,6 +992,10 @@
 				596890172190ADF30029F0FC /* EpisodesTableViewController.m */,
 				592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */,
 				592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */,
+				594810F021921713000C4B5C /* TrendingViewController.h */,
+				594810F121921713000C4B5C /* TrendingViewController.m */,
+				594810ED219214BA000C4B5C /* TrendingCollectionViewController.h */,
+				594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1322,6 +1342,7 @@
 				5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */,
 				5962422421556514001995AD /* TitleInfoViewController.m in Sources */,
 				5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */,
+				594810F221921713000C4B5C /* TrendingViewController.m in Sources */,
 				F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */,
 				596241A82155642E001995AD /* SideBarCell.m in Sources */,
 				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
@@ -1378,6 +1399,7 @@
 				59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */,
 				5962421D21556514001995AD /* SettingsViewController.m in Sources */,
 				596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */,
+				594810F521921FD0000C4B5C /* TrendingCollectionHeaderView.m in Sources */,
 				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,
 				596241572155638D001995AD /* AniListConstants.m in Sources */,
@@ -1385,6 +1407,7 @@
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
 				596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */,
+				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,
 				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
@@ -1397,6 +1420,7 @@
 				5962421621556514001995AD /* AiringDayTableViewController.m in Sources */,
 				596241E0215564D1001995AD /* AnimeEntryTableViewCell.m in Sources */,
 				5962421A21556514001995AD /* SeasonsRootViewController.m in Sources */,
+				594810EF219214BA000C4B5C /* TrendingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
