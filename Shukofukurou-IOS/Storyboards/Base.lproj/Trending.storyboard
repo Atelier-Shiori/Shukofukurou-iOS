@@ -13,8 +13,8 @@
         <scene sceneID="wTv-NV-XSD">
             <objects>
                 <navigationController storyboardIdentifier="TrendingRootView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t2t-Yk-A01" customClass="TrendingViewController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NV6-Ug-xuP">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="NV6-Ug-xuP">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1007" y="32"/>
         </scene>
-        <!--Trending Collection View Controller-->
+        <!--Trending-->
         <scene sceneID="Eoj-76-ONV">
             <objects>
                 <collectionViewController id="WgN-23-V3S" customClass="TrendingCollectionViewController" sceneMemberID="viewController">
@@ -106,13 +106,13 @@
                             <outlet property="delegate" destination="WgN-23-V3S" id="l3S-JV-M6p"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="T3Z-kQ-ACQ">
+                    <navigationItem key="navigationItem" title="Trending" id="T3Z-kQ-ACQ">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="9bM-GJ-qx2">
                             <connections>
                                 <action selector="showLeftViewAnimated:" destination="WgN-23-V3S" id="gcP-x7-UEK"/>
                             </connections>
                         </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="AIy-YD-Gqp">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="AIy-YD-Gqp">
                             <rect key="frame" x="132" y="7" width="111" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -135,6 +135,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
+        <image name="Menu" width="25" height="25"/>
     </resources>
 </document>
