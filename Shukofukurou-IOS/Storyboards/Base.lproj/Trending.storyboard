@@ -107,26 +107,27 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="T3Z-kQ-ACQ">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="9bM-GJ-qx2">
                             <connections>
                                 <action selector="showLeftViewAnimated:" destination="WgN-23-V3S" id="gcP-x7-UEK"/>
                             </connections>
                         </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="AIy-YD-Gqp">
-                            <rect key="frame" x="132" y="7" width="111" height="30"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dZo-7C-KNg">
+                            <rect key="frame" x="132" y="7.5" width="111" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Anime"/>
                                 <segment title="Manga"/>
                             </segments>
                             <connections>
-                                <action selector="typechanged:" destination="WgN-23-V3S" eventType="valueChanged" id="7iu-d6-QJf"/>
+                                <action selector="typechanged:" destination="WgN-23-V3S" eventType="valueChanged" id="hH3-mk-Avc"/>
                             </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="menubtn" destination="9bM-GJ-qx2" id="EMd-mv-MRd"/>
-                        <outlet property="typeselector" destination="AIy-YD-Gqp" id="6U8-ho-Ulo"/>
+                        <outlet property="typeselector" destination="dZo-7C-KNg" id="qHw-6B-TOL"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plN-68-dCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,6 +136,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="50" height="50"/>
+        <image name="Menu" width="25" height="25"/>
     </resources>
 </document>
