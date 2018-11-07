@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1007" y="32"/>
         </scene>
-        <!--Trending-->
+        <!--Trending Collection View Controller-->
         <scene sceneID="Eoj-76-ONV">
             <objects>
                 <collectionViewController id="WgN-23-V3S" customClass="TrendingCollectionViewController" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                             <outlet property="delegate" destination="WgN-23-V3S" id="l3S-JV-M6p"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Trending" id="T3Z-kQ-ACQ">
+                    <navigationItem key="navigationItem" id="T3Z-kQ-ACQ">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="9bM-GJ-qx2">
                             <connections>
                                 <action selector="showLeftViewAnimated:" destination="WgN-23-V3S" id="gcP-x7-UEK"/>
@@ -135,6 +135,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="25" height="25"/>
+        <image name="Menu" width="50" height="50"/>
     </resources>
 </document>

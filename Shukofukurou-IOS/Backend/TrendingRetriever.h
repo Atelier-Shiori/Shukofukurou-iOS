@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(unsigned int, TrendListType) {
     TrendListTypeScore = 0,
     TrendListTypeNew = 1,
-    TrendListTypeTrending = 2
+    TrendListTypeTrending = 2,
+    TrendListTypeSeasonPopular = 3
 };
 + (void)getTrendListForService:(int)service withType:(int)type shouldRefresh:(bool)shouldRefresh completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler;
 @end

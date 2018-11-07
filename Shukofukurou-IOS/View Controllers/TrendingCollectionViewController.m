@@ -52,6 +52,8 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.refreshControl = [UIRefreshControl new];
     [self.collectionView.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
+    self.navigationItem.title = @"Trending";
+    
     [self hidemenubtn];
     self.typeselector.selectedSegmentIndex = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedtrendtype"];
     [self loadretrieving];

@@ -56,11 +56,27 @@
             [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 if (responseObject[@"data"] != [NSNull null]) {
                     finaldict[@"Newly Added"] = type == 0 ? [AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatAniList AniListMangaSearchtoAtarashii:responseObject];
-                    NSDictionary *parameters = @{@"query" : [self getAnilistQueryForSort:TrendListTypeTrending], @"variables" : variables};
+                    parameters = @{@"query" : [self getAnilistQueryForSort:TrendListTypeTrending], @"variables" : variables};
                     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                         if (responseObject[@"data"] != [NSNull null]) {
                             finaldict[@"Trending"] = type == 0 ? [AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatAniList AniListMangaSearchtoAtarashii:responseObject];
-                            completionHandler(finaldict);
+                            if (type == 0) {
+                                parameters = @{@"query" : [self getAnilistQueryForSort:TrendListTypeSeasonPopular], @"variables" : variables};
+                                [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                    if (responseObject[@"data"] != [NSNull null]) {
+                                        finaldict[@"Popular This Season"] = [AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject];
+                                        completionHandler(finaldict);
+                                    }
+                                    else {
+                                        errorHandler(nil);
+                                    }
+                                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                    errorHandler(error);
+                                }];
+                            }
+                            else {
+                                completionHandler(finaldict);
+                            }
                         }
                         else {
                             errorHandler(nil);
@@ -96,7 +112,22 @@
                     [manager GET:[self getKitsuTrendingURLs:TrendListTypeTrending withType:type] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
                             finaldict[@"Trending"] = type == 0 ? [AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:responseObject];
-                            completionHandler(finaldict);
+                            if (type == 0) {
+                                [manager GET:[self getKitsuTrendingURLs:TrendListTypeSeasonPopular withType:type] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                    if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+                                        finaldict[@"Popular This Season"] =  [AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:responseObject];
+                                        completionHandler(finaldict);
+                                    }
+                                    else {
+                                        errorHandler(nil);
+                                    }
+                                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                    errorHandler(error);
+                                }];
+                            }
+                            else {
+                                completionHandler(finaldict);
+                            }
                         }
                         else {
                             errorHandler(nil);
@@ -187,6 +218,8 @@
             return [NSString stringWithFormat:@"https://kitsu.io/api/edge/%@?page[limit]=10&sort=-createdAt", typestr];
         case TrendListTypeTrending:
             return [NSString stringWithFormat:@"https://kitsu.io/api/edge/trending/%@", typestr];
+        case TrendListTypeSeasonPopular:
+            return [NSString stringWithFormat:@"https://kitsu.io/api/edge/%@?page[limit]=10&sort=popularityRank&filter[status]=current",typestr];
         default:
             break;
     }
@@ -204,6 +237,8 @@
         case TrendListTypeTrending:
             sortstr = @"TRENDING_DESC";
             break;
+        case TrendListTypeSeasonPopular:
+            return @"query ($type: MediaType) {\n  Page(perPage: 10) {\n    media(type: $type, sort: POPULARITY_DESC, status: RELEASING) {\n      id\n      idMal\n      isAdult\n      coverImage {\n        large\n        medium\n      }\n      title {\n        romaji\n        english\n        native\n        userPreferred\n      }\n      episodes\n      chapters\n      volumes\n      format\n      averageScore\n      status\n    }\n  }\n}";
     }
     return [NSString stringWithFormat:@"query ($type: MediaType) {\n  Page(perPage: 10) {\n    media(type: $type, sort: %@) {\n      id\n      title {\n        userPreferred\n        english\n        romaji\n      }\n      synonyms\n      coverImage {\n        medium\n        large\n      }\n      format\n      type\n      status\n      episodes\n      chapters\n      volumes\n      isAdult\n    }\n  }\n}", sortstr];
 }
