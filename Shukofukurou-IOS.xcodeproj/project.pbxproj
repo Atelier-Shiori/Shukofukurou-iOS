@@ -106,6 +106,8 @@
 		596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B32163D11E0005A60F /* CharacterTableViewController.m */; };
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
+		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
+		5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
 		598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
@@ -532,6 +534,11 @@
 		596A01B62163D1330005A60F /* CharacterDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterDetailViewController.m; sourceTree = "<group>"; };
 		596A01B82163F4570005A60F /* PersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonTableViewCell.h; sourceTree = "<group>"; };
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
+		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
+		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
+		5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou-IOS.entitlements"; sourceTree = "<group>"; };
+		5981223921935C7200117FA0 /* AiringNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
+		5981223A21935C7200117FA0 /* AiringNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
 		598AB4D22162658700979C19 /* RelatedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedTableViewController.h; sourceTree = "<group>"; };
 		598AB4D32162658700979C19 /* RelatedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedTableViewController.m; sourceTree = "<group>"; };
 		598AB4EC216296F500979C19 /* ReviewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -609,6 +616,7 @@
 		596240A72155622E001995AD /* Shukofukurou-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */,
 				596240A82155622E001995AD /* AppDelegate.h */,
 				596240A92155622E001995AD /* AppDelegate.m */,
 				596240B42155622F001995AD /* Assets.xcassets */,
@@ -820,6 +828,10 @@
 				5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */,
 				594810D82191D645000C4B5C /* TrendingRetriever.h */,
 				594810D92191D645000C4B5C /* TrendingRetriever.m */,
+				5981223921935C7200117FA0 /* AiringNotificationManager.h */,
+				5981223A21935C7200117FA0 /* AiringNotificationManager.m */,
+				597559582199E1C500C1F188 /* TitleIdEnumerator.h */,
+				597559592199E1C500C1F188 /* TitleIdEnumerator.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1076,6 +1088,9 @@
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -1350,6 +1365,7 @@
 				598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */,
 				5933CEC22174F0CA00EAE7E6 /* MSWeakTimer.m in Sources */,
 				5962421921556514001995AD /* AiringViewController.m in Sources */,
+				5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */,
 				5962418A215563D2001995AD /* Utility.m in Sources */,
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
@@ -1367,6 +1383,7 @@
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
+				5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */,
 				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
 				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
@@ -1696,6 +1713,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
@@ -1715,6 +1733,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";

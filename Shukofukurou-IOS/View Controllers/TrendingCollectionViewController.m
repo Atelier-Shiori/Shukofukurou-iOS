@@ -69,19 +69,17 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)loadretrieving {
-    [self.collectionView.refreshControl beginRefreshing];
     [TrendingRetriever getTrendListForService:[listservice getCurrentServiceID] withType:(int)_typeselector.selectedSegmentIndex shouldRefresh:NO completion:^(id  _Nonnull responseobject) {
         self.items = responseobject;
         [self.collectionView reloadData];
-        [self.collectionView.refreshControl endRefreshing];
     } error:^(NSError * _Nonnull error) {
         NSLog(@"%@", error);
-        [self.collectionView.refreshControl endRefreshing];
     }];
 }
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
     // Refreshes list
+    [sender beginRefreshing];
     [TrendingRetriever getTrendListForService:[listservice getCurrentServiceID] withType:(int)_typeselector.selectedSegmentIndex shouldRefresh:YES completion:^(id  _Nonnull responseobject) {
         self.items = responseobject;
         [self.collectionView reloadData];

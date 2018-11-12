@@ -12,6 +12,7 @@
 #import "OAuthViewControllerDelegate.h"
 #import "ServiceSwitcherViewDelegate.h"
 #import "MainSideBarViewDelegate.h"
+#import "AiringNotificationManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, AuthViewControllerDelegate, ServiceSwitcherViewDelegate, MainSideBarViewDelegate>
 
@@ -20,6 +21,8 @@
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
 @property (readonly, strong) ViewControllerManager *vcmanager;
+
+@property (strong) AiringNotificationManager *airingnotificationmanager;
 
 - (NSManagedObjectContext *)managedObjectContext;
 - (void)saveContext;
