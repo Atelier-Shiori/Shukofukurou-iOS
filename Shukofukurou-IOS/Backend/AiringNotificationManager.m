@@ -243,6 +243,7 @@
 }
 
 - (void)removependingnotification:(int)anilistid {
+    NSLog(@"Removed from Notification Queue: %i", anilistid);
     [_notificationCenter removePendingNotificationRequestsWithIdentifiers:@[[NSString stringWithFormat:@"airing-%i",anilistid]]];
 }
 

@@ -120,6 +120,7 @@
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
 		59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
 		59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
+		59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -563,6 +564,8 @@
 		59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotifySettingsTableViewController.m; sourceTree = "<group>"; };
 		59FE3E4D219B39C50035E2E5 /* AiringNotificationServiceSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationServiceSelector.h; sourceTree = "<group>"; };
 		59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationServiceSelector.m; sourceTree = "<group>"; };
+		59FE3E50219B65990035E2E5 /* NotifyingTitlesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyingTitlesTableViewController.h; sourceTree = "<group>"; };
+		59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyingTitlesTableViewController.m; sourceTree = "<group>"; };
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1018,6 +1021,8 @@
 				59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */,
 				59FE3E4D219B39C50035E2E5 /* AiringNotificationServiceSelector.h */,
 				59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */,
+				59FE3E50219B65990035E2E5 /* NotifyingTitlesTableViewController.h */,
+				59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1400,6 +1405,7 @@
 				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
 				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */,
 				5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */,
 				596240BB2155622F001995AD /* main.m in Sources */,
 				5962418B215563D2001995AD /* Kitsu.m in Sources */,
