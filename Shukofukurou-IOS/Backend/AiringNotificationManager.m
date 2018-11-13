@@ -137,13 +137,11 @@
         NSLog(@"Adding New Entries");
         for (NSDictionary *entry in list) {
             int anilistid = [titleidenum findTargetIdFromSourceId:((NSNumber *)entry[@"id"]).intValue];
-            if (![self retrieveNotificationItem:anilistid withService:service] || ![self retrieveIgnoredNotificationItem:((NSNumber *)entry[@"id"]).intValue withService:service]) {
-                if (anilistid > 0) {
+            if (![self retrieveNotificationItem:anilistid withService:service] && anilistid > 0) {
                     [self addNotifyingTitle:entry withAniListID:anilistid withService:service];
-                }
-                else {
+            }
+            else if (![self retrieveIgnoredNotificationItem:((NSNumber *)entry[@"id"]).intValue withService:service] && anilistid == 0) {
                     [self addIgnoreNotifyingTitle:entry withService:service];
-                }
             }
         }
         completionHandler(true);
@@ -182,7 +180,7 @@
             NSDictionary *animeinfo = responseObject[@"data"][@"Media"];
             bool finished = [(NSString *)animeinfo[@"status"] isEqualToString:@"FINISHED"] || [(NSString *)animeinfo[@"status"] isEqualToString:@"CANCELLED"];
             [notifyobj setValue:@(finished) forKey:@"finished"];
-            [notifyobj setValue:animeinfo[@"nextAiringEpisode"] != [NSNull null] ? [NSDate dateWithTimeIntervalSince1970:((NSNumber *)animeinfo[@"nextAiringEpisode"][@"airingAt"]).longValue] : [NSNull null] forKey:@"nextairdate"];
+            [notifyobj setValue:animeinfo[@"nextAiringEpisode"] != [NSNull null] ? [NSDate dateWithTimeIntervalSince1970:((NSNumber *)animeinfo[@"nextAiringEpisode"][@"airingAt"]).longValue] : nil forKey:@"nextairdate"];
             [notifyobj setValue:animeinfo[@"nextAiringEpisode"] != [NSNull null] ? animeinfo[@"nextAiringEpisode"][@"nextepisode"] : @(0) forKey:@"nextepisode"];
             [self.managedObjectContext save:nil];
         }];
