@@ -33,7 +33,7 @@
 - (void)setsidebar:(CGSize)size {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         // Always Shows Sidebar if in Landscape orientation
-        if (size.width/size.height >= 1) {
+        if (size.width/size.height >= .75) {
             self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
             _shouldHideMenuButton = YES;
         }
