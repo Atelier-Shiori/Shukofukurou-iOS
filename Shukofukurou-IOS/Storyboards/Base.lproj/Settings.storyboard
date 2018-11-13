@@ -218,11 +218,11 @@
                                         <rect key="frame" x="0.0" y="475.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bFF-2G-uJx" id="z3p-F0-TiO">
-                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="294" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Third Party Licenses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UMu-fR-oTs">
-                                                    <rect key="frame" x="16" y="0.0" width="269" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -242,7 +242,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Online Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dtR-E0-Ft1">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -259,7 +259,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="File a Bug Report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cKh-aP-eUL">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -280,7 +280,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Follow us on Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CsV-SG-DtT">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -297,7 +297,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Follow us on Mastodon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lbp-OE-fGh">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -359,7 +359,7 @@
         <!--Air Notifications-->
         <scene sceneID="DmB-F9-a9q">
             <objects>
-                <tableViewController title="Air Notifications" id="9Cb-Tn-ZDu" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="airnotifysettings" title="Air Notifications" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Cb-Tn-ZDu" customClass="AiringNotifySettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fCf-FE-dBM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -377,6 +377,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w1V-gl-d6k">
                                                     <rect key="frame" x="255" y="7" width="49" height="31"/>
                                                     <connections>
+                                                        <action selector="enablenotifyswitch:" destination="9Cb-Tn-ZDu" eventType="valueChanged" id="oo7-I1-P65"/>
                                                         <action selector="setTitleCache:" destination="pjy-6k-cAo" eventType="valueChanged" id="gHk-8S-uTl"/>
                                                     </connections>
                                                 </switch>
@@ -416,15 +417,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="UBX-Wo-cbj" style="IBUITableViewCellStyleDefault" id="Xk2-dk-0ug">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="UBX-Wo-cbj" style="IBUITableViewCellStyleDefault" id="Xk2-dk-0ug">
                                         <rect key="frame" x="0.0" y="123" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xk2-dk-0ug" id="eab-AL-ccx">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Select Airing Titles Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UBX-Wo-cbj">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="List Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UBX-Wo-cbj">
+                                                    <rect key="frame" x="16" y="0.0" width="269" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -432,6 +433,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VQ9-zn-MwN" kind="show" id="oLx-bI-6y7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -441,6 +445,11 @@
                             <outlet property="delegate" destination="9Cb-Tn-ZDu" id="J4J-1D-9FH"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="airnotifyswitch" destination="w1V-gl-d6k" id="Pxc-9Q-HID"/>
+                        <outlet property="selectlistservicecell" destination="Xk2-dk-0ug" id="zKj-2V-Hnx"/>
+                        <outlet property="viewnotifyingtitlescell" destination="EQc-sT-ECa" id="Vst-Tb-cxP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apa-ua-ia1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -490,10 +499,10 @@
             </objects>
             <point key="canvasLocation" x="-615" y="219"/>
         </scene>
-        <!--Airing Notification Source-->
+        <!--List Source-->
         <scene sceneID="jNF-oB-7ZT">
             <objects>
-                <tableViewController storyboardIdentifier="NotificationServiceSelector" id="VQ9-zn-MwN" customClass="ServiceSwitcherViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NotificationServiceSelector" id="VQ9-zn-MwN" customClass="AiringNotificationServiceSelector" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="TYZ-pK-VAE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -560,22 +569,16 @@
                             <outlet property="delegate" destination="VQ9-zn-MwN" id="pQK-9Z-s2d"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Airing Notification Source" id="vAi-vE-8LC">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="VgH-ju-Dv3">
-                            <connections>
-                                <action selector="cancel:" destination="VQ9-zn-MwN" id="Jh5-GQ-PlY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="List Source" id="vAi-vE-8LC"/>
                     <connections>
-                        <outlet property="anilistservicecell" destination="BY9-UC-H0o" id="xoK-Kr-4CE"/>
-                        <outlet property="kitsuservicecell" destination="Q4w-2k-vIY" id="1Bs-nJ-QdO"/>
-                        <outlet property="myanimelistservicecell" destination="oe1-C0-DfP" id="xRR-XX-NSW"/>
+                        <outlet property="anilistservicecell" destination="BY9-UC-H0o" id="i8g-MA-k7p"/>
+                        <outlet property="kitsuservicecell" destination="Q4w-2k-vIY" id="Vwe-cY-Ul0"/>
+                        <outlet property="myanimelistservicecell" destination="oe1-C0-DfP" id="Ov4-24-Ld8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHS-mn-UlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2254" y="788"/>
+            <point key="canvasLocation" x="2233" y="714"/>
         </scene>
     </scenes>
     <resources>

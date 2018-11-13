@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AiringNotificationManager : NSObject
 @property (strong) NSManagedObjectContext *managedObjectContext;
++ (AiringNotificationManager *)sharedAiringNotificationManager;
++ (int)airingNotificationServiceSource;
+- (void)checknotifications:(void (^)(bool success))completionHandler;
 - (void)checkListForAiringTitles:(void (^)(bool success))completionHandler;
 - (void)checkForNewNotifications:(void (^)(bool success))completionHandler;
 - (void)addNotifyingTitle:(NSDictionary *)titleInfo withAniListID:(int)anilistid withService:(int)service;

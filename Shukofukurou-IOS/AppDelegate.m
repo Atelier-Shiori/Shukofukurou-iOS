@@ -33,6 +33,8 @@
     defaultValues[@"selectedsearchtype"] = @(0);
     defaultValues[@"cachetitleinfo"] = @YES;
     defaultValues[@"selectedtrendtype"] = @(0);
+    defaultValues[@"airnotificationsenabled"] = @NO;
+    defaultValues[@"airingnotification_service"] = @(3);
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";
@@ -109,6 +111,7 @@
     [self checkaccountinformation];
     _autorefresh = [AutoRefreshTimer new];
     [StreamDataRetriever retrieveStreamData];
+    _airingnotificationmanager = [AiringNotificationManager new];
     // Set Background Fetch
     [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     // Set Image Disk Cache Size

@@ -7,6 +7,7 @@
 //
 
 #import "ListViewController.h"
+#import "AiringNotificationManager.h"
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
 #import "AnimeEntryTableViewCell.h"
@@ -29,6 +30,7 @@
 @property (strong) UISearchController *searchController;
 @property (strong) ListSelectorViewController *listselector;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
+@property bool initalload;
 @end
 
 @implementation ListViewController
@@ -133,7 +135,9 @@
 
 - (void)refreshListWithCompletionHandler:(void (^)(bool success)) completionHandler {
     NSLog(@"Refreshing List");
-    [_refreshcontrol beginRefreshing];
+    if (_initalload) {
+        [_refreshcontrol beginRefreshing];
+    }
     [self retrieveList:true completion:^(bool success) {
         NSLog(@"Refreshed: %i", success);
         [self.tableView reloadData];
@@ -151,13 +155,23 @@
         completionHandler(true);
     }
     else {
-        [_refreshcontrol beginRefreshing];
+        if (_initalload) {
+            [_refreshcontrol beginRefreshing];
+        }
         [listservice retrieveownListWithType:_listtype completion:^(id responseObject) {
             [self saveEntriesWithDictionary:responseObject withType:self.listtype];
             // populate list
             [self reloadList];
             [self.refreshControl endRefreshing];
-            completionHandler(true);
+            if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice getCurrentServiceID]) {
+                AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
+                [anm checknotifications:^(bool success) {
+                    completionHandler(true);
+                }];
+            }
+            else {
+                completionHandler(true);
+            }
         } error:^(NSError *error) {
             NSLog(@"%@", error.userInfo);
             [self.refreshControl endRefreshing];
@@ -213,6 +227,7 @@
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:[self getSortBy] ascending:[self getAccending]];
     _filteredlist = [[self retrieveEntriesWithType:_listtype withFilterPredicate:filterpredicate] sortedArrayUsingDescriptors:@[sort]];
     [self.tableView reloadData];
+    _initalload = true;
 }
 
 - (void)filterList {
@@ -554,6 +569,7 @@
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
     // Refreshes list
+    [sender beginRefreshing];
     __weak ListViewController *weakSelf = self;
     [self retrieveList:true completion:^(bool success) {
         [weakSelf.tableView reloadData];
@@ -619,6 +635,13 @@
                     break;
                 default:
                     break;
+            }
+            // Check Notifications
+            if ([AiringNotificationManager airingNotificationServiceSource] == [listservice getCurrentServiceID]) {
+                AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
+                int sourceserviceid = [AiringNotificationManager airingNotificationServiceSource];
+                [anm removeNotifyingTitle:titleid withService:sourceserviceid];
+                [anm removeIgnoreNotifyingTitle:titleid withService:sourceserviceid];
             }
             [self reloadList];
         } error:^(NSError *error) {

@@ -118,6 +118,8 @@
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
+		59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
+		59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -557,6 +559,10 @@
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
 		59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
 		59D9159E2162C1B800B5A61B /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
+		59FE3E38219B287E0035E2E5 /* AiringNotifySettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotifySettingsTableViewController.h; sourceTree = "<group>"; };
+		59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotifySettingsTableViewController.m; sourceTree = "<group>"; };
+		59FE3E4D219B39C50035E2E5 /* AiringNotificationServiceSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationServiceSelector.h; sourceTree = "<group>"; };
+		59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationServiceSelector.m; sourceTree = "<group>"; };
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1008,6 +1014,10 @@
 				594810F121921713000C4B5C /* TrendingViewController.m */,
 				594810ED219214BA000C4B5C /* TrendingCollectionViewController.h */,
 				594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */,
+				59FE3E38219B287E0035E2E5 /* AiringNotifySettingsTableViewController.h */,
+				59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */,
+				59FE3E4D219B39C50035E2E5 /* AiringNotificationServiceSelector.h */,
+				59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1357,6 +1367,7 @@
 				5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */,
 				5962422421556514001995AD /* TitleInfoViewController.m in Sources */,
 				5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */,
+				59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */,
 				594810F221921713000C4B5C /* TrendingViewController.m in Sources */,
 				F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */,
 				596241A82155642E001995AD /* SideBarCell.m in Sources */,
@@ -1377,6 +1388,7 @@
 				5962421821556514001995AD /* MainViewController.m in Sources */,
 				596241DF215564D1001995AD /* TitleInfoTableViewCell.m in Sources */,
 				5962419921556406001995AD /* AuthViewController.m in Sources */,
+				59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */,
 				5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
