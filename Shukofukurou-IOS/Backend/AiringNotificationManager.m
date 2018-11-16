@@ -162,7 +162,7 @@
     AFHTTPSessionManager *sessionmanager = [Utility jsonmanager];
     __block NSManagedObjectContext *notifyobj = notificationList[position];
     if ([notifyobj valueForKey:@"nextairdate"] != [NSNull null]) {
-        if ([(NSDate *)[notifyobj valueForKey:@"nextairdate"] timeIntervalSinceNow] < 0) {
+        if ([(NSDate *)[notifyobj valueForKey:@"nextairdate"] timeIntervalSinceNow] > 0) {
             if (notificationList.count == position+1) {
                 [self setNotifications];
                 completionHandler(true);
@@ -181,7 +181,7 @@
             bool finished = [(NSString *)animeinfo[@"status"] isEqualToString:@"FINISHED"] || [(NSString *)animeinfo[@"status"] isEqualToString:@"CANCELLED"];
             [notifyobj setValue:@(finished) forKey:@"finished"];
             [notifyobj setValue:animeinfo[@"nextAiringEpisode"] != [NSNull null] ? [NSDate dateWithTimeIntervalSince1970:((NSNumber *)animeinfo[@"nextAiringEpisode"][@"airingAt"]).longValue] : nil forKey:@"nextairdate"];
-            [notifyobj setValue:animeinfo[@"nextAiringEpisode"] != [NSNull null] ? animeinfo[@"nextAiringEpisode"][@"nextepisode"] : @(0) forKey:@"nextepisode"];
+            [notifyobj setValue:animeinfo[@"nextAiringEpisode"] != [NSNull null] ? animeinfo[@"nextAiringEpisode"][@"episode"] : @(0) forKey:@"nextepisode"];
             [self.managedObjectContext save:nil];
         }];
         if (notificationList.count == position+1) {
