@@ -174,6 +174,13 @@
         [genres addObject:genre];
     }
     aobject.genres = genres;
+    NSMutableArray *studiosarray = [NSMutableArray new];
+    if (title[@"studios"] != [NSNull null]) {
+        for (NSDictionary *studio in title[@"studios"][@"edges"]) {
+            [studiosarray addObject:studio[@"node"][@"name"]];
+        }
+    }
+    aobject.producers = studiosarray;
     if (title[@"idMal"]) {
         aobject.mappings = @{@"myanimelist/anime" : title[@"idMal"]};
     }
