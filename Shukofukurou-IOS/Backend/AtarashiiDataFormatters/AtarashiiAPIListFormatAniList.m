@@ -157,6 +157,9 @@
     aobject.end_date = title[@"endDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"endDate"][@"year"],title[@"endDate"][@"month"],title[@"endDate"][@"day"]] : @"";
     aobject.duration = title[@"duration"] && title[@"duration"] != [NSNull null] ? ((NSNumber *)title[@"duration"]).intValue : 0;
     aobject.classification = @"";
+    aobject.hashtag = title[@"hashtag"] != [NSNull null] ? title[@"hashtag"] : @"";
+    aobject.season = title[@"season"] != [NSNull null] ? ((NSString *)title[@"season"]).capitalizedString : @"Unknown";
+    aobject.source = title[@"source"] != [NSNull null] ? [(NSString *)title[@"source"] stringByReplacingOccurrencesOfString:@"_" withString:@" "].capitalizedString : @"";
     aobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
     NSString *tmpstatus  = title[@"status"] != [NSNull null] ? title[@"status"] : @"NOT_YET_RELEASED";
     if ([tmpstatus isEqualToString:@"FINISHED"]||[tmpstatus isEqualToString:@"CANCELLED"]) {

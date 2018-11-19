@@ -29,7 +29,8 @@
 }
 
 - (void)loadNotifications {
-    _notificationitems = [[AiringNotificationManager sharedAiringNotificationManager] getAllNotifications:YES];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    _notificationitems = [[[AiringNotificationManager sharedAiringNotificationManager] getAllNotifications:YES] sortedArrayUsingDescriptors:@[sort]];
     [self.tableView reloadData];
 }
 

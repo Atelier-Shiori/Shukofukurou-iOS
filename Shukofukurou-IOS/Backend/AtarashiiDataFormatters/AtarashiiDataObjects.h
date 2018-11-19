@@ -24,6 +24,9 @@
 @property (strong) NSString *broadcast;
 @property int duration;
 @property (strong) NSString *classification;
+@property (strong) NSString *hashtag;
+@property (strong) NSString *source;
+@property (strong) NSString *season;
 @property double members_score;
 @property int members_count;
 @property int favorited_count;

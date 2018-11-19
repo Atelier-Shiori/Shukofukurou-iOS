@@ -126,9 +126,14 @@
                 return;
             }
         }
-        weakSelf.navigationItem.hidesBackButton = NO;
-        weakSelf.loadingview.hidden = YES;
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't load title information" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            weakSelf.navigationItem.hidesBackButton = NO;
+            weakSelf.loadingview.hidden = YES;
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
     }];
 }
 
@@ -653,8 +658,14 @@
     // [detailarray addObject:@{@"title" : @"Type", @"values" : @""}];
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Type" withValue:titleinfo[@"type"] withCellType:cellTypeInfo]];
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Episodes" withValue:(((NSNumber *)titleinfo[@"episodes"]).intValue > 0 || titleinfo[@"episodes"] != nil) ? ((NSNumber *)titleinfo[@"episodes"]).stringValue : @"Unknown" withCellType:cellTypeInfo]];
-    if (titleinfo[@"duration"] == nil  || ((NSNumber *)titleinfo[@"duration"]).intValue == 0){
-        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Duration" withValue:((NSNumber *)titleinfo[@"duration"]).stringValue withCellType:cellTypeInfo]];
+    if (((NSNumber *)titleinfo[@"duration"]).intValue > 0){
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Duration" withValue:[NSString stringWithFormat:@"%@ mins", ((NSNumber *)titleinfo[@"duration"]).stringValue] withCellType:cellTypeInfo]];
+    }
+    if (((NSString *)titleinfo[@"season"]).length > 0) {
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Aired Season" withValue:titleinfo[@"season"] withCellType:cellTypeInfo]];
+    }
+    if (((NSString *)titleinfo[@"source"]).length > 0) {
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Source" withValue:titleinfo[@"source"] withCellType:cellTypeInfo]];
     }
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Status" withValue:titleinfo[@"status"] withCellType:cellTypeInfo]];
     // Other Info
@@ -690,6 +701,9 @@
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Genres" withValue:genres withCellType:cellTypeInfoExpand]];
     if (((NSArray *)titleinfo[@"producers"]).count > 0){
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Producers" withValue:[Utility appendstringwithArray:(NSArray *)titleinfo[@"producers"]] withCellType:cellTypeInfoExpand]];
+    }
+    if (((NSString *)titleinfo[@"hashtag"]).length > 0) {
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Hashtag" withValue:titleinfo[@"hashtag"] withCellType:cellTypeInfo]];
     }
     if (titleinfo[@"members_score"] != nil || ((NSNumber *)titleinfo[@"members_score"]).intValue > 0) {
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:[NSString stringWithFormat:@"%.2f", ((NSNumber *)titleinfo[@"members_score"]).floatValue] withCellType:cellTypeInfo]];

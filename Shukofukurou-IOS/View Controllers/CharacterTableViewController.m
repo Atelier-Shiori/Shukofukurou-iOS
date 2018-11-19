@@ -30,8 +30,13 @@
         self.navigationItem.hidesBackButton = NO;
     } error:^(NSError *error) {
         NSLog(@"%@",error);
-        [self.navigationController popViewControllerAnimated:YES];
-        self.navigationItem.hidesBackButton = NO;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't load staff list." message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+            self.navigationItem.hidesBackButton = NO;
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
     }];
 }
 
@@ -118,9 +123,6 @@
                 break;
             }
         }
-        
-        
-        
     }
     else {
         [characterdetailvc retrievePersonDetailsForID:((NSNumber *)entry[@"id"]).intValue];
