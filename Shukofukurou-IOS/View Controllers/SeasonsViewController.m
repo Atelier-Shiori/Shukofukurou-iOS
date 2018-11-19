@@ -141,7 +141,7 @@ static NSString * const reuseIdentifier = @"Cell";
     // Configure the cell
     cell.title.text = entry[@"title"];
     [cell loadimage:entry[@"image_url"]];
-    return cell;
+    return cell ? cell : [UICollectionViewCell new];
 }
 
 #pragma mark <UICollectionViewDelegate>

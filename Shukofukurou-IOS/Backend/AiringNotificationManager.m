@@ -94,7 +94,7 @@
 - (void)checkListForAiringTitles:(void (^)(bool success))completionHandler {
     NSLog(@"Checking for new airing titles");
     __block int service = [AiringNotificationManager airingNotificationServiceSource];
-    NSArray *list = @[];
+    NSArray *list;
     switch (service) {
         case 1: {
             NSDictionary *udict = [listservice getAllUserNames];
@@ -299,7 +299,7 @@
 - (void)cleanupFinishedTitles {
     NSLog(@"Clearing Finished Titles from Notifications");
     [_managedObjectContext performBlockAndWait:^{
-        NSArray *notifications = @[];
+        NSArray *notifications;
         NSFetchRequest *fetchRequest = [NSFetchRequest new];
         fetchRequest.entity = [NSEntityDescription entityForName:@"Notifications" inManagedObjectContext:self.managedObjectContext];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"finished == %i", 1];
@@ -316,7 +316,7 @@
 
 - (void)clearNotifyList {
     [_managedObjectContext performBlockAndWait:^{
-        NSArray *notifications = @[];
+        NSArray *notifications;
         NSFetchRequest *fetchRequest = [NSFetchRequest new];
         fetchRequest.entity = [NSEntityDescription entityForName:@"Notifications" inManagedObjectContext:self.managedObjectContext];
         NSError *error = nil;

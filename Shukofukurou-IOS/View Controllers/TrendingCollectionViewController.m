@@ -145,7 +145,7 @@ static NSString * const reuseIdentifier = @"Cell";
     cell.title.text = entry[@"title"];
     [cell loadimage:entry[@"image_url"]];
     
-    return cell;
+    return cell ? cell : [UICollectionViewCell new];
 }
 
 #pragma mark <UICollectionViewDelegate>
@@ -172,7 +172,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *reusableview = nil;
+    UICollectionReusableView *reusableview = [UICollectionReusableView new];
     if (kind == UICollectionElementKindSectionHeader) {
         TrendingCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         headerView.sectionLabel.text = _items.allKeys[indexPath.section];

@@ -115,7 +115,7 @@
     aentrycell.progress.text = [NSString stringWithFormat:@"Episodes: %@", entry[@"episodes"]];
     aentrycell.type.text = [NSString stringWithFormat:@"Type: %@", entry[@"type"]];
     [aentrycell loadimage:entry[@"image_url"]];
-    return aentrycell;
+    return aentrycell ? aentrycell : [UITableViewCell new];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

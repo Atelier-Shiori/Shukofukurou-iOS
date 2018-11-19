@@ -11,7 +11,7 @@
 
 @implementation TitleIdEnumerator
 - (instancetype) initWithList:(NSArray *)list withType:(int)type completion:(void (^)(TitleIdEnumerator *titleidenum))completionHandler {
-    if ([super init]) {
+    if (self = [super init]) {
         self.tmplist = list;
         self.type = type;
         _completionHandler = completionHandler;

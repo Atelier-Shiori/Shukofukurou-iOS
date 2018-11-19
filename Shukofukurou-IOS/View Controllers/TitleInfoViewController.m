@@ -607,7 +607,7 @@
     return nil;
 }
 
-- (NSArray *)generateUserEntryAnimeArray:(NSDictionary *)entry {
+- (NSArray *)generateUserEntryAnimeArray:( NSDictionary * _Nonnull)entry {
     NSMutableArray *entrycellarray = [NSMutableArray new];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Episode" withValue:entry[@"watched_episodes"] withMaximumCellValue:((NSNumber *)entry[@"episodes"]).intValue withCellType:cellTypeProgressEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Status" withValue:entry[@"watched_status"] withCellType:cellTypeEntry]];
@@ -621,7 +621,7 @@
     return entrycellarray;
 }
 
-- (NSArray *)generateUserEntryMangaArray:(NSDictionary *)entry {
+- (NSArray *)generateUserEntryMangaArray:(NSDictionary * _Nonnull)entry {
     NSMutableArray *entrycellarray = [NSMutableArray new];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Chapter" withValue:entry[@"chapters_read"] withMaximumCellValue:((NSNumber *)entry[@"chapters"]).intValue withCellType:cellTypeProgressEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Volume" withValue:entry[@"volumes_read"] withMaximumCellValue:((NSNumber *)entry[@"volumes"]).intValue withCellType:cellTypeProgressEntry]];

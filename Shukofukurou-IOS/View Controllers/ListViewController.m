@@ -103,11 +103,6 @@
 }
 
 - (void)recieveNotification:(NSNotification *)notification {
-    bool refresh = YES;
-    if (notification.object && [notification.object isKindOfClass:[NSDictionary class]]) {
-        NSDictionary *userinfo = notification.object;
-        refresh = ((NSNumber *)userinfo[@"refresh"]).boolValue;
-    }
     if (([notification.name isEqualToString:@"AnimeRefreshList"] && _listtype == Anime) || ([notification.name isEqualToString:@"MangaRefreshList"] && _listtype == Manga)) {
         NSLog(@"Refreshing List");
         [self refreshListWithCompletionHandler:^(bool success) {
