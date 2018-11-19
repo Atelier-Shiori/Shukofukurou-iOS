@@ -508,4 +508,28 @@
     }
     return nil;
 }
++ (NSArray *)normalizeSeasonData:(NSArray *)seasonData withSeason:(NSString *)season withYear:(int)year {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *d in seasonData) {
+        @autoreleasepool {
+            if (((NSNumber *)d[@"nsfw"]).boolValue) {
+                continue;
+            }
+            AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
+            aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
+            aobject.title = d[@"attributes"][@"canonicalTitle"];
+            aobject.other_titles =  @{@"synonyms" : (d[@"attributes"][@"abbreviatedTitles"] && d[@"attributes"][@"abbreviatedTitles"]  != [NSNull null]) ? d[@"attributes"][@"abbreviatedTitles"] : @[], @"english" : d[@"attributes"][@"titles"][@"en"] && d[@"attributes"][@"titles"][@"en"] != [NSNull null] ? @[d[@"attributes"][@"titles"][@"en"]] : d[@"attributes"][@"titles"][@"en_jp"] && d[@"attributes"][@"titles"][@"en_jp"] != [NSNull null] ? @[d[@"attributes"][@"titles"][@"en_jp"]] : @[], @"japanese" : d[@"attributes"][@"titles"][@"ja_jp"] && d[@"attributes"][@"titles"][@"ja_jp"] != [NSNull null] ?  @[d[@"attributes"][@"titles"][@"ja_jp"]] : @[] };
+            if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
+                aobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
+            }
+            aobject.type = [Utility convertAnimeType:d[@"attributes"][@"showType"]];
+            NSMutableDictionary *finaldict = [[NSMutableDictionary alloc] initWithDictionary:aobject.NSDictionaryRepresentation];
+            finaldict[@"year"] = @(year);
+            finaldict[@"season"] = season;
+            finaldict[@"service"] = @(2);
+            [tmparray addObject:finaldict.copy];
+        }
+    }
+    return tmparray.copy;
+}
 @end

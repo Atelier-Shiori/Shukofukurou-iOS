@@ -83,6 +83,15 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+}
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ServiceChanged"]) {
+        // Reload List
+        [self reloadData:NO];
+    }
 }
 
 - (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
@@ -104,6 +113,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)reloadData:(bool)refresh {
     __weak SeasonsViewController *weakSelf = self;
+    _seasonlist = @[];
+    [self.collectionView reloadData];
     [AniListSeasonListGenerator retrieveSeasonDataWithSeason:weakSelf.currentseason  withYear:weakSelf.currentyear refresh:refresh completion:^(id responseObject) {
         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
         weakSelf.seasonlist = [responseObject sortedArrayUsingDescriptors:@[sort]];
@@ -143,24 +154,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (!self.collectionView.refreshControl.refreshing) {
         NSDictionary *entry = _seasonlist[indexPath.row];
-        switch ([listservice getCurrentServiceID]) {
-            case 1:
-                if (entry[@"idMal"] != [NSNull null]) {
-                    [self showTitleView:((NSNumber *)entry[@"idMal"]).intValue];
-                }
-                break;
-            case 2:
-                if (entry[@"idMal"] != [NSNull null]) {
-                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)entry[@"idMal"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:0 completionHandler:^(int kitsuid) {
-                        [self showTitleView:kitsuid];
-                    } error:^(NSError *error) {
-                    }];
-                }
-                break;
-            case 3:
-                [self showTitleView:((NSNumber *)entry[@"id"]).intValue];
-                break;
-        }
+        [self showTitleView:((NSNumber *)entry[@"id"]).intValue];
         return YES;
     }
     return NO;

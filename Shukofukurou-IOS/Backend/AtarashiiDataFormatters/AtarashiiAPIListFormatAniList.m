@@ -532,6 +532,7 @@
             NSMutableDictionary *finaldict = [[NSMutableDictionary alloc] initWithDictionary:aobject.NSDictionaryRepresentation];
             finaldict[@"year"] = @(year);
             finaldict[@"season"] = season;
+            finaldict[@"service"] = @(3);
             [tmparray addObject:finaldict.copy];
         }
     }

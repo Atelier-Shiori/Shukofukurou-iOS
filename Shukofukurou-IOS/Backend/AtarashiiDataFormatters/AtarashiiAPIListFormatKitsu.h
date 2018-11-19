@@ -21,4 +21,5 @@
 + (NSArray *)KitsuReactionstoAtarashii:(NSDictionary *)data withType:(int)type;
 + (NSDictionary *)KitsuUsertoAtarashii:(NSDictionary *)userinfo;
 + (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray;
++ (NSArray *)normalizeSeasonData:(NSArray *)seasonData withSeason:(NSString *)season withYear:(int)year;
 @end
