@@ -137,7 +137,7 @@
         NSLog(@"Adding New Entries");
         for (NSDictionary *entry in list) {
             int anilistid = [titleidenum findTargetIdFromSourceId:((NSNumber *)entry[@"id"]).intValue];
-            if (![self retrieveNotificationItem:anilistid withService:service] && anilistid > 0) {
+            if (![self retrieveNotificationItem:anilistid isAniListID:YES withService:service] && anilistid > 0) {
                     [self addNotifyingTitle:entry withAniListID:anilistid withService:service];
             }
             else if (![self retrieveIgnoredNotificationItem:((NSNumber *)entry[@"id"]).intValue withService:service] && anilistid == 0) {
@@ -253,7 +253,7 @@
 
 - (void)addNotifyingTitle:(NSDictionary *)titleInfo withAniListID:(int)anilistid withService:(int)service {
     [_managedObjectContext performBlockAndWait:^{
-        NSManagedObject *notifyobj = [self retrieveNotificationItem:anilistid withService:service];
+        NSManagedObject *notifyobj = [self retrieveNotificationItem:anilistid isAniListID:YES withService:service];
         if (!notifyobj) {
             notifyobj = [NSEntityDescription insertNewObjectForEntityForName:@"Notifications" inManagedObjectContext:self.managedObjectContext];
         }
@@ -281,7 +281,7 @@
 }
 
 - (void)removeNotifyingTitle:(int)titleid withService:(int)service {
-    __block NSManagedObject *notifyobj = [self retrieveNotificationItem:titleid withService:service];
+    __block NSManagedObject *notifyobj = [self retrieveNotificationItem:titleid isAniListID:NO withService:service];
     if (notifyobj) {
         [_managedObjectContext performBlockAndWait:^{
             int anilistid = ((NSNumber *)[notifyobj valueForKey:@"anilistid"]).intValue;
@@ -341,12 +341,18 @@
     [_notificationCenter removeAllPendingNotificationRequests];
 }
 
-- (NSManagedObject *)retrieveNotificationItem:(int)titleid withService:(int)service {
+- (NSManagedObject *)retrieveNotificationItem:(int)titleid isAniListID:(bool)isAniListID withService:(int)service {
     __block NSArray *notifications = @[];
     [_managedObjectContext performBlockAndWait:^{
         NSFetchRequest *fetchRequest = [NSFetchRequest new];
         fetchRequest.entity = [NSEntityDescription entityForName:@"Notifications" inManagedObjectContext:self.managedObjectContext];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"service == %i AND servicetitleid == %i", service, titleid];
+        NSPredicate *predicate;
+        if (!isAniListID) {
+        predicate = [NSPredicate predicateWithFormat:@"service == %i AND servicetitleid == %i", service, titleid];
+        }
+        else {
+            predicate = [NSPredicate predicateWithFormat:@"service == %i AND anilistid == %i", service, titleid];
+        }
         fetchRequest.predicate = predicate;
         NSError *error = nil;
         notifications = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
