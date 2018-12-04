@@ -35,11 +35,16 @@
         // Always Shows Sidebar if in Landscape orientation
         if (size.width/size.height >= .75) {
             self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
-            _shouldHideMenuButton = YES;
         }
         else {
             self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
+        }
+        
+        if ((size.height == 1024 && size.width <= 768) || size.height == 1112 || size.height == 1194 || size.height == 1366|| self.leftViewAlwaysVisibleOptions == LGSideMenuAlwaysVisibleOnNone) {
             _shouldHideMenuButton = NO;
+        }
+        else {
+            _shouldHideMenuButton = YES;
         }
         [NSNotificationCenter.defaultCenter postNotificationName:@"sidebarStateDidChange" object:@(_shouldHideMenuButton)];
     }
