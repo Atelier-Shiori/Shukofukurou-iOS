@@ -220,25 +220,30 @@
         content.sound = [UNNotificationSound defaultSound];
         content.userInfo = @{@"anilistid" : [notificationobj valueForKey:@"anilistid"], @"servicetitleid" : [notificationobj valueForKey:@"servicetitleid"], @"service" : [notificationobj valueForKey:@"service"]};
         NSDate *airdate = (NSDate *)[notificationobj valueForKey:@"nextairdate"];
-        NSDateComponents *triggerDate = [[NSCalendar currentCalendar]
-                                         components:NSCalendarUnitYear +
-                                         NSCalendarUnitMonth + NSCalendarUnitDay +
-                                         NSCalendarUnitHour + NSCalendarUnitMinute +
-                                         NSCalendarUnitSecond fromDate:airdate];
-        UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate
-                                                                                                          repeats:NO];
-        NSString *identifier = [NSString stringWithFormat:@"airing-%@",[notificationobj valueForKey:@"anilistid"]];
-        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
-                        content:content
-                                                                              trigger:trigger];
-        [_notificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-            if (error != nil) {
-                NSLog(@"Something went wrong: %@",error);
-            }
-            else {
-                NSLog(@"Successfully scheduled notification: %@", identifier);
-            }
-        }];
+        if (airdate) {
+            NSDateComponents *triggerDate = [[NSCalendar currentCalendar]
+                                             components:NSCalendarUnitYear +
+                                             NSCalendarUnitMonth + NSCalendarUnitDay +
+                                             NSCalendarUnitHour + NSCalendarUnitMinute +
+                                             NSCalendarUnitSecond fromDate:airdate];
+            UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate
+                                                                                                              repeats:NO];
+            NSString *identifier = [NSString stringWithFormat:@"airing-%@",[notificationobj valueForKey:@"anilistid"]];
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
+                            content:content
+                                                                                  trigger:trigger];
+            [_notificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (error != nil) {
+                    NSLog(@"Something went wrong: %@",error);
+                }
+                else {
+                    NSLog(@"Successfully scheduled notification: %@", identifier);
+                }
+            }];
+        }
+        else {
+            NSLog(@"Something went wrong: Invalid Air Date");
+        }
     }
     else {
         NSLog(@"Skipping %@, No Air Date and Time", [notificationobj valueForKey:@"anilistid"]);
