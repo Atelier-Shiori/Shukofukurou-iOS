@@ -161,7 +161,7 @@
     }
     AFHTTPSessionManager *sessionmanager = [Utility jsonmanager];
     __block NSManagedObjectContext *notifyobj = notificationList[position];
-    if ([notifyobj valueForKey:@"nextairdate"] != [NSNull null]) {
+    if ([notifyobj valueForKey:@"nextairdate"] != [NSNull null] && [notifyobj valueForKey:@"nextairdate"]) {
         if ([(NSDate *)[notifyobj valueForKey:@"nextairdate"] timeIntervalSinceNow] > 0) {
             if (notificationList.count == position+1) {
                 [self setNotifications];
@@ -173,6 +173,17 @@
             }
             return;
         }
+    }
+    if ([notifyobj valueForKey:@"anilistid"] == [NSNull null] || ![notifyobj valueForKey:@"anilistid"]) {
+        if (notificationList.count == position+1) {
+            [self setNotifications];
+            completionHandler(true);
+        }
+        else {
+            int newPosition = position + 1;
+            [self performNewNotificationCheck:notificationList withPosition:newPosition completionHandler:completionHandler];
+        }
+        return;
     }
     NSDictionary *parameters = @{@"query" : kAniListNextEpisode, @"variables" : @{@"id": (NSNumber *)[notifyobj valueForKey:@"anilistid"]}};
     [sessionmanager POST:@"https://graphql.anilist.co/" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
