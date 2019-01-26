@@ -78,8 +78,6 @@
 		5962422721556514001995AD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
 		5962422821556514001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
 		5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
-		59624230215565C7001995AD /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; };
-		59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
 		59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
@@ -118,6 +116,8 @@
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
+		59E7718621FBD81C007EB353 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; };
+		59E7718721FBD81C007EB353 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
 		59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
 		59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
@@ -300,13 +300,6 @@
 			remoteGlobalIDString = C63EE56B1BBA07ED008F46BB;
 			remoteInfo = MGSwipeTableCell;
 		};
-		59624232215565C7001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
-			remoteInfo = "SDWebImage iOS";
-		};
 		59624237215565CC001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
@@ -342,6 +335,13 @@
 			remoteGlobalIDString = C63EE56A1BBA07ED008F46BB;
 			remoteInfo = MGSwipeTableCell;
 		};
+		59E7718821FBD81C007EB353 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
+			remoteInfo = "SDWebImage iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -355,8 +355,8 @@
 				5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */,
 				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
 				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
+				59E7718721FBD81C007EB353 /* SDWebImage.framework in Embed Frameworks */,
 				59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */,
-				59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,8 +579,8 @@
 				59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */,
 				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
+				59E7718621FBD81C007EB353 /* SDWebImage.framework in Frameworks */,
 				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
-				59624230215565C7001995AD /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,12 +1060,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				59624233215565C7001995AD /* PBXTargetDependency */,
 				59624238215565CC001995AD /* PBXTargetDependency */,
 				5962423C215565D2001995AD /* PBXTargetDependency */,
 				59624240215565D7001995AD /* PBXTargetDependency */,
 				59624248215565E3001995AD /* PBXTargetDependency */,
 				5962424C215565E9001995AD /* PBXTargetDependency */,
+				59E7718921FBD81C007EB353 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou-IOS";
 			productName = "Shukofukurou-IOS";
@@ -1475,11 +1475,6 @@
 			target = 596240A42155622E001995AD /* Shukofukurou-IOS */;
 			targetProxy = 596240C12155622F001995AD /* PBXContainerItemProxy */;
 		};
-		59624233215565C7001995AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SDWebImage iOS";
-			targetProxy = 59624232215565C7001995AD /* PBXContainerItemProxy */;
-		};
 		59624238215565CC001995AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SAMKeychain-iOS";
@@ -1504,6 +1499,11 @@
 			isa = PBXTargetDependency;
 			name = MGSwipeTableCell;
 			targetProxy = 5962424B215565E9001995AD /* PBXContainerItemProxy */;
+		};
+		59E7718921FBD81C007EB353 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SDWebImage iOS";
+			targetProxy = 59E7718821FBD81C007EB353 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
