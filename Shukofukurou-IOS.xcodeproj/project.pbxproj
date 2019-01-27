@@ -107,6 +107,8 @@
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
+		597BD4A821FD5D15001393B9 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */; };
+		597BD4A921FD5D15001393B9 /* IQKeyboardManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
@@ -118,6 +120,10 @@
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
+		59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
+		59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
+		59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
+		59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
 		59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
 		59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
 		59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
@@ -342,6 +348,27 @@
 			remoteGlobalIDString = C63EE56A1BBA07ED008F46BB;
 			remoteInfo = MGSwipeTableCell;
 		};
+		597BD4A421FD5D07001393B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CD2C4A61C5A615600975A7A;
+			remoteInfo = IQKeyboardManager;
+		};
+		597BD4A621FD5D07001393B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CD5970C1D1C5EBE00AB28D3;
+			remoteInfo = IQKeyboardManagerSwift;
+		};
+		597BD4AA21FD5D15001393B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD2C4A51C5A615600975A7A;
+			remoteInfo = IQKeyboardManager;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -356,6 +383,7 @@
 				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
 				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
 				59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */,
+				597BD4A921FD5D15001393B9 /* IQKeyboardManager.framework in Embed Frameworks */,
 				59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -539,6 +567,7 @@
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
+		597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IQKeyboardManager.xcodeproj; path = "Dependencies/IQKeyboardManager-master/IQKeyboardManager.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou-IOS.entitlements"; sourceTree = "<group>"; };
 		5981223921935C7200117FA0 /* AiringNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5981223A21935C7200117FA0 /* AiringNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
@@ -560,6 +589,14 @@
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
 		59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
 		59D9159E2162C1B800B5A61B /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
+		59EBC1EC21FD2FCA00481D33 /* ThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
+		59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeManager.m; sourceTree = "<group>"; };
+		59EBC1EF21FD2FFB00481D33 /* ThemeManagerTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeManagerTheme.h; sourceTree = "<group>"; };
+		59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeManagerTheme.m; sourceTree = "<group>"; };
+		59EBC1F221FD322900481D33 /* DefaultTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultTheme.h; sourceTree = "<group>"; };
+		59EBC1F321FD322900481D33 /* DefaultTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultTheme.m; sourceTree = "<group>"; };
+		59EBC1F521FD32F300481D33 /* DarkTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DarkTheme.h; sourceTree = "<group>"; };
+		59EBC1F621FD32F300481D33 /* DarkTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkTheme.m; sourceTree = "<group>"; };
 		59FE3E38219B287E0035E2E5 /* AiringNotifySettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotifySettingsTableViewController.h; sourceTree = "<group>"; };
 		59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotifySettingsTableViewController.m; sourceTree = "<group>"; };
 		59FE3E4D219B39C50035E2E5 /* AiringNotificationServiceSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationServiceSelector.h; sourceTree = "<group>"; };
@@ -580,6 +617,7 @@
 				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
 				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
+				597BD4A821FD5D15001393B9 /* IQKeyboardManager.framework in Frameworks */,
 				59624230215565C7001995AD /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +663,7 @@
 		596240A72155622E001995AD /* Shukofukurou-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				59EBC1D921FD231900481D33 /* Themes */,
 				5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */,
 				596240A82155622E001995AD /* AppDelegate.h */,
 				596240A92155622E001995AD /* AppDelegate.m */,
@@ -657,6 +696,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				597BD48C21FD5CFC001393B9 /* IQKeyboardManager-master */,
 				5933CEBF2174F0A200EAE7E6 /* MSWeakTimer */,
 				59D915882162C1A600B5A61B /* UILabel+Copyable */,
 				5997B4A82162A68C005E894A /* TopAlignedLabel */,
@@ -1027,6 +1067,24 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		597BD48C21FD5CFC001393B9 /* IQKeyboardManager-master */ = {
+			isa = PBXGroup;
+			children = (
+				597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */,
+			);
+			name = "IQKeyboardManager-master";
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		597BD4A021FD5D07001393B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */,
+				597BD4A721FD5D07001393B9 /* IQKeyboardManagerSwift.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5997B4A82162A68C005E894A /* TopAlignedLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1043,6 +1101,21 @@
 				59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */,
 			);
 			path = "UILabel+Copyable";
+			sourceTree = "<group>";
+		};
+		59EBC1D921FD231900481D33 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				59EBC1EC21FD2FCA00481D33 /* ThemeManager.h */,
+				59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */,
+				59EBC1EF21FD2FFB00481D33 /* ThemeManagerTheme.h */,
+				59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */,
+				59EBC1F221FD322900481D33 /* DefaultTheme.h */,
+				59EBC1F321FD322900481D33 /* DefaultTheme.m */,
+				59EBC1F521FD32F300481D33 /* DarkTheme.h */,
+				59EBC1F621FD32F300481D33 /* DarkTheme.m */,
+			);
+			path = Themes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1066,6 +1139,7 @@
 				59624240215565D7001995AD /* PBXTargetDependency */,
 				59624248215565E3001995AD /* PBXTargetDependency */,
 				5962424C215565E9001995AD /* PBXTargetDependency */,
+				597BD4AB21FD5D15001393B9 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou-IOS";
 			productName = "Shukofukurou-IOS";
@@ -1135,6 +1209,10 @@
 				{
 					ProductGroup = 5962411721556329001995AD /* Products */;
 					ProjectRef = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
+				},
+				{
+					ProductGroup = 597BD4A021FD5D07001393B9 /* Products */;
+					ProjectRef = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
 				},
 				{
 					ProductGroup = 596241442155634A001995AD /* Products */;
@@ -1330,6 +1408,20 @@
 			remoteRef = 5962414D2155634F001995AD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = IQKeyboardManager.framework;
+			remoteRef = 597BD4A421FD5D07001393B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		597BD4A721FD5D07001393B9 /* IQKeyboardManagerSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = IQKeyboardManagerSwift.framework;
+			remoteRef = 597BD4A621FD5D07001393B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1369,6 +1461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */,
 				5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */,
 				5962422421556514001995AD /* TitleInfoViewController.m in Sources */,
 				5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */,
@@ -1385,6 +1478,7 @@
 				5962418A215563D2001995AD /* Utility.m in Sources */,
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
+				59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */,
 				5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */,
 				59624188215563D2001995AD /* Keychain.m in Sources */,
 				5962422021556514001995AD /* SettingsRootViewController.m in Sources */,
@@ -1400,6 +1494,7 @@
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
+				59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */,
 				5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */,
 				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
 				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
@@ -1419,6 +1514,7 @@
 				5962422621556514001995AD /* LoadViewController.m in Sources */,
 				5962422121556514001995AD /* SearchRootViewController.m in Sources */,
 				5962421721556514001995AD /* ListViewController.m in Sources */,
+				59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */,
 				59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */,
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
@@ -1504,6 +1600,11 @@
 			isa = PBXTargetDependency;
 			name = MGSwipeTableCell;
 			targetProxy = 5962424B215565E9001995AD /* PBXContainerItemProxy */;
+		};
+		597BD4AB21FD5D15001393B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IQKeyboardManager;
+			targetProxy = 597BD4AA21FD5D15001393B9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

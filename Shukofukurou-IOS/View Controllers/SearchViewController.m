@@ -32,7 +32,7 @@
     [super viewDidLoad];
     [self setsegment];
     _searchArray = [NSMutableArray new];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
     [self setupsearch];
@@ -65,7 +65,7 @@
     }
 }
 
-- (void)recieveNotification:(NSNotification *)notification {
+- (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Reload Search Results
         long selectedsegment = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];

@@ -23,6 +23,10 @@
 
 @implementation ReviewTableViewController
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -158,9 +162,10 @@
     }
     NSDictionary *reviewData = _reviews[indexPath.row];
     ReviewDetailViewController *reviewdetailvc = (ReviewDetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"reviewdetail"];
-    [reviewdetailvc loadView];
     [self.navigationController pushViewController:reviewdetailvc animated:YES];
+    [reviewdetailvc loadView];
     [reviewdetailvc populateReviewData:reviewData withType:_type];
+    [reviewdetailvc viewDidLoad];
 }
 
 @end

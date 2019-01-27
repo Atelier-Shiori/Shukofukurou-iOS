@@ -411,7 +411,7 @@
             user.forum_posts = ((NSNumber *)userdata[@"attributes"][@"postsCount"]).intValue;
             user.reviews = ((NSNumber *)userdata[@"attributes"][@"mediaReactionsCount"]).intValue;
             user.comments = ((NSNumber *)userdata[@"attributes"][@"commentsCount"]).intValue;
-            user.extradict = @{@"likes_recieved" : userdata[@"attributes"][@"likesReceivedCount"], @"likes_given" : userdata[@"attributes"][@"likesGivenCount"], @"about" : userdata[@"attributes"][@"about"] != [NSNull null] ? userdata[@"attributes"][@"about"] : [NSNull null]};
+            user.extradict = @{@"likes_received" : userdata[@"attributes"][@"likesReceivedCount"], @"likes_given" : userdata[@"attributes"][@"likesGivenCount"], @"about" : userdata[@"attributes"][@"about"] != [NSNull null] ? userdata[@"attributes"][@"about"] : [NSNull null]};
             return [user.NSDictionaryRepresentation copy];
     }
     return nil;

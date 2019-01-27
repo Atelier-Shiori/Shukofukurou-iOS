@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TitleInfoSynopsisTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *valueText;
+- (void)fixTextColor;
 
 @end
 

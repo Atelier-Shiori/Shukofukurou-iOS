@@ -12,6 +12,8 @@
 #import "StreamDataRetriever.h"
 #import "AiringSchedule.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import "ThemeManager.h"
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
@@ -35,6 +37,7 @@
     defaultValues[@"selectedtrendtype"] = @(0);
     defaultValues[@"airnotificationsenabled"] = @NO;
     defaultValues[@"airingnotification_service"] = @(3);
+    defaultValues[@"darkmode"] = @NO;
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";
@@ -107,6 +110,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LoadTheme" object:nil];
     // Override point for customization after application launch.
     [self checkaccountinformation];
     _autorefresh = [AutoRefreshTimer new];
@@ -117,6 +121,24 @@
     // Set Image Disk Cache Size
     SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 96;
     return YES;
+}
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)loadtheme {
+    if (!_tmanager) {
+        [IQKeyboardManager sharedManager].enable = true;
+        _tmanager = [ThemeManager new];
+    }
+    [_tmanager setTheme];
+}
+
+- (void)receiveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"LoadTheme"]) {
+        [self loadtheme];
+    }
 }
 
 

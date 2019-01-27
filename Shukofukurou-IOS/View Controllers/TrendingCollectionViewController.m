@@ -45,7 +45,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
     
     // Set Notification Center Observer
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     
     // Add Refresh Control
@@ -60,7 +60,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
-- (void)recieveNotification:(NSNotification *)notification {
+- (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Reload List
         NSLog(@"Switching Lists");

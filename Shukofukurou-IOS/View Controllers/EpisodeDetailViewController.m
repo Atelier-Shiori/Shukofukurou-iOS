@@ -12,6 +12,7 @@
 #import "listservice.h"
 #import "TitleInfoTableViewCell.h"
 #import "NSString+HTMLtoNSAttributedString.h"
+#import "ThemeManager.h"
 
 @interface EpisodeDetailViewController ()
 @property (strong) NSMutableDictionary *items;
@@ -29,15 +30,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     _items = [NSMutableDictionary new];
+    self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
 }
 
-- (void)recieveNotification:(NSNotification *)notification {
+- (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Leave Episode Detail
         self.navigationItem.hidesBackButton = NO;
         [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
     }
 }
 
@@ -116,6 +122,7 @@
         case cellTypeSynopsis: {
             TitleInfoSynopsisTableViewCell *synopsiscell = [tableView dequeueReusableCellWithIdentifier:@"synopsiscell" forIndexPath:indexPath];
             synopsiscell.valueText.attributedText = [(NSString *)entry.cellValue convertHTMLtoAttStr];
+            [synopsiscell fixTextColor];
             return synopsiscell;
             break;
         }

@@ -39,15 +39,15 @@
     if (self = [super init]) {
         self.managedObjectContext = ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
         self.notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AirNotifyServiceChanged" object:nil];
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AirNotifyToggled" object:nil];
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AirNotifyServiceChanged" object:nil];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AirNotifyToggled" object:nil];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
         self.schedulednotifications = [NSMutableArray new];
     }
     return self;
 }
 
-- (void)recieveNotification:(NSNotification *)notification {
+- (void)receiveNotification:(NSNotification *)notification {
     int service = [AiringNotificationManager airingNotificationServiceSource];
     if ([notification.name isEqualToString:@"AirNotifyServiceChanged"]) {
         [self clearNotifyList];

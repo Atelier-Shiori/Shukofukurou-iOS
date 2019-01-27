@@ -12,6 +12,7 @@
 #import "AniListScoreConvert.h"
 #import "RatingTwentyConvert.h"
 #import "UILabel+Copyable.h"
+#import "ThemeManager.h"
 
 @implementation TitleInfoBasicTableViewCell
 
@@ -54,12 +55,34 @@
 
 @implementation TitleInfoSynopsisTableViewCell
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (instancetype)init {
+    if ([super init]) {
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
+    }
+    return self;
+}
+
+- (void)receiveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
     _valueText.scrollEnabled = false;
     _valueText.textContainer.heightTracksTextView = true;
 }
+
+- (void)fixTextColor {
+    _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:false animated:animated];
 }

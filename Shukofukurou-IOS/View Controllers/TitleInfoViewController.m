@@ -24,6 +24,7 @@
 #import "ViewControllerManager.h"
 #import "StreamDataRetriever.h"
 #import "TitleInfoCache.h"
+#import "ThemeManager.h"
 
 @interface TitleInfoViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
@@ -52,10 +53,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedIn" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedIn" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
+    // Set Background Color
+    self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -66,7 +70,7 @@
     }
 }
 
-- (void)recieveNotification:(NSNotification *)notification {
+- (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"UserLoggedIn"]) {
         if (notification.object) {
             if (((ListViewController *)notification.object).listtype == _currenttype) {
@@ -87,6 +91,9 @@
         self.navigationItem.hidesBackButton = NO;
         _loadingview.hidden = YES;
         [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
     }
 }
 
@@ -437,6 +444,7 @@
     }
     
     cell.valueText.attributedText = [(NSString *)cellInfo.cellValue convertHTMLtoAttStr];
+    [cell fixTextColor];
     return cell;
 }
 

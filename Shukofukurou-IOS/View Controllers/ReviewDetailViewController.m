@@ -12,11 +12,26 @@
 #import "Utility.h"
 #import "UITextView+SetHTMLAttributedText.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ThemeManager.h"
 
 @implementation ReviewDetailViewController
+
+-(void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
     // Do view setup here.
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
+}
+
+- (void)receiveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
+        self.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
 }
 
 - (void)populateReviewData:(NSDictionary *)review withType:(int)type {
@@ -41,6 +56,7 @@
     __weak ReviewDetailViewController *weakSelf = self;
     [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.navigationItem.hidesBackButton = NO;
+        weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
     }];
 }
 

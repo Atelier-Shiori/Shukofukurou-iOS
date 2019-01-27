@@ -13,6 +13,7 @@
 #import "PersonTableViewCell.h"
 #import "TitleInfoViewController.h"
 #import "NSString+HTMLtoNSAttributedString.h"
+#import "ThemeManager.h"
 
 @interface CharacterDetailViewController ()
 @property (strong) NSDictionary *items;
@@ -31,7 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
+    self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -42,11 +45,14 @@
     }
 }
 
-- (void)recieveNotification:(NSNotification *)notification {
+- (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Leave Character Information
         self.navigationItem.hidesBackButton = NO;
         [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
     }
 }
 
@@ -289,6 +295,7 @@
          if ([(NSString *)entry[@"type"] isEqualToString:@"longdetail"]) {
              TitleInfoSynopsisTableViewCell *detailcell = [tableView dequeueReusableCellWithIdentifier:@"synopsiscell" forIndexPath:indexPath];
              detailcell.valueText.attributedText = [(NSString *)entry[@"value"] convertHTMLtoAttStr];
+             [detailcell fixTextColor];
              return detailcell;
          }
          else if ([(NSString *)entry[@"type"] isEqualToString:@"detail"]) {

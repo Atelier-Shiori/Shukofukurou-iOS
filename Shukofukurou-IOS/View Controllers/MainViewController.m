@@ -6,6 +6,7 @@
 //  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "MainViewController.h"
 #import "SettingsRootViewController.h"
 #import "ViewControllerManager.h"
@@ -17,12 +18,13 @@
 
 @implementation MainViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.mvc = self;
     [self setsidebar:self.view.bounds.size];
+    AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
+    [del loadtheme];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size

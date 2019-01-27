@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bnb-Qg-Z8N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bnb-Qg-Z8N">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -64,7 +64,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="6gO-27-Tmc" secondAttribute="bottom" id="TvT-WF-xEY"/>
                                             </constraints>
                                         </stackView>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" translatesAutoresizingMaskIntoConstraints="NO" id="G1J-oz-bwm">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1J-oz-bwm">
                                             <rect key="frame" x="308" y="84" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="9Sb-ut-24H"/>
@@ -145,7 +145,7 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" translatesAutoresizingMaskIntoConstraints="NO" id="S7Y-Ms-2Cs">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S7Y-Ms-2Cs">
                                             <rect key="frame" x="308" y="84" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="84g-gd-a9J"/>
@@ -378,9 +378,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu" width="25" height="25"/>
-        <image name="filter" width="30" height="30"/>
-        <image name="listsort" width="25" height="25"/>
-        <image name="status-active" width="30" height="30"/>
+        <image name="Menu" width="50" height="50"/>
+        <image name="filter" width="60" height="60"/>
+        <image name="listsort" width="50" height="50"/>
+        <image name="status-active" width="60" height="60"/>
     </resources>
 </document>
