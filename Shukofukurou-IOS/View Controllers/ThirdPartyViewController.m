@@ -7,6 +7,7 @@
 //
 
 #import "ThirdPartyViewController.h"
+#import "ThemeManager.h"
 
 @interface ThirdPartyViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textview;
@@ -26,6 +27,13 @@
     @catch (NSException *exception) {
         NSLog(@"exception: %@",exception);
     }
+    [self fixtheme];
+}
+
+- (void)fixtheme {
+    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+    self.view.backgroundColor = darkmode ? [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    _textview.textColor = [ThemeManager sharedCurrentTheme].textColor;
 }
 
 @end

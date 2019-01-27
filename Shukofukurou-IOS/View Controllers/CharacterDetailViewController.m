@@ -21,6 +21,7 @@
 @property (strong) NSString *website_url;
 @property int personid;
 @property int persontype;
+@property bool setthemecolors;
 @end
 
 @implementation CharacterDetailViewController
@@ -34,11 +35,14 @@
     // Do any additional setup after loading the view.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
-    self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
+    [self setThemeColors];
+    _setthemecolors = true;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self setThemeColors];
+    _setthemecolors = true;
     NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
     if (indexPath) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
@@ -52,7 +56,21 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
+        [self setThemeColors];
+        _setthemecolors = false;
+    }
+}
+
+- (void)setThemeColors {
+    if (!_setthemecolors) {
+        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        self.tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        UITableViewCell *synopsis = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        if ([synopsis isKindOfClass:[TitleInfoSynopsisTableViewCell class]]) {
+            [(TitleInfoSynopsisTableViewCell*)synopsis fixTextColor];
+        }
     }
 }
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SideBarCell : UITableViewCell
+@interface SideBarCell : UITableViewCell <UIAppearance>
 @property (assign, nonatomic) IBOutlet UILabel *titleLabel;
 @property (assign, nonatomic) IBOutlet UIView *separatorView;
 @property  (assign, nonatomic) IBOutlet UIImageView *image;

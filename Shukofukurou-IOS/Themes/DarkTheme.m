@@ -13,7 +13,8 @@
     if (self = [super init]) {
         self.viewBackgroundColor = [UIColor colorWithRed:0.22 green:0.22 blue:0.23 alpha:1.0];;
         self.viewAltBackgroundColor = [UIColor colorWithRed:0.27 green:0.27 blue:0.24 alpha:1.0];
-        self.tableCellSelectionBackgroundColor = [UIColor colorWithRed:0.40 green:0.40 blue:0.40 alpha:1.0];;
+        self.tableCellSelectionBackgroundColor = [UIColor colorWithRed:0.43 green:0.43 blue:0.43 alpha:1.0];
+        self.tableHeaderBackgroundColor = [UIColor colorWithRed:0.42 green:0.42 blue:0.43 alpha:1.0];
         self.textColor = [UIColor whiteColor];
         self.tintColor = [UIColor colorWithRed:0.27 green:0.44 blue:0.99 alpha:1.0];
         self.thumbTintColor = [UISwitch new].thumbTintColor.copy;

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ReactionTableViewCell : UITableViewCell
+@interface ReactionTableViewCell : UITableViewCell <UIAppearance>
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *likes;
 @property (weak, nonatomic) IBOutlet UILabel *rating;

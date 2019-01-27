@@ -42,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titlestatus;
 @property (weak, nonatomic) IBOutlet UILabel *titletype;
 @property (strong) RelatedTableViewController *relatedtvc;
+@property bool setthemecolors;
 @end
 
 @implementation TitleInfoViewController
@@ -52,21 +53,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Set Background Color
+    [self setThemeColors];
+    _setthemecolors = true;
     // Do any additional setup after loading the view.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedIn" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
-    // Set Background Color
-    self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self setThemeColors];
+    _setthemecolors = true;
     NSIndexPath *indexPath = self.tableview.indexPathForSelectedRow;
     if (indexPath) {
         [self.tableview deselectRowAtIndexPath:indexPath animated:animated];
+    }
+}
+
+- (void)setThemeColors {
+    if (!_setthemecolors) {
+        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        self.tableview.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        int synopsissection = 0;
+        for (NSString *section in _sections) {
+            if ([section isEqualToString:@"Synopsis"]) {
+                break;
+            }
+            synopsissection++;
+        }
+        if (synopsissection < 2) {
+            TitleInfoSynopsisTableViewCell *synopsis = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:synopsissection]];
+            [synopsis fixTextColor];
+        }
     }
 }
 
@@ -93,7 +117,7 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
+        _setthemecolors = false;
     }
 }
 

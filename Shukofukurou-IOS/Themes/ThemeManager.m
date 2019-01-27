@@ -13,6 +13,12 @@
 #import "ThemeManager.h"
 #import "DefaultTheme.h"
 #import "DarkTheme.h"
+#import "AnimeEntryTableViewCell.h"
+#import "MangaEntryTableViewCell.h"
+#import "SearchTableViewCell.h"
+#import "TitleInfoTableViewCell.h"
+#import "ReviewTableViewCell.h"
+#import "SideBarCell.h"
 
 @interface ThemeManager ()
 @property ThemeManagerTheme *lightTheme;
@@ -49,7 +55,15 @@
     [UITableView appearance].backgroundColor = darkmode ? _currentTheme.viewBackgroundColor : _currentTheme.viewAltBackgroundColor;
     [UICollectionView appearance].backgroundColor = _currentTheme.viewBackgroundColor;
     [UITableViewCell appearance].backgroundColor = darkmode ? _currentTheme.viewAltBackgroundColor : _currentTheme.viewBackgroundColor;
-    [UITableViewCell appearance].backgroundView.backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
+    [UITableViewCell appearance].selectedBackgroundView.backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
+    [UISegmentedControl appearance].tintColor = _currentTheme.tintColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SideBarCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[ReactionTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
+    [UITableViewHeaderFooterView appearance].tintColor = _currentTheme.tableHeaderBackgroundColor;
     [UILabel appearance].textColor = _currentTheme.textColor;
     [UITextField appearance].textColor = _currentTheme.textColor;
     [UITextView appearance].textColor = _currentTheme.textColor;;

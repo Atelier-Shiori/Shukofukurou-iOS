@@ -14,6 +14,10 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ThemeManager.h"
 
+@interface ReviewDetailViewController ()
+@property bool setthemecolors;
+@end
+
 @implementation ReviewDetailViewController
 
 -(void)dealloc {
@@ -22,14 +26,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
+    [self setThemeColors];
+    _setthemecolors = true;
     // Do view setup here.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setThemeColors];
+    _setthemecolors = true;
+}
+
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        self.view.backgroundColor = [ThemeManager sharedCurrentTheme].viewAltBackgroundColor;
+        _setthemecolors = false;
+    }
+}
+
+- (void)setThemeColors {
+    if (!_setthemecolors) {
+    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
         self.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
     }
 }

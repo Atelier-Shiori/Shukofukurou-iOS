@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) UIColor *viewBackgroundColor;
 @property (strong) UIColor *viewAltBackgroundColor;
 @property (strong) UIColor *tableCellSelectionBackgroundColor;
+@property (strong) UIColor *tableHeaderBackgroundColor;
 @property (strong) UIColor *textColor;
 @property (strong) UIColor *tintColor;
 @property (strong) UIColor *thumbTintColor;
