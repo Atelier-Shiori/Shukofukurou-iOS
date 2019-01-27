@@ -78,8 +78,6 @@
 		5962422721556514001995AD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
 		5962422821556514001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
 		5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
-		59624230215565C7001995AD /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; };
-		59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596240F721556317001995AD /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
 		59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
@@ -119,6 +117,8 @@
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
+		59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; };
+		59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
 		59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
 		59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
@@ -137,48 +137,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 596240A42155622E001995AD;
 			remoteInfo = "Shukofukurou-IOS";
-		};
-		596240F221556317001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 53761325155AD0D5005750A4;
-			remoteInfo = "SDWebImage iOS static";
-		};
-		596240F421556317001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4314D1991D0E0E3B004B36C9;
-			remoteInfo = "SDWebImage watchOS static";
-		};
-		596240F621556317001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4A2CADFF1AB4BB5300B6BC39;
-			remoteInfo = "SDWebImage iOS";
-		};
-		596240F821556317001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 00733A4C1BC487C000A5A117;
-			remoteInfo = "SDWebImage tvOS";
-		};
-		596240FA21556317001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 431BB7031D06D2C1006A3455;
-			remoteInfo = "SDWebImage watchOS";
-		};
-		596240FC21556317001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4397D2F21D0DDD8C00BB2784;
-			remoteInfo = "SDWebImage OSX";
 		};
 		596241082155631F001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -306,13 +264,6 @@
 			remoteGlobalIDString = C63EE56B1BBA07ED008F46BB;
 			remoteInfo = MGSwipeTableCell;
 		};
-		59624232215565C7001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
-			remoteInfo = "SDWebImage iOS";
-		};
 		59624237215565CC001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
@@ -362,12 +313,54 @@
 			remoteGlobalIDString = 4CD5970C1D1C5EBE00AB28D3;
 			remoteInfo = IQKeyboardManagerSwift;
 		};
-		597BD4AA21FD5D15001393B9 /* PBXContainerItemProxy */ = {
+		59B22D1D21FE62F400627172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53761325155AD0D5005750A4;
+			remoteInfo = "SDWebImage iOS static";
+		};
+		59B22D1F21FE62F400627172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4314D1991D0E0E3B004B36C9;
+			remoteInfo = "SDWebImage watchOS static";
+		};
+		59B22D2121FE62F400627172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4A2CADFF1AB4BB5300B6BC39;
+			remoteInfo = "SDWebImage iOS";
+		};
+		59B22D2321FE62F400627172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 00733A4C1BC487C000A5A117;
+			remoteInfo = "SDWebImage tvOS";
+		};
+		59B22D2521FE62F400627172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 431BB7031D06D2C1006A3455;
+			remoteInfo = "SDWebImage watchOS";
+		};
+		59B22D2721FE62F400627172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4397D2F21D0DDD8C00BB2784;
+			remoteInfo = "SDWebImage OSX";
+		};
+		59B22D2B21FE630000627172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 4CD2C4A51C5A615600975A7A;
-			remoteInfo = IQKeyboardManager;
+			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
+			remoteInfo = "SDWebImage iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -382,9 +375,9 @@
 				5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */,
 				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
 				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
+				59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */,
 				59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */,
 				597BD4A921FD5D15001393B9 /* IQKeyboardManager.framework in Embed Frameworks */,
-				59624231215565C7001995AD /* SDWebImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,7 +421,6 @@
 		596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shukofukurou-IOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240C42155622F001995AD /* Shukofukurou_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shukofukurou_IOSTests.m; sourceTree = "<group>"; };
 		596240C62155622F001995AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		596240E921556317001995AD /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		596240FE2155631F001995AD /* SAMKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SAMKeychain.xcodeproj; sourceTree = "<group>"; };
 		5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreActionSheetPicker.xcodeproj; path = CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj; sourceTree = "<group>"; };
 		5962411F21556336001995AD /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AFNetworking.xcodeproj; sourceTree = "<group>"; };
@@ -587,6 +579,7 @@
 		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
 		59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyViewController.h; sourceTree = "<group>"; };
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
+		59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
 		59D9159E2162C1B800B5A61B /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
 		59EBC1EC21FD2FCA00481D33 /* ThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
@@ -616,9 +609,9 @@
 				59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */,
 				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
+				59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */,
 				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
 				597BD4A821FD5D15001393B9 /* IQKeyboardManager.framework in Frameworks */,
-				59624230215565C7001995AD /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,22 +756,9 @@
 		596240E1215562D2001995AD /* SDWebImage-master */ = {
 			isa = PBXGroup;
 			children = (
-				596240E921556317001995AD /* SDWebImage.xcodeproj */,
+				59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */,
 			);
 			path = "SDWebImage-master";
-			sourceTree = "<group>";
-		};
-		596240EA21556317001995AD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				596240F321556317001995AD /* libSDWebImage iOS static.a */,
-				596240F521556317001995AD /* libSDWebImage watchOS static.a */,
-				596240F721556317001995AD /* SDWebImage.framework */,
-				596240F921556317001995AD /* SDWebImage.framework */,
-				596240FB21556317001995AD /* SDWebImage.framework */,
-				596240FD21556317001995AD /* SDWebImage.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		596240FF2155631F001995AD /* Products */ = {
@@ -1094,6 +1074,19 @@
 			path = TopAlignedLabel;
 			sourceTree = "<group>";
 		};
+		59B22D1521FE62F300627172 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59B22D1E21FE62F400627172 /* libSDWebImage iOS static.a */,
+				59B22D2021FE62F400627172 /* libSDWebImage watchOS static.a */,
+				59B22D2221FE62F400627172 /* SDWebImage.framework */,
+				59B22D2421FE62F400627172 /* SDWebImage.framework */,
+				59B22D2621FE62F400627172 /* SDWebImage.framework */,
+				59B22D2821FE62F400627172 /* SDWebImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		59D915882162C1A600B5A61B /* UILabel+Copyable */ = {
 			isa = PBXGroup;
 			children = (
@@ -1133,13 +1126,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				59624233215565C7001995AD /* PBXTargetDependency */,
 				59624238215565CC001995AD /* PBXTargetDependency */,
 				5962423C215565D2001995AD /* PBXTargetDependency */,
 				59624240215565D7001995AD /* PBXTargetDependency */,
 				59624248215565E3001995AD /* PBXTargetDependency */,
 				5962424C215565E9001995AD /* PBXTargetDependency */,
-				597BD4AB21FD5D15001393B9 /* PBXTargetDependency */,
+				59B22D2C21FE630000627172 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou-IOS";
 			productName = "Shukofukurou-IOS";
@@ -1227,8 +1219,8 @@
 					ProjectRef = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
 				},
 				{
-					ProductGroup = 596240EA21556317001995AD /* Products */;
-					ProjectRef = 596240E921556317001995AD /* SDWebImage.xcodeproj */;
+					ProductGroup = 59B22D1521FE62F300627172 /* Products */;
+					ProjectRef = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1240,48 +1232,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		596240F321556317001995AD /* libSDWebImage iOS static.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libSDWebImage iOS static.a";
-			remoteRef = 596240F221556317001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		596240F521556317001995AD /* libSDWebImage watchOS static.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libSDWebImage watchOS static.a";
-			remoteRef = 596240F421556317001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		596240F721556317001995AD /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 596240F621556317001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		596240F921556317001995AD /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 596240F821556317001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		596240FB21556317001995AD /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 596240FA21556317001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		596240FD21556317001995AD /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 596240FC21556317001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		596241092155631F001995AD /* SAMKeychain.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1420,6 +1370,48 @@
 			fileType = wrapper.framework;
 			path = IQKeyboardManagerSwift.framework;
 			remoteRef = 597BD4A621FD5D07001393B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B22D1E21FE62F400627172 /* libSDWebImage iOS static.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImage iOS static.a";
+			remoteRef = 59B22D1D21FE62F400627172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B22D2021FE62F400627172 /* libSDWebImage watchOS static.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImage watchOS static.a";
+			remoteRef = 59B22D1F21FE62F400627172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B22D2221FE62F400627172 /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 59B22D2121FE62F400627172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B22D2421FE62F400627172 /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 59B22D2321FE62F400627172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B22D2621FE62F400627172 /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 59B22D2521FE62F400627172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B22D2821FE62F400627172 /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 59B22D2721FE62F400627172 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1571,11 +1563,6 @@
 			target = 596240A42155622E001995AD /* Shukofukurou-IOS */;
 			targetProxy = 596240C12155622F001995AD /* PBXContainerItemProxy */;
 		};
-		59624233215565C7001995AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SDWebImage iOS";
-			targetProxy = 59624232215565C7001995AD /* PBXContainerItemProxy */;
-		};
 		59624238215565CC001995AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SAMKeychain-iOS";
@@ -1601,10 +1588,10 @@
 			name = MGSwipeTableCell;
 			targetProxy = 5962424B215565E9001995AD /* PBXContainerItemProxy */;
 		};
-		597BD4AB21FD5D15001393B9 /* PBXTargetDependency */ = {
+		59B22D2C21FE630000627172 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = IQKeyboardManager;
-			targetProxy = 597BD4AA21FD5D15001393B9 /* PBXContainerItemProxy */;
+			name = "SDWebImage iOS";
+			targetProxy = 59B22D2B21FE630000627172 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
