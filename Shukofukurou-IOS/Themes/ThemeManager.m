@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import <LGSideMenuController/LGSideMenuController.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import <MGSwipeTableCell/MGSwipeButton.h>
 #import "ThemeManager.h"
 #import "DefaultTheme.h"
 #import "DarkTheme.h"
@@ -58,11 +59,11 @@
     [UITableViewCell appearance].selectedBackgroundView.backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
     [UISegmentedControl appearance].tintColor = _currentTheme.tintColor;
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SideBarCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[ReactionTableViewCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor =  _currentTheme.tablecellImageTintColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[ReactionTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
     [UITableViewHeaderFooterView appearance].tintColor = _currentTheme.tableHeaderBackgroundColor;
     [UILabel appearance].textColor = _currentTheme.textColor;
     [UITextField appearance].textColor = _currentTheme.textColor;

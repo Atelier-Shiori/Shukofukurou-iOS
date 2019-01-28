@@ -12,6 +12,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MangaEntryTableViewCell : MGSwipeTableCell
+@property (strong) MGSwipeButton *incrementswipebutton;
+@property (strong) MGSwipeButton *incrementvolswipebutton;
+@property (strong) MGSwipeButton *adveditswipebutton;
+@property (strong) MGSwipeButton *viewonsiteswipebutton;
+@property (strong) MGSwipeButton *customlistbutton;
+@property (strong) MGSwipeButton *shareswipebutton;
+@property (strong) MGSwipeButton *optionswipebutton;
+@property (strong) NSArray *regularswipebuttons;
+@property (strong) NSArray *compactswipebuttons;
 @property (weak, nonatomic) IBOutlet UIImageView *posterimage;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *score;
@@ -19,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *progressVolumes;
 @property (weak, nonatomic) IBOutlet UIImageView *active;
 - (void)loadimage:(NSString *)imageurl;
+- (void)setSwipeButtons;
 @end
 
 NS_ASSUME_NONNULL_END

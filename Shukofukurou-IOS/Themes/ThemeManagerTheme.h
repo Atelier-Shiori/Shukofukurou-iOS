@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) UIColor *tintColor;
 @property (strong) UIColor *thumbTintColor;
 @property (strong) UIColor *trackTintColor;
+@property (strong) UIColor *tablecellImageTintColor;
 @property UIKeyboardAppearance keyboardappearence;
 @property UIBarStyle navBarStyle;
 @end

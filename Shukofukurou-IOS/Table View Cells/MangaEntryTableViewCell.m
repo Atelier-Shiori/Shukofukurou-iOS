@@ -31,4 +31,24 @@
     }
 }
 
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [self setSwipeButtons];
+}
+
+- (void)setSwipeButtons {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        bool isregular = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
+        if (isregular) {
+            self.rightButtons = _regularswipebuttons;
+        }
+        else {
+            self.rightButtons = _compactswipebuttons;
+        }
+    }
+    else {
+        self.rightButtons = _compactswipebuttons;
+    }
+    [self refreshButtons:NO];
+}
+
 @end

@@ -450,6 +450,7 @@
         // Geneerate Swipe Cells
         // Left
         __weak ListViewController *weakSelf = self;
+        int currentservice = [listservice getCurrentServiceID];
         aentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
@@ -458,20 +459,71 @@
         aentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
         
         //Right
-        NSMutableArray *rightbuttons = [NSMutableArray new];
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        NSMutableArray *rightregularbuttons = [NSMutableArray new];
+        NSMutableArray *rightcompactbuttons = [NSMutableArray new];
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            aentrycell.viewonsiteswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
+                return true;
+            }];
+
+            aentrycell.adveditswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
+                return true;
+            }];
+            if (currentservice == 3) {
+                aentrycell.customlistbutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                    NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                    [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
+                    return true;
+                }];
+            }
+            aentrycell.shareswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:aentrycell];
+                return true;
+            }];
+        }
+        
+        aentrycell.optionswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf showOtherOptions:entry withIndexPath:indexPath];
             return true;
-        }]];
+        }];
+        
+        // Set Swipe Button Array
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            [rightregularbuttons addObject:aentrycell.shareswipebutton];
+            if (currentservice == 3) {
+                [rightregularbuttons addObject:aentrycell.customlistbutton];
+            }
+            [rightregularbuttons addObject:aentrycell.adveditswipebutton];
+            [rightregularbuttons addObject:aentrycell.viewonsiteswipebutton];
+            for (MGSwipeButton *btn in rightregularbuttons) {
+                [btn iconTintColor:[UIColor whiteColor]];
+            }
+        }
+        [rightcompactbuttons addObject:aentrycell.optionswipebutton];
+        
         if ([self canIncrement:entry]) {
-            [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ep +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            aentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf incrementProgress:entry];
                 return true;
-            }]];
+            }];
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                [rightregularbuttons addObject:aentrycell.incrementswipebutton];
+            }
+            [rightcompactbuttons addObject:aentrycell.incrementswipebutton];
         }
-        aentrycell.rightButtons = rightbuttons.copy;
+        for (MGSwipeButton *btn in rightcompactbuttons) {
+            [btn iconTintColor:[UIColor whiteColor]];
+        }
+        aentrycell.regularswipebuttons = rightregularbuttons.copy;
+        aentrycell.compactswipebuttons = rightcompactbuttons.copy;
+        [aentrycell setSwipeButtons];
         aentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
         return aentrycell;
     }
@@ -511,6 +563,7 @@
         // Geneerate Swipe Cells
         // Left
         __weak ListViewController *weakSelf = self;
+        int currentservice = [listservice getCurrentServiceID];
         mentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
@@ -519,25 +572,79 @@
         mentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
         
         //Right
-        NSMutableArray *rightbuttons = [NSMutableArray new];
-        [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Options" backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        NSMutableArray *rightregularbuttons = [NSMutableArray new];
+        NSMutableArray *rightcompactbuttons = [NSMutableArray new];
+        
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            mentrycell.viewonsiteswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
+                return true;
+            }];
+            
+            mentrycell.adveditswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
+                return true;
+            }];
+            if (currentservice == 3) {
+                mentrycell.customlistbutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                    NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                    [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
+                    return true;
+                }];
+            }
+            mentrycell.shareswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:mentrycell];
+                return true;
+            }];
+        }
+        
+        mentrycell.optionswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf showOtherOptions:entry withIndexPath:indexPath];
             return true;
-        }]];
+            
+        }];
+        
+        // Set Swipe Button Array
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            [rightregularbuttons addObject:mentrycell.shareswipebutton];
+            if (currentservice == 3) {
+                [rightregularbuttons addObject:mentrycell.customlistbutton];
+            }
+            [rightregularbuttons addObject:mentrycell.adveditswipebutton];
+            [rightregularbuttons addObject:mentrycell.viewonsiteswipebutton];
+            for (MGSwipeButton *btn in rightregularbuttons) {
+                [btn iconTintColor:[UIColor whiteColor]];
+            }
+        }
+        [rightcompactbuttons addObject:mentrycell.optionswipebutton];
         if ([self canIncrement:entry]) {
-            [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Vol +" backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            mentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"volincrement"] backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performMangaIncrement:entry volumeIncrement:YES];
                 return true;
-            }]];
-            [rightbuttons addObject:[MGSwipeButton buttonWithTitle:@"Ch +" backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            }];
+            mentrycell.incrementvolswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performMangaIncrement:entry volumeIncrement:NO];
                 return true;
-            }]];
+            }];
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                [rightregularbuttons addObject:mentrycell.incrementswipebutton];
+                [rightregularbuttons addObject:mentrycell.incrementvolswipebutton];
+            }
+            [rightcompactbuttons addObject:mentrycell.incrementswipebutton];
+            [rightcompactbuttons addObject:mentrycell.incrementvolswipebutton];
         }
-        mentrycell.rightButtons = rightbuttons.copy;
+        for (MGSwipeButton *btn in rightcompactbuttons) {
+            [btn iconTintColor:[UIColor whiteColor]];
+        }
+        mentrycell.regularswipebuttons = rightregularbuttons.copy;
+        mentrycell.compactswipebuttons = rightcompactbuttons.copy;
+        [mentrycell setSwipeButtons];
         mentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
         return mentrycell;
     }
@@ -883,7 +990,6 @@
 - (void)showOtherOptions:(NSDictionary *)entry withIndexPath:(NSIndexPath *)indexpath {
     int titleid = ((NSNumber *)entry[@"id"]).intValue;
     int currentservice = [listservice getCurrentServiceID];
-    __weak ListViewController *weakSelf = self;
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexpath];
     options.popoverPresentationController.sourceView = cell;
@@ -893,29 +999,11 @@
         [self performViewOnListSite:titleid];
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UINavigationController *navController = [UINavigationController new];
-        AdvEditTableViewController *advedit = [[UIStoryboard storyboardWithName:@"AdvancedEdit" bundle:nil] instantiateViewControllerWithIdentifier:@"advedit"];
-        [advedit populateTableViewWithID:((NSNumber *)entry[@"id"]).intValue withEntryDictionary:entry withType:weakSelf.listtype];
-        advedit.entryUpdated = ^(int listtype) {
-            [weakSelf reloadList];
-        };
-        navController.viewControllers = @[advedit];
-        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-            navController.modalPresentationStyle = UIModalPresentationFormSheet;
-        }
-        [self presentViewController:navController animated:YES completion:^{}];
+        [self performAdvancedEditwithEntry:entry withType:self.listtype];
     }]];
     if (currentservice == 3) {
         [options addAction:[UIAlertAction actionWithTitle:@"Manage Custom Lists" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            UINavigationController *navcontroller = [UINavigationController new];
-            CustomListTableViewController *clvc = [[UIStoryboard storyboardWithName:@"CustomList" bundle:nil] instantiateViewControllerWithIdentifier:@"customlistedit"];
-            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-                navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
-            }
-            [navcontroller setViewControllers:@[clvc]];
-            [self presentViewController:navcontroller animated:YES completion:nil];
-            [clvc viewDidLoad];
-            [clvc populateCustomLists:entry withCurrentType:weakSelf.listtype withSelectedId:((NSNumber *)entry[@"entryid"]).intValue];
+            [self performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
         }]];
     }
     [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -928,6 +1016,33 @@
      presentViewController:options
      animated:YES
      completion:nil];
+}
+
+- (void)performAdvancedEditwithEntry:(NSDictionary *)entry withType:(int)type {
+    UINavigationController *navController = [UINavigationController new];
+    AdvEditTableViewController *advedit = [[UIStoryboard storyboardWithName:@"AdvancedEdit" bundle:nil] instantiateViewControllerWithIdentifier:@"advedit"];
+    [advedit populateTableViewWithID:((NSNumber *)entry[@"id"]).intValue withEntryDictionary:entry withType:type];
+     __weak ListViewController *weakSelf = self;
+    advedit.entryUpdated = ^(int listtype) {
+        [weakSelf reloadList];
+    };
+    navController.viewControllers = @[advedit];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [self presentViewController:navController animated:YES completion:^{}];
+}
+
+- (void)performCustomListEdit:(int)entryid withEntry:(NSDictionary *)entry {
+    UINavigationController *navcontroller = [UINavigationController new];
+    CustomListTableViewController *clvc = [[UIStoryboard storyboardWithName:@"CustomList" bundle:nil] instantiateViewControllerWithIdentifier:@"customlistedit"];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [navcontroller setViewControllers:@[clvc]];
+    [self presentViewController:navcontroller animated:YES completion:nil];
+    [clvc viewDidLoad];
+    [clvc populateCustomLists:entry withCurrentType:_listtype withSelectedId:entryid];
 }
 
 - (void)performViewOnListSite:(int)titleid {

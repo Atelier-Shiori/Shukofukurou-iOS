@@ -19,6 +19,7 @@
         self.textColor = [UITextField new].textColor.copy;
         self.tintColor = [UIView new].tintColor.copy;
         self.thumbTintColor = [UISwitch new].thumbTintColor.copy;
+        self.tablecellImageTintColor = [UIColor blackColor];
         self.navBarStyle = UIBarStyleDefault;
         self.keyboardappearence = UIKeyboardAppearanceLight;
     }

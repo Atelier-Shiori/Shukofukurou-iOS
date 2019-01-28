@@ -19,6 +19,7 @@
         self.tintColor = [UIColor colorWithRed:0.27 green:0.44 blue:0.99 alpha:1.0];
         self.thumbTintColor = [UISwitch new].thumbTintColor.copy;
         self.trackTintColor = [UIProgressView new].trackTintColor.copy;
+        self.tablecellImageTintColor = [UIColor whiteColor];
         self.navBarStyle = UIBarStyleBlackTranslucent;
         self.keyboardappearence = UIKeyboardAppearanceDark;
     }
