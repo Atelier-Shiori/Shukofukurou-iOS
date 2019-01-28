@@ -42,6 +42,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titlestatus;
 @property (weak, nonatomic) IBOutlet UILabel *titletype;
 @property (strong) RelatedTableViewController *relatedtvc;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *titleinfobaritem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *shareitembaritem;
 @property bool setthemecolors;
 @end
 
@@ -62,6 +64,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
+    [self setToolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -216,12 +219,15 @@
 - (IBAction)presentoptions:(id)sender {
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     __weak TitleInfoViewController *weakSelf = self;
-    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf performViewOnListSite];
-    }]];
-    [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf performShare:sender];
-    }]];
+    bool isregularclass = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
+    if (!isregularclass) {
+        [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [weakSelf performViewOnListSite];
+        }]];
+        [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [weakSelf performShare:sender];
+        }]];
+    }
     if ([listservice checkAccountForCurrentService] && !_isNewEntry) {
         [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UINavigationController *navController = [UINavigationController new];
@@ -269,6 +275,14 @@
      completion:nil];
 }
 
+- (IBAction)viewonsite:(id)sender {
+    [self performViewOnListSite];
+}
+
+- (IBAction)share:(id)sender {
+    [self performShare:sender];
+}
+
 - (void)performViewOnListSite {
     NSString *URL = [self getTitleURL];
     [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
@@ -314,6 +328,32 @@
             return @"";
     }
 }
+
+# pragma mark Toolbar
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [self setToolbar];
+}
+
+- (void)setToolbar {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        NSMutableArray *toolbarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
+            if (![toolbarButtons containsObject:self.shareitembaritem]) {
+                [toolbarButtons addObject:self.shareitembaritem];
+                [toolbarButtons addObject:self.titleinfobaritem];
+            }
+        }
+        else {
+            if ([toolbarButtons containsObject:self.shareitembaritem]) {
+                [toolbarButtons removeObject:self.shareitembaritem];
+                [toolbarButtons removeObject:self.titleinfobaritem];
+            }
+        }
+        [self.navigationItem setRightBarButtonItems:toolbarButtons animated:YES];
+    }
+}
+
 
 #pragma mark - Table view data source
 

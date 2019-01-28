@@ -123,38 +123,48 @@
 - (void)removeAccount:(int)service {
     // Clears user data for logged in account
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    //Remove account from keychain and account data
-    [AtarashiiListCoreData removeAllEntrieswithService:service];
+    bool accountexists = true;
     switch (service) {
         case 1:
             [Keychain removeaccount];
+            accountexists = [Keychain checkaccount];
             break;
         case 2:
             [Kitsu removeAccount];
-            [defaults setValue:@"" forKey:@"kitsu-username"];
-            [defaults setInteger:0 forKey:@"kitsu-ratingsystem"];
-            [defaults setValue:@(0) forKey:@"kitsu-userid"];
-            [defaults setValue:@"" forKey:@"kitsu-avatar"];
+            accountexists = [Kitsu getFirstAccount];
+            if (!accountexists) {
+                [defaults setValue:@"" forKey:@"kitsu-username"];
+                [defaults setInteger:0 forKey:@"kitsu-ratingsystem"];
+                [defaults setValue:@(0) forKey:@"kitsu-userid"];
+                [defaults setValue:@"" forKey:@"kitsu-avatar"];
+            }
             break;
         case 3:
             [AniList removeAccount];
-            [defaults setValue:@(0) forKey:@"anilist-userid"];
-            [defaults setValue:@"" forKey:@"anilist-username"];
-            [defaults setValue:@"" forKey:@"anilist-scoreformat"];
-            [defaults setValue:@"" forKey:@"anilist-avatar"];
-            if ([defaults boolForKey:@"anilist-selectedlistcustomlistanime"]) {
-                [defaults setValue:@"watching" forKey:@"anilist-selectedanimelist"];
-                [defaults setBool:NO forKey:@"anilist-selectedlistcustomlistanime"];
-            }
-            if ([defaults boolForKey:@"anilist-selectedlistcustomlistmanga"]) {
-                [defaults setValue:@"reading" forKey:@"anilist-selectedmangalist"];
-                [defaults setBool:NO forKey:@"anilist-selectedlistcustomlistmanga"];
+            accountexists = [AniList getFirstAccount];
+            if (!accountexists) {
+                [defaults setValue:@(0) forKey:@"anilist-userid"];
+                [defaults setValue:@"" forKey:@"anilist-username"];
+                [defaults setValue:@"" forKey:@"anilist-scoreformat"];
+                [defaults setValue:@"" forKey:@"anilist-avatar"];
+                if ([defaults boolForKey:@"anilist-selectedlistcustomlistanime"]) {
+                    [defaults setValue:@"watching" forKey:@"anilist-selectedanimelist"];
+                    [defaults setBool:NO forKey:@"anilist-selectedlistcustomlistanime"];
+                }
+                if ([defaults boolForKey:@"anilist-selectedlistcustomlistmanga"]) {
+                    [defaults setValue:@"reading" forKey:@"anilist-selectedmangalist"];
+                    [defaults setBool:NO forKey:@"anilist-selectedlistcustomlistmanga"];
+                }
             }
         default:
-            break;
+            return;
     }
-    [self setLoggedinUser];
-    [self.delegate accountRemovedForService:service];
+    if (!accountexists) {
+        //Remove account from keychain and account data
+        [AtarashiiListCoreData removeAllEntrieswithService:service];
+        [self setLoggedinUser];
+        [self.delegate accountRemovedForService:service];
+    }
 }
 
 - (IBAction)switchservices:(id)sender {

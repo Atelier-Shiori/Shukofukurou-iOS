@@ -30,6 +30,7 @@
     _refreshlistonstart.on = [defaults boolForKey:@"refreshlistonstart"];
     _refreshlistautomatically.on = [defaults boolForKey:@"refreshautomatically"];
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
+    _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"SettingsViewLoaded" object:nil];

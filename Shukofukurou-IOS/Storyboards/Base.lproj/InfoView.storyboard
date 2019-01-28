@@ -370,12 +370,24 @@
                         <outlet property="loadingview" destination="3KE-JW-NG9" id="fVE-pG-CpD"/>
                         <outlet property="navigationitem" destination="RZa-oa-qRJ" id="jVm-KY-FuN"/>
                         <outlet property="posterImage" destination="rb0-sw-NtN" id="bgs-Mx-gic"/>
+                        <outlet property="shareitembaritem" destination="zsL-iI-aqD" id="MF5-5e-lZg"/>
                         <outlet property="tableview" destination="J8w-Dp-9fh" id="uo2-Rx-REg"/>
+                        <outlet property="titleinfobaritem" destination="Ulf-p5-uPL" id="ETf-Bu-tyh"/>
                         <outlet property="titlestatus" destination="Hv5-aH-KvH" id="RyH-dY-rZ6"/>
                         <outlet property="titletype" destination="tt7-dk-GRU" id="Q6d-CZ-iQ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VNg-J1-bhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Title Info" image="TitleInfo" id="Ulf-p5-uPL">
+                    <connections>
+                        <action selector="viewonsite:" destination="cNU-2n-D9v" id="Vkv-t6-Cv7"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="action" id="zsL-iI-aqD">
+                    <connections>
+                        <action selector="share:" destination="cNU-2n-D9v" id="Lwm-hE-8po"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="-450" y="-2013"/>
         </scene>
@@ -1015,11 +1027,23 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="infobarbuttonitem" destination="2Xd-j4-Wm3" id="A5e-Is-1H3"/>
                         <outlet property="posterimage" destination="Koy-mR-IoV" id="cHp-rM-9Xi"/>
+                        <outlet property="shareitembaritem" destination="5fQ-ID-6WS" id="WsJ-HY-fcS"/>
                         <outlet property="tableView" destination="7yI-Xw-XP4" id="9i9-Vy-CI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0G-ef-gHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Title Info" image="TitleInfo" id="2Xd-j4-Wm3">
+                    <connections>
+                        <action selector="viewonsite:" destination="6Tr-Ep-oQe" id="wBd-5t-hEg"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="action" id="5fQ-ID-6WS">
+                    <connections>
+                        <action selector="share:" destination="6Tr-Ep-oQe" id="eeY-wy-iNl"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="1254.375" y="152.11267605633802"/>
         </scene>
@@ -1278,6 +1302,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TitleInfo" width="50" height="50"/>
         <image name="favorite" width="45" height="45"/>
         <image name="option" width="50" height="50"/>
     </resources>

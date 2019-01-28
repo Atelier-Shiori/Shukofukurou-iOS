@@ -21,6 +21,8 @@
 @property (strong) NSString *website_url;
 @property int personid;
 @property int persontype;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *infobarbuttonitem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *shareitembaritem;
 @property bool setthemecolors;
 @end
 
@@ -37,6 +39,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     [self setThemeColors];
     _setthemecolors = true;
+    [self setToolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -213,12 +216,15 @@
 - (IBAction)showoptions:(id)sender {
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     __weak CharacterDetailViewController *weakSelf = self;
-    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf performViewOnListSite];
-    }]];
-    [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf performShare:sender];
-    }]];
+    bool isregularclass = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
+    if (!isregularclass) {
+        [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [weakSelf performViewOnListSite];
+        }]];
+        [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [weakSelf performShare:sender];
+        }]];
+    }
     if (self.navigationController.viewControllers.count > 3) {
         [options addAction:[UIAlertAction actionWithTitle:@"Return to Parent" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
@@ -234,6 +240,14 @@
      presentViewController:options
      animated:YES
      completion:nil];
+}
+
+- (IBAction)viewonsite:(id)sender {
+    [self performViewOnListSite];
+}
+
+- (IBAction)share:(id)sender {
+    [self performShare:sender];
 }
 
 - (void)performViewOnListSite {
@@ -280,6 +294,32 @@
             return @"";
     }
 }
+
+# pragma mark Toolbar
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [self setToolbar];
+}
+
+- (void)setToolbar {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        NSMutableArray *toolbarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
+            if (![toolbarButtons containsObject:self.shareitembaritem]) {
+                [toolbarButtons addObject:self.shareitembaritem];
+                [toolbarButtons addObject:self.infobarbuttonitem];
+            }
+        }
+        else {
+            if ([toolbarButtons containsObject:self.shareitembaritem]) {
+                [toolbarButtons removeObject:self.shareitembaritem];
+                [toolbarButtons removeObject:self.infobarbuttonitem];
+            }
+        }
+        [self.navigationItem setRightBarButtonItems:toolbarButtons animated:YES];
+    }
+}
+
 
 #pragma mark - Table view data source
 
