@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import <LGSideMenuController/LGSideMenuController.h>
-#import <IQKeyboardManager/IQKeyboardManager.h>
 #import <MGSwipeTableCell/MGSwipeButton.h>
 #import "ThemeManager.h"
 #import "DefaultTheme.h"
