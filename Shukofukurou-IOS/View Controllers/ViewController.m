@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ViewControllerManager.h"
+#import "ThemeManager.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
@@ -21,6 +22,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
+    [self setTheme];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setTheme];
 }
 
 - (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
@@ -49,6 +56,12 @@
 - (IBAction)login:(id)sender {
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     [vcm.mainsidebar performLogin];
+}
+
+- (void)setTheme {
+    ThemeManagerTheme *theme = [ThemeManager sharedCurrentTheme];
+    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+    self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
 }
 
 @end

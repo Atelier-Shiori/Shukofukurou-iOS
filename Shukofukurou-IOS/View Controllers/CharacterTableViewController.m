@@ -10,11 +10,14 @@
 #import "CharacterDetailViewController.h"
 #import "listservice.h"
 #import "PersonTableViewCell.h"
+#import "MBProgressHUD.h"
+#import "ThemeManager.h"
 
 @interface CharacterTableViewController ()
 @property int titleid;
 @property (strong) NSDictionary *items;
 @property (strong) NSArray *sections;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation CharacterTableViewController
@@ -25,11 +28,14 @@
 
 - (void)retrievePersonList:(int)titleid {
     self.navigationItem.hidesBackButton = YES;
+    [self showloadingview:YES];
     [listservice retrieveStaff:titleid completion:^(id responseObject) {
         [self generateStaffList:responseObject];
         self.navigationItem.hidesBackButton = NO;
+        [self showloadingview:NO];
     } error:^(NSError *error) {
         NSLog(@"%@",error);
+        [self showloadingview:NO];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't load staff list." message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self.navigationController popViewControllerAnimated:YES];
@@ -126,6 +132,18 @@
     }
     else {
         [characterdetailvc retrievePersonDetailsForID:((NSNumber *)entry[@"id"]).intValue];
+    }
+}
+
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
     }
 }
 

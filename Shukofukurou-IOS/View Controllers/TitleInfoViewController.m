@@ -25,6 +25,7 @@
 #import "StreamDataRetriever.h"
 #import "TitleInfoCache.h"
 #import "ThemeManager.h"
+#import "MBProgressHUD.h"
 
 @interface TitleInfoViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
@@ -38,12 +39,12 @@
 @property int entryid;
 @property int titleid;
 @property bool forcerefresh;
-@property (weak, nonatomic) IBOutlet UIVisualEffectView *loadingview;
 @property (weak, nonatomic) IBOutlet UILabel *titlestatus;
 @property (weak, nonatomic) IBOutlet UILabel *titletype;
 @property (strong) RelatedTableViewController *relatedtvc;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *titleinfobaritem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *shareitembaritem;
+@property (strong) MBProgressHUD *hud;
 @property bool setthemecolors;
 @end
 
@@ -116,7 +117,7 @@
     else if ([notification.name isEqualToString:@"ServiceChanged"]) {
         // Leave Title Information
         self.navigationItem.hidesBackButton = NO;
-        _loadingview.hidden = YES;
+        [self showloadingview:NO];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else if ([notification.name isEqualToString:@"ThemeChanged"]) {
@@ -131,13 +132,13 @@
         if (titleinfo) {
             [self populateInfoWithType:type withDictionary:titleinfo];
             [self view];
-            self.loadingview.hidden = YES;
+            [self showloadingview:NO];
             return;
         }
     }
     __weak TitleInfoViewController *weakSelf = self;
     self.navigationItem.hidesBackButton = YES;
-    self.loadingview.hidden = NO;
+    [self showloadingview:YES];
     [listservice retrieveTitleInfo:titleid withType:type useAccount:NO completion:^(id responseObject) {
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
             [weakSelf populateInfoWithType:type withDictionary:[TitleInfoCache saveTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type withResponseObject:responseObject]];
@@ -147,7 +148,7 @@
             [weakSelf populateInfoWithType:type withDictionary:responseObject];
         }
         weakSelf.navigationItem.hidesBackButton = NO;
-        weakSelf.loadingview.hidden = YES;
+        [weakSelf showloadingview:NO];
     } error:^(NSError *error) {
         NSLog(@"%@",error);
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
@@ -155,7 +156,7 @@
             if (titleinfo) {
                 [self populateInfoWithType:type withDictionary:titleinfo];
                 [self view];
-                self.loadingview.hidden = YES;
+                [weakSelf showloadingview:NO];
                 weakSelf.forcerefresh = false;
                 return;
             }
@@ -163,7 +164,7 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't load title information" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             weakSelf.navigationItem.hidesBackButton = NO;
-            weakSelf.loadingview.hidden = YES;
+            [weakSelf showloadingview:NO];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }];
         [alert addAction:action];
@@ -875,7 +876,7 @@
     NSDictionary *entry = [self generateUpdateDictionary];
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
-    _loadingview.hidden = NO;
+    [self showloadingview:YES];
     _navigationitem.hidesBackButton = YES;
     [listservice addAnimeTitleToList:_titleid withEpisode:((NSNumber *)entry[@"episode"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue completion:^(id responseObject) {
         // Reload List
@@ -887,7 +888,7 @@
             }
             dispatch_async(dispatch_get_main_queue(), ^{
             [updatecell setEnabled: YES];
-            weakSelf.loadingview.hidden = YES;
+            [weakSelf showloadingview:NO];
             weakSelf.navigationitem.hidesBackButton = NO;
                 [weakSelf.tableview reloadData];
             });
@@ -897,7 +898,7 @@
         NSLog(@"%@",error);
         dispatch_async(dispatch_get_main_queue(), ^{
         [updatecell setEnabled: YES];
-        weakSelf.loadingview.hidden = YES;
+        [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
         });
     }];
@@ -907,7 +908,7 @@
     NSDictionary *entry = [self generateUpdateDictionary];
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
-    _loadingview.hidden = NO;
+    [self showloadingview:YES];
     _navigationitem.hidesBackButton = YES;
     [listservice addMangaTitleToList:_titleid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue completion:^(id responseObject) {
         ListViewController *lvc = [ViewControllerManager getAppDelegateViewControllerManager].getMangaListRootViewController.lvc;
@@ -917,8 +918,8 @@
                 [lvc reloadList];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-            [updatecell setEnabled: YES];
-            weakSelf.loadingview.hidden = YES;
+                [updatecell setEnabled: YES];
+                [weakSelf showloadingview:NO];
             weakSelf.navigationitem.hidesBackButton = NO;
                 [weakSelf.tableview reloadData];
             });
@@ -927,7 +928,7 @@
         NSLog(@"%@",error);
         dispatch_async(dispatch_get_main_queue(), ^{
         [updatecell setEnabled: YES];
-        weakSelf.loadingview.hidden = YES;
+        [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
         });
     }];
@@ -955,7 +956,7 @@
     }
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
-    _loadingview.hidden = NO;
+    [self showloadingview:YES];
     _navigationitem.hidesBackButton = YES;
     [listservice updateAnimeTitleOnList:selectededitid withEpisode:((NSNumber *)entry[@"episode"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
         NSDictionary *updatedfields = @{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"], @"rewatching" : @(weakSelf.selectedreconsuming)};
@@ -972,7 +973,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
         [updatecell setEnabled: YES];
-        weakSelf.loadingview.hidden = YES;
+        [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
                 [weakSelf.tableview reloadData];
             });
@@ -980,8 +981,8 @@
     error:^(NSError * error) {
         NSLog(@"%@", error.localizedDescription);
             dispatch_async(dispatch_get_main_queue(), ^{
-        [updatecell setEnabled: YES];
-        weakSelf.loadingview.hidden = YES;
+        [updatecell setEnabled: NO];
+        [weakSelf showloadingview:YES];
         weakSelf.navigationitem.hidesBackButton = NO;
             });
     }];
@@ -1008,7 +1009,7 @@
     }
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
-    _loadingview.hidden = NO;
+    [self showloadingview:YES];
     _navigationitem.hidesBackButton = YES;
     [listservice updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
         NSDictionary *updatedfields = @{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"rereading" : @(weakSelf.selectedreconsuming)};
@@ -1025,7 +1026,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
         [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
         [updatecell setEnabled: YES];
-        weakSelf.loadingview.hidden = YES;
+        [weakSelf showloadingview:YES];
         weakSelf.navigationitem.hidesBackButton = NO;
             [weakSelf.tableview reloadData];
         });
@@ -1033,7 +1034,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"%@", error.localizedDescription);
         [updatecell setEnabled: YES];
-        weakSelf.loadingview.hidden = YES;
+        [weakSelf showloadingview:YES];
         weakSelf.navigationitem.hidesBackButton = NO;
         });
     }];
@@ -1202,5 +1203,17 @@
     EpisodesTableViewController *episodesvc = [self.storyboard instantiateViewControllerWithIdentifier:@"episodestbvc"];
     [self.navigationController pushViewController:episodesvc animated:YES];
     [episodesvc loadEpisodeListForTitleId:_titleid];
+}
+
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
 }
 @end

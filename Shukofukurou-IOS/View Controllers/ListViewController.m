@@ -20,6 +20,8 @@
 #import "AdvEditTableViewController.h"
 #import "ViewControllerManager.h"
 #import "SortTableViewController.h"
+#import "MBProgressHUD.h"
+#import "ThemeManager.h"
 
 @interface ListViewController ()
 @property (strong) NSMutableArray *list;
@@ -31,6 +33,7 @@
 @property (strong) ListSelectorViewController *listselector;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @property bool initalload;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation ListViewController
@@ -153,11 +156,17 @@
         if (_initalload) {
             [_refreshcontrol beginRefreshing];
         }
+        else {
+            [self showloadingview:YES];
+        }
         [listservice retrieveownListWithType:_listtype completion:^(id responseObject) {
             [self saveEntriesWithDictionary:responseObject withType:self.listtype];
             // populate list
             [self reloadList];
             [self.refreshControl endRefreshing];
+            if (self.hud) {
+                [self showloadingview:NO];
+            }
             if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice getCurrentServiceID]) {
                 AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
                 [anm checknotifications:^(bool success) {
@@ -170,6 +179,9 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error.userInfo);
             [self.refreshControl endRefreshing];
+            if (self.hud) {
+                [self showloadingview:NO];
+            }
             completionHandler(false);
         }];
     }
@@ -1160,5 +1172,18 @@
     [sorttvc loadView];
     [self presentViewController:navcontroller animated:YES completion:nil];
     [sorttvc loadSort:sortbystr withAccending:accending withType:_listtype];
+}
+
+#pragma mark HUD
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
 }
 @end

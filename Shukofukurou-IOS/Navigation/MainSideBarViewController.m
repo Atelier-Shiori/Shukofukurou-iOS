@@ -156,6 +156,7 @@
                     [defaults setBool:NO forKey:@"anilist-selectedlistcustomlistmanga"];
                 }
             }
+            break;
         default:
             return;
     }

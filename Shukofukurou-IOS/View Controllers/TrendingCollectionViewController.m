@@ -13,9 +13,12 @@
 #import "TrendingRetriever.h"
 #import "ViewControllerManager.h"
 #import "listservice.h"
+#import "MBProgressHUD.h"
+#import "ThemeManager.h"
 
 @interface TrendingCollectionViewController ()
 @property (strong) NSDictionary *items;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation TrendingCollectionViewController
@@ -69,11 +72,14 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)loadretrieving {
+    [self showloadingview:YES];
     [TrendingRetriever getTrendListForService:[listservice getCurrentServiceID] withType:(int)_typeselector.selectedSegmentIndex shouldRefresh:NO completion:^(id  _Nonnull responseobject) {
         self.items = responseobject;
         [self.collectionView reloadData];
+        [self showloadingview:NO];
     } error:^(NSError * _Nonnull error) {
         NSLog(@"%@", error);
+        [self showloadingview:NO];
     }];
 }
 
@@ -187,6 +193,19 @@ static NSString * const reuseIdentifier = @"Cell";
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(113, 180);
+}
+
+#pragma mark HUD
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
 }
 
 @end

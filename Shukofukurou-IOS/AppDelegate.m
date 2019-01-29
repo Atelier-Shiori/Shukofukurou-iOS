@@ -12,7 +12,6 @@
 #import "StreamDataRetriever.h"
 #import "AiringSchedule.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <IQKeyboardManager/IQKeyboardManager.h>
 #import "ThemeManager.h"
 
 @interface AppDelegate ()
@@ -129,7 +128,6 @@
 
 - (void)loadtheme {
     if (!_tmanager) {
-        [IQKeyboardManager sharedManager].enable = true;
         _tmanager = [ThemeManager new];
     }
     [_tmanager setTheme];

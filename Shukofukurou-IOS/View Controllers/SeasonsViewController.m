@@ -15,6 +15,8 @@
 #import "listservice.h"
 #import "TitleInfoViewController.h"
 #import "TitleIdConverter.h"
+#import "MBProgressHUD.h"
+#import "ThemeManager.h"
 
 @interface SeasonsViewController ()
 @property (strong) NSArray *seasonlist;
@@ -23,6 +25,7 @@
 @property (strong) NSString *currentseason;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @property int currentyear;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation SeasonsViewController
@@ -115,11 +118,16 @@ static NSString * const reuseIdentifier = @"Cell";
     __weak SeasonsViewController *weakSelf = self;
     _seasonlist = @[];
     [self.collectionView reloadData];
+    if (!self.collectionView.refreshControl.refreshing) {
+        [self showloadingview:YES];
+    }
     [AniListSeasonListGenerator retrieveSeasonDataWithSeason:weakSelf.currentseason  withYear:weakSelf.currentyear refresh:refresh completion:^(id responseObject) {
         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
         weakSelf.seasonlist = [responseObject sortedArrayUsingDescriptors:@[sort]];
         [weakSelf.collectionView reloadData];
+        [self showloadingview:NO];
     } error:^(NSError *error) {
+        [self showloadingview:NO];
     }];
 }
 
@@ -212,5 +220,16 @@ static NSString * const reuseIdentifier = @"Cell";
     }];
 }
 
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
+}
 
 @end

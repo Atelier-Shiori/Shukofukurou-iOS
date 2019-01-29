@@ -168,6 +168,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+    [super setSelected:NO animated:YES];
 }
 
 - (void)selectAction {
@@ -367,9 +368,31 @@
 
 @implementation TitleInfoNotesEntryTableViewCell
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (instancetype)init {
+    if ([super init]) {
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
+    }
+    return self;
+}
+
+- (void)receiveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString: @"ThemeChanged"]) {
+        [self setKeyboardAppearence];
+    }
+}
+
+- (void)setKeyboardAppearence {
+    _notes.keyboardAppearance = [ThemeManager sharedCurrentTheme].keyboardappearence;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self setKeyboardAppearence];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

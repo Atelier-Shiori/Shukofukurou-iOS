@@ -105,8 +105,6 @@
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
-		597BD4A821FD5D15001393B9 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */; };
-		597BD4A921FD5D15001393B9 /* IQKeyboardManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
@@ -115,6 +113,7 @@
 		59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
 		59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
+		59A7E0522200B1C2002EE2EC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */; };
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; };
@@ -299,20 +298,6 @@
 			remoteGlobalIDString = C63EE56A1BBA07ED008F46BB;
 			remoteInfo = MGSwipeTableCell;
 		};
-		597BD4A421FD5D07001393B9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4CD2C4A61C5A615600975A7A;
-			remoteInfo = IQKeyboardManager;
-		};
-		597BD4A621FD5D07001393B9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4CD5970C1D1C5EBE00AB28D3;
-			remoteInfo = IQKeyboardManagerSwift;
-		};
 		59B22D1D21FE62F400627172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
@@ -377,7 +362,6 @@
 				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
 				59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */,
 				59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */,
-				597BD4A921FD5D15001393B9 /* IQKeyboardManager.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,7 +543,6 @@
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
-		597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IQKeyboardManager.xcodeproj; path = "Dependencies/IQKeyboardManager-master/IQKeyboardManager.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou-IOS.entitlements"; sourceTree = "<group>"; };
 		5981223921935C7200117FA0 /* AiringNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5981223A21935C7200117FA0 /* AiringNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
@@ -576,6 +559,8 @@
 		59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvEditTableViewController.m; sourceTree = "<group>"; };
 		59A75816215D3A8800B36F9C /* TitleInfoCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleInfoCache.h; sourceTree = "<group>"; };
 		59A75817215D3A8800B36F9C /* TitleInfoCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
+		59A7E0502200B1C2002EE2EC /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
 		59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyViewController.h; sourceTree = "<group>"; };
 		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
@@ -611,7 +596,6 @@
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
 				59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */,
 				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
-				597BD4A821FD5D15001393B9 /* IQKeyboardManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,7 +673,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				597BD48C21FD5CFC001393B9 /* IQKeyboardManager-master */,
+				59A7E03B2200B160002EE2EC /* MBProgressHUD */,
 				5933CEBF2174F0A200EAE7E6 /* MSWeakTimer */,
 				59D915882162C1A600B5A61B /* UILabel+Copyable */,
 				5997B4A82162A68C005E894A /* TopAlignedLabel */,
@@ -1047,24 +1031,6 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		597BD48C21FD5CFC001393B9 /* IQKeyboardManager-master */ = {
-			isa = PBXGroup;
-			children = (
-				597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */,
-			);
-			name = "IQKeyboardManager-master";
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		597BD4A021FD5D07001393B9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */,
-				597BD4A721FD5D07001393B9 /* IQKeyboardManagerSwift.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		5997B4A82162A68C005E894A /* TopAlignedLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,6 +1038,15 @@
 				5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */,
 			);
 			path = TopAlignedLabel;
+			sourceTree = "<group>";
+		};
+		59A7E03B2200B160002EE2EC /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				59A7E0502200B1C2002EE2EC /* MBProgressHUD.h */,
+				59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		59B22D1521FE62F300627172 /* Products */ = {
@@ -1201,10 +1176,6 @@
 				{
 					ProductGroup = 5962411721556329001995AD /* Products */;
 					ProjectRef = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
-				},
-				{
-					ProductGroup = 597BD4A021FD5D07001393B9 /* Products */;
-					ProjectRef = 597BD49F21FD5D07001393B9 /* IQKeyboardManager.xcodeproj */;
 				},
 				{
 					ProductGroup = 596241442155634A001995AD /* Products */;
@@ -1356,20 +1327,6 @@
 			fileType = wrapper.framework;
 			path = MGSwipeTableCell.framework;
 			remoteRef = 5962414D2155634F001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		597BD4A521FD5D07001393B9 /* IQKeyboardManager.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = IQKeyboardManager.framework;
-			remoteRef = 597BD4A421FD5D07001393B9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		597BD4A721FD5D07001393B9 /* IQKeyboardManagerSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = IQKeyboardManagerSwift.framework;
-			remoteRef = 597BD4A621FD5D07001393B9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		59B22D1E21FE62F400627172 /* libSDWebImage iOS static.a */ = {
@@ -1524,6 +1481,7 @@
 				596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */,
 				594810F521921FD0000C4B5C /* TrendingCollectionHeaderView.m in Sources */,
 				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
+				59A7E0522200B1C2002EE2EC /* MBProgressHUD.m in Sources */,
 				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,
 				596241572155638D001995AD /* AniListConstants.m in Sources */,
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,

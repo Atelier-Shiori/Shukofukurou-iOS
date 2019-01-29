@@ -16,6 +16,8 @@
 #import "AniListScoreConvert.h"
 #import "TitleInfoViewController.h"
 #import "TitleIdConverter.h"
+#import "MBProgressHUD.h"
+#import "ThemeManager.h"
 
 
 @interface AiringViewController ()
@@ -24,8 +26,8 @@
 @property (strong) NSString *currentday;
 @property (weak, nonatomic) IBOutlet UIRefreshControl *refreshcontrol;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
-
 @property (strong) AiringDayTableViewController *airingdaycontroller;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation AiringViewController
@@ -44,11 +46,13 @@
     __weak AiringViewController *weakSelf = self;
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     if (![defaults valueForKey:@"airschedulerefreshdate"] || ((NSDate *)[defaults valueForKey:@"airschedulerefreshdate"]).timeIntervalSinceNow < 0) {
+        [self showloadingview:YES];
         [AiringSchedule retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success, bool refreshed) {
             if (success && refreshed) {
                 [self reloadData];
                 [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*72] forKey:@"airschedulerefreshdate"];
             }
+            [self showloadingview:NO];
         }];
     }
     else {
@@ -215,6 +219,18 @@
             break;
     }
     _navcontroller.title = _currentday;
+}
+
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
 }
 
 @end

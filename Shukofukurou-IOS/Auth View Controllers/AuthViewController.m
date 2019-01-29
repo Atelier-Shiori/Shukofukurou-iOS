@@ -10,6 +10,7 @@
 #import "ListService.h"
 #import "AppDelegate.h"
 #import "OnePasswordExtension.h"
+#import "ThemeManager.h"
 
 @interface AuthViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *loginbtn;
@@ -30,6 +31,7 @@
             self.navigationItem.title = @"Kitsu Login";
             break;
     }
+    [self setTheme];
 }
 
 /*
@@ -117,6 +119,14 @@
         self.username.text = loginDictionary[AppExtensionUsernameKey];
         self.password.text = loginDictionary[AppExtensionPasswordKey];
     }];
+}
+
+- (void)setTheme {
+    ThemeManagerTheme *theme = [ThemeManager sharedCurrentTheme];
+    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+    self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
+    self.username.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
+    self.password.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
 }
 
 @end

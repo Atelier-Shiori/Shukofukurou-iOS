@@ -20,6 +20,7 @@
 #import "TitleInfoTableViewCell.h"
 #import "ReviewTableViewCell.h"
 #import "SideBarCell.h"
+#import "MBProgressHUD.h"
 
 @interface ThemeManager ()
 @property ThemeManagerTheme *lightTheme;
@@ -77,11 +78,8 @@
     [UIToolbar appearance].barStyle = _currentTheme.navBarStyle;
     [del getvcmanager].mvc.leftViewBackgroundColor = _currentTheme.viewBackgroundColor;
     // Keyboard
-    [[IQKeyboardManager sharedManager] setOverrideKeyboardAppearance:YES];
-    [[IQKeyboardManager sharedManager] setKeyboardAppearance:_currentTheme.keyboardappearence];
-    //[[UITextView appearance] setKeyboardAppearance:_currentTheme.keyboardappearence];
-    //[UITextField appearance].keyboardAppearance = _currentTheme.keyboardappearence;
-    //[UISearchBar appearance].keyboardAppearance = _currentTheme.keyboardappearence;
+    [UITextField appearance].keyboardAppearance = _currentTheme.keyboardappearence;
+    [UISearchBar appearance].keyboardAppearance = _currentTheme.keyboardappearence;
     [NSNotificationCenter.defaultCenter postNotificationName:@"ThemeChanged" object:nil];
 }
 @end
