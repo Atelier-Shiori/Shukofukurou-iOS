@@ -13,6 +13,7 @@
 #import "EntryCellInfo.h"
 #import "TitleInfoTableViewCell.h"
 #import "listservice.h"
+#import "ThemeManager.h"
 
 @interface AdvEditTableViewController ()
 @property (strong) NSArray *cellEntries;
@@ -32,7 +33,12 @@
 @implementation AdvEditTableViewController
 
 - (void)viewDidLoad {
+    [self loadTheme];
     [super viewDidLoad];
+}
+
+- (void)loadTheme {
+    self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
 }
 
 - (void)populateTableViewWithID:(int)titleid withEntryDictionary:(nullable NSDictionary *)uentry withType:(int)type {

@@ -9,6 +9,7 @@
 #import "CustomListTableViewController.h"
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
+#import "ThemeManager.h"
 
 @interface CustomListTableViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *savebtn;
@@ -20,10 +21,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self loadTheme];
     _customListArray = [NSMutableArray new];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+}
+
+- (void)loadTheme {
+    self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
 }
 
 - (void)populateCustomLists:(NSDictionary *)entry withCurrentType:(int)type withSelectedId:(int)selid {

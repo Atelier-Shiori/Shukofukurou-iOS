@@ -13,6 +13,7 @@
 #import "RatingTwentyConvert.h"
 #import "UILabel+Copyable.h"
 #import "ThemeManager.h"
+#import "TableViewCellBackgroundView.h"
 
 @implementation TitleInfoBasicTableViewCell
 
@@ -41,7 +42,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:false animated:animated];
 }
@@ -93,6 +96,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
     NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
     if ([anilistscoretype isEqualToString:@"POINT_100"]) {
         self.scorefield.keyboardType = UIKeyboardTypeNumberPad;
@@ -163,6 +167,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -206,6 +211,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -392,6 +398,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
     [self setKeyboardAppearence];
 }
 
@@ -417,6 +424,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -448,6 +456,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

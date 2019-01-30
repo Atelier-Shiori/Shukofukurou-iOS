@@ -22,8 +22,24 @@
 
 @implementation CharacterTableViewController
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadTheme];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"ThemeChanged" object:nil];
+}
+
+- (void)receivedNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        [self loadTheme];
+    }
+}
+
+- (void)loadTheme {
+    self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
 }
 
 - (void)retrievePersonList:(int)titleid {

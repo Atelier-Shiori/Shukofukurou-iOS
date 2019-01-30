@@ -8,12 +8,14 @@
 
 #import "MangaEntryTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "TableViewCellBackgroundView.h"
 
 @implementation MangaEntryTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

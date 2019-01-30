@@ -44,6 +44,7 @@
 @property (strong) RelatedTableViewController *relatedtvc;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *titleinfobaritem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *shareitembaritem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *optionsitembaritem;
 @property (strong) MBProgressHUD *hud;
 @property bool setthemecolors;
 @end
@@ -1215,5 +1216,8 @@
     else {
         [_hud hideAnimated:YES];
     }
+    _titleinfobaritem.enabled = !show;
+    _shareitembaritem.enabled = !show;
+    _optionsitembaritem.enabled = !show;
 }
 @end

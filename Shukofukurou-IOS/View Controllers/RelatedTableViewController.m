@@ -9,6 +9,7 @@
 #import "RelatedTableViewController.h"
 #import "TitleInfoViewController.h"
 #import "Utility.h"
+#import "ThemeManager.h"
 
 @interface RelatedTableViewController ()
 @property int type;
@@ -20,12 +21,28 @@
 
 @implementation RelatedTableViewController
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
+    [self loadTheme];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"ThemeChanged" object:nil];
+}
+
+- (void)receivedNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        [self loadTheme];
+    }
+}
+
+- (void)loadTheme {
+    self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
 }
 
 #pragma mark - Table view data source

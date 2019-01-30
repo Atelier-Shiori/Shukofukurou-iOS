@@ -12,6 +12,7 @@
 #import "AniListScoreConvert.h"
 #import "listservice.h"
 #import "ReviewDetailViewController.h"
+#import "ThemeManager.h"
 
 @interface ReviewTableViewController ()
 @property int type;
@@ -29,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadTheme];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"ThemeChanged" object:nil];
     
     switch ([listservice getCurrentServiceID]) {
         case 2:
@@ -38,6 +41,16 @@
             break;
     }
     _reviews = [NSMutableArray new];
+}
+
+- (void)receivedNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        [self loadTheme];
+    }
+}
+
+- (void)loadTheme {
+    self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
 }
 
 - (void)retrieveReviewsForTitleID:(int)titleid withType:(int)type {

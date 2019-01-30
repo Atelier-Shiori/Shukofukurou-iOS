@@ -7,7 +7,12 @@
 //
 
 #import "SideBarCell.h"
+#import "TableViewCellBackgroundView.h"
 
 @implementation SideBarCell
-
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+}
 @end

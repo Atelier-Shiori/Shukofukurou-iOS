@@ -20,6 +20,7 @@
 #import "ReviewTableViewCell.h"
 #import "SideBarCell.h"
 #import "MBProgressHUD.h"
+#import "TableViewCellBackgroundView.h"
 
 @interface ThemeManager ()
 @property ThemeManagerTheme *lightTheme;
@@ -56,7 +57,8 @@
     [UITableView appearance].backgroundColor = darkmode ? _currentTheme.viewBackgroundColor : _currentTheme.viewAltBackgroundColor;
     [UICollectionView appearance].backgroundColor = _currentTheme.viewBackgroundColor;
     [UITableViewCell appearance].backgroundColor = darkmode ? _currentTheme.viewAltBackgroundColor : _currentTheme.viewBackgroundColor;
-    [UITableViewCell appearance].selectedBackgroundView.backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
+    [UITableViewCell appearance].selectionStyle = UITableViewCellSelectionStyleDefault;
+    [TableViewCellBackgroundView appearance].backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
     [UISegmentedControl appearance].tintColor = _currentTheme.tintColor;
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SideBarCell class]]].tintColor = darkmode ? _currentTheme.tintColor: _currentTheme.textColor;
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
@@ -75,7 +77,7 @@
     [UIProgressView appearance].trackTintColor = _currentTheme.trackTintColor;
     [UINavigationBar appearance].barStyle = _currentTheme.navBarStyle;
     [UIToolbar appearance].barStyle = _currentTheme.navBarStyle;
-    [del getvcmanager].mvc.leftViewBackgroundColor = _currentTheme.viewBackgroundColor;
+    [del getvcmanager].mvc.leftViewBackgroundColor = darkmode ? _currentTheme.viewAltBackgroundColor : _currentTheme.viewBackgroundColor;
     // Keyboard
     [UITextField appearance].keyboardAppearance = _currentTheme.keyboardappearence;
     [UISearchBar appearance].keyboardAppearance = _currentTheme.keyboardappearence;

@@ -8,12 +8,14 @@
 
 #import "SearchTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "TableViewCellBackgroundView.h"
 
 @implementation SearchTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

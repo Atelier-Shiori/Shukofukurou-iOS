@@ -8,12 +8,14 @@
 
 #import "EpisodesTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "TableViewCellBackgroundView.h"
 
 @implementation EpisodesTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -9,12 +9,14 @@
 #import "ReviewTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UILabel+Copyable.h"
+#import "TableViewCellBackgroundView.h"
 
 @implementation ReviewTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [TableViewCellBackgroundView new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

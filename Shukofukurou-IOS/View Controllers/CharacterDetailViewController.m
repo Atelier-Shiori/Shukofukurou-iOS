@@ -23,6 +23,8 @@
 @property int persontype;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *infobarbuttonitem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *shareitembaritem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *options;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *returntoparentitem;
 @property bool setthemecolors;
 @end
 
@@ -227,7 +229,7 @@
     }
     if (self.navigationController.viewControllers.count > 3) {
         [options addAction:[UIAlertAction actionWithTitle:@"Return to Parent" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            [weakSelf performReturntoParent];
         }]];
     }
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -250,6 +252,10 @@
     [self performShare:sender];
 }
 
+- (IBAction)returnToParent:(id)sender {
+    [self performReturntoParent];
+}
+
 - (void)performViewOnListSite {
     NSString *URL = [self getTitleURL];
     [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
@@ -262,6 +268,10 @@
     activityViewControntroller.popoverPresentationController.barButtonItem = sender;
     activityViewControntroller.popoverPresentationController.sourceView = self.view;
     [self presentViewController:activityViewControntroller animated:true completion:nil];
+}
+
+- (void)performReturntoParent {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (NSString *)getTitleURL {
@@ -306,14 +316,22 @@
         NSMutableArray *toolbarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
         if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
             if (![toolbarButtons containsObject:self.shareitembaritem]) {
+                if (self.navigationController.viewControllers.count > 3) {
+                    [toolbarButtons addObject:self.returntoparentitem];
+                }
                 [toolbarButtons addObject:self.shareitembaritem];
                 [toolbarButtons addObject:self.infobarbuttonitem];
+                [toolbarButtons removeObject:self.options];
             }
         }
         else {
             if ([toolbarButtons containsObject:self.shareitembaritem]) {
                 [toolbarButtons removeObject:self.shareitembaritem];
                 [toolbarButtons removeObject:self.infobarbuttonitem];
+                if (self.navigationController.viewControllers.count > 3) {
+                    [toolbarButtons removeObject:self.returntoparentitem];
+                }
+                [toolbarButtons addObject:self.options];
             }
         }
         [self.navigationItem setRightBarButtonItems:toolbarButtons animated:YES];

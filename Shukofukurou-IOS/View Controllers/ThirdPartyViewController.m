@@ -30,6 +30,11 @@
     [self fixtheme];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [_textview setContentOffset:CGPointZero animated:NO];
+}
+
 - (void)fixtheme {
     bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
     self.view.backgroundColor = darkmode ? [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;

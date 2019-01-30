@@ -20,6 +20,8 @@
 		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
 		59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D89215953C1003CE863 /* CustomListTableViewController.m */; };
+		594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */; };
+		594D0937220207FD00A37B6B /* UITableViewCellSelBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D0936220207FD00A37B6B /* UITableViewCellSelBackground.m */; };
 		595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595C1F78218DF4B000953793 /* Trending.storyboard */; };
 		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
 		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
@@ -395,6 +397,10 @@
 		59481D8321594078003CE863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomList.storyboard; sourceTree = "<group>"; };
 		59481D88215953C1003CE863 /* CustomListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListTableViewController.h; sourceTree = "<group>"; };
 		59481D89215953C1003CE863 /* CustomListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListTableViewController.m; sourceTree = "<group>"; };
+		594D09322202019E00A37B6B /* TableViewCellBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCellBackgroundView.h; sourceTree = "<group>"; };
+		594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCellBackgroundView.m; sourceTree = "<group>"; };
+		594D0935220207FD00A37B6B /* UITableViewCellSelBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewCellSelBackground.h; sourceTree = "<group>"; };
+		594D0936220207FD00A37B6B /* UITableViewCellSelBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewCellSelBackground.m; sourceTree = "<group>"; };
 		595C1F79218DF4B000953793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trending.storyboard; sourceTree = "<group>"; };
 		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -845,6 +851,8 @@
 				5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */,
 				5962417D215563CD001995AD /* Utility.h */,
 				5962417B215563CB001995AD /* Utility.m */,
+				594D09322202019E00A37B6B /* TableViewCellBackgroundView.h */,
+				594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -947,6 +955,8 @@
 				596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */,
 				594810F321921FCF000C4B5C /* TrendingCollectionHeaderView.h */,
 				594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */,
+				594D0935220207FD00A37B6B /* UITableViewCellSelBackground.h */,
+				594D0936220207FD00A37B6B /* UITableViewCellSelBackground.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -1472,6 +1482,7 @@
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
 				5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */,
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
+				594D0937220207FD00A37B6B /* UITableViewCellSelBackground.m in Sources */,
 				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
 				596890182190ADF30029F0FC /* EpisodesTableViewController.m in Sources */,
 				596241562155638D001995AD /* ClientConstants.m in Sources */,
@@ -1480,6 +1491,7 @@
 				5962421D21556514001995AD /* SettingsViewController.m in Sources */,
 				596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */,
 				594810F521921FD0000C4B5C /* TrendingCollectionHeaderView.m in Sources */,
+				594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */,
 				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				59A7E0522200B1C2002EE2EC /* MBProgressHUD.m in Sources */,
 				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,
