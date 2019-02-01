@@ -28,7 +28,7 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
         NSMutableArray *tmparray = [NSMutableArray new];
         [self retrievelist:userid withArray:tmparray withType:type page:1 completion:completionHandler error:errorHandler];
     } error:^(NSError *error) {
-            errorHandler(error);
+        errorHandler(error);
     }];
 }
 
@@ -37,7 +37,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self retrievelist:userid withArray:tmparray withType:type page:page completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     if (cred) {
@@ -170,6 +177,25 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     return false;
 }
 
++ (void)refreshToken:(void (^)(bool success))completion {
+    AFOAuthCredential *cred =
+    [AFOAuthCredential retrieveCredentialWithIdentifier:kAniListKeychainIdentifier];
+    AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:[NSURL URLWithString:@"https://anilist.co/"]
+                                                                     clientID:kanilistclient
+                                                                       secret:kanilistsecretkey];
+    [OAuth2Manager setUseHTTPBasicAuthentication:NO];
+    [OAuth2Manager authenticateUsingOAuthWithURLString:@"api/v2/oauth/token"
+                                            parameters:@{@"grant_type":@"refresh_token", @"refresh_token":cred.refreshToken} success:^(AFOAuthCredential *credential) {
+                                                NSLog(@"Token refreshed");
+                                                [AFOAuthCredential storeCredential:credential
+                                                                    withIdentifier:kAniListKeychainIdentifier];
+                                                completion(true);
+                                            }
+                                               failure:^(NSError *error) {
+                                                   completion(false);
+                                               }];
+}
+
 + (void)verifyAccountWithPin:(NSString *)pin completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuth2Manager *OAuth2Manager =
     [[AFOAuth2Manager alloc] initWithBaseURL:[NSURL URLWithString:@"https://anilist.co/"]
@@ -198,7 +224,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 + (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self retrieveProfile:username completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -222,7 +255,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -231,7 +271,7 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     NSMutableDictionary *variables =  [self generateAnimeAttributes:episode withStatus:[self convertWatchStatus:status isReconsuming:false withType:AniListAnime] withScore:score withExtraFields:nil];
     variables[@"mediaid"] = @(titleid);
     NSDictionary *parameters = @{@"query"
-        : kAnilistAddAnimeListEntry, @"variables" : variables};
+                                 : kAnilistAddAnimeListEntry, @"variables" : variables};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -242,7 +282,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 + (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -264,7 +311,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     // Note: Tags field is ignored.
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -291,7 +345,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     // Note: Tags field is ignored.
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -318,7 +379,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     // Note; Type field is ignored
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -342,7 +410,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     // Note; Type field is ignored
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self modifyCustomLists:titleid withCustomLists:customlists completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -445,7 +520,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self retrieveTitleIds:userid withArray:tmparray withType:type page:page completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     if (cred) {
@@ -492,7 +574,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 + (void)getOwnAnilistid:(void (^)(int userid, NSString *username, NSString *scoreformat, NSString *avatar)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self getOwnAnilistid:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -513,7 +602,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 + (void)getAniListUserid:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self getAniListUserid:username completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -577,7 +673,14 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 + (void)getUserRatingType:(void (^)(NSString *scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
-        errorHandler(nil);
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self getUserRatingType:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -632,6 +735,11 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     // Retrieves missing user information and populates it before showing the UI.
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
+        [self refreshToken:^(bool success) {
+            if (success) {
+                [self saveuserinfoforcurrenttoken];
+            }
+        }];
         return;
     }
     AFHTTPSessionManager *manager = [Utility syncmanager];
