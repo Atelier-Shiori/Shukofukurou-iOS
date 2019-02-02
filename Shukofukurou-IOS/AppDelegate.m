@@ -252,7 +252,7 @@
              reloadeduserdata = true;
         }
     }
-    if (reloadeduserdata) {
+    if ([listservice checkAccountForCurrentService]) {
         // Reload user data on sidebar
         [_vcmanager.mainsidebar setLoggedinUser];
     }
