@@ -107,6 +107,7 @@
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
+		5976C0872208A13A003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C0862208A13A003DA0D6 /* OAuthCredManager.m */; };
 		5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
@@ -549,6 +550,8 @@
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
+		5976C0852208A13A003DA0D6 /* OAuthCredManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAuthCredManager.h; sourceTree = "<group>"; };
+		5976C0862208A13A003DA0D6 /* OAuthCredManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAuthCredManager.m; sourceTree = "<group>"; };
 		5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou-IOS.entitlements"; sourceTree = "<group>"; };
 		5981223921935C7200117FA0 /* AiringNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5981223A21935C7200117FA0 /* AiringNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
@@ -853,6 +856,8 @@
 				5962417B215563CB001995AD /* Utility.m */,
 				594D09322202019E00A37B6B /* TableViewCellBackgroundView.h */,
 				594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */,
+				5976C0852208A13A003DA0D6 /* OAuthCredManager.h */,
+				5976C0862208A13A003DA0D6 /* OAuthCredManager.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1458,6 +1463,7 @@
 				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
 				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
+				5976C0872208A13A003DA0D6 /* OAuthCredManager.m in Sources */,
 				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */,
 				5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */,
