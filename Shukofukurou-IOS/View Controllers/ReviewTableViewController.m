@@ -13,6 +13,7 @@
 #import "listservice.h"
 #import "ReviewDetailViewController.h"
 #import "ThemeManager.h"
+#import "MBProgressHUD.h"
 
 @interface ReviewTableViewController ()
 @property int type;
@@ -20,6 +21,7 @@
 @property (strong) NSMutableArray *reviews;
 @property int nextPageOffset;
 @property bool loadingReactions;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation ReviewTableViewController
@@ -85,6 +87,7 @@
         }];
     }
     else {
+        [self showloadingview:YES];
         [listservice retrieveReviewsForTitle:titleid withType:type completion:^(id responseObject) {
             switch ([listservice getCurrentServiceID]) {
                 case 1:
@@ -98,8 +101,10 @@
             }
             [self.tableView reloadData];
             self.navigationItem.hidesBackButton = NO;
+            [self showloadingview:NO];
         } error:^(NSError *error) {
             NSLog(@"%@",error);
+            [self showloadingview:NO];
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }
@@ -179,6 +184,18 @@
     [reviewdetailvc loadView];
     [reviewdetailvc populateReviewData:reviewData withType:_type];
     [reviewdetailvc viewDidLoad];
+}
+
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
 }
 
 @end
