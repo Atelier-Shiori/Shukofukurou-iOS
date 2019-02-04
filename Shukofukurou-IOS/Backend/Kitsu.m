@@ -252,8 +252,7 @@
 
 + (void)refreshToken:(void (^)(bool success))completion {
     OAuthCredManager *credmanager = [OAuthCredManager sharedInstance];
-    AFOAuthCredential *cred =
-    [credmanager getFirstAccountForService:2];
+    AFOAuthCredential *cred = [credmanager getFirstAccountForService:2];
     NSURL *baseURL = [NSURL URLWithString:kKitsuBaseURL];
     AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
                                                                      clientID:kKitsuClient
