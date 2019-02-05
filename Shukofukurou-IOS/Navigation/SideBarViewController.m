@@ -24,6 +24,10 @@ struct {
     unsigned int sidebarItemDidChange:1;
 } delegateRespondsTo;
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sidebarItems = [self generateSideBarItems];
@@ -34,6 +38,14 @@ struct {
     
     NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[self getSidebarItemIndexForIdentifier:selectedrow] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"SideBarSelectionChanged" object:nil];
+}
+
+- (void)didReceiveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"SideBarSelectionChanged"]) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[self getSidebarItemIndexForIdentifier:notification.object] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        [NSUserDefaults.standardUserDefaults setValue:notification.object forKey:@"selectedmainview"];
+    }
 }
 
 - (NSArray *)generateSideBarItems {

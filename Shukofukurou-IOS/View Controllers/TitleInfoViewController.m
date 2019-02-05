@@ -256,8 +256,7 @@
     }
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
         [options addAction:[UIAlertAction actionWithTitle:@"Refresh Title Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            weakSelf.forcerefresh = true;
-            [weakSelf loadTitleInfo:weakSelf.titleid withType:weakSelf.currenttype];
+            [weakSelf refreshTitleInfo];
         }]];
     }
     if (self.navigationController.viewControllers.count > 3) {
@@ -328,6 +327,13 @@
         }
         default:
             return @"";
+    }
+}
+
+- (void)refreshTitleInfo {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
+        self.forcerefresh = true;
+        [self loadTitleInfo:self.titleid withType:self.currenttype];
     }
 }
 

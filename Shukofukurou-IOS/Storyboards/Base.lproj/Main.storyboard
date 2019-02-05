@@ -138,8 +138,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jp1-pJ-hyH"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6vI-Zg-w7W"/>
-                                    <barButtonItem title="Services" id="HWn-YN-Vy2">
+                                    <barButtonItem title="Service" id="HWn-YN-Vy2">
                                         <connections>
                                             <action selector="switchservices:" destination="h1S-qp-QWw" id="n6h-2F-rSL"/>
                                         </connections>
@@ -166,6 +165,7 @@
                     <connections>
                         <outlet property="avatar" destination="xfq-5b-Lyu" id="jA5-av-LLW"/>
                         <outlet property="logintoolbarbtn" destination="vt3-WL-ZAV" id="Wbs-y5-rKl"/>
+                        <outlet property="optionsbuttonitem" destination="QY3-Bv-QDf" id="vlh-rx-Zne"/>
                         <outlet property="servicename" destination="juw-fi-1Wk" id="Ehe-A4-gyC"/>
                         <outlet property="username" destination="7BU-lo-3NW" id="THe-Vy-z2v"/>
                     </connections>

@@ -20,6 +20,7 @@
 #import "StatsViewController.h"
 
 @interface MainSideBarViewController ()
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *optionsbuttonitem;
 @property (strong) MainViewController *mainvc;
 @end
 
@@ -48,6 +49,7 @@
 - (void)setLoggedinUser {
     if ([listservice checkAccountForCurrentService]) {
         _logintoolbarbtn.title = @"Logout";
+        _optionsbuttonitem.enabled = YES;
         _username.text = [listservice getCurrentServiceUsername];
         NSString *avatarurl = [listservice getCurrentUserAvatar];
         if (avatarurl.length > 0) {
@@ -60,6 +62,7 @@
     else {
         _logintoolbarbtn.title = @"Login";
         _username.text = @"Not logged in";
+        _optionsbuttonitem.enabled = NO;
         _avatar.image = [UIImage new];
     }
     _servicename.text = [listservice currentservicename];

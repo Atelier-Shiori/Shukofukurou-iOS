@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TrendingCollectionViewController : UICollectionViewController
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeselector;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
-
+- (void)loadretrieving;
 @end
 
 NS_ASSUME_NONNULL_END

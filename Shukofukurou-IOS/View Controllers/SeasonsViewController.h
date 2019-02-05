@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SeasonsViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
-
+- (void)reloadData:(bool)refresh;
 @end
 
 NS_ASSUME_NONNULL_END
