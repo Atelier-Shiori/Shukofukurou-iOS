@@ -158,88 +158,88 @@
 }
 
 - (void)toggleView:(id)sender {
-    UIKeyCommand *command = (UIKeyCommand *)sender;
-    NSString *viewname;
-    if ([command.discoverabilityTitle isEqualToString:@"Anime List"]) {
-        viewname = @"anime-list";
+    if (!self.presentedViewController) {
+        UIKeyCommand *command = (UIKeyCommand *)sender;
+        NSString *viewname;
+        if ([command.discoverabilityTitle isEqualToString:@"Anime List"]) {
+            viewname = @"anime-list";
+        }
+        else if ([command.discoverabilityTitle isEqualToString:@"Manga List"]) {
+            viewname = @"manga-list";
+        }
+        else if ([command.discoverabilityTitle isEqualToString:@"Search"]) {
+            viewname = @"search";
+        }
+        else if ([command.discoverabilityTitle isEqualToString:@"Seasons"]) {
+            viewname = @"seasons";
+        }
+        else if ([command.discoverabilityTitle isEqualToString:@"Airing"]) {
+            viewname = @"airing";
+        }
+        else if ([command.discoverabilityTitle isEqualToString:@"Trending"]) {
+            viewname = @"trending";
+        }
+        [NSNotificationCenter.defaultCenter postNotificationName:@"SideBarSelectionChanged" object:viewname];
+        [self sidebarItemDidChange:viewname];
     }
-    else if ([command.discoverabilityTitle isEqualToString:@"Manga List"]) {
-        viewname = @"manga-list";
-    }
-    else if ([command.discoverabilityTitle isEqualToString:@"Search"]) {
-        viewname = @"search";
-    }
-    else if ([command.discoverabilityTitle isEqualToString:@"Seasons"]) {
-        viewname = @"seasons";
-    }
-    else if ([command.discoverabilityTitle isEqualToString:@"Airing"]) {
-        viewname = @"airing";
-    }
-    else if ([command.discoverabilityTitle isEqualToString:@"Trending"]) {
-        viewname = @"trending";
-    }
-    [NSNotificationCenter.defaultCenter postNotificationName:@"SideBarSelectionChanged" object:viewname];
-    [self sidebarItemDidChange:viewname];
-}
-
-- (void)viewMangaList:(id)sender {
-    NSString *viewname = @"manga-list";
-    [NSNotificationCenter.defaultCenter postNotificationName:@"SideBarSelectionChanged" object:viewname];
-    [self sidebarItemDidChange:viewname];
 }
 
 - (void)refresh:(id)sender {
-    UIViewController *visibleController;
-    if ([self.rootViewController isEqual: [_vcm getAnimeListRootViewController]]) {
-        ListRootViewController *listrootvc = (ListRootViewController *)self.rootViewController;
-        visibleController = listrootvc.topViewController;
-    }
-    else if ([self.rootViewController isEqual: [_vcm getMangaListRootViewController]]) {
-        ListRootViewController *listrootvc = (ListRootViewController *)self.rootViewController;
-        visibleController = listrootvc.topViewController;
-    }
-    if ([self.rootViewController isEqual: [_vcm getSearchView]]) {
-        SearchRootViewController *listrootvc = (SearchRootViewController *)self.rootViewController;
-        visibleController = listrootvc.topViewController;
-    }
-    else if ([self.rootViewController isEqual: [_vcm getSeasonRootViewController]]) {
-        SeasonsRootViewController *listrootvc = (SeasonsRootViewController *)self.rootViewController;
-        visibleController = listrootvc.topViewController;
-    }
-    else if ([self.rootViewController isEqual: [_vcm getAiringRootViewController]]) {
-        AiringRootViewController *listrootvc = (AiringRootViewController *)self.rootViewController;
-        visibleController = listrootvc.topViewController;
-    }
-    else if ([self.rootViewController isEqual: [_vcm getTrendingRootViewController]]) {
-        TrendingViewController *listrootvc = (TrendingViewController *)self.rootViewController;
-        visibleController = listrootvc.topViewController;
-    }
-    if (visibleController) {
-        NSLog(@"%@", NSStringFromClass(visibleController.class));
-        if ([visibleController isKindOfClass:[ListViewController class]]) {
-            [(ListViewController *)visibleController refreshListWithCompletionHandler:^(bool success) {
-            }];
-            return;
+    if (!self.presentedViewController) {
+        UIViewController *visibleController;
+        if ([self.rootViewController isEqual: [_vcm getAnimeListRootViewController]]) {
+            ListRootViewController *listrootvc = (ListRootViewController *)self.rootViewController;
+            visibleController = listrootvc.topViewController;
         }
-        else if ([visibleController isKindOfClass:[TitleInfoViewController class]]) {
-            [(TitleInfoViewController *)visibleController refreshTitleInfo];
+        else if ([self.rootViewController isEqual: [_vcm getMangaListRootViewController]]) {
+            ListRootViewController *listrootvc = (ListRootViewController *)self.rootViewController;
+            visibleController = listrootvc.topViewController;
         }
-        else if ([visibleController isKindOfClass:[SeasonsViewController class]]) {
-            [(SeasonsViewController *)visibleController reloadData:YES];
+        if ([self.rootViewController isEqual: [_vcm getSearchView]]) {
+            SearchRootViewController *listrootvc = (SearchRootViewController *)self.rootViewController;
+            visibleController = listrootvc.topViewController;
         }
-        else if ([visibleController isKindOfClass:[TrendingCollectionViewController class]]) {
-            [(TrendingCollectionViewController *)visibleController loadretrieving];
+        else if ([self.rootViewController isEqual: [_vcm getSeasonRootViewController]]) {
+            SeasonsRootViewController *listrootvc = (SeasonsRootViewController *)self.rootViewController;
+            visibleController = listrootvc.topViewController;
         }
-        else if ([visibleController isKindOfClass:[AiringViewController class]]) {
-            [(AiringViewController *)visibleController reloadData];
+        else if ([self.rootViewController isEqual: [_vcm getAiringRootViewController]]) {
+            AiringRootViewController *listrootvc = (AiringRootViewController *)self.rootViewController;
+            visibleController = listrootvc.topViewController;
+        }
+        else if ([self.rootViewController isEqual: [_vcm getTrendingRootViewController]]) {
+            TrendingViewController *listrootvc = (TrendingViewController *)self.rootViewController;
+            visibleController = listrootvc.topViewController;
+        }
+        if (visibleController) {
+            NSLog(@"%@", NSStringFromClass(visibleController.class));
+            if ([visibleController isKindOfClass:[ListViewController class]]) {
+                [(ListViewController *)visibleController refreshListWithCompletionHandler:^(bool success) {
+                }];
+                return;
+            }
+            else if ([visibleController isKindOfClass:[TitleInfoViewController class]]) {
+                [(TitleInfoViewController *)visibleController refreshTitleInfo];
+            }
+            else if ([visibleController isKindOfClass:[SeasonsViewController class]]) {
+                [(SeasonsViewController *)visibleController reloadData:YES];
+            }
+            else if ([visibleController isKindOfClass:[TrendingCollectionViewController class]]) {
+                [(TrendingCollectionViewController *)visibleController loadretrieving];
+            }
+            else if ([visibleController isKindOfClass:[AiringViewController class]]) {
+                [(AiringViewController *)visibleController reloadData];
+            }
         }
     }
 }
 
 - (void)goBack:(id)sender {
-    UINavigationController *navController = (UINavigationController *)self.rootViewController;
-    if (navController.viewControllers.count > 1 && !navController.navigationItem.hidesBackButton) {
-        [navController popViewControllerAnimated:YES];
+    if (!self.presentedViewController) {
+        UINavigationController *navController = (UINavigationController *)self.rootViewController;
+        if (navController.viewControllers.count > 1 && !navController.navigationItem.hidesBackButton) {
+            [navController popViewControllerAnimated:YES];
+        }
     }
 }
 
