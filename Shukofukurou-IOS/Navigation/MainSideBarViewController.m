@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "Keychain.h"
 #import "AtarashiiListCoreData.h"
+#import "StatsViewController.h"
 
 @interface MainSideBarViewController ()
 @property (strong) MainViewController *mainvc;
@@ -183,6 +184,35 @@
         }
     }
     [_mainvc presentViewController:serviceswitcher animated:YES completion:nil];
+}
+
+- (IBAction)showoptions:(id)sender {
+    [self setMainViewController];
+    UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    bool isloggedin = [listservice checkAccountForCurrentService];
+    __weak MainSideBarViewController *weakself = self;
+    if (isloggedin) {
+        [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View List Stats"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UINavigationController *navcontroller = [UINavigationController new];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Stats" bundle:nil];
+            StatsViewController *statsviewcontroller = (StatsViewController *)[storyboard instantiateInitialViewController];
+            [navcontroller setViewControllers: @[statsviewcontroller]];
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+            }
+            [weakself.mainvc presentViewController:navcontroller animated:YES completion:nil];
+        }]];
+    }
+    [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    
+    options.popoverPresentationController.barButtonItem = sender;
+    options.popoverPresentationController.sourceView = self.view;
+    
+    [self
+     presentViewController:options
+     animated:YES
+     completion:nil];
 }
 
 - (void)setMainViewController {

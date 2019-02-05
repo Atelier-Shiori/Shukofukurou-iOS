@@ -131,8 +131,15 @@
                                             <action selector="accountaction:" destination="h1S-qp-QWw" id="Xud-mD-tAk"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3Os-qU-N44"/>
+                                    <barButtonItem title="Options" image="option" id="QY3-Bv-QDf">
+                                        <connections>
+                                            <action selector="showoptions:" destination="h1S-qp-QWw" id="cKX-Mb-yxR"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jp1-pJ-hyH"/>
-                                    <barButtonItem title="Switch Services" id="HWn-YN-Vy2">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6vI-Zg-w7W"/>
+                                    <barButtonItem title="Services" id="HWn-YN-Vy2">
                                         <connections>
                                             <action selector="switchservices:" destination="h1S-qp-QWw" id="n6h-2F-rSL"/>
                                         </connections>
@@ -319,5 +326,6 @@
     </scenes>
     <resources>
         <image name="Menu" width="50" height="50"/>
+        <image name="option" width="50" height="50"/>
     </resources>
 </document>
