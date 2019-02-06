@@ -214,6 +214,7 @@
         if (visibleController) {
             NSLog(@"%@", NSStringFromClass(visibleController.class));
             if ([visibleController isKindOfClass:[ListViewController class]]) {
+                ((ListViewController *)visibleController).initalload = NO;
                 [(ListViewController *)visibleController refreshListWithCompletionHandler:^(bool success) {
                 }];
                 return;

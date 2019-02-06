@@ -32,8 +32,8 @@
 @property (strong) UISearchController *searchController;
 @property (strong) ListSelectorViewController *listselector;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
-@property bool initalload;
 @property (strong) MBProgressHUD *hud;
+@property bool refreshing;
 @end
 
 @implementation ListViewController
@@ -135,6 +135,11 @@
     NSLog(@"Refreshing List");
     if (_initalload) {
         [_refreshcontrol beginRefreshing];
+    }
+    else {
+        if (_refreshing) {
+            return;
+        }
     }
     [self retrieveList:true completion:^(bool success) {
         NSLog(@"Refreshed: %i", success);
@@ -1181,9 +1186,11 @@
         _hud.label.text = @"Loading";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
         _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        _refreshing = YES;
     }
     else {
         [_hud hideAnimated:YES];
+        _refreshing = NO;
     }
 }
 @end
