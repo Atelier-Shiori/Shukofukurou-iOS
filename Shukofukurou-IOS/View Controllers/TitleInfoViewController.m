@@ -47,6 +47,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *optionsitembaritem;
 @property (strong) MBProgressHUD *hud;
 @property bool setthemecolors;
+@property bool refreshing;
 @end
 
 @implementation TitleInfoViewController
@@ -331,7 +332,7 @@
 }
 
 - (void)refreshTitleInfo {
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !_refreshing) {
         self.forcerefresh = true;
         [self loadTitleInfo:self.titleid withType:self.currenttype];
     }
@@ -1218,9 +1219,11 @@
         _hud.label.text = @"Loading";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
         _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        _refreshing = YES;
     }
     else {
         [_hud hideAnimated:YES];
+        _refreshing = NO;
     }
     _titleinfobaritem.enabled = !show;
     _shareitembaritem.enabled = !show;

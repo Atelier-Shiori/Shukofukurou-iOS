@@ -229,7 +229,7 @@
                 [(TrendingCollectionViewController *)visibleController loadretrieving];
             }
             else if ([visibleController isKindOfClass:[AiringViewController class]]) {
-                [(AiringViewController *)visibleController reloadData];
+                [(AiringViewController *)visibleController performrefresh];
             }
         }
     }

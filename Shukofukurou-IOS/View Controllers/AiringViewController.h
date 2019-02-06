@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AiringViewController : UITableViewController
-- (void)reloadData;
+- (void)performrefresh;
 @end
 
 NS_ASSUME_NONNULL_END

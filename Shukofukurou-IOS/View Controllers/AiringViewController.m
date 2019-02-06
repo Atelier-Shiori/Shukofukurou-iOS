@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @property (strong) AiringDayTableViewController *airingdaycontroller;
 @property (strong) MBProgressHUD *hud;
+@property bool refreshing;
 @end
 
 @implementation AiringViewController
@@ -165,6 +166,19 @@
     }];
 }
 
+- (void)performrefresh {
+    if (!_refreshing) {
+        [self showloadingview:YES];
+        __weak AiringViewController *weakSelf = self;
+        [AiringSchedule retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success, bool refreshed) {
+            if (success && refreshed) {
+                [weakSelf reloadData];
+            }
+            [self showloadingview:NO];
+        }];
+    }
+}
+
 - (void)reloadData {
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
     self.airinglist = [[AiringSchedule retrieveAiringDataForDay:self.currentday.lowercaseString] sortedArrayUsingDescriptors:@[sort]];
@@ -223,6 +237,7 @@
 
 - (void)showloadingview:(bool)show {
     if (show) {
+        _refreshing = YES;
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
@@ -230,6 +245,7 @@
     }
     else {
         [_hud hideAnimated:YES];
+        _refreshing = NO;
     }
 }
 
