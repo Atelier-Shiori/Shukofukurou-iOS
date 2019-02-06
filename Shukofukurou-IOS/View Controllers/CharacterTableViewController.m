@@ -18,6 +18,7 @@
 @property (strong) NSDictionary *items;
 @property (strong) NSArray *sections;
 @property (strong) MBProgressHUD *hud;
+@property int currenttype;
 @end
 
 @implementation CharacterTableViewController
@@ -42,10 +43,11 @@
     self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
 }
 
-- (void)retrievePersonList:(int)titleid {
+- (void)retrievePersonList:(int)titleid withType:(int)type {
+    _currenttype = type;
     self.navigationItem.hidesBackButton = YES;
     [self showloadingview:YES];
-    [listservice retrieveStaff:titleid completion:^(id responseObject) {
+    [listservice retrieveStaff:titleid withType:type completion:^(id responseObject) {
         [self generateStaffList:responseObject];
         self.navigationItem.hidesBackButton = NO;
         [self showloadingview:NO];
@@ -80,7 +82,12 @@
     finaldict[@"Voice Actors"] = [voiceactors sortedArrayUsingDescriptors:@[namesort]].copy;
     finaldict[@"Staff"] = [finaldict[@"Staff"] sortedArrayUsingDescriptors:@[namesort]];
     _items = finaldict.copy;
-    _sections = @[@"Characters", @"Voice Actors", @"Staff"];
+    if (voiceactors.count > 0) {
+        _sections = @[@"Characters", @"Voice Actors", @"Staff"];
+    }
+    else {
+        _sections = @[@"Characters", @"Staff"];
+    }
     [self.tableView reloadData];
 }
 

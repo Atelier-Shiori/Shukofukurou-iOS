@@ -586,6 +586,9 @@
                     case cellActionViewReviews:
                         [self showReviews];
                         break;
+                    case cellActionViewStaff:
+                        [self showStaff];
+                        break;
                     default:
                         break;
                 }
@@ -869,6 +872,16 @@
     }
     [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Related" withCellAction:cellActionViewRelated]];
     [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:[listservice getCurrentServiceID] == 2 ? @"Reactions" : @"Reviews" withCellAction:cellActionViewReviews]];
+    switch ([listservice getCurrentServiceID]) {
+        case 3:
+            [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Characters" withCellAction:cellActionViewStaff]];
+            break;
+        case 1:
+        case 2:
+            break;
+        default:
+            break;
+    }
     return detailarray.copy;
 }
 
@@ -1206,7 +1219,7 @@
 - (void)showStaff {
     CharacterTableViewController *charactervc = [self.storyboard instantiateViewControllerWithIdentifier:@"StaffTbVC"];
     [self.navigationController pushViewController:charactervc animated:YES];
-    [charactervc retrievePersonList:_titleid];
+    [charactervc retrievePersonList:_titleid withType:_currenttype];
 }
 
 - (void)showEpisodes {

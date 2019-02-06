@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CharacterTableViewController : UITableViewController
-- (void)retrievePersonList:(int)titleid;
+- (void)retrievePersonList:(int)titleid withType:(int)type;
 @end
 
 NS_ASSUME_NONNULL_END

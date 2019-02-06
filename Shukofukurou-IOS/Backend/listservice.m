@@ -416,7 +416,7 @@
     }
 }
 
-+ (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)retrieveStaff:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveStaff:titleid completion:completionHandler error:errorHandler];
@@ -434,7 +434,7 @@
             break;
         }
         case 3: {
-            [AniList retrieveStaff:titleid completion:completionHandler error:errorHandler];
+            [AniList retrieveStaff:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {

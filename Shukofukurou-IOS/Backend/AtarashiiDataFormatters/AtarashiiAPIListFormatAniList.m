@@ -377,8 +377,9 @@
     return uobject.NSDictionaryRepresentation;
 }
 
-+ (NSDictionary *)generateStaffList:(NSArray *)staffarray withCharacterArray:(NSArray *)characterarray {
++ (NSDictionary *)generateStaffList:(NSArray *)staffarray withCharacterArray:(NSArray *)characterarray withType:(NSString *)type {
     // Generate character list
+    int mediatype = [type isEqualToString:@"ANIME"] ? 0: 1;
     NSMutableArray *tmpcharacterarray = [NSMutableArray new];
     for (NSDictionary *acharacter in characterarray) {
         @autoreleasepool {
@@ -388,8 +389,10 @@
             NSString *description = acharacter[@"node"][@"description"] != [NSNull null] ? acharacter[@"node"][@"description"] : @"No character description provided";
             NSString *imageurl = acharacter[@"node"][@"image"] != [NSNull null] && acharacter[@"node"][@"image"][@"large"] ? acharacter[@"node"][@"image"][@"large"] : @"";
             NSMutableArray *castingsarray = [NSMutableArray new];
-            for (NSDictionary *va in acharacter[@"voiceActors"]) {
-                [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] && ((NSString *)va[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",va[@"name"][@"last"],va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
+            if (mediatype == 0) {
+                for (NSDictionary *va in acharacter[@"voiceActors"]) {
+                    [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] && ((NSString *)va[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",va[@"name"][@"last"],va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
+                }
             }
             [tmpcharacterarray addObject:@{@"id" : characterid.copy, @"name" : charactername.copy, @"role" : role.copy, @"image" : imageurl.copy, @"description" : description.copy,  @"actors" : castingsarray.copy}];
         }
