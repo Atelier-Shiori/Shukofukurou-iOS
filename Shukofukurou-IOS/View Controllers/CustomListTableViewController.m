@@ -10,6 +10,7 @@
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
 #import "ThemeManager.h"
+#import "Utility.h"
 
 @interface CustomListTableViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *savebtn;
@@ -120,7 +121,7 @@
         weakSelf.savebtn.enabled = YES;
         if (responseObject[@"data"] != [NSNull null]) {
             NSString *customliststr = [weakSelf generateCustomListStringWithArray:responseObject[@"data"][@"SaveMediaListEntry"][@"customLists"]];
-            [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr} withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:weakSelf.currenttype withId:weakSelf.entryid withIdType:1];
+            [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr, @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice getCurrentServiceID]]} withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:weakSelf.currenttype withId:weakSelf.entryid withIdType:1];
             switch (weakSelf.currenttype) {
                 case 0:
                     [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];

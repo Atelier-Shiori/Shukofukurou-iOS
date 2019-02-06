@@ -55,10 +55,10 @@
     NSArray *choices = @[];
     switch (_type) {
         case 0:
-            choices = @[@"Title", @"Episodes", @"Watched Episodes", @"Score"];
+            choices = @[@"Title", @"Episodes", @"Watched Episodes", @"Score", @"Last Updated"];
             break;
         case 1:
-            choices = @[@"Title", @"Chapters", @"Volumes", @"Chapters Read", @"Volumes Read", @"Score"];
+            choices = @[@"Title", @"Chapters", @"Volumes", @"Chapters Read", @"Volumes Read", @"Score", @"Last Updated"];
             break;
     }
     int selectedsort = 0;

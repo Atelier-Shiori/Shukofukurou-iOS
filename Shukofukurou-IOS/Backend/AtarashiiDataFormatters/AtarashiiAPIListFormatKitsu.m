@@ -63,6 +63,7 @@
                         lentry.rewatch_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
                         lentry.personal_comments = entry[@"attributes"][@"notes"];
                         lentry.private_entry = ((NSNumber *) entry[@"attributes"][@"private"]).boolValue;
+                        lentry.lastupdated = [Utility dateStringToDate:entry[@"attributes"][@"updatedAt"]].timeIntervalSince1970;
                         [tmpanimelist addObject: lentry.NSDictionaryRepresentation];
                     }
                 }
@@ -124,6 +125,7 @@
                     lentry.reread_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
                     lentry.personal_comments = entry[@"attributes"][@"notes"];
                     lentry.private_entry = ((NSNumber *) entry[@"attributes"][@"private"]).boolValue;
+                    lentry.lastupdated = [Utility dateStringToDate:entry[@"attributes"][@"updatedAt"]].timeIntervalSince1970;
                     [tmpmangalist addObject: lentry.NSDictionaryRepresentation];
                 }
             }

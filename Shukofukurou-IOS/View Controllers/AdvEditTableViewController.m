@@ -14,6 +14,7 @@
 #import "TitleInfoTableViewCell.h"
 #import "listservice.h"
 #import "ThemeManager.h"
+#import "Utility.h"
 
 @interface AdvEditTableViewController ()
 @property (strong) NSArray *cellEntries;
@@ -616,7 +617,7 @@
     _savebtn.enabled = NO;
     _cancelbtn.enabled = NO;
     [listservice updateAnimeTitleOnList:selectededitid withEpisode:((NSNumber *)entry[@"episode"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
-        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"]}];
+        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]}];
         [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
         switch ([listservice getCurrentServiceID]) {
             case 1:
@@ -665,7 +666,7 @@
     _savebtn.enabled = NO;
     _cancelbtn.enabled = NO;
     [listservice updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
-        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"]}];
+        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]}];
         [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
         switch ([listservice getCurrentServiceID]) {
             case 1:
