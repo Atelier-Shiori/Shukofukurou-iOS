@@ -15,6 +15,7 @@
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
 #import "ThemeManager.h"
+#import "MBProgressHUD.h"
 
 @interface StatsViewController ()
 @property (strong) NSMutableArray *animestats;
@@ -24,6 +25,7 @@
 @property (strong) NSArray *mangascoredistribution;
 @property (strong) NSArray *currentdistribution;
 @property (strong) NSArray *ratinglabels;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation StatsViewController
@@ -34,6 +36,7 @@
     self.graphView.animationDuration = 2.0;
     self.graphView.dataSource = self;
     [self setTheme];
+    [self showloadingview:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -85,6 +88,7 @@
     }
     [_tableView reloadData];
     [self loadandsizechart];
+    [self showloadingview:NO];
 }
 
 #pragma List Stats Generation
@@ -362,4 +366,16 @@
     return [_currentdistribution valueForKeyPath:@"@max.intValue"];
 }
 
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        _hud.label.text = @"Loading";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
+    _statsselector.enabled = !show;
+}
 @end

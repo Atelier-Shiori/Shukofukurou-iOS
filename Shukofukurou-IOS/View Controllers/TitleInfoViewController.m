@@ -874,7 +874,7 @@
     [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:[listservice getCurrentServiceID] == 2 ? @"Reactions" : @"Reviews" withCellAction:cellActionViewReviews]];
     switch ([listservice getCurrentServiceID]) {
         case 3:
-            [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Characters" withCellAction:cellActionViewStaff]];
+            [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Characters/Staff" withCellAction:cellActionViewStaff]];
             break;
         case 1:
         case 2:

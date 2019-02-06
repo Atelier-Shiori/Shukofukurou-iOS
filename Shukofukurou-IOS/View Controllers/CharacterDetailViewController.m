@@ -207,12 +207,18 @@
     }
     persondetails[@"Voice Actors"] = data[@"actors"];
     _items = persondetails.copy;
-    if (data[@"appeared_anime"] && data[@"appeared_manga"]) {
-        _sections = @[@"Details",@"Anime Appearences", @"Manga Appearences", @"Voice Actors" ];
+    NSMutableArray *tmpsections = [NSMutableArray new];
+    [tmpsections addObject:@"Details"];
+    if (((NSArray *)data[@"appeared_anime"]).count > 0) {
+        [tmpsections addObject:@"Anime Appearences"];
     }
-    else {
-        _sections = @[@"Details", @"Voice Actors"];
+    if (((NSArray *)data[@"appeared_manga"]).count > 0) {
+        [tmpsections addObject:@"Manga Appearences"];
     }
+    if (((NSArray *)data[@"actors"]).count > 0) {
+        [tmpsections addObject:@"Voice Actors"];
+    }
+    _sections = tmpsections.copy;
     [self.tableView reloadData];
 }
 - (IBAction)showoptions:(id)sender {
