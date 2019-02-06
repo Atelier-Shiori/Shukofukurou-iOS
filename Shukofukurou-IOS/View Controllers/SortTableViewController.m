@@ -8,6 +8,7 @@
 
 #import "SortTableViewController.h"
 #import <CoreActionSheetPicker/CoreActionSheetPicker.h>
+#import "ThemeManager.h"
 
 @interface SortTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *sortbycell;
@@ -18,6 +19,22 @@
 @implementation SortTableViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setTheme];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setTheme];
+}
+
+- (void)setTheme {
+    if (self.navigationController.popoverPresentationController) {
+        self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    }
+}
+
+- (void)viewDidLayoutSubviews {
+    self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

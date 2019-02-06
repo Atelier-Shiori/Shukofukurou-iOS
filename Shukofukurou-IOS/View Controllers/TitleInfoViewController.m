@@ -268,8 +268,10 @@
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     
-    options.popoverPresentationController.barButtonItem = sender;
-    options.popoverPresentationController.sourceView = self.view;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        options.popoverPresentationController.barButtonItem = sender;
+        options.popoverPresentationController.sourceView = self.view;
+    }
     
     [self
      presentViewController:options

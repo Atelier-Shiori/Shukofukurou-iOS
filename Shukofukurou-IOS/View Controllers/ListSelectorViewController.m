@@ -8,6 +8,7 @@
 
 #import "ListSelectorViewController.h"
 #import "listservice.h"
+#import "ThemeManager.h"
 
 @interface ListSelectorViewController ()
 @property int listtype;
@@ -19,6 +20,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setTheme];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setTheme];
+}
+
+- (void)viewDidLayoutSubviews {
+    self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
 }
 
 - (void)generateLists:(NSArray *)list withListType:(int)listtype {
@@ -169,5 +180,10 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)setTheme {
+    if (self.navigationController.popoverPresentationController) {
+        self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    }
+}
 
 @end

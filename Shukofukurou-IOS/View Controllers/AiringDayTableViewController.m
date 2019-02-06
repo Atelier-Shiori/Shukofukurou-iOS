@@ -7,6 +7,7 @@
 //
 
 #import "AiringDayTableViewController.h"
+#import "ThemeManager.h"
 
 @interface AiringDayTableViewController ()
 @property (strong) NSArray *days;
@@ -16,9 +17,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setTheme];
     _days = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", @"Unknown"];
     [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setTheme];
+}
+
+- (void)setTheme {
+    if (self.navigationController.popoverPresentationController) {
+        self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    }
+}
+
+- (void)viewDidLayoutSubviews {
+    self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
 }
 
 #pragma mark - Table view data source

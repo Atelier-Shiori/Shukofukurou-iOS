@@ -1068,12 +1068,15 @@
 }
 
 - (void)performShare:(int)titleid withCell:(UITableViewCell *)cell{
+    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
     NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL:titleid]]];
     UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     activityViewControntroller.excludedActivityTypes = @[];
-    activityViewControntroller.popoverPresentationController.sourceView = cell;
-    activityViewControntroller.popoverPresentationController.sourceRect = cell.bounds;
-    activityViewControntroller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        activityViewControntroller.popoverPresentationController.sourceView = cell;
+        activityViewControntroller.popoverPresentationController.sourceRect = cell.bounds;
+        activityViewControntroller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
+    }
     [self presentViewController:activityViewControntroller animated:true completion:nil];
 }
 
