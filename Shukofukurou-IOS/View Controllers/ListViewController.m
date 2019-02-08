@@ -170,9 +170,7 @@
             // populate list
             [self reloadList];
             [self.refreshControl endRefreshing];
-            if (self.hud) {
-                [self showloadingview:NO];
-            }
+            [self showloadingview:NO];
             if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice getCurrentServiceID]) {
                 AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
                 [anm checknotifications:^(bool success) {
@@ -185,9 +183,7 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error.userInfo);
             [self.refreshControl endRefreshing];
-            if (self.hud) {
-                [self showloadingview:NO];
-            }
+            [self showloadingview:NO];
             completionHandler(false);
         }];
     }

@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UILabel+Copyable.h"
 #import "TableViewCellBackgroundView.h"
+#import "UIImageView+Letters.h"
 
 @implementation ReviewTableViewCell
 
@@ -36,7 +37,7 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+    [super setSelected:NO animated:NO];
     
     // Configure the view for the selected state
 }
@@ -46,8 +47,12 @@
         [_avatar sd_setImageWithURL:[NSURL URLWithString:imageurl]];
     }
     else {
-        _avatar.image = [UIImage new];
+        [_avatar setImageWithString:_username.text];
     }
+    _avatar.layer.cornerRadius = _avatar.frame.size.width /2;
+    _avatar.layer.masksToBounds = YES;
+    _avatar.layer.borderWidth = 3.0f;
+    _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 @end

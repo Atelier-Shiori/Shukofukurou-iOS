@@ -9,6 +9,7 @@
 #import "MainSideBarViewController.h"
 #import <LGSideMenuController/UIViewController+LGSideMenuController.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+Letters.h"
 #import "ViewControllerManager.h"
 #import "MainViewController.h"
 #import "ListService.h"
@@ -22,6 +23,7 @@
 @interface MainSideBarViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *optionsbuttonitem;
 @property (strong) MainViewController *mainvc;
+@property (strong, nonatomic) IBOutlet UIImageView *servicelogo;
 @end
 
 @implementation MainSideBarViewController
@@ -56,16 +58,22 @@
             [_avatar sd_setImageWithURL:[NSURL URLWithString:avatarurl]];
         }
         else {
-            _avatar.image = [UIImage new];
+            [_avatar setImageWithString:_username.text];
         }
+        _avatar.layer.cornerRadius = _avatar.frame.size.width /2;
+        _avatar.layer.masksToBounds = YES;
+        _avatar.layer.borderWidth = 3.0f;
+        _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
     }
     else {
         _logintoolbarbtn.title = @"Login";
         _username.text = @"Not logged in";
         _optionsbuttonitem.enabled = NO;
         _avatar.image = [UIImage new];
+        _avatar.layer.masksToBounds = NO;
+        _avatar.layer.borderWidth = 0;
     }
-    _servicename.text = [listservice currentservicename];
+    _servicelogo.image = [UIImage imageNamed:[listservice currentservicename].lowercaseString];
 }
 
 - (IBAction)accountaction:(id)sender {

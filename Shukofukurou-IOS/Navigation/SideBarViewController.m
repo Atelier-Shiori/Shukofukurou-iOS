@@ -15,7 +15,9 @@
 
 @interface SideBarViewController ()
 
-@property (strong, nonatomic) NSArray *sidebarItems;
+//@property (strong, nonatomic) NSArray *sidebarItems;
+@property (strong) NSDictionary *items;
+@property (strong) NSArray *sections;
 @property (strong) ViewControllerManager *vcm;
 @end
 
@@ -30,7 +32,7 @@ struct {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.sidebarItems = [self generateSideBarItems];
+    [self generateSideBarItems];
     
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.sidebarvc = self;
@@ -48,34 +50,53 @@ struct {
     }
 }
 
-- (NSArray *)generateSideBarItems {
+- (void)generateSideBarItems {
     // Load sidebar items
-    NSMutableArray *items = [NSMutableArray new];
-    [items addObject:@{@"image" : @"anime" , @"title" : @"Anime", @"identifier" : @"anime-list", @"type" : @"cell"}];
-    [items addObject:@{@"image" : @"manga" , @"title" : @"Manga", @"identifier" : @"manga-list", @"type" : @"cell"}];
+    NSMutableArray *listitems = [NSMutableArray new];
+    NSMutableArray *discoveritems = [NSMutableArray new];
+    NSMutableArray *otheritems = [NSMutableArray new];
+    [listitems addObject:@{@"image" : @"anime" , @"title" : @"Anime", @"identifier" : @"anime-list", @"type" : @"cell"}];
+    [listitems addObject:@{@"image" : @"manga" , @"title" : @"Manga", @"identifier" : @"manga-list", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"stats" , @"title" : @"Statistics", @"identifier" : @"stats", @"type" : @"cell"}];
-    [items addObject:@{@"image" : @"search" , @"title" : @"Search", @"identifier" : @"search", @"type" : @"cell"}];
-    [items addObject:@{@"image" : @"seasons" , @"title" : @"Seasons", @"identifier" : @"seasons", @"type" : @"cell"}];
-    [items addObject:@{@"image" : @"airing" , @"title" : @"Airing", @"identifier" : @"airing", @"type" : @"cell"}];
-    [items addObject:@{@"image" : @"trending" , @"title" : @"Trending", @"identifier" : @"trending", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"search" , @"title" : @"Search", @"identifier" : @"search", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"seasons" , @"title" : @"Seasons", @"identifier" : @"seasons", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"airing" , @"title" : @"Airing", @"identifier" : @"airing", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"trending" , @"title" : @"Trending", @"identifier" : @"trending", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"profilebrowser" , @"title" : @"Profile Browser", @"identifier" : @"profiles", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"export" , @"title" : @"Export List", @"identifier" : @"export", @"type" : @"cell"}];
-    [items addObject:@{@"image" : @"settings" , @"title" : @"Settings", @"identifier" : @"settings", @"type" : @"cell"}];
-    return items;
+    [otheritems addObject:@{@"image" : @"settings" , @"title" : @"Settings", @"identifier" : @"settings", @"type" : @"cell"}];
+    _items = @{@"" : listitems, @"Discover" : discoveritems, @"Other" : otheritems };
+    _sections = @[@"", @"Discover", @"Other"];
 }
 
 #pragma mark - UITableViewDataSource
 
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return CGFLOAT_MIN;
+    }
+    return tableView.sectionHeaderHeight;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _sections.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sidebarItems.count;
+    return ((NSArray *)_items[_sections[section]]).count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return _sections[section];
 }
 
 #pragma mark - UITableView Delegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *type = self.sidebarItems[indexPath.row][@"type"];
+    NSString *cellType = _sections[indexPath.section];
+    NSString *type = _items[cellType][indexPath.row][@"type"];
     UITableViewCell *cell;
-    NSDictionary *cellinfo = self.sidebarItems[indexPath.row];
+    NSDictionary *cellinfo = _items[cellType][indexPath.row];
     if ([type isEqualToString:@"cell"]) {
         cell = [self generateNormalCell:cellinfo cellForRowAtIndexPath:indexPath withTableView:tableView];
     }
@@ -90,7 +111,7 @@ struct {
     SideBarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     cell.titleLabel.text = cellInfo[@"title"];
-    cell.imageView.image = cellInfo[@"image"] ? [UIImage imageNamed:self.sidebarItems[indexPath.row][@"image"]] : [UIImage new];
+    cell.imageView.image = cellInfo[@"image"] ? [UIImage imageNamed:cellInfo[@"image"]] : [UIImage new];
     //cell.separatorView.hidden = (indexPath.row <= 3 || indexPath.row == self.sidebarItems.count-1);
     return cell;
 }
@@ -101,7 +122,8 @@ struct {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self setMainViewController];
-    NSDictionary *selecteditem = _sidebarItems[indexPath.row];
+    NSString *cellType = _sections[indexPath.section];
+    NSDictionary *selecteditem = _items[cellType][indexPath.row];
     [_delegate sidebarItemDidChange:(NSString *)selecteditem[@"identifier"]];
     [NSUserDefaults.standardUserDefaults setValue:selecteditem[@"identifier"] forKey:@"selectedmainview"];
     [self hideLeftViewAnimated:self];
@@ -124,10 +146,12 @@ struct {
 
 - (int)getSidebarItemIndexForIdentifier:(NSString *)identifier {
     int tmpindex = -1;
-    for (NSDictionary *cell in _sidebarItems) {
-        tmpindex++;
-        if (cell[@"identifier"] && [identifier isEqualToString:cell[@"identifier"]]) {
-            return tmpindex;
+    for (NSString *section in _sections) {
+        for (NSDictionary *cell in _items[section]) {
+            tmpindex++;
+            if (cell[@"identifier"] && [identifier isEqualToString:cell[@"identifier"]]) {
+                return tmpindex;
+            }
         }
     }
     return -1;

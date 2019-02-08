@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainSideBarViewController : UIViewController
 @property (assign, nonatomic) IBOutlet UILabel *username;
-@property (assign, nonatomic) IBOutlet UILabel *servicename;
 @property  (assign, nonatomic) IBOutlet UIImageView *avatar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *logintoolbarbtn;
 @property (nonatomic, weak) id <MainSideBarViewDelegate> delegate;
