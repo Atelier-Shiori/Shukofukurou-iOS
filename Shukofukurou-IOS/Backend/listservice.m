@@ -529,10 +529,16 @@
 
 + (bool)checkAccountForCurrentService {
     int service = [listservice getCurrentServiceID];
-    if ((![Keychain checkaccount] && service == 1) || (![Kitsu getFirstAccount] && service == 2) || (![AniList getFirstAccount] && service == 3)) {
-        return false;
+    switch (service) {
+        case 1:
+            return [Keychain checkaccount];
+        case 2:
+            return [Kitsu getFirstAccount] != nil;
+        case 3:
+            return [AniList getFirstAccount] != nil;
+        default:
+            return true;
     }
-    return true;
 }
 
 + (NSString *)getCurrentServiceUsername {

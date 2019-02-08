@@ -30,8 +30,8 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 
 - (instancetype)init {
     if (self = [super init]) {
-        _KitsuCredential = [self getFirstAccountForService:2];
-        _AniListCredential = [self getFirstAccountForService:3];
+        [self getFirstAccountForService:2];
+        [self getFirstAccountForService:3];
     }
     return self;
 }
@@ -54,7 +54,18 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
         default:
             return nil;
     }
-    return [AFOAuthCredential retrieveCredentialWithIdentifier:keychainidentifier];
+    AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:keychainidentifier];
+    if (cred) {
+        switch (service) {
+            case 2:
+                _KitsuCredential = cred;
+                return _KitsuCredential;
+            case 3:
+                _AniListCredential = cred;
+                return _AniListCredential;
+        }
+    }
+    return nil;
 }
 
 - (AFOAuthCredential *)saveCredentialForService:(int)service withCredential:(AFOAuthCredential *)cred {
