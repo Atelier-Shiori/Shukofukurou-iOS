@@ -12,6 +12,7 @@
 #import "Utility.h"
 #import "UITextView+SetHTMLAttributedText.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+Letters.h"
 #import "ThemeManager.h"
 
 @interface ReviewDetailViewController ()
@@ -84,8 +85,12 @@
         [_avatar sd_setImageWithURL:[NSURL URLWithString:imageurl]];
     }
     else {
-        _avatar.image = [UIImage new];
+        [_avatar setImageWithString:self.navigationItem.title];
     }
+    _avatar.layer.cornerRadius = _avatar.frame.size.width /2;
+    _avatar.layer.masksToBounds = YES;
+    _avatar.layer.borderWidth = 3.0f;
+    _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 @end

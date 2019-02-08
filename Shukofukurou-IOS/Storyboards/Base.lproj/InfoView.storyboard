@@ -595,9 +595,11 @@
                             <constraint firstItem="Wr3-a1-cgD" firstAttribute="leading" secondItem="l4h-b1-VPj" secondAttribute="trailing" constant="8" id="XRu-g5-rJr"/>
                             <constraint firstItem="Wr3-a1-cgD" firstAttribute="leading" secondItem="l4h-b1-VPj" secondAttribute="trailing" constant="8" id="Z31-M6-dDT"/>
                             <constraint firstItem="Y5J-wb-oQc" firstAttribute="leading" secondItem="iF2-MB-erc" secondAttribute="leading" id="d76-xI-qXy"/>
+                            <constraint firstItem="iF2-MB-erc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BU9-qA-JNc" secondAttribute="trailing" symbolic="YES" id="e4P-nn-PyZ"/>
                             <constraint firstItem="Y5J-wb-oQc" firstAttribute="trailing" secondItem="iF2-MB-erc" secondAttribute="trailing" id="fNT-re-mcl"/>
                             <constraint firstItem="Wr3-a1-cgD" firstAttribute="top" secondItem="iF2-MB-erc" secondAttribute="top" constant="11" id="iFK-fl-Vfr"/>
                             <constraint firstItem="l4h-b1-VPj" firstAttribute="leading" secondItem="378-ce-rKL" secondAttribute="leadingMargin" id="l8A-1e-Q7P"/>
+                            <constraint firstItem="iF2-MB-erc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wr3-a1-cgD" secondAttribute="trailing" symbolic="YES" id="oZR-aZ-jC6"/>
                             <constraint firstItem="BU9-qA-JNc" firstAttribute="top" secondItem="Wr3-a1-cgD" secondAttribute="bottom" constant="2" id="scH-aF-Fb6"/>
                             <constraint firstItem="BU9-qA-JNc" firstAttribute="leading" secondItem="l4h-b1-VPj" secondAttribute="trailing" constant="8" id="uLI-E4-PB5"/>
                             <constraint firstItem="Y5J-wb-oQc" firstAttribute="bottom" secondItem="iF2-MB-erc" secondAttribute="bottom" id="uQ9-mi-rYb"/>
