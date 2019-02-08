@@ -39,13 +39,13 @@ struct {
     self.clearsSelectionOnViewWillAppear = NO;
     
     NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
-    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[self getSidebarItemIndexForIdentifier:selectedrow] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [self.tableView selectRowAtIndexPath:[self getSidebarItemIndexForIdentifier:selectedrow] animated:NO scrollPosition:UITableViewScrollPositionNone];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"SideBarSelectionChanged" object:nil];
 }
 
 - (void)didReceiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"SideBarSelectionChanged"]) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[self getSidebarItemIndexForIdentifier:notification.object] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        [self.tableView selectRowAtIndexPath:[self getSidebarItemIndexForIdentifier:notification.object] animated:NO scrollPosition:UITableViewScrollPositionNone];
         [NSUserDefaults.standardUserDefaults setValue:notification.object forKey:@"selectedmainview"];
     }
 }
@@ -144,17 +144,19 @@ struct {
         });
 }
 
-- (int)getSidebarItemIndexForIdentifier:(NSString *)identifier {
-    int tmpindex = -1;
+- (NSIndexPath *)getSidebarItemIndexForIdentifier:(NSString *)identifier {
+    int tmpsectionindex = -1;
     for (NSString *section in _sections) {
+        tmpsectionindex++;
+        int tmpindex = -1;
         for (NSDictionary *cell in _items[section]) {
             tmpindex++;
             if (cell[@"identifier"] && [identifier isEqualToString:cell[@"identifier"]]) {
-                return tmpindex;
+                return [NSIndexPath indexPathForRow:tmpindex inSection:tmpsectionindex];
             }
         }
     }
-    return -1;
+    return nil;
 }
 
 @end
