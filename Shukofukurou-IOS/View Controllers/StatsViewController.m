@@ -18,13 +18,14 @@
 #import "MBProgressHUD.h"
 
 @interface StatsViewController ()
-@property (strong) NSMutableArray *animestats;
-@property (strong) NSMutableArray *mangastats;
-@property (strong) NSArray *currentstats;
+@property (strong) NSMutableDictionary *animestats;
+@property (strong) NSMutableDictionary *mangastats;
+@property (strong) NSDictionary *currentstats;
 @property (strong) NSArray *animescoredistribution;
 @property (strong) NSArray *mangascoredistribution;
 @property (strong) NSArray *currentdistribution;
 @property (strong) NSArray *ratinglabels;
+@property (strong) NSArray *sections;
 @property (strong) MBProgressHUD *hud;
 @end
 
@@ -94,11 +95,12 @@
 #pragma List Stats Generation
 -(void)populateValues {
     NSDictionary *anime;
-    _animestats = [NSMutableArray new];
-    _mangastats = [NSMutableArray new];
-    _currentstats = @[];
+    _animestats = [NSMutableDictionary new];
+    _mangastats = [NSMutableDictionary new];
+    _currentstats = @{};
     _currentdistribution = @[];
     _ratinglabels = @[@"10", @"9", @"8", @"7", @"6", @"5", @"4", @"3", @"2", @"1"];
+    _sections = @[@"Rating", @"Status", @"Progress"];
     switch ([listservice getCurrentServiceID]) {
         case 1:
             anime = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime];
@@ -110,8 +112,7 @@
     }
     _animescoredistribution = [self populateScores:anime[@"anime"] withService:[listservice getCurrentServiceID] withType:0];
     [self populatestatuscounts:anime[@"anime"] type:0];
-    [self populateTotalEps:anime[@"anime"]];
-    [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Days Spent" withValue:[NSString stringWithFormat:@"%.02f", ((NSNumber *)anime[@"statistics"][@"days"]).floatValue] withCellType:cellTypeInfo]];
+    _animestats[@"Progress"] = @[[self populateTotalEps:anime[@"anime"]] , [[EntryCellInfo alloc] initCellWithTitle:@"Days Spent" withValue:[NSString stringWithFormat:@"%.02f", ((NSNumber *)anime[@"statistics"][@"days"]).floatValue] withCellType:cellTypeInfo]];
     NSDictionary *manga;
     switch ([listservice getCurrentServiceID]) {
         case 1:
@@ -125,7 +126,7 @@
     _mangascoredistribution = [self populateScores:manga[@"manga"] withService:[listservice getCurrentServiceID] withType:1];
     [self populatestatuscounts:manga[@"manga"] type:1];
     [self populateTotalVolandChaps:manga[@"manga"]];
-    [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Days Spent" withValue:[NSString stringWithFormat:@"%.02f", ((NSNumber *)manga[@"statistics"][@"days"]).floatValue] withCellType:cellTypeInfo]];
+    //[_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Days Spent" withValue:[NSString stringWithFormat:@"%.02f", ((NSNumber *)manga[@"statistics"][@"days"]).floatValue] withCellType:cellTypeInfo]];
 }
 
 - (void)populatestatuscounts:(NSArray *)a type:(int)type{
@@ -160,11 +161,13 @@
                     break;
             }
         }
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Watching" withValue:watching.stringValue withCellType:cellTypeInfo]];
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Completed" withValue:completed.stringValue withCellType:cellTypeInfo]];
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"On-hold" withValue:onhold.stringValue withCellType:cellTypeInfo]];
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Dropped" withValue:dropped.stringValue withCellType:cellTypeInfo]];
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Planned" withValue:plantowatch.stringValue withCellType:cellTypeInfo]];
+        NSMutableArray *animestatus = [NSMutableArray new];
+        [animestatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Watching" withValue:watching.stringValue withCellType:cellTypeInfo]];
+        [animestatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Completed" withValue:completed.stringValue withCellType:cellTypeInfo]];
+        [animestatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"On-hold" withValue:onhold.stringValue withCellType:cellTypeInfo]];
+        [animestatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Dropped" withValue:dropped.stringValue withCellType:cellTypeInfo]];
+        [animestatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Planned" withValue:plantowatch.stringValue withCellType:cellTypeInfo]];
+        _animestats[@"Status"] = [animestatus copy];
     }
     else {
         NSNumber *reading;
@@ -198,20 +201,22 @@
                     break;
             }
         }
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Reading" withValue:reading.stringValue withCellType:cellTypeInfo]];
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Completed" withValue:completed.stringValue withCellType:cellTypeInfo]];
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"On-hold" withValue:onhold.stringValue withCellType:cellTypeInfo]];
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Dropped" withValue:dropped.stringValue withCellType:cellTypeInfo]];
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Planned" withValue:plantoread.stringValue withCellType:cellTypeInfo]];
+        NSMutableArray *mangastatus = [NSMutableArray new];
+        [mangastatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Reading" withValue:reading.stringValue withCellType:cellTypeInfo]];
+        [mangastatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Completed" withValue:completed.stringValue withCellType:cellTypeInfo]];
+        [mangastatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"On-hold" withValue:onhold.stringValue withCellType:cellTypeInfo]];
+        [mangastatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Dropped" withValue:dropped.stringValue withCellType:cellTypeInfo]];
+        [mangastatus addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Planned" withValue:plantoread.stringValue withCellType:cellTypeInfo]];
+        _mangastats[@"Status"] = [mangastatus copy];
     }
 }
 
-- (void)populateTotalEps:(NSArray *)a {
+- (EntryCellInfo *)populateTotalEps:(NSArray *)a {
     int totaleps = 0;
     for (NSDictionary *d in a) {
         totaleps = totaleps + ((NSNumber *)d[@"watched_episodes"]).intValue;
     }
-    [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Total Episodes" withValue:@(totaleps).stringValue withCellType:cellTypeInfo]];
+    return [[EntryCellInfo alloc] initCellWithTitle:@"Total Episodes" withValue:@(totaleps).stringValue withCellType:cellTypeInfo];
 }
 
 - (void)populateTotalVolandChaps:(NSArray *)a {
@@ -221,18 +226,16 @@
         totalchap = totalchap + ((NSNumber *)d[@"chapters_read"]).intValue;
         totalvol = totalvol + ((NSNumber *)d[@"volumes_read"]).intValue;
     }
-    [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Total Chapters" withValue:@(totalchap).stringValue withCellType:cellTypeInfo]];
-    [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Total Volumes" withValue:@(totalvol).stringValue withCellType:cellTypeInfo]];
+    NSMutableArray *progressstats = [NSMutableArray new];
+    [progressstats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Total Chapters" withValue:@(totalchap).stringValue withCellType:cellTypeInfo]];
+    [progressstats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Total Volumes" withValue:@(totalvol).stringValue withCellType:cellTypeInfo]];
+    _mangastats[@"Progress"] = progressstats.copy;
 }
 
 #pragma mark score
 - (NSArray *)populateScores:(NSArray *)list withService:(int)service withType:(int)type {
-    if (type == 0) {
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Num of Entries" withValue:[NSString stringWithFormat:@"%li",list.count] withCellType:cellTypeInfo]];
-    }
-    else {
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Num of Entries" withValue:[NSString stringWithFormat:@"%li",list.count] withCellType:cellTypeInfo]];
-    }
+    NSMutableArray *scorestats = [NSMutableArray new];
+    [scorestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Num of Entries" withValue:[NSString stringWithFormat:@"%li",list.count] withCellType:cellTypeInfo]];
     NSMutableArray *scores = [NSMutableArray new];
     for (NSDictionary *d in list) {
         switch (service) {
@@ -268,13 +271,13 @@
         standarddev = @"0";
         avgscore = @"0";
     }
+    [scorestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Std Dev" withValue:standarddev withCellType:cellTypeInfo]];
+    [scorestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Avg Score" withValue:avgscore withCellType:cellTypeInfo]];
     if (type == 0) {
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Std Dev" withValue:standarddev withCellType:cellTypeInfo]];
-        [_animestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Avg Score" withValue:avgscore withCellType:cellTypeInfo]];
+        _animestats[@"Rating"] = scorestats.copy;
     }
     else {
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Std Dev" withValue:standarddev withCellType:cellTypeInfo]];
-        [_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Avg Score" withValue:avgscore withCellType:cellTypeInfo]];
+        _mangastats[@"Rating"] = scorestats.copy;
     }
     return [self countscores:scores];
 }
@@ -325,11 +328,20 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _sections.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _currentstats.count;
+    return ((NSArray *)_currentstats[_sections[section]]).count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return _sections[section];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    EntryCellInfo *cellEntry = _currentstats[indexPath.row];
+    NSString *cellType = _sections[indexPath.section];
+    EntryCellInfo *cellEntry = _currentstats[cellType][indexPath.row];
     NSString *reusableIdentifier = @"titleinfocell";
     TitleInfoBasicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reusableIdentifier];
     if (!cell && tableView != self.tableView) {
