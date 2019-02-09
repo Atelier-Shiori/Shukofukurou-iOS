@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59282C87220F46C40017DEF4 /* TitleIDMapper.m */; };
 		592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */; };
 		592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592DA184216BCE88008C99B3 /* SortTableViewController.m */; };
 		592EB7772209D747004DE461 /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7742209D747004DE461 /* ScrollViewFrameAccessor.m */; };
@@ -52,7 +53,6 @@
 		5962418A215563D2001995AD /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417B215563CB001995AD /* Utility.m */; };
 		5962418B215563D2001995AD /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417E215563CD001995AD /* Kitsu.m */; };
 		5962418C215563D2001995AD /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624180215563CE001995AD /* listservice.m */; };
-		5962418D215563D2001995AD /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624183215563D0001995AD /* TitleIdConverter.m */; };
 		5962418E215563D2001995AD /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
 		5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624185215563D1001995AD /* RatingTwentyConvert.m */; };
 		59624190215563D2001995AD /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624186215563D2001995AD /* KitsuListRetriever.m */; };
@@ -386,6 +386,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		59282C86220F46C40017DEF4 /* TitleIDMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIDMapper.h; sourceTree = "<group>"; };
+		59282C87220F46C40017DEF4 /* TitleIDMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIDMapper.m; sourceTree = "<group>"; };
 		592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
 		592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailViewController.m; sourceTree = "<group>"; };
 		592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -477,14 +479,12 @@
 		59624179215563CA001995AD /* KitsuListRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KitsuListRetriever.h; sourceTree = "<group>"; };
 		5962417A215563CB001995AD /* listservice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listservice.h; sourceTree = "<group>"; };
 		5962417B215563CB001995AD /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		5962417C215563CC001995AD /* TitleIdConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleIdConverter.h; sourceTree = "<group>"; };
 		5962417D215563CD001995AD /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		5962417E215563CD001995AD /* Kitsu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kitsu.m; sourceTree = "<group>"; };
 		5962417F215563CE001995AD /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		59624180215563CE001995AD /* listservice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listservice.m; sourceTree = "<group>"; };
 		59624181215563CF001995AD /* NSString+HTMLtoNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLtoNSAttributedString.h"; sourceTree = "<group>"; };
 		59624182215563CF001995AD /* Kitsu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kitsu.h; sourceTree = "<group>"; };
-		59624183215563D0001995AD /* TitleIdConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleIdConverter.m; sourceTree = "<group>"; };
 		59624184215563D0001995AD /* MyAnimeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimeList.m; sourceTree = "<group>"; };
 		59624185215563D1001995AD /* RatingTwentyConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
 		59624186215563D2001995AD /* KitsuListRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KitsuListRetriever.m; sourceTree = "<group>"; };
@@ -923,8 +923,8 @@
 				59624185215563D1001995AD /* RatingTwentyConvert.m */,
 				59481D6B21591F44003CE863 /* StreamDataRetriever.h */,
 				59481D8021591F44003CE863 /* StreamDataRetriever.m */,
-				5962417C215563CC001995AD /* TitleIdConverter.h */,
-				59624183215563D0001995AD /* TitleIdConverter.m */,
+				59282C86220F46C40017DEF4 /* TitleIDMapper.h */,
+				59282C87220F46C40017DEF4 /* TitleIDMapper.m */,
 				597559582199E1C500C1F188 /* TitleIdEnumerator.h */,
 				597559592199E1C500C1F188 /* TitleIdEnumerator.m */,
 				59A75816215D3A8800B36F9C /* TitleInfoCache.h */,
@@ -1591,6 +1591,7 @@
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
 				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
 				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
+				59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
 				59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */,
 				5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */,
@@ -1643,7 +1644,6 @@
 				594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */,
 				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				59A7E0522200B1C2002EE2EC /* MBProgressHUD.m in Sources */,
-				5962418D215563D2001995AD /* TitleIdConverter.m in Sources */,
 				596241572155638D001995AD /* AniListConstants.m in Sources */,
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,

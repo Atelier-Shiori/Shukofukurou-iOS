@@ -15,7 +15,7 @@
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
 #import "TitleInfoViewController.h"
-#import "TitleIdConverter.h"
+#import "TitleIDMapper.h"
 #import "MBProgressHUD.h"
 #import "ThemeManager.h"
 
@@ -127,22 +127,26 @@
     if (!self.tableView.refreshControl.refreshing) {
         NSDictionary *entry = _airinglist[indexPath.row];
         switch ([listservice getCurrentServiceID]) {
-            case 1:
+            case 1: {
                 if (entry[@"idMal"] != [NSNull null]) {
                     [self showTitleView:((NSNumber *)entry[@"idMal"]).intValue];
                 }
                 break;
-            case 2:
-                if (entry[@"idMal"] != [NSNull null]) {
-                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)entry[@"idMal"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:0 completionHandler:^(int kitsuid) {
-                        [self showTitleView:kitsuid];
-                    } error:^(NSError *error) {
-                    }];
-                }
+            }
+            case 2: {
+                [self showloadingview:YES];
+                [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)entry[@"id"]).stringValue withTargetServiceId:2 withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
+                    [self showloadingview:NO];
+                    if (success) {
+                        [self showTitleView:((NSNumber *)titleid).intValue];
+                    }
+                }];
                 break;
-            case 3:
+            }
+            case 3: {
                 [self showTitleView:((NSNumber *)entry[@"id"]).intValue];
                 break;
+            }
         }
     }
     else {

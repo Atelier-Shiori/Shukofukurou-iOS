@@ -10,7 +10,7 @@
 #import "MyAnimeList.h"
 #import "Kitsu.h"
 #import "AniList.h"
-#import "TitleIdConverter.h"
+#import "TitleIdMapper.h"
 
 @interface listservice : NSObject
 + (int)getCurrentServiceID;
