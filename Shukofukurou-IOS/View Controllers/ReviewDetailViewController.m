@@ -47,10 +47,15 @@
 
 - (void)setThemeColors {
     if (!_setthemecolors) {
-    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
         ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+        UIColor *textcolor = [ThemeManager sharedCurrentTheme].textColor;;
         self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        self.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
+        self.reviewtext.textColor = textcolor;
+        self.progress.textColor = textcolor;
+        self.reviewdate.textColor = textcolor;
+        self.helpful.textColor = textcolor;
+        self.score.textColor = textcolor;
     }
 }
 

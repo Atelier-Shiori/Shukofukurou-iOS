@@ -9,6 +9,7 @@
 #import "ListSelectorViewController.h"
 #import "listservice.h"
 #import "ThemeManager.h"
+#import "UIViewThemed.h"
 
 @interface ListSelectorViewController ()
 @property int listtype;
@@ -151,6 +152,15 @@
     return _listsectionTitles[section];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    if (sectionTitle == nil) {
+        return nil;
+    }
+    UIViewGroupHeader *view = [[UIViewGroupHeader alloc] initIsSidebar:false isFirstSection:section == 0 ? true : false];
+    view.label.text = sectionTitle.uppercaseString;
+    return view;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListLabelCell"];

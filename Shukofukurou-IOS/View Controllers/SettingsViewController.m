@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TitleInfoCache.h"
 #import "ViewControllerManager.h"
+#import "UIViewThemed.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *imagecachesize;
@@ -128,6 +129,16 @@
 
 - (void)loadImageCacheSize {
     _imagecachesize.detailTextLabel.text = [NSString stringWithFormat:@"%.2f MB", @(SDImageCache.sharedImageCache.getSize/1000000).doubleValue];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    if (sectionTitle == nil) {
+        return nil;
+    }
+    UIViewGroupHeader *view = [[UIViewGroupHeader alloc] initIsSidebar:false isFirstSection:section == 0 ? true : false];
+    view.label.text = sectionTitle.uppercaseString;
+    return view;
 }
 
 @end

@@ -133,6 +133,7 @@
 		59B3AC63220922930050662A /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B3AC61220922930050662A /* Stats.storyboard */; };
 		59B3AC732209266C0050662A /* GKBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC6F2209266C0050662A /* GKBarGraph.m */; };
 		59B3AC742209266C0050662A /* GKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC702209266C0050662A /* GKBar.m */; };
+		59B580D9220F334300EFE7AC /* UIViewThemed.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B580D8220F334300EFE7AC /* UIViewThemed.m */; };
 		59B5BC35220DF8B900F904B4 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B5BC34220DF8B900F904B4 /* UIImageView+Letters.m */; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
 		59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
@@ -616,6 +617,8 @@
 		59B3AC722209266C0050662A /* GKBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKBar.h; path = Dependencies/GraphKit/BarGraph/GKBar.h; sourceTree = SOURCE_ROOT; };
 		59B3AC752209267A0050662A /* GKLineGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKLineGraph.m; path = Dependencies/GraphKit/LineGraph/GKLineGraph.m; sourceTree = SOURCE_ROOT; };
 		59B3AC762209267A0050662A /* GKLineGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKLineGraph.h; path = Dependencies/GraphKit/LineGraph/GKLineGraph.h; sourceTree = SOURCE_ROOT; };
+		59B580D7220F334300EFE7AC /* UIViewThemed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewThemed.h; sourceTree = "<group>"; };
+		59B580D8220F334300EFE7AC /* UIViewThemed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewThemed.m; sourceTree = "<group>"; };
 		59B5BC33220DF8B900F904B4 /* UIImageView+Letters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		59B5BC34220DF8B900F904B4 /* UIImageView+Letters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
@@ -936,6 +939,8 @@
 				594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */,
 				5976C0852208A13A003DA0D6 /* OAuthCredManager.h */,
 				5976C0862208A13A003DA0D6 /* OAuthCredManager.m */,
+				59B580D7220F334300EFE7AC /* UIViewThemed.h */,
+				59B580D8220F334300EFE7AC /* UIViewThemed.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1570,6 +1575,7 @@
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
 				59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */,
+				59B580D9220F334300EFE7AC /* UIViewThemed.m in Sources */,
 				5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */,
 				59624188215563D2001995AD /* Keychain.m in Sources */,
 				5962422021556514001995AD /* SettingsRootViewController.m in Sources */,

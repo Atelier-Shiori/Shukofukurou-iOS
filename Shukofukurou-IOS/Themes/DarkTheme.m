@@ -14,6 +14,7 @@
         self.viewBackgroundColor = [UIColor colorWithRed:0.22 green:0.22 blue:0.23 alpha:1.0];;
         self.viewAltBackgroundColor = [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.0];
         self.tableCellSelectionBackgroundColor = [UIColor colorWithRed:0.43 green:0.43 blue:0.43 alpha:1.0];
+        self.groupHeaderTextColor = UIColor.whiteColor;
         self.tableHeaderBackgroundColor = [UIColor colorWithRed:0.42 green:0.42 blue:0.43 alpha:1.0];
         self.textColor = [UIColor whiteColor];
         self.tintColor = [UIColor colorWithRed:0.27 green:0.44 blue:0.99 alpha:1.0];

@@ -169,15 +169,17 @@
             [self saveEntriesWithDictionary:responseObject withType:self.listtype];
             // populate list
             [self reloadList];
-            [self.refreshControl endRefreshing];
-            [self showloadingview:NO];
             if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice getCurrentServiceID]) {
                 AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
                 [anm checknotifications:^(bool success) {
+                    [self.refreshControl endRefreshing];
+                    [self showloadingview:NO];
                     completionHandler(true);
                 }];
             }
             else {
+                [self.refreshControl endRefreshing];
+                [self showloadingview:NO];
                 completionHandler(true);
             }
         } error:^(NSError *error) {
@@ -1181,14 +1183,14 @@
 
 #pragma mark HUD
 - (void)showloadingview:(bool)show {
-    if (show) {
+    if (show && !_refreshing) {
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
         _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
         _refreshing = YES;
     }
-    else {
+    else if (!show) {
         [_hud hideAnimated:YES];
         _refreshing = NO;
     }

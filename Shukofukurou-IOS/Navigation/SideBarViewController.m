@@ -12,6 +12,7 @@
 #import "ViewController.h"
 #import <LGSideMenuController/UIViewController+LGSideMenuController.h>
 #import "ViewControllerManager.h"
+#import "UIViewThemed.h"
 
 @interface SideBarViewController ()
 
@@ -91,6 +92,15 @@ struct {
 }
 
 #pragma mark - UITableView Delegate
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    if (sectionTitle == nil) {
+        return nil;
+    }
+    UIViewGroupHeader *view = [[UIViewGroupHeader alloc] initIsSidebar:true isFirstSection:false];
+    view.label.text = sectionTitle.uppercaseString;
+    return view;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellType = _sections[indexPath.section];

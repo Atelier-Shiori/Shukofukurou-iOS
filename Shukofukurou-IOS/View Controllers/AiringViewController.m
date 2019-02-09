@@ -236,14 +236,14 @@
 }
 
 - (void)showloadingview:(bool)show {
-    if (show) {
+    if (show && !_refreshing) {
         _refreshing = YES;
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
         _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
     }
-    else {
+    else if (!show) {
         [_hud hideAnimated:YES];
         _refreshing = NO;
     }

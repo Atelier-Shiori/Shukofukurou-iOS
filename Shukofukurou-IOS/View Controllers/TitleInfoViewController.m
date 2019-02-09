@@ -86,6 +86,8 @@
         ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
         self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
         self.tableview.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        self.titlestatus.textColor = current.textColor;
+        self.titletype.textColor = current.textColor;
         int synopsissection = 0;
         for (NSString *section in _sections) {
             if ([section isEqualToString:@"Synopsis"]) {
@@ -1229,14 +1231,14 @@
 }
 
 - (void)showloadingview:(bool)show {
-    if (show) {
+    if (show && !_refreshing) {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.label.text = @"Loading";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
         _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
         _refreshing = YES;
     }
-    else {
+    else if (!show) {
         [_hud hideAnimated:YES];
         _refreshing = NO;
     }
