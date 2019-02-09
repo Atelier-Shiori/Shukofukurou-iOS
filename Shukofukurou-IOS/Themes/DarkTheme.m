@@ -17,7 +17,7 @@
         self.groupHeaderTextColor = UIColor.whiteColor;
         self.tableHeaderBackgroundColor = [UIColor colorWithRed:0.42 green:0.42 blue:0.43 alpha:1.0];
         self.textColor = [UIColor whiteColor];
-        self.tintColor = [UIColor colorWithRed:0.27 green:0.44 blue:0.99 alpha:1.0];
+        self.tintColor = [UIColor colorWithRed:0.41 green:0.55 blue:0.79 alpha:1.0];
         self.thumbTintColor = [UISwitch new].thumbTintColor.copy;
         self.trackTintColor = [UIProgressView new].trackTintColor.copy;
         self.tablecellImageTintColor = [UIColor whiteColor];
