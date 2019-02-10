@@ -30,7 +30,6 @@
     if (self = [super init]) {
         _managedObjectContext = ((AppDelegate*)UIApplication.sharedApplication.delegate).managedObjectContext;
         _manager = [AFHTTPSessionManager manager];
-        [self clearAllMappings];
     }
     return self;
 }
