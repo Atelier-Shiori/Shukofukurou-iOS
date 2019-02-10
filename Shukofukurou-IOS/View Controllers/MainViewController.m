@@ -12,6 +12,10 @@
 #import "ViewControllerManager.h"
 #import "listservice.h"
 #import "TitleInfoViewController.h"
+#ifdef oss
+#else
+#import "TipJar.h"
+#endif
 
 @interface MainViewController ()
 @property (strong) ViewControllerManager *vcm;
@@ -109,6 +113,12 @@
     else if ([identifier isEqualToString:@"settings"]) {
         [self showSettingsViewController];
     }
+#ifdef oss
+#else
+    else if ([identifier isEqualToString:@"tipjar"]) {
+        [self showTipJar];
+    }
+#endif
 }
 
 - (void)showAnimeListViewController {
@@ -145,7 +155,16 @@
     navcontroller.viewControllers = @[[_vcm getViewController]];
     self.rootViewController = navcontroller;
 }
-
+#ifdef oss
+#else
+- (void)showTipJar {
+    UINavigationController *navcontroller = [UINavigationController new];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TipJar" bundle:nil];
+    TipJar *tipjarController = (TipJar *)[storyboard instantiateInitialViewController];
+    navcontroller.viewControllers = @[tipjarController];
+    self.rootViewController = navcontroller;
+}
+#endif
 #pragma mark keyboard commands
 
 - (BOOL)canBecomeFirstResponder {

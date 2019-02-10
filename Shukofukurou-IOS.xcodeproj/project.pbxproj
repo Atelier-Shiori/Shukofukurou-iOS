@@ -21,6 +21,144 @@
 		5933CEC22174F0CA00EAE7E6 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC02174F0CA00EAE7E6 /* MSWeakTimer.m */; };
 		5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */; };
 		5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
+		5934E1F7220F7539002B8311 /* GKBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC6F2209266C0050662A /* GKBarGraph.m */; };
+		5934E1F8220F7539002B8311 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
+		5934E1F9220F7539002B8311 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624168215563AD001995AD /* AniListSeasonListGenerator.m */; };
+		5934E1FA220F7539002B8311 /* TitleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242042155650B001995AD /* TitleInfoViewController.m */; };
+		5934E1FB220F7539002B8311 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624169215563AE001995AD /* AniListScoreConvert.m */; };
+		5934E1FC220F7539002B8311 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
+		5934E1FD220F7539002B8311 /* TrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F121921713000C4B5C /* TrendingViewController.m */; };
+		5934E1FE220F7539002B8311 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
+		5934E1FF220F7539002B8311 /* SideBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A22155642B001995AD /* SideBarCell.m */; };
+		5934E200220F7539002B8311 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
+		5934E201220F7539002B8311 /* ViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FA21556506001995AD /* ViewControllerManager.m */; };
+		5934E202220F7539002B8311 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
+		5934E203220F7539002B8311 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC02174F0CA00EAE7E6 /* MSWeakTimer.m */; };
+		5934E204220F7539002B8311 /* NSArray+MK_Misc.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB77A2209D76B004DE461 /* NSArray+MK_Misc.m */; };
+		5934E205220F7539002B8311 /* AiringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EF215564FF001995AD /* AiringViewController.m */; };
+		5934E206220F7539002B8311 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
+		5934E207220F7539002B8311 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417B215563CB001995AD /* Utility.m */; };
+		5934E208220F7539002B8311 /* SeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242062155650C001995AD /* SeasonsViewController.m */; };
+		5934E209220F7539002B8311 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
+		5934E20A220F7539002B8311 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
+		5934E20B220F7539002B8311 /* UIViewThemed.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B580D8220F334300EFE7AC /* UIViewThemed.m */; };
+		5934E20C220F7539002B8311 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624185215563D1001995AD /* RatingTwentyConvert.m */; };
+		5934E20D220F7539002B8311 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624176215563C9001995AD /* Keychain.m */; };
+		5934E20E220F7539002B8311 /* SettingsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FD21556507001995AD /* SettingsRootViewController.m */; };
+		5934E20F220F7539002B8311 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DD215564D0001995AD /* SearchTableViewCell.m */; };
+		5934E210220F7539002B8311 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A12155642B001995AD /* RootViewController.m */; };
+		5934E211220F7539002B8311 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EC215564FE001995AD /* MainViewController.m */; };
+		5934E212220F7539002B8311 /* TitleInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D5215564CA001995AD /* TitleInfoTableViewCell.m */; };
+		5934E213220F7539002B8311 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419221556402001995AD /* AuthViewController.m */; };
+		5934E214220F7539002B8311 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
+		5934E215220F7539002B8311 /* TopAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */; };
+		5934E216220F7539002B8311 /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7742209D747004DE461 /* ScrollViewFrameAccessor.m */; };
+		5934E217220F7539002B8311 /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624172215563B5001995AD /* AtarashiiListCoreData.m */; };
+		5934E218220F7539002B8311 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
+		5934E219220F7539002B8311 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415F21556399001995AD /* AtarashiiDataObjects.m */; };
+		5934E21A220F7539002B8311 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */; };
+		5934E21B220F7539002B8311 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59282C87220F46C40017DEF4 /* TitleIDMapper.m */; };
+		5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A52155642D001995AD /* MainSideBarViewController.m */; };
+		5934E21D220F7539002B8311 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
+		5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
+		5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F521556503001995AD /* ServiceSwitcherViewController.m */; };
+		5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
+		5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
+		5934E222220F7539002B8311 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C0862208A13A003DA0D6 /* OAuthCredManager.m */; };
+		5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */; };
+		5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
+		5934E225220F7539002B8311 /* ServiceSwitcherRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */; };
+		5934E226220F7539002B8311 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
+		5934E227220F7539002B8311 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417E215563CD001995AD /* Kitsu.m */; };
+		5934E228220F7539002B8311 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624165215563AB001995AD /* AniList.m */; };
+		5934E229220F7539002B8311 /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */; };
+		5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC69220926020050662A /* UIColor+GraphKit.m */; };
+		5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
+		5934E22C220F7539002B8311 /* OAuthLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59325ED5216BBF1F00430ED7 /* OAuthLogin.m */; };
+		5934E22D220F7539002B8311 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
+		5934E22E220F7539002B8311 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
+		5934E22F220F7539002B8311 /* ListRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E7215564FB001995AD /* ListRootViewController.m */; };
+		5934E230220F7539002B8311 /* NSMutableArray+MK_Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7842209D76C004DE461 /* NSMutableArray+MK_Stack.m */; };
+		5934E231220F7539002B8311 /* NSMutableArray+MK_Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB77C2209D76C004DE461 /* NSMutableArray+MK_Queue.m */; };
+		5934E232220F7539002B8311 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420C21556510001995AD /* LoadViewController.m */; };
+		5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B5BC34220DF8B900F904B4 /* UIImageView+Letters.m */; };
+		5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FE21556508001995AD /* SearchRootViewController.m */; };
+		5934E235220F7539002B8311 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EB215564FD001995AD /* ListViewController.m */; };
+		5934E236220F7539002B8311 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
+		5934E237220F7539002B8311 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
+		5934E238220F7539002B8311 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624164215563AA001995AD /* AiringSchedule.m */; };
+		5934E239220F7539002B8311 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624180215563CE001995AD /* listservice.m */; };
+		5934E23A220F7539002B8311 /* NSArray+MK_Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB77E2209D76C004DE461 /* NSArray+MK_Block.m */; };
+		5934E23B220F7539002B8311 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592DA184216BCE88008C99B3 /* SortTableViewController.m */; };
+		5934E23C220F7539002B8311 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624170215563B3001995AD /* Base64Category.m */; };
+		5934E23D220F7539002B8311 /* CustomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D89215953C1003CE863 /* CustomListTableViewController.m */; };
+		5934E23E220F7539002B8311 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */; };
+		5934E23F220F7539002B8311 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC5F2209226C0050662A /* StatsViewController.m */; };
+		5934E240220F7539002B8311 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A32155642C001995AD /* SideBarViewController.m */; };
+		5934E241220F7539002B8311 /* UITableViewCellSelBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D0936220207FD00A37B6B /* UITableViewCellSelBackground.m */; };
+		5934E242220F7539002B8311 /* SeasonSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FC21556507001995AD /* SeasonSelectorTableViewController.m */; };
+		5934E243220F7539002B8311 /* EpisodesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890172190ADF30029F0FC /* EpisodesTableViewController.m */; };
+		5934E244220F7539002B8311 /* ViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7762209D747004DE461 /* ViewFrameAccessor.m */; };
+		5934E245220F7539002B8311 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241532155638C001995AD /* ClientConstants.m */; };
+		5934E246220F7539002B8311 /* EpisodesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */; };
+		5934E247220F7539002B8311 /* NSMutableArray+MK_Misc.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB77B2209D76B004DE461 /* NSMutableArray+MK_Misc.m */; };
+		5934E248220F7539002B8311 /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
+		5934E249220F7539002B8311 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F621556503001995AD /* SettingsViewController.m */; };
+		5934E24A220F7539002B8311 /* CharacterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B32163D11E0005A60F /* CharacterTableViewController.m */; };
+		5934E24B220F7539002B8311 /* TrendingCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */; };
+		5934E24C220F7539002B8311 /* GKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC702209266C0050662A /* GKBar.m */; };
+		5934E24D220F7539002B8311 /* TableViewCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */; };
+		5934E24E220F7539002B8311 /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */; };
+		5934E24F220F7539002B8311 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */; };
+		5934E250220F7539002B8311 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241552155638D001995AD /* AniListConstants.m */; };
+		5934E251220F7539002B8311 /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
+		5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DB215564CF001995AD /* MangaEntryTableViewCell.m */; };
+		5934E253220F7539002B8311 /* EntryCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D8215564CC001995AD /* EntryCellInfo.m */; };
+		5934E254220F7539002B8311 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */; };
+		5934E255220F7539002B8311 /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810D92191D645000C4B5C /* TrendingRetriever.m */; };
+		5934E256220F7539002B8311 /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
+		5934E257220F7539002B8311 /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
+		5934E258220F7539002B8311 /* SeasonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DC215564D0001995AD /* SeasonCollectionViewCell.m */; };
+		5934E259220F7539002B8311 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624186215563D2001995AD /* KitsuListRetriever.m */; };
+		5934E25A220F7539002B8311 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
+		5934E25B220F7539002B8311 /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
+		5934E25C220F7539002B8311 /* ListSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F421556502001995AD /* ListSelectorViewController.m */; };
+		5934E25D220F7539002B8311 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
+		5934E25E220F7539002B8311 /* AiringRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242032155650B001995AD /* AiringRootViewController.m */; };
+		5934E25F220F7539002B8311 /* AiringDayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E9215564FC001995AD /* AiringDayTableViewController.m */; };
+		5934E260220F7539002B8311 /* AnimeEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D6215564CB001995AD /* AnimeEntryTableViewCell.m */; };
+		5934E261220F7539002B8311 /* SeasonsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F321556502001995AD /* SeasonsRootViewController.m */; };
+		5934E262220F7539002B8311 /* TrendingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */; };
+		5934E264220F7539002B8311 /* MGSwipeTableCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; };
+		5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
+		5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; };
+		5934E267220F7539002B8311 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
+		5934E268220F7539002B8311 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; };
+		5934E269220F7539002B8311 /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; };
+		5934E26B220F7539002B8311 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C521556497001995AD /* Main.storyboard */; };
+		5934E26C220F7539002B8311 /* Lists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C321556493001995AD /* Lists.storyboard */; };
+		5934E26D220F7539002B8311 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BD21556486001995AD /* Auth.storyboard */; };
+		5934E26E220F7539002B8311 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CB215564A5001995AD /* Search.storyboard */; };
+		5934E26F220F7539002B8311 /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BF21556489001995AD /* InfoView.storyboard */; };
+		5934E270220F7539002B8311 /* Airing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BB21556481001995AD /* Airing.storyboard */; };
+		5934E271220F7539002B8311 /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B3AC61220922930050662A /* Stats.storyboard */; };
+		5934E272220F7539002B8311 /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
+		5934E273220F7539002B8311 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241C12155648D001995AD /* LaunchScreen.storyboard */; };
+		5934E274220F7539002B8311 /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
+		5934E275220F7539002B8311 /* Trending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595C1F78218DF4B000953793 /* Trending.storyboard */; };
+		5934E276220F7539002B8311 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
+		5934E277220F7539002B8311 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
+		5934E278220F7539002B8311 /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
+		5934E279220F7539002B8311 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
+		5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
+		5934E27C220F7539002B8311 /* MGSwipeTableCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5934E27E220F7539002B8311 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5934E27F220F7539002B8311 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5934E280220F7539002B8311 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5934E281220F7539002B8311 /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5934E29B220F7572002B8311 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5934E29A220F7572002B8311 /* StoreKit.framework */; };
+		5934E29E220F833A002B8311 /* TipJar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5934E29C220F833A002B8311 /* TipJar.storyboard */; };
 		594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810D92191D645000C4B5C /* TrendingRetriever.m */; };
 		594810EF219214BA000C4B5C /* TrendingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */; };
 		594810F221921713000C4B5C /* TrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F121921713000C4B5C /* TrendingViewController.m */; };
@@ -124,6 +262,8 @@
 		59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
 		59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
+		59A7A7EF220F95C8009563CA /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7A7ED220F95C8009563CA /* SKProduct+LocalizedPrice.m */; };
+		59A7A7F2220F95FA009563CA /* TipJar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7A7F1220F95FA009563CA /* TipJar.m */; };
 		59A7E0522200B1C2002EE2EC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */; };
 		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
@@ -147,6 +287,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5934E1EB220F7539002B8311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E8A666331A844CC400287CA3;
+			remoteInfo = "SAMKeychain-iOS";
+		};
+		5934E1ED220F7539002B8311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CCA90421AE0EFB000368F5E;
+			remoteInfo = CoreActionSheetPicker;
+		};
+		5934E1EF220F7539002B8311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 299522381BBF104D00859F49;
+			remoteInfo = "AFNetworking iOS";
+		};
+		5934E1F1220F7539002B8311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AF139BF1BF384DA0037B073;
+			remoteInfo = LGSideMenuController;
+		};
+		5934E1F3220F7539002B8311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C63EE56A1BBA07ED008F46BB;
+			remoteInfo = MGSwipeTableCell;
+		};
+		5934E1F5220F7539002B8311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
+			remoteInfo = "SDWebImage iOS";
+		};
 		596240C12155622F001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5962409D2155622E001995AD /* Project object */;
@@ -367,6 +549,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5934E27B220F7539002B8311 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5934E27C220F7539002B8311 /* MGSwipeTableCell.framework in Embed Frameworks */,
+				5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */,
+				5934E27E220F7539002B8311 /* AFNetworking.framework in Embed Frameworks */,
+				5934E27F220F7539002B8311 /* SAMKeychain.framework in Embed Frameworks */,
+				5934E280220F7539002B8311 /* SDWebImage.framework in Embed Frameworks */,
+				5934E281220F7539002B8311 /* LGSideMenuController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		59624234215565C7001995AD /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,6 +615,10 @@
 		5933CEC42174F0F000EAE7E6 /* AutoRefreshTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoRefreshTimer.h; path = "Shukofukurou-IOS/AutoRefreshTimer.h"; sourceTree = SOURCE_ROOT; };
 		5934AD17216567E800EC6773 /* UITextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
+		5934E285220F7539002B8311 /* Shukofukurou-IOS-OSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS-OSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5934E286220F753A002B8311 /* Shukofukurou-IOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shukofukurou-IOS copy-Info.plist"; path = "/Users/koufuuchino/Documents/Shukofukurou-IOS/Shukofukurou-IOS copy-Info.plist"; sourceTree = "<absolute>"; };
+		5934E29A220F7572002B8311 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5934E29D220F833A002B8311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TipJar.storyboard; sourceTree = "<group>"; };
 		594810D82191D645000C4B5C /* TrendingRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingRetriever.h; sourceTree = "<group>"; };
 		594810D92191D645000C4B5C /* TrendingRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingRetriever.m; sourceTree = "<group>"; };
 		594810ED219214BA000C4B5C /* TrendingCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingCollectionViewController.h; sourceTree = "<group>"; };
@@ -599,6 +801,10 @@
 		59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvEditTableViewController.m; sourceTree = "<group>"; };
 		59A75816215D3A8800B36F9C /* TitleInfoCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleInfoCache.h; sourceTree = "<group>"; };
 		59A75817215D3A8800B36F9C /* TitleInfoCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
+		59A7A7ED220F95C8009563CA /* SKProduct+LocalizedPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKProduct+LocalizedPrice.m"; sourceTree = "<group>"; };
+		59A7A7EE220F95C8009563CA /* SKProduct+LocalizedPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKProduct+LocalizedPrice.h"; sourceTree = "<group>"; };
+		59A7A7F0220F95FA009563CA /* TipJar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipJar.h; sourceTree = "<group>"; };
+		59A7A7F1220F95FA009563CA /* TipJar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipJar.m; sourceTree = "<group>"; };
 		59A7E0502200B1C2002EE2EC /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
@@ -642,11 +848,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5934E263220F7539002B8311 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5934E264220F7539002B8311 /* MGSwipeTableCell.framework in Frameworks */,
+				5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */,
+				5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */,
+				5934E267220F7539002B8311 /* SAMKeychain.framework in Frameworks */,
+				5934E268220F7539002B8311 /* SDWebImage.framework in Frameworks */,
+				5934E269220F7539002B8311 /* LGSideMenuController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		596240A22155622E001995AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				59624249215565E9001995AD /* MGSwipeTableCell.framework in Frameworks */,
+				5934E29B220F7572002B8311 /* StoreKit.framework in Frameworks */,
 				59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */,
 				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
@@ -704,6 +924,14 @@
 			path = MSWeakTimer;
 			sourceTree = "<group>";
 		};
+		5934E299220F7572002B8311 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5934E29A220F7572002B8311 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5962409C2155622E001995AD = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +939,8 @@
 				596240A72155622E001995AD /* Shukofukurou-IOS */,
 				596240C32155622F001995AD /* Shukofukurou-IOSTests */,
 				596240A62155622E001995AD /* Products */,
+				5934E286220F753A002B8311 /* Shukofukurou-IOS copy-Info.plist */,
+				5934E299220F7572002B8311 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -719,6 +949,7 @@
 			children = (
 				596240A52155622E001995AD /* Shukofukurou-IOS.app */,
 				596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */,
+				5934E285220F7539002B8311 /* Shukofukurou-IOS-OSS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -726,6 +957,7 @@
 		596240A72155622E001995AD /* Shukofukurou-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				59A7A7DA220F95BD009563CA /* TipJar */,
 				59EBC1D921FD231900481D33 /* Themes */,
 				5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */,
 				596240A82155622E001995AD /* AppDelegate.h */,
@@ -1017,6 +1249,7 @@
 				596241D1215564B4001995AD /* Settings.storyboard */,
 				595C1F78218DF4B000953793 /* Trending.storyboard */,
 				59B3AC61220922930050662A /* Stats.storyboard */,
+				5934E29C220F833A002B8311 /* TipJar.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1141,6 +1374,17 @@
 			path = TopAlignedLabel;
 			sourceTree = "<group>";
 		};
+		59A7A7DA220F95BD009563CA /* TipJar */ = {
+			isa = PBXGroup;
+			children = (
+				59A7A7EE220F95C8009563CA /* SKProduct+LocalizedPrice.h */,
+				59A7A7ED220F95C8009563CA /* SKProduct+LocalizedPrice.m */,
+				59A7A7F0220F95FA009563CA /* TipJar.h */,
+				59A7A7F1220F95FA009563CA /* TipJar.m */,
+			);
+			path = TipJar;
+			sourceTree = "<group>";
+		};
 		59A7E03B2200B160002EE2EC /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1233,6 +1477,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5934E1E9220F7539002B8311 /* Shukofukurou-IOS-OSS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5934E282220F7539002B8311 /* Build configuration list for PBXNativeTarget "Shukofukurou-IOS-OSS" */;
+			buildPhases = (
+				5934E1F6220F7539002B8311 /* Sources */,
+				5934E263220F7539002B8311 /* Frameworks */,
+				5934E26A220F7539002B8311 /* Resources */,
+				5934E27B220F7539002B8311 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5934E1EA220F7539002B8311 /* PBXTargetDependency */,
+				5934E1EC220F7539002B8311 /* PBXTargetDependency */,
+				5934E1EE220F7539002B8311 /* PBXTargetDependency */,
+				5934E1F0220F7539002B8311 /* PBXTargetDependency */,
+				5934E1F2220F7539002B8311 /* PBXTargetDependency */,
+				5934E1F4220F7539002B8311 /* PBXTargetDependency */,
+			);
+			name = "Shukofukurou-IOS-OSS";
+			productName = "Shukofukurou-IOS";
+			productReference = 5934E285220F7539002B8311 /* Shukofukurou-IOS-OSS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		596240A42155622E001995AD /* Shukofukurou-IOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 596240C92155622F001995AD /* Build configuration list for PBXNativeTarget "Shukofukurou-IOS" */;
@@ -1290,6 +1558,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1342,6 +1613,7 @@
 			targets = (
 				596240A42155622E001995AD /* Shukofukurou-IOS */,
 				596240BF2155622F001995AD /* Shukofukurou-IOSTests */,
+				5934E1E9220F7539002B8311 /* Shukofukurou-IOS-OSS */,
 			);
 		};
 /* End PBXProject section */
@@ -1518,6 +1790,29 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5934E26A220F7539002B8311 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5934E26B220F7539002B8311 /* Main.storyboard in Resources */,
+				5934E26C220F7539002B8311 /* Lists.storyboard in Resources */,
+				5934E26D220F7539002B8311 /* Auth.storyboard in Resources */,
+				5934E26E220F7539002B8311 /* Search.storyboard in Resources */,
+				5934E26F220F7539002B8311 /* InfoView.storyboard in Resources */,
+				5934E270220F7539002B8311 /* Airing.storyboard in Resources */,
+				5934E271220F7539002B8311 /* Stats.storyboard in Resources */,
+				5934E272220F7539002B8311 /* ServiceSwitcher.storyboard in Resources */,
+				5934E273220F7539002B8311 /* LaunchScreen.storyboard in Resources */,
+				5934E274220F7539002B8311 /* AdvancedEdit.storyboard in Resources */,
+				5934E275220F7539002B8311 /* Trending.storyboard in Resources */,
+				5934E276220F7539002B8311 /* Assets.xcassets in Resources */,
+				5934E277220F7539002B8311 /* Settings.storyboard in Resources */,
+				5934E278220F7539002B8311 /* Seasons.storyboard in Resources */,
+				5934E279220F7539002B8311 /* ThirdParty.rtf in Resources */,
+				5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		596240A32155622E001995AD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1536,6 +1831,7 @@
 				596240B52155622F001995AD /* Assets.xcassets in Resources */,
 				596242582155662A001995AD /* Settings.storyboard in Resources */,
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
+				5934E29E220F833A002B8311 /* TipJar.storyboard in Resources */,
 				59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */,
 				59481D8421594078003CE863 /* CustomList.storyboard in Resources */,
 			);
@@ -1551,6 +1847,121 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5934E1F6220F7539002B8311 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5934E1F7220F7539002B8311 /* GKBarGraph.m in Sources */,
+				5934E1F8220F7539002B8311 /* ThemeManagerTheme.m in Sources */,
+				5934E1F9220F7539002B8311 /* AniListSeasonListGenerator.m in Sources */,
+				5934E1FA220F7539002B8311 /* TitleInfoViewController.m in Sources */,
+				5934E1FB220F7539002B8311 /* AniListScoreConvert.m in Sources */,
+				5934E1FC220F7539002B8311 /* AiringNotificationServiceSelector.m in Sources */,
+				5934E1FD220F7539002B8311 /* TrendingViewController.m in Sources */,
+				5934E1FE220F7539002B8311 /* ReviewDetailViewController.m in Sources */,
+				5934E1FF220F7539002B8311 /* SideBarCell.m in Sources */,
+				5934E200220F7539002B8311 /* AppDelegate.m in Sources */,
+				5934E201220F7539002B8311 /* ViewControllerManager.m in Sources */,
+				5934E202220F7539002B8311 /* ReviewTableViewCell.m in Sources */,
+				5934E203220F7539002B8311 /* MSWeakTimer.m in Sources */,
+				5934E204220F7539002B8311 /* NSArray+MK_Misc.m in Sources */,
+				5934E205220F7539002B8311 /* AiringViewController.m in Sources */,
+				5934E206220F7539002B8311 /* TitleIdEnumerator.m in Sources */,
+				5934E207220F7539002B8311 /* Utility.m in Sources */,
+				5934E208220F7539002B8311 /* SeasonsViewController.m in Sources */,
+				5934E209220F7539002B8311 /* SearchViewController.m in Sources */,
+				5934E20A220F7539002B8311 /* DefaultTheme.m in Sources */,
+				5934E20B220F7539002B8311 /* UIViewThemed.m in Sources */,
+				5934E20C220F7539002B8311 /* RatingTwentyConvert.m in Sources */,
+				5934E20D220F7539002B8311 /* Keychain.m in Sources */,
+				5934E20E220F7539002B8311 /* SettingsRootViewController.m in Sources */,
+				5934E20F220F7539002B8311 /* SearchTableViewCell.m in Sources */,
+				5934E210220F7539002B8311 /* RootViewController.m in Sources */,
+				5934E211220F7539002B8311 /* MainViewController.m in Sources */,
+				5934E212220F7539002B8311 /* TitleInfoTableViewCell.m in Sources */,
+				5934E213220F7539002B8311 /* AuthViewController.m in Sources */,
+				5934E214220F7539002B8311 /* AiringNotifySettingsTableViewController.m in Sources */,
+				5934E215220F7539002B8311 /* TopAlignedLabel.m in Sources */,
+				5934E216220F7539002B8311 /* ScrollViewFrameAccessor.m in Sources */,
+				5934E217220F7539002B8311 /* AtarashiiListCoreData.m in Sources */,
+				5934E218220F7539002B8311 /* RelatedTableViewController.m in Sources */,
+				5934E219220F7539002B8311 /* AtarashiiDataObjects.m in Sources */,
+				5934E21A220F7539002B8311 /* AtarashiiAPIListFormatAniList.m in Sources */,
+				5934E21B220F7539002B8311 /* TitleIDMapper.m in Sources */,
+				5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */,
+				5934E21D220F7539002B8311 /* ThemeManager.m in Sources */,
+				5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */,
+				5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */,
+				5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */,
+				5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */,
+				5934E222220F7539002B8311 /* OAuthCredManager.m in Sources */,
+				5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */,
+				5934E225220F7539002B8311 /* ServiceSwitcherRootViewController.m in Sources */,
+				5934E226220F7539002B8311 /* main.m in Sources */,
+				5934E227220F7539002B8311 /* Kitsu.m in Sources */,
+				5934E228220F7539002B8311 /* AniList.m in Sources */,
+				5934E229220F7539002B8311 /* EpisodeDetailViewController.m in Sources */,
+				5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */,
+				5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */,
+				5934E22C220F7539002B8311 /* OAuthLogin.m in Sources */,
+				5934E22D220F7539002B8311 /* ThirdPartyViewController.m in Sources */,
+				5934E22E220F7539002B8311 /* ReviewTableViewController.m in Sources */,
+				5934E22F220F7539002B8311 /* ListRootViewController.m in Sources */,
+				5934E230220F7539002B8311 /* NSMutableArray+MK_Stack.m in Sources */,
+				5934E231220F7539002B8311 /* NSMutableArray+MK_Queue.m in Sources */,
+				5934E232220F7539002B8311 /* LoadViewController.m in Sources */,
+				5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */,
+				5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */,
+				5934E235220F7539002B8311 /* ListViewController.m in Sources */,
+				5934E236220F7539002B8311 /* DarkTheme.m in Sources */,
+				5934E237220F7539002B8311 /* StreamDataRetriever.m in Sources */,
+				5934E238220F7539002B8311 /* AiringSchedule.m in Sources */,
+				5934E239220F7539002B8311 /* listservice.m in Sources */,
+				5934E23A220F7539002B8311 /* NSArray+MK_Block.m in Sources */,
+				5934E23B220F7539002B8311 /* SortTableViewController.m in Sources */,
+				5934E23C220F7539002B8311 /* Base64Category.m in Sources */,
+				5934E23D220F7539002B8311 /* CustomListTableViewController.m in Sources */,
+				5934E23E220F7539002B8311 /* AutoRefreshTimer.m in Sources */,
+				5934E23F220F7539002B8311 /* StatsViewController.m in Sources */,
+				5934E240220F7539002B8311 /* SideBarViewController.m in Sources */,
+				5934E241220F7539002B8311 /* UITableViewCellSelBackground.m in Sources */,
+				5934E242220F7539002B8311 /* SeasonSelectorTableViewController.m in Sources */,
+				5934E243220F7539002B8311 /* EpisodesTableViewController.m in Sources */,
+				5934E244220F7539002B8311 /* ViewFrameAccessor.m in Sources */,
+				5934E245220F7539002B8311 /* ClientConstants.m in Sources */,
+				5934E246220F7539002B8311 /* EpisodesTableViewCell.m in Sources */,
+				5934E247220F7539002B8311 /* NSMutableArray+MK_Misc.m in Sources */,
+				5934E248220F7539002B8311 /* UILabel+Copyable.m in Sources */,
+				5934E249220F7539002B8311 /* SettingsViewController.m in Sources */,
+				5934E24A220F7539002B8311 /* CharacterTableViewController.m in Sources */,
+				5934E24B220F7539002B8311 /* TrendingCollectionHeaderView.m in Sources */,
+				5934E24C220F7539002B8311 /* GKBar.m in Sources */,
+				5934E24D220F7539002B8311 /* TableViewCellBackgroundView.m in Sources */,
+				5934E24E220F7539002B8311 /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
+				5934E24F220F7539002B8311 /* MBProgressHUD.m in Sources */,
+				5934E250220F7539002B8311 /* AniListConstants.m in Sources */,
+				5934E251220F7539002B8311 /* TitleInfoCache.m in Sources */,
+				5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */,
+				5934E253220F7539002B8311 /* EntryCellInfo.m in Sources */,
+				5934E254220F7539002B8311 /* AtarashiiAPIListFormatKitsu.m in Sources */,
+				5934E255220F7539002B8311 /* TrendingRetriever.m in Sources */,
+				5934E256220F7539002B8311 /* CharacterDetailViewController.m in Sources */,
+				5934E257220F7539002B8311 /* AdvEditTableViewController.m in Sources */,
+				5934E258220F7539002B8311 /* SeasonCollectionViewCell.m in Sources */,
+				5934E259220F7539002B8311 /* KitsuListRetriever.m in Sources */,
+				5934E25A220F7539002B8311 /* ViewController.m in Sources */,
+				5934E25B220F7539002B8311 /* PersonTableViewCell.m in Sources */,
+				5934E25C220F7539002B8311 /* ListSelectorViewController.m in Sources */,
+				5934E25D220F7539002B8311 /* UITextView+SetHTMLAttributedText.m in Sources */,
+				5934E25E220F7539002B8311 /* AiringRootViewController.m in Sources */,
+				5934E25F220F7539002B8311 /* AiringDayTableViewController.m in Sources */,
+				5934E260220F7539002B8311 /* AnimeEntryTableViewCell.m in Sources */,
+				5934E261220F7539002B8311 /* SeasonsRootViewController.m in Sources */,
+				5934E262220F7539002B8311 /* TrendingCollectionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		596240A12155622E001995AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1600,6 +2011,7 @@
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
 				5976C0872208A13A003DA0D6 /* OAuthCredManager.m in Sources */,
 				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				59A7A7F2220F95FA009563CA /* TipJar.m in Sources */,
 				59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */,
 				5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */,
 				596240BB2155622F001995AD /* main.m in Sources */,
@@ -1652,6 +2064,7 @@
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,
+				59A7A7EF220F95C8009563CA /* SKProduct+LocalizedPrice.m in Sources */,
 				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
 				59624190215563D2001995AD /* KitsuListRetriever.m in Sources */,
 				5962422821556514001995AD /* ViewController.m in Sources */,
@@ -1677,6 +2090,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5934E1EA220F7539002B8311 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SAMKeychain-iOS";
+			targetProxy = 5934E1EB220F7539002B8311 /* PBXContainerItemProxy */;
+		};
+		5934E1EC220F7539002B8311 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CoreActionSheetPicker;
+			targetProxy = 5934E1ED220F7539002B8311 /* PBXContainerItemProxy */;
+		};
+		5934E1EE220F7539002B8311 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "AFNetworking iOS";
+			targetProxy = 5934E1EF220F7539002B8311 /* PBXContainerItemProxy */;
+		};
+		5934E1F0220F7539002B8311 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LGSideMenuController;
+			targetProxy = 5934E1F1220F7539002B8311 /* PBXContainerItemProxy */;
+		};
+		5934E1F2220F7539002B8311 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MGSwipeTableCell;
+			targetProxy = 5934E1F3220F7539002B8311 /* PBXContainerItemProxy */;
+		};
+		5934E1F4220F7539002B8311 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SDWebImage iOS";
+			targetProxy = 5934E1F5220F7539002B8311 /* PBXContainerItemProxy */;
+		};
 		596240C22155622F001995AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 596240A42155622E001995AD /* Shukofukurou-IOS */;
@@ -1715,6 +2158,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5934E29C220F833A002B8311 /* TipJar.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5934E29D220F833A002B8311 /* Base */,
+			);
+			name = TipJar.storyboard;
+			sourceTree = "<group>";
+		};
 		59481D8221594078003CE863 /* CustomList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1830,6 +2281,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5934E283220F7539002B8311 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"OSS=1",
+				);
+				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5934E284220F7539002B8311 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				GCC_PREPROCESSOR_DEFINITIONS = "OSS=1";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
+				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		596240C72155622F001995AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2023,6 +2521,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5934E282220F7539002B8311 /* Build configuration list for PBXNativeTarget "Shukofukurou-IOS-OSS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5934E283220F7539002B8311 /* Debug */,
+				5934E284220F7539002B8311 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		596240A02155622E001995AD /* Build configuration list for PBXProject "Shukofukurou-IOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

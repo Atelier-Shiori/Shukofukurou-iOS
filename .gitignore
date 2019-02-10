@@ -79,3 +79,8 @@ iOSInjectionProject/
 
 # End of https://www.gitignore.io/api/objective-c
 Shukofukurou-IOS/Backend/Constants/ClientConstants.m
+Shukofukurou-IOS/Storyboards/Base.lproj/TipJar.storyboard
+Shukofukurou-IOS/TipJar/SKProduct+LocalizedPrice.h
+Shukofukurou-IOS/TipJar/SKProduct+LocalizedPrice.m
+Shukofukurou-IOS/TipJar/TipJar.h
+Shukofukurou-IOS/TipJar/TipJar.m

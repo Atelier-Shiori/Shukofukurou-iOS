@@ -19,11 +19,13 @@
 #import "Keychain.h"
 #import "AtarashiiListCoreData.h"
 #import "StatsViewController.h"
+#import "ThemeManager.h"
 
 @interface MainSideBarViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *optionsbuttonitem;
 @property (strong) MainViewController *mainvc;
 @property (strong, nonatomic) IBOutlet UIImageView *servicelogo;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @end
 
 @implementation MainSideBarViewController
@@ -32,10 +34,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setLoggedinUser];
+    _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
+    _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
     // Register with view controller manager
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     vcm.mainsidebar = self;
     _delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"ThemeChanged" object:nil];
+}
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)didReceiveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
+        _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    }
 }
 
 /*

@@ -65,7 +65,6 @@
     [UISegmentedControl appearance].tintColor = _currentTheme.tintColor;
     [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]].textColor = _currentTheme.groupHeaderTextColor;
     [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewCell class]]].textColor = _currentTheme.textColor;
-    [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]].textColor = _currentTheme.textColor;
     [UILabel appearanceWhenContainedInInstancesOfClasses:@[[SeasonCollectionViewCell class]]].textColor = _currentTheme.textColor;
     [UILabel appearanceWhenContainedInInstancesOfClasses:@[[TrendingCollectionHeaderView class]]].textColor = _currentTheme.textColor;
     [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UIViewThemed class]]].textColor = _currentTheme.textColor;
@@ -76,6 +75,8 @@
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[ReactionTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
     [UITableViewHeaderFooterView appearance].tintColor = _currentTheme.tableHeaderBackgroundColor;
+    [UINavigationBar appearance].tintColor = _currentTheme.tintColor;
+    [UITableViewCell  appearance].tintColor = _currentTheme.tintColor;
     [UITextField appearance].textColor = _currentTheme.textColor;
     [UITextView appearance].textColor = _currentTheme.textColor;;
     [UITextView appearance].backgroundColor = UIColor.clearColor;

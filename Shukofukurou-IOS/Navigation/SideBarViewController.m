@@ -66,6 +66,10 @@ struct {
     //[items addObject:@{@"image" : @"profilebrowser" , @"title" : @"Profile Browser", @"identifier" : @"profiles", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"export" , @"title" : @"Export List", @"identifier" : @"export", @"type" : @"cell"}];
     [otheritems addObject:@{@"image" : @"settings" , @"title" : @"Settings", @"identifier" : @"settings", @"type" : @"cell"}];
+#ifdef oss
+#else
+    [otheritems addObject:@{@"image" : @"tipjar" , @"title" : @"Tip Jar", @"identifier" : @"tipjar", @"type" : @"cell"}];
+#endif
     _items = @{@"" : listitems, @"Discover" : discoveritems, @"Other" : otheritems };
     _sections = @[@"", @"Discover", @"Other"];
 }

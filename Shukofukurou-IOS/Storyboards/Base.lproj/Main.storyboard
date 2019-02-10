@@ -127,6 +127,7 @@
                         <outlet property="logintoolbarbtn" destination="vt3-WL-ZAV" id="Wbs-y5-rKl"/>
                         <outlet property="optionsbuttonitem" destination="QY3-Bv-QDf" id="vlh-rx-Zne"/>
                         <outlet property="servicelogo" destination="hwF-2Y-NkJ" id="MbH-mP-dGi"/>
+                        <outlet property="toolbar" destination="hLa-1n-UEk" id="3fs-6a-Bdq"/>
                         <outlet property="username" destination="7BU-lo-3NW" id="THe-Vy-z2v"/>
                     </connections>
                 </viewController>
