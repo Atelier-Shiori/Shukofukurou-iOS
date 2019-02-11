@@ -11,8 +11,8 @@
 #import "ThemeManager.h"
 
 @interface SortTableViewController ()
-@property (weak, nonatomic) IBOutlet UITableViewCell *sortbycell;
-@property (weak, nonatomic) IBOutlet UISwitch *accendingswitch;
+@property (strong, nonatomic) IBOutlet UITableViewCell *sortbycell;
+@property (strong, nonatomic) IBOutlet UISwitch *accendingswitch;
 @property int type;
 @end
 

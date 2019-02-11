@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SafariServices/SafariServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SettingsViewController : UITableViewController
+@interface SettingsViewController : UITableViewController <SFSafariViewControllerDelegate>
 @property (strong) IBOutlet UISwitch *refreshlistonstart;
 @property (strong) IBOutlet UISwitch *refreshlistautomatically;
 @property (strong) IBOutlet UISegmentedControl *streamregion;
-@property (weak, nonatomic) IBOutlet UISwitch *cachetitleinfo;
+@property (strong, nonatomic) IBOutlet UISwitch *cachetitleinfo;
 @property (strong, nonatomic) IBOutlet UISwitch *darkmodeswitch;
 
 - (void)loadImageCacheSize;

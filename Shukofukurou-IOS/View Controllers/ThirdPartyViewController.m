@@ -10,7 +10,7 @@
 #import "ThemeManager.h"
 
 @interface ThirdPartyViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *textview;
+@property (strong, nonatomic) IBOutlet UITextView *textview;
 
 @end
 
@@ -32,7 +32,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [_textview setContentOffset:CGPointZero animated:NO];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        [_textview setContentOffset:CGPointZero animated:NO];
+    }
 }
 
 - (void)fixtheme {

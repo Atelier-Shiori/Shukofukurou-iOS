@@ -8,6 +8,7 @@
 
 #import "listservice.h"
 #import "Keychain.h"
+#import "OAuthCredManager.h"
 
 @implementation listservice
 /* Note: Current Service type will be specified as the following:
@@ -529,13 +530,13 @@
 
 + (bool)checkAccountForCurrentService {
     int service = [listservice getCurrentServiceID];
+    bool hasUserInfo =  ([listservice getCurrentUserID] > 0 || [listservice getCurrentServiceUsername].length > 0);
     switch (service) {
         case 1:
-            return [Keychain checkaccount];
+            return ([Keychain checkaccount] || hasUserInfo);
         case 2:
-            return [Kitsu getFirstAccount] != nil;
         case 3:
-            return [AniList getFirstAccount] != nil;
+            return ([OAuthCredManager.sharedInstance getFirstAccountForService:service] || hasUserInfo);
         default:
             return true;
     }

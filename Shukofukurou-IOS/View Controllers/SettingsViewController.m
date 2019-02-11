@@ -11,10 +11,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TitleInfoCache.h"
 #import "ViewControllerManager.h"
+#import "ThemeManager.h"
 #import "UIViewThemed.h"
 
 @interface SettingsViewController ()
-@property (weak, nonatomic) IBOutlet UITableViewCell *imagecachesize;
+@property (strong, nonatomic) IBOutlet UITableViewCell *imagecachesize;
+@property (strong, nonatomic) IBOutlet UILabel *versionnum;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @end
 
@@ -33,6 +35,7 @@
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
+    _versionnum.text = [NSString stringWithFormat:@"%@ (Build %@)",[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"SettingsViewLoaded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
@@ -65,6 +68,7 @@
 - (IBAction)setrefreshonstart:(id)sender {
     [NSUserDefaults.standardUserDefaults setBool:_refreshlistonstart.on forKey:@"refreshlistonstart"];
 }
+
 - (IBAction)setrefreshautomatically:(id)sender {
     [NSUserDefaults.standardUserDefaults setBool:_refreshlistautomatically.on forKey:@"refreshautomatically"];
     if (!_refreshlistautomatically.on) {
@@ -109,7 +113,11 @@
 }
 
 - (void)openManual {
-        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"] options:@{} completionHandler:^(BOOL success) {}];
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"]];
+    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    [self presentViewController:svc animated:YES completion:^{
+    }];
 }
     
 - (void)clearImages {
@@ -139,6 +147,11 @@
     UIViewGroupHeader *view = [[UIViewGroupHeader alloc] initIsSidebar:false isFirstSection:section == 0 ? true : false];
     view.label.text = sectionTitle.uppercaseString;
     return view;
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 @end

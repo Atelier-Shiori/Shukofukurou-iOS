@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) IBOutlet UILabel *username;
 @property  (assign, nonatomic) IBOutlet UIImageView *avatar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *logintoolbarbtn;
-@property (nonatomic, weak) id <MainSideBarViewDelegate> delegate;
+@property (nonatomic, strong) id <MainSideBarViewDelegate> delegate;
 - (void)setLoggedinUser;
 - (void)performLogin;
 @end

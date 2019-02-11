@@ -64,6 +64,9 @@
     if (width == 320) {
         self.graphView.marginBar = 10;
     }
+    else if (width <= 414) {
+        self.graphView.marginBar = 15;
+    }
     else {
         self.graphView.marginBar = 20;
     }
