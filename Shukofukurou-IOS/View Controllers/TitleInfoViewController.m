@@ -1007,7 +1007,7 @@
         NSLog(@"%@", error.localizedDescription);
             dispatch_async(dispatch_get_main_queue(), ^{
         [updatecell setEnabled: NO];
-        [weakSelf showloadingview:YES];
+        [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
             });
     }];
@@ -1034,7 +1034,7 @@
     }
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
-    [self showloadingview:YES];
+    [self showloadingview:NO];
     _navigationitem.hidesBackButton = YES;
     [listservice updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
         NSDictionary *updatedfields = @{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"rereading" : @(weakSelf.selectedreconsuming), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
@@ -1051,7 +1051,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
         [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
         [updatecell setEnabled: YES];
-        [weakSelf showloadingview:YES];
+        [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
             [weakSelf.tableview reloadData];
         });
@@ -1059,7 +1059,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"%@", error.localizedDescription);
         [updatecell setEnabled: YES];
-        [weakSelf showloadingview:YES];
+        [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
         });
     }];
