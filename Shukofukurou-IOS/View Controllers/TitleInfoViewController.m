@@ -1034,7 +1034,7 @@
     }
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
-    [self showloadingview:NO];
+    [self showloadingview:YES];
     _navigationitem.hidesBackButton = YES;
     [listservice updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
         NSDictionary *updatedfields = @{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"rereading" : @(weakSelf.selectedreconsuming), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
