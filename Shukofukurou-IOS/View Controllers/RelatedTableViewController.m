@@ -172,10 +172,10 @@
             break;
         case 4: {
             if (_type == 0) {
-                openurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", @"https://www.reddit.com/search?sort=new&amp;q=subreddit%3Aanime%20title%3A", [Utility urlEncodeString:_ctitle], @"%20episode%20discussion"]];
+                openurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", @"https://www.reddit.com/search?q=subreddit%3Aanime%20title%3A", [Utility urlEncodeString:_ctitle], @"%20episode%20discussion&sort=new"]];
             }
             else {
-                openurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", @"https://www.reddit.com/search?sort=new&amp;q=subreddit%3Amanga%20title%3A", [Utility urlEncodeString:_ctitle], @"%20ch"]];
+                openurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", @"https://www.reddit.com/search?q=subreddit%3Amanga%20title%3A%20", [Utility urlEncodeString:_ctitle], @"%20ch&sort=new"]];
             }
             break;
         }
