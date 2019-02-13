@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SafariServices/SafariServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RelatedTableViewController : UITableViewController
+@interface RelatedTableViewController : UITableViewController <SFSafariViewControllerDelegate>
 - (void)generateRelated:(NSDictionary *)titleinfo withType:(int)type;
 @end
 

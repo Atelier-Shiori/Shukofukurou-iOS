@@ -20,6 +20,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:false animated:animated];
@@ -31,6 +32,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:false animated:animated];
@@ -80,6 +82,7 @@
     // Initialization code
     _valueText.scrollEnabled = false;
     _valueText.textContainer.heightTracksTextView = true;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)fixTextColor {

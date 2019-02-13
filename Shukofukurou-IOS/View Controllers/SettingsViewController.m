@@ -99,7 +99,7 @@
         [cell setSelected:NO animated:YES];
     }
     else if ([cell.textLabel.text isEqualToString:@"File a Bug Report"]) {
-        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/Shukofukurou-iOS/issues"] options:@{} completionHandler:^(BOOL success) {}];
+        [self openWebBrowserView:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/Shukofukurou-iOS/issues"]];
         [cell setSelected:NO animated:YES];
     }
     else if ([cell.textLabel.text isEqualToString:@"Follow us on Twitter"]) {
@@ -113,11 +113,7 @@
 }
 
 - (void)openManual {
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"]];
-    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
-    [self presentViewController:svc animated:YES completion:^{
-    }];
+    [self openWebBrowserView:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"]];
 }
     
 - (void)clearImages {
@@ -154,4 +150,11 @@
     }];
 }
 
+- (void)openWebBrowserView:(NSURL *)url {
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    [self presentViewController:svc animated:YES completion:^{
+    }];
+}
 @end

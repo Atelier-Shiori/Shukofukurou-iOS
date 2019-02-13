@@ -34,6 +34,7 @@
     [super awakeFromNib];
     // Initialization code
     _reaction.copyingEnabled = YES;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

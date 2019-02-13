@@ -206,6 +206,19 @@
             return;
         }
     }
-    [UIApplication.sharedApplication openURL:openurl options:@{} completionHandler:^(BOOL success) {}];
+    [self openWebBrowserView:openurl];
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (void)openWebBrowserView:(NSURL *)url {
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    [self presentViewController:svc animated:YES completion:^{
+    }];
 }
 @end
