@@ -14,6 +14,7 @@
 #import "TitleInfoTableViewCell.h"
 #import "listservice.h"
 #import "ThemeManager.h"
+#import "MBProgressHUD.h"
 #import "Utility.h"
 
 @interface AdvEditTableViewController ()
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navitem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *savebtn;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelbtn;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation AdvEditTableViewController
@@ -616,6 +618,7 @@
     __weak AdvEditTableViewController *weakSelf = self;
     _savebtn.enabled = NO;
     _cancelbtn.enabled = NO;
+    [self showloadingview:YES];
     [listservice updateAnimeTitleOnList:selectededitid withEpisode:((NSNumber *)entry[@"episode"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
         NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]}];
         [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
@@ -633,6 +636,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.savebtn.enabled = YES;
             weakSelf.cancelbtn.enabled = YES;
+            [self showloadingview:NO];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         });
     }
@@ -641,6 +645,7 @@
                                       dispatch_async(dispatch_get_main_queue(), ^{
                                           weakSelf.savebtn.enabled = YES;
                                           weakSelf.cancelbtn.enabled = YES;
+                                          [self showloadingview:NO];
                                       });
                                   }];
 }
@@ -665,6 +670,7 @@
     __weak AdvEditTableViewController *weakSelf = self;
     _savebtn.enabled = NO;
     _cancelbtn.enabled = NO;
+    [self showloadingview:YES];
     [listservice updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
         NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]}];
         [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
@@ -682,6 +688,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.savebtn.enabled = YES;
             weakSelf.cancelbtn.enabled = YES;
+            [self showloadingview:NO];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         });
     }error:^(NSError * error) {
@@ -689,6 +696,7 @@
             NSLog(@"%@", error.localizedDescription);
             weakSelf.savebtn.enabled = YES;
             weakSelf.cancelbtn.enabled = YES;
+            [self showloadingview:NO];
         });
     }];
 }
@@ -698,4 +706,16 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark HUD
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        _hud.label.text = @"Saving...";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else if (!show) {
+        [_hud hideAnimated:YES];
+    }
+}
 @end
