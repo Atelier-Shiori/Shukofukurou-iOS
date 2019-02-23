@@ -95,6 +95,9 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
     return [self.expiration compare:[NSDate date]] == NSOrderedAscending;
 }
 
+- (NSDate *)getExpirationDate {
+    return _expiration;
+}
 #pragma mark Keychain
 
 + (BOOL)storeCredential:(AFOAuthCredential *)credential
