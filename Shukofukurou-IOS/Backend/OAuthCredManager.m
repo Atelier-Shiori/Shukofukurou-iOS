@@ -31,6 +31,7 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 
 - (instancetype)init {
     if ([super init]) {
+        [SAMKeychain setAccessibilityType:kSecAttrAccessibleAfterFirstUnlock];
         [self getFirstAccountForService:2];
         [self getFirstAccountForService:3];
     }
