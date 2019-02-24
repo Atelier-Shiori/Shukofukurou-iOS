@@ -11,12 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OAuthCredManager : NSObject
-@property (strong, nullable) AFOAuthCredential *AniListCredential;
-@property (strong, nullable) AFOAuthCredential *KitsuCredential;
+@property (strong) AFOAuthCredential *AniListCredential;
+@property (strong) AFOAuthCredential *KitsuCredential;
 + (instancetype)sharedInstance;
 - (AFOAuthCredential *)getFirstAccountForService:(int)service;
 - (AFOAuthCredential *)saveCredentialForService:(int)service withCredential:(AFOAuthCredential *)cred;
 - (bool)removeCredentialForService:(int)service;
+- (void)fixkeychainaccessability;
 @end
 
 NS_ASSUME_NONNULL_END

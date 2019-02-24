@@ -107,8 +107,8 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 43000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wtautological-compare"
-    if (&kSecAttrAccessibleWhenUnlocked != NULL) {
-        securityAccessibility = (__bridge id)kSecAttrAccessibleWhenUnlocked;
+    if (&kSecAttrAccessibleAfterFirstUnlock != NULL) {
+        securityAccessibility = (__bridge id)kSecAttrAccessibleAfterFirstUnlock;
     }
 #pragma clang diagnostic pop
 #endif

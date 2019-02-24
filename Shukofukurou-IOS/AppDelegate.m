@@ -13,6 +13,7 @@
 #import "AiringSchedule.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ThemeManager.h"
+#import "OAuthCredManager.h"
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
@@ -109,6 +110,9 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FixKeychainItems"]) {
+        [[OAuthCredManager sharedInstance] fixkeychainaccessability];
+    }
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LoadTheme" object:nil];
     // Override point for customization after application launch.
     [self checkaccountinformation];

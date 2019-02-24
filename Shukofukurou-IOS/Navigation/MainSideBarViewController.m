@@ -249,6 +249,4 @@
         self.mainvc = (MainViewController *)self.sideMenuController;
     });
 }
-
-
 @end

@@ -9,16 +9,29 @@
 #import "ViewController.h"
 #import "ViewControllerManager.h"
 #import "ThemeManager.h"
+#import "MBProgressHUD.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
-
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"firstload"]) {
+        [self showloadingview:YES];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            [NSThread sleepForTimeInterval:2];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showloadingview:NO];
+                [defaults setBool:YES forKey:@"firstload"];
+            });
+        });
+    }
     // Do any additional setup after loading the view, typically from a nib.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
@@ -68,4 +81,15 @@
     self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
 }
 
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.label.text = @"Please Wait";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
+}
 @end

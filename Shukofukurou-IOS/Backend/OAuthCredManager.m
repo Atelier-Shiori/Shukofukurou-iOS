@@ -8,7 +8,6 @@
 
 #import "OAuthCredManager.h"
 #import <AFNetworking/AFNetworking.h>
-#import <SAMKeychain/SAMKeychain.h>
 
 @implementation OAuthCredManager
 
@@ -30,8 +29,7 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 }
 
 - (instancetype)init {
-    if ([super init]) {
-        [SAMKeychain setAccessibilityType:kSecAttrAccessibleAfterFirstUnlock];
+    if (self = [super init]) {
         [self getFirstAccountForService:2];
         [self getFirstAccountForService:3];
     }
@@ -54,11 +52,9 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
             keychainidentifier = kAniListKeychainIdentifier;
             break;
         default:
-            return [AFOAuthCredential new];
+            return nil;
     }
-    NSData *credData = [SAMKeychain passwordDataForService:@"Shukofukurou-IOS" account:keychainidentifier];
-    AFOAuthCredential *cred = credData ? [self convertJsonDataToCredential:credData] : nil;
-    //AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:keychainidentifier];
+    AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:keychainidentifier];
     if (cred) {
         switch (service) {
             case 2:
@@ -82,10 +78,9 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
             keychainidentifier = kAniListKeychainIdentifier;
             break;
         default:
-            return [AFOAuthCredential new];
+            return nil;
     }
-    [SAMKeychain setPasswordData:[self convertCredentialToJSONData:cred] forService:@"Shukofukurou-IOS" account:keychainidentifier];
-    //[AFOAuthCredential storeCredential:cred withIdentifier:keychainidentifier];
+    [AFOAuthCredential storeCredential:cred withIdentifier:keychainidentifier];
     switch (service) {
         case 2:
             _KitsuCredential = [AFOAuthCredential retrieveCredentialWithIdentifier:keychainidentifier];
@@ -109,8 +104,7 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
         default:
             return false;
     }
-    bool success = [SAMKeychain deletePasswordForService:@"Shukofukurou-IOS" account:keychainidentifier];
-    //bool success = [AFOAuthCredential deleteCredentialWithIdentifier:keychainidentifier];
+    bool success = [AFOAuthCredential deleteCredentialWithIdentifier:keychainidentifier];
     switch (service) {
         case 2:
             _KitsuCredential = nil;
@@ -122,29 +116,13 @@ NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
     return success;
 }
 
-- (NSData *)convertCredentialToJSONData:(AFOAuthCredential *)cred {
-    NSMutableDictionary *userToken = [NSMutableDictionary new];
-    userToken[@"access_token"] = cred.accessToken;
-    userToken[@"refresh_token"] = cred.refreshToken;
-    userToken[@"type"] = cred.tokenType;
-    NSDate * expiration = [cred getExpirationDate];
-    userToken[@"expiration"] = @(expiration.timeIntervalSince1970);
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userToken
-                                                       options:(NSJSONWritingOptions)    (NSJSONWritingPrettyPrinted)
-                                                         error:&error];
-    if (!jsonData) {
-        return nil;
+- (void)fixkeychainaccessability {
+    if (_AniListCredential) {
+        [AFOAuthCredential storeCredential:_AniListCredential withIdentifier:kAniListKeychainIdentifier];
     }
-    return jsonData;
-}
-
-- (AFOAuthCredential *)convertJsonDataToCredential:(NSData *)jsonData {
-    NSError *error;
-    NSDictionary *userToken = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
-    AFOAuthCredential *cred = [[AFOAuthCredential alloc] initWithOAuthToken:userToken[@"access_token"] tokenType:userToken[@"type"]];
-    NSDate *tokenExpireDate = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)userToken[@"expiration"]).intValue];
-    [cred setRefreshToken:userToken[@"refresh_token"] expiration:tokenExpireDate];
-    return cred;
+    if (_KitsuCredential) {
+        [AFOAuthCredential storeCredential:_KitsuCredential withIdentifier:kKitsuKeychainIdentifier];
+    }
+    [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"FixKeychainItems"];
 }
 @end

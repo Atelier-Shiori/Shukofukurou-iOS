@@ -279,6 +279,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="3HD-AE-NkY"/>
+                                                    <constraint firstAttribute="width" constant="161" id="FYP-Pe-M7r"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <nil key="textColor"/>
@@ -288,6 +289,7 @@
                                                 <rect key="frame" x="0.0" y="23" width="161" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="CR5-d8-Bja"/>
+                                                    <constraint firstAttribute="width" constant="161" id="Wyj-nd-XHJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <nil key="textColor"/>
@@ -297,11 +299,40 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nm4-LU-rGI">
+                                <rect key="frame" x="250" y="70" width="60" height="16"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="Tzu-Bv-nzl">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="1Rp-U8-Jan"/>
+                                            <constraint firstAttribute="width" constant="16" id="1q8-eI-TVO"/>
+                                            <constraint firstAttribute="height" constant="16" id="OWw-hT-bd4"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="z9a-rY-z83"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQm-nO-JQf">
+                                        <rect key="frame" x="26" y="0.0" width="34" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="1CD-z5-pu8"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="QHd-FO-ZAf"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="STS-Kk-bFm"/>
+                                            <constraint firstAttribute="height" constant="16" id="YCr-zw-gob"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="J8w-Dp-9fh" firstAttribute="leading" secondItem="rej-K6-hZP" secondAttribute="leading" id="25p-sP-4tE"/>
+                            <constraint firstItem="nm4-LU-rGI" firstAttribute="top" secondItem="rej-K6-hZP" secondAttribute="top" constant="6" id="7L8-ge-cuB"/>
+                            <constraint firstItem="rej-K6-hZP" firstAttribute="top" secondItem="HHo-Mw-Y0l" secondAttribute="topMargin" constant="-4" id="A44-RN-C0V"/>
                             <constraint firstItem="J8w-Dp-9fh" firstAttribute="trailing" secondItem="rej-K6-hZP" secondAttribute="trailing" id="GvB-xu-1Jb"/>
+                            <constraint firstItem="rej-K6-hZP" firstAttribute="trailing" secondItem="nm4-LU-rGI" secondAttribute="trailing" constant="10" id="YTh-Kl-tmz"/>
                             <constraint firstItem="HHo-Mw-Y0l" firstAttribute="top" secondItem="rej-K6-hZP" secondAttribute="top" constant="4" id="df5-PZ-rf5"/>
                             <constraint firstItem="J8w-Dp-9fh" firstAttribute="top" secondItem="rej-K6-hZP" secondAttribute="top" id="ilw-g2-Kte"/>
                             <constraint firstItem="HHo-Mw-Y0l" firstAttribute="leading" secondItem="rej-K6-hZP" secondAttribute="leading" constant="16" id="onK-u4-hrC"/>
@@ -337,6 +368,8 @@
                         <outlet property="navigationitem" destination="RZa-oa-qRJ" id="jVm-KY-FuN"/>
                         <outlet property="optionsitembaritem" destination="WUv-95-hSt" id="Myu-Gf-pQ6"/>
                         <outlet property="posterImage" destination="rb0-sw-NtN" id="bgs-Mx-gic"/>
+                        <outlet property="scoreimage" destination="Tzu-Bv-nzl" id="b3h-il-v2E"/>
+                        <outlet property="scorelabel" destination="FQm-nO-JQf" id="yZa-0o-1s1"/>
                         <outlet property="shareitembaritem" destination="zsL-iI-aqD" id="MF5-5e-lZg"/>
                         <outlet property="tableview" destination="J8w-Dp-9fh" id="uo2-Rx-REg"/>
                         <outlet property="titleinfobaritem" destination="Ulf-p5-uPL" id="ETf-Bu-tyh"/>

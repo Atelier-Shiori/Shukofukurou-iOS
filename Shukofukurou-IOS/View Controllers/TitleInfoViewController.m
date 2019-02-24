@@ -48,6 +48,8 @@
 @property (strong) MBProgressHUD *hud;
 @property bool setthemecolors;
 @property bool refreshing;
+@property (strong, nonatomic) IBOutlet UILabel *scorelabel;
+@property (strong, nonatomic) IBOutlet UIImageView *scoreimage;
 @end
 
 @implementation TitleInfoViewController
@@ -86,8 +88,10 @@
         ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
         self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
         self.tableview.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        self.scoreimage.tintColor = darkmode ? current.tintColor : current.textColor;
         self.titlestatus.textColor = current.textColor;
         self.titletype.textColor = current.textColor;
+        self.scorelabel.textColor = current.textColor;
         int synopsissection = 0;
         for (NSString *section in _sections) {
             if ([section isEqualToString:@"Synopsis"]) {
@@ -794,7 +798,9 @@
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Hashtag" withValue:titleinfo[@"hashtag"] withCellType:cellTypeInfo]];
     }
     if (titleinfo[@"members_score"] != nil || ((NSNumber *)titleinfo[@"members_score"]).intValue > 0) {
-        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:[NSString stringWithFormat:@"%.2f", ((NSNumber *)titleinfo[@"members_score"]).floatValue] withCellType:cellTypeInfo]];
+        NSString *scorestring = [NSString stringWithFormat:@"%.2f", ((NSNumber *)titleinfo[@"members_score"]).floatValue];
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:scorestring withCellType:cellTypeInfo]];
+        _scorelabel.text = scorestring;
     }
     NSNumber *popularity = titleinfo[@"popularity_rank"];
     if (popularity.intValue > 0) {
@@ -862,7 +868,9 @@
     }
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Genres" withValue:genres withCellType:cellTypeInfoExpand]];
     if (titleinfo[@"members_score"] != nil || ((NSNumber *)titleinfo[@"members_score"]).intValue > 0) {
-        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:[NSString stringWithFormat:@"%.2f", ((NSNumber *)titleinfo[@"members_score"]).floatValue] withCellType:cellTypeInfo]];
+        NSString *scorestring = [NSString stringWithFormat:@"%.2f", ((NSNumber *)titleinfo[@"members_score"]).floatValue];
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:scorestring withCellType:cellTypeInfo]];
+        _scorelabel.text = scorestring;
     }
     NSNumber *popularity = titleinfo[@"popularity_rank"];
     if (popularity.intValue > 0) {
