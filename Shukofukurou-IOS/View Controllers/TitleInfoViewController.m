@@ -68,6 +68,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"EntryUpdated" object:nil];
     _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
     [self setToolbar];
 }
@@ -130,6 +131,13 @@
     }
     else if ([notification.name isEqualToString:@"ThemeChanged"]) {
         _setthemecolors = false;
+    }
+    else if ([notification.name isEqualToString:@"EntryUpdated"]) {
+        NSDictionary *info = notification.object;
+        if (((NSNumber *)info[@"id"]).intValue == _titleid && ((NSNumber *)info[@"type"]).intValue == _currenttype) {
+            [self updateUserEntry];
+            [_tableview reloadData];
+        }
     }
 }
 

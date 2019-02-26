@@ -762,6 +762,7 @@
                 [anm removeIgnoreNotifyingTitle:titleid withService:sourceserviceid];
             }
             [self reloadList];
+            [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(self.listtype), @"id": @(titleid)}];
         } error:^(NSError *error) {
         }];
     }];
@@ -844,6 +845,7 @@
                 break;
         }
         [self reloadList];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(self.listtype), @"id": entry[@"id"]}];
     }
     error:^(NSError * error) {
         NSLog(@"%@", error.localizedDescription);
@@ -927,6 +929,7 @@
                 break;
         }
         [self reloadList];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(self.listtype), @"id": entry[@"id"]}];
     } error:^(NSError *error) {
         NSLog(@"%@", error.localizedDescription);
     }];
@@ -1041,6 +1044,7 @@
      __weak ListViewController *weakSelf = self;
     advedit.entryUpdated = ^(int listtype) {
         [weakSelf reloadList];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(listtype), @"id": entry[@"id"]}];
     };
     navController.viewControllers = @[advedit];
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
