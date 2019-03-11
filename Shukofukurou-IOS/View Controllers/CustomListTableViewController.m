@@ -116,12 +116,12 @@
     _cancelbtn.enabled = NO;
     _savebtn.enabled = NO;
     __weak CustomListTableViewController *weakSelf = self;
-    [AniList modifyCustomLists:_entryid withCustomLists:[self generateCustomListArray] completion:^(id responseObject) {
+    [listservice.sharedInstance.anilistManager modifyCustomLists:_entryid withCustomLists:[self generateCustomListArray] completion:^(id responseObject) {
         weakSelf.cancelbtn.enabled = YES;
         weakSelf.savebtn.enabled = YES;
         if (responseObject[@"data"] != [NSNull null]) {
             NSString *customliststr = [weakSelf generateCustomListStringWithArray:responseObject[@"data"][@"SaveMediaListEntry"][@"customLists"]];
-            [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr, @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice getCurrentServiceID]]} withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:weakSelf.currenttype withId:weakSelf.entryid withIdType:1];
+            [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr, @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice.sharedInstance getCurrentServiceID]]} withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:weakSelf.currenttype withId:weakSelf.entryid withIdType:1];
             switch (weakSelf.currenttype) {
                 case 0:
                     [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];

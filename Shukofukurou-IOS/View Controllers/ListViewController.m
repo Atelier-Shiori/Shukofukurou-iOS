@@ -52,7 +52,7 @@
     __weak ListViewController *weakSelf = self;
     [self restoreSelectedListFromDefaults];
     [self setViewTitle];
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         // Load List
         [self retrieveList:[NSUserDefaults.standardUserDefaults boolForKey:@"refreshlistonstart"] completion:^(bool success) {
             [weakSelf.tableView reloadData];
@@ -165,11 +165,11 @@
         else {
             [self showloadingview:YES];
         }
-        [listservice retrieveownListWithType:_listtype completion:^(id responseObject) {
+        [listservice.sharedInstance retrieveownListWithType:_listtype completion:^(id responseObject) {
             [self saveEntriesWithDictionary:responseObject withType:self.listtype];
             // populate list
             [self reloadList];
-            if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice getCurrentServiceID]) {
+            if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice.sharedInstance getCurrentServiceID]) {
                 AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
                 [anm checknotifications:^(bool success) {
                     [self.refreshControl endRefreshing];
@@ -277,7 +277,7 @@
     [self restoreSelectedListFromDefaults];
     [self setViewTitle];
     __weak ListViewController *weakSelf = self;
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         // Load List
         [self retrieveList:[NSUserDefaults.standardUserDefaults boolForKey:@"refreshlistonstart"] completion:^(bool success) {
             [weakSelf.tableView reloadData];
@@ -296,37 +296,37 @@
 #pragma mark helpers
 
 - (bool)hasListEntriesWithType:(int)type {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            return [AtarashiiListCoreData hasListEntriesWithUserName:[listservice getCurrentServiceUsername] withService:0 withType:_listtype];
+            return [AtarashiiListCoreData hasListEntriesWithUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:0 withType:_listtype];
         case 2:
         case 3:
-            return [AtarashiiListCoreData hasListEntriesWithUserID:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:_listtype];
+            return [AtarashiiListCoreData hasListEntriesWithUserID:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:_listtype];
         default:
             return false;
     }
 }
 
 - (NSArray *)retrieveEntriesWithType:(int)type withFilterPredicate:(NSPredicate *)predicate {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            return [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:type withPredicate:predicate];
+            return [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:type withPredicate:predicate];
         case 2:
         case 3:
-            return [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type withPredicate:predicate];
+            return [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type withPredicate:predicate];
         default:
             return nil;
     }
 }
 
 - (void)saveEntriesWithDictionary:(NSDictionary *)data withType:(int)type {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:type];
+            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
             break;
         case 2:
         case 3:
-            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
             break;
         default:
             break;
@@ -335,7 +335,7 @@
 
 - (void)setSelectedListToDefaults {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (_listtype == Anime) {
                 [defaults setValue:_selectedlist forKey:@"myanimelist-selectedanimelist"];
@@ -372,7 +372,7 @@
 
 - (void)restoreSelectedListFromDefaults {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (_listtype == Anime) {
                 _selectedlist = [defaults valueForKey:@"myanimelist-selectedanimelist"];
@@ -447,7 +447,7 @@
         aentrycell.title.text = entry[@"title"];
         aentrycell.progress.text = [NSString stringWithFormat:@"Episode: %@/%@", entry[@"watched_episodes"], entry[@"episodes"]];
         NSString *score = @"";
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 score = entry[@"score"];
                 break;
@@ -466,7 +466,7 @@
         // Geneerate Swipe Cells
         // Left
         __weak ListViewController *weakSelf = self;
-        int currentservice = [listservice getCurrentServiceID];
+        int currentservice = [listservice.sharedInstance getCurrentServiceID];
         aentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
@@ -559,7 +559,7 @@
         mentrycell.progress.text = [NSString stringWithFormat:@"Chapters: %@/%@", entry[@"chapters_read"], entry[@"chapters"]];
         mentrycell.progressVolumes.text = [NSString stringWithFormat:@"Volumes: %@/%@", entry[@"volumes_read"], entry[@"volumes"]];
         NSString *score = @"";
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 score = entry[@"score"];
                 break;
@@ -579,7 +579,7 @@
         // Geneerate Swipe Cells
         // Left
         __weak ListViewController *weakSelf = self;
-        int currentservice = [listservice getCurrentServiceID];
+        int currentservice = [listservice.sharedInstance getCurrentServiceID];
         mentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
@@ -728,7 +728,7 @@
 - (void)deleteTitle:(int)titleid withInfo:(NSDictionary *)info {
     __weak ListViewController *weakSelf = self;
     __block int ntitleid = 0;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             ntitleid = titleid;
             break;
@@ -742,20 +742,20 @@
     UIAlertController *prompt = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Are you sure you want to delete %@ from your list?", info[@"title"]] message:@"Once you delete this title, this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         // Delete Title
-        [listservice removeTitleFromList:ntitleid withType:weakSelf.listtype completion:^(id responseObject) {
-            switch ([listservice getCurrentServiceID]) {
+        [listservice.sharedInstance removeTitleFromList:ntitleid withType:weakSelf.listtype completion:^(id responseObject) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
-                    [AtarashiiListCoreData removeSingleEntrywithUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:weakSelf.listtype withId:ntitleid withIdType:0];
+                    [AtarashiiListCoreData removeSingleEntrywithUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:weakSelf.listtype withId:ntitleid withIdType:0];
                     break;
                 case 2:
                 case 3:
-                    [AtarashiiListCoreData removeSingleEntrywithUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:weakSelf.listtype withId:ntitleid withIdType:1];
+                    [AtarashiiListCoreData removeSingleEntrywithUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:weakSelf.listtype withId:ntitleid withIdType:1];
                     break;
                 default:
                     break;
             }
             // Check Notifications
-            if ([AiringNotificationManager airingNotificationServiceSource] == [listservice getCurrentServiceID]) {
+            if ([AiringNotificationManager airingNotificationServiceSource] == [listservice.sharedInstance getCurrentServiceID]) {
                 AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
                 int sourceserviceid = [AiringNotificationManager airingNotificationServiceSource];
                 [anm removeNotifyingTitle:titleid withService:sourceserviceid];
@@ -773,7 +773,7 @@
 }
 
 - (void)incrementProgress:(NSDictionary *)entry {
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     int titleid = -1;
     switch (currentservice) {
         case 1:
@@ -833,15 +833,15 @@
             break;
     }
     int score = ((NSNumber *)entry[@"score"]).intValue;;
-    [listservice updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
+        NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]};
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:titleid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:0 withId:titleid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:titleid withIdType:1];
                 break;
         }
         [self reloadList];
@@ -853,7 +853,7 @@
 }
 
 - (void)performMangaIncrement:(NSDictionary *)entry volumeIncrement:(bool)volumeIncrement {
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     int titleid = -1;
     switch (currentservice) {
         case 1:
@@ -917,15 +917,15 @@
             break;
     }
     int score = ((NSNumber *)entry[@"score"]).intValue;;
-    [listservice updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
-        NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice getCurrentServiceID]]};
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
+        NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice.sharedInstance getCurrentServiceID]]};
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:titleid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:1 withId:titleid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:titleid withIdType:1];
                 break;
         }
         [self reloadList];
@@ -1008,13 +1008,13 @@
 
 - (void)showOtherOptions:(NSDictionary *)entry withIndexPath:(NSIndexPath *)indexpath {
     int titleid = ((NSNumber *)entry[@"id"]).intValue;
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexpath];
     options.popoverPresentationController.sourceView = cell;
     options.popoverPresentationController.sourceRect = cell.bounds;
     options.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
-    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice.sharedInstance currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self performViewOnListSite:titleid];
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -1085,7 +1085,7 @@
 
 # pragma mark helpers
 - (NSString *)getTitleURL:(int)titleid {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (_listtype == Anime){
                 return [NSString stringWithFormat:@"https://myanimelist.net/anime/%i",titleid];

@@ -1,0 +1,4 @@
+[submodule "Dependencies/Hakuchou"]
+	path = Dependencies/Hakuchou
+	url = https://github.com/Atelier-Shiori/Hakuchou.git
+	branch = master

@@ -104,29 +104,29 @@
     _currentdistribution = @[];
     _ratinglabels = @[@"10", @"9", @"8", @"7", @"6", @"5", @"4", @"3", @"2", @"1"];
     _sections = @[@"Rating", @"Status", @"Progress"];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            anime = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime];
+            anime = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime];
             break;
         case 2:
         case 3:
-            anime = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime];
+            anime = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime];
             break;
     }
-    _animescoredistribution = [self populateScores:anime[@"anime"] withService:[listservice getCurrentServiceID] withType:0];
+    _animescoredistribution = [self populateScores:anime[@"anime"] withService:[listservice.sharedInstance getCurrentServiceID] withType:0];
     [self populatestatuscounts:anime[@"anime"] type:0];
     _animestats[@"Progress"] = @[[self populateTotalEps:anime[@"anime"]] , [[EntryCellInfo alloc] initCellWithTitle:@"Days Spent" withValue:[NSString stringWithFormat:@"%.02f", ((NSNumber *)anime[@"statistics"][@"days"]).floatValue] withCellType:cellTypeInfo]];
     NSDictionary *manga;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            manga = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga];
+            manga = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga];
             break;
         case 2:
         case 3:
-            manga = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga];
+            manga = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga];
             break;
     }
-    _mangascoredistribution = [self populateScores:manga[@"manga"] withService:[listservice getCurrentServiceID] withType:1];
+    _mangascoredistribution = [self populateScores:manga[@"manga"] withService:[listservice.sharedInstance getCurrentServiceID] withType:1];
     [self populatestatuscounts:manga[@"manga"] type:1];
     [self populateTotalVolandChaps:manga[@"manga"]];
     //[_mangastats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Days Spent" withValue:[NSString stringWithFormat:@"%.02f", ((NSNumber *)manga[@"statistics"][@"days"]).floatValue] withCellType:cellTypeInfo]];

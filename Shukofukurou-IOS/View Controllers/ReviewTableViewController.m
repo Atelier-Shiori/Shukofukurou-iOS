@@ -35,7 +35,7 @@
     [self loadTheme];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"ThemeChanged" object:nil];
     
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2:
             self.navigationItem.title = @"Reactions";
             break;
@@ -61,9 +61,9 @@
         _type = type;
     }
     self.navigationItem.hidesBackButton = YES;
-    if ([listservice getCurrentServiceID] == 2) {
+    if ([listservice.sharedInstance getCurrentServiceID] == 2) {
         self.loadingReactions = YES;
-        [Kitsu retrieveLimitedReviewsForTitle:titleid withType:type withPageOffset:_nextPageOffset completion:^(id responseObject) {
+        [listservice.sharedInstance .kitsuManager retrieveLimitedReviewsForTitle:titleid withType:type withPageOffset:_nextPageOffset completion:^(id responseObject) {
             [self.reviews addObjectsFromArray:responseObject[@"data"]];
             NSDictionary *pageInfo = responseObject[@"pageInfo"];
             if (((NSNumber *)pageInfo[@"nextPage"]).boolValue) {
@@ -88,8 +88,8 @@
     }
     else {
         [self showloadingview:YES];
-        [listservice retrieveReviewsForTitle:titleid withType:type completion:^(id responseObject) {
-            switch ([listservice getCurrentServiceID]) {
+        [listservice.sharedInstance retrieveReviewsForTitle:titleid withType:type completion:^(id responseObject) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                 case 3: {
                     [self.reviews addObjectsFromArray:responseObject];
@@ -128,14 +128,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"normalcell" forIndexPath:indexPath];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2:
             return [self generateReactionCellWithtableView:tableView cellForRowAtIndexPath:indexPath];
         case 1:
         case 3: {
             NSDictionary *review = _reviews[indexPath.row];
             cell.textLabel.text = review[@"username"];
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     cell.detailTextLabel.text = ((NSNumber *)review[@"rating"]).stringValue;
                     break;

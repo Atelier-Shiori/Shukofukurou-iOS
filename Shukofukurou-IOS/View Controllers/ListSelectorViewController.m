@@ -40,7 +40,7 @@
     _listtype = listtype;
     [_lists removeAllObjects];
     _lists[@"Normal Lists"] = [self generateNormalListCounts:list];
-    if ([listservice getCurrentServiceID] == 3) {
+    if ([listservice.sharedInstance getCurrentServiceID] == 3) {
         _lists[@"Custom Lists"] = [self generateCustomListsCount:list];
     }
     _listsectionTitles = _lists.allKeys;

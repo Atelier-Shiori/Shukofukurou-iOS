@@ -47,7 +47,7 @@
     _currenttype = type;
     self.navigationItem.hidesBackButton = YES;
     [self showloadingview:YES];
-    [listservice retrieveStaff:titleid withType:type completion:^(id responseObject) {
+    [listservice.sharedInstance retrieveStaff:titleid withType:type completion:^(id responseObject) {
         [self generateStaffList:responseObject];
         self.navigationItem.hidesBackButton = NO;
         [self showloadingview:NO];
@@ -139,7 +139,7 @@
     CharacterDetailViewController *characterdetailvc = [self.storyboard instantiateViewControllerWithIdentifier:@"characterdetail"];
     [self.navigationController pushViewController:characterdetailvc animated:YES];
     if ([cellType isEqualToString:@"Characters"]) {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
                 [characterdetailvc populateCharacterData:entry];
                 break;

@@ -60,7 +60,7 @@
 }
 
 - (void)populateReviewData:(NSDictionary *)review withType:(int)type {
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     _type = type;
     self.navigationItem.title = review[@"username"];
     NSString *score = @"0";

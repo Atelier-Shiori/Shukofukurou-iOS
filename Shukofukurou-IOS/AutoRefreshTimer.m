@@ -72,7 +72,7 @@
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
         if (success) {
-            if ([defaults boolForKey:@"refreshautomatically"] && [listservice checkAccountForCurrentService]) {
+            if ([defaults boolForKey:@"refreshautomatically"] && [listservice.sharedInstance checkAccountForCurrentService]) {
                 if (![defaults valueForKey:@"nextlistrefresh"] || ((NSDate *)[defaults valueForKey:@"nextlistrefresh"]).timeIntervalSinceNow < 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeRefreshList" object:nil];

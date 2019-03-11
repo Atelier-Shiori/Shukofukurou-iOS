@@ -65,11 +65,11 @@
 */
 
 - (void)setLoggedinUser {
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         _logintoolbarbtn.title = @"Logout";
         _optionsbuttonitem.enabled = YES;
-        _username.text = [listservice getCurrentServiceUsername];
-        NSString *avatarurl = [listservice getCurrentUserAvatar];
+        _username.text = [listservice.sharedInstance getCurrentServiceUsername];
+        NSString *avatarurl = [listservice.sharedInstance getCurrentUserAvatar];
         if (avatarurl.length > 0) {
             [_avatar sd_setImageWithURL:[NSURL URLWithString:avatarurl]];
         }
@@ -89,7 +89,7 @@
         _avatar.layer.masksToBounds = NO;
         _avatar.layer.borderWidth = 0;
     }
-    _servicelogo.image = [UIImage imageNamed:[listservice currentservicename].lowercaseString];
+    _servicelogo.image = [UIImage imageNamed:[listservice.sharedInstance currentservicename].lowercaseString];
 }
 
 - (IBAction)accountaction:(id)sender {
@@ -101,7 +101,7 @@
     [self setMainViewController];
     if ([_logintoolbarbtn.title isEqualToString:@"Login"]) {
         // Show Login Dialog
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 2:
                 [self performusernamepassLogin];
@@ -137,9 +137,9 @@
 
 - (void)performlogout {
     __weak MainSideBarViewController *weakself = self;
-    UIAlertController *prompt = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Are you sure you want to logout of %@?", [listservice currentservicename]] message:@"To use certain features, you need to login again." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *prompt = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Are you sure you want to logout of %@?", [listservice.sharedInstance currentservicename]] message:@"To use certain features, you need to login again." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        int currentservice = [listservice getCurrentServiceID];
+        int currentservice = [listservice.sharedInstance getCurrentServiceID];
         [weakself removeAccount:currentservice];
     }];
     UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
@@ -158,8 +158,8 @@
             accountexists = [Keychain checkaccount];
             break;
         case 2:
-            [Kitsu removeAccount];
-            accountexists = [Kitsu getFirstAccount];
+            [listservice.sharedInstance .kitsuManager removeAccount];
+            accountexists = [listservice.sharedInstance .kitsuManager getFirstAccount];
             if (!accountexists) {
                 [defaults setValue:@"" forKey:@"kitsu-username"];
                 [defaults setInteger:0 forKey:@"kitsu-ratingsystem"];
@@ -168,8 +168,8 @@
             }
             break;
         case 3:
-            [AniList removeAccount];
-            accountexists = [AniList getFirstAccount];
+            [listservice.sharedInstance .anilistManager removeAccount];
+            accountexists = [listservice.sharedInstance .anilistManager getFirstAccount];
             if (!accountexists) {
                 [defaults setValue:@(0) forKey:@"anilist-userid"];
                 [defaults setValue:@"" forKey:@"anilist-username"];
@@ -216,7 +216,7 @@
 - (IBAction)showoptions:(id)sender {
     [self setMainViewController];
     UIAlertController *options = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    bool isloggedin = [listservice checkAccountForCurrentService];
+    bool isloggedin = [listservice.sharedInstance checkAccountForCurrentService];
     __weak MainSideBarViewController *weakself = self;
     if (isloggedin) {
         [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View List Stats"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

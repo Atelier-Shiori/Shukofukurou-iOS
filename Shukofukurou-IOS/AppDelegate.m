@@ -13,7 +13,7 @@
 #import "AiringSchedule.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ThemeManager.h"
-#import "OAuthCredManager.h"
+#import <Hakuchou_iOS/OAuthCredManager.h>
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
@@ -62,7 +62,7 @@
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
         if (success) {
-            if ([NSUserDefaults.standardUserDefaults boolForKey:@"refreshautomatically"] && [listservice checkAccountForCurrentService]) {
+            if ([NSUserDefaults.standardUserDefaults boolForKey:@"refreshautomatically"] && [listservice.sharedInstance checkAccountForCurrentService]) {
                 if (![defaults valueForKey:@"nextlistrefresh"] || ((NSDate *)[defaults valueForKey:@"nextlistrefresh"]).timeIntervalSinceNow < 0) {
                     [[self.vcmanager getAnimeListRootViewController].lvc refreshListWithCompletionHandler:^(bool success) {
                         if (success) {
@@ -240,18 +240,18 @@
     // Retrieves updated user data
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     bool reloadeduserdata = false;
-    if ([Kitsu getFirstAccount]) {
+    if ([listservice.sharedInstance .kitsuManager getFirstAccount]) {
         bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
         if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
-            [Kitsu saveuserinfoforcurrenttoken];
+            [listservice.sharedInstance .kitsuManager saveuserinfoforcurrenttoken];
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
             reloadeduserdata = true;
         }
     }
-    if ([AniList getFirstAccount]) {
+    if ([listservice.sharedInstance .anilistManager getFirstAccount]) {
         bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
         if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
-            [AniList saveuserinfoforcurrenttoken];
+            [listservice.sharedInstance .anilistManager saveuserinfoforcurrenttoken];
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
              reloadeduserdata = true;
         }

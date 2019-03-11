@@ -61,15 +61,15 @@
 
 - (void)performAniListOAuthWithCallBackURL:(NSURL *)callbackURL {
     NSString *pin = [callbackURL.absoluteString stringByReplacingOccurrencesOfString:@"hiyokoauth://anilistauth/?code=" withString:@""];
-    [listservice verifyAccountWithUsername:@"" password:pin withServiceID:[listservice getCurrentServiceID] completion:^(id responseObject) {
+    [listservice.sharedInstance verifyAccountWithUsername:@"" password:pin withServiceID:[listservice.sharedInstance getCurrentServiceID] completion:^(id responseObject) {
         // Callback
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 3:
                 [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
                 break;
         }
         // Call delegate
-        [self.delegate authSuccessful:[listservice getCurrentServiceID]];
+        [self.delegate authSuccessful:[listservice.sharedInstance getCurrentServiceID]];
     } error:^(NSError *error) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"OAuth Failed" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

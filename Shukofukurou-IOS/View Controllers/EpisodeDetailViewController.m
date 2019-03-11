@@ -72,9 +72,9 @@
 - (void)retrieveEpisodeDetail:(int)episodeId withTitleId:(int)titleId {
     _episodeid = episodeId;
     _titleid = titleId;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2: {
-            [Kitsu retrieveEpisodeDetails:episodeId completion:^(id responseObject) {
+            [listservice.sharedInstance .kitsuManager retrieveEpisodeDetails:episodeId completion:^(id responseObject) {
                 [self populateData:responseObject];
             } error:^(NSError *error) {
                 NSLog(@"%@",error);

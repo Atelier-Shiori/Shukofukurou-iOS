@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
         self.delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2:
             self.navigationItem.title = @"Kitsu Login";
             break;
@@ -54,23 +54,23 @@
     }
 }
 - (void)performLogin {
-    [listservice verifyAccountWithUsername:_username.text password:_password.text withServiceID:[listservice getCurrentServiceID] completion:^(id responseObject) {
+    [listservice.sharedInstance verifyAccountWithUsername:_username.text password:_password.text withServiceID:[listservice.sharedInstance getCurrentServiceID] completion:^(id responseObject) {
         // Callback
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 2:
                 [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
                 break;
         }
         self.loginbtn.enabled = true;
         self.cancelbtn.enabled = true;
-        [self.delegate authSuccessful:[listservice getCurrentServiceID]];
+        [self.delegate authSuccessful:[listservice.sharedInstance getCurrentServiceID]];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     } error:^(NSError *error) {
             if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
-                [self showAlertMessage:[NSString stringWithFormat:@"Unable to login to %@", [listservice currentservicename]] withExplaination:@"Username or password is incorrect, please try again."];
+                [self showAlertMessage:[NSString stringWithFormat:@"Unable to login to %@", [listservice.sharedInstance currentservicename]] withExplaination:@"Username or password is incorrect, please try again."];
             }
             else {
-                [self showAlertMessage:[NSString stringWithFormat:@"Unable to login to %@ due to a unknown error.", [listservice currentservicename]] withExplaination:error.localizedDescription];
+                [self showAlertMessage:[NSString stringWithFormat:@"Unable to login to %@ due to a unknown error.", [listservice.sharedInstance currentservicename]] withExplaination:error.localizedDescription];
             }
         self.loginbtn.enabled = true;
         self.cancelbtn.enabled = true;
@@ -80,7 +80,7 @@
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)registeraccount:(id)sender {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2:
             [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://kitsu.io/"] options:@{} completionHandler:^(BOOL success) {}];
             break;
@@ -98,7 +98,7 @@
 
 - (IBAction)findLoginFrom1Password:(id)sender {
     NSString *URLString = @"";
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             URLString = @"https://www.myanimelist.net/";
             break;

@@ -73,7 +73,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)loadretrieving {
     [self showloadingview:YES];
-    [TrendingRetriever getTrendListForService:[listservice getCurrentServiceID] withType:(int)_typeselector.selectedSegmentIndex shouldRefresh:NO completion:^(id  _Nonnull responseobject) {
+    [TrendingRetriever getTrendListForService:[listservice.sharedInstance getCurrentServiceID] withType:(int)_typeselector.selectedSegmentIndex shouldRefresh:NO completion:^(id  _Nonnull responseobject) {
         self.items = responseobject;
         [self.collectionView reloadData];
         [self showloadingview:NO];
@@ -86,7 +86,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (IBAction)refresh:(UIRefreshControl *)sender {
     // Refreshes list
     [sender beginRefreshing];
-    [TrendingRetriever getTrendListForService:[listservice getCurrentServiceID] withType:(int)_typeselector.selectedSegmentIndex shouldRefresh:YES completion:^(id  _Nonnull responseobject) {
+    [TrendingRetriever getTrendListForService:[listservice.sharedInstance getCurrentServiceID] withType:(int)_typeselector.selectedSegmentIndex shouldRefresh:YES completion:^(id  _Nonnull responseobject) {
         self.items = responseobject;
         [self.collectionView reloadData];
         [sender endRefreshing];

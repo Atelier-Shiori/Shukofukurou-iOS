@@ -70,7 +70,7 @@
         // Reload Search Results
         long selectedsegment = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
         bool loadsearch = true;
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 2:
                 loadsearch = selectedsegment <= 1;
@@ -97,7 +97,7 @@
 - (void)performSearch:(NSString *)searchtext {
     __weak SearchViewController *weakSelf = self;
     if (_searchselector.selectedSegmentIndex <= 1) {
-        [listservice searchTitle:searchtext withType:_searchtype completion:^(id responseObject) {
+        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype completion:^(id responseObject) {
             [weakSelf clearsearch];
             [weakSelf.searchArray addObjectsFromArray:responseObject];
             [weakSelf.tableView reloadData];
@@ -106,7 +106,7 @@
         }];
     }
     else {
-        [AniList searchPeople:searchtext withType:(int)_searchselector.selectedSegmentIndex - 2 completion:^(id responseObject) {
+        [listservice.sharedInstance .anilistManager searchPeople:searchtext withType:(int)_searchselector.selectedSegmentIndex - 2 completion:^(id responseObject) {
             [weakSelf clearsearch];
             [weakSelf.searchArray addObjectsFromArray:responseObject];
             [weakSelf.tableView reloadData];
@@ -132,7 +132,7 @@
     NSArray *segmentitems;
     long selectedsegment = [NSUserDefaults.standardUserDefaults integerForKey:@"selectedsearchtype"];
     [_searchselector removeAllSegments];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
         case 2:
             segmentitems = @[@"Anime", @"Manga"];

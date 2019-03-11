@@ -18,7 +18,8 @@ If you want to help support us to reach the goal of $10 a month, which will allo
 ## Compiling Instructions
 **Note: Self-compiling is meant for developers and advanced users only. Apple limits provisioning profile that allows you to run your apps on your iOS device for 7 days without a paid Apple Developer membership. If you want to use the app for more than 7 days without having to reinstall it, consider downloading it from the App Store. You can support dvelopment for our App and you don't have to buy a $99 a year Apple Developer Program membership, unless you already have one.**
 
-1. Download or clone this repo.
+1. Download or clone this repo. Note that you need to retrieve the submodules or it won't compile.
+```git clone --recurse-submodules -j8 https://github.com/Atelier-Shiori/Shukofukurou-iOS.git```
 2. Go into the repo folder, open Shukofukurou-IOS > Backend > Constants in finder. Copy the "ClientConstants-sample.m" file and rename it to "ClientConstants.m".
 3. Specify the API keys and secrets for Kitsu and Anilist. Kitsu can be found [here](https://kitsu.docs.apiary.io/#) and AniList can be found [here](https://anilist.co/settings/developer/client/). The redirect URL should be set to "hiyokoauth://anilistauth/" for anilist.
 4. Open the project in Xcode. To install the app, choose the "Shukofukurou-IOS-OSS" as the target, and  select your device on the device popup menu on the XCode toolbar . **Note: If you are not using a paid Apple Developer Membership, the app will ony run for 7 days before you need to reinstall it.**
@@ -30,6 +31,7 @@ There is no plans for a macOS release since there is a macOS version, but anyone
 All the frameworks are included. Just build! Here are the frameworks that are used in this app so far:
 * ActionSheetPicker.framework
 * AFNetworking.framework
+* Hakuchou_iOS.framework
 * LGSideMenuController.framework
 * MGSwipeTableCell.framework
 * SAMKeychain.framework

@@ -83,7 +83,7 @@
 
 - (void)sidebarItemDidChange:(NSString *)identifier {
     if ([identifier isEqualToString:@"anime-list"]) {
-        if ([listservice checkAccountForCurrentService]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [self showAnimeListViewController];
         }
         else {
@@ -91,7 +91,7 @@
         }
     }
     else if ([identifier isEqualToString:@"manga-list"]) {
-        if ([listservice checkAccountForCurrentService]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [self showMangaListViewController];
         }
         else {

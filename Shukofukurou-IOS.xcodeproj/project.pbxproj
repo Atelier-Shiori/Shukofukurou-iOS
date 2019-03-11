@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59282C87220F46C40017DEF4 /* TitleIDMapper.m */; };
 		592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */; };
+		592B8CAF2236E17A007D43F4 /* Hakuchou_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */; };
+		592B8CB02236E17A007D43F4 /* Hakuchou_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592DA184216BCE88008C99B3 /* SortTableViewController.m */; };
 		592EB7772209D747004DE461 /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7742209D747004DE461 /* ScrollViewFrameAccessor.m */; };
 		592EB7782209D747004DE461 /* ViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7762209D747004DE461 /* ViewFrameAccessor.m */; };
@@ -55,8 +57,6 @@
 		5934E216220F7539002B8311 /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7742209D747004DE461 /* ScrollViewFrameAccessor.m */; };
 		5934E217220F7539002B8311 /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624172215563B5001995AD /* AtarashiiListCoreData.m */; };
 		5934E218220F7539002B8311 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
-		5934E219220F7539002B8311 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415F21556399001995AD /* AtarashiiDataObjects.m */; };
-		5934E21A220F7539002B8311 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */; };
 		5934E21B220F7539002B8311 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59282C87220F46C40017DEF4 /* TitleIDMapper.m */; };
 		5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A52155642D001995AD /* MainSideBarViewController.m */; };
 		5934E21D220F7539002B8311 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
@@ -64,13 +64,10 @@
 		5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F521556503001995AD /* ServiceSwitcherViewController.m */; };
 		5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
 		5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
-		5934E222220F7539002B8311 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C0862208A13A003DA0D6 /* OAuthCredManager.m */; };
 		5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */; };
 		5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
 		5934E225220F7539002B8311 /* ServiceSwitcherRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */; };
 		5934E226220F7539002B8311 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
-		5934E227220F7539002B8311 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417E215563CD001995AD /* Kitsu.m */; };
-		5934E228220F7539002B8311 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624165215563AB001995AD /* AniList.m */; };
 		5934E229220F7539002B8311 /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */; };
 		5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC69220926020050662A /* UIColor+GraphKit.m */; };
 		5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
@@ -108,18 +105,14 @@
 		5934E24B220F7539002B8311 /* TrendingCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */; };
 		5934E24C220F7539002B8311 /* GKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC702209266C0050662A /* GKBar.m */; };
 		5934E24D220F7539002B8311 /* TableViewCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */; };
-		5934E24E220F7539002B8311 /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */; };
 		5934E24F220F7539002B8311 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */; };
-		5934E250220F7539002B8311 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241552155638D001995AD /* AniListConstants.m */; };
 		5934E251220F7539002B8311 /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
 		5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DB215564CF001995AD /* MangaEntryTableViewCell.m */; };
 		5934E253220F7539002B8311 /* EntryCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D8215564CC001995AD /* EntryCellInfo.m */; };
-		5934E254220F7539002B8311 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */; };
 		5934E255220F7539002B8311 /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810D92191D645000C4B5C /* TrendingRetriever.m */; };
 		5934E256220F7539002B8311 /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		5934E257220F7539002B8311 /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
 		5934E258220F7539002B8311 /* SeasonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241DC215564D0001995AD /* SeasonCollectionViewCell.m */; };
-		5934E259220F7539002B8311 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624186215563D2001995AD /* KitsuListRetriever.m */; };
 		5934E25A220F7539002B8311 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
 		5934E25B220F7539002B8311 /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5934E25C220F7539002B8311 /* ListSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F421556502001995AD /* ListSelectorViewController.m */; };
@@ -175,13 +168,7 @@
 		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
 		596240C52155622F001995AD /* Shukofukurou_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240C42155622F001995AD /* Shukofukurou_IOSTests.m */; };
 		596241562155638D001995AD /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241532155638C001995AD /* ClientConstants.m */; };
-		596241572155638D001995AD /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241552155638D001995AD /* AniListConstants.m */; };
-		596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */; };
-		596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */; };
-		596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */; };
-		596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962415F21556399001995AD /* AtarashiiDataObjects.m */; };
 		5962416C215563AF001995AD /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624164215563AA001995AD /* AiringSchedule.m */; };
-		5962416D215563AF001995AD /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624165215563AB001995AD /* AniList.m */; };
 		5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624168215563AD001995AD /* AniListSeasonListGenerator.m */; };
 		5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624169215563AE001995AD /* AniListScoreConvert.m */; };
 		59624174215563B5001995AD /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624170215563B3001995AD /* Base64Category.m */; };
@@ -189,11 +176,9 @@
 		59624188215563D2001995AD /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624176215563C9001995AD /* Keychain.m */; };
 		59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */; };
 		5962418A215563D2001995AD /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417B215563CB001995AD /* Utility.m */; };
-		5962418B215563D2001995AD /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417E215563CD001995AD /* Kitsu.m */; };
 		5962418C215563D2001995AD /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624180215563CE001995AD /* listservice.m */; };
 		5962418E215563D2001995AD /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
 		5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624185215563D1001995AD /* RatingTwentyConvert.m */; };
-		59624190215563D2001995AD /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624186215563D2001995AD /* KitsuListRetriever.m */; };
 		5962419921556406001995AD /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419221556402001995AD /* AuthViewController.m */; };
 		596241A72155642E001995AD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A12155642B001995AD /* RootViewController.m */; };
 		596241A82155642E001995AD /* SideBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A22155642B001995AD /* SideBarCell.m */; };
@@ -253,7 +238,6 @@
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
-		5976C0872208A13A003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C0862208A13A003DA0D6 /* OAuthCredManager.m */; };
 		5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
@@ -287,6 +271,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		592B8CA92236E0BF007D43F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 590B5E77222D783F0099D056;
+			remoteInfo = Hakuchou;
+		};
+		592B8CAB2236E0BF007D43F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 590B5E87222D785F0099D056;
+			remoteInfo = "Hakuchou-iOS";
+		};
+		592B8CB12236E17A007D43F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 590B5E86222D785F0099D056;
+			remoteInfo = "Hakuchou-iOS";
+		};
 		5934E1EB220F7539002B8311 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
@@ -572,6 +577,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5962424A215565E9001995AD /* MGSwipeTableCell.framework in Embed Frameworks */,
+				592B8CB02236E17A007D43F4 /* Hakuchou_iOS.framework in Embed Frameworks */,
 				5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */,
 				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
 				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
@@ -589,6 +595,7 @@
 		592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
 		592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailViewController.m; sourceTree = "<group>"; };
 		592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 2.xcdatamodel"; sourceTree = "<group>"; };
+		592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Hakuchou.xcodeproj; sourceTree = "<group>"; };
 		592DA183216BCE88008C99B3 /* SortTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTableViewController.h; sourceTree = "<group>"; };
 		592DA184216BCE88008C99B3 /* SortTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
 		592EB7722209D747004DE461 /* ScrollViewFrameAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewFrameAccessor.h; sourceTree = "<group>"; };
@@ -651,21 +658,9 @@
 		5962411F21556336001995AD /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AFNetworking.xcodeproj; sourceTree = "<group>"; };
 		596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = LGSideMenuControllerFramework.xcodeproj; sourceTree = "<group>"; };
 		596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MGSwipeTableCell.xcodeproj; sourceTree = "<group>"; };
-		596241522155638B001995AD /* AniListConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
 		596241532155638C001995AD /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		596241542155638C001995AD /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
-		596241552155638D001995AD /* AniListConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
-		5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIKitsuStaffFormat.m; sourceTree = "<group>"; };
-		5962415921556396001995AD /* AtarashiiAPIListFormatKitsu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatKitsu.h; sourceTree = "<group>"; };
-		5962415A21556396001995AD /* AtarashiiAPIKitsuStaffFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIKitsuStaffFormat.h; sourceTree = "<group>"; };
-		5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatAniList.m; sourceTree = "<group>"; };
-		5962415C21556398001995AD /* AtarashiiAPIListFormatAniList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatAniList.h; sourceTree = "<group>"; };
-		5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatKitsu.m; sourceTree = "<group>"; };
-		5962415E21556399001995AD /* AtarashiiDataObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiDataObjects.h; sourceTree = "<group>"; };
-		5962415F21556399001995AD /* AtarashiiDataObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiDataObjects.m; sourceTree = "<group>"; };
 		59624164215563AA001995AD /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
-		59624165215563AB001995AD /* AniList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniList.m; sourceTree = "<group>"; };
-		59624166215563AC001995AD /* AniList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
 		59624167215563AD001995AD /* AniListSeasonListGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListSeasonListGenerator.h; sourceTree = "<group>"; };
 		59624168215563AD001995AD /* AniListSeasonListGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListSeasonListGenerator.m; sourceTree = "<group>"; };
 		59624169215563AE001995AD /* AniListScoreConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListScoreConvert.m; sourceTree = "<group>"; };
@@ -678,18 +673,14 @@
 		59624176215563C9001995AD /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
 		59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
 		59624178215563CA001995AD /* MyAnimeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimeList.h; sourceTree = "<group>"; };
-		59624179215563CA001995AD /* KitsuListRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KitsuListRetriever.h; sourceTree = "<group>"; };
 		5962417A215563CB001995AD /* listservice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listservice.h; sourceTree = "<group>"; };
 		5962417B215563CB001995AD /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		5962417D215563CD001995AD /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
-		5962417E215563CD001995AD /* Kitsu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kitsu.m; sourceTree = "<group>"; };
 		5962417F215563CE001995AD /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		59624180215563CE001995AD /* listservice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listservice.m; sourceTree = "<group>"; };
 		59624181215563CF001995AD /* NSString+HTMLtoNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLtoNSAttributedString.h"; sourceTree = "<group>"; };
-		59624182215563CF001995AD /* Kitsu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kitsu.h; sourceTree = "<group>"; };
 		59624184215563D0001995AD /* MyAnimeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimeList.m; sourceTree = "<group>"; };
 		59624185215563D1001995AD /* RatingTwentyConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
-		59624186215563D2001995AD /* KitsuListRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KitsuListRetriever.m; sourceTree = "<group>"; };
 		59624187215563D2001995AD /* RatingTwentyConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
 		5962419221556402001995AD /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
 		5962419321556403001995AD /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
@@ -782,8 +773,6 @@
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
-		5976C0852208A13A003DA0D6 /* OAuthCredManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAuthCredManager.h; sourceTree = "<group>"; };
-		5976C0862208A13A003DA0D6 /* OAuthCredManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAuthCredManager.m; sourceTree = "<group>"; };
 		5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou-IOS.entitlements"; sourceTree = "<group>"; };
 		5981223921935C7200117FA0 /* AiringNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5981223A21935C7200117FA0 /* AiringNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
@@ -869,6 +858,7 @@
 				5934E29B220F7572002B8311 /* StoreKit.framework in Frameworks */,
 				59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */,
 				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
+				592B8CAF2236E17A007D43F4 /* Hakuchou_iOS.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
 				59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */,
 				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
@@ -885,6 +875,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		592B8C912236E098007D43F4 /* Hakuchou */ = {
+			isa = PBXGroup;
+			children = (
+				592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */,
+			);
+			path = Hakuchou;
+			sourceTree = "<group>";
+		};
+		592B8CA52236E0BF007D43F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				592B8CAA2236E0BF007D43F4 /* Hakuchou.framework */,
+				592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		592EB75F2209D73A004DE461 /* FrameAccessor */ = {
 			isa = PBXGroup;
 			children = (
@@ -991,6 +998,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				592B8C912236E098007D43F4 /* Hakuchou */,
 				59B5BC32220DF88700F904B4 /* UIImageView-Letters */,
 				592EB7792209D756004DE461 /* MKFoundationKit */,
 				592EB75F2209D73A004DE461 /* FrameAccessor */,
@@ -1127,13 +1135,10 @@
 				5981223A21935C7200117FA0 /* AiringNotificationManager.m */,
 				5962416A215563AF001995AD /* AiringSchedule.h */,
 				59624164215563AA001995AD /* AiringSchedule.m */,
-				59624166215563AC001995AD /* AniList.h */,
-				59624165215563AB001995AD /* AniList.m */,
 				5962416B215563AF001995AD /* AniListScoreConvert.h */,
 				59624169215563AE001995AD /* AniListScoreConvert.m */,
 				59624167215563AD001995AD /* AniListSeasonListGenerator.h */,
 				59624168215563AD001995AD /* AniListSeasonListGenerator.m */,
-				596241502155636D001995AD /* AtarashiiDataFormatters */,
 				59624171215563B4001995AD /* AtarashiiListCoreData.h */,
 				59624172215563B5001995AD /* AtarashiiListCoreData.m */,
 				59624173215563B5001995AD /* Base64Category.h */,
@@ -1141,10 +1146,6 @@
 				5962415121556378001995AD /* Constants */,
 				5962417F215563CE001995AD /* Keychain.h */,
 				59624176215563C9001995AD /* Keychain.m */,
-				59624182215563CF001995AD /* Kitsu.h */,
-				5962417E215563CD001995AD /* Kitsu.m */,
-				59624179215563CA001995AD /* KitsuListRetriever.h */,
-				59624186215563D2001995AD /* KitsuListRetriever.m */,
 				5962417A215563CB001995AD /* listservice.h */,
 				59624180215563CE001995AD /* listservice.m */,
 				59624178215563CA001995AD /* MyAnimeList.h */,
@@ -1169,34 +1170,15 @@
 				5962417B215563CB001995AD /* Utility.m */,
 				594D09322202019E00A37B6B /* TableViewCellBackgroundView.h */,
 				594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */,
-				5976C0852208A13A003DA0D6 /* OAuthCredManager.h */,
-				5976C0862208A13A003DA0D6 /* OAuthCredManager.m */,
 				59B580D7220F334300EFE7AC /* UIViewThemed.h */,
 				59B580D8220F334300EFE7AC /* UIViewThemed.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
 		};
-		596241502155636D001995AD /* AtarashiiDataFormatters */ = {
-			isa = PBXGroup;
-			children = (
-				5962415A21556396001995AD /* AtarashiiAPIKitsuStaffFormat.h */,
-				5962415821556395001995AD /* AtarashiiAPIKitsuStaffFormat.m */,
-				5962415C21556398001995AD /* AtarashiiAPIListFormatAniList.h */,
-				5962415B21556397001995AD /* AtarashiiAPIListFormatAniList.m */,
-				5962415921556396001995AD /* AtarashiiAPIListFormatKitsu.h */,
-				5962415D21556398001995AD /* AtarashiiAPIListFormatKitsu.m */,
-				5962415E21556399001995AD /* AtarashiiDataObjects.h */,
-				5962415F21556399001995AD /* AtarashiiDataObjects.m */,
-			);
-			path = AtarashiiDataFormatters;
-			sourceTree = "<group>";
-		};
 		5962415121556378001995AD /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				596241522155638B001995AD /* AniListConstants.h */,
-				596241552155638D001995AD /* AniListConstants.m */,
 				596241542155638C001995AD /* ClientConstants.h */,
 				596241532155638C001995AD /* ClientConstants.m */,
 			);
@@ -1519,6 +1501,7 @@
 				59624248215565E3001995AD /* PBXTargetDependency */,
 				5962424C215565E9001995AD /* PBXTargetDependency */,
 				59B22D2C21FE630000627172 /* PBXTargetDependency */,
+				592B8CB22236E17A007D43F4 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou-IOS";
 			productName = "Shukofukurou-IOS";
@@ -1593,6 +1576,10 @@
 					ProjectRef = 5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */;
 				},
 				{
+					ProductGroup = 592B8CA52236E0BF007D43F4 /* Products */;
+					ProjectRef = 592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */;
+				},
+				{
 					ProductGroup = 596241442155634A001995AD /* Products */;
 					ProjectRef = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
 				},
@@ -1619,6 +1606,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		592B8CAA2236E0BF007D43F4 /* Hakuchou.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Hakuchou.framework;
+			remoteRef = 592B8CA92236E0BF007D43F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Hakuchou_iOS.framework;
+			remoteRef = 592B8CAB2236E0BF007D43F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		596241092155631F001995AD /* SAMKeychain.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1885,8 +1886,6 @@
 				5934E216220F7539002B8311 /* ScrollViewFrameAccessor.m in Sources */,
 				5934E217220F7539002B8311 /* AtarashiiListCoreData.m in Sources */,
 				5934E218220F7539002B8311 /* RelatedTableViewController.m in Sources */,
-				5934E219220F7539002B8311 /* AtarashiiDataObjects.m in Sources */,
-				5934E21A220F7539002B8311 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				5934E21B220F7539002B8311 /* TitleIDMapper.m in Sources */,
 				5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */,
 				5934E21D220F7539002B8311 /* ThemeManager.m in Sources */,
@@ -1894,13 +1893,10 @@
 				5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */,
 				5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */,
 				5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */,
-				5934E222220F7539002B8311 /* OAuthCredManager.m in Sources */,
 				5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */,
 				5934E225220F7539002B8311 /* ServiceSwitcherRootViewController.m in Sources */,
 				5934E226220F7539002B8311 /* main.m in Sources */,
-				5934E227220F7539002B8311 /* Kitsu.m in Sources */,
-				5934E228220F7539002B8311 /* AniList.m in Sources */,
 				5934E229220F7539002B8311 /* EpisodeDetailViewController.m in Sources */,
 				5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */,
 				5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */,
@@ -1938,18 +1934,14 @@
 				5934E24B220F7539002B8311 /* TrendingCollectionHeaderView.m in Sources */,
 				5934E24C220F7539002B8311 /* GKBar.m in Sources */,
 				5934E24D220F7539002B8311 /* TableViewCellBackgroundView.m in Sources */,
-				5934E24E220F7539002B8311 /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				5934E24F220F7539002B8311 /* MBProgressHUD.m in Sources */,
-				5934E250220F7539002B8311 /* AniListConstants.m in Sources */,
 				5934E251220F7539002B8311 /* TitleInfoCache.m in Sources */,
 				5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */,
 				5934E253220F7539002B8311 /* EntryCellInfo.m in Sources */,
-				5934E254220F7539002B8311 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				5934E255220F7539002B8311 /* TrendingRetriever.m in Sources */,
 				5934E256220F7539002B8311 /* CharacterDetailViewController.m in Sources */,
 				5934E257220F7539002B8311 /* AdvEditTableViewController.m in Sources */,
 				5934E258220F7539002B8311 /* SeasonCollectionViewCell.m in Sources */,
-				5934E259220F7539002B8311 /* KitsuListRetriever.m in Sources */,
 				5934E25A220F7539002B8311 /* ViewController.m in Sources */,
 				5934E25B220F7539002B8311 /* PersonTableViewCell.m in Sources */,
 				5934E25C220F7539002B8311 /* ListSelectorViewController.m in Sources */,
@@ -2000,8 +1992,6 @@
 				592EB7772209D747004DE461 /* ScrollViewFrameAccessor.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
-				596241632155639A001995AD /* AtarashiiDataObjects.m in Sources */,
-				596241612155639A001995AD /* AtarashiiAPIListFormatAniList.m in Sources */,
 				59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
 				59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */,
@@ -2009,14 +1999,11 @@
 				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
 				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
-				5976C0872208A13A003DA0D6 /* OAuthCredManager.m in Sources */,
 				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				59A7A7F2220F95FA009563CA /* TipJar.m in Sources */,
 				59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */,
 				5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */,
 				596240BB2155622F001995AD /* main.m in Sources */,
-				5962418B215563D2001995AD /* Kitsu.m in Sources */,
-				5962416D215563AF001995AD /* AniList.m in Sources */,
 				592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */,
 				595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */,
 				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
@@ -2054,19 +2041,15 @@
 				594810F521921FD0000C4B5C /* TrendingCollectionHeaderView.m in Sources */,
 				59B3AC742209266C0050662A /* GKBar.m in Sources */,
 				594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */,
-				596241602155639A001995AD /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				59A7E0522200B1C2002EE2EC /* MBProgressHUD.m in Sources */,
-				596241572155638D001995AD /* AniListConstants.m in Sources */,
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
-				596241622155639A001995AD /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,
 				59A7A7EF220F95C8009563CA /* SKProduct+LocalizedPrice.m in Sources */,
 				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
-				59624190215563D2001995AD /* KitsuListRetriever.m in Sources */,
 				5962422821556514001995AD /* ViewController.m in Sources */,
 				596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */,
 				5962421B21556514001995AD /* ListSelectorViewController.m in Sources */,
@@ -2090,6 +2073,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		592B8CB22236E17A007D43F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Hakuchou-iOS";
+			targetProxy = 592B8CB12236E17A007D43F4 /* PBXContainerItemProxy */;
+		};
 		5934E1EA220F7539002B8311 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SAMKeychain-iOS";

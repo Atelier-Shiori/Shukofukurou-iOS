@@ -28,9 +28,9 @@
 }
 
 - (void)loadEpisodeListForTitleId:(int)titleid {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2: {
-            [Kitsu retrieveEpisodesList:titleid completion:^(id responseObject) {
+            [listservice.sharedInstance.kitsuManager retrieveEpisodesList:titleid completion:^(id responseObject) {
                 self.episodes = responseObject;
                 if (self.episodes.count > 0) {
                     [self.tableView reloadData];

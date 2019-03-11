@@ -9,9 +9,9 @@
 #import "TrendingRetriever.h"
 #import <AFNetworking/AFNetworking.h>
 #import "AppDelegate.h"
-#import "AtarashiiAPIListFormatAniList.h"
+#import <Hakuchou_iOS/AtarashiiAPIListFormatAniList.h>
 #import "Utility.h"
-#import "AtarashiiAPIListFormatKitsu.h"
+#import <Hakuchou_iOS/AtarashiiAPIListFormatKitsu.h>
 
 @implementation TrendingRetriever
 + (NSManagedObjectContext *)managedObjectContext {

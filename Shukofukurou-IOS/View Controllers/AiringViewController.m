@@ -126,7 +126,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!self.tableView.refreshControl.refreshing) {
         NSDictionary *entry = _airinglist[indexPath.row];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
                 if (entry[@"idMal"] != [NSNull null]) {
                     [self showTitleView:((NSNumber *)entry[@"idMal"]).intValue];

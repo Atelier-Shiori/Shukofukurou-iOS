@@ -51,7 +51,7 @@
 }
 
 - (void)setcurrentservicestate {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             _myanimelistservicecell.accessoryType = UITableViewCellAccessoryCheckmark;
             _kitsuservicecell.accessoryType = UITableViewCellAccessoryNone;
@@ -78,7 +78,7 @@
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     int newindex = (int)indexPath.row+1;
-    int oldservice = [listservice getCurrentServiceID];
+    int oldservice = [listservice.sharedInstance getCurrentServiceID];
     [NSUserDefaults.standardUserDefaults setInteger:newindex forKey:@"currentservice"];
     [_delegate listserviceDidChange:oldservice newService:newindex];
     [self setcurrentservicestate];

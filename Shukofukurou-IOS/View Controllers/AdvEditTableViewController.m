@@ -48,7 +48,7 @@
     _currenttype = type;
     _titleid = titleid;
     NSDictionary *userentry = uentry ? uentry : nil;
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if (!userentry) {
         userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:titleid withService:currentservice withType:type];
     }
@@ -110,7 +110,7 @@
     }
     else if (cellEntry.type == cellTypeEntry) {
         NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
-        int currentservice = [listservice getCurrentServiceID];
+        int currentservice = [listservice.sharedInstance getCurrentServiceID];
         if (currentservice == 3 && ([anilistscoretype isEqualToString:@"POINT_100"] ||[anilistscoretype isEqualToString:@"POINT_10_DECIMAL"]) && [cellEntry.cellTitle isEqualToString:@"Score"]) {
             // Generate Advanced Score Cell
             return [self generateAdvScoreCell:cellEntry withTableView:tableView cellForRowAtIndexPath:indexPath];
@@ -144,7 +144,7 @@
     }
     else if ([cellInfo.cellTitle isEqualToString:@"Score"]) {
         cell.rawValue = ((NSNumber *)cellInfo.cellValue).intValue;
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 cell.detailTextLabel.text = @(cell.rawValue).stringValue;
                 break;
@@ -273,7 +273,7 @@
 #pragma mark Generate Cell Info
 - (NSArray *)generateUserEntryAnimeArray:(NSDictionary *)entry {
     NSMutableArray *entrycellarray = [NSMutableArray new];
-    int currentService = [listservice getCurrentServiceID];
+    int currentService = [listservice.sharedInstance getCurrentServiceID];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Episode" withValue:entry[@"watched_episodes"] withMaximumCellValue:((NSNumber *)entry[@"episodes"]).intValue withCellType:cellTypeProgressEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Status" withValue:entry[@"watched_status"] withCellType:cellTypeEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:entry[@"score"] withCellType:cellTypeEntry]];
@@ -296,7 +296,7 @@
 
 - (NSArray *)generateUserEntryMangaArray:(NSDictionary *)entry {
     NSMutableArray *entrycellarray = [NSMutableArray new];
-    int currentService = [listservice getCurrentServiceID];
+    int currentService = [listservice.sharedInstance getCurrentServiceID];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Chapter" withValue:entry[@"chapters_read"] withMaximumCellValue:((NSNumber *)entry[@"chapters"]).intValue withCellType:cellTypeProgressEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Volume" withValue:entry[@"volumes_read"] withMaximumCellValue:((NSNumber *)entry[@"volumes"]).intValue withCellType:cellTypeProgressEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Status" withValue:entry[@"read_status"] withCellType:cellTypeEntry]];
@@ -460,7 +460,7 @@
     NSDateFormatter *df = [NSDateFormatter new];
     df.dateFormat = @"yyyy-MM-dd";
     //NSString *tags = @"";
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             /*
              if (((NSArray *)_tagsfield.objectValue).count > 0){
@@ -539,7 +539,7 @@
     NSDateFormatter *df = [NSDateFormatter new];
     df.dateFormat = @"yyyy-MM-dd";
     //NSString *tags = @"";
-    int currentService = [listservice getCurrentServiceID];
+    int currentService = [listservice.sharedInstance getCurrentServiceID];
     /*
      if (currentService == 1) {
      if (((NSArray *)_tagsfield.objectValue).count > 0){
@@ -602,7 +602,7 @@
     NSDictionary *entry = [self generateUpdateDictionary];
     NSDictionary * extraparameters = [self generateExtraFieldsWithType:_currenttype withUpdateDictionary:entry];
     int selectededitid = 0;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             selectededitid = self.titleid;
             break;
@@ -619,16 +619,16 @@
     _savebtn.enabled = NO;
     _cancelbtn.enabled = NO;
     [self showloadingview:YES];
-    [listservice updateAnimeTitleOnList:selectededitid withEpisode:((NSNumber *)entry[@"episode"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
-        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]}];
+    [listservice.sharedInstance updateAnimeTitleOnList:selectededitid withEpisode:((NSNumber *)entry[@"episode"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
+        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]}];
         [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:weakSelf.titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:weakSelf.titleid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:0 withId:weakSelf.entryid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:weakSelf.entryid withIdType:1];
                 break;
         }
         weakSelf.entryUpdated(weakSelf.currenttype);
@@ -654,7 +654,7 @@
     NSDictionary *entry = [self generateUpdateDictionary];
     NSDictionary * extraparameters = [self generateExtraFieldsWithType:_currenttype withUpdateDictionary:entry];
     int selectededitid = 0;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             selectededitid = self.titleid;
             break;
@@ -671,16 +671,16 @@
     _savebtn.enabled = NO;
     _cancelbtn.enabled = NO;
     [self showloadingview:YES];
-    [listservice updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
-        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]}];
+    [listservice.sharedInstance updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
+        NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]}];
         [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:selectededitid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:1 withId:selectededitid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:selectededitid withIdType:1];
                 break;
         }
         weakSelf.entryUpdated(weakSelf.currenttype);

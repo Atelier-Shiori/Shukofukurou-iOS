@@ -267,7 +267,7 @@
     NSArray *rawscorearray = [self getRawScoreArray];
     __block int actualscore = _rawValue;
     int selection = 0;
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if (currentservice == 3) {
         actualscore = [AniListScoreConvert convertScoreToRawActualScore:actualscore withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]].intValue;
     }
@@ -295,7 +295,7 @@
 - (NSArray *)getScoreMenuArray {
     NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
     int kitsuscoretype = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"];
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if (([anilistscoretype isEqualToString:@"POINT_10"] && currentservice == 3) || currentservice == 1) {
         return @[@"0 - No Score", @"10 - Masterpiece", @"9 - Great", @"8 - Very Good", @"7 - Good", @"6 - Fine", @"5 - Average", @"4 - Bad", @"3 - Very Bad", @"2 - Horrible", @"1 - Unwatchable"];
 
@@ -321,7 +321,7 @@
 - (NSArray *)getRawScoreArray {
     NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
     int kitsuscoretype = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"];
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if (([anilistscoretype isEqualToString:@"POINT_10"] && currentservice == 3) || currentservice == 1) {
         return @[@(0), @(10), @(9), @(8), @(7), @(6), @(5), @(4), @(3), @(2), @(1)];
     }

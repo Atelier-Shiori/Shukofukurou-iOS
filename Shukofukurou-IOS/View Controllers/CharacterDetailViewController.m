@@ -83,7 +83,7 @@
     _personid = personid;
     _persontype = personTypeCharacter;
     self.navigationItem.hidesBackButton = YES;
-    [AniList retrieveCharacterDetails:personid completion:^(id responseObject) {
+    [listservice.sharedInstance.anilistManager retrieveCharacterDetails:personid completion:^(id responseObject) {
         [self populateCharacterData:responseObject];
         self.navigationItem.hidesBackButton = NO;
     } error:^(NSError *error) {
@@ -102,7 +102,7 @@
     _personid = personid;
     _persontype = personTypeStaff;
     self.navigationItem.hidesBackButton = YES;
-    [listservice retrievePersonDetails:_personid completion:^(id responseObject) {
+    [listservice.sharedInstance retrievePersonDetails:_personid completion:^(id responseObject) {
         [self populatePersonData:responseObject];
         self.navigationItem.hidesBackButton = NO;
     } error:^(NSError *error) {
@@ -226,7 +226,7 @@
     __weak CharacterDetailViewController *weakSelf = self;
     bool isregularclass = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
     if (!isregularclass) {
-        [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice.sharedInstance currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [weakSelf performViewOnListSite];
         }]];
         [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -281,7 +281,7 @@
 }
 
 - (NSString *)getTitleURL {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (_persontype == personTypeStaff){
                 return [NSString stringWithFormat:@"https://myanimelist.net/people/%i" ,_personid];
@@ -432,7 +432,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellType = _sections[indexPath.section];
     NSDictionary *entry = _items[cellType][indexPath.row];
-    int currentlistservice = [listservice getCurrentServiceID];
+    int currentlistservice = [listservice.sharedInstance getCurrentServiceID];
     if ([cellType isEqualToString:@"Anime Staff Positions"] || [cellType isEqualToString:@"Voice Acting Roles"]) {
         if (currentlistservice == 3 && [cellType isEqualToString:@"Voice Acting Roles"]) {
             CharacterDetailViewController *cdetailvc = [self.storyboard instantiateViewControllerWithIdentifier:@"characterdetail"];
