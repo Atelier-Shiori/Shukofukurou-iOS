@@ -14,7 +14,7 @@
 #import "TitleInfoTableViewCell.h"
 #import "listservice.h"
 #import "ThemeManager.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 #import "Utility.h"
 
 @interface AdvEditTableViewController ()

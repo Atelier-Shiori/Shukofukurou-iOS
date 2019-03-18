@@ -13,7 +13,7 @@
 #import "listservice.h"
 #import "ReviewDetailViewController.h"
 #import "ThemeManager.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 
 @interface ReviewTableViewController ()
 @property int type;

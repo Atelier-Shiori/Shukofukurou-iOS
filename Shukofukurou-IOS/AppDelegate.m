@@ -116,6 +116,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LoadTheme" object:nil];
     // Override point for customization after application launch.
     [self checkaccountinformation];
+    [self storeCurrentServicetoAppGroup];
     _autorefresh = [AutoRefreshTimer new];
     [StreamDataRetriever retrieveStreamData];
     _airingnotificationmanager = [AiringNotificationManager new];
@@ -290,6 +291,7 @@
     NSLog(@"New Service: %i oldserivce: %i", newservice, oldservice);
     [_vcmanager.mainsidebar setLoggedinUser];
     [_vcmanager.mvc loadfromdefaults];
+    [self storeCurrentServicetoAppGroup];
     [NSNotificationCenter.defaultCenter postNotificationName:@"ServiceChanged" object:nil];
 }
 
@@ -311,6 +313,15 @@
     [_vcmanager.getAnimeListRootViewController.lvc clearlists];
     [_vcmanager.getMangaListRootViewController.lvc clearlists];
     [_vcmanager.mvc loadfromdefaults];
+    [self storeCurrentServicetoAppGroup];
     [NSNotificationCenter.defaultCenter postNotificationName:@"UserLoggedOut" object:nil];
 }
+
+- (void)storeCurrentServicetoAppGroup {
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.moe.malupdaterosx.Shukofukurou-IOS.scrobbleextension"];
+    [defaults setInteger:[listservice.sharedInstance getCurrentServiceID] forKey:@"currentservice"];
+    [defaults setBool:[listservice.sharedInstance checkAccountForCurrentService] forKey:@"currentserviceloggedin"];
+    [defaults synchronize];
+}
+
 @end

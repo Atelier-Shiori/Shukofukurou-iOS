@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gVU-yn-ud1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="1KI-Vf-c0d">
+            <objects>
+                <navigationController storyboardIdentifier="ExtensionRoot" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gVU-yn-ud1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8zQ-IR-ci0">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="d2r-sr-b53" kind="relationship" relationship="rootViewController" id="UQm-4C-F6G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OSh-Lz-4eG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-310" y="-57"/>
+        </scene>
+        <!--Scrobble-->
+        <scene sceneID="EvD-11-J6x">
+            <objects>
+                <viewController id="d2r-sr-b53" customClass="ShareViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZXh-Oc-lBA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fnp-vv-bAo">
+                                <rect key="frame" x="4" y="68" width="367" height="82"/>
+                                <string key="text">Please check the title you are about to scrobble. Tap Scrobble to scrobble. The scrobble operation will occur when you launch Shukofukurou</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mwf-cL-swj">
+                                <rect key="frame" x="0.0" y="183" width="375" height="484"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="484" id="c1O-ps-uxP"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="detail" textLabel="mWz-AB-zmr" detailTextLabel="R0a-P0-ETj" style="IBUITableViewCellStyleValue1" id="hWV-UH-wkS">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hWV-UH-wkS" id="QpF-wO-oCG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mWz-AB-zmr">
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R0a-P0-ETj">
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="d2r-sr-b53" id="xTg-YY-Oig"/>
+                                    <outlet property="delegate" destination="d2r-sr-b53" id="g1v-QJ-7sW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fnp-vv-bAo" firstAttribute="top" secondItem="FvB-qA-Izt" secondAttribute="top" constant="4" id="6FY-yH-xHY"/>
+                            <constraint firstItem="Mwf-cL-swj" firstAttribute="trailing" secondItem="FvB-qA-Izt" secondAttribute="trailing" id="6kx-Nh-2z9"/>
+                            <constraint firstItem="Fnp-vv-bAo" firstAttribute="leading" secondItem="FvB-qA-Izt" secondAttribute="leading" constant="4" id="F8t-1d-X5R"/>
+                            <constraint firstItem="FvB-qA-Izt" firstAttribute="trailing" secondItem="Fnp-vv-bAo" secondAttribute="trailing" constant="4" id="WFT-W6-z7a"/>
+                            <constraint firstItem="Mwf-cL-swj" firstAttribute="bottom" secondItem="FvB-qA-Izt" secondAttribute="bottom" id="YjT-Tp-m95"/>
+                            <constraint firstItem="Mwf-cL-swj" firstAttribute="leading" secondItem="FvB-qA-Izt" secondAttribute="leading" id="g0Z-vi-E9x"/>
+                            <constraint firstItem="Mwf-cL-swj" firstAttribute="top" secondItem="Fnp-vv-bAo" secondAttribute="bottom" constant="33" id="lUa-72-63j"/>
+                            <constraint firstAttribute="trailing" secondItem="Mwf-cL-swj" secondAttribute="trailing" id="pYS-2I-OZr"/>
+                            <constraint firstItem="Mwf-cL-swj" firstAttribute="leading" secondItem="ZXh-Oc-lBA" secondAttribute="leading" id="wMP-mE-wqm"/>
+                            <constraint firstItem="Mwf-cL-swj" firstAttribute="bottom" secondItem="FvB-qA-Izt" secondAttribute="bottom" id="wNE-C6-owp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FvB-qA-Izt"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scrobble" id="WHc-6p-GU1">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Ruu-8c-Dev">
+                            <connections>
+                                <action selector="cancel:" destination="d2r-sr-b53" id="fe7-vv-4tK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Scrobble" id="2io-0l-UXb">
+                            <connections>
+                                <action selector="scrobble:" destination="d2r-sr-b53" id="l9b-Bw-sYg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="Ruu-8c-Dev" id="IFC-5O-m0I"/>
+                        <outlet property="scrobbleButton" destination="2io-0l-UXb" id="Dsm-mV-62C"/>
+                        <outlet property="tableView" destination="Mwf-cL-swj" id="adP-wc-dGs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Si0-HG-pQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="412" y="-57.121439280359823"/>
+        </scene>
+    </scenes>
+</document>

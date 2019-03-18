@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "ViewControllerManager.h"
 #import "ThemeManager.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;

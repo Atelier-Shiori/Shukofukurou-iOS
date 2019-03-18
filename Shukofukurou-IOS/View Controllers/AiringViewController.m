@@ -16,7 +16,7 @@
 #import "AniListScoreConvert.h"
 #import "TitleInfoViewController.h"
 #import "TitleIDMapper.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 #import "ThemeManager.h"
 
 

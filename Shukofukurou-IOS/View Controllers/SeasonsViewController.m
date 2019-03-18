@@ -14,7 +14,7 @@
 #import "AniListSeasonListGenerator.h"
 #import "listservice.h"
 #import "TitleInfoViewController.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 #import "ThemeManager.h"
 
 @interface SeasonsViewController ()

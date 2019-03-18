@@ -22,7 +22,7 @@
 #import "SeasonCollectionViewCell.h"
 #import "TrendingCollectionHeaderView.h"
 #import "UIViewThemed.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 #import "TableViewCellBackgroundView.h"
 
 @interface ThemeManager ()

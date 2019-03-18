@@ -15,7 +15,7 @@
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
 #import "ThemeManager.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 
 @interface StatsViewController ()
 @property (strong) NSMutableDictionary *animestats;

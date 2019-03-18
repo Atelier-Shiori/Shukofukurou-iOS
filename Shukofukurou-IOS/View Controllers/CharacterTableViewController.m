@@ -10,7 +10,7 @@
 #import "CharacterDetailViewController.h"
 #import "listservice.h"
 #import "PersonTableViewCell.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 #import "ThemeManager.h"
 
 @interface CharacterTableViewController ()

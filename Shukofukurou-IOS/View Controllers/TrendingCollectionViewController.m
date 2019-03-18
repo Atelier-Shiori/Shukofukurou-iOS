@@ -13,7 +13,7 @@
 #import "TrendingRetriever.h"
 #import "ViewControllerManager.h"
 #import "listservice.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 #import "ThemeManager.h"
 
 @interface TrendingCollectionViewController ()

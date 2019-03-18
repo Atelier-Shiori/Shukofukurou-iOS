@@ -20,7 +20,7 @@
 #import "AdvEditTableViewController.h"
 #import "ViewControllerManager.h"
 #import "SortTableViewController.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 #import "ThemeManager.h"
 #import "Utility.h"
 

@@ -25,7 +25,7 @@
 #import "StreamDataRetriever.h"
 #import "TitleInfoCache.h"
 #import "ThemeManager.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 
 @interface TitleInfoViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
