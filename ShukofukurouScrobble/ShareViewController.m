@@ -25,12 +25,28 @@ NSString *const sharesupportedSites = @"(crunchyroll)";
 
 - (void)viewDidLoad {
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.moe.malupdaterosx.Shukofukurou-IOS.scrobbleextension"];
-    if ([defaults boolForKey:@"currentserviceloggedin"]) {
+    if ([defaults valueForKey:@"streamdata"]) {
+        [self promptExistingStreamData];
+    }
+    else if ([defaults boolForKey:@"currentserviceloggedin"]) {
         [self getURLAndPopulateData];
     }
     else {
         [self showNotLoggedInError];
     }
+}
+
+- (void)promptExistingStreamData {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Pending Scrobble" message:@"There is an scrobble that is pending. If you continue, it will be overwritten. Is this okay?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[self extensionContext] completeRequestReturningItems:nil completionHandler:nil];
+    }];
+    UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self getURLAndPopulateData];
+    }];
+    [alertcontroller addAction:noaction];
+    [alertcontroller addAction:yesaction];
+    [self presentViewController:alertcontroller animated:YES completion:nil];
 }
 
 - (void)getURLAndPopulateData {

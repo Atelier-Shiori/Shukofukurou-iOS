@@ -178,6 +178,12 @@
 		595A961B2240030200E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		595A961E2240031900E3C245 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A7E0502200B1C2002EE2EC /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		595A961F2240037100E3C245 /* MBProgressHUDFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; };
+		595A96232240120A00E3C245 /* TitleSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A96222240120A00E3C245 /* TitleSearch.m */; };
+		595A96242240120A00E3C245 /* TitleSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A96222240120A00E3C245 /* TitleSearch.m */; };
+		595A9629224013A700E3C245 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 595A9628224013A700E3C245 /* string_score.c */; };
+		595A962A224013A700E3C245 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 595A9628224013A700E3C245 /* string_score.c */; };
+		595A962D2240201C00E3C245 /* AnimeRelations.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A962C2240201C00E3C245 /* AnimeRelations.m */; };
+		595A962E2240201C00E3C245 /* AnimeRelations.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A962C2240201C00E3C245 /* AnimeRelations.m */; };
 		595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595C1F78218DF4B000953793 /* Trending.storyboard */; };
 		595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC69220926020050662A /* UIColor+GraphKit.m */; };
 		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
@@ -740,6 +746,13 @@
 		595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUDFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A960F224002B600E3C245 /* MBProgressHUDFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUDFramework.h; sourceTree = "<group>"; };
 		595A9610224002B600E3C245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		595A96212240120A00E3C245 /* TitleSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleSearch.h; sourceTree = "<group>"; };
+		595A96222240120A00E3C245 /* TitleSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleSearch.m; sourceTree = "<group>"; };
+		595A9625224012FC00E3C245 /* Hiyoko 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 4.xcdatamodel"; sourceTree = "<group>"; };
+		595A9627224013A700E3C245 /* string_score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_score.h; sourceTree = "<group>"; };
+		595A9628224013A700E3C245 /* string_score.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string_score.c; sourceTree = "<group>"; };
+		595A962B2240201C00E3C245 /* AnimeRelations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeRelations.h; sourceTree = "<group>"; };
+		595A962C2240201C00E3C245 /* AnimeRelations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeRelations.m; sourceTree = "<group>"; };
 		595C1F79218DF4B000953793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trending.storyboard; sourceTree = "<group>"; };
 		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1103,6 +1116,26 @@
 			path = MBProgressHUDFramework;
 			sourceTree = "<group>";
 		};
+		595A96202240118E00E3C245 /* Scrobble */ = {
+			isa = PBXGroup;
+			children = (
+				595A96212240120A00E3C245 /* TitleSearch.h */,
+				595A96222240120A00E3C245 /* TitleSearch.m */,
+				595A962B2240201C00E3C245 /* AnimeRelations.h */,
+				595A962C2240201C00E3C245 /* AnimeRelations.m */,
+			);
+			path = Scrobble;
+			sourceTree = "<group>";
+		};
+		595A96262240139100E3C245 /* string score */ = {
+			isa = PBXGroup;
+			children = (
+				595A9628224013A700E3C245 /* string_score.c */,
+				595A9627224013A700E3C245 /* string_score.h */,
+			);
+			path = "string score";
+			sourceTree = "<group>";
+		};
 		5962409C2155622E001995AD = {
 			isa = PBXGroup;
 			children = (
@@ -1132,6 +1165,7 @@
 		596240A72155622E001995AD /* Shukofukurou-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				595A96202240118E00E3C245 /* Scrobble */,
 				59A7A7DA220F95BD009563CA /* TipJar */,
 				59EBC1D921FD231900481D33 /* Themes */,
 				5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */,
@@ -1166,6 +1200,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				595A96262240139100E3C245 /* string score */,
 				595A95F0223FE31F00E3C245 /* CocoaOniguruma */,
 				592B8C912236E098007D43F4 /* Hakuchou */,
 				59B5BC32220DF88700F904B4 /* UIImageView-Letters */,
@@ -2185,6 +2220,7 @@
 				5934E232220F7539002B8311 /* LoadViewController.m in Sources */,
 				5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */,
 				5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */,
+				595A962A224013A700E3C245 /* string_score.c in Sources */,
 				5934E235220F7539002B8311 /* ListViewController.m in Sources */,
 				5934E236220F7539002B8311 /* DarkTheme.m in Sources */,
 				5934E237220F7539002B8311 /* StreamDataRetriever.m in Sources */,
@@ -2211,7 +2247,9 @@
 				5934E24C220F7539002B8311 /* GKBar.m in Sources */,
 				5934E24D220F7539002B8311 /* TableViewCellBackgroundView.m in Sources */,
 				5934E251220F7539002B8311 /* TitleInfoCache.m in Sources */,
+				595A962E2240201C00E3C245 /* AnimeRelations.m in Sources */,
 				5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */,
+				595A96242240120A00E3C245 /* TitleSearch.m in Sources */,
 				5934E253220F7539002B8311 /* EntryCellInfo.m in Sources */,
 				5934E255220F7539002B8311 /* TrendingRetriever.m in Sources */,
 				5934E256220F7539002B8311 /* CharacterDetailViewController.m in Sources */,
@@ -2299,6 +2337,7 @@
 				59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */,
 				5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */,
 				596240BB2155622F001995AD /* main.m in Sources */,
+				595A96232240120A00E3C245 /* TitleSearch.m in Sources */,
 				592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */,
 				595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */,
 				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
@@ -2317,6 +2356,7 @@
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
 				592EB7882209D76C004DE461 /* NSArray+MK_Block.m in Sources */,
+				595A962D2240201C00E3C245 /* AnimeRelations.m in Sources */,
 				592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
@@ -2341,6 +2381,7 @@
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
+				595A9629224013A700E3C245 /* string_score.c in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,
 				59A7A7EF220F95C8009563CA /* SKProduct+LocalizedPrice.m in Sources */,
 				596241E3215564D1001995AD /* SeasonCollectionViewCell.m in Sources */,
@@ -2987,11 +3028,12 @@
 		5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				595A9625224012FC00E3C245 /* Hiyoko 4.xcdatamodel */,
 				599CF00D220B61280063EBB9 /* Hiyoko 3.xcdatamodel */,
 				592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */,
 				5962422B2155653D001995AD /* Hiyoko.xcdatamodel */,
 			);
-			currentVersion = 599CF00D220B61280063EBB9 /* Hiyoko 3.xcdatamodel */;
+			currentVersion = 595A9625224012FC00E3C245 /* Hiyoko 4.xcdatamodel */;
 			path = Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
