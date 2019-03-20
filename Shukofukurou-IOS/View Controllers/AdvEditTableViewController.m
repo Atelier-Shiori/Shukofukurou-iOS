@@ -497,8 +497,8 @@
             if (((NSNumber *)udict[@"set end date"]).boolValue) {
                 extrafields[@"finishedAt"] = [df stringFromDate:(NSDate *)udict[@"end"]];
             }
-            extrafields[@"private"] = udict[@"private"];
-            extrafields[@"reconsuming"] = type == 0 ? udict[@"rewatching"] : udict[@"rereading"];
+            extrafields[@"private"] = @(((NSNumber *)udict[@"private"]).boolValue);
+            extrafields[@"reconsuming"] = type == 0 ? @(((NSNumber *)udict[@"rewatching"]).boolValue) : @(((NSNumber *)udict[@"rereading"]).boolValue);
             extrafields[@"reconsumeCount"] = type == 0 ? udict[@"# rewatch"] : udict[@"# reread"];
             break;
         }
@@ -523,8 +523,8 @@
             else {
                 extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
             }
-            extrafields[@"private"] = udict[@"private"];
-            extrafields[@"reconsuming"] = type == 0 ? udict[@"rewatching"] : udict[@"rereading"];
+            extrafields[@"private"] = @(((NSNumber *)udict[@"private"]).boolValue);
+            extrafields[@"reconsuming"] = type == 0 ? @(((NSNumber *)udict[@"rewatching"]).boolValue) : @(((NSNumber *)udict[@"rereading"]).boolValue);
             extrafields[@"reconsumeCount"] = type == 0 ? udict[@"# rewatch"] : udict[@"# reread"];
             break;
         }
@@ -565,11 +565,11 @@
         }
     }
     if (type == 0) {
-        extrafields[@"rewatching"] = udict[@"rewatching"];
+        extrafields[@"rewatching"] = @(((NSNumber *)udict[@"rewatching"]).boolValue);
         extrafields[@"rewatch_count"] = udict[@"# rewatch"];
     }
     else {
-        extrafields[@"rereading"] = udict[@"rereading"];
+        extrafields[@"rereading"] = @(((NSNumber *)udict[@"rereading"]).boolValue);
         extrafields[@"reread_count"] = udict[@"# reread"];
     }
     if (currentService == 2 || currentService == 3) {
@@ -579,7 +579,7 @@
         else {
             extrafields[@"personal_comments"] = [NSNull null];
         }
-        extrafields[@"private"] = udict[@"private"];
+        extrafields[@"private"] = @(((NSNumber *)udict[@"private"]).boolValue);
     }
     return extrafields;
 }
