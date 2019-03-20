@@ -89,8 +89,8 @@
     UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self clearScrobble];
     }];
-    [alertcontroller addAction:yesaction];
     [alertcontroller addAction:noaction];
+    [alertcontroller addAction:yesaction];
     [[ViewControllerManager getAppDelegateViewControllerManager].mvc presentViewController:alertcontroller animated:YES completion:nil];
 }
 

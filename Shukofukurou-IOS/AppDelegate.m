@@ -282,6 +282,7 @@
     }];
     [_vcmanager.mvc loadfromdefaults];
     [_vcmanager.mvc showtoolbarstate];
+    [self storeCurrentServicetoAppGroup];
 }
 - (void)authCanceled {
     NSLog(@"Auth canceled!");
