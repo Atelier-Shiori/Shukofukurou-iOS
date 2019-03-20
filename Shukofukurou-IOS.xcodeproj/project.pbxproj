@@ -186,6 +186,8 @@
 		595A962E2240201C00E3C245 /* AnimeRelations.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A962C2240201C00E3C245 /* AnimeRelations.m */; };
 		595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595C1F78218DF4B000953793 /* Trending.storyboard */; };
 		595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC69220926020050662A /* UIColor+GraphKit.m */; };
+		595D666222416FCC00B54BCA /* ScrobbleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 595D666122416FCC00B54BCA /* ScrobbleManager.m */; };
+		595D666322416FCC00B54BCA /* ScrobbleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 595D666122416FCC00B54BCA /* ScrobbleManager.m */; };
 		596240AA2155622E001995AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240A92155622E001995AD /* AppDelegate.m */; };
 		596240B52155622F001995AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
 		596240BB2155622F001995AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
@@ -754,6 +756,8 @@
 		595A962B2240201C00E3C245 /* AnimeRelations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeRelations.h; sourceTree = "<group>"; };
 		595A962C2240201C00E3C245 /* AnimeRelations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeRelations.m; sourceTree = "<group>"; };
 		595C1F79218DF4B000953793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trending.storyboard; sourceTree = "<group>"; };
+		595D666022416FCC00B54BCA /* ScrobbleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrobbleManager.h; sourceTree = "<group>"; };
+		595D666122416FCC00B54BCA /* ScrobbleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrobbleManager.m; sourceTree = "<group>"; };
 		596240A52155622E001995AD /* Shukofukurou-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596240A82155622E001995AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		596240A92155622E001995AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1123,6 +1127,8 @@
 				595A96222240120A00E3C245 /* TitleSearch.m */,
 				595A962B2240201C00E3C245 /* AnimeRelations.h */,
 				595A962C2240201C00E3C245 /* AnimeRelations.m */,
+				595D666022416FCC00B54BCA /* ScrobbleManager.h */,
+				595D666122416FCC00B54BCA /* ScrobbleManager.m */,
 			);
 			path = Scrobble;
 			sourceTree = "<group>";
@@ -2218,6 +2224,7 @@
 				5934E230220F7539002B8311 /* NSMutableArray+MK_Stack.m in Sources */,
 				5934E231220F7539002B8311 /* NSMutableArray+MK_Queue.m in Sources */,
 				5934E232220F7539002B8311 /* LoadViewController.m in Sources */,
+				595D666322416FCC00B54BCA /* ScrobbleManager.m in Sources */,
 				5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */,
 				5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */,
 				595A962A224013A700E3C245 /* string_score.c in Sources */,
@@ -2390,6 +2397,7 @@
 				5962421B21556514001995AD /* ListSelectorViewController.m in Sources */,
 				5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */,
 				5962422321556514001995AD /* AiringRootViewController.m in Sources */,
+				595D666222416FCC00B54BCA /* ScrobbleManager.m in Sources */,
 				5962421621556514001995AD /* AiringDayTableViewController.m in Sources */,
 				596241E0215564D1001995AD /* AnimeEntryTableViewCell.m in Sources */,
 				5962421A21556514001995AD /* SeasonsRootViewController.m in Sources */,

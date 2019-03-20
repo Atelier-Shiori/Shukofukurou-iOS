@@ -64,7 +64,7 @@ typedef NS_ENUM(unsigned int, matchtype) {
     NSDictionary *streamdata = [defaults valueForKey:@"streamdata"];
     if (streamdata) {
         _DetectedTitle = streamdata[@"title"];
-        _DetectedEpisode = streamdata[@"episode"];
+        _DetectedEpisode = ((NSNumber *)streamdata[@"episode"]).stringValue;
         _DetectedSeason = ((NSNumber *)streamdata[@"season"]).intValue;
     }
     _DetectedTitleisMovie = _DetectedEpisode.length == 0 || [_DetectedTitle localizedCaseInsensitiveContainsString:@"movie"];
@@ -324,11 +324,11 @@ typedef NS_ENUM(unsigned int, matchtype) {
                                 insertNewObjectForEntityForName :@"ScrobbleCache"
                                 inManagedObjectContext: self.moc];
         // Set values in the new record
-        [obj setValue:atitle forKey:@"actualTitle"];
-        [obj setValue:title forKey:@"detectedTitle"];
-        [obj setValue:showid forKey:@"id"];
+        [obj setValue:atitle forKey:@"actualtitle"];
+        [obj setValue:title forKey:@"title"];
+        [obj setValue:@(showid.intValue) forKey:@"titleid"];
         [obj setValue:@(totalEpisodes) forKey:@"totalEpisodes"];
-        [obj setValue:@(season) forKey:@"detectedSeason"];
+        [obj setValue:@(season) forKey:@"season"];
         [obj setValue:@(service) forKey:@"service"];
         NSError *error = nil;
         // Save
@@ -340,25 +340,25 @@ typedef NS_ENUM(unsigned int, matchtype) {
     [_moc performBlockAndWait:^{
         NSFetchRequest *allCaches = [[NSFetchRequest alloc] init];
         allCaches.entity = [NSEntityDescription entityForName:@"ScrobbleCache" inManagedObjectContext:self.moc];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat: @"detectedTitle == %@  AND service == %i", self.DetectedTitle, [listservice.sharedInstance getCurrentServiceID]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat: @"title == %@  AND service == %i", self.DetectedTitle, [listservice.sharedInstance getCurrentServiceID]];
         allCaches.predicate = predicate;
         NSError *error = nil;
         NSArray *cache = [self.moc executeFetchRequest:allCaches error:&error];
         if (cache.count > 0) {
             for (NSManagedObject *cacheentry in cache) {
-                NSString *title = [cacheentry valueForKey:@"detectedTitle"];
-                NSNumber *season = [cacheentry valueForKey:@"detectedSeason"];
+                NSString *title = [cacheentry valueForKey:@"title"];
+                NSNumber *season = [cacheentry valueForKey:@"season"];
                 if ([title isEqualToString:self.DetectedTitle] && self.DetectedSeason == season.intValue) {
                     NSLog(@"%@", season.intValue > 1 ? [NSString stringWithFormat:@"%@ Season %i is found in cache.", title, season.intValue] : [NSString stringWithFormat:@"%@ is found in cache.", title]);
                     // Total Episode check
                     NSNumber *totalepisodes = [cacheentry valueForKey:@"totalEpisodes"];
                     if ( self.DetectedEpisode.intValue <= totalepisodes.intValue || totalepisodes.intValue == 0 ) {
-                        self.titleid = ((NSNumber *)[cacheentry valueForKey:@"id"]).stringValue;
+                        self.titleid = ((NSNumber *)[cacheentry valueForKey:@"titleid"]).stringValue;
                         return;
                     }
                     else {
                         // Check Anime Relations
-                        int newid = [self checkAnimeRelations:((NSString *)[cacheentry valueForKey:@"id"]).intValue];
+                        int newid = [self checkAnimeRelations:((NSNumber *)[cacheentry valueForKey:@"titleid"]).intValue];
                         if (newid > 0) {
                             NSLog(@"Using Anime Relations mapping id...");
                             self.titleid =  @(newid).stringValue;

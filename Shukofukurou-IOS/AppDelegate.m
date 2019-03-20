@@ -14,6 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ThemeManager.h"
 #import <Hakuchou_iOS/OAuthCredManager.h>
+#import "ScrobbleManager.h"
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
@@ -172,6 +173,7 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [_vcmanager.mvc hidetoolbarstate];
     [_vcmanager.mvc showtoolbarstate];
+    [ScrobbleManager.sharedInstance checkScrobble];
 }
 
 

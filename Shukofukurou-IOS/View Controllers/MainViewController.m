@@ -12,6 +12,7 @@
 #import "ViewControllerManager.h"
 #import "listservice.h"
 #import "TitleInfoViewController.h"
+#import "ScrobbleManager.h"
 #ifdef oss
 #else
 #import "TipJar.h"
@@ -30,6 +31,7 @@
     [self setsidebar:self.view.bounds.size];
     AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
     [del loadtheme];
+    [ScrobbleManager.sharedInstance checkScrobble];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size
