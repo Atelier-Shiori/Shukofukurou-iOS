@@ -259,6 +259,8 @@
 		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 		596890032190AC6C0029F0FC /* EpisodesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */; };
 		596890182190ADF30029F0FC /* EpisodesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890172190ADF30029F0FC /* EpisodesTableViewController.m */; };
+		5968F1B12249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */; };
+		5968F1B22249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */; };
 		596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B32163D11E0005A60F /* CharacterTableViewController.m */; };
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
@@ -879,6 +881,8 @@
 		596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodesTableViewCell.m; sourceTree = "<group>"; };
 		596890162190ADF30029F0FC /* EpisodesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodesTableViewController.h; sourceTree = "<group>"; };
 		596890172190ADF30029F0FC /* EpisodesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodesTableViewController.m; sourceTree = "<group>"; };
+		5968F1AF2249199E00A048D4 /* ScrobbleSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrobbleSettingsViewController.h; sourceTree = "<group>"; };
+		5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrobbleSettingsViewController.m; sourceTree = "<group>"; };
 		596A01B22163D11E0005A60F /* CharacterTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterTableViewController.h; sourceTree = "<group>"; };
 		596A01B32163D11E0005A60F /* CharacterTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterTableViewController.m; sourceTree = "<group>"; };
 		596A01B52163D1330005A60F /* CharacterDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterDetailViewController.h; sourceTree = "<group>"; };
@@ -1552,6 +1556,8 @@
 				596241FA21556506001995AD /* ViewControllerManager.m */,
 				59B3AC5E2209226C0050662A /* StatsViewController.h */,
 				59B3AC5F2209226C0050662A /* StatsViewController.m */,
+				5968F1AF2249199E00A048D4 /* ScrobbleSettingsViewController.h */,
+				5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2257,6 +2263,7 @@
 				595A962E2240201C00E3C245 /* AnimeRelations.m in Sources */,
 				5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */,
 				595A96242240120A00E3C245 /* TitleSearch.m in Sources */,
+				5968F1B22249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */,
 				5934E253220F7539002B8311 /* EntryCellInfo.m in Sources */,
 				5934E255220F7539002B8311 /* TrendingRetriever.m in Sources */,
 				5934E256220F7539002B8311 /* CharacterDetailViewController.m in Sources */,
@@ -2386,6 +2393,7 @@
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
+				5968F1B12249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */,
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				595A9629224013A700E3C245 /* string_score.c in Sources */,

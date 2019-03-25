@@ -14,6 +14,8 @@
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
 #import "Utility.h"
+#import "AnimeRelations.h"
+#import "AppDelegate.h"
 
 @interface ScrobbleManager ()
 @property (strong) MBProgressHUD *hud;
@@ -246,6 +248,19 @@
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.moe.malupdaterosx.Shukofukurou-IOS.scrobbleextension"];
     [defaults setValue:nil forKey:@"streamdata"];
     [defaults synchronize];
-    
+}
+
+- (void)clearScrobbleCache {
+    NSManagedObjectContext *moc = ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
+    [moc performBlockAndWait:^{
+        NSFetchRequest *allCaches = [[NSFetchRequest alloc] init];
+        allCaches.entity = [NSEntityDescription entityForName:@"ScrobbleCache" inManagedObjectContext:moc];
+        NSError *error = nil;
+        NSArray *cache = [moc executeFetchRequest:allCaches error:&error];
+        for (NSManagedObject *obj in cache) {
+            [moc deleteObject:obj];
+        }
+        [moc save:&error];
+    }];
 }
 @end

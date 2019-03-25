@@ -9,7 +9,8 @@
 
 @interface AnimeRelations : NSObject
 + (instancetype)sharedInstance;
-- (void)updateRelations;
+- (void)autoupdateRelations:(void (^)(bool success)) completionHandler;
+- (void)updateRelations:(void (^)(bool success)) completionHandler;
 - (NSArray *)retrieveRelationsEntriesForTitleID:(int)titleid withService:(int)service;
 - (void)clearAnimeRelations;
 @end

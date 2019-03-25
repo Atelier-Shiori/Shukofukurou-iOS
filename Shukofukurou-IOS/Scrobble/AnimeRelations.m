@@ -32,31 +32,31 @@
         _moc = ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
         _manager = [AFHTTPSessionManager manager];
         _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        _manager.completionQueue = dispatch_queue_create("AFNetworking+Synchronous", NULL);
     }
     return self;
 }
 
-- (void)updateRelations {
-    AFHTTPSessionManager *manager = [self manager];
-    NSError *error;
-    NSURLSessionDataTask *task;
-    id responseObject = [manager syncGET:@"https://github.com/erengy/anime-relations/raw/master/anime-relations.txt" parameters:nil task:&task error:&error];
-    // Get Status Code
-    switch (((NSHTTPURLResponse *)task.response).statusCode) {
-        case 200:{
-            NSLog(@"Updating Anime Relations!");
-            [self processAnimeRelations:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Set the last updated date
-            [[NSUserDefaults standardUserDefaults] setValue:[NSDate date] forKey:@"AnimeRelationsLastUpdated"];
-        });
-            break;
-        }
-        default:
-            NSLog(@"Anime Relations Update Failed!");
-            break;
+- (void)autoupdateRelations:(void (^)(bool success)) completionHandler {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    NSDate *nextupdatedate = [defaults valueForKey:@"AnimeRelationsUpdateDate"];
+    if (!nextupdatedate || [nextupdatedate timeIntervalSinceNow] < -604800) {
+        [self updateRelations:completionHandler];
     }
+    else {
+        completionHandler(true);
+    }
+}
+
+- (void)updateRelations:(void (^)(bool success)) completionHandler {
+    [_manager GET:@"https://github.com/erengy/anime-relations/raw/master/anime-relations.txt" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"Updating Anime Relations!");
+        [self processAnimeRelations:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
+        [[NSUserDefaults standardUserDefaults] setValue:[NSDate date] forKey:@"AnimeRelationsUpdateDate"];
+        completionHandler(true);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Anime Relations Update Failed!");
+        completionHandler(false);
+    }];
 }
 
 - (void)processAnimeRelations:(NSString *)data {
