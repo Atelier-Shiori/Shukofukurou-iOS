@@ -12,6 +12,9 @@
 #import <MBProgressHUDFramework/MBProgressHUD.h>
 
 @interface ScrobbleSettingsViewController ()
+@property (strong, nonatomic) IBOutlet UITableViewCell *clearcachecell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *updateanimerelationscell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *resetscrobbledatacell;
 @property (strong) MBProgressHUD *hud;
 @end
 
@@ -31,15 +34,12 @@
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if ([cell.textLabel.text isEqualToString:@"Clear Scrobble Cache"]) {
         [self clearScrobbleCache];
-        [cell setSelected:NO animated:YES];
     }
     else if ([cell.textLabel.text isEqualToString:@"Update Anime Relations"]) {
         [self performUpdateAnimeRelations];
-        [cell setSelected:NO animated:YES];
     }
     else if ([cell.textLabel.text isEqualToString:@"Reset Scrobble Data"]) {
         [self clearScrobbleData];
-        [cell setSelected:NO animated:YES];
     }
 }
 
@@ -47,8 +47,11 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Do you really want to clear the scrobble cache?",nil) message:NSLocalizedString(@"Once done, this action cannot be undone.",nil) preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes",nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [self performClearScrobbleCache];
+        [self.clearcachecell setSelected:NO animated:YES];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.clearcachecell setSelected:NO animated:YES];
+    }]];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -56,8 +59,11 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Do you really want to reset all scrobble data?",nil) message:NSLocalizedString(@"Once done, this action cannot be undone.",nil) preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes",nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [self performresetScrobbleData];
+        [self.resetscrobbledatacell setSelected:NO animated:YES];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.resetscrobbledatacell setSelected:NO animated:YES];
+    }]];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -68,7 +74,8 @@
 - (void)performUpdateAnimeRelations {
     [self showloadingview:YES withText:@"Updating Anime Relations..."];
     [AnimeRelations.sharedInstance updateRelations:^(bool success) {
-         [self showloadingview:NO withText:@""];
+        [self showloadingview:NO withText:@""];
+        [self.updateanimerelationscell setSelected:NO animated:YES];
     }];
 }
 

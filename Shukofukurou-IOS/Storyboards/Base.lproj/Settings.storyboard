@@ -504,6 +504,11 @@
                         </connections>
                     </tableView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="clearcachecell" destination="kto-nq-0Au" id="iHe-Wf-wVW"/>
+                        <outlet property="resetscrobbledatacell" destination="qwY-UR-jfQ" id="lS0-Au-FdY"/>
+                        <outlet property="updateanimerelationscell" destination="lES-zG-aQk" id="Zhr-Lv-ED0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcX-L1-YNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
