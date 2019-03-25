@@ -125,6 +125,7 @@
     [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     // Set Image Disk Cache Size
     SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 96;
+    [ScrobbleManager.sharedInstance checkScrobble];
     return YES;
 }
 

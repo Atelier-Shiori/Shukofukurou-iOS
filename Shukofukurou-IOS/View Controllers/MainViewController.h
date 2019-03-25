@@ -17,4 +17,5 @@
 - (void)loadfromdefaults;
 - (void)hidetoolbarstate;
 - (void)showtoolbarstate;
+- (UINavigationController *)currentRootView;
 @end

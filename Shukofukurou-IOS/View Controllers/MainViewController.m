@@ -31,7 +31,6 @@
     [self setsidebar:self.view.bounds.size];
     AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
     [del loadtheme];
-    [ScrobbleManager.sharedInstance checkScrobble];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size
@@ -81,6 +80,48 @@
 - (void)loadfromdefaults {
     NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
     [self sidebarItemDidChange:selectedrow];
+}
+
+- (UINavigationController *)currentRootView {
+    NSString *identifier = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
+    if ([identifier isEqualToString:@"anime-list"]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
+            return (UINavigationController *)[_vcm getAnimeListRootViewController];
+        }
+        else {
+            return nil;
+        }
+    }
+    else if ([identifier isEqualToString:@"manga-list"]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
+            return (UINavigationController *)[_vcm getMangaListRootViewController];
+        }
+        else {
+            return nil;
+        }
+    }
+    else if ([identifier isEqualToString:@"search"]) {
+        return (UINavigationController *)[_vcm getSearchView];
+    }
+    else if ([identifier isEqualToString:@"seasons"]) {
+        return (UINavigationController *)[_vcm getSeasonRootViewController];
+    }
+    else if ([identifier isEqualToString:@"airing"]) {
+        return (UINavigationController *)[_vcm getAiringRootViewController];
+    }
+    else if ([identifier isEqualToString:@"trending"]) {
+        return (UINavigationController *)[_vcm getTrendingRootViewController];
+    }
+    else if ([identifier isEqualToString:@"settings"]) {
+        return (UINavigationController *)[_vcm getSettingsRootViewController];
+    }
+#ifdef oss
+#else
+    else if ([identifier isEqualToString:@"tipjar"]) {
+        return nil;
+    }
+#endif
+    return nil;
 }
 
 - (void)sidebarItemDidChange:(NSString *)identifier {

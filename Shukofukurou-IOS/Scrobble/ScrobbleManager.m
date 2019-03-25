@@ -21,6 +21,7 @@
 @property int titleid;
 @property int episode;
 @property (strong) NSDictionary *titleinformation;
+@property (strong) UINavigationController *hudcontainingview;
 @end
 
 @implementation ScrobbleManager
@@ -124,6 +125,10 @@
         watchstatus = entry[@"watched_status"];
         rewatching = ((NSNumber *)entry[@"rewatching"]).boolValue;
         score =((NSNumber *)entry[@"score"]).intValue;
+        if (((NSNumber *)entry[@"watched_episodes"]).intValue == self.episode) {
+            [self scrobbleSameEpisode];
+            return;
+        }
     }
     else {
         watchstatus = @"watching";
@@ -151,6 +156,7 @@
         [self scrobbleUpdateFailed];
     }];
 }
+
 - (void)updateEntryWithEntryID:(int)entryid withStatus:(NSString *)status withRewatch:(bool)rewatching withScore:(int)score {
     NSDictionary * extraparameters = @{};
     switch ([listservice.sharedInstance getCurrentServiceID]) {
@@ -189,6 +195,15 @@
     [[ViewControllerManager getAppDelegateViewControllerManager].mvc presentViewController:alertcontroller animated:YES completion:nil];
 }
 
+- (void)scrobbleSameEpisode {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Same Episode." message:@"Episode progress is the same, thus the entry was not updated." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self clearScrobble];
+    }];
+    [alertcontroller addAction:okaction];
+    [[ViewControllerManager getAppDelegateViewControllerManager].mvc presentViewController:alertcontroller animated:YES completion:nil];
+}
+
 - (void)scrobbleUpdateFailed {
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Scrobble Failed." message:@"Could not update list. Try again later" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -210,11 +225,18 @@
 - (void)showloadingview:(bool)show withText:(NSString *)text{
     dispatch_async(dispatch_get_main_queue(), ^{
         if (show) {
-            self.hud = [MBProgressHUD showHUDAddedTo:[ViewControllerManager getAppDelegateViewControllerManager].mvc.rootViewContainer animated:YES];
-            self.hud.label.text = text;
+            self.hudcontainingview = [[ViewControllerManager getAppDelegateViewControllerManager].mvc currentRootView];
+            if (self.hudcontainingview) {
+                self.hud = [MBProgressHUD showHUDAddedTo:self.hudcontainingview.view animated:YES];
+                self.hud.label.text = text;
+            }
         }
         else {
-            [MBProgressHUD hideHUDForView:[ViewControllerManager getAppDelegateViewControllerManager].mvc.rootViewContainer animated:YES];
+            if (self.hudcontainingview) {
+                [self.hud hideAnimated:YES];
+                [MBProgressHUD hideHUDForView:self.hudcontainingview.view animated:YES];
+                self.hudcontainingview = nil;
+            }
         }
     });
 }
