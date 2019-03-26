@@ -21,7 +21,7 @@
 
 @implementation ShareViewController
 
-NSString *const sharesupportedSites = @"(crunchyroll|vrv)";
+NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive)";
 
 - (void)viewDidLoad {
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.moe.malupdaterosx.Shukofukurou-IOS.scrobbleextension"];
