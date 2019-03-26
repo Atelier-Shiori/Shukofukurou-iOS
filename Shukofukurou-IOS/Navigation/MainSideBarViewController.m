@@ -20,6 +20,7 @@
 #import "AtarashiiListCoreData.h"
 #import "StatsViewController.h"
 #import "ThemeManager.h"
+#import "ExportMainTableViewController.h"
 
 @interface MainSideBarViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *optionsbuttonitem;
@@ -230,6 +231,16 @@
             [weakself.mainvc presentViewController:navcontroller animated:YES completion:nil];
         }]];
     }
+    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Export Lists"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UINavigationController *navcontroller = [UINavigationController new];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Export" bundle:nil];
+        ExportMainTableViewController *exportviewcontroller = (ExportMainTableViewController *)[storyboard instantiateInitialViewController];
+        [navcontroller setViewControllers: @[exportviewcontroller]];
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
+        [weakself.mainvc presentViewController:navcontroller animated:YES completion:nil];
+    }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {

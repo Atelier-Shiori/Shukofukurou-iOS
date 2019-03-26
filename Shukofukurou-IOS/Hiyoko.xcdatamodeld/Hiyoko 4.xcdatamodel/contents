@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18E220a" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Airing" representedClassName="Airing" syncable="YES" codeGenerationType="class">
         <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="episodes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -58,6 +58,11 @@
         <attribute name="serviceid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titleid" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="ExportedLists" representedClassName="ExportedLists" syncable="YES" codeGenerationType="class">
+        <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="MangaListEntries" representedClassName="MangaListEntries" syncable="YES" codeGenerationType="class">
         <attribute name="chapters" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -151,6 +156,7 @@
     <elements>
         <element name="Airing" positionX="-45" positionY="144" width="128" height="30"/>
         <element name="AnimeListEntries" positionX="-36" positionY="9" width="128" height="405"/>
+        <element name="AnimeRelationsE" positionX="-45" positionY="135" width="128" height="225"/>
         <element name="CachedTitleEntries" positionX="-45" positionY="135" width="128" height="135"/>
         <element name="MangaListEntries" positionX="-63" positionY="-18" width="128" height="420"/>
         <element name="NewTitleIdmappings" positionX="-45" positionY="144" width="128" height="30"/>
@@ -161,6 +167,6 @@
         <element name="StreamSites" positionX="-45" positionY="135" width="128" height="75"/>
         <element name="Titleidmappings" positionX="-54" positionY="-9" width="128" height="120"/>
         <element name="Trending" positionX="-45" positionY="135" width="128" height="105"/>
-        <element name="AnimeRelationsE" positionX="-45" positionY="135" width="128" height="225"/>
+        <element name="ExportedLists" positionX="-45" positionY="135" width="128" height="90"/>
     </elements>
 </model>

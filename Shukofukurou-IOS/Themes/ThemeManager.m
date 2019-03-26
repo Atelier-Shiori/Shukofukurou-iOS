@@ -24,6 +24,7 @@
 #import "UIViewThemed.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
 #import "TableViewCellBackgroundView.h"
+#import "UITableViewCellSelBackground.h"
 
 @interface ThemeManager ()
 @property ThemeManagerTheme *lightTheme;
@@ -74,6 +75,7 @@
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
     [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[ReactionTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[UISwipeCellNoBackground class]]].tintColor = _currentTheme.tablecellImageTintColor;
     [UITableViewHeaderFooterView appearance].tintColor = _currentTheme.tableHeaderBackgroundColor;
     [UINavigationBar appearance].tintColor = _currentTheme.tintColor;
     [UITableViewCell  appearance].tintColor = _currentTheme.tintColor;

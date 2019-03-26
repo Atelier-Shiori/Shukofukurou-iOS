@@ -24,3 +24,8 @@
 }
 
 @end
+
+@implementation UISwipeCellNoBackground
+
+
+@end

@@ -265,6 +265,17 @@
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
+		597DDCE7224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
+		597DDCE8224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
+		597DDCEB224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */; };
+		597DDCEC224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */; };
+		597DDCEF224A6FD70005C652 /* FailedTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */; };
+		597DDCF0224A6FD70005C652 /* FailedTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */; };
+		597DDCF3224A70DB0005C652 /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF2224A70DB0005C652 /* ExportOperationManager.m */; };
+		597DDCF4224A70DB0005C652 /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF2224A70DB0005C652 /* ExportOperationManager.m */; };
+		597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597DDCF7224A70EA0005C652 /* Export.storyboard */; };
+		597DDCFA224A71670005C652 /* ExportListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF9224A71670005C652 /* ExportListTableViewController.m */; };
+		597DDCFB224A71670005C652 /* ExportListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF9224A71670005C652 /* ExportListTableViewController.m */; };
 		5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
@@ -891,6 +902,17 @@
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
+		597DDCE5224A6FB10005C652 /* ExportMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportMainTableViewController.h; sourceTree = "<group>"; };
+		597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportMainTableViewController.m; sourceTree = "<group>"; };
+		597DDCE9224A6FC50005C652 /* ExportedListsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportedListsTableViewController.h; sourceTree = "<group>"; };
+		597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportedListsTableViewController.m; sourceTree = "<group>"; };
+		597DDCED224A6FD70005C652 /* FailedTitlesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FailedTitlesTableViewController.h; sourceTree = "<group>"; };
+		597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FailedTitlesTableViewController.m; sourceTree = "<group>"; };
+		597DDCF1224A70DB0005C652 /* ExportOperationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportOperationManager.h; sourceTree = "<group>"; };
+		597DDCF2224A70DB0005C652 /* ExportOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportOperationManager.m; sourceTree = "<group>"; };
+		597DDCF6224A70EA0005C652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Export.storyboard; sourceTree = "<group>"; };
+		597DDCF8224A71670005C652 /* ExportListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportListTableViewController.h; sourceTree = "<group>"; };
+		597DDCF9224A71670005C652 /* ExportListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportListTableViewController.m; sourceTree = "<group>"; };
 		5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou-IOS.entitlements"; sourceTree = "<group>"; };
 		5981223921935C7200117FA0 /* AiringNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5981223A21935C7200117FA0 /* AiringNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
@@ -1434,6 +1456,7 @@
 				596241BB21556481001995AD /* Airing.storyboard */,
 				596241BD21556486001995AD /* Auth.storyboard */,
 				59481D8221594078003CE863 /* CustomList.storyboard */,
+				597DDCF7224A70EA0005C652 /* Export.storyboard */,
 				596241BF21556489001995AD /* InfoView.storyboard */,
 				596241C12155648D001995AD /* LaunchScreen.storyboard */,
 				596241C321556493001995AD /* Lists.storyboard */,
@@ -1481,6 +1504,7 @@
 		596241E5215564E2001995AD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				597DDCE2224A6AC00005C652 /* Export */,
 				59A0C6F5215A983600B15F9F /* AdvEditTableViewController.h */,
 				59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */,
 				5962420E21556511001995AD /* AiringDayTableViewController.h */,
@@ -1560,6 +1584,23 @@
 				5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		597DDCE2224A6AC00005C652 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				597DDCE5224A6FB10005C652 /* ExportMainTableViewController.h */,
+				597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */,
+				597DDCE9224A6FC50005C652 /* ExportedListsTableViewController.h */,
+				597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */,
+				597DDCED224A6FD70005C652 /* FailedTitlesTableViewController.h */,
+				597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */,
+				597DDCF1224A70DB0005C652 /* ExportOperationManager.h */,
+				597DDCF2224A70DB0005C652 /* ExportOperationManager.m */,
+				597DDCF8224A71670005C652 /* ExportListTableViewController.h */,
+				597DDCF9224A71670005C652 /* ExportListTableViewController.m */,
+			);
+			path = Export;
 			sourceTree = "<group>";
 		};
 		5997B4A82162A68C005E894A /* TopAlignedLabel */ = {
@@ -2145,6 +2186,7 @@
 				5962425121556617001995AD /* Lists.storyboard in Resources */,
 				5962424E2155660F001995AD /* Auth.storyboard in Resources */,
 				5962425521556622001995AD /* Search.storyboard in Resources */,
+				597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */,
 				5962424F21556612001995AD /* InfoView.storyboard in Resources */,
 				5962424D2155660C001995AD /* Airing.storyboard in Resources */,
 				59B3AC63220922930050662A /* Stats.storyboard in Resources */,
@@ -2182,10 +2224,12 @@
 				5934E1FB220F7539002B8311 /* AniListScoreConvert.m in Sources */,
 				5934E1FC220F7539002B8311 /* AiringNotificationServiceSelector.m in Sources */,
 				5934E1FD220F7539002B8311 /* TrendingViewController.m in Sources */,
+				597DDCFB224A71670005C652 /* ExportListTableViewController.m in Sources */,
 				5934E1FE220F7539002B8311 /* ReviewDetailViewController.m in Sources */,
 				5934E1FF220F7539002B8311 /* SideBarCell.m in Sources */,
 				5934E200220F7539002B8311 /* AppDelegate.m in Sources */,
 				5934E201220F7539002B8311 /* ViewControllerManager.m in Sources */,
+				597DDCF4224A70DB0005C652 /* ExportOperationManager.m in Sources */,
 				5934E202220F7539002B8311 /* ReviewTableViewCell.m in Sources */,
 				5934E203220F7539002B8311 /* MSWeakTimer.m in Sources */,
 				5934E204220F7539002B8311 /* NSArray+MK_Misc.m in Sources */,
@@ -2197,6 +2241,7 @@
 				5934E20A220F7539002B8311 /* DefaultTheme.m in Sources */,
 				5934E20B220F7539002B8311 /* UIViewThemed.m in Sources */,
 				5934E20C220F7539002B8311 /* RatingTwentyConvert.m in Sources */,
+				597DDCEC224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */,
 				5934E20D220F7539002B8311 /* Keychain.m in Sources */,
 				5934E20E220F7539002B8311 /* SettingsRootViewController.m in Sources */,
 				5934E20F220F7539002B8311 /* SearchTableViewCell.m in Sources */,
@@ -2243,10 +2288,12 @@
 				5934E23B220F7539002B8311 /* SortTableViewController.m in Sources */,
 				5934E23C220F7539002B8311 /* Base64Category.m in Sources */,
 				5934E23D220F7539002B8311 /* CustomListTableViewController.m in Sources */,
+				597DDCF0224A6FD70005C652 /* FailedTitlesTableViewController.m in Sources */,
 				5934E23E220F7539002B8311 /* AutoRefreshTimer.m in Sources */,
 				5934E23F220F7539002B8311 /* StatsViewController.m in Sources */,
 				5934E240220F7539002B8311 /* SideBarViewController.m in Sources */,
 				5934E241220F7539002B8311 /* UITableViewCellSelBackground.m in Sources */,
+				597DDCE8224A6FB10005C652 /* ExportMainTableViewController.m in Sources */,
 				5934E242220F7539002B8311 /* SeasonSelectorTableViewController.m in Sources */,
 				5934E243220F7539002B8311 /* EpisodesTableViewController.m in Sources */,
 				5934E244220F7539002B8311 /* ViewFrameAccessor.m in Sources */,
@@ -2340,6 +2387,7 @@
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
 				59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */,
+				597DDCEB224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
 				59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */,
 				5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */,
@@ -2347,6 +2395,7 @@
 				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
 				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				597DDCE7224A6FB10005C652 /* ExportMainTableViewController.m in Sources */,
 				59A7A7F2220F95FA009563CA /* TipJar.m in Sources */,
 				59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */,
 				5962422221556514001995AD /* ServiceSwitcherRootViewController.m in Sources */,
@@ -2370,7 +2419,9 @@
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
 				592EB7882209D76C004DE461 /* NSArray+MK_Block.m in Sources */,
+				597DDCEF224A6FD70005C652 /* FailedTitlesTableViewController.m in Sources */,
 				595A962D2240201C00E3C245 /* AnimeRelations.m in Sources */,
+				597DDCFA224A71670005C652 /* ExportListTableViewController.m in Sources */,
 				592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
@@ -2392,6 +2443,7 @@
 				594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */,
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
+				597DDCF3224A70DB0005C652 /* ExportOperationManager.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
 				5968F1B12249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */,
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
@@ -2627,6 +2679,14 @@
 				596241D0215564B4001995AD /* Base */,
 			);
 			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		597DDCF7224A70EA0005C652 /* Export.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDCF6224A70EA0005C652 /* Base */,
+			);
+			name = Export.storyboard;
 			sourceTree = "<group>";
 		};
 		59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */ = {
