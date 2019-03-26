@@ -25,7 +25,7 @@ NSString *const supportedSites = @"(crunchyroll|hidive|daisuki|animelab|funimati
         // Set Timeout
         request.timeoutInterval = 15;
         // Set User Agent
-        [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" forHTTPHeaderField:@"User-Agent"];
+        [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15" forHTTPHeaderField:@"User-Agent"];
         // Based on http://demianturner.com/2016/08/synchronous-nsurlsession-in-obj-c/
         __block NSHTTPURLResponse *urlresponse = nil;
         __block NSData *data = nil;
