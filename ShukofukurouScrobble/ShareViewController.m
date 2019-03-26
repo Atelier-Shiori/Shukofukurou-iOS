@@ -21,7 +21,7 @@
 
 @implementation ShareViewController
 
-NSString *const sharesupportedSites = @"(crunchyroll)";
+NSString *const sharesupportedSites = @"(crunchyroll|vrv)";
 
 - (void)viewDidLoad {
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.moe.malupdaterosx.Shukofukurou-IOS.scrobbleextension"];
@@ -99,6 +99,10 @@ NSString *const sharesupportedSites = @"(crunchyroll)";
         [self showloadingview:NO withText:@""];
         [self showError];
     }
+}
+
+- (void)retrieveAndPopulateUsingPageTitle:(NSString *)pagetitle withURL:(NSString *)url {
+    
 }
 
 - (void)showError {

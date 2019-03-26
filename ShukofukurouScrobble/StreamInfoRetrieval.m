@@ -13,7 +13,7 @@
 #import "NSString+HTML.h"
 
 @implementation StreamInfoRetrieval
-NSString *const supportedSites = @"(crunchyroll|hidive|daisuki|animelab|funimation)";
+NSString *const supportedSites = @"(crunchyroll|hidive|daisuki|animelab|funimation|vrv)";
 + (NSDictionary *)retrieveStreamInfo:(NSString*)URL {
     NSString *site = [self checkURL:URL];
     if (site.length > 0) {
@@ -54,9 +54,11 @@ NSString *const supportedSites = @"(crunchyroll|hidive|daisuki|animelab|funimati
 }
 + (NSString *)getPageTitle:(NSString *)dom {
     // Parses title from DOM
-    OnigRegexp *regex = [OnigRegexp compile:@"<title>(.*?)<\\/title>" options:OnigOptionIgnorecase];
+    OnigRegexp *regex = [OnigRegexp compile:@"<title[^>]*>(.*?)<\\/title>" options:OnigOptionIgnorecase];
     NSString *title = [regex search:dom].strings[0];
-    regex = [OnigRegexp compile:@"(<title>|<\\/title>)" options:OnigOptionIgnorecase];
+    regex = [OnigRegexp compile:@"<title[^>]*>" options:OnigOptionIgnorecase];
+    title = [title replaceByRegexp:regex with:@""];
+    regex = [OnigRegexp compile:@"<\\/title>" options:OnigOptionIgnorecase];
     title = [title replaceByRegexp:regex with:@""];
     //Unexcape HTML Characters
     title = [title kv_decodeHTMLCharacterEntities];
