@@ -271,8 +271,6 @@
 		597DDCEC224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */; };
 		597DDCEF224A6FD70005C652 /* FailedTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */; };
 		597DDCF0224A6FD70005C652 /* FailedTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */; };
-		597DDCF3224A70DB0005C652 /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF2224A70DB0005C652 /* ExportOperationManager.m */; };
-		597DDCF4224A70DB0005C652 /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF2224A70DB0005C652 /* ExportOperationManager.m */; };
 		597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597DDCF7224A70EA0005C652 /* Export.storyboard */; };
 		597DDCFA224A71670005C652 /* ExportListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF9224A71670005C652 /* ExportListTableViewController.m */; };
 		597DDCFB224A71670005C652 /* ExportListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCF9224A71670005C652 /* ExportListTableViewController.m */; };
@@ -280,6 +278,8 @@
 		598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4ED216296F500979C19 /* ReviewTableViewCell.m */; };
 		598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
+		599121F7224BBBF600896BEF /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 599121F6224BBBF600896BEF /* ExportOperationManager.m */; };
+		599121FC224BC1C200896BEF /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 599121F6224BBBF600896BEF /* ExportOperationManager.m */; };
 		5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */; };
 		59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
 		59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
@@ -908,8 +908,6 @@
 		597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportedListsTableViewController.m; sourceTree = "<group>"; };
 		597DDCED224A6FD70005C652 /* FailedTitlesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FailedTitlesTableViewController.h; sourceTree = "<group>"; };
 		597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FailedTitlesTableViewController.m; sourceTree = "<group>"; };
-		597DDCF1224A70DB0005C652 /* ExportOperationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportOperationManager.h; sourceTree = "<group>"; };
-		597DDCF2224A70DB0005C652 /* ExportOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportOperationManager.m; sourceTree = "<group>"; };
 		597DDCF6224A70EA0005C652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Export.storyboard; sourceTree = "<group>"; };
 		597DDCF8224A71670005C652 /* ExportListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportListTableViewController.h; sourceTree = "<group>"; };
 		597DDCF9224A71670005C652 /* ExportListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportListTableViewController.m; sourceTree = "<group>"; };
@@ -922,6 +920,8 @@
 		598AB4ED216296F500979C19 /* ReviewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewTableViewCell.m; sourceTree = "<group>"; };
 		598AB4EF2162976100979C19 /* ReviewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewTableViewController.h; sourceTree = "<group>"; };
 		598AB4F02162976100979C19 /* ReviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewTableViewController.m; sourceTree = "<group>"; };
+		599121F5224BBBF600896BEF /* ExportOperationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportOperationManager.h; sourceTree = "<group>"; };
+		599121F6224BBBF600896BEF /* ExportOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportOperationManager.m; sourceTree = "<group>"; };
 		5997B4BD2162A6AA005E894A /* TopAlignedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopAlignedLabel.h; sourceTree = "<group>"; };
 		5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopAlignedLabel.m; sourceTree = "<group>"; };
 		599CF00D220B61280063EBB9 /* Hiyoko 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -1595,10 +1595,10 @@
 				597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */,
 				597DDCED224A6FD70005C652 /* FailedTitlesTableViewController.h */,
 				597DDCEE224A6FD70005C652 /* FailedTitlesTableViewController.m */,
-				597DDCF1224A70DB0005C652 /* ExportOperationManager.h */,
-				597DDCF2224A70DB0005C652 /* ExportOperationManager.m */,
 				597DDCF8224A71670005C652 /* ExportListTableViewController.h */,
 				597DDCF9224A71670005C652 /* ExportListTableViewController.m */,
+				599121F5224BBBF600896BEF /* ExportOperationManager.h */,
+				599121F6224BBBF600896BEF /* ExportOperationManager.m */,
 			);
 			path = Export;
 			sourceTree = "<group>";
@@ -2229,7 +2229,6 @@
 				5934E1FF220F7539002B8311 /* SideBarCell.m in Sources */,
 				5934E200220F7539002B8311 /* AppDelegate.m in Sources */,
 				5934E201220F7539002B8311 /* ViewControllerManager.m in Sources */,
-				597DDCF4224A70DB0005C652 /* ExportOperationManager.m in Sources */,
 				5934E202220F7539002B8311 /* ReviewTableViewCell.m in Sources */,
 				5934E203220F7539002B8311 /* MSWeakTimer.m in Sources */,
 				5934E204220F7539002B8311 /* NSArray+MK_Misc.m in Sources */,
@@ -2282,6 +2281,7 @@
 				5934E235220F7539002B8311 /* ListViewController.m in Sources */,
 				5934E236220F7539002B8311 /* DarkTheme.m in Sources */,
 				5934E237220F7539002B8311 /* StreamDataRetriever.m in Sources */,
+				599121FC224BC1C200896BEF /* ExportOperationManager.m in Sources */,
 				5934E238220F7539002B8311 /* AiringSchedule.m in Sources */,
 				5934E239220F7539002B8311 /* listservice.m in Sources */,
 				5934E23A220F7539002B8311 /* NSArray+MK_Block.m in Sources */,
@@ -2443,9 +2443,9 @@
 				594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */,
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
-				597DDCF3224A70DB0005C652 /* ExportOperationManager.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
 				5968F1B12249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */,
+				599121F7224BBBF600896BEF /* ExportOperationManager.m in Sources */,
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
 				595A9629224013A700E3C245 /* string_score.c in Sources */,

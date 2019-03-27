@@ -10,6 +10,9 @@
 #import "AppDelegate.h"
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
+#import "ThemeManager.h"
+#import "ExportOperationManager.h"
 
 @interface ExportListTableViewController ()
 typedef NS_ENUM(unsigned int, ExportType) {
@@ -23,6 +26,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
 @property (strong, nonatomic) IBOutlet UITableViewCell *jsonanimeformatted;
 @property (strong, nonatomic) IBOutlet UITableViewCell *jsonmangaformatted;
 @property (strong) NSManagedObjectContext *moc;
+@property (strong) MBProgressHUD *hud;
 @end
 
 @implementation ExportListTableViewController
@@ -88,7 +92,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
     switch (type) {
         case MALXMLAnimeExportType:
         case MALXMLMangaExportType:
-
+            [self exportXML:type];
             break;
         case JsonAnimeExportType:
         case JsonMangaExportType:
@@ -97,6 +101,21 @@ typedef NS_ENUM(unsigned int, ExportType) {
         default:
             break;
     }
+}
+
+- (void)exportXML:(int)type {
+    int listtype = type == MALXMLAnimeExportType ? 0 : 1;
+    ExportOperationManager *exportopmanager = [ExportOperationManager new];
+    [self showloadingview:YES];
+    exportopmanager.completion = ^(NSMutableArray * _Nonnull failedtitles, NSString * _Nonnull xml) {
+        [self showloadingview:NO];
+        [self saveToCoreData:xml withType:type];
+        [self showMessage:@"Export Successful." withInformativeText:@"You can see your exported list in the Exported Lists section."];
+        if (failedtitles.count > 0) {
+            NSLog(@"One or more titles failed to export");
+        }
+    };
+    [exportopmanager beginTitleIdBuildingForType:listtype];
 }
 
 - (void)exportJson:(int)type {
@@ -168,6 +187,18 @@ typedef NS_ENUM(unsigned int, ExportType) {
     NSError *error = nil;
     // Save
     [self.moc save:&error];
+}
+
+- (void)showloadingview:(bool)show {
+    if (show) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        _hud.label.text = @"Exporting...";
+        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
+    else {
+        [_hud hideAnimated:YES];
+    }
 }
 
 @end
