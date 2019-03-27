@@ -97,6 +97,7 @@
 
 - (void)performDelete:(NSManagedObject *)obj {
     [_moc deleteObject:obj];
+    [_moc save:nil];
     [self populateDictionaries];
 }
 

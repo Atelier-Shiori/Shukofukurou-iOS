@@ -26,8 +26,8 @@
 @implementation ExportOperationManager
 - (instancetype)init {
     if (self = [super init]) {
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(wentToBackground:) name:UIApplicationWillResignActiveNotification object:nil];
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(becameActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(wentToBackground:) name:@"enteredBackground" object:nil];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(becameActive:) name:@"becameActive" object:nil];
         _mapper = [TitleIDMapper new];
         _lservice = listservice.sharedInstance;
         _failedtitles = [NSMutableArray new];
@@ -42,10 +42,12 @@
 }
 
 - (void)wentToBackground:(NSNotification *)notification {
+    NSLog(@"Paused");
     _paused = true;
 }
 
 - (void)becameActive:(NSNotification *)notification {
+    NSLog(@"Active");
     _paused = false;
     if (_active) {
         NSLog(@"Resume building of MAL List entries.");

@@ -13,6 +13,7 @@
 #import <MBProgressHudFramework/MBProgressHUD.h>
 #import "ThemeManager.h"
 #import "ExportOperationManager.h"
+#import "FailedTitlesTableViewController.h"
 
 @interface ExportListTableViewController ()
 typedef NS_ENUM(unsigned int, ExportType) {
@@ -26,6 +27,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
 @property (strong, nonatomic) IBOutlet UITableViewCell *jsonanimeformatted;
 @property (strong, nonatomic) IBOutlet UITableViewCell *jsonmangaformatted;
 @property (strong) NSManagedObjectContext *moc;
+@property (strong) ExportOperationManager *exportopmanager;
 @property (strong) MBProgressHUD *hud;
 @end
 
@@ -105,17 +107,26 @@ typedef NS_ENUM(unsigned int, ExportType) {
 
 - (void)exportXML:(int)type {
     int listtype = type == MALXMLAnimeExportType ? 0 : 1;
-    ExportOperationManager *exportopmanager = [ExportOperationManager new];
+    _exportopmanager = [ExportOperationManager new];
     [self showloadingview:YES];
-    exportopmanager.completion = ^(NSMutableArray * _Nonnull failedtitles, NSString * _Nonnull xml) {
-        [self showloadingview:NO];
-        [self saveToCoreData:xml withType:type];
-        [self showMessage:@"Export Successful." withInformativeText:@"You can see your exported list in the Exported Lists section."];
+    __weak ExportListTableViewController *weakself = self;
+    _exportopmanager.completion = ^(NSMutableArray * _Nonnull failedtitles, NSString * _Nonnull xml) {
+        [weakself showloadingview:NO];
+        [weakself saveToCoreData:xml withType:type];
         if (failedtitles.count > 0) {
             NSLog(@"One or more titles failed to export");
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Export" bundle:nil];
+            FailedTitlesTableViewController *failedviewcontroller = (FailedTitlesTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"failedtitles"];
+            [weakself.navigationController pushViewController:failedviewcontroller animated:YES];
+            failedviewcontroller.failedexports = failedtitles;
+            [failedviewcontroller.tableView reloadData];
+            [failedviewcontroller showFailedMessage];
+        }
+        else {
+            [weakself showMessage:@"Export Successful." withInformativeText:@"You can see your exported list in the Exported Lists section."];
         }
     };
-    [exportopmanager beginTitleIdBuildingForType:listtype];
+    [_exportopmanager beginTitleIdBuildingForType:listtype];
 }
 
 - (void)exportJson:(int)type {
@@ -191,6 +202,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
 
 - (void)showloadingview:(bool)show {
     if (show) {
+        self.navigationItem.backBarButtonItem.enabled = NO;
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Exporting...";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
@@ -198,6 +210,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
     }
     else {
         [_hud hideAnimated:YES];
+        self.navigationItem.backBarButtonItem.enabled = YES;
     }
 }
 

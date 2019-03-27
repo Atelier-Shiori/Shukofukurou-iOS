@@ -13,8 +13,11 @@
 #import "ViewControllerManager.h"
 #import "ThemeManager.h"
 #import "UIViewThemed.h"
+#import "TitleIDMapper.h"
 
 @interface SettingsViewController ()
+@property (strong, nonatomic) IBOutlet UITableViewCell *resetmappingscell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *clearimagecell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *imagecachesize;
 @property (strong, nonatomic) IBOutlet UILabel *versionnum;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
@@ -96,7 +99,6 @@
     }
     else if ([cell.textLabel.text isEqualToString:@"Clear Image Cache"]) {
         [self clearImages];
-        [cell setSelected:NO animated:YES];
     }
     else if ([cell.textLabel.text isEqualToString:@"File a Bug Report"]) {
         [self openWebBrowserView:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/Shukofukurou-iOS/issues"]];
@@ -110,6 +112,9 @@
         [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://mastodon.social/@malupdaterosxdev"] options:@{} completionHandler:^(BOOL success) {}];
         [cell setSelected:NO animated:YES];
     }
+    else if ([cell.textLabel.text isEqualToString:@"Reset Title ID Mappings"]) {
+        [self resetTitleIDMappings];
+    }
 }
 
 - (void)openManual {
@@ -121,11 +126,27 @@
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes",nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
             [self loadImageCacheSize];
+            [self.clearimagecell setSelected:NO animated:YES];
         }];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self.clearimagecell setSelected:NO animated:YES];
+    }]];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+- (void)resetTitleIDMappings {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Do you really want to reset the Title ID Mappings?",nil) message:NSLocalizedString(@"Once done, this action cannot be undone.",nil) preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes",nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [TitleIDMapper.sharedInstance clearAllMappings];
+        [self.resetmappingscell setSelected:NO animated:YES];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.resetmappingscell setSelected:NO animated:YES];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)toggledarkmode:(id)sender {
     [NSUserDefaults.standardUserDefaults setBool:_darkmodeswitch.on forKey:@"darkmode"];
     [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTheme" object:nil];

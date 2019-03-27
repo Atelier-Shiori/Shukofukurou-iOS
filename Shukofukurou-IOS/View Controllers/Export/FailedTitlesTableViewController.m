@@ -26,25 +26,19 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return _failedexports.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"failedtitle" forIndexPath:indexPath];
+    NSDictionary *entry = _failedexports[indexPath.row];
     // Configure the cell...
+    cell.textLabel.text = entry[@"title"];
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -89,5 +83,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)dismisscontroller:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)showFailedMessage {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"One or more titles failed to export" message:@"This is due to the title not being in MyAnimeList's database. You can review them." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertcontroller addAction:okaction];
+    [self presentViewController:alertcontroller animated:YES completion:nil];
+}
 
 @end

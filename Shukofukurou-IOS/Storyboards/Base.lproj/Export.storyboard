@@ -81,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="355" y="183"/>
         </scene>
-        <!--Export List Table View Controller-->
+        <!--Select Export Format-->
         <scene sceneID="k4i-Oj-3X3">
             <objects>
-                <tableViewController id="hGc-3U-aDl" customClass="ExportListTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Select Export Format" id="hGc-3U-aDl" customClass="ExportListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hTE-CO-jDb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,16 +179,16 @@
             </objects>
             <point key="canvasLocation" x="1288" y="-258"/>
         </scene>
-        <!--Failed Exports-->
+        <!--Titles Failed to Export-->
         <scene sceneID="tzy-uE-m82">
             <objects>
-                <tableViewController title="Failed Exports" id="IS0-uk-01n" customClass="FailedTitlesTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="failedtitles" title="Titles Failed to Export" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IS0-uk-01n" customClass="FailedTitlesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t6O-el-Q2J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hjB-WF-n3F">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="failedtitle" id="hjB-WF-n3F" customClass="UITableViewCellNoSelection">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hjB-WF-n3F" id="44c-DU-8lJ">
@@ -202,9 +202,6 @@
                             <outlet property="delegate" destination="IS0-uk-01n" id="fHT-qq-fYG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Failed Exports" id="nWs-qC-m9W">
-                        <barButtonItem key="rightBarButtonItem" title="Continue" id="QZa-lb-kRx"/>
-                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Asm-mM-NWD" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FailedTitlesTableViewController : UITableViewController
-
+@property (strong) NSArray *failedexports;
+- (void)showFailedMessage;
 @end
 
 NS_ASSUME_NONNULL_END

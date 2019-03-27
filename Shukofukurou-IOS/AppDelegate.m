@@ -159,6 +159,7 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     [_autorefresh pauseTimer];
     [_vcmanager.mvc hidetoolbarstate];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"enteredBackground" object:nil];
 }
 
 
@@ -175,6 +176,7 @@
     [_vcmanager.mvc hidetoolbarstate];
     [_vcmanager.mvc showtoolbarstate];
     [ScrobbleManager.sharedInstance checkScrobble];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"becameActive" object:nil];
 }
 
 

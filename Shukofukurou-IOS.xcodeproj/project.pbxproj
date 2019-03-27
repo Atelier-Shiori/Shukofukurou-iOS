@@ -280,6 +280,8 @@
 		598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
 		599121F7224BBBF600896BEF /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 599121F6224BBBF600896BEF /* ExportOperationManager.m */; };
 		599121FC224BC1C200896BEF /* ExportOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 599121F6224BBBF600896BEF /* ExportOperationManager.m */; };
+		599121FF224BCE5E00896BEF /* ExportSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599121FE224BCE5E00896BEF /* ExportSettingsTableViewController.m */; };
+		59912200224BCE5E00896BEF /* ExportSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599121FE224BCE5E00896BEF /* ExportSettingsTableViewController.m */; };
 		5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */; };
 		59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */; };
 		59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */; };
@@ -922,6 +924,8 @@
 		598AB4F02162976100979C19 /* ReviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewTableViewController.m; sourceTree = "<group>"; };
 		599121F5224BBBF600896BEF /* ExportOperationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportOperationManager.h; sourceTree = "<group>"; };
 		599121F6224BBBF600896BEF /* ExportOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportOperationManager.m; sourceTree = "<group>"; };
+		599121FD224BCE5E00896BEF /* ExportSettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportSettingsTableViewController.h; sourceTree = "<group>"; };
+		599121FE224BCE5E00896BEF /* ExportSettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportSettingsTableViewController.m; sourceTree = "<group>"; };
 		5997B4BD2162A6AA005E894A /* TopAlignedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopAlignedLabel.h; sourceTree = "<group>"; };
 		5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopAlignedLabel.m; sourceTree = "<group>"; };
 		599CF00D220B61280063EBB9 /* Hiyoko 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -1582,6 +1586,8 @@
 				59B3AC5F2209226C0050662A /* StatsViewController.m */,
 				5968F1AF2249199E00A048D4 /* ScrobbleSettingsViewController.h */,
 				5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */,
+				599121FD224BCE5E00896BEF /* ExportSettingsTableViewController.h */,
+				599121FE224BCE5E00896BEF /* ExportSettingsTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2257,6 +2263,7 @@
 				5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */,
 				5934E21D220F7539002B8311 /* ThemeManager.m in Sources */,
 				5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */,
+				59912200224BCE5E00896BEF /* ExportSettingsTableViewController.m in Sources */,
 				5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */,
 				5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */,
 				5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */,
@@ -2445,6 +2452,7 @@
 				596241E2215564D1001995AD /* MangaEntryTableViewCell.m in Sources */,
 				596241E1215564D1001995AD /* EntryCellInfo.m in Sources */,
 				5968F1B12249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */,
+				599121FF224BCE5E00896BEF /* ExportSettingsTableViewController.m in Sources */,
 				599121F7224BBBF600896BEF /* ExportOperationManager.m in Sources */,
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,

@@ -10,6 +10,8 @@
 #import "ScrobbleManager.h"
 #import "AnimeRelations.h"
 #import <MBProgressHUDFramework/MBProgressHUD.h>
+#import <SafariServices/SafariServices.h>
+#import "ThemeManager.h"
 
 @interface ScrobbleSettingsViewController ()
 @property (strong, nonatomic) IBOutlet UITableViewCell *clearcachecell;
@@ -40,6 +42,9 @@
     }
     else if ([cell.textLabel.text isEqualToString:@"Reset Scrobble Data"]) {
         [self clearScrobbleData];
+    }
+    else if ([cell.textLabel.text isEqualToString:@"Scrobble User Guide"]) {
+        [self performOpenScrobbleGuide];
     }
 }
 
@@ -93,6 +98,14 @@
         [self.hud hideAnimated:YES];
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     }
+}
+
+- (void)performOpenScrobbleGuide {
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[[NSURL alloc] initWithString:@"https://malupdaterosx.moe/scrobbleguide.pdf"]];
+    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    [self presentViewController:svc animated:YES completion:^{
+    }];
 }
 
 @end
