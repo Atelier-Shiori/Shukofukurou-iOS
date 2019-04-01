@@ -48,7 +48,8 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:false animated:animated];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [super setSelected:NO animated:NO];
 }
 
 - (void)selectAction {
@@ -90,7 +91,8 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:false animated:animated];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [super setSelected:NO animated:NO];
 }
 @end
 
@@ -431,10 +433,10 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
-    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [super setSelected:NO animated:NO];
 }
+
 - (IBAction)valueChanged:(id)sender {
     NSLog(@"Value Changed");
     self.switchChanged(_toggleswitch.on, _cellTitle.text, _dateToggle);

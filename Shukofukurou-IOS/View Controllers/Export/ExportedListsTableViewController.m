@@ -83,6 +83,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UISwipeCellNoBackground *cell = (UISwipeCellNoBackground *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [cell showSwipe:MGSwipeDirectionRightToLeft animated:YES];
+}
+
 - (void)promptdelete:(NSManagedObject *)obj {
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Delete Exported List?" message:[NSString stringWithFormat:@"Do you want to delete list %@? Once done, it cannot be undone.", [obj valueForKey:@"title"]] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

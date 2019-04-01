@@ -18,8 +18,12 @@
 @end
 
 @implementation UITableViewCellNoSelection
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     [super setSelected:NO animated:NO];
 }
 
