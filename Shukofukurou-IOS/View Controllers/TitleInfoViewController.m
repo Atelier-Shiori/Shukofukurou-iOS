@@ -764,6 +764,12 @@
     if (((NSString *)titleinfo[@"season"]).length > 0) {
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Aired Season" withValue:titleinfo[@"season"] withCellType:cellTypeInfo]];
     }
+    if (titleinfo[@"start_date"] && titleinfo[@"start_date"] != [NSNull null] && ((NSString *)titleinfo[@"start_date"]).length > 0) {
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Started" withValue:titleinfo[@"start_date"] withCellType:cellTypeInfo]];
+    }
+    if (titleinfo[@"end_date"] && titleinfo[@"end_date"] != [NSNull null] && ((NSString *)titleinfo[@"end_date"]).length > 0) {
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Ended" withValue:titleinfo[@"end_date"] withCellType:cellTypeInfo]];
+    }
     if (((NSString *)titleinfo[@"source"]).length > 0) {
         [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Source" withValue:titleinfo[@"source"] withCellType:cellTypeInfo]];
     }
@@ -844,6 +850,12 @@
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Chapters" withValue:(((NSNumber *)titleinfo[@"chapters"]).intValue > 0 || titleinfo[@"chapters"] != nil) ? ((NSNumber *)titleinfo[@"chapters"]).stringValue : @"Unknown" withCellType:cellTypeInfo]];
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Volumes" withValue:(((NSNumber *)titleinfo[@"volumes"]).intValue > 0 || titleinfo[@"volumes"] != nil) ? ((NSNumber *)titleinfo[@"volumes"]).stringValue : @"Unknown" withCellType:cellTypeInfo]];
     [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Status" withValue:titleinfo[@"status"] withCellType:cellTypeInfo]];
+    if (titleinfo[@"start_date"] && titleinfo[@"start_date"] != [NSNull null] && ((NSString *)titleinfo[@"start_date"]).length > 0) {
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Started" withValue:titleinfo[@"start_date"] withCellType:cellTypeInfo]];
+    }
+    if (titleinfo[@"end_date"] && titleinfo[@"end_date"] != [NSNull null] && ((NSString *)titleinfo[@"end_date"]).length > 0) {
+        [detailarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Ended" withValue:titleinfo[@"end_date"] withCellType:cellTypeInfo]];
+    }
     // Other Info
     NSDictionary *dtitles =  titleinfo[@"other_titles"];
     NSMutableArray *othertitles = [NSMutableArray new];
