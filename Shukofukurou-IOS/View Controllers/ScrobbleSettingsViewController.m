@@ -93,6 +93,8 @@
     if (show) {
         self.hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         self.hud.label.text = text;
+        self.hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+        self.hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
     }
     else {
         [self.hud hideAnimated:YES];

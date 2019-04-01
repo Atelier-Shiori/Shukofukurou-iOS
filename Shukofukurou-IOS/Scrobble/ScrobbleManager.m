@@ -16,6 +16,7 @@
 #import "Utility.h"
 #import "AnimeRelations.h"
 #import "AppDelegate.h"
+#import "ThemeManager.h"
 
 @interface ScrobbleManager ()
 @property (strong) MBProgressHUD *hud;
@@ -224,13 +225,15 @@
     [[ViewControllerManager getAppDelegateViewControllerManager].mvc presentViewController:alertcontroller animated:YES completion:nil];
 }
 
-- (void)showloadingview:(bool)show withText:(NSString *)text{
+- (void)showloadingview:(bool)show withText:(NSString *)text {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (show) {
             self.hudcontainingview = [[ViewControllerManager getAppDelegateViewControllerManager].mvc currentRootView];
             if (self.hudcontainingview) {
                 self.hud = [MBProgressHUD showHUDAddedTo:self.hudcontainingview.view animated:YES];
                 self.hud.label.text = text;
+                self.hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+                self.hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
             }
         }
         else {

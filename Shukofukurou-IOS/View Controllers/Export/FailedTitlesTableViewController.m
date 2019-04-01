@@ -7,6 +7,7 @@
 //
 
 #import "FailedTitlesTableViewController.h"
+#import "ThemeManager.h"
 
 @interface FailedTitlesTableViewController ()
 
@@ -36,7 +37,7 @@
     NSDictionary *entry = _failedexports[indexPath.row];
     // Configure the cell...
     cell.textLabel.text = entry[@"title"];
-    
+    cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
     return cell;
 }
 

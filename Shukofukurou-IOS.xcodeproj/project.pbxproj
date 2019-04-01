@@ -151,6 +151,8 @@
 		5934E281220F7539002B8311 /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E29B220F7572002B8311 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5934E29A220F7572002B8311 /* StoreKit.framework */; };
 		5934E29E220F833A002B8311 /* TipJar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5934E29C220F833A002B8311 /* TipJar.storyboard */; };
+		5945CD9A2252573F00F164E1 /* PatronTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5945CD992252573F00F164E1 /* PatronTableViewController.m */; };
+		5945CD9B2252573F00F164E1 /* PatronTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5945CD992252573F00F164E1 /* PatronTableViewController.m */; };
 		594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810D92191D645000C4B5C /* TrendingRetriever.m */; };
 		594810EF219214BA000C4B5C /* TrendingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */; };
 		594810F221921713000C4B5C /* TrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F121921713000C4B5C /* TrendingViewController.m */; };
@@ -728,6 +730,8 @@
 		5934E286220F753A002B8311 /* Shukofukurou-IOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shukofukurou-IOS copy-Info.plist"; path = "/Users/koufuuchino/Documents/Shukofukurou-IOS/Shukofukurou-IOS copy-Info.plist"; sourceTree = "<absolute>"; };
 		5934E29A220F7572002B8311 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5934E29D220F833A002B8311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TipJar.storyboard; sourceTree = "<group>"; };
+		5945CD982252573F00F164E1 /* PatronTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatronTableViewController.h; sourceTree = "<group>"; };
+		5945CD992252573F00F164E1 /* PatronTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatronTableViewController.m; sourceTree = "<group>"; };
 		594810D82191D645000C4B5C /* TrendingRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingRetriever.h; sourceTree = "<group>"; };
 		594810D92191D645000C4B5C /* TrendingRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingRetriever.m; sourceTree = "<group>"; };
 		594810ED219214BA000C4B5C /* TrendingCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingCollectionViewController.h; sourceTree = "<group>"; };
@@ -1588,6 +1592,8 @@
 				5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */,
 				599121FD224BCE5E00896BEF /* ExportSettingsTableViewController.h */,
 				599121FE224BCE5E00896BEF /* ExportSettingsTableViewController.m */,
+				5945CD982252573F00F164E1 /* PatronTableViewController.h */,
+				5945CD992252573F00F164E1 /* PatronTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2256,6 +2262,7 @@
 				5934E213220F7539002B8311 /* AuthViewController.m in Sources */,
 				5934E214220F7539002B8311 /* AiringNotifySettingsTableViewController.m in Sources */,
 				5934E215220F7539002B8311 /* TopAlignedLabel.m in Sources */,
+				5945CD9B2252573F00F164E1 /* PatronTableViewController.m in Sources */,
 				5934E216220F7539002B8311 /* ScrollViewFrameAccessor.m in Sources */,
 				5934E217220F7539002B8311 /* AtarashiiListCoreData.m in Sources */,
 				5934E218220F7539002B8311 /* RelatedTableViewController.m in Sources */,
@@ -2360,6 +2367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59B3AC732209266C0050662A /* GKBarGraph.m in Sources */,
+				5945CD9A2252573F00F164E1 /* PatronTableViewController.m in Sources */,
 				59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */,
 				5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */,
 				5962422421556514001995AD /* TitleInfoViewController.m in Sources */,

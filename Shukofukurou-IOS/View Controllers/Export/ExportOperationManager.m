@@ -11,6 +11,7 @@
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
 #import "RatingTwentyConvert.h"
+#import <MBProgressHudFramework/MBProgressHUD.h>
 
 @interface ExportOperationManager ()
 @property (strong) NSArray *tmplist;
@@ -71,6 +72,7 @@
     if (_paused) {
         return;
     }
+    self.hud.label.text = [NSString stringWithFormat:@"Retrieving Mappings: %i/%lu", _arrayposition+1, (unsigned long)_tmplist.count];
     [_mapper retrieveTitleIdForService:_lservice.getCurrentServiceID withTitleId:_tmplist[_arrayposition][@"id"] withTargetServiceId:1 withType:_mediatype completionHandler:^(id  _Nonnull titleid, bool success) {
         if (!success) {
             [self.failedtitles addObject:self.tmplist[self.arrayposition]];
@@ -90,6 +92,7 @@
         self.arrayposition++;
         if (self.arrayposition == self.tmplist.count) {
             NSLog(@"Conversion complete. Generating XML.");
+            self.hud.label.text = @"Generating XML...";
             NSString *xmlstring = self.mediatype == 0 ? [self generateAnimeListXML:self.finallist] : [self generateMangaListXML:self.finallist];
             self.completion(self.failedtitles, xmlstring);
             self.active = false;

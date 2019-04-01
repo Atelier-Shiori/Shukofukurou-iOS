@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class MBProgressHUD;
 
 @interface ExportOperationManager : NSObject
+@property (strong) MBProgressHUD *hud;
 @property (strong) NSMutableArray *failedtitles;
 @property (nonatomic, copy) void (^completion)(NSMutableArray *failedtitles, NSString *xml);
 - (void)beginTitleIdBuildingForType:(int)mediatype;

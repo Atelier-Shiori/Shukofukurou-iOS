@@ -109,6 +109,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
     int listtype = type == MALXMLAnimeExportType ? 0 : 1;
     _exportopmanager = [ExportOperationManager new];
     [self showloadingview:YES];
+    _exportopmanager.hud = self.hud;
     __weak ExportListTableViewController *weakself = self;
     _exportopmanager.completion = ^(NSMutableArray * _Nonnull failedtitles, NSString * _Nonnull xml) {
         [weakself showloadingview:NO];
