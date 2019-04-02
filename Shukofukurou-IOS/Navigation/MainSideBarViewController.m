@@ -229,6 +229,7 @@
                 navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
             }
             [weakself.mainvc presentViewController:navcontroller animated:YES completion:nil];
+            [weakself hideLeftViewAnimated:weakself];
         }]];
     }
     [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Export Lists"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -240,6 +241,7 @@
             navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
         }
         [weakself.mainvc presentViewController:navcontroller animated:YES completion:nil];
+        [weakself hideLeftViewAnimated:weakself];
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];

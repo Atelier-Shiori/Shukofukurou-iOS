@@ -82,12 +82,33 @@ typedef NS_ENUM(unsigned int, ExportType) {
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:exportTitle message:[NSString stringWithFormat:@"Do you want to export your %@ list?%@", [listservice.sharedInstance currentservicename], (exporttype == MALXMLAnimeExportType || exporttype == MALXMLMangaExportType) ? @"This may take some time." : @""] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self beginExport:exporttype];
+        [self deselectcell:exporttype];
     }];
     UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self deselectcell:exporttype];
     }];
     [alertcontroller addAction:noaction];
     [alertcontroller addAction:yesaction];
     [self presentViewController:alertcontroller animated:YES completion:nil];
+}
+
+- (void)deselectcell:(int)exporttype {
+    switch (exporttype) {
+        case MALXMLAnimeExportType:
+            [_malanimeformatted setSelected:NO animated:YES];
+            break;
+        case MALXMLMangaExportType:
+            [_malmangaformatted setSelected:NO animated:YES];
+            break;
+        case JsonAnimeExportType:
+            [_jsonanimeformatted setSelected:NO animated:YES];
+            break;
+        case JsonMangaExportType:
+            [_jsonmangaformatted setSelected:NO animated:YES];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)beginExport:(int)type {
