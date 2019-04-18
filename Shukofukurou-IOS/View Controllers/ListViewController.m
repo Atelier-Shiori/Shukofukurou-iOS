@@ -165,24 +165,6 @@
         else {
             [self showloadingview:YES];
         }
-        if (![listservice.sharedInstance checkUserData]) {
-            NSLog(@"User data not available. Retrieving username and user id");
-            switch (listservice.sharedInstance.getCurrentServiceID) {
-                case 1:
-                    [listservice.sharedInstance.kitsuManager saveuserinfoforcurrenttoken];
-                    break;
-                case 2:
-                    [listservice.sharedInstance.anilistManager saveuserinfoforcurrenttoken];
-                    break;
-                default:
-                    break;
-            }
-            if (![listservice.sharedInstance checkUserData]) {
-                [self.refreshControl endRefreshing];
-                [self showloadingview:NO];
-                completionHandler(false);
-            }
-        }
         [listservice.sharedInstance retrieveownListWithType:_listtype completion:^(id responseObject) {
             [self saveEntriesWithDictionary:responseObject withType:self.listtype];
             // populate list

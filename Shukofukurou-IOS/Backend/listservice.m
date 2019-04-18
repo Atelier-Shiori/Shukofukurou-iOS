@@ -72,7 +72,7 @@
             break;
         }
         case 3: {
-            [anilistManager retrieveList:[self getCurrentServiceUsername] listType:type completion:completionHandler error:errorHandler];
+            [anilistManager retrieveOwnListWithType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
