@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) id <MainSideBarViewDelegate> delegate;
 - (void)setLoggedinUser;
 - (void)performLogin;
+- (void)showSwitchServicesPickerasPopover:(bool)showasPopover withSender:(nullable id)sender;
 @end
 
 NS_ASSUME_NONNULL_END

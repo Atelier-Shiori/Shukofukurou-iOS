@@ -200,9 +200,15 @@
 - (IBAction)switchservices:(id)sender {
     [self hideLeftViewAnimated:self];
     [self setMainViewController];
+    [self showSwitchServicesPickerasPopover:YES withSender:sender];
+}
+
+- (void)showSwitchServicesPickerasPopover:(bool)showasPopover withSender:(nullable id)sender {
+    [self hideLeftViewAnimated:self];
+    [self setMainViewController];
     ServiceSwitcherRootViewController *serviceswitcher = [[ViewControllerManager getAppDelegateViewControllerManager] getServiceSwitcherRootViewController];
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        if (_mainvc.view.bounds.size.width > _mainvc.view.bounds.size.height) {
+        if (_mainvc.view.bounds.size.width > _mainvc.view.bounds.size.height && showasPopover && sender) {
             serviceswitcher.modalPresentationStyle = UIModalPresentationPopover;
             serviceswitcher.popoverPresentationController.barButtonItem = sender;
             serviceswitcher.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;

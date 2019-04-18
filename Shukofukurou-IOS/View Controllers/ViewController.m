@@ -10,9 +10,11 @@
 #import "ViewControllerManager.h"
 #import "ThemeManager.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
+#import "listservice.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
+@property (strong, nonatomic) IBOutlet UITableViewCell *logincell;
 @property (strong) MBProgressHUD *hud;
 @end
 
@@ -34,8 +36,10 @@
     }
     // Do any additional setup after loading the view, typically from a nib.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(serviceChangedNotification:) name:@"ServiceChanged" object:nil];
     [self hidemenubtn];
     [self setTheme];
+    [self setLoginLabel];
 }
 
 - (void)dealloc {
@@ -49,6 +53,14 @@
 
 - (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
     [self hidemenubtn];
+}
+
+- (void)serviceChangedNotification:(NSNotification *)notification {
+    [self setLoginLabel];
+}
+
+- (void)setLoginLabel {
+    _logincell.textLabel.text = [NSString stringWithFormat:@"Log into %@", [listservice.sharedInstance currentservicename]];
 }
 
 - (void)hidemenubtn {
@@ -70,20 +82,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)login:(id)sender {
-    ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
-    [vcm.mainsidebar performLogin];
-}
-
 - (void)setTheme {
-    ThemeManagerTheme *theme = [ThemeManager sharedCurrentTheme];
+   /* ThemeManagerTheme *theme = [ThemeManager sharedCurrentTheme];
     bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-    self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
+    self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;*/
 }
 
 - (void)showloadingview:(bool)show {
     if (show) {
-        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Please Wait";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
         _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
@@ -91,5 +98,48 @@
     else {
         [_hud hideAnimated:YES];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    switch (cell.tag) {
+        case 1: {
+            ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
+            [vcm.mainsidebar performLogin];
+            [cell setSelected:NO animated:YES];
+            break;
+        }
+        case 2: {
+            [self openWebBrowserView:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"]];
+            [cell setSelected:NO animated:YES];
+            break;
+        }
+        case 3: {
+            [self openWebBrowserView:[NSURL URLWithString:@"https://malupdaterosx.moe/scrobbleguide.pdf"]];
+            [cell setSelected:NO animated:YES];
+            break;
+        }
+        case 4: {
+            ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
+            [vcm.mainsidebar showSwitchServicesPickerasPopover:NO withSender:nil];
+            break;
+        }
+        default:
+            break;
+    }
+    
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (void)openWebBrowserView:(NSURL *)url {
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    [self presentViewController:svc animated:YES completion:^{
+    }];
 }
 @end
