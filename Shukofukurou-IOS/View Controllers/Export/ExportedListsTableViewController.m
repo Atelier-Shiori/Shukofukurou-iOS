@@ -36,15 +36,19 @@
     NSError *error = nil;
     NSMutableArray *xml = [NSMutableArray new];
     NSMutableArray *json = [NSMutableArray new];
+    NSMutableArray *csv = [NSMutableArray new];
     for (NSManagedObject *obj in [self.moc executeFetchRequest:listFetch error:&error]) {
         if ([(NSString *)[obj valueForKey:@"format"] isEqualToString:@"xml"]) {
             [xml addObject:obj];
         }
-        else {
+        else if ([(NSString *)[obj valueForKey:@"format"] isEqualToString:@"json"]) {
             [json addObject:obj];
         }
+        else if ([(NSString *)[obj valueForKey:@"format"] isEqualToString:@"csv"]) {
+            [csv addObject:obj];
+        }
     }
-    _exportedlists = @{@"MAL XML Formatted" : xml.copy, @"JSON Formatted" : json.copy };
+    _exportedlists = @{@"MAL XML Formatted" : xml.copy, @"JSON Formatted" : json.copy, @"Comma Delimited" : csv.copy };
     _allsections = _exportedlists.allKeys;
     [self.tableView reloadData];
 }

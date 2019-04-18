@@ -14,18 +14,23 @@
 #import "ThemeManager.h"
 #import "ExportOperationManager.h"
 #import "FailedTitlesTableViewController.h"
+#import "RatingTwentyConvert.h"
 
 @interface ExportListTableViewController ()
 typedef NS_ENUM(unsigned int, ExportType) {
     MALXMLAnimeExportType = 0,
     MALXMLMangaExportType = 1,
     JsonAnimeExportType = 2,
-    JsonMangaExportType = 3
+    JsonMangaExportType = 3,
+    CsvAnimeExportType = 4,
+    CsvMangaExportType = 5
 };
 @property (strong, nonatomic) IBOutlet UITableViewCell *malanimeformatted;
 @property (strong, nonatomic) IBOutlet UITableViewCell *malmangaformatted;
 @property (strong, nonatomic) IBOutlet UITableViewCell *jsonanimeformatted;
 @property (strong, nonatomic) IBOutlet UITableViewCell *jsonmangaformatted;
+@property (strong, nonatomic) IBOutlet UITableViewCell *csvanimeformatted;
+@property (strong, nonatomic) IBOutlet UITableViewCell *csvmangaformatted;
 @property (strong) NSManagedObjectContext *moc;
 @property (strong) ExportOperationManager *exportopmanager;
 @property (strong) MBProgressHUD *hud;
@@ -62,6 +67,12 @@ typedef NS_ENUM(unsigned int, ExportType) {
     else if ([cell.textLabel.text isEqualToString:@"Export to JSON (Manga)"]) {
         exporttype = JsonMangaExportType;
     }
+    else if ([cell.textLabel.text isEqualToString:@"Export to CSV (Anime)"]) {
+        exporttype = CsvAnimeExportType;
+    }
+    else if ([cell.textLabel.text isEqualToString:@"Export to CSV (Manga)"]) {
+        exporttype = CsvMangaExportType;
+    }
     [self promptExport:exporttype];
 }
 
@@ -75,6 +86,10 @@ typedef NS_ENUM(unsigned int, ExportType) {
         case JsonAnimeExportType:
         case JsonMangaExportType:
             exportTitle = @"Export as Json?";
+            break;
+        case CsvAnimeExportType:
+        case CsvMangaExportType:
+            exportTitle = @"Export as a CSV file?";
             break;
         default:
             break;
@@ -106,6 +121,12 @@ typedef NS_ENUM(unsigned int, ExportType) {
         case JsonMangaExportType:
             [_jsonmangaformatted setSelected:NO animated:YES];
             break;
+        case CsvAnimeExportType:
+            [_csvanimeformatted setSelected:NO animated:YES];
+            break;
+        case CsvMangaExportType:
+            [_csvmangaformatted setSelected:NO animated:YES];
+            break;
         default:
             break;
     }
@@ -121,6 +142,9 @@ typedef NS_ENUM(unsigned int, ExportType) {
         case JsonMangaExportType:
             [self exportJson:type];
             break;
+        case CsvAnimeExportType:
+        case CsvMangaExportType:
+            [self exportCSV:type];
         default:
             break;
     }
@@ -167,24 +191,43 @@ typedef NS_ENUM(unsigned int, ExportType) {
     else {
         [self showMessage:@"Export Unsuccessful." withInformativeText:@"The list failed to export."];
     }
-    switch (type) {
-        case MALXMLAnimeExportType:
-            [_malanimeformatted setSelected:NO animated:YES];
-            break;
-        case MALXMLMangaExportType:
-            [_malmangaformatted setSelected:NO animated:YES];
-            break;
-        case JsonAnimeExportType:
-            [_jsonanimeformatted setSelected:NO animated:YES];
-            break;
-        case JsonMangaExportType:
-            [_jsonmangaformatted setSelected:NO animated:YES];
-            break;
-        default:
-            break;
-    }
-    
+    [self deselectcell:type];
 }
+
+- (void)exportCSV:(int)type {
+    int listtype = type == CsvAnimeExportType ? 0 : 1;
+    NSString *csvOutput = [self csvListForType:listtype];
+    [self saveToCoreData:csvOutput withType:type];
+    [self showMessage:@"Export Successful." withInformativeText:@"You can see your exported list in the Exported Lists section."];
+    [self deselectcell:type];
+}
+
+- (NSString *)csvListForType:(int)type {
+    int listtype = type;
+    NSString *currentservicename = listservice.sharedInstance.currentservicename.lowercaseString;
+    listservice *lservice = listservice.sharedInstance;
+    NSDictionary *list = [AtarashiiListCoreData retrieveEntriesForUserId:[lservice getCurrentUserID] withService:[lservice getCurrentServiceID] withType:listtype];
+    NSMutableString *csvoutput = [NSMutableString new];
+    // Write CSV Header
+    if (listtype == 0) {
+        [csvoutput appendFormat:@"\"%@_title_id\",\"title\",\"episodes\",\"type\",\"current_status\",\"current_progress\",\"rating\",\"reconsume_count\",\"comments\",\"start_date\",\"end_date\"\n",currentservicename];
+    }
+    else {
+        [csvoutput appendFormat:@"\"%@_title_id\",\"title\",\"chapters\",\"volumes\",\"type\",\"current_status\",\"current_progress\",\"current_progress_volumes\",\"rating\",\"reconsume_count\",\"comments\",\"start_date\",\"end_date\"\n",currentservicename];
+    }
+    NSArray *alist = listtype == 0 ? list[@"anime"] : list[@"manga"];
+    for (NSDictionary *entry in alist) {
+        int score = lservice.getCurrentServiceID == 2 ? [RatingTwentyConvert translateKitsuTwentyScoreToMAL:entry[@"score"] && entry[@"score"] != [NSNull null] ? ((NSNumber *)entry[@"score"]).intValue : 0] : lservice.getCurrentServiceID == 1 ? ((NSNumber *)entry[@"score"]).intValue * 10 : ((NSNumber *)entry[@"score"]).intValue;
+        if (listtype == 0) {
+            [csvoutput appendFormat:@"%@,\"%@\",%@,\"%@\",\"%@\",%@,%@,%@,\"%@\",\"%@\",\"%@\"\n", entry[@"id"],entry[@"title"],entry[@"episodes"],entry[@"type"], entry[@"watched_status"], entry[@"watched_episodes"], @(score), entry[@"rewatch_count"], entry[@"comments"] && entry[@"comments"] != [NSNull null] ? entry[@"comments"] : @"", entry[@"watching_start"] && entry[@"watching_start"] != [NSNull null] ? entry[@"watching_start"] : @"",entry[@"watching_end"] && entry[@"watching_end"] != [NSNull null] ? entry[@"watching_end"] : @""];
+        }
+        else {
+            [csvoutput appendFormat:@"%@,\"%@\",%@,%@,\"%@\",\"%@\",%@,%@,%@,%@,\"%@\",\"%@\",\"%@\"\n", entry[@"id"],entry[@"title"],entry[@"chapters"],entry[@"volumes"],entry[@"type"], entry[@"read_status"], entry[@"chapters_read"], entry[@"volumes_read"], @(score), entry[@"reread_count"], entry[@"comments"] && entry[@"comments"] != [NSNull null] ? entry[@"comments"] : @"", entry[@"reading_start"] && entry[@"reading_start"] != [NSNull null] ? entry[@"reading_start"] : @"",entry[@"reading_end"] && entry[@"reading_end"] != [NSNull null] ? entry[@"reading_end"] : @""];
+        }
+    }
+    return csvoutput;
+}
+
 
 - (void)showMessage:(NSString *)title withInformativeText:(NSString *)informativeText {
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:title message:informativeText preferredStyle:UIAlertControllerStyleAlert];
@@ -205,6 +248,10 @@ typedef NS_ENUM(unsigned int, ExportType) {
         case JsonAnimeExportType:
         case JsonMangaExportType:
             format = @"json";
+            break;
+        case CsvAnimeExportType:
+        case CsvMangaExportType:
+            format = @"csv";
             break;
         default:
             break;
