@@ -39,6 +39,28 @@
     return (int)[NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
 }
 
+- (bool)checkUserData {
+    switch ([self getCurrentServiceID]) {
+        case 1: {
+            break;
+        }
+        case 2: {
+            NSString *kitsuusername = [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
+            int kitsuid = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"];
+            return kitsuusername && kitsuid > 0;
+        }
+        case 3: {
+            NSString *anilistusername = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
+            int anilistid = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"];
+            return anilistusername && anilistid > 0;
+        }
+        default: {
+            break;
+        }
+    }
+    return false;
+}
+
 - (void)retrieveownListWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {

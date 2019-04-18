@@ -80,6 +80,20 @@
     int newindex = (int)indexPath.row+1;
     int oldservice = [listservice.sharedInstance getCurrentServiceID];
     [NSUserDefaults.standardUserDefaults setInteger:newindex forKey:@"currentservice"];
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
+        if (![listservice.sharedInstance checkUserData]) {
+            switch (listservice.sharedInstance.getCurrentServiceID) {
+                case 1:
+                    [listservice.sharedInstance.kitsuManager saveuserinfoforcurrenttoken];
+                    break;
+                case 2:
+                    [listservice.sharedInstance.anilistManager saveuserinfoforcurrenttoken];
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     [_delegate listserviceDidChange:oldservice newService:newindex];
     [self setcurrentservicestate];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

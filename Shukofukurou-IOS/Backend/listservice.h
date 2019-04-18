@@ -17,6 +17,7 @@
 
 + (instancetype)sharedInstance;
 - (int)getCurrentServiceID;
+- (bool)checkUserData;
 - (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveownListWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
@@ -52,4 +53,5 @@
 - (NSString *)currentservicename;
 - (int)getCurrentUserID;
 - (NSString *)getCurrentUserAvatar;
+- (bool)checkUserData;
 @end
