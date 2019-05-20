@@ -73,61 +73,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqy-Vi-U5T">
-                                <rect key="frame" x="0.0" y="64" width="250" height="557"/>
+                                <rect key="frame" x="0.0" y="64" width="250" height="559"/>
                                 <connections>
                                     <segue destination="e1U-ul-rkf" kind="embed" id="fpt-2U-Ibn"/>
                                 </connections>
                             </containerView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLa-1n-UEk">
-                                <rect key="frame" x="0.0" y="621" width="250" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="AaS-DT-OTQ"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Login" id="vt3-WL-ZAV">
-                                        <connections>
-                                            <action selector="accountaction:" destination="h1S-qp-QWw" id="Xud-mD-tAk"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3Os-qU-N44"/>
-                                    <barButtonItem title="Options" image="option" id="QY3-Bv-QDf">
-                                        <connections>
-                                            <action selector="showoptions:" destination="h1S-qp-QWw" id="cKX-Mb-yxR"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jp1-pJ-hyH"/>
-                                    <barButtonItem title="Service" id="HWn-YN-Vy2">
-                                        <connections>
-                                            <action selector="switchservices:" destination="h1S-qp-QWw" id="n6h-2F-rSL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hLa-1n-UEk" firstAttribute="trailing" secondItem="5c1-Ch-XQv" secondAttribute="trailing" id="0CR-iG-iuJ"/>
                             <constraint firstItem="Zqy-Vi-U5T" firstAttribute="trailing" secondItem="5c1-Ch-XQv" secondAttribute="trailing" id="GoI-uM-iod"/>
-                            <constraint firstItem="hLa-1n-UEk" firstAttribute="bottom" secondItem="5c1-Ch-XQv" secondAttribute="bottom" id="U2l-jX-9nX"/>
+                            <constraint firstItem="Zqy-Vi-U5T" firstAttribute="bottom" secondItem="5c1-Ch-XQv" secondAttribute="bottom" id="Qzn-mt-20y"/>
                             <constraint firstItem="Zqy-Vi-U5T" firstAttribute="leading" secondItem="5c1-Ch-XQv" secondAttribute="leading" id="hEc-uj-Mfd"/>
                             <constraint firstItem="Zqy-Vi-U5T" firstAttribute="top" secondItem="5c1-Ch-XQv" secondAttribute="top" id="nNz-gu-sPX"/>
-                            <constraint firstItem="hLa-1n-UEk" firstAttribute="leading" secondItem="5c1-Ch-XQv" secondAttribute="leading" id="pwY-QD-yho"/>
-                            <constraint firstItem="hLa-1n-UEk" firstAttribute="top" secondItem="Zqy-Vi-U5T" secondAttribute="bottom" id="rWG-YA-x8R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5c1-Ch-XQv"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Login" id="vt3-WL-ZAV">
+                            <connections>
+                                <action selector="accountaction:" destination="h1S-qp-QWw" id="Xud-mD-tAk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="3Os-qU-N44"/>
+                        <barButtonItem title="Options" image="option" id="QY3-Bv-QDf">
+                            <connections>
+                                <action selector="showoptions:" destination="h1S-qp-QWw" id="cKX-Mb-yxR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jp1-pJ-hyH"/>
+                        <barButtonItem title="Service" id="HWn-YN-Vy2">
+                            <connections>
+                                <action selector="switchservices:" destination="h1S-qp-QWw" id="n6h-2F-rSL"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Ngp-fW-SdM">
                         <connections>
                             <outlet property="titleView" destination="5k1-vP-WMQ" id="Itq-D1-Q8B"/>
                         </connections>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="250" height="667"/>
                     <connections>
                         <outlet property="avatar" destination="xfq-5b-Lyu" id="jA5-av-LLW"/>
                         <outlet property="logintoolbarbtn" destination="vt3-WL-ZAV" id="Wbs-y5-rKl"/>
                         <outlet property="optionsbuttonitem" destination="QY3-Bv-QDf" id="vlh-rx-Zne"/>
                         <outlet property="servicelogo" destination="hwF-2Y-NkJ" id="MbH-mP-dGi"/>
-                        <outlet property="toolbar" destination="hLa-1n-UEk" id="3fs-6a-Bdq"/>
                         <outlet property="username" destination="7BU-lo-3NW" id="THe-Vy-z2v"/>
                     </connections>
                 </viewController>

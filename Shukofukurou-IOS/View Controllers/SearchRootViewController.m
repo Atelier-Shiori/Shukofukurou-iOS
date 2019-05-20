@@ -20,6 +20,7 @@
     // Register with Search Tab View
     _searchvc = (SearchViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"SearchView"];
     self.viewControllers = @[_searchvc];
+    self.toolbarHidden = NO;
 }
 
 @end

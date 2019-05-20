@@ -40,6 +40,7 @@
     // Register with view controller manager
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     vcm.mainsidebar = self;
+    self.navigationController.toolbarHidden = NO;
     _delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"ThemeChanged" object:nil];
 }
