@@ -45,7 +45,7 @@ typedef NS_ENUM(unsigned int, matchtype) {
     if (_titleid.length > 0) {
         completionHandler(_titleid.intValue, _DetectedEpisode.intValue, true);
     }
-    [listservice.sharedInstance searchTitle:_DetectedTitle withType:0 completion:^(id responseObject) {
+    [listservice.sharedInstance searchTitle:_DetectedTitle withType:0 withSearchOptions:nil completion:^(id responseObject, int nextoffset, bool hasnextpage) {
         self.titleid = [self findaniid:responseObject searchterm:self.DetectedTitle];
         if (self.titleid.length > 0) {
             [self checkCache];

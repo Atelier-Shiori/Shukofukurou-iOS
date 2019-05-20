@@ -121,18 +121,38 @@
     }
 }
 
-- (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)searchTitle:(NSString *)searchterm withType:(int)type  withSearchOptions:(NSDictionary *)options completion:(void (^)(id responseObject, int nextoffset, bool hasnextpage)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
-            [MyAnimeList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            //[MyAnimeList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [kitsuManager searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            [kitsuManager searchTitle:searchterm withType:type withSearchOptions:options completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [anilistManager searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            [anilistManager searchTitle:searchterm withType:type withCurrentPage:1  withSearchOptions:options completion:completionHandler error:errorHandler];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+- (void)searchTitle:(NSString *)searchterm withType:(int)type withOffset:(int)offset  withSearchOptions:(NSDictionary *)options completion:(void (^)(id responseObject, int nextoffset, bool hasnextpage)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    switch ([self getCurrentServiceID]) {
+        case 1: {
+            //[MyAnimeList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            break;
+        }
+        case 2: {
+            [kitsuManager searchTitle:searchterm withType:type withDataArray:[NSMutableArray new] withPageOffet:offset withMaxOffset:offset withSearchOptions:options completion:completionHandler error:errorHandler];
+            break;
+        }
+        case 3: {
+            [anilistManager searchTitle:searchterm withType:type withCurrentPage:offset  withSearchOptions:options completion:completionHandler error:errorHandler];
             break;
         }
         default: {

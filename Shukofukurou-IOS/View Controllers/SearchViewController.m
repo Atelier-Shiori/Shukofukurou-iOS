@@ -19,7 +19,9 @@
 @property (strong) UISearchController *searchController;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *searchselector;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
-
+@property bool loadingsearch;
+@property int nextpage;
+@property bool hasnextpage;
 @end
 
 @implementation SearchViewController
@@ -96,13 +98,19 @@
 
 - (void)performSearch:(NSString *)searchtext {
     __weak SearchViewController *weakSelf = self;
+    _loadingsearch = true;
     if (_searchselector.selectedSegmentIndex <= 1) {
-        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype completion:^(id responseObject) {
+#warning implement adv search here
+        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype withSearchOptions:nil completion:^(id responseObject, int nextoffset, bool hasnextpage) {
             [weakSelf clearsearch];
             [weakSelf.searchArray addObjectsFromArray:responseObject];
             [weakSelf.tableView reloadData];
+            weakSelf.nextpage = nextoffset;
+            weakSelf.hasnextpage = hasnextpage;
+            weakSelf.loadingsearch = false;
         } error:^(NSError *error) {
             NSLog(@"Search Failed: %@", error.localizedDescription);
+            weakSelf.loadingsearch = false;
         }];
     }
     else {
@@ -112,6 +120,24 @@
             [weakSelf.tableView reloadData];
         } error:^(NSError *error) {
             NSLog(@"Search Failed: %@", error.localizedDescription);
+        }];
+    }
+}
+
+- (void)loadMoreSearchResults:(NSString *)searchtext  {
+    __weak SearchViewController *weakSelf = self;
+    if (_searchselector.selectedSegmentIndex <= 1) {
+         _loadingsearch = true;
+#warning implement adv search here
+        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype withOffset:_nextpage withSearchOptions:nil completion:^(id responseObject, int nextoffset, bool hasnextpage) {
+            [weakSelf.searchArray addObjectsFromArray:responseObject];
+            [weakSelf.tableView reloadData];
+            weakSelf.nextpage = nextoffset;
+            weakSelf.hasnextpage = hasnextpage;
+            weakSelf.loadingsearch = false;
+        } error:^(NSError *error) {
+            NSLog(@"Search Failed: %@", error.localizedDescription);
+             weakSelf.loadingsearch = false;
         }];
     }
 }
@@ -126,6 +152,8 @@
     _searchController.searchBar.text = @"";
     [self clearsearch];
     [_searchController.searchBar resignFirstResponder];
+    _nextpage = 0;
+    _hasnextpage = false;
 }
 
 - (void)setsegment {
@@ -192,6 +220,9 @@
     aentrycell.type.text = [NSString stringWithFormat:@"Type: %@", entry[@"type"]];
     [aentrycell loadimage:entry[@"image_url"]];
     aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
+    if (!_loadingsearch && _hasnextpage && indexPath.row == _searchArray.count-1) {
+        [self loadMoreSearchResults:self.searchController.searchBar.text];
+    }
     return aentrycell;
 }
 
@@ -207,6 +238,9 @@
     mentrycell.type.text = [NSString stringWithFormat:@"Type: %@", entry[@"type"]];
     [mentrycell loadimage:entry[@"image_url"]];
     mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
+    if (!_loadingsearch && _hasnextpage && indexPath.row == _searchArray.count-1) {
+        [self loadMoreSearchResults:self.searchController.searchBar.text];
+    }
     return mentrycell;
 }
 

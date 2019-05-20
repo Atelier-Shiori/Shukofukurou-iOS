@@ -305,6 +305,8 @@
 		59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
 		59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
 		59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
+		59F9C98D2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
+		59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
 		59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
 		59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
 		59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
@@ -974,6 +976,8 @@
 		59EBC1F321FD322900481D33 /* DefaultTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultTheme.m; sourceTree = "<group>"; };
 		59EBC1F521FD32F300481D33 /* DarkTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DarkTheme.h; sourceTree = "<group>"; };
 		59EBC1F621FD32F300481D33 /* DarkTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkTheme.m; sourceTree = "<group>"; };
+		59F9C98B2292F7EB0054B89D /* SearchAdvSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchAdvSettings.h; sourceTree = "<group>"; };
+		59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchAdvSettings.m; sourceTree = "<group>"; };
 		59FE3E38219B287E0035E2E5 /* AiringNotifySettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotifySettingsTableViewController.h; sourceTree = "<group>"; };
 		59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotifySettingsTableViewController.m; sourceTree = "<group>"; };
 		59FE3E4D219B39C50035E2E5 /* AiringNotificationServiceSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationServiceSelector.h; sourceTree = "<group>"; };
@@ -1594,6 +1598,8 @@
 				599121FE224BCE5E00896BEF /* ExportSettingsTableViewController.m */,
 				5945CD982252573F00F164E1 /* PatronTableViewController.h */,
 				5945CD992252573F00F164E1 /* PatronTableViewController.m */,
+				59F9C98B2292F7EB0054B89D /* SearchAdvSettings.h */,
+				59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2292,6 +2298,7 @@
 				5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */,
 				5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */,
 				595A962A224013A700E3C245 /* string_score.c in Sources */,
+				59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */,
 				5934E235220F7539002B8311 /* ListViewController.m in Sources */,
 				5934E236220F7539002B8311 /* DarkTheme.m in Sources */,
 				5934E237220F7539002B8311 /* StreamDataRetriever.m in Sources */,
@@ -2374,6 +2381,7 @@
 				5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */,
 				59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */,
 				594810F221921713000C4B5C /* TrendingViewController.m in Sources */,
+				59F9C98D2292F7EB0054B89D /* SearchAdvSettings.m in Sources */,
 				F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */,
 				596241A82155642E001995AD /* SideBarCell.m in Sources */,
 				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
