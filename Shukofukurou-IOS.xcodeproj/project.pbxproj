@@ -307,6 +307,8 @@
 		59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
 		59F9C98D2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
 		59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
+		59F9C9A622932BA60054B89D /* AdvSearchSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */; };
+		59F9C9A722932BA60054B89D /* AdvSearchSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */; };
 		59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
 		59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
 		59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
@@ -978,6 +980,8 @@
 		59EBC1F621FD32F300481D33 /* DarkTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkTheme.m; sourceTree = "<group>"; };
 		59F9C98B2292F7EB0054B89D /* SearchAdvSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchAdvSettings.h; sourceTree = "<group>"; };
 		59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchAdvSettings.m; sourceTree = "<group>"; };
+		59F9C9A422932BA60054B89D /* AdvSearchSelectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvSearchSelectionCell.h; sourceTree = "<group>"; };
+		59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvSearchSelectionCell.m; sourceTree = "<group>"; };
 		59FE3E38219B287E0035E2E5 /* AiringNotifySettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotifySettingsTableViewController.h; sourceTree = "<group>"; };
 		59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotifySettingsTableViewController.m; sourceTree = "<group>"; };
 		59FE3E4D219B39C50035E2E5 /* AiringNotificationServiceSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringNotificationServiceSelector.h; sourceTree = "<group>"; };
@@ -1509,6 +1513,8 @@
 				594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */,
 				594D0935220207FD00A37B6B /* UITableViewCellSelBackground.h */,
 				594D0936220207FD00A37B6B /* UITableViewCellSelBackground.m */,
+				59F9C9A422932BA60054B89D /* AdvSearchSelectionCell.h */,
+				59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -2261,6 +2267,7 @@
 				597DDCEC224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */,
 				5934E20D220F7539002B8311 /* Keychain.m in Sources */,
 				5934E20E220F7539002B8311 /* SettingsRootViewController.m in Sources */,
+				59F9C9A722932BA60054B89D /* AdvSearchSelectionCell.m in Sources */,
 				5934E20F220F7539002B8311 /* SearchTableViewCell.m in Sources */,
 				5934E210220F7539002B8311 /* RootViewController.m in Sources */,
 				5934E211220F7539002B8311 /* MainViewController.m in Sources */,
@@ -2387,6 +2394,7 @@
 				596240AA2155622E001995AD /* AppDelegate.m in Sources */,
 				5962421E21556514001995AD /* ViewControllerManager.m in Sources */,
 				598AB4EE216296F500979C19 /* ReviewTableViewCell.m in Sources */,
+				59F9C9A622932BA60054B89D /* AdvSearchSelectionCell.m in Sources */,
 				5933CEC22174F0CA00EAE7E6 /* MSWeakTimer.m in Sources */,
 				592EB7852209D76C004DE461 /* NSArray+MK_Misc.m in Sources */,
 				5962421921556514001995AD /* AiringViewController.m in Sources */,

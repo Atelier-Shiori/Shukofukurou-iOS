@@ -14,6 +14,7 @@
 #import "AniListScoreConvert.h"
 #import "TitleInfoViewController.h"
 #import "CharacterDetailViewController.h"
+#import "SearchAdvSettings.h"
 
 @interface SearchViewController ()
 @property (strong) UISearchController *searchController;
@@ -22,6 +23,8 @@
 @property bool loadingsearch;
 @property int nextpage;
 @property bool hasnextpage;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *advsearchtoolbaritem;
+@property (strong) SearchAdvSettings *advsearchoptions;
 @end
 
 @implementation SearchViewController
@@ -32,6 +35,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    __weak SearchViewController *weakSelf = self;
+    _advsearchoptions = [self.storyboard instantiateViewControllerWithIdentifier:@"advsearchopt"];
+    _advsearchoptions.completionHandler = ^(NSDictionary * _Nonnull advsearchoptions) {
+        [weakSelf performSearch:weakSelf.searchController.searchBar.text];
+    };
+    [_advsearchoptions viewDidLoad];
     [self setsegment];
     _searchArray = [NSMutableArray new];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
@@ -100,8 +109,7 @@
     __weak SearchViewController *weakSelf = self;
     _loadingsearch = true;
     if (_searchselector.selectedSegmentIndex <= 1) {
-#warning implement adv search here
-        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype withSearchOptions:nil completion:^(id responseObject, int nextoffset, bool hasnextpage) {
+        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype withSearchOptions:_advsearchoptions.advsearchoptions completion:^(id responseObject, int nextoffset, bool hasnextpage) {
             [weakSelf clearsearch];
             [weakSelf.searchArray addObjectsFromArray:responseObject];
             [weakSelf.tableView reloadData];
@@ -111,6 +119,8 @@
         } error:^(NSError *error) {
             NSLog(@"Search Failed: %@", error.localizedDescription);
             weakSelf.loadingsearch = false;
+            NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",errResponse);
         }];
     }
     else {
@@ -120,6 +130,8 @@
             [weakSelf.tableView reloadData];
         } error:^(NSError *error) {
             NSLog(@"Search Failed: %@", error.localizedDescription);
+            NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",errResponse);
         }];
     }
 }
@@ -128,8 +140,7 @@
     __weak SearchViewController *weakSelf = self;
     if (_searchselector.selectedSegmentIndex <= 1) {
          _loadingsearch = true;
-#warning implement adv search here
-        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype withOffset:_nextpage withSearchOptions:nil completion:^(id responseObject, int nextoffset, bool hasnextpage) {
+        [listservice.sharedInstance searchTitle:searchtext withType:_searchtype withOffset:_nextpage withSearchOptions:_advsearchoptions.advsearchoptions completion:^(id responseObject, int nextoffset, bool hasnextpage) {
             [weakSelf.searchArray addObjectsFromArray:responseObject];
             [weakSelf.tableView reloadData];
             weakSelf.nextpage = nextoffset;
@@ -154,6 +165,8 @@
     [_searchController.searchBar resignFirstResponder];
     _nextpage = 0;
     _hasnextpage = false;
+    [self resetAdvancedSearchOptions];
+    [self setAdvancedSearchToolBarItemState];
 }
 
 - (void)setsegment {
@@ -178,6 +191,8 @@
     _searchselector.selectedSegmentIndex = selectedsegment;
     _searchtype = (int)_searchselector.selectedSegmentIndex;
     [NSUserDefaults.standardUserDefaults setInteger:selectedsegment forKey:@"selectedsearchtype"];
+    [_advsearchoptions generateSearchOptionsForType:(int)selectedsegment];
+    [self setAdvancedSearchToolBarItemState];
 }
 
 #pragma mark - Table view data source
@@ -291,13 +306,42 @@
     if (searchText.length == 0) {
         _searchController.searchBar.showsCancelButton = NO;
         [self clearsearch];
+        [self resetAdvancedSearchOptions];
     }
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     _searchController.searchBar.showsCancelButton = NO;
     searchBar.text = @"";
     [self clearsearch];
+    [self resetAdvancedSearchOptions];
     [searchBar resignFirstResponder];
+}
+
+#pragma mark Advanced Search
+- (IBAction)showAdvancedSearch:(id)sender {
+    [_advsearchoptions populateSearchOptionsForType:(int)_searchselector.selectedSegmentIndex];
+    UINavigationController *navcontroller = [UINavigationController new];
+    navcontroller.viewControllers = @[_advsearchoptions];
+    navcontroller.navigationBar.hidden = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [self presentViewController:navcontroller animated:YES completion:nil];
+}
+
+- (void)setAdvancedSearchToolBarItemState {
+    if (_searchselector.selectedSegmentIndex > 1) {
+        _advsearchtoolbaritem.enabled = NO;
+    }
+    else {
+        _advsearchtoolbaritem.enabled = YES;
+    }
+}
+
+- (void)resetAdvancedSearchOptions {
+    if (_searchselector.selectedSegmentIndex < 1) {
+        [_advsearchoptions generateSearchOptionsForType:(int)_searchselector.selectedSegmentIndex];
+    }
 }
 
 @end

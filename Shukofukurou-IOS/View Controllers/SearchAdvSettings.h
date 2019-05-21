@@ -10,8 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SearchAdvSettings : UIViewController
-
+@interface SearchAdvSettings : UITableViewController
+@property int currentadvsearch;
+@property int currentlistservice;
+@property (strong) NSDictionary *advsearchoptions;
+@property (nonatomic, copy) void (^completionHandler)(NSDictionary *advsearchoptions);
+- (void)loadViewForType:(int)type;
+- (void)generateadvsearchdictionary;
+- (void)populateSearchOptionsForType:(int)type;
+- (void)generateSearchOptionsForType:(int)type;
+- (NSDictionary *)getAdvSearchOptionsForType:(int)type;
 @end
 
 NS_ASSUME_NONNULL_END
