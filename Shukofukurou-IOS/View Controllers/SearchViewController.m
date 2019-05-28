@@ -38,7 +38,9 @@
     __weak SearchViewController *weakSelf = self;
     _advsearchoptions = [self.storyboard instantiateViewControllerWithIdentifier:@"advsearchopt"];
     _advsearchoptions.completionHandler = ^(NSDictionary * _Nonnull advsearchoptions) {
-        [weakSelf performSearch:weakSelf.searchController.searchBar.text];
+        if (weakSelf.searchController.searchBar.text.length > 0) {
+            [weakSelf performSearch:weakSelf.searchController.searchBar.text];
+        }
     };
     [_advsearchoptions viewDidLoad];
     [self setsegment];
