@@ -675,7 +675,7 @@
     [self showloadingview:YES];
     [listservice.sharedInstance updateMangaTitleOnList:selectededitid withChapter:((NSNumber *)entry[@"chapter"]).intValue withVolume:((NSNumber *)entry[@"volume"]).intValue withStatus:entry[@"status"] withScore:((NSNumber *)entry[@"score"]).intValue withExtraFields:extraparameters completion:^(id responseobject) {
         NSMutableDictionary *updatedfields = [[NSMutableDictionary alloc] initWithDictionary:@{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]}];
-        [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
+        [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:1 withUpdateDictionary:entry]];
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:selectededitid withIdType:0];
