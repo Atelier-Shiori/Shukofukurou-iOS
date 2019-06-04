@@ -25,7 +25,7 @@ If you want to help support us to reach the goal of $10 a month, which will allo
 4. Open the project in Xcode. To install the app, choose the "Shukofukurou-IOS-OSS" as the target, and  select your device on the device popup menu on the XCode toolbar . **Note: If you are not using a paid Apple Developer Membership, the app will ony run for 7 days before you need to reinstall it.**
 
 ## macOS Release?
-There is no plans for a macOS release since there is a macOS version, but anyone is free to port it once Apple opens iOS App porting to the Mac in 2019.
+There is no plans for a macOS release using Project Catalyst.s
 
 ## Dependencies
 All the frameworks are included. Just build! Here are the frameworks that are used in this app so far:
