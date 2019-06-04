@@ -27,12 +27,11 @@
                 //Add Regex Arguments Here
                 if ([ez checkMatch:url pattern:@"[^/]+\\/episode-[0-9]+.*-[0-9]+"]||[ez checkMatch:url pattern:@"[^/]+\\/.*-movie-[0-9]+"]||[ez checkMatch:url pattern:@"[^/]+\\/.*-\\d+"]) {
                     //Perform Sanitation
-                    regextitle = [ez searchreplace:regextitle pattern:@"Crunchyroll - Watch\\s"];
-                    regextitle = [ez searchreplace:regextitle pattern:@"\\s-\\sMovie\\s-\\sMovie"];
+                    regextitle = [ez findMatch:regextitle pattern:@".* (Episode \\d+|\\(Movie\\))" rangeatindex:0];
                     tmpepisode = [ez findMatch:regextitle pattern:@"\\sEpisode (\\d+)" rangeatindex:0];
                     regextitle = [regextitle stringByReplacingOccurrencesOfString:tmpepisode withString:@""];
                     tmpepisode = [ez searchreplace:tmpepisode pattern:@"\\sEpisode"];
-                    regextitle = [ez searchreplace:regextitle pattern:@"\\s-\\s*.*"];
+                    regextitle = [regextitle stringByReplacingOccurrencesOfString:@"(Movie)" withString:@""];
                     title = regextitle;
                     if ([ez checkMatch:title pattern:@"Crunchyroll"]) {
                         continue;
