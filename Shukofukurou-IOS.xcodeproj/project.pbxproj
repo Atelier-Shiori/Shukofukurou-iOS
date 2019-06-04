@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59225B8A22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */; };
+		59225B8B22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */; };
 		59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59282C87220F46C40017DEF4 /* TitleIDMapper.m */; };
 		592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */; };
 		592B8CAF2236E17A007D43F4 /* Hakuchou_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */; };
@@ -698,6 +700,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		59225B8822A6B083000B8675 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		59282C86220F46C40017DEF4 /* TitleIDMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIDMapper.h; sourceTree = "<group>"; };
 		59282C87220F46C40017DEF4 /* TitleIDMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIDMapper.m; sourceTree = "<group>"; };
 		592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
@@ -1050,6 +1054,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59225B7222A6B053000B8675 /* UIViewController-BackButtonHandler */ = {
+			isa = PBXGroup;
+			children = (
+				59225B8822A6B083000B8675 /* UIViewController+BackButtonHandler.h */,
+				59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */,
+			);
+			path = "UIViewController-BackButtonHandler";
+			sourceTree = "<group>";
+		};
 		592B8C912236E098007D43F4 /* Hakuchou */ = {
 			isa = PBXGroup;
 			children = (
@@ -1248,6 +1261,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				59225B7222A6B053000B8675 /* UIViewController-BackButtonHandler */,
 				595A96262240139100E3C245 /* string score */,
 				595A95F0223FE31F00E3C245 /* CocoaOniguruma */,
 				592B8C912236E098007D43F4 /* Hakuchou */,
@@ -2329,6 +2343,7 @@
 				5934E246220F7539002B8311 /* EpisodesTableViewCell.m in Sources */,
 				5934E247220F7539002B8311 /* NSMutableArray+MK_Misc.m in Sources */,
 				5934E248220F7539002B8311 /* UILabel+Copyable.m in Sources */,
+				59225B8B22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */,
 				5934E249220F7539002B8311 /* SettingsViewController.m in Sources */,
 				5934E24A220F7539002B8311 /* CharacterTableViewController.m in Sources */,
 				5934E24B220F7539002B8311 /* TrendingCollectionHeaderView.m in Sources */,
@@ -2400,6 +2415,7 @@
 				5962421921556514001995AD /* AiringViewController.m in Sources */,
 				5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */,
 				5962418A215563D2001995AD /* Utility.m in Sources */,
+				59225B8A22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */,
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
 				59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */,

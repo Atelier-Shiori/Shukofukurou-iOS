@@ -645,6 +645,7 @@
                                       NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
                                       NSLog(@"%@",errResponse);
                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                        [weakSelf showError:error];
                                           weakSelf.savebtn.enabled = YES;
                                           weakSelf.cancelbtn.enabled = YES;
                                           [self showloadingview:NO];
@@ -696,6 +697,7 @@
     }error:^(NSError * error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"%@", error.localizedDescription);
+            [weakSelf showError:error];
             weakSelf.savebtn.enabled = YES;
             weakSelf.cancelbtn.enabled = YES;
             [self showloadingview:NO];
@@ -719,5 +721,13 @@
     else if (!show) {
         [_hud hideAnimated:YES];
     }
+}
+
+- (void)showError:(NSError *)error {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Operation failed" message:[NSString stringWithFormat:@"%@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertcontroller addAction:okaction];
+    [self.navigationController presentViewController:alertcontroller animated:YES completion:nil];
 }
 @end

@@ -26,6 +26,7 @@
 #import "TitleInfoCache.h"
 #import "ThemeManager.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
+#import "UIViewController+BackButtonHandler.h"
 
 @interface TitleInfoViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *posterImage;
@@ -50,6 +51,7 @@
 @property bool refreshing;
 @property (strong, nonatomic) IBOutlet UILabel *scorelabel;
 @property (strong, nonatomic) IBOutlet UIImageView *scoreimage;
+@property bool entrychanged;
 @end
 
 @implementation TitleInfoViewController
@@ -81,6 +83,16 @@
     if (indexPath) {
         [self.tableview deselectRowAtIndexPath:indexPath animated:animated];
     }
+}
+
+- (bool)navigationShouldPopOnBackButton {
+    if (_entrychanged) {
+        [self showUnsavedChangesWithBlock:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)setThemeColors {
@@ -276,7 +288,9 @@
     }
     if (self.navigationController.viewControllers.count > 3) {
         [options addAction:[UIAlertAction actionWithTitle:@"Return to Parent" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            [weakSelf checkUnsavedChangesWithBlock:^{
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            }];
         }]];
     }
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -349,8 +363,10 @@
 
 - (void)refreshTitleInfo {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !_refreshing) {
-        self.forcerefresh = true;
-        [self loadTitleInfo:self.titleid withType:self.currenttype];
+        [self checkUnsavedChangesWithBlock:^{
+            self.forcerefresh = true;
+            [self loadTitleInfo:self.titleid withType:self.currenttype];
+        }];
     }
 }
 
@@ -450,6 +466,7 @@
         cell.entrytype = _currenttype;
         cell.valueChanged = ^(NSString * _Nonnull newvalue, NSString * _Nonnull fieldname) {
             cellInfo.cellValue = newvalue;
+            [self setmodified:YES];
         };
     }
     else if ([cellInfo.cellTitle isEqualToString:@"Score"]) {
@@ -467,6 +484,7 @@
         }
         cell.scoreChanged = ^(int newvalue, NSString * _Nonnull fieldname) {
             cellInfo.cellValue = @(newvalue);
+            [self setmodified:YES];
         };
     }
     return cell;
@@ -485,6 +503,7 @@
     cell.episodefield.text = @(cell.currentprogress).stringValue;
     cell.valueChanged = ^(NSNumber * _Nonnull newvalue, NSString * _Nonnull fieldname) {
         cellInfo.cellValue = newvalue;
+        [self setmodified:YES];
     };
     return cell;
 }
@@ -499,6 +518,7 @@
     cell.scorefield.text = [AniListScoreConvert convertAniListScoreToActualScore:cell.rawscore withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
     cell.scoreChanged = ^(int newvalue, NSString * _Nonnull fieldname) {
         cellInfo.cellValue = @(newvalue);
+        [self setmodified:YES];
     };
     return cell;
 }
@@ -549,12 +569,16 @@
         case cellActionAddEntry:
         case cellActionUpdateEntry:
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.textLabel.textColor = [UIColor colorWithRed:0.20 green:0.78 blue:0.35 alpha:1.0];
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:cell.textLabel.font.pointSize];
             break;
         case cellActionViewStaff:
         case cellActionViewReviews:
         case cellActionViewRelated:
         case cellActionViewEpisodes:
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:cell.textLabel.font.pointSize];
             break;
         default:
             break;
@@ -564,45 +588,67 @@
         if ([weakSelf validateCells]) {
             if (weakSelf.currenttype == 0) {
                 switch (actiontype) {
-                    case cellActionAddEntry:
+                    case cellActionAddEntry: {
                         [self addAnimeEntry:cell];
                         break;
-                    case cellActionUpdateEntry:
+                    }
+                    case cellActionUpdateEntry: {
                         [self updateAnime:cell];
                         break;
-                    case cellActionViewRelated:
-                        [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
+                    }
+                    case cellActionViewRelated: {
+                        [self checkUnsavedChangesWithBlock:^{
+                            [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
+                        }];
                         break;
-                    case cellActionViewReviews:
+                    }
+                    case cellActionViewReviews: {
                         [self showReviews];
                         break;
-                    case cellActionViewStaff:
-                        [self showStaff];
+                    }
+                    case cellActionViewStaff: {
+                        [self checkUnsavedChangesWithBlock:^{
+                            [self showStaff];
+                        }];
                         break;
-                    case cellActionViewEpisodes:
-                        [self showEpisodes];
+                    }
+                    case cellActionViewEpisodes: {
+                        [self checkUnsavedChangesWithBlock:^{
+                            [self showEpisodes];
+                        }];
                         break;
-                    default:
+                    }
+                    default: {
                         break;
+                    }
                 }
             }
             else {
                 switch (actiontype) {
-                    case cellActionAddEntry:
+                    case cellActionAddEntry: {
                         [self addMangaEntry:cell];
                         break;
-                    case cellActionUpdateEntry:
+                    }
+                    case cellActionUpdateEntry: {
                         [self updateManga:cell];
                         break;
-                    case cellActionViewRelated:
-                        [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
+                    }
+                    case cellActionViewRelated: {
+                        [self checkUnsavedChangesWithBlock:^{
+                            [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
+                        }];
                         break;
-                    case cellActionViewReviews:
+                    }
+                    case cellActionViewReviews: {
                         [self showReviews];
                         break;
-                    case cellActionViewStaff:
-                        [self showStaff];
+                    }
+                    case cellActionViewStaff: {
+                        [self checkUnsavedChangesWithBlock:^{
+                            [self showStaff];
+                        }];
                         break;
+                    }
                     default:
                         break;
                 }
@@ -749,6 +795,7 @@
         default:
             break;
     }
+    [self setmodified:NO];
     [_tableview reloadData];
 }
 
@@ -950,6 +997,7 @@
     } error:^(NSError * error) {
         NSLog(@"%@",error);
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self showError:error];
         [updatecell setEnabled: YES];
         [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
@@ -980,6 +1028,7 @@
     } error:^(NSError *error) {
         NSLog(@"%@",error);
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self showError:error];
         [updatecell setEnabled: YES];
         [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
@@ -1025,15 +1074,17 @@
         // Reload List
             dispatch_async(dispatch_get_main_queue(), ^{
                 [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
-        [updatecell setEnabled: YES];
-        [weakSelf showloadingview:NO];
-        weakSelf.navigationitem.hidesBackButton = NO;
+                [updatecell setEnabled: YES];
+                [weakSelf showloadingview:NO];
+                [weakSelf setmodified:NO];
+                weakSelf.navigationitem.hidesBackButton = NO;
                 [weakSelf.tableview reloadData];
             });
     }
     error:^(NSError * error) {
         NSLog(@"%@", error.localizedDescription);
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self showError:error];
         [updatecell setEnabled: NO];
         [weakSelf showloadingview:NO];
         weakSelf.navigationitem.hidesBackButton = NO;
@@ -1077,14 +1128,16 @@
         }
         // Reload List
         dispatch_async(dispatch_get_main_queue(), ^{
-        [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
-        [updatecell setEnabled: YES];
-        [weakSelf showloadingview:NO];
-        weakSelf.navigationitem.hidesBackButton = NO;
+            [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
+            [updatecell setEnabled: YES];
+            [weakSelf setmodified:NO];
+            [weakSelf showloadingview:NO];
+            weakSelf.navigationitem.hidesBackButton = NO;
             [weakSelf.tableview reloadData];
         });
     }error:^(NSError * error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self showError:error];
         NSLog(@"%@", error.localizedDescription);
         [updatecell setEnabled: YES];
         [weakSelf showloadingview:NO];
@@ -1273,5 +1326,41 @@
     _titleinfobaritem.enabled = !show;
     _shareitembaritem.enabled = !show;
     _optionsitembaritem.enabled = !show;
+}
+
+- (void)showError:(NSError *)error {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Operation failed" message:[NSString stringWithFormat:@"%@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertcontroller addAction:okaction];
+    [self.navigationController presentViewController:alertcontroller animated:YES completion:nil];
+}
+- (void)checkUnsavedChangesWithBlock:(void (^)(void))actionBlock {
+    if (_entrychanged) {
+        [self showUnsavedChangesWithBlock:actionBlock];
+    }
+    else {
+        actionBlock();
+    }
+}
+
+- (void)showUnsavedChangesWithBlock:(void (^)(void))actionBlock {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Unsaved Changes" message:@"Do you want to leave this title's information page without saving your library entry? Unsaved changes will be lost." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self updateUserEntry];
+        actionBlock();
+    }];
+    UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertcontroller addAction:noaction];
+    [alertcontroller addAction:yesaction];
+    [[ViewControllerManager getAppDelegateViewControllerManager].mvc presentViewController:alertcontroller animated:YES completion:nil];
+}
+
+- (void)setmodified:(bool)modified {
+    _entrychanged = modified;
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = !modified;
+    }
 }
 @end
