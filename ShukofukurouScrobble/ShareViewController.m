@@ -24,6 +24,7 @@
 NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive)";
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.moe.malupdaterosx.Shukofukurou-IOS.scrobbleextension"];
     if ([defaults valueForKey:@"streamdata"]) {
         [self promptExistingStreamData];

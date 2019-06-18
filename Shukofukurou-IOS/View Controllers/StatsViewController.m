@@ -352,7 +352,7 @@
     }
     cell.textLabel.text = cellEntry.cellTitle;
     cell.detailTextLabel.text = cellEntry.cellValue;
-    return cell;
+    return cell ? cell : [UITableViewCell new];
 }
 
 - (NSInteger)numberOfBars {

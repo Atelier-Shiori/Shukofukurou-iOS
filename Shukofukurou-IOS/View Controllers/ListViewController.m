@@ -511,17 +511,25 @@
         
         // Set Swipe Button Array
         if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-            [rightregularbuttons addObject:aentrycell.shareswipebutton];
-            if (currentservice == 3) {
+            if (aentrycell.shareswipebutton) {
+                [rightregularbuttons addObject:aentrycell.shareswipebutton];
+            }
+            if (currentservice == 3 && aentrycell.customlistbutton) {
                 [rightregularbuttons addObject:aentrycell.customlistbutton];
             }
-            [rightregularbuttons addObject:aentrycell.adveditswipebutton];
-            [rightregularbuttons addObject:aentrycell.viewonsiteswipebutton];
+            if (aentrycell.adveditswipebutton) {
+                [rightregularbuttons addObject:aentrycell.adveditswipebutton];
+            }
+            if (aentrycell.viewonsiteswipebutton) {
+                [rightregularbuttons addObject:aentrycell.viewonsiteswipebutton];
+            }
             for (MGSwipeButton *btn in rightregularbuttons) {
                 [btn iconTintColor:[UIColor whiteColor]];
             }
         }
-        [rightcompactbuttons addObject:aentrycell.optionswipebutton];
+        if (aentrycell.optionswipebutton) {
+            [rightcompactbuttons addObject:aentrycell.optionswipebutton];
+        }
         
         if ([self canIncrement:entry]) {
             aentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
@@ -530,9 +538,13 @@
                 return true;
             }];
             if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-                [rightregularbuttons addObject:aentrycell.incrementswipebutton];
+                if (aentrycell.incrementswipebutton) {
+                    [rightregularbuttons addObject:aentrycell.incrementswipebutton];
+                }
             }
-            [rightcompactbuttons addObject:aentrycell.incrementswipebutton];
+            if (aentrycell.incrementswipebutton) {
+                [rightcompactbuttons addObject:aentrycell.incrementswipebutton];
+            }
         }
         for (MGSwipeButton *btn in rightcompactbuttons) {
             [btn iconTintColor:[UIColor whiteColor]];
@@ -626,17 +638,25 @@
         
         // Set Swipe Button Array
         if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-            [rightregularbuttons addObject:mentrycell.shareswipebutton];
-            if (currentservice == 3) {
+            if (mentrycell.shareswipebutton) {
+                [rightregularbuttons addObject:mentrycell.shareswipebutton];
+            }
+            if (currentservice == 3 && mentrycell.customlistbutton) {
                 [rightregularbuttons addObject:mentrycell.customlistbutton];
             }
-            [rightregularbuttons addObject:mentrycell.adveditswipebutton];
-            [rightregularbuttons addObject:mentrycell.viewonsiteswipebutton];
+            if (mentrycell.adveditswipebutton) {
+                [rightregularbuttons addObject:mentrycell.adveditswipebutton];
+            }
+            if (mentrycell.viewonsiteswipebutton) {
+                [rightregularbuttons addObject:mentrycell.viewonsiteswipebutton];
+            }
             for (MGSwipeButton *btn in rightregularbuttons) {
                 [btn iconTintColor:[UIColor whiteColor]];
             }
         }
-        [rightcompactbuttons addObject:mentrycell.optionswipebutton];
+        if (mentrycell.optionswipebutton) {
+            [rightcompactbuttons addObject:mentrycell.optionswipebutton];
+        }
         if ([self canIncrement:entry]) {
             mentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"volincrement"] backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
@@ -649,11 +669,15 @@
                 return true;
             }];
             if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-                [rightregularbuttons addObject:mentrycell.incrementswipebutton];
-                [rightregularbuttons addObject:mentrycell.incrementvolswipebutton];
+                if (mentrycell.incrementswipebutton && mentrycell.incrementvolswipebutton) {
+                    [rightregularbuttons addObject:mentrycell.incrementswipebutton];
+                    [rightregularbuttons addObject:mentrycell.incrementvolswipebutton];
+                }
             }
-            [rightcompactbuttons addObject:mentrycell.incrementswipebutton];
-            [rightcompactbuttons addObject:mentrycell.incrementvolswipebutton];
+            if (mentrycell.incrementswipebutton && mentrycell.incrementvolswipebutton) {
+                [rightcompactbuttons addObject:mentrycell.incrementswipebutton];
+                [rightcompactbuttons addObject:mentrycell.incrementvolswipebutton];
+            }
         }
         for (MGSwipeButton *btn in rightcompactbuttons) {
             [btn iconTintColor:[UIColor whiteColor]];
