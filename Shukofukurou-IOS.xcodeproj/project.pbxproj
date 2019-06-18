@@ -289,6 +289,8 @@
 		597DDB1C22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */; };
 		597DDB1E22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */; };
 		597DDB1F22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */; };
+		597DDB2122B94AF800B7227C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */; };
+		597DDB2222B94AF800B7227C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */; };
 		597DDCE7224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
 		597DDCE8224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
 		597DDCEB224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */; };
@@ -946,6 +948,7 @@
 		597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoSwitchEntryTableViewCell.xib; sourceTree = "<group>"; };
 		597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoUpdateTableViewCell.xib; sourceTree = "<group>"; };
 		597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoBasicTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		597DDCE5224A6FB10005C652 /* ExportMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportMainTableViewController.h; sourceTree = "<group>"; };
 		597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportMainTableViewController.m; sourceTree = "<group>"; };
 		597DDCE9224A6FC50005C652 /* ExportedListsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportedListsTableViewController.h; sourceTree = "<group>"; };
@@ -1668,6 +1671,7 @@
 				597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */,
 				597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */,
 				597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */,
+				597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -2250,6 +2254,7 @@
 				597DDB1F22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5934E275220F7539002B8311 /* Trending.storyboard in Resources */,
 				5934E276220F7539002B8311 /* Assets.xcassets in Resources */,
+				597DDB2222B94AF800B7227C /* SearchTableViewCell.xib in Resources */,
 				5934E277220F7539002B8311 /* Settings.storyboard in Resources */,
 				597DDB0A22B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
 				5934E278220F7539002B8311 /* Seasons.storyboard in Resources */,
@@ -2284,6 +2289,7 @@
 				597DDB0622B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */,
 				5962425521556622001995AD /* Search.storyboard in Resources */,
 				597DDB0922B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
+				597DDB2122B94AF800B7227C /* SearchTableViewCell.xib in Resources */,
 				597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */,
 				597DDB1E22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5962424F21556612001995AD /* InfoView.storyboard in Resources */,

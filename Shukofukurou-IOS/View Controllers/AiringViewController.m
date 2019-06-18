@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self.tableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"searchcell"];
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     AiringRootViewController *airingvc = [vcm getAiringRootViewController];
     airingvc.airingviewcontroller = self;
@@ -109,7 +109,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *entry = _airinglist[indexPath.row];
-    SearchTableViewCell *aentrycell = [tableView dequeueReusableCellWithIdentifier:@"airingcell"];
+    SearchTableViewCell *aentrycell = [tableView dequeueReusableCellWithIdentifier:@"searchcell"];
     if (aentrycell == nil && tableView != self.tableView) {
         aentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"airingcell"];
         if (!aentrycell) {
