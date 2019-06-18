@@ -487,7 +487,7 @@
 
 #pragma mark tableview cell registration
 - (void)registerTableViewCells {
-    NSDictionary *cells = @{ @"TitleInfoBasicTableViewCell" : @"titleinfocell", @"TitleInfoBasicExpandTableViewCell" : @"titleinfocellexpand", @"TitleInfoSynopsisTableViewCell" : @"synopsiscell"};
+    NSDictionary *cells = @{ @"TitleInfoBasicTableViewCell" : @"titleinfocell", @"TitleInfoBasicExpandTableViewCell" : @"titleinfocellexpand", @"TitleInfoSynopsisTableViewCell" : @"synopsiscell", @"PersonSubtitleTableViewCell" : @"charactercell"};
     for (NSString *nibName in cells.allKeys) {
         [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:cells[nibName]];
     }

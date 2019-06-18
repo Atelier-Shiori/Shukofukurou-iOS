@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerTableViewCells];
     [self loadTheme];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"ThemeChanged" object:nil];
 }
@@ -168,6 +169,13 @@
     else {
         [_hud hideAnimated:YES];
     }
+}
+
+#pragma mark table view cell registration
+
+- (void)registerTableViewCells {
+    [self.tableView registerNib:[UINib nibWithNibName:@"PersonSubtitleTableViewCell" bundle:nil] forCellReuseIdentifier:@"charactercell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"PersonTableViewCell" bundle:nil] forCellReuseIdentifier:@"personcell"];
 }
 
 @end
