@@ -269,32 +269,32 @@
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
-		597DDAFC22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */; };
-		597DDAFD22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */; };
 		597DDB0622B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */; };
 		597DDB0722B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */; };
-		597DDB0922B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */; };
-		597DDB0A22B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */; };
-		597DDB0C22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */; };
-		597DDB0D22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */; };
-		597DDB0F22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */; };
-		597DDB1022B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */; };
-		597DDB1222B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */; };
-		597DDB1322B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */; };
-		597DDB1522B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */; };
-		597DDB1622B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */; };
-		597DDB1822B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */; };
-		597DDB1922B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */; };
-		597DDB1B22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */; };
-		597DDB1C22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */; };
-		597DDB1E22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */; };
-		597DDB1F22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */; };
-		597DDB2122B94AF800B7227C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */; };
-		597DDB2222B94AF800B7227C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */; };
-		597DDB2422B94E0A00B7227C /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2322B94E0A00B7227C /* PersonTableViewCell.xib */; };
-		597DDB2522B94E0A00B7227C /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2322B94E0A00B7227C /* PersonTableViewCell.xib */; };
-		597DDB2722B94E3300B7227C /* PersonSubtitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2622B94E3300B7227C /* PersonSubtitleTableViewCell.xib */; };
-		597DDB2822B94E3300B7227C /* PersonSubtitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2622B94E3300B7227C /* PersonSubtitleTableViewCell.xib */; };
+		597DDB2922B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2C22B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib */; };
+		597DDB2A22B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB2C22B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib */; };
+		597DDB2D22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3022B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib */; };
+		597DDB2E22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3022B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib */; };
+		597DDB3122B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3422B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */; };
+		597DDB3222B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3422B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */; };
+		597DDB3522B950DE00B7227C /* TitleInfoProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3822B950DE00B7227C /* TitleInfoProgressTableViewCell.xib */; };
+		597DDB3622B950DE00B7227C /* TitleInfoProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3822B950DE00B7227C /* TitleInfoProgressTableViewCell.xib */; };
+		597DDB3922B950E300B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3C22B950E300B7227C /* TitleInfoListEntryTableViewCell.xib */; };
+		597DDB3A22B950E300B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB3C22B950E300B7227C /* TitleInfoListEntryTableViewCell.xib */; };
+		597DDB3D22B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4022B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib */; };
+		597DDB3E22B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4022B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib */; };
+		597DDB4122B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4422B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib */; };
+		597DDB4222B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4422B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib */; };
+		597DDB4522B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4822B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib */; };
+		597DDB4622B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4822B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib */; };
+		597DDB4922B950F500B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4C22B950F500B7227C /* TitleInfoBasicTableViewCell.xib */; };
+		597DDB4A22B950F500B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB4C22B950F500B7227C /* TitleInfoBasicTableViewCell.xib */; };
+		597DDB4D22B950FA00B7227C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB5022B950FA00B7227C /* SearchTableViewCell.xib */; };
+		597DDB4E22B950FA00B7227C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB5022B950FA00B7227C /* SearchTableViewCell.xib */; };
+		597DDB5122B950FE00B7227C /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB5422B950FE00B7227C /* PersonTableViewCell.xib */; };
+		597DDB5222B950FE00B7227C /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB5422B950FE00B7227C /* PersonTableViewCell.xib */; };
+		597DDB5522B9510200B7227C /* PersonSubtitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB5822B9510200B7227C /* PersonSubtitleTableViewCell.xib */; };
+		597DDB5622B9510200B7227C /* PersonSubtitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB5822B9510200B7227C /* PersonSubtitleTableViewCell.xib */; };
 		597DDCE7224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
 		597DDCE8224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
 		597DDCEB224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */; };
@@ -942,19 +942,19 @@
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
-		597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoBasicExpandTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoStreamSiteTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoSynopsisTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoAdvScoreEntryTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoProgressTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoListEntryTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoNotesEntryTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoSwitchEntryTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoUpdateTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoBasicTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB2322B94E0A00B7227C /* PersonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonTableViewCell.xib; sourceTree = "<group>"; };
-		597DDB2622B94E3300B7227C /* PersonSubtitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonSubtitleTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TitleInfoStreamSiteTableViewCell.xib; path = Base.lproj/TitleInfoStreamSiteTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB2B22B950A700B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoBasicExpandTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB2F22B950D500B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoSynopsisTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB3322B950DA00B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoAdvScoreEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB3722B950DE00B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoProgressTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB3B22B950E300B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoListEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB3F22B950E700B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoNotesEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB4322B950EB00B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoSwitchEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB4722B950EF00B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoUpdateTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB4B22B950F500B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleInfoBasicTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB4F22B950FA00B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB5322B950FE00B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PersonTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB5722B9510200B7227C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PersonSubtitleTableViewCell.xib; sourceTree = "<group>"; };
 		597DDCE5224A6FB10005C652 /* ExportMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportMainTableViewController.h; sourceTree = "<group>"; };
 		597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportMainTableViewController.m; sourceTree = "<group>"; };
 		597DDCE9224A6FC50005C652 /* ExportedListsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportedListsTableViewController.h; sourceTree = "<group>"; };
@@ -1667,19 +1667,19 @@
 		597DDAE522B939FD00B7227C /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */,
+				597DDB2C22B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib */,
 				597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */,
-				597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */,
-				597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */,
-				597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */,
-				597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */,
-				597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */,
-				597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */,
-				597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */,
-				597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */,
-				597DDB2022B94AF800B7227C /* SearchTableViewCell.xib */,
-				597DDB2322B94E0A00B7227C /* PersonTableViewCell.xib */,
-				597DDB2622B94E3300B7227C /* PersonSubtitleTableViewCell.xib */,
+				597DDB3022B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib */,
+				597DDB3422B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */,
+				597DDB3822B950DE00B7227C /* TitleInfoProgressTableViewCell.xib */,
+				597DDB3C22B950E300B7227C /* TitleInfoListEntryTableViewCell.xib */,
+				597DDB4022B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib */,
+				597DDB4422B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib */,
+				597DDB4822B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib */,
+				597DDB4C22B950F500B7227C /* TitleInfoBasicTableViewCell.xib */,
+				597DDB5022B950FA00B7227C /* SearchTableViewCell.xib */,
+				597DDB5422B950FE00B7227C /* PersonTableViewCell.xib */,
+				597DDB5822B9510200B7227C /* PersonSubtitleTableViewCell.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -2245,30 +2245,30 @@
 				5934E26B220F7539002B8311 /* Main.storyboard in Resources */,
 				5934E26C220F7539002B8311 /* Lists.storyboard in Resources */,
 				5934E26D220F7539002B8311 /* Auth.storyboard in Resources */,
-				597DDB1922B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
+				597DDB4222B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
 				5934E26E220F7539002B8311 /* Search.storyboard in Resources */,
-				597DDB1C22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */,
+				597DDB4622B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */,
 				5934E26F220F7539002B8311 /* InfoView.storyboard in Resources */,
-				597DDB1622B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */,
+				597DDB3E22B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */,
 				5934E270220F7539002B8311 /* Airing.storyboard in Resources */,
-				597DDAFD22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */,
+				597DDB2A22B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */,
 				5934E271220F7539002B8311 /* Stats.storyboard in Resources */,
 				5934E272220F7539002B8311 /* ServiceSwitcher.storyboard in Resources */,
 				5934E273220F7539002B8311 /* LaunchScreen.storyboard in Resources */,
-				597DDB0D22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
-				597DDB2522B94E0A00B7227C /* PersonTableViewCell.xib in Resources */,
+				597DDB3222B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
+				597DDB5222B950FE00B7227C /* PersonTableViewCell.xib in Resources */,
 				5934E274220F7539002B8311 /* AdvancedEdit.storyboard in Resources */,
-				597DDB2822B94E3300B7227C /* PersonSubtitleTableViewCell.xib in Resources */,
+				597DDB5622B9510200B7227C /* PersonSubtitleTableViewCell.xib in Resources */,
 				597DDB0722B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */,
-				597DDB1322B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */,
-				597DDB1F22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
+				597DDB3A22B950E300B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */,
+				597DDB4A22B950F500B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5934E275220F7539002B8311 /* Trending.storyboard in Resources */,
 				5934E276220F7539002B8311 /* Assets.xcassets in Resources */,
-				597DDB2222B94AF800B7227C /* SearchTableViewCell.xib in Resources */,
+				597DDB4E22B950FA00B7227C /* SearchTableViewCell.xib in Resources */,
 				5934E277220F7539002B8311 /* Settings.storyboard in Resources */,
-				597DDB0A22B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
+				597DDB2E22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
 				5934E278220F7539002B8311 /* Seasons.storyboard in Resources */,
-				597DDB1022B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */,
+				597DDB3622B950DE00B7227C /* TitleInfoProgressTableViewCell.xib in Resources */,
 				5934E279220F7539002B8311 /* ThirdParty.rtf in Resources */,
 				5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */,
 			);
@@ -2298,32 +2298,32 @@
 				5962424E2155660F001995AD /* Auth.storyboard in Resources */,
 				597DDB0622B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */,
 				5962425521556622001995AD /* Search.storyboard in Resources */,
-				597DDB0922B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
-				597DDB2122B94AF800B7227C /* SearchTableViewCell.xib in Resources */,
+				597DDB2D22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
+				597DDB4D22B950FA00B7227C /* SearchTableViewCell.xib in Resources */,
 				597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */,
-				597DDB1E22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
+				597DDB4922B950F500B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5962424F21556612001995AD /* InfoView.storyboard in Resources */,
-				597DDB0C22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
+				597DDB3122B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
 				5962424D2155660C001995AD /* Airing.storyboard in Resources */,
-				597DDB2722B94E3300B7227C /* PersonSubtitleTableViewCell.xib in Resources */,
+				597DDB5522B9510200B7227C /* PersonSubtitleTableViewCell.xib in Resources */,
 				59B3AC63220922930050662A /* Stats.storyboard in Resources */,
-				597DDB1522B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */,
-				597DDB1222B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */,
+				597DDB3D22B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */,
+				597DDB3922B950E300B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */,
 				5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */,
-				597DDB1B22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */,
+				597DDB4522B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */,
 				5962425021556614001995AD /* LaunchScreen.storyboard in Resources */,
 				59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */,
 				595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */,
-				597DDAFC22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */,
+				597DDB2922B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */,
 				596240B52155622F001995AD /* Assets.xcassets in Resources */,
 				596242582155662A001995AD /* Settings.storyboard in Resources */,
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
 				5934E29E220F833A002B8311 /* TipJar.storyboard in Resources */,
 				59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */,
-				597DDB2422B94E0A00B7227C /* PersonTableViewCell.xib in Resources */,
-				597DDB1822B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
+				597DDB5122B950FE00B7227C /* PersonTableViewCell.xib in Resources */,
+				597DDB4122B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
 				59481D8421594078003CE863 /* CustomList.storyboard in Resources */,
-				597DDB0F22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */,
+				597DDB3522B950DE00B7227C /* TitleInfoProgressTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2813,6 +2813,102 @@
 				596241D0215564B4001995AD /* Base */,
 			);
 			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		597DDB2C22B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB2B22B950A700B7227C /* Base */,
+			);
+			name = TitleInfoBasicExpandTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB3022B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB2F22B950D500B7227C /* Base */,
+			);
+			name = TitleInfoSynopsisTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB3422B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB3322B950DA00B7227C /* Base */,
+			);
+			name = TitleInfoAdvScoreEntryTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB3822B950DE00B7227C /* TitleInfoProgressTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB3722B950DE00B7227C /* Base */,
+			);
+			name = TitleInfoProgressTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB3C22B950E300B7227C /* TitleInfoListEntryTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB3B22B950E300B7227C /* Base */,
+			);
+			name = TitleInfoListEntryTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB4022B950E700B7227C /* TitleInfoNotesEntryTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB3F22B950E700B7227C /* Base */,
+			);
+			name = TitleInfoNotesEntryTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB4422B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB4322B950EB00B7227C /* Base */,
+			);
+			name = TitleInfoSwitchEntryTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB4822B950EF00B7227C /* TitleInfoUpdateTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB4722B950EF00B7227C /* Base */,
+			);
+			name = TitleInfoUpdateTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB4C22B950F500B7227C /* TitleInfoBasicTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB4B22B950F500B7227C /* Base */,
+			);
+			name = TitleInfoBasicTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB5022B950FA00B7227C /* SearchTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB4F22B950FA00B7227C /* Base */,
+			);
+			name = SearchTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB5422B950FE00B7227C /* PersonTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB5322B950FE00B7227C /* Base */,
+			);
+			name = PersonTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		597DDB5822B9510200B7227C /* PersonSubtitleTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				597DDB5722B9510200B7227C /* Base */,
+			);
+			name = PersonSubtitleTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 		597DDCF7224A70EA0005C652 /* Export.storyboard */ = {
