@@ -269,6 +269,26 @@
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
+		597DDAFC22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */; };
+		597DDAFD22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */; };
+		597DDB0622B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */; };
+		597DDB0722B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */; };
+		597DDB0922B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */; };
+		597DDB0A22B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */; };
+		597DDB0C22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */; };
+		597DDB0D22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */; };
+		597DDB0F22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */; };
+		597DDB1022B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */; };
+		597DDB1222B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */; };
+		597DDB1322B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */; };
+		597DDB1522B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */; };
+		597DDB1622B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */; };
+		597DDB1822B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */; };
+		597DDB1922B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */; };
+		597DDB1B22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */; };
+		597DDB1C22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */; };
+		597DDB1E22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */; };
+		597DDB1F22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */; };
 		597DDCE7224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
 		597DDCE8224A6FB10005C652 /* ExportMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */; };
 		597DDCEB224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597DDCEA224A6FC50005C652 /* ExportedListsTableViewController.m */; };
@@ -916,6 +936,16 @@
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
+		597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoBasicExpandTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoStreamSiteTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoSynopsisTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoAdvScoreEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoProgressTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoListEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoNotesEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoSwitchEntryTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoUpdateTableViewCell.xib; sourceTree = "<group>"; };
+		597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoBasicTableViewCell.xib; sourceTree = "<group>"; };
 		597DDCE5224A6FB10005C652 /* ExportMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportMainTableViewController.h; sourceTree = "<group>"; };
 		597DDCE6224A6FB10005C652 /* ExportMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportMainTableViewController.m; sourceTree = "<group>"; };
 		597DDCE9224A6FC50005C652 /* ExportedListsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportedListsTableViewController.h; sourceTree = "<group>"; };
@@ -1226,6 +1256,7 @@
 		596240A72155622E001995AD /* Shukofukurou-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				597DDAE522B939FD00B7227C /* XIB */,
 				595A96202240118E00E3C245 /* Scrobble */,
 				59A7A7DA220F95BD009563CA /* TipJar */,
 				59EBC1D921FD231900481D33 /* Themes */,
@@ -1622,6 +1653,23 @@
 				59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		597DDAE522B939FD00B7227C /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				597DDAFB22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib */,
+				597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */,
+				597DDB0822B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib */,
+				597DDB0B22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib */,
+				597DDB0E22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib */,
+				597DDB1122B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib */,
+				597DDB1422B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib */,
+				597DDB1722B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib */,
+				597DDB1A22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib */,
+				597DDB1D22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib */,
+			);
+			path = XIB;
 			sourceTree = "<group>";
 		};
 		597DDCE2224A6AC00005C652 /* Export */ = {
@@ -2185,17 +2233,27 @@
 				5934E26B220F7539002B8311 /* Main.storyboard in Resources */,
 				5934E26C220F7539002B8311 /* Lists.storyboard in Resources */,
 				5934E26D220F7539002B8311 /* Auth.storyboard in Resources */,
+				597DDB1922B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
 				5934E26E220F7539002B8311 /* Search.storyboard in Resources */,
+				597DDB1C22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */,
 				5934E26F220F7539002B8311 /* InfoView.storyboard in Resources */,
+				597DDB1622B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */,
 				5934E270220F7539002B8311 /* Airing.storyboard in Resources */,
+				597DDAFD22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */,
 				5934E271220F7539002B8311 /* Stats.storyboard in Resources */,
 				5934E272220F7539002B8311 /* ServiceSwitcher.storyboard in Resources */,
 				5934E273220F7539002B8311 /* LaunchScreen.storyboard in Resources */,
+				597DDB0D22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
 				5934E274220F7539002B8311 /* AdvancedEdit.storyboard in Resources */,
+				597DDB0722B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */,
+				597DDB1322B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */,
+				597DDB1F22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5934E275220F7539002B8311 /* Trending.storyboard in Resources */,
 				5934E276220F7539002B8311 /* Assets.xcassets in Resources */,
 				5934E277220F7539002B8311 /* Settings.storyboard in Resources */,
+				597DDB0A22B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
 				5934E278220F7539002B8311 /* Seasons.storyboard in Resources */,
+				597DDB1022B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */,
 				5934E279220F7539002B8311 /* ThirdParty.rtf in Resources */,
 				5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */,
 			);
@@ -2223,21 +2281,31 @@
 				596242522155661A001995AD /* Main.storyboard in Resources */,
 				5962425121556617001995AD /* Lists.storyboard in Resources */,
 				5962424E2155660F001995AD /* Auth.storyboard in Resources */,
+				597DDB0622B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */,
 				5962425521556622001995AD /* Search.storyboard in Resources */,
+				597DDB0922B93DA300B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
 				597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */,
+				597DDB1E22B93EEF00B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5962424F21556612001995AD /* InfoView.storyboard in Resources */,
+				597DDB0C22B93DB300B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
 				5962424D2155660C001995AD /* Airing.storyboard in Resources */,
 				59B3AC63220922930050662A /* Stats.storyboard in Resources */,
+				597DDB1522B93DEA00B7227C /* TitleInfoNotesEntryTableViewCell.xib in Resources */,
+				597DDB1222B93DDB00B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */,
 				5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */,
+				597DDB1B22B93E2E00B7227C /* TitleInfoUpdateTableViewCell.xib in Resources */,
 				5962425021556614001995AD /* LaunchScreen.storyboard in Resources */,
 				59A0C6F4215A883E00B15F9F /* AdvancedEdit.storyboard in Resources */,
 				595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */,
+				597DDAFC22B93CAE00B7227C /* TitleInfoBasicExpandTableViewCell.xib in Resources */,
 				596240B52155622F001995AD /* Assets.xcassets in Resources */,
 				596242582155662A001995AD /* Settings.storyboard in Resources */,
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
 				5934E29E220F833A002B8311 /* TipJar.storyboard in Resources */,
 				59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */,
+				597DDB1822B93DF900B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
 				59481D8421594078003CE863 /* CustomList.storyboard in Resources */,
+				597DDB0F22B93DC000B7227C /* TitleInfoProgressTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

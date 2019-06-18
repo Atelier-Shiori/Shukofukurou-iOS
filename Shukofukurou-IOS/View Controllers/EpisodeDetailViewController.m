@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerTableViewCells];
     // Do any additional setup after loading the view.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
@@ -169,6 +170,14 @@
     }
     else {
         _posterimage.image = [UIImage new];
+    }
+}
+
+#pragma mark tableview cell registration
+- (void)registerTableViewCells {
+    NSDictionary *cells = @{ @"TitleInfoBasicTableViewCell" : @"titleinfocell", @"TitleInfoBasicExpandTableViewCell" : @"titleinfocellexpand", @"TitleInfoSynopsisTableViewCell" : @"synopsiscell"};
+    for (NSString *nibName in cells.allKeys) {
+        [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:cells[nibName]];
     }
 }
 @end

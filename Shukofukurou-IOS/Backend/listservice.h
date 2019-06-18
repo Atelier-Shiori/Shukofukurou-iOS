@@ -54,5 +54,4 @@
 - (NSString *)currentservicename;
 - (int)getCurrentUserID;
 - (NSString *)getCurrentUserAvatar;
-- (bool)checkUserData;
 @end

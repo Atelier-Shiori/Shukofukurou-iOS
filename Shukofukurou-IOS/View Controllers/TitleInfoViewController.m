@@ -62,6 +62,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerTableViewCells];
     // Set Background Color
     [self setThemeColors];
     _setthemecolors = true;
@@ -1361,6 +1362,14 @@
     _entrychanged = modified;
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = !modified;
+    }
+}
+
+#pragma mark tableview cell registration
+- (void)registerTableViewCells {
+    NSDictionary *cells = @{@"TitleInfoListEntryTableViewCell" : @"editdetailcell", @"TitleInfoProgressTableViewCell" : @"progresscell", @"TitleInfoAdvScoreEntryTableViewCell" : @"advscorecell", @"TitleInfoBasicTableViewCell" : @"titleinfocell", @"TitleInfoBasicExpandTableViewCell" : @"titleinfocellexpand", @"TitleInfoSynopsisTableViewCell" : @"synopsiscell", @"TitleInfoUpdateTableViewCell" : @"actioncell", @"TitleInfoStreamSiteTableViewCell" : @"streamsitecell"};
+    for (NSString *nibName in cells.allKeys) {
+        [self.tableview registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:cells[nibName]];
     }
 }
 @end

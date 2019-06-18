@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="progresscell" id="fZo-RN-blQ" customClass="TitleInfoProgressTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fZo-RN-blQ" id="XF9-Im-0I2">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EI2-rU-EUG">
+                        <rect key="frame" x="16" y="11" width="61.5" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-pm-ywb">
+                        <rect key="frame" x="155" y="8" width="152" height="29"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kb-VL-p2t">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="f7e-do-TNu"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="progressdidchange:" destination="fZo-RN-blQ" eventType="editingDidEnd" id="avn-lZ-Ugn"/>
+                                </connections>
+                            </textField>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="o4y-xg-TSf">
+                                <rect key="frame" x="58" y="0.0" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperincrement:" destination="fZo-RN-blQ" eventType="valueChanged" id="Yb4-HV-FPX"/>
+                                </connections>
+                            </stepper>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Qra-pm-ywb" secondAttribute="bottom" constant="6.5" id="08k-8S-waW"/>
+                    <constraint firstItem="Qra-pm-ywb" firstAttribute="top" secondItem="XF9-Im-0I2" secondAttribute="top" constant="8" id="35Z-fa-iZ0"/>
+                    <constraint firstItem="EI2-rU-EUG" firstAttribute="leading" secondItem="XF9-Im-0I2" secondAttribute="leadingMargin" id="6Hz-Ve-JAN"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="EI2-rU-EUG" secondAttribute="bottom" id="AoS-r5-lBm"/>
+                    <constraint firstItem="EI2-rU-EUG" firstAttribute="top" secondItem="XF9-Im-0I2" secondAttribute="topMargin" id="nB3-bc-ijT"/>
+                    <constraint firstAttribute="trailing" secondItem="Qra-pm-ywb" secondAttribute="trailing" constant="13" id="z4s-tM-R6Z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="episodefield" destination="4kb-VL-p2t" id="Hzg-an-suU"/>
+                <outlet property="fieldtitlelabel" destination="EI2-rU-EUG" id="XjV-d7-PRv"/>
+                <outlet property="stepper" destination="o4y-xg-TSf" id="as2-Ht-XRb"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

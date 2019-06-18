@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad {
     [self loadTheme];
+    [self registerTableViewCells];
     [super viewDidLoad];
 }
 
@@ -729,5 +730,13 @@
     }];
     [alertcontroller addAction:okaction];
     [self.navigationController presentViewController:alertcontroller animated:YES completion:nil];
+}
+
+#pragma mark tableview cell registration
+- (void)registerTableViewCells {
+    NSDictionary *cells = @{ @"TitleInfoListEntryTableViewCell" : @"editdetailcell", @"TitleInfoProgressTableViewCell" : @"progresscell", @"TitleInfoAdvScoreEntryTableViewCell" : @"advscorecell", @"TitleInfoSwitchEntryTableViewCell" : @"switchcell", @"TitleInfoNotesEntryTableViewCell" : @"notescell" };
+    for (NSString *nibName in cells.allKeys) {
+        [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:cells[nibName]];
+    }
 }
 @end

@@ -66,7 +66,7 @@
 }
 
 - (instancetype)init {
-    if ([super init]) {
+    if (self = [super init]) {
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     }
     return self;
@@ -384,7 +384,7 @@
 }
 
 - (instancetype)init {
-    if ([super init]) {
+    if (self = [super init]) {
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     }
     return self;

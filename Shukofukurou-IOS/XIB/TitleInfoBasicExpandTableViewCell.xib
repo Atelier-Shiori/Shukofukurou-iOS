@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleinfocellexpand" id="x8C-YC-kIJ" customClass="TitleInfoBasicExpandTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x8C-YC-kIJ" id="rk6-Sm-R2x">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQa-DH-fmd">
+                        <rect key="frame" x="16" y="11" width="100" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="iij-ag-GRL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLh-Ed-Oag">
+                        <rect key="frame" x="126" y="11" width="180" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="180" id="0Z7-kZ-F8L"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zQa-DH-fmd" firstAttribute="top" secondItem="rk6-Sm-R2x" secondAttribute="topMargin" id="0a3-aY-fB5"/>
+                    <constraint firstItem="zQa-DH-fmd" firstAttribute="bottom" secondItem="rk6-Sm-R2x" secondAttribute="bottomMargin" id="Aad-A2-Tgg"/>
+                    <constraint firstItem="cLh-Ed-Oag" firstAttribute="trailing" secondItem="rk6-Sm-R2x" secondAttribute="trailingMargin" id="Elv-lK-oHh"/>
+                    <constraint firstItem="cLh-Ed-Oag" firstAttribute="top" secondItem="rk6-Sm-R2x" secondAttribute="topMargin" id="L9K-XG-q0d"/>
+                    <constraint firstItem="cLh-Ed-Oag" firstAttribute="leading" secondItem="zQa-DH-fmd" secondAttribute="trailing" constant="10" id="Oxd-f2-OIB"/>
+                    <constraint firstItem="zQa-DH-fmd" firstAttribute="leading" secondItem="rk6-Sm-R2x" secondAttribute="leadingMargin" id="cB0-g4-OG2"/>
+                    <constraint firstItem="cLh-Ed-Oag" firstAttribute="bottom" secondItem="rk6-Sm-R2x" secondAttribute="bottomMargin" id="oqn-dx-KSd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="titleLabel" destination="zQa-DH-fmd" id="ceL-BK-HUv"/>
+                <outlet property="valueLabel" destination="cLh-Ed-Oag" id="M72-OV-4I9"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
