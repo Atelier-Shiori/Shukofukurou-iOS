@@ -11,7 +11,7 @@
 
 @interface ThirdPartyViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *textview;
-
+@property bool loaded;
 @end
 
 @implementation ThirdPartyViewController
@@ -22,7 +22,10 @@
     
     // Load Credits
     @try {
-        [_textview setAttributedText: [[NSAttributedString alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"ThirdParty" withExtension:@"rtf"] options:@{NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType} documentAttributes:nil error:nil]];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            self.textview.attributedText =  [[NSAttributedString alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"ThirdParty" withExtension:@"rtf"] options:@{NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType} documentAttributes:nil error:nil];
+            [self.textview setContentOffset:CGPointZero animated:NO];
+             });
     }
     @catch (NSException *exception) {
         NSLog(@"exception: %@",exception);
@@ -32,9 +35,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        [_textview setContentOffset:CGPointZero animated:NO];
-    }
 }
 
 - (void)fixtheme {
