@@ -244,28 +244,33 @@
 
 - (void)checkaccountinformation {
     // Retrieves updated user data
-    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    bool reloadeduserdata = false;
-    if ([listservice.sharedInstance .kitsuManager getFirstAccount]) {
-        bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
-        if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
-            [listservice.sharedInstance .kitsuManager saveuserinfoforcurrenttoken];
-            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
-            reloadeduserdata = true;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+        bool reloadeduserdata = false;
+        if ([listservice.sharedInstance .kitsuManager getFirstAccount]) {
+            bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
+            if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
+                [listservice.sharedInstance.kitsuManager saveuserinfoforcurrenttoken];
+                [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
+                reloadeduserdata = true;
+            }
         }
-    }
-    if ([listservice.sharedInstance .anilistManager getFirstAccount]) {
-        bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
-        if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
-            [listservice.sharedInstance .anilistManager saveuserinfoforcurrenttoken];
-            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
-             reloadeduserdata = true;
+        if ([listservice.sharedInstance .anilistManager getFirstAccount]) {
+            bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
+            if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
+                [listservice.sharedInstance .anilistManager saveuserinfoforcurrenttoken];
+                [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
+                 reloadeduserdata = true;
+            }
         }
-    }
-    if (reloadeduserdata) {
-        // Reload user data on sidebar
-        [_vcmanager.mainsidebar setLoggedinUser];
-    }
+        if (reloadeduserdata) {
+            // Reload user data on sidebar
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [self.vcmanager.mainsidebar setLoggedinUser];
+             });
+        }
+    });
 }
 
 #pragma mark AuthViewController Delegate
