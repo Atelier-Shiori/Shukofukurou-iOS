@@ -13,7 +13,7 @@
 #import "listservice.h"
 #import "TitleInfoViewController.h"
 #import "ScrobbleManager.h"
-#ifdef oss
+#ifdef defined(OSS)
 #else
 #import "TipJar.h"
 #endif
@@ -115,7 +115,7 @@
     else if ([identifier isEqualToString:@"settings"]) {
         return (UINavigationController *)[_vcm getSettingsRootViewController];
     }
-#ifdef oss
+#ifdef defined(OSS)
 #else
     else if ([identifier isEqualToString:@"tipjar"]) {
         return nil;
@@ -156,7 +156,7 @@
     else if ([identifier isEqualToString:@"settings"]) {
         [self showSettingsViewController];
     }
-#ifdef oss
+#ifdef defined(OSS)
 #else
     else if ([identifier isEqualToString:@"tipjar"]) {
         [self showTipJar];
@@ -198,7 +198,7 @@
     navcontroller.viewControllers = @[[_vcm getViewController]];
     self.rootViewController = navcontroller;
 }
-#ifdef oss
+#ifdef defined(OSS)
 #else
 - (void)showTipJar {
     UINavigationController *navcontroller = [UINavigationController new];

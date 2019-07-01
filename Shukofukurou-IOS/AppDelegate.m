@@ -126,7 +126,7 @@
     // Set Image Disk Cache Size
     SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 96;
     [ScrobbleManager.sharedInstance checkScrobble];
-#ifdef oss
+#ifdef defined(OSS)
     [self showopensourcemessage];
 #endif
     return YES;
@@ -339,7 +339,7 @@
 }
 
 - (void)showopensourcemessage {
-#ifdef oss
+#ifdef defined(OSS)
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"You are using the community version." message:@"This is the community version, which provides you no support or warrenty whatsoever. If you are using a free Apple Developer Account, this app must be reinstalled every 7 days to continue fuctioning. This alert will apear on every launch." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5921475622CA8624004ADF52 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A95F8223FE37D00E3C245 /* CocoaOniguruma.framework */; };
+		5921475722CA8624004ADF52 /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595A95F8223FE37D00E3C245 /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59225B8A22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */; };
 		59225B8B22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */; };
 		59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59282C87220F46C40017DEF4 /* TitleIDMapper.m */; };
@@ -328,6 +330,8 @@
 		59B3AC742209266C0050662A /* GKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC702209266C0050662A /* GKBar.m */; };
 		59B580D9220F334300EFE7AC /* UIViewThemed.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B580D8220F334300EFE7AC /* UIViewThemed.m */; };
 		59B5BC35220DF8B900F904B4 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B5BC34220DF8B900F904B4 /* UIImageView+Letters.m */; };
+		59C3CAFE22CA81F30007786A /* Hakuchou_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */; };
+		59C3CAFF22CA81F30007786A /* Hakuchou_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
 		59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
 		59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
@@ -344,6 +348,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5921473D22CA8499004ADF52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 595A95F1223FE37D00E3C245 /* CocoaOniguruma.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CocoaOniguruma;
+		};
+		5921475822CA8624004ADF52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 595A95F1223FE37D00E3C245 /* CocoaOniguruma.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CocoaOniguruma;
+		};
 		592B8CA92236E0BF007D43F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */;
@@ -673,6 +691,13 @@
 			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
 			remoteInfo = "SDWebImage iOS";
 		};
+		59C3CB0022CA81F30007786A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 590B5E86222D785F0099D056;
+			remoteInfo = "Hakuchou-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -686,7 +711,9 @@
 				595A961B2240030200E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */,
 				5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */,
 				5934E27E220F7539002B8311 /* AFNetworking.framework in Embed Frameworks */,
+				59C3CAFF22CA81F30007786A /* Hakuchou_iOS.framework in Embed Frameworks */,
 				5934E27F220F7539002B8311 /* SAMKeychain.framework in Embed Frameworks */,
+				5921475722CA8624004ADF52 /* CocoaOniguruma.framework in Embed Frameworks */,
 				5934E280220F7539002B8311 /* SDWebImage.framework in Embed Frameworks */,
 				5934E281220F7539002B8311 /* LGSideMenuController.framework in Embed Frameworks */,
 			);
@@ -1044,7 +1071,9 @@
 				595A961A2240030200E3C245 /* MBProgressHUDFramework.framework in Frameworks */,
 				5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */,
 				5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */,
+				59C3CAFE22CA81F30007786A /* Hakuchou_iOS.framework in Frameworks */,
 				5934E267220F7539002B8311 /* SAMKeychain.framework in Frameworks */,
+				5921475622CA8624004ADF52 /* CocoaOniguruma.framework in Frameworks */,
 				5934E268220F7539002B8311 /* SDWebImage.framework in Frameworks */,
 				5934E269220F7539002B8311 /* LGSideMenuController.framework in Frameworks */,
 			);
@@ -1837,6 +1866,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5921473E22CA8499004ADF52 /* PBXTargetDependency */,
 				5934E1EA220F7539002B8311 /* PBXTargetDependency */,
 				5934E1EC220F7539002B8311 /* PBXTargetDependency */,
 				5934E1EE220F7539002B8311 /* PBXTargetDependency */,
@@ -1844,6 +1874,8 @@
 				5934E1F2220F7539002B8311 /* PBXTargetDependency */,
 				5934E1F4220F7539002B8311 /* PBXTargetDependency */,
 				595A961D2240030200E3C245 /* PBXTargetDependency */,
+				59C3CB0122CA81F30007786A /* PBXTargetDependency */,
+				5921475922CA8624004ADF52 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou-IOS-OSS";
 			productName = "Shukofukurou-IOS";
@@ -2610,6 +2642,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5921473E22CA8499004ADF52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaOniguruma;
+			targetProxy = 5921473D22CA8499004ADF52 /* PBXContainerItemProxy */;
+		};
+		5921475922CA8624004ADF52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaOniguruma;
+			targetProxy = 5921475822CA8624004ADF52 /* PBXContainerItemProxy */;
+		};
 		592B8CB22236E17A007D43F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Hakuchou-iOS";
@@ -2699,6 +2741,11 @@
 			isa = PBXTargetDependency;
 			name = "SDWebImage iOS";
 			targetProxy = 59B22D2B21FE630000627172 /* PBXContainerItemProxy */;
+		};
+		59C3CB0122CA81F30007786A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Hakuchou-iOS";
+			targetProxy = 59C3CB0022CA81F30007786A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

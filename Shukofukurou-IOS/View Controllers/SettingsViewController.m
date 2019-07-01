@@ -101,7 +101,7 @@
         [self clearImages];
     }
     else if ([cell.textLabel.text isEqualToString:@"File a Bug Report"]) {
-#ifdef oss
+#ifdef defined(OSS)
         [self showopensourcemessage];
 #else
         [self openWebBrowserView:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/Shukofukurou-iOS/issues"]];
@@ -184,7 +184,7 @@
 }
 
 - (void)showopensourcemessage {
-#ifdef oss
+#ifdef defined(OSS)
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"You are using the community version." message:@"You may not file bug reports on the community version." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
