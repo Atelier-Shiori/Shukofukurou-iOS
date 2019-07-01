@@ -101,8 +101,12 @@
         [self clearImages];
     }
     else if ([cell.textLabel.text isEqualToString:@"File a Bug Report"]) {
+#ifdef oss
+        [self showopensourcemessage];
+#else
         [self openWebBrowserView:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/Shukofukurou-iOS/issues"]];
         [cell setSelected:NO animated:YES];
+#endif
     }
     else if ([cell.textLabel.text isEqualToString:@"Follow us on Twitter"]) {
         [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://twitter.com/maluosxdev"] options:@{} completionHandler:^(BOOL success) {}];
@@ -177,5 +181,16 @@
     svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
     [self presentViewController:svc animated:YES completion:^{
     }];
+}
+
+- (void)showopensourcemessage {
+#ifdef oss
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"You are using the community version." message:@"You may not file bug reports on the community version." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertcontroller addAction:plaction];
+    [[ViewControllerManager getAppDelegateViewControllerManager].mvc presentViewController:alertcontroller animated:YES completion:nil];
+#else
+#endif
 }
 @end
