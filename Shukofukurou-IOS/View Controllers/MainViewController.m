@@ -13,7 +13,7 @@
 #import "listservice.h"
 #import "TitleInfoViewController.h"
 #import "ScrobbleManager.h"
-#ifdef defined(OSS)
+#if defined(OSS)
 #else
 #import "TipJar.h"
 #endif
@@ -31,6 +31,9 @@
     [self setsidebar:self.view.bounds.size];
     AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
     [del loadtheme];
+#if defined(OSS)
+    [self showopensourcemessage];
+#endif
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size
@@ -115,7 +118,7 @@
     else if ([identifier isEqualToString:@"settings"]) {
         return (UINavigationController *)[_vcm getSettingsRootViewController];
     }
-#ifdef defined(OSS)
+#if defined(OSS)
 #else
     else if ([identifier isEqualToString:@"tipjar"]) {
         return nil;
@@ -156,7 +159,7 @@
     else if ([identifier isEqualToString:@"settings"]) {
         [self showSettingsViewController];
     }
-#ifdef defined(OSS)
+#if defined(OSS)
 #else
     else if ([identifier isEqualToString:@"tipjar"]) {
         [self showTipJar];
@@ -198,7 +201,7 @@
     navcontroller.viewControllers = @[[_vcm getViewController]];
     self.rootViewController = navcontroller;
 }
-#ifdef defined(OSS)
+#if defined(OSS)
 #else
 - (void)showTipJar {
     UINavigationController *navcontroller = [UINavigationController new];
@@ -304,6 +307,19 @@
             [navController popViewControllerAnimated:YES];
         }
     }
+}
+
+- (void)showopensourcemessage {
+#if defined(OSS)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"You are using the community version." message:@"This is the community version, which provides you no support or warranty. If you are using a free Apple Developer Account, this app must be reinstalled every 7 days to continue fuctioning. This alert will appear on every launch. To remove this message, use the official App Store version." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okaction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alertcontroller addAction:okaction];
+        [self presentViewController:alertcontroller animated:YES completion:nil];
+    });
+#else
+#endif
 }
 
 @end

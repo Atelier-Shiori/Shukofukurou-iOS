@@ -2992,10 +2992,10 @@
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					"OSS=1",
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = (
+					"DEBUG=true",
+					"OSS=true",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -3017,8 +3017,9 @@
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
-				GCC_PREPROCESSOR_DEFINITIONS = "OSS=1";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
+				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "OSS=true";
 				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
