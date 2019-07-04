@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ExportedListsTableViewController : UITableViewController
+@interface ExportedListsTableViewController : UITableViewController <UIDocumentPickerDelegate>
 
 @end
 

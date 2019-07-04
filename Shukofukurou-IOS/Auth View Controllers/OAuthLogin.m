@@ -11,16 +11,10 @@
 #import "ClientConstants.h"
 #import "listservice.h"
 #import "ViewControllerManager.h"
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_12_0
 #import <AuthenticationServices/AuthenticationServices.h>
-#endif
 #import <SafariServices/SafariServices.h>
 @interface OAuthLogin ()
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_12_0
 @property (nonatomic) ASWebAuthenticationSession *session;
-#else
-@property (nonatomic) SFAuthenticationSession *session;
-#endif
 @end
 
 @implementation OAuthLogin
@@ -32,30 +26,16 @@
 }
 
 - (void)startAniListOAuthSession {
-    if (@available (iOS 12, *)) {
-        self.session = [[ASWebAuthenticationSession alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/api/v2/oauth/authorize?client_id=%@&response_type=code",kanilistclient]] callbackURLScheme:@"hiyokoauth://" completionHandler:^(NSURL * _Nullable callbackURL, NSError * _Nullable error) {
-            if (!error) {
-                [self performAniListOAuthWithCallBackURL:callbackURL];
+    self.session = [[ASWebAuthenticationSession alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/api/v2/oauth/authorize?client_id=%@&response_type=code",kanilistclient]] callbackURLScheme:@"hiyokoauth://" completionHandler:^(NSURL * _Nullable callbackURL, NSError * _Nullable error) {
+        if (!error) {
+            [self performAniListOAuthWithCallBackURL:callbackURL];
+        }
+        else {
+            if (error.code == ASWebAuthenticationSessionErrorCodeCanceledLogin) {
+                [self.delegate authCanceled];
             }
-            else {
-                if (error.code == ASWebAuthenticationSessionErrorCodeCanceledLogin) {
-                    [self.delegate authCanceled];
-                }
-            }
-        }];
-    }
-    else {
-        self.session = [[SFAuthenticationSession alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/api/v2/oauth/authorize?client_id=%@&response_type=code",kanilistclient]] callbackURLScheme:@"hiyokoauth://" completionHandler:^(NSURL * _Nullable callbackURL, NSError * _Nullable error) {
-            if (!error) {
-                [self performAniListOAuthWithCallBackURL:callbackURL];
-            }
-            else {
-                if (error.code == SFAuthenticationErrorCanceledLogin) {
-                    [self.delegate authCanceled];
-                }
-            }
-            }];
-    }
+        }
+    }];
     [self.session start];
 }
 
