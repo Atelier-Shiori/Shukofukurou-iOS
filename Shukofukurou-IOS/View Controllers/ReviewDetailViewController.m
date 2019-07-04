@@ -47,7 +47,9 @@
 
 - (void)setThemeColors {
     if (!_setthemecolors) {
-        if (@available(iOS 13, *)) { }
+        if (@available(iOS 13, *)) {
+            self.reviewtext.textColor = [UIColor labelColor];
+        }
         else {
             bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
             ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
@@ -84,7 +86,9 @@
     __weak ReviewDetailViewController *weakSelf = self;
     [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.navigationItem.hidesBackButton = NO;
-        if (@available(iOS 13, *)) { }
+        if (@available(iOS 13, *)) {
+            weakSelf.reviewtext.textColor = [UIColor labelColor];
+        }
         else {
             weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
         }

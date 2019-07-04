@@ -11,7 +11,6 @@
 #import "ClientConstants.h"
 #import "listservice.h"
 #import "ViewControllerManager.h"
-#import <AuthenticationServices/AuthenticationServices.h>
 #import <SafariServices/SafariServices.h>
 @interface OAuthLogin ()
 @property (nonatomic) ASWebAuthenticationSession *session;
@@ -31,13 +30,23 @@
             [self performAniListOAuthWithCallBackURL:callbackURL];
         }
         else {
+            NSLog(@"%@", error);
             if (error.code == ASWebAuthenticationSessionErrorCodeCanceledLogin) {
                 [self.delegate authCanceled];
             }
         }
     }];
+    if (@available(iOS 13, *)) {
+        self.session.prefersEphemeralWebBrowserSession = NO;
+        self.session.presentationContextProvider = self;
+    }
     [self.session start];
 }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
+- (ASPresentationAnchor)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession *)session {
+    return ((AppDelegate *)UIApplication.sharedApplication.delegate).window;
+}
+#endif
 
 - (void)performAniListOAuthWithCallBackURL:(NSURL *)callbackURL {
     NSString *pin = [callbackURL.absoluteString stringByReplacingOccurrencesOfString:@"hiyokoauth://anilistauth/?code=" withString:@""];

@@ -90,7 +90,10 @@
 }
 
 - (void)fixTextColor {
-    if (@available(iOS 13, *)) { }
+    if (@available(iOS 13, *)) {
+        _valueText.textColor = [UIColor labelColor];
+        _valueText.backgroundColor = [UIColor clearColor];
+    }
     else {
         _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
     }
