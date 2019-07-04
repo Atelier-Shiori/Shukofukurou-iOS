@@ -233,7 +233,10 @@
                 self.hud = [MBProgressHUD showHUDAddedTo:self.hudcontainingview.view animated:YES];
                 self.hud.label.text = text;
                 self.hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-                self.hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+                if (@available(iOS 13, *)) { }
+                else {
+                    self.hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+                }
             }
         }
         else {

@@ -35,8 +35,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setLoggedinUser];
-    _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
-    _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
+        _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    }
     // Register with view controller manager
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     vcm.mainsidebar = self;
@@ -51,8 +54,11 @@
 
 - (void)didReceiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
-        _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
+            _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
+        }
     }
 }
 

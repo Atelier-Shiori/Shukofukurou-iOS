@@ -70,9 +70,12 @@
 - (void)setThemeColors {
     if (!_setthemecolors) {
         bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        self.tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+            self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+            self.tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        }
         UITableViewCell *synopsis = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         if ([synopsis isKindOfClass:[TitleInfoSynopsisTableViewCell class]]) {
             [(TitleInfoSynopsisTableViewCell*)synopsis fixTextColor];

@@ -41,7 +41,10 @@
 }
 
 - (void)loadTheme {
-    self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    }
 }
 
 - (void)retrievePersonList:(int)titleid withType:(int)type {
@@ -163,8 +166,11 @@
     if (show) {
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
-        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
     }
     else {
         [_hud hideAnimated:YES];

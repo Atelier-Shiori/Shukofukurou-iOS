@@ -37,7 +37,10 @@
     NSDictionary *entry = _failedexports[indexPath.row];
     // Configure the cell...
     cell.textLabel.text = entry[@"title"];
-    cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
+    if (@available(iOS 13, *)) { }
+    else {
+        cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
+    }
     return cell;
 }
 

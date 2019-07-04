@@ -93,8 +93,11 @@
     if (show) {
         self.hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         self.hud.label.text = text;
-        self.hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        self.hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            self.hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+            self.hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
     }
     else {
         [self.hud hideAnimated:YES];
@@ -104,8 +107,11 @@
 
 - (void)performOpenScrobbleGuide {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[[NSURL alloc] initWithString:@"https://malupdaterosx.moe/scrobbleguide.pdf"]];
-    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

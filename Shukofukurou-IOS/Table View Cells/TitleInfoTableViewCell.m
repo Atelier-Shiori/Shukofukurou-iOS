@@ -74,7 +74,10 @@
 
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
     }
 }
 
@@ -87,7 +90,10 @@
 }
 
 - (void)fixTextColor {
-    _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -397,7 +403,10 @@
 }
 
 - (void)setKeyboardAppearence {
-    _notes.keyboardAppearance = [ThemeManager sharedCurrentTheme].keyboardappearence;
+    if (@available(iOS 13, *)) { }
+    else {
+        _notes.keyboardAppearance = [ThemeManager sharedCurrentTheme].keyboardappearence;
+    }
 }
 
 - (void)awakeFromNib {

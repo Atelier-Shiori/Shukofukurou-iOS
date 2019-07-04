@@ -38,9 +38,12 @@
 }
 
 - (void)fixtheme {
-    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-    self.view.backgroundColor = darkmode ? [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    _textview.textColor = [ThemeManager sharedCurrentTheme].textColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        self.view.backgroundColor = darkmode ? [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        _textview.textColor = [ThemeManager sharedCurrentTheme].textColor;
+    }
 }
 
 @end

@@ -42,7 +42,10 @@
 
 - (void)setTheme {
     if (self.navigationController.popoverPresentationController) {
-        self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        }
     }
 }
 

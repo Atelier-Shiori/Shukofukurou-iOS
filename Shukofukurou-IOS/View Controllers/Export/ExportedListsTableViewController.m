@@ -72,7 +72,10 @@
     NSManagedObjectContext *obj = ((NSArray *)_exportedlists[_allsections[indexPath.section]])[indexPath.row];
     // Configure the cell
     cell.textLabel.text = [obj valueForKey:@"title"];
-    cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
+    if (@available(iOS 13, *)) { }
+    else {
+        cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     __weak ExportedListsTableViewController *weakself = self;
     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {

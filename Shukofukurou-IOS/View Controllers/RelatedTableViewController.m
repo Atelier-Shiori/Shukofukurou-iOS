@@ -42,7 +42,10 @@
 }
 
 - (void)loadTheme {
-    self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+    }
 }
 
 #pragma mark - Table view data source
@@ -216,8 +219,11 @@
 
 - (void)openWebBrowserView:(NSURL *)url {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

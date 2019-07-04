@@ -92,8 +92,11 @@
     if (show) {
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Please Wait";
-        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
     }
     else {
         [_hud hideAnimated:YES];
@@ -137,8 +140,11 @@
 
 - (void)openWebBrowserView:(NSURL *)url {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

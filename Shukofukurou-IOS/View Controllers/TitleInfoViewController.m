@@ -98,24 +98,27 @@
 
 - (void)setThemeColors {
     if (!_setthemecolors) {
-        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        self.tableview.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        self.scoreimage.tintColor = darkmode ? current.tintColor : current.textColor;
-        self.titlestatus.textColor = current.textColor;
-        self.titletype.textColor = current.textColor;
-        self.scorelabel.textColor = current.textColor;
-        int synopsissection = 0;
-        for (NSString *section in _sections) {
-            if ([section isEqualToString:@"Synopsis"]) {
-                break;
+        if (@available(iOS 13, *)) { }
+        else {
+            bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+            ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+            self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+            self.tableview.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+            self.scoreimage.tintColor = darkmode ? current.tintColor : current.textColor;
+            self.titlestatus.textColor = current.textColor;
+            self.titletype.textColor = current.textColor;
+            self.scorelabel.textColor = current.textColor;
+            int synopsissection = 0;
+            for (NSString *section in _sections) {
+                if ([section isEqualToString:@"Synopsis"]) {
+                    break;
+                }
+                synopsissection++;
             }
-            synopsissection++;
-        }
-        if (synopsissection < 2) {
-            TitleInfoSynopsisTableViewCell *synopsis = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:synopsissection]];
-            [synopsis fixTextColor];
+            if (synopsissection < 2) {
+                TitleInfoSynopsisTableViewCell *synopsis = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:synopsissection]];
+                [synopsis fixTextColor];
+            }
         }
     }
 }
@@ -578,7 +581,10 @@
         case cellActionViewRelated:
         case cellActionViewEpisodes:
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
+            if (@available(iOS 13, *)) { }
+            else {
+                cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
+            }
             cell.textLabel.font = [UIFont systemFontOfSize:cell.textLabel.font.pointSize];
             break;
         default:
@@ -1316,8 +1322,11 @@
     if (show && !_refreshing) {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.label.text = @"Loading";
-        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
         _refreshing = YES;
     }
     else if (!show) {

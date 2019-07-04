@@ -177,8 +177,11 @@
 
 - (void)openWebBrowserView:(NSURL *)url {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

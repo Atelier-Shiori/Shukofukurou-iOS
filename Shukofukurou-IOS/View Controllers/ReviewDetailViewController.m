@@ -47,15 +47,18 @@
 
 - (void)setThemeColors {
     if (!_setthemecolors) {
-        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-        UIColor *textcolor = [ThemeManager sharedCurrentTheme].textColor;;
-        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        self.reviewtext.textColor = textcolor;
-        self.progress.textColor = textcolor;
-        self.reviewdate.textColor = textcolor;
-        self.helpful.textColor = textcolor;
-        self.score.textColor = textcolor;
+        if (@available(iOS 13, *)) { }
+        else {
+            bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+            ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+            UIColor *textcolor = [ThemeManager sharedCurrentTheme].textColor;;
+            self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+            self.reviewtext.textColor = textcolor;
+            self.progress.textColor = textcolor;
+            self.reviewdate.textColor = textcolor;
+            self.helpful.textColor = textcolor;
+            self.score.textColor = textcolor;
+        }
     }
 }
 
@@ -81,7 +84,10 @@
     __weak ReviewDetailViewController *weakSelf = self;
     [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.navigationItem.hidesBackButton = NO;
-        weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
     }];
 }
 

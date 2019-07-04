@@ -200,8 +200,11 @@ static NSString * const reuseIdentifier = @"Cell";
     if (show) {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.label.text = @"Loading";
-        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
     }
     else {
         [_hud hideAnimated:YES];

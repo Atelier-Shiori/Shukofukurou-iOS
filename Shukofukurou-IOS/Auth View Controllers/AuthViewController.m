@@ -122,11 +122,14 @@
 }
 
 - (void)setTheme {
-    ThemeManagerTheme *theme = [ThemeManager sharedCurrentTheme];
-    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-    self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
-    self.username.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
-    self.password.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        ThemeManagerTheme *theme = [ThemeManager sharedCurrentTheme];
+        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
+        self.username.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
+        self.password.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;
+    }
 }
 
 @end

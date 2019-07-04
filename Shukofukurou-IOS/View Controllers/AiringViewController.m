@@ -244,8 +244,11 @@
         _refreshing = YES;
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
-        _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        if (@available(iOS 13, *)) { }
+        else {
+            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
+        }
     }
     else if (!show) {
         [_hud hideAnimated:YES];

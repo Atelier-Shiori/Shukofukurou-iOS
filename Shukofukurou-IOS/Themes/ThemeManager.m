@@ -47,51 +47,58 @@
     return self;
 }
 - (void)setTheme {
-    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"]) {
-        _currentTheme = _darkTheme;
-        NSLog(@"Using Dark Theme.");
+    if (@available (iOS 13, *)) {
+        // Do not set appearence in iOS/iPadOS 13 or later
+        return;
     }
     else {
-        _currentTheme = _lightTheme;
-        NSLog(@"Using Light Theme.");
+        // Set Theme Appearence
+        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"]) {
+            _currentTheme = _darkTheme;
+            NSLog(@"Using Dark Theme.");
+        }
+        else {
+            _currentTheme = _lightTheme;
+            NSLog(@"Using Light Theme.");
+        }
+        AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
+        del.window.backgroundColor = _currentTheme.viewBackgroundColor;
+        [UITableView appearance].backgroundColor = darkmode ? _currentTheme.viewBackgroundColor : _currentTheme.viewAltBackgroundColor;
+        [UICollectionView appearance].backgroundColor = _currentTheme.viewBackgroundColor;
+        [UITableViewCell appearance].backgroundColor = darkmode ? _currentTheme.viewAltBackgroundColor : _currentTheme.viewBackgroundColor;
+        [UITableViewCell appearance].selectionStyle = UITableViewCellSelectionStyleDefault;
+        [TableViewCellBackgroundView appearance].backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
+        [UISegmentedControl appearance].tintColor = _currentTheme.tintColor;
+        [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]].textColor = _currentTheme.groupHeaderTextColor;
+        [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewCell class]]].textColor = _currentTheme.textColor;
+        [UILabel appearanceWhenContainedInInstancesOfClasses:@[[SeasonCollectionViewCell class]]].textColor = _currentTheme.textColor;
+        [UILabel appearanceWhenContainedInInstancesOfClasses:@[[TrendingCollectionHeaderView class]]].textColor = _currentTheme.textColor;
+        [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UIViewThemed class]]].textColor = _currentTheme.textColor;
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SideBarCell class]]].tintColor = _currentTheme.tintColor;
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor =  _currentTheme.tablecellImageTintColor;
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[ReactionTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[UISwipeCellNoBackground class]]].tintColor = _currentTheme.tablecellImageTintColor;
+        [UITableViewHeaderFooterView appearance].tintColor = _currentTheme.tableHeaderBackgroundColor;
+        [UINavigationBar appearance].tintColor = _currentTheme.tintColor;
+        [UITableViewCell  appearance].tintColor = _currentTheme.tintColor;
+        [UITextField appearance].textColor = _currentTheme.textColor;
+        [UITextView appearance].textColor = _currentTheme.textColor;;
+        [UITextView appearance].backgroundColor = UIColor.clearColor;
+        del.window.tintColor = _currentTheme.tintColor;
+        [UISwitch appearance].thumbTintColor = _currentTheme.thumbTintColor;
+        [UISlider appearance].thumbTintColor = _currentTheme.thumbTintColor;
+        [UIProgressView appearance].trackTintColor = _currentTheme.trackTintColor;
+        [UINavigationBar appearance].barStyle = _currentTheme.navBarStyle;
+        [UIToolbar appearance].barStyle = _currentTheme.navBarStyle;
+        [del getvcmanager].mvc.leftViewBackgroundColor = _currentTheme.viewAltBackgroundColor;
+        // Keyboard
+        [UITextField appearance].keyboardAppearance = _currentTheme.keyboardappearence;
+        [UISearchBar appearance].keyboardAppearance = _currentTheme.keyboardappearence;
+        [NSNotificationCenter.defaultCenter postNotificationName:@"ThemeChanged" object:nil];
     }
-    AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
-    del.window.backgroundColor = _currentTheme.viewBackgroundColor;
-    [UITableView appearance].backgroundColor = darkmode ? _currentTheme.viewBackgroundColor : _currentTheme.viewAltBackgroundColor;
-    [UICollectionView appearance].backgroundColor = _currentTheme.viewBackgroundColor;
-    [UITableViewCell appearance].backgroundColor = darkmode ? _currentTheme.viewAltBackgroundColor : _currentTheme.viewBackgroundColor;
-    [UITableViewCell appearance].selectionStyle = UITableViewCellSelectionStyleDefault;
-    [TableViewCellBackgroundView appearance].backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
-    [UISegmentedControl appearance].tintColor = _currentTheme.tintColor;
-    [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]].textColor = _currentTheme.groupHeaderTextColor;
-    [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewCell class]]].textColor = _currentTheme.textColor;
-    [UILabel appearanceWhenContainedInInstancesOfClasses:@[[SeasonCollectionViewCell class]]].textColor = _currentTheme.textColor;
-    [UILabel appearanceWhenContainedInInstancesOfClasses:@[[TrendingCollectionHeaderView class]]].textColor = _currentTheme.textColor;
-    [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UIViewThemed class]]].textColor = _currentTheme.textColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SideBarCell class]]].tintColor = _currentTheme.tintColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor =  _currentTheme.tablecellImageTintColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[ReactionTableViewCell class]]].tintColor = _currentTheme.tablecellImageTintColor;
-    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[UISwipeCellNoBackground class]]].tintColor = _currentTheme.tablecellImageTintColor;
-    [UITableViewHeaderFooterView appearance].tintColor = _currentTheme.tableHeaderBackgroundColor;
-    [UINavigationBar appearance].tintColor = _currentTheme.tintColor;
-    [UITableViewCell  appearance].tintColor = _currentTheme.tintColor;
-    [UITextField appearance].textColor = _currentTheme.textColor;
-    [UITextView appearance].textColor = _currentTheme.textColor;;
-    [UITextView appearance].backgroundColor = UIColor.clearColor;
-    del.window.tintColor = _currentTheme.tintColor;
-    [UISwitch appearance].thumbTintColor = _currentTheme.thumbTintColor;
-    [UISlider appearance].thumbTintColor = _currentTheme.thumbTintColor;
-    [UIProgressView appearance].trackTintColor = _currentTheme.trackTintColor;
-    [UINavigationBar appearance].barStyle = _currentTheme.navBarStyle;
-    [UIToolbar appearance].barStyle = _currentTheme.navBarStyle;
-    [del getvcmanager].mvc.leftViewBackgroundColor = _currentTheme.viewAltBackgroundColor;
-    // Keyboard
-    [UITextField appearance].keyboardAppearance = _currentTheme.keyboardappearence;
-    [UISearchBar appearance].keyboardAppearance = _currentTheme.keyboardappearence;
-    [NSNotificationCenter.defaultCenter postNotificationName:@"ThemeChanged" object:nil];
 }
 @end

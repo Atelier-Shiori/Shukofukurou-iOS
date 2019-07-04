@@ -48,10 +48,13 @@
 
 - (void)setTheme {
     bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-    ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-    self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-    self.graphView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-    _tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+    if (@available(iOS 13, *)) { }
+    else {
+        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
+        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        self.graphView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+        _tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
+    }
 }
 
 - (void)viewDidLayoutSubviews {
