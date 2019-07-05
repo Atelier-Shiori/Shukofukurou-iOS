@@ -19,7 +19,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkW-cb-lY6" customClass="GKBarGraph">
                                 <rect key="frame" x="0.0" y="44" width="375" height="208"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="208" id="NbF-Rx-mbs"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="mYa-Cp-fqs"/>
@@ -88,7 +88,7 @@
                     <navigationItem key="navigationItem" id="dgG-Md-ycW">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Ge4-K1-4Gu">
-                            <rect key="frame" x="132" y="6" width="111" height="30"/>
+                            <rect key="frame" x="132" y="5" width="111" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Anime"/>

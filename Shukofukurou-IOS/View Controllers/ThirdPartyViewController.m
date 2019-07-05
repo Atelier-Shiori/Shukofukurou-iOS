@@ -38,7 +38,11 @@
 }
 
 - (void)fixtheme {
-    if (@available(iOS 13, *)) { }
+    if (@available(iOS 13, *)) {
+        self.view.backgroundColor = [UIColor tertiarySystemBackgroundColor];
+        _textview.backgroundColor = [UIColor clearColor];
+        _textview.textColor = [UIColor labelColor];
+    }
     else {
         bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
         self.view.backgroundColor = darkmode ? [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
