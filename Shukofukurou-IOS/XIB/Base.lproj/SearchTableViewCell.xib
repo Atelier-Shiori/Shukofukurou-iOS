@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vxq-B3-kdf" id="ou2-h9-tVB">
-                <rect key="frame" x="0.0" y="0.0" width="337" height="119.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="343.5" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3ZP-Wx-HgM">
@@ -69,7 +68,7 @@
                         </subviews>
                     </stackView>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" translatesAutoresizingMaskIntoConstraints="NO" id="Knf-ZF-KBq">
-                        <rect key="frame" x="304" y="84" width="25" height="25"/>
+                        <rect key="frame" x="310.5" y="84" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="EZm-2p-VUp"/>
                             <constraint firstAttribute="width" constant="25" id="TFc-xZ-Ird"/>
@@ -84,6 +83,7 @@
                     <constraint firstItem="3ZP-Wx-HgM" firstAttribute="centerY" secondItem="ou2-h9-tVB" secondAttribute="centerY" id="vBk-8c-erc"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemGroupedBackgroundColor"/>
             <connections>
                 <outlet property="active" destination="Knf-ZF-KBq" id="b8f-6D-Sup"/>
                 <outlet property="posterimage" destination="nXN-iS-BRM" id="qCV-jQ-5zS"/>
@@ -92,6 +92,7 @@
                 <outlet property="title" destination="JEu-iU-A1y" id="TAC-TK-tgh"/>
                 <outlet property="type" destination="J67-zT-BEh" id="WhM-WL-a4e"/>
             </connections>
+            <point key="canvasLocation" x="133" y="110"/>
         </tableViewCell>
     </objects>
     <resources>

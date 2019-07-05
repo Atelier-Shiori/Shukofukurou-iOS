@@ -256,6 +256,16 @@
         [weakself.mainvc presentViewController:navcontroller animated:YES completion:nil];
         [weakself hideLeftViewAnimated:weakself];
     }]];
+    [options addAction:[UIAlertAction actionWithTitle:@"Reload User Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *prompt = [UIAlertController alertControllerWithTitle:@"Do you want to reload all user information?" message:@"This will reload user information for all logged in accounts.\n\nNote that if you changed the scoring system, you would need to reload the title information view to see the new scoring system." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [NSNotificationCenter.defaultCenter postNotificationName:@"RefreshUserInfo" object:nil];
+        }];
+        UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+        [prompt addAction:yesaction];
+        [prompt addAction:noaction];
+        [weakself.mainvc presentViewController:prompt animated:YES completion:nil];
+    }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {

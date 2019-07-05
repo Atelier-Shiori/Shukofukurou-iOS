@@ -38,6 +38,10 @@
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
+    if (@available(iOS 13, *)) {
+        // Disable Dark Mode Switch
+        _darkmodeswitch.enabled = NO;
+    }
     _versionnum.text = [NSString stringWithFormat:@"%@ (Build %@)",[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"SettingsViewLoaded" object:nil];

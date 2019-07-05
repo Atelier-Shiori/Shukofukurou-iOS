@@ -574,8 +574,7 @@
         case cellActionAddEntry:
         case cellActionUpdateEntry:
             cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.textLabel.textColor = [UIColor colorWithRed:0.20 green:0.78 blue:0.35 alpha:1.0];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:cell.textLabel.font.pointSize];
+            [cell setUpdateActionCell:YES];
             break;
         case cellActionViewStaff:
         case cellActionViewReviews:

@@ -77,6 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property int actiontype;
 @property (nonatomic, copy) void (^cellPressed)(int actiontype, TitleInfoUpdateTableViewCell *cell);
 - (void)selectAction;
+- (void)setUpdateActionCell:(bool)isActionCell;
 - (void)setEnabled:(bool)enabled;
 @end
 

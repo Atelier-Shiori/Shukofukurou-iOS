@@ -49,6 +49,7 @@ struct {
     if ([notification.name isEqualToString:@"SideBarSelectionChanged"]) {
         [self.tableView selectRowAtIndexPath:[self getSidebarItemIndexForIdentifier:notification.object] animated:NO scrollPosition:UITableViewScrollPositionNone];
         [NSUserDefaults.standardUserDefaults setValue:notification.object forKey:@"selectedmainview"];
+        [self setselectedcellbackground];
     }
 }
 

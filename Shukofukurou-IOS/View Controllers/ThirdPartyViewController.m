@@ -22,8 +22,16 @@
     
     // Load Credits
     @try {
+        UIColor *textcolor;
+        if (@available(iOS 13.0, *)) {
+            textcolor = [UIColor labelColor];
+        } else {
+            // Fallback on earlier versions
+            textcolor = [ThemeManager sharedCurrentTheme].textColor;
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            self.textview.attributedText =  [[NSAttributedString alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"ThirdParty" withExtension:@"rtf"] options:@{NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType} documentAttributes:nil error:nil];
+            self.textview.attributedText =  [[NSAttributedString alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"ThirdParty" withExtension:@"rtf"] options:@{NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType, NSForegroundColorAttributeName : textcolor} documentAttributes:nil error:nil];
             [self.textview setContentOffset:CGPointZero animated:NO];
              });
     }
@@ -39,7 +47,6 @@
 
 - (void)fixtheme {
     if (@available(iOS 13, *)) {
-        self.view.backgroundColor = [UIColor tertiarySystemBackgroundColor];
         _textview.backgroundColor = [UIColor clearColor];
         _textview.textColor = [UIColor labelColor];
     }

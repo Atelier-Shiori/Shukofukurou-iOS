@@ -492,4 +492,9 @@
     self.textLabel.enabled = enabled;
 }
 
+- (void)setUpdateActionCell:(bool)isActionCell {
+    self.textLabel.textColor = [UIColor systemGreenColor];
+    self.textLabel.font = [UIFont boldSystemFontOfSize:self.textLabel.font.pointSize];
+}
+
 @end

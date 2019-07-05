@@ -115,6 +115,7 @@
         [[OAuthCredManager sharedInstance] fixkeychainaccessability];
     }
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LoadTheme" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"RefreshUserInfo" object:nil];
     // Override point for customization after application launch.
     [self checkaccountinformation];
     [self storeCurrentServicetoAppGroup];
@@ -143,6 +144,10 @@
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"LoadTheme"]) {
         [self loadtheme];
+    }
+    else if ([notification.name isEqualToString:@"RefreshUserInfo"]) {
+        NSLog(@"Reloading user information for all accounts");
+        [self checkaccountinformation:YES];
     }
 }
 
@@ -241,8 +246,11 @@
     }
     return _vcmanager;
 }
-
 - (void)checkaccountinformation {
+    [self checkaccountinformation:NO];
+}
+
+- (void)checkaccountinformation:(bool)forcereload {
     // Retrieves updated user data
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
@@ -250,7 +258,7 @@
         bool reloadeduserdata = false;
         if ([listservice.sharedInstance .kitsuManager getFirstAccount]) {
             bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
-            if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
+            if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu || forcereload) {
                 [listservice.sharedInstance.kitsuManager saveuserinfoforcurrenttoken];
                 [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
                 reloadeduserdata = true;
@@ -258,7 +266,7 @@
         }
         if ([listservice.sharedInstance .anilistManager getFirstAccount]) {
             bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
-            if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
+            if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList || forcereload) {
                 [listservice.sharedInstance .anilistManager saveuserinfoforcurrenttoken];
                 [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
                  reloadeduserdata = true;
@@ -268,6 +276,11 @@
             // Reload user data on sidebar
              dispatch_async(dispatch_get_main_queue(), ^{
                  [self.vcmanager.mainsidebar setLoggedinUser];
+                 if ([listservice.sharedInstance checkAccountForCurrentService]) {
+                     // Reloads list so that the score display is shown properly, if the user changed scoring systems.
+                     [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
+                     [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];
+                 }
              });
         }
     });
