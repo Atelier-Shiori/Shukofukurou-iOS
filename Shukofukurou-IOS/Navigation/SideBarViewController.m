@@ -41,6 +41,7 @@ struct {
     
     NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
     [self.tableView selectRowAtIndexPath:[self getSidebarItemIndexForIdentifier:selectedrow] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [self setselectedcellbackground];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"SideBarSelectionChanged" object:nil];
 }
 
@@ -140,6 +141,7 @@ struct {
     NSDictionary *selecteditem = _items[cellType][indexPath.row];
     [_delegate sidebarItemDidChange:(NSString *)selecteditem[@"identifier"]];
     [NSUserDefaults.standardUserDefaults setValue:selecteditem[@"identifier"] forKey:@"selectedmainview"];
+    [self setselectedcellbackground];
     [self hideLeftViewAnimated:self];
 }
 
@@ -171,6 +173,18 @@ struct {
         }
     }
     return nil;
+}
+
+- (void)setselectedcellbackground {
+    // This brings back the behavior of the cell background for selected cell from iOS 12 and earlier
+    if (@available(iOS 13.0, *)) {
+        for (UITableViewCell *cell in self.tableView.visibleCells) {
+            cell.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+        }
+        NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
+        UITableViewCell *selectedcell = [self.tableView cellForRowAtIndexPath:[self getSidebarItemIndexForIdentifier:selectedrow]];
+        selectedcell.backgroundColor = [UIColor systemGray5Color];
+    }
 }
 
 @end

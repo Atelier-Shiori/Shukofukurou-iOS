@@ -62,6 +62,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
     [self registerTableViewCells];
     // Set Background Color
     [self setThemeColors];

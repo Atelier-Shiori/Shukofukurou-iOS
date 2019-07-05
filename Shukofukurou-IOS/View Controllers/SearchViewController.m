@@ -50,6 +50,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
     [self setupsearch];
+    self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
 }
 
 - (void)setupsearch {
@@ -59,7 +60,6 @@
     _searchController.obscuresBackgroundDuringPresentation = NO;
     _searchController.hidesNavigationBarDuringPresentation = NO;
     self.navigationItem.searchController = _searchController;
-    self.navigationItem.hidesSearchBarWhenScrolling = NO;
 }
 
 - (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
