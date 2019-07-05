@@ -60,13 +60,11 @@ struct {
     NSMutableArray *otheritems = [NSMutableArray new];
     [listitems addObject:@{@"image" : @"anime" , @"title" : @"Anime", @"identifier" : @"anime-list", @"type" : @"cell"}];
     [listitems addObject:@{@"image" : @"manga" , @"title" : @"Manga", @"identifier" : @"manga-list", @"type" : @"cell"}];
-    //[items addObject:@{@"image" : @"stats" , @"title" : @"Statistics", @"identifier" : @"stats", @"type" : @"cell"}];
     [discoveritems addObject:@{@"image" : @"search" , @"title" : @"Search", @"identifier" : @"search", @"type" : @"cell"}];
     [discoveritems addObject:@{@"image" : @"seasons" , @"title" : @"Seasons", @"identifier" : @"seasons", @"type" : @"cell"}];
     [discoveritems addObject:@{@"image" : @"airing" , @"title" : @"Airing", @"identifier" : @"airing", @"type" : @"cell"}];
     [discoveritems addObject:@{@"image" : @"trending" , @"title" : @"Trending", @"identifier" : @"trending", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"profilebrowser" , @"title" : @"Profile Browser", @"identifier" : @"profiles", @"type" : @"cell"}];
-    //[items addObject:@{@"image" : @"export" , @"title" : @"Export List", @"identifier" : @"export", @"type" : @"cell"}];
     [otheritems addObject:@{@"image" : @"settings" , @"title" : @"Settings", @"identifier" : @"settings", @"type" : @"cell"}];
 #if defined(OSS)
 #else
