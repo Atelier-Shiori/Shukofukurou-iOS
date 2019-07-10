@@ -303,6 +303,13 @@
 - (void)goBack:(id)sender {
     if (!self.presentedViewController) {
         UINavigationController *navController = (UINavigationController *)self.rootViewController;
+        if (navController.viewControllers.count > 1 && !navController.navigationItem.hidesBackButton && [navController.viewControllers[navController.viewControllers.count-1] isKindOfClass:[TitleInfoViewController class]]) {
+            TitleInfoViewController *titleviewcontroller = (TitleInfoViewController *)navController.viewControllers[navController.viewControllers.count-1];
+            [titleviewcontroller checkUnsavedChangesWithBlock:^{
+                [navController popViewControllerAnimated:YES];
+            }];
+            return;
+        }
         if (navController.viewControllers.count > 1 && !navController.navigationItem.hidesBackButton) {
             [navController popViewControllerAnimated:YES];
         }

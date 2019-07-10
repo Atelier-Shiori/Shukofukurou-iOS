@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadTitleInfo:(int)titleid withType:(int)type;
 - (void)populateInfoWithType:(int)type withDictionary:(NSDictionary *)titleinfo;
 - (void)refreshTitleInfo;
+- (void)checkUnsavedChangesWithBlock:(void (^)(void))actionBlock;
 @end
 
 NS_ASSUME_NONNULL_END
