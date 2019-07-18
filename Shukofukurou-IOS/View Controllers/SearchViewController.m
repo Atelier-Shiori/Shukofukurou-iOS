@@ -53,6 +53,10 @@
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.toolbarHidden = NO;
+}
+
 - (void)setupsearch {
     _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     _searchController.searchBar.placeholder = @"Search";
@@ -296,6 +300,7 @@
             [characterdetailvc retrievePersonDetailsForID:titleid];
         }
     }
+    self.navigationController.toolbarHidden = YES;
 }
 
 #pragma mark UISearchBarDelegate
