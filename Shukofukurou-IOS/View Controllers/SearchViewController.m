@@ -52,6 +52,10 @@
     [self setupsearch];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.toolbarHidden = NO;
+}
+
 - (void)setupsearch {
     _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     _searchController.searchBar.placeholder = @"Search";
@@ -295,6 +299,7 @@
         else {
             [characterdetailvc retrievePersonDetailsForID:titleid];
         }
+        self.navigationController.toolbarHidden = YES;
     }
 }
 
