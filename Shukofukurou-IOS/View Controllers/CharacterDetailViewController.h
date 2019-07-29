@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SafariServices/SafariServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CharacterDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface CharacterDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate>
 typedef NS_ENUM(unsigned int, personType) {
     personTypeCharacter = 0,
     personTypeStaff = 1

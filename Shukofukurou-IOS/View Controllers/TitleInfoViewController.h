@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SafariServices/SafariServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TitleInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TitleInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate>
 @property bool selectedaired;
 @property bool selectedaircompleted;
 @property bool selectedfinished;

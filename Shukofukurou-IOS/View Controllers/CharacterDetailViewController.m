@@ -269,7 +269,7 @@
 
 - (void)performViewOnListSite {
     NSString *URL = [self getTitleURL];
-    [UIApplication.sharedApplication openURL:[NSURL URLWithString:URL] options:@{} completionHandler:^(BOOL success) {}];
+    [self openWebBrowserView:[NSURL URLWithString:URL]];
 }
 
 - (void)performShare:(id)sender {
@@ -495,6 +495,23 @@
     for (NSString *nibName in cells.allKeys) {
         [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:cells[nibName]];
     }
+}
+
+#pragma mark Safari View Controller
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (void)openWebBrowserView:(NSURL *)url {
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+    if (@available(iOS 13, *)) { }
+    else {
+        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
+    }
+    [self presentViewController:svc animated:YES completion:^{
+    }];
 }
 
 @end
