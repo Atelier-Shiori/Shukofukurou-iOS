@@ -344,6 +344,8 @@
 		59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E39219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m */; };
 		59FE3E4F219B39C50035E2E5 /* AiringNotificationServiceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */; };
 		59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
+		914C3B9E22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */; };
+		914C3B9F22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */; };
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -1058,6 +1060,9 @@
 		59FE3E4E219B39C50035E2E5 /* AiringNotificationServiceSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationServiceSelector.m; sourceTree = "<group>"; };
 		59FE3E50219B65990035E2E5 /* NotifyingTitlesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyingTitlesTableViewController.h; sourceTree = "<group>"; };
 		59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyingTitlesTableViewController.m; sourceTree = "<group>"; };
+		914C3B9C22EF4CF3001893FD /* ListEntryActionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListEntryActionTableViewController.h; sourceTree = "<group>"; };
+		914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListEntryActionTableViewController.m; sourceTree = "<group>"; };
+		914C3BB522EF50C7001893FD /* CellActionEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellActionEnum.h; sourceTree = "<group>"; };
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1506,6 +1511,7 @@
 				594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */,
 				59B580D7220F334300EFE7AC /* UIViewThemed.h */,
 				59B580D8220F334300EFE7AC /* UIViewThemed.m */,
+				914C3BB522EF50C7001893FD /* CellActionEnum.h */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1689,6 +1695,8 @@
 				5945CD992252573F00F164E1 /* PatronTableViewController.m */,
 				59F9C98B2292F7EB0054B89D /* SearchAdvSettings.h */,
 				59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */,
+				914C3B9C22EF4CF3001893FD /* ListEntryActionTableViewController.h */,
+				914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2419,6 +2427,7 @@
 				5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */,
 				5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */,
 				5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */,
+				914C3B9F22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */,
 				5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */,
 				5934E225220F7539002B8311 /* ServiceSwitcherRootViewController.m in Sources */,
@@ -2551,6 +2560,7 @@
 				592EB7772209D747004DE461 /* ScrollViewFrameAccessor.m in Sources */,
 				59624175215563B5001995AD /* AtarashiiListCoreData.m in Sources */,
 				598AB4D42162658700979C19 /* RelatedTableViewController.m in Sources */,
+				914C3B9E22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */,
 				59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */,
 				597DDCEB224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,

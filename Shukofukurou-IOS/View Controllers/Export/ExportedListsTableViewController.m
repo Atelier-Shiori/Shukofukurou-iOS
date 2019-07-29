@@ -114,17 +114,6 @@
 }
 
 - (void)performexport:(NSManagedObject *)obj withCell:(UITableViewCell *)cell {
-    /*
-    NSArray *activityItems = @[[self writeToFile:obj]];
-    UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    activityViewControntroller.excludedActivityTypes = @[];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        activityViewControntroller.popoverPresentationController.sourceView = cell;
-        activityViewControntroller.popoverPresentationController.sourceRect = cell.bounds;
-        activityViewControntroller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
-    }
-    [self presentViewController:activityViewControntroller animated:true completion:nil];
-    */
     UIDocumentPickerViewController *docPicker = [[UIDocumentPickerViewController alloc] initWithURL:[self writeToFile:obj] inMode:UIDocumentPickerModeExportToService];
     docPicker.delegate = self;
     docPicker.modalPresentationStyle = UIModalPresentationFormSheet;

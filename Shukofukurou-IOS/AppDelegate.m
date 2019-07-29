@@ -39,6 +39,7 @@
     defaultValues[@"airnotificationsenabled"] = @NO;
     defaultValues[@"airingnotification_service"] = @(3);
     defaultValues[@"darkmode"] = @NO;
+    defaultValues[@"cellaction"] = @(0);
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";
