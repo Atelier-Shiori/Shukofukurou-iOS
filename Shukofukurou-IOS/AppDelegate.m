@@ -40,6 +40,7 @@
     defaultValues[@"airingnotification_service"] = @(3);
     defaultValues[@"darkmode"] = @NO;
     defaultValues[@"cellaction"] = @(0);
+    defaultValues[@"historyprunedate"] = @(90);
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";

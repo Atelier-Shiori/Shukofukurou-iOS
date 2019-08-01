@@ -346,6 +346,13 @@
 		59FE3E52219B65990035E2E5 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
 		914C3B9E22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */; };
 		914C3B9F22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */; };
+		91A27F3622F3291600937F1E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A27F3522F3291600937F1E /* HistoryViewController.m */; };
+		91A27F3722F3291600937F1E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A27F3522F3291600937F1E /* HistoryViewController.m */; };
+		91DA289E22F0907A00255735 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91DA289D22F0907A00255735 /* History.storyboard */; };
+		91DA289F22F0907A00255735 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91DA289D22F0907A00255735 /* History.storyboard */; };
+		91DA28B722F095A900255735 /* HistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DA28B622F095A900255735 /* HistoryManager.m */; };
+		91DA28B822F095A900255735 /* HistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DA28B622F095A900255735 /* HistoryManager.m */; };
+		91DA28BA22F0A9EF00255735 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DA28B922F0A9EF00255735 /* CloudKit.framework */; };
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -1063,6 +1070,13 @@
 		914C3B9C22EF4CF3001893FD /* ListEntryActionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListEntryActionTableViewController.h; sourceTree = "<group>"; };
 		914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListEntryActionTableViewController.m; sourceTree = "<group>"; };
 		914C3BB522EF50C7001893FD /* CellActionEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellActionEnum.h; sourceTree = "<group>"; };
+		91A27F3422F3291600937F1E /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		91A27F3522F3291600937F1E /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		91DA289D22F0907A00255735 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		91DA28B522F095A900255735 /* HistoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryManager.h; sourceTree = "<group>"; };
+		91DA28B622F095A900255735 /* HistoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryManager.m; sourceTree = "<group>"; };
+		91DA28B922F0A9EF00255735 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		91DA28BB22F0AA7300255735 /* Hiyoko 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 5.xcdatamodel"; sourceTree = "<group>"; };
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1111,6 +1125,7 @@
 				592B8CAF2236E17A007D43F4 /* Hakuchou_iOS.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
 				595A9614224002B600E3C245 /* MBProgressHUDFramework.framework in Frameworks */,
+				91DA28BA22F0A9EF00255735 /* CloudKit.framework in Frameworks */,
 				595A95FE223FE3CD00E3C245 /* CocoaOniguruma.framework in Frameworks */,
 				59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */,
 				59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */,
@@ -1195,6 +1210,7 @@
 		5934E299220F7572002B8311 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91DA28B922F0A9EF00255735 /* CloudKit.framework */,
 				5934E29A220F7572002B8311 /* StoreKit.framework */,
 			);
 			name = Frameworks;
@@ -1512,6 +1528,8 @@
 				59B580D7220F334300EFE7AC /* UIViewThemed.h */,
 				59B580D8220F334300EFE7AC /* UIViewThemed.m */,
 				914C3BB522EF50C7001893FD /* CellActionEnum.h */,
+				91DA28B522F095A900255735 /* HistoryManager.h */,
+				91DA28B622F095A900255735 /* HistoryManager.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1573,6 +1591,7 @@
 				595C1F78218DF4B000953793 /* Trending.storyboard */,
 				59B3AC61220922930050662A /* Stats.storyboard */,
 				5934E29C220F833A002B8311 /* TipJar.storyboard */,
+				91DA289D22F0907A00255735 /* History.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1697,6 +1716,8 @@
 				59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */,
 				914C3B9C22EF4CF3001893FD /* ListEntryActionTableViewController.h */,
 				914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */,
+				91A27F3422F3291600937F1E /* HistoryViewController.h */,
+				91A27F3522F3291600937F1E /* HistoryViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2305,6 +2326,7 @@
 				5934E275220F7539002B8311 /* Trending.storyboard in Resources */,
 				5934E276220F7539002B8311 /* Assets.xcassets in Resources */,
 				597DDB4E22B950FA00B7227C /* SearchTableViewCell.xib in Resources */,
+				91DA289F22F0907A00255735 /* History.storyboard in Resources */,
 				5934E277220F7539002B8311 /* Settings.storyboard in Resources */,
 				597DDB2E22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
 				5934E278220F7539002B8311 /* Seasons.storyboard in Resources */,
@@ -2360,6 +2382,7 @@
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
 				5934E29E220F833A002B8311 /* TipJar.storyboard in Resources */,
 				59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */,
+				91DA289E22F0907A00255735 /* History.storyboard in Resources */,
 				597DDB5122B950FE00B7227C /* PersonTableViewCell.xib in Resources */,
 				597DDB4122B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
 				59481D8421594078003CE863 /* CustomList.storyboard in Resources */,
@@ -2395,6 +2418,7 @@
 				5934E201220F7539002B8311 /* ViewControllerManager.m in Sources */,
 				5934E202220F7539002B8311 /* ReviewTableViewCell.m in Sources */,
 				5934E203220F7539002B8311 /* MSWeakTimer.m in Sources */,
+				91DA28B822F095A900255735 /* HistoryManager.m in Sources */,
 				5934E204220F7539002B8311 /* NSArray+MK_Misc.m in Sources */,
 				5934E205220F7539002B8311 /* AiringViewController.m in Sources */,
 				5934E206220F7539002B8311 /* TitleIdEnumerator.m in Sources */,
@@ -2407,6 +2431,7 @@
 				597DDCEC224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */,
 				5934E20D220F7539002B8311 /* Keychain.m in Sources */,
 				5934E20E220F7539002B8311 /* SettingsRootViewController.m in Sources */,
+				91A27F3722F3291600937F1E /* HistoryViewController.m in Sources */,
 				59F9C9A722932BA60054B89D /* AdvSearchSelectionCell.m in Sources */,
 				5934E20F220F7539002B8311 /* SearchTableViewCell.m in Sources */,
 				5934E210220F7539002B8311 /* RootViewController.m in Sources */,
@@ -2547,6 +2572,7 @@
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
 				59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */,
 				59B580D9220F334300EFE7AC /* UIViewThemed.m in Sources */,
+				91A27F3622F3291600937F1E /* HistoryViewController.m in Sources */,
 				5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */,
 				59624188215563D2001995AD /* Keychain.m in Sources */,
 				5962422021556514001995AD /* SettingsRootViewController.m in Sources */,
@@ -2599,6 +2625,7 @@
 				597DDCFA224A71670005C652 /* ExportListTableViewController.m in Sources */,
 				592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,
+				91DA28B722F095A900255735 /* HistoryManager.m in Sources */,
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
 				5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */,
 				59B3AC602209226C0050662A /* StatsViewController.m in Sources */,
@@ -3398,12 +3425,13 @@
 		5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				91DA28BB22F0AA7300255735 /* Hiyoko 5.xcdatamodel */,
 				595A9625224012FC00E3C245 /* Hiyoko 4.xcdatamodel */,
 				599CF00D220B61280063EBB9 /* Hiyoko 3.xcdatamodel */,
 				592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */,
 				5962422B2155653D001995AD /* Hiyoko.xcdatamodel */,
 			);
-			currentVersion = 595A9625224012FC00E3C245 /* Hiyoko 4.xcdatamodel */;
+			currentVersion = 91DA28BB22F0AA7300255735 /* Hiyoko 5.xcdatamodel */;
 			path = Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
