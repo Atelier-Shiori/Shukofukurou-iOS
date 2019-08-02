@@ -60,6 +60,7 @@ struct {
     NSMutableArray *otheritems = [NSMutableArray new];
     [listitems addObject:@{@"image" : @"anime" , @"title" : @"Anime", @"identifier" : @"anime-list", @"type" : @"cell"}];
     [listitems addObject:@{@"image" : @"manga" , @"title" : @"Manga", @"identifier" : @"manga-list", @"type" : @"cell"}];
+    [listitems addObject:@{@"image" : @"history" , @"title" : @"History", @"identifier" : @"history", @"type" : @"cell"}];
     [discoveritems addObject:@{@"image" : @"search" , @"title" : @"Search", @"identifier" : @"search", @"type" : @"cell"}];
     [discoveritems addObject:@{@"image" : @"seasons" , @"title" : @"Seasons", @"identifier" : @"seasons", @"type" : @"cell"}];
     [discoveritems addObject:@{@"image" : @"airing" , @"title" : @"Airing", @"identifier" : @"airing", @"type" : @"cell"}];

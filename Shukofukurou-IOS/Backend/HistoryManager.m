@@ -116,34 +116,45 @@
             completionHandler([self retrieveHistoryList]);
             return;
         }
-        // Sync From iCloud to local database
-        for (CKRecord *record in results) {
-            if (((NSNumber *)record[@"historyactiondate"]).longValue > syncdate && ![self historyentryexists:record[@"historyid"]]) {
-                // Insert Record
-                [self insertHistoryRecordWithCKRecord:record];
-            }
-            else {
-                if (![self historyentryexists:record[@"historyid"]]) {
-                    // Delete entry, does not exist on device and is before sync date.
-                    [self deleteticloudrecord:record.recordID.recordName];
-                    continue;
-                }
-            }
-        }
         // Check Local Entries
         NSFetchRequest *fetchRequest = [NSFetchRequest new];
         fetchRequest.entity = [NSEntityDescription entityForName:@"UpdateHistory" inManagedObjectContext:self.moc];
         NSArray *entries = [self.moc executeFetchRequest:fetchRequest error:&error];
         for (NSManagedObject *obj in entries) {
-            if (![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) {
-                [self deleteHistoryRecord:obj];
+            if (((NSNumber *)[obj valueForKey:@"historyactiondate"]).longValue > syncdate && ![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) {
+                [self inserticloudrecord:obj];
+            }
+            else {
+                if (![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) {
+                    [self deleteHistoryRecord:obj];
+                }
             }
         }
         [self.moc save:nil];
-        [defaults setInteger:[NSDate date].timeIntervalSince1970 forKey:@"historysyncdate"];
-        [self pruneLocalHistory];
-        [self pruneicloudHistory:^{
-            completionHandler([self retrieveHistoryList]);
+        [CKContainer.defaultContainer.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable nresults, NSError * _Nullable error) {
+            if (error) {
+                completionHandler([self retrieveHistoryList]);
+                return;
+            }
+            // Sync From iCloud to local database
+            for (CKRecord *record in nresults) {
+                if (((NSNumber *)record[@"historyactiondate"]).longValue > syncdate && ![self historyentryexists:record[@"historyid"]]) {
+                    // Insert Record
+                    [self insertHistoryRecordWithCKRecord:record];
+                }
+                else {
+                    if (![self historyentryexists:record[@"historyid"]]) {
+                        // Delete entry, does not exist on device and is before sync date.
+                        [self deleteticloudrecord:record.recordID.recordName];
+                        continue;
+                    }
+                }
+            }
+            [defaults setInteger:[NSDate date].timeIntervalSince1970 forKey:@"historysyncdate"];
+            [self pruneLocalHistory];
+                [self pruneicloudHistory:^{
+                    completionHandler([self retrieveHistoryList]);
+                }];
         }];
         
     }];

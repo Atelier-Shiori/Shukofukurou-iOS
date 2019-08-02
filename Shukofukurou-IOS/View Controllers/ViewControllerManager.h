@@ -21,6 +21,7 @@
 #import "TrendingViewController.h"
 #import "MainViewController.h"
 #import "ViewController.h"
+#import "HistoryViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -37,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (SeasonsRootViewController *)getSeasonRootViewController;
 - (AiringRootViewController *)getAiringRootViewController;
 - (TrendingViewController *)getTrendingRootViewController;
+- (HistoryRootViewController *)getHistoryRootViewController;
 - (ServiceSwitcherRootViewController *)getServiceSwitcherRootViewController;
 - (ViewController *)getViewController;
 @end

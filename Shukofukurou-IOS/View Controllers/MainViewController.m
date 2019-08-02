@@ -144,6 +144,14 @@
             [self showNotLoggedIn];
         }
     }
+    else if ([identifier isEqualToString:@"history"]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
+            [self showHistoryViewController];
+        }
+        else {
+            [self showNotLoggedIn];
+        }
+    }
     else if ([identifier isEqualToString:@"search"]) {
         [self showSearchViewController];
     }
@@ -173,6 +181,10 @@
 
 - (void)showMangaListViewController {
     self.rootViewController = [_vcm getMangaListRootViewController];
+}
+
+- (void)showHistoryViewController {
+    self.rootViewController = [_vcm getHistoryRootViewController];
 }
 
 - (void)showSearchViewController {

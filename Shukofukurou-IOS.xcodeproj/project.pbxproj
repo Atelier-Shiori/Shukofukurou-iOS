@@ -348,6 +348,8 @@
 		914C3B9F22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */; };
 		91A27F3622F3291600937F1E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A27F3522F3291600937F1E /* HistoryViewController.m */; };
 		91A27F3722F3291600937F1E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A27F3522F3291600937F1E /* HistoryViewController.m */; };
+		91A27F4F22F3328700937F1E /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A27F4E22F3328700937F1E /* HistoryCell.m */; };
+		91A27F5022F3328700937F1E /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A27F4E22F3328700937F1E /* HistoryCell.m */; };
 		91DA289E22F0907A00255735 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91DA289D22F0907A00255735 /* History.storyboard */; };
 		91DA289F22F0907A00255735 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91DA289D22F0907A00255735 /* History.storyboard */; };
 		91DA28B722F095A900255735 /* HistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DA28B622F095A900255735 /* HistoryManager.m */; };
@@ -1072,6 +1074,8 @@
 		914C3BB522EF50C7001893FD /* CellActionEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellActionEnum.h; sourceTree = "<group>"; };
 		91A27F3422F3291600937F1E /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		91A27F3522F3291600937F1E /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		91A27F4D22F3328700937F1E /* HistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
+		91A27F4E22F3328700937F1E /* HistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		91DA289D22F0907A00255735 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		91DA28B522F095A900255735 /* HistoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryManager.h; sourceTree = "<group>"; };
 		91DA28B622F095A900255735 /* HistoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryManager.m; sourceTree = "<group>"; };
@@ -1623,6 +1627,8 @@
 				594D0936220207FD00A37B6B /* UITableViewCellSelBackground.m */,
 				59F9C9A422932BA60054B89D /* AdvSearchSelectionCell.h */,
 				59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */,
+				91A27F4D22F3328700937F1E /* HistoryCell.h */,
+				91A27F4E22F3328700937F1E /* HistoryCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -2407,6 +2413,7 @@
 				5934E1F7220F7539002B8311 /* GKBarGraph.m in Sources */,
 				5934E1F8220F7539002B8311 /* ThemeManagerTheme.m in Sources */,
 				5934E1F9220F7539002B8311 /* AniListSeasonListGenerator.m in Sources */,
+				91A27F5022F3328700937F1E /* HistoryCell.m in Sources */,
 				5934E1FA220F7539002B8311 /* TitleInfoViewController.m in Sources */,
 				5934E1FB220F7539002B8311 /* AniListScoreConvert.m in Sources */,
 				5934E1FC220F7539002B8311 /* AiringNotificationServiceSelector.m in Sources */,
@@ -2625,6 +2632,7 @@
 				597DDCFA224A71670005C652 /* ExportListTableViewController.m in Sources */,
 				592DA185216BCE88008C99B3 /* SortTableViewController.m in Sources */,
 				59624174215563B5001995AD /* Base64Category.m in Sources */,
+				91A27F4F22F3328700937F1E /* HistoryCell.m in Sources */,
 				91DA28B722F095A900255735 /* HistoryManager.m in Sources */,
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
 				5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */,

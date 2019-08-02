@@ -22,6 +22,7 @@
 @property (strong) TrendingViewController *trendrootview;
 @property (strong) ServiceSwitcherRootViewController *serviceswitcherrootvc;
 @property (strong) ViewController *vc;
+@property (strong) HistoryRootViewController *historyrootvc;
 @end
 
 
@@ -105,6 +106,14 @@
     return _serviceswitcherrootvc;
 }
 
+- (HistoryRootViewController *)getHistoryRootViewController {
+    if (!_historyrootvc) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"History" bundle:nil];
+        _historyrootvc = (HistoryRootViewController *)[storyboard instantiateInitialViewController];
+    }
+    return _historyrootvc;
+}
+
 - (ViewController *)getViewController {
     if (!_vc) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -113,3 +122,4 @@
     return _vc;
 }
 @end
+

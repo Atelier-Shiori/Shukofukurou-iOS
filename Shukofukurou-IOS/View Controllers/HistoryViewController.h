@@ -11,7 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *historytypeselector;
 
+@end
+
+@interface HistoryRootViewController : UINavigationController
+@property (strong) HistoryViewController *historyvc;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,6 +11,7 @@
 #import "AtarashiiListCoreData.h"
 #import "ThemeManager.h"
 #import "Utility.h"
+#import "HistoryManager.h"
 
 @interface CustomListTableViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *savebtn;
@@ -150,4 +151,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)saveCustomListEntryHistory {
+    //        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:watchedepisodes withMediaType:self.listtype withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
+}
 @end
