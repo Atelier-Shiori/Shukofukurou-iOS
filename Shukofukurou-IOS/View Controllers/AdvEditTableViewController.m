@@ -16,8 +16,10 @@
 #import "ThemeManager.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
 #import "Utility.h"
+#import "HistoryManager.h"
 
 @interface AdvEditTableViewController ()
+@property (strong) NSDictionary *origentry;
 @property (strong) NSArray *cellEntries;
 @property int currenttype;
 @property int titleid;
@@ -52,6 +54,7 @@
     _currenttype = type;
     _titleid = titleid;
     NSDictionary *userentry = uentry ? uentry : nil;
+    _origentry = userentry;
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if (!userentry) {
         userentry = [AtarashiiListCoreData retrieveSingleEntryForTitleID:titleid withService:currentservice withType:type];
@@ -636,6 +639,7 @@
                 break;
         }
         weakSelf.entryUpdated(weakSelf.currenttype);
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.origentry[@"id"]).intValue withTitle:self.origentry[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"episode"]).intValue withMediaType:0 withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
         // Reload List
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.savebtn.enabled = YES;
@@ -691,6 +695,8 @@
                 break;
         }
         weakSelf.entryUpdated(weakSelf.currenttype);
+        [HistoryManager.sharedInstance insertHistoryRecord:
+         ((NSNumber *)self.origentry[@"id"]).intValue withTitle:self.origentry[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"chapter"]).intValue withMediaType:1 withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
         // Reload List
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.savebtn.enabled = YES;

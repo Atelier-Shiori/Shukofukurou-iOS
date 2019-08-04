@@ -72,6 +72,7 @@
         [historyobj setValue:record[@"titleid"] forKey:@"titleid"];
         [historyobj setValue:record[@"user"] forKey:@"user"];
         [_moc save:nil];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"HistoryEntryInserted" object:nil];
     }];
 }
 

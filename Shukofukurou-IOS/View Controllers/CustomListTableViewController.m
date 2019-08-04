@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *savebtn;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelbtn;
 @property (strong) NSMutableArray *customListArray;
+@property (strong) NSDictionary *entry;
 @end
 
 @implementation CustomListTableViewController
@@ -27,6 +28,7 @@
     _customListArray = [NSMutableArray new];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
 }
 
 - (void)loadTheme {
@@ -53,6 +55,7 @@
         [self.tableView reloadData];
         _currenttype = type;
         _entryid = selid;
+        _entry = entry;
     }
     else {
         [self shownocustomlistsmessage];
@@ -126,6 +129,7 @@
         if (responseObject[@"data"] != [NSNull null]) {
             NSString *customliststr = [weakSelf generateCustomListStringWithArray:responseObject[@"data"][@"SaveMediaListEntry"][@"customLists"]];
             [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr, @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice.sharedInstance getCurrentServiceID]]} withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:weakSelf.currenttype withId:weakSelf.entryid withIdType:1];
+            [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.entry[@"id"]).intValue withTitle:self.entry[@"title"] withHistoryActionType:HistoryActionTypeEditCustomList withSegment:0 withMediaType:self.entry[@"watched_episodes"] ? 0 : 1 withService:3 insertToiCloud:YES];
             switch (weakSelf.currenttype) {
                 case 0:
                     [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];

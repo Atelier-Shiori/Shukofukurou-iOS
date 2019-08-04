@@ -44,7 +44,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -110,7 +113,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
     NSString *anilistscoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
     if ([anilistscoretype isEqualToString:@"POINT_100"]) {
         self.scorefield.keyboardType = UIKeyboardTypeNumberPad;
@@ -181,7 +187,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -225,7 +234,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -415,7 +427,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
     [self setKeyboardAppearence];
 }
 
@@ -441,7 +456,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -473,7 +491,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

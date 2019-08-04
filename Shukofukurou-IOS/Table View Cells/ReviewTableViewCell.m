@@ -17,7 +17,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    if (@available(iOS 13, *)) { }
+    else {
+        self.selectedBackgroundView = [TableViewCellBackgroundView new];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

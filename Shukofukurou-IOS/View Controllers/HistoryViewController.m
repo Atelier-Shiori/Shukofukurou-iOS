@@ -11,6 +11,7 @@
 #import "ViewControllerManager.h"
 #import <MBProgressHUDFramework/MBProgressHUDFramework.h>
 #import "ThemeManager.h"
+#import "TitleInfoViewController.h"
 
 @interface HistoryViewController ()
 @property (strong) NSArray *historyItems;
@@ -35,6 +36,11 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"HistoryEntryInserted" object:nil];
     [self loadhistory];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.toolbarHidden = NO;
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
@@ -71,13 +77,17 @@
 }
 
 #pragma mark Table View Delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *historyentry = _historyItems[indexPath.row];
-    HistoryCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"animeentrycell"];
+    HistoryCell *cell = (HistoryCell *)[self.tableView dequeueReusableCellWithIdentifier:@"historycell"];
     if (cell == nil && tableView != self.tableView) {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"animeentrycell"];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"historycell"];
     }
-    cell.title = historyentry[@"title"];
+    cell.title.text = historyentry[@"title"];
     [cell setActionText:((NSNumber *)historyentry[@"historyactiontype"]).intValue withSegment:historyentry[@"segment"] withMediaType:((NSNumber *)historyentry[@"mediatype"]).intValue];
     NSDate *historydate = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)historyentry[@"historyactiondate"]).longValue];
     cell.datestring.text = [NSDateFormatter localizedStringFromDate: historydate
@@ -96,6 +106,16 @@
     [self.tableView reloadData];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < _historyItems.count) {
+        self.navigationController.toolbarHidden = YES;
+        TitleInfoViewController *titleinfovc = (TitleInfoViewController *)[[UIStoryboard storyboardWithName:@"InfoView" bundle:nil] instantiateViewControllerWithIdentifier:@"TitleInfo"];
+        [self.navigationController pushViewController:titleinfovc animated:YES];
+        NSDictionary *historyentry = _historyItems[indexPath.row];
+        [titleinfovc loadTitleInfo:((NSNumber *)historyentry[@"titleid"]).intValue withType:((NSNumber *)historyentry[@"mediatype"]).intValue];
+    }
+}
+
 - (IBAction)historySelectorChanged:(id)sender {
     [self loadhistory];
 }
@@ -106,7 +126,9 @@
          HistoryManager *historymgr = HistoryManager.sharedInstance;
          [historymgr removeAllHistoryRecords];
          [historymgr removeAlliCloudHistoryRecords:^{
-             [self loadhistory];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [self loadhistory];
+             });
          }];
      }];
      UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -119,9 +141,11 @@
 - (IBAction)refresh:(id)sender {
     [self showloadingview:YES];
     [HistoryManager.sharedInstance synchistory:^(NSArray * _Nonnull history) {
-        self.historyItems = [history filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mediatype == %i", self.historytypeselector.selectedSegmentIndex]];
-        [self.tableView reloadData];
-        [self showloadingview:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.historyItems = [history filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mediatype == %i", self.historytypeselector.selectedSegmentIndex]];
+            [self.tableView reloadData];
+            [self showloadingview:NO];
+        });
     }];
 }
 

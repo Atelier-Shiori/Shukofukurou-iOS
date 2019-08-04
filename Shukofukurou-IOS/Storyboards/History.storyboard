@@ -91,12 +91,9 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="action" destination="QwM-xP-N2h" id="XgB-wv-brj"/>
                                     <outlet property="actiontext" destination="QwM-xP-N2h" id="0Rf-ta-Vcn"/>
                                     <outlet property="datestring" destination="YM7-EH-Ewj" id="i8m-rV-jx6"/>
-                                    <outlet property="progress" destination="QwM-xP-N2h" id="SBl-2L-4Gd"/>
-                                    <outlet property="progressVolumes" destination="aHe-UG-07f" id="YHl-iI-AHJ"/>
-                                    <outlet property="title" destination="3fE-Af-u6T" id="HGU-uM-E6i"/>
+                                    <outlet property="title" destination="3fE-Af-u6T" id="JWe-Ay-9bQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -118,7 +115,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="VcR-CP-ZeW">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="VcR-CP-ZeW">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="4Td-2n-Ocf">
                             <connections>
