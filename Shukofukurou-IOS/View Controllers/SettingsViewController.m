@@ -112,6 +112,10 @@
         [cell setSelected:NO animated:YES];
 #endif
     }
+    else if ([cell.textLabel.text isEqualToString:@"Third Party Licenses"]) {
+        [self openWebBrowserView:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-for-ios/shukofukurou-for-ios-third-party-licenses/"]];
+        [cell setSelected:NO animated:YES];
+    }
     else if ([cell.textLabel.text isEqualToString:@"Follow us on Twitter"]) {
         [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://twitter.com/maluosxdev"] options:@{} completionHandler:^(BOOL success) {}];
         [cell setSelected:NO animated:YES];

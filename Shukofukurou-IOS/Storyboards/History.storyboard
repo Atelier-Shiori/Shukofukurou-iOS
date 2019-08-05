@@ -11,8 +11,8 @@
         <scene sceneID="ZoB-Dd-sfQ">
             <objects>
                 <navigationController storyboardIdentifier="historyrootvc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JN9-6I-dvf" customClass="HistoryRootViewController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jsi-M1-r9G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Jsi-M1-r9G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -23,14 +23,15 @@
             </objects>
             <point key="canvasLocation" x="-1335" y="84"/>
         </scene>
-        <!--History View Controller-->
+        <!--History-->
         <scene sceneID="JGH-Yw-IVs">
             <objects>
-                <tableViewController storyboardIdentifier="historyview" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E2u-gL-eje" customClass="HistoryViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="historyview" title="History" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E2u-gL-eje" customClass="HistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jLL-fG-7nW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="separatorColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="historycell" rowHeight="120" id="Tm9-NF-ozE" customClass="HistoryCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
@@ -115,15 +116,14 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="VcR-CP-ZeW">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="History" largeTitleDisplayMode="always" id="VcR-CP-ZeW">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Menu" id="4Td-2n-Ocf">
                             <connections>
                                 <action selector="showLeftViewAnimated:" destination="E2u-gL-eje" id="aeB-7u-IyM"/>
                             </connections>
                         </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="qGe-ub-vR2">
-                            <rect key="frame" x="122" y="5.5" width="131" height="33"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="qGe-ub-vR2">
+                            <rect key="frame" x="127" y="6" width="121" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Anime"/>

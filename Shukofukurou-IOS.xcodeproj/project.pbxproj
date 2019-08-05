@@ -76,7 +76,6 @@
 		5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC69220926020050662A /* UIColor+GraphKit.m */; };
 		5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
 		5934E22C220F7539002B8311 /* OAuthLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59325ED5216BBF1F00430ED7 /* OAuthLogin.m */; };
-		5934E22D220F7539002B8311 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		5934E22E220F7539002B8311 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
 		5934E22F220F7539002B8311 /* ListRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E7215564FB001995AD /* ListRootViewController.m */; };
 		5934E230220F7539002B8311 /* NSMutableArray+MK_Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB7842209D76C004DE461 /* NSMutableArray+MK_Stack.m */; };
@@ -145,7 +144,6 @@
 		5934E276220F7539002B8311 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596240B42155622F001995AD /* Assets.xcassets */; };
 		5934E277220F7539002B8311 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
 		5934E278220F7539002B8311 /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
-		5934E279220F7539002B8311 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
 		5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
 		5934E27C220F7539002B8311 /* MGSwipeTableCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -320,8 +318,6 @@
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
 		59A7A7EF220F95C8009563CA /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7A7ED220F95C8009563CA /* SKProduct+LocalizedPrice.m */; };
 		59A7A7F2220F95FA009563CA /* TipJar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7A7F1220F95FA009563CA /* TipJar.m */; };
-		59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */; };
-		59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */; };
 		59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; };
 		59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59B3AC602209226C0050662A /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC5F2209226C0050662A /* StatsViewController.m */; };
@@ -1029,9 +1025,6 @@
 		59A7A7F1220F95FA009563CA /* TipJar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipJar.m; sourceTree = "<group>"; };
 		59A7E0502200B1C2002EE2EC /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ThirdParty.rtf; sourceTree = "<group>"; };
-		59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyViewController.h; sourceTree = "<group>"; };
-		59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyViewController.m; sourceTree = "<group>"; };
 		59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		59B3AC5E2209226C0050662A /* StatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		59B3AC5F2209226C0050662A /* StatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
@@ -1336,7 +1329,6 @@
 				596241AB21556443001995AD /* Storyboards */,
 				596241D2215564BD001995AD /* Table View Cells */,
 				596241E5215564E2001995AD /* View Controllers */,
-				59AEEA072156CFBD005D99D5 /* ThirdParty.rtf */,
 				5933CEC42174F0F000EAE7E6 /* AutoRefreshTimer.h */,
 				5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */,
 			);
@@ -1698,8 +1690,6 @@
 				596241F621556503001995AD /* SettingsViewController.m */,
 				592DA183216BCE88008C99B3 /* SortTableViewController.h */,
 				592DA184216BCE88008C99B3 /* SortTableViewController.m */,
-				59AEEA092156D2CB005D99D5 /* ThirdPartyViewController.h */,
-				59AEEA0A2156D2CB005D99D5 /* ThirdPartyViewController.m */,
 				596241F721556504001995AD /* TitleInfoViewController.h */,
 				596242042155650B001995AD /* TitleInfoViewController.m */,
 				594810ED219214BA000C4B5C /* TrendingCollectionViewController.h */,
@@ -2337,7 +2327,6 @@
 				597DDB2E22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
 				5934E278220F7539002B8311 /* Seasons.storyboard in Resources */,
 				597DDB3622B950DE00B7227C /* TitleInfoProgressTableViewCell.xib in Resources */,
-				5934E279220F7539002B8311 /* ThirdParty.rtf in Resources */,
 				5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2387,7 +2376,6 @@
 				596242582155662A001995AD /* Settings.storyboard in Resources */,
 				5962425621556624001995AD /* Seasons.storyboard in Resources */,
 				5934E29E220F833A002B8311 /* TipJar.storyboard in Resources */,
-				59AEEA082156CFBD005D99D5 /* ThirdParty.rtf in Resources */,
 				91DA289E22F0907A00255735 /* History.storyboard in Resources */,
 				597DDB5122B950FE00B7227C /* PersonTableViewCell.xib in Resources */,
 				597DDB4122B950EB00B7227C /* TitleInfoSwitchEntryTableViewCell.xib in Resources */,
@@ -2468,7 +2456,6 @@
 				5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */,
 				5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */,
 				5934E22C220F7539002B8311 /* OAuthLogin.m in Sources */,
-				5934E22D220F7539002B8311 /* ThirdPartyViewController.m in Sources */,
 				5934E22E220F7539002B8311 /* ReviewTableViewController.m in Sources */,
 				5934E22F220F7539002B8311 /* ListRootViewController.m in Sources */,
 				5934E230220F7539002B8311 /* NSMutableArray+MK_Stack.m in Sources */,
@@ -2613,7 +2600,6 @@
 				595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */,
 				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
 				59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */,
-				59AEEA0B2156D2CB005D99D5 /* ThirdPartyViewController.m in Sources */,
 				598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */,
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,
 				592EB7892209D76C004DE461 /* NSMutableArray+MK_Stack.m in Sources */,

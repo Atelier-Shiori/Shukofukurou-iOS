@@ -28,7 +28,6 @@
     _customListArray = [NSMutableArray new];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
 }
 
 - (void)loadTheme {

@@ -45,11 +45,16 @@
 
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"UserLoggedIn"]|| [notification.name isEqualToString:@"ServiceChanged"] || [notification.name isEqualToString:@"HistoryEntryInserted"]) {
-        [self loadhistory];
+        NSLog(@"Reloading History");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loadhistory];
+        });
     }
     else if ([notification.name isEqualToString:@"UserLoggedOut"]) {
         _historyItems = @[];
-        [self.tableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }
 }
 
@@ -101,7 +106,8 @@
     [historymgr pruneLocalHistory];
     [historymgr pruneicloudHistory:^{
     }];
-    NSArray *tmphistory = [historymgr retrieveHistoryList];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"historyactiondate" ascending:NO];
+    NSArray *tmphistory = [[historymgr retrieveHistoryList] sortedArrayUsingDescriptors:@[descriptor]];
     _historyItems = [tmphistory filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mediatype == %i", _historytypeselector.selectedSegmentIndex]];
     [self.tableView reloadData];
 }
@@ -166,5 +172,8 @@
 @end
 
 @implementation HistoryRootViewController
-
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
+}
 @end
