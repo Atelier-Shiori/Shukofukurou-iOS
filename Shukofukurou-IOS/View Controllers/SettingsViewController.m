@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *clearimagecell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *imagecachesize;
 @property (strong, nonatomic) IBOutlet UILabel *versionnum;
+@property (strong, nonatomic) IBOutlet UISwitch *synctoicloud;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @end
 
@@ -36,6 +37,7 @@
     _refreshlistonstart.on = [defaults boolForKey:@"refreshlistonstart"];
     _refreshlistautomatically.on = [defaults boolForKey:@"refreshautomatically"];
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
+    _synctoicloud.on - [defaults boolForKey:@"synchistorytoicloud"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
     if (@available(iOS 13, *)) {
@@ -162,6 +164,9 @@
 - (IBAction)toggledarkmode:(id)sender {
     [NSUserDefaults.standardUserDefaults setBool:_darkmodeswitch.on forKey:@"darkmode"];
     [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTheme" object:nil];
+}
+- (IBAction)synctoicloudtoggle:(id)sender {
+    [NSUserDefaults.standardUserDefaults setBool:_darkmodeswitch.on forKey:@"synchistorytoicloud"];
 }
 
 - (void)loadImageCacheSize {

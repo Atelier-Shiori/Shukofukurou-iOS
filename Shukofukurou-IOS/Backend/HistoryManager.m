@@ -37,8 +37,7 @@
       withHistoryActionType:(HistoryActionType)historyActionType
                 withSegment:(int)segment
               withMediaType:(int)mediatype
-                withService:(int)service
-             insertToiCloud:(bool)icloudinsert {
+                withService:(int)service {
     [_moc performBlockAndWait:^{
         NSManagedObject *historyobj = [NSEntityDescription insertNewObjectForEntityForName:@"UpdateHistory" inManagedObjectContext:_moc];
         NSDate *updatedate = [NSDate date];
@@ -53,7 +52,7 @@
         [historyobj setValue:@(titleid) forKey:@"titleid"];
         [historyobj setValue:useridentifier forKey:@"user"];
         [_moc save:nil];
-        if (icloudinsert) {
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
             [self inserticloudrecord:historyobj];
         }
     }];
@@ -209,6 +208,10 @@
 }
 
 - (void)pruneicloudHistory:(void (^)(void)) completionHandler {
+    if (![NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
+        completionHandler();
+        return;
+    }
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:@"historyRecord" predicate:predicate];
         
@@ -240,6 +243,10 @@
 }
 
 - (void)removeAlliCloudHistoryRecords:(void (^)(void)) completionHandler {
+    if (![NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
+        completionHandler();
+        return;
+    }
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:@"historyRecord" predicate:predicate];
         

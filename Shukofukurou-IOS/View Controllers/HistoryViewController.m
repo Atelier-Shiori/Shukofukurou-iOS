@@ -15,6 +15,7 @@
 
 @interface HistoryViewController ()
 @property (strong) NSArray *historyItems;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *syncbtn;
 @property (strong) MBProgressHUD *hud;
 @end
 
@@ -35,12 +36,17 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedIn" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"HistoryEntryInserted" object:nil];
+    _syncbtn.enabled = [NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"];
     [self loadhistory];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = NO;
+    if ([self needsRefresh]) {
+        [self performRefresh];
+    }
+    _syncbtn.enabled = [NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"];
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
@@ -122,12 +128,13 @@
     }
 }
 
+#pragma mark history
 - (IBAction)historySelectorChanged:(id)sender {
     [self loadhistory];
 }
 
 - (IBAction)clearHistory:(id)sender {
-    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Clear History" message:@"Do you want to clear the history. This cannot be undone. History will clear on all devices connected to your iCloud account." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Clear History" message:[NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"] ? @"Do you want to clear the history. This cannot be undone. History will clear on all devices connected to your iCloud account." : @"Do you want to clear the history. This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
      UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
          HistoryManager *historymgr = HistoryManager.sharedInstance;
          [historymgr removeAllHistoryRecords];
@@ -145,6 +152,10 @@
 }
 
 - (IBAction)refresh:(id)sender {
+    [self performRefresh];
+}
+
+- (void)performRefresh {
     [self showloadingview:YES];
     [HistoryManager.sharedInstance synchistory:^(NSArray * _Nonnull history) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -168,6 +179,13 @@
     else if (!show) {
         [_hud hideAnimated:YES];
     }
+}
+
+- (bool)needsRefresh {
+    if (![NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
+        return false;
+    }
+    return [[[NSDate dateWithTimeIntervalSince1970:[NSUserDefaults.standardUserDefaults integerForKey:@"historysyncdate"]] dateByAddingTimeInterval:6*60*60] timeIntervalSince1970] < [[NSDate date] timeIntervalSince1970];
 }
 @end
 

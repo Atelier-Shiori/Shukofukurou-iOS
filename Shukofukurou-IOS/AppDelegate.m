@@ -41,6 +41,7 @@
     defaultValues[@"darkmode"] = @NO;
     defaultValues[@"cellaction"] = @(0);
     defaultValues[@"historyprunedate"] = @(90);
+    defaultValues[@"synchistorytoicloud"] = @YES;
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";

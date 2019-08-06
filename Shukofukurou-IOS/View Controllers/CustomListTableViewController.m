@@ -128,7 +128,7 @@
         if (responseObject[@"data"] != [NSNull null]) {
             NSString *customliststr = [weakSelf generateCustomListStringWithArray:responseObject[@"data"][@"SaveMediaListEntry"][@"customLists"]];
             [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr, @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice.sharedInstance getCurrentServiceID]]} withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:weakSelf.currenttype withId:weakSelf.entryid withIdType:1];
-            [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.entry[@"id"]).intValue withTitle:self.entry[@"title"] withHistoryActionType:HistoryActionTypeEditCustomList withSegment:0 withMediaType:self.entry[@"watched_episodes"] ? 0 : 1 withService:3 insertToiCloud:YES];
+            [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.entry[@"id"]).intValue withTitle:self.entry[@"title"] withHistoryActionType:HistoryActionTypeEditCustomList withSegment:0 withMediaType:self.entry[@"watched_episodes"] ? 0 : 1 withService:3];
             switch (weakSelf.currenttype) {
                 case 0:
                     [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
@@ -155,6 +155,6 @@
 }
 
 - (void)saveCustomListEntryHistory {
-    //        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:watchedepisodes withMediaType:self.listtype withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
+    //        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:watchedepisodes withMediaType:self.listtype withService:listservice.sharedInstance.getCurrentServiceID];
 }
 @end

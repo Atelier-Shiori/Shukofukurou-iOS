@@ -1079,7 +1079,7 @@
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:weakSelf.entryid withIdType:1];
                 break;
         }
-        [HistoryManager.sharedInstance insertHistoryRecord:self.titleid withTitle:self.navigationitem.title withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"episode"]).intValue withMediaType:0 withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
+        [HistoryManager.sharedInstance insertHistoryRecord:self.titleid withTitle:self.navigationitem.title withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"episode"]).intValue withMediaType:0 withService:listservice.sharedInstance.getCurrentServiceID];
         // Reload List
             dispatch_async(dispatch_get_main_queue(), ^{
                 [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeReloadList" object:nil];
@@ -1135,7 +1135,7 @@
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:selectededitid withIdType:1];
                 break;
         }
-        [HistoryManager.sharedInstance insertHistoryRecord:self.titleid withTitle:self.navigationitem.title withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"chapter"]).intValue withMediaType:1 withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
+        [HistoryManager.sharedInstance insertHistoryRecord:self.titleid withTitle:self.navigationitem.title withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"chapter"]).intValue withMediaType:1 withService:listservice.sharedInstance.getCurrentServiceID];
         // Reload List
         dispatch_async(dispatch_get_main_queue(), ^{
             [NSNotificationCenter.defaultCenter postNotificationName:@"MangaReloadList" object:nil];

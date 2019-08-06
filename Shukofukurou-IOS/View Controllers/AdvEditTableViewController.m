@@ -639,7 +639,7 @@
                 break;
         }
         weakSelf.entryUpdated(weakSelf.currenttype);
-        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.origentry[@"id"]).intValue withTitle:self.origentry[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"episode"]).intValue withMediaType:0 withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.origentry[@"id"]).intValue withTitle:self.origentry[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"episode"]).intValue withMediaType:0 withService:listservice.sharedInstance.getCurrentServiceID];
         // Reload List
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.savebtn.enabled = YES;
@@ -696,7 +696,7 @@
         }
         weakSelf.entryUpdated(weakSelf.currenttype);
         [HistoryManager.sharedInstance insertHistoryRecord:
-         ((NSNumber *)self.origentry[@"id"]).intValue withTitle:self.origentry[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"chapter"]).intValue withMediaType:1 withService:listservice.sharedInstance.getCurrentServiceID insertToiCloud:YES];
+         ((NSNumber *)self.origentry[@"id"]).intValue withTitle:self.origentry[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:((NSNumber *)entry[@"chapter"]).intValue withMediaType:1 withService:listservice.sharedInstance.getCurrentServiceID];
         // Reload List
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.savebtn.enabled = YES;

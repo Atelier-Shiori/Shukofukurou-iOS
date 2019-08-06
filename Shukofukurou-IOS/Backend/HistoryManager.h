@@ -25,8 +25,7 @@ typedef NS_ENUM(unsigned int, HistoryActionType) {
 withHistoryActionType:(HistoryActionType)historyActionType
           withSegment:(int)segment
         withMediaType:(int)mediatype
-          withService:(int)service
-             insertToiCloud:(bool)icloudinsert;
+          withService:(int)service;
 - (void)synchistory:(void (^)(NSArray *history)) completionHandler;
 - (NSArray *)retrieveHistoryList;
 - (void)pruneLocalHistory;
