@@ -37,7 +37,7 @@
     _refreshlistonstart.on = [defaults boolForKey:@"refreshlistonstart"];
     _refreshlistautomatically.on = [defaults boolForKey:@"refreshautomatically"];
     _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
-    _synctoicloud.on - [defaults boolForKey:@"synchistorytoicloud"];
+    _synctoicloud.on = [defaults boolForKey:@"synchistorytoicloud"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
     if (@available(iOS 13, *)) {
@@ -166,7 +166,7 @@
     [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTheme" object:nil];
 }
 - (IBAction)synctoicloudtoggle:(id)sender {
-    [NSUserDefaults.standardUserDefaults setBool:_darkmodeswitch.on forKey:@"synchistorytoicloud"];
+    [NSUserDefaults.standardUserDefaults setBool:_synctoicloud.on forKey:@"synchistorytoicloud"];
 }
 
 - (void)loadImageCacheSize {
