@@ -7,7 +7,6 @@
 //
 
 #import "SettingsViewController.h"
-#import "StreamDataRetriever.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TitleInfoCache.h"
 #import "ViewControllerManager.h"
@@ -36,7 +35,6 @@
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     _refreshlistonstart.on = [defaults boolForKey:@"refreshlistonstart"];
     _refreshlistautomatically.on = [defaults boolForKey:@"refreshautomatically"];
-    _streamregion.selectedSegmentIndex = [defaults integerForKey:@"stream_region"];
     _synctoicloud.on = [defaults boolForKey:@"synchistorytoicloud"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
@@ -83,11 +81,6 @@
     if (!_refreshlistautomatically.on) {
         [NSUserDefaults.standardUserDefaults setObject:nil forKey:@"nextlistrefresh"];
     }
-}
-- (IBAction)setstreamregion:(id)sender {
-    [NSUserDefaults.standardUserDefaults setInteger:_streamregion.selectedSegmentIndex forKey:@"stream_region"];
-    [StreamDataRetriever removeAllStreamEntries];
-    [StreamDataRetriever performrestrieveStreamData];
 }
 
 - (IBAction)setTitleCache:(id)sender {

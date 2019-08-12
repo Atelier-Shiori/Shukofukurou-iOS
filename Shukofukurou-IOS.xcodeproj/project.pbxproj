@@ -318,6 +318,8 @@
 		59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A75817215D3A8800B36F9C /* TitleInfoCache.m */; };
 		59A7A7EF220F95C8009563CA /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7A7ED220F95C8009563CA /* SKProduct+LocalizedPrice.m */; };
 		59A7A7F2220F95FA009563CA /* TipJar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7A7F1220F95FA009563CA /* TipJar.m */; };
+		59B155C62301E8BF004BE7B2 /* StreamingRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B155C52301E8BF004BE7B2 /* StreamingRegionTableViewController.m */; };
+		59B155C72301E8BF004BE7B2 /* StreamingRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B155C52301E8BF004BE7B2 /* StreamingRegionTableViewController.m */; };
 		59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; };
 		59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59B3AC602209226C0050662A /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC5F2209226C0050662A /* StatsViewController.m */; };
@@ -1026,6 +1028,8 @@
 		59A7A7F1220F95FA009563CA /* TipJar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipJar.m; sourceTree = "<group>"; };
 		59A7E0502200B1C2002EE2EC /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		59B155C42301E8BF004BE7B2 /* StreamingRegionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamingRegionTableViewController.h; sourceTree = "<group>"; };
+		59B155C52301E8BF004BE7B2 /* StreamingRegionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamingRegionTableViewController.m; sourceTree = "<group>"; };
 		59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		59B3AC5E2209226C0050662A /* StatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		59B3AC5F2209226C0050662A /* StatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
@@ -1717,6 +1721,8 @@
 				914C3B9D22EF4CF3001893FD /* ListEntryActionTableViewController.m */,
 				91A27F3422F3291600937F1E /* HistoryViewController.h */,
 				91A27F3522F3291600937F1E /* HistoryViewController.m */,
+				59B155C42301E8BF004BE7B2 /* StreamingRegionTableViewController.h */,
+				59B155C52301E8BF004BE7B2 /* StreamingRegionTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2475,6 +2481,7 @@
 				5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */,
 				5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */,
 				595A962A224013A700E3C245 /* string_score.c in Sources */,
+				59B155C72301E8BF004BE7B2 /* StreamingRegionTableViewController.m in Sources */,
 				59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */,
 				5934E235220F7539002B8311 /* ListViewController.m in Sources */,
 				5934E236220F7539002B8311 /* DarkTheme.m in Sources */,
@@ -2669,6 +2676,7 @@
 				596241E0215564D1001995AD /* AnimeEntryTableViewCell.m in Sources */,
 				5962421A21556514001995AD /* SeasonsRootViewController.m in Sources */,
 				594810EF219214BA000C4B5C /* TrendingCollectionViewController.m in Sources */,
+				59B155C62301E8BF004BE7B2 /* StreamingRegionTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

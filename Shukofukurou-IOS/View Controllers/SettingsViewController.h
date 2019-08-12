@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SettingsViewController : UITableViewController <SFSafariViewControllerDelegate>
 @property (strong) IBOutlet UISwitch *refreshlistonstart;
 @property (strong) IBOutlet UISwitch *refreshlistautomatically;
-@property (strong) IBOutlet UISegmentedControl *streamregion;
 @property (strong, nonatomic) IBOutlet UISwitch *cachetitleinfo;
 @property (strong, nonatomic) IBOutlet UISwitch *darkmodeswitch;
 
