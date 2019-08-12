@@ -333,6 +333,7 @@
 		59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
 		59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
 		59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
+		59F546392301A16500E4E9CC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DA28B922F0A9EF00255735 /* CloudKit.framework */; };
 		59F9C98D2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
 		59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
 		59F9C9A622932BA60054B89D /* AdvSearchSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */; };
@@ -1088,6 +1089,7 @@
 				5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */,
 				5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */,
 				59C3CAFE22CA81F30007786A /* Hakuchou_iOS.framework in Frameworks */,
+				59F546392301A16500E4E9CC /* CloudKit.framework in Frameworks */,
 				5934E267220F7539002B8311 /* SAMKeychain.framework in Frameworks */,
 				5921475622CA8624004ADF52 /* CocoaOniguruma.framework in Frameworks */,
 				5934E268220F7539002B8311 /* SDWebImage.framework in Frameworks */,
@@ -1317,6 +1319,7 @@
 				59A7A7DA220F95BD009563CA /* TipJar */,
 				59EBC1D921FD231900481D33 /* Themes */,
 				5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */,
+				597C994522FF96050080C7F8 /* New Group */,
 				596240A82155622E001995AD /* AppDelegate.h */,
 				596240A92155622E001995AD /* AppDelegate.m */,
 				596240BA2155622F001995AD /* main.m */,
@@ -1716,6 +1719,13 @@
 				91A27F3522F3291600937F1E /* HistoryViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		597C994522FF96050080C7F8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		597DDAE522B939FD00B7227C /* XIB */ = {

@@ -159,7 +159,8 @@
     [self showloadingview:YES];
     [HistoryManager.sharedInstance synchistory:^(NSArray * _Nonnull history) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.historyItems = [history filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mediatype == %i", self.historytypeselector.selectedSegmentIndex]];
+            NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"historyactiondate" ascending:NO];
+            self.historyItems = [[history filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mediatype == %i", self.historytypeselector.selectedSegmentIndex]] sortedArrayUsingDescriptors:@[descriptor]];
             [self.tableView reloadData];
             [self showloadingview:NO];
         });

@@ -13,6 +13,7 @@
 
 @interface HistoryManager ()
 @property (strong) NSManagedObjectContext *moc;
+@property (strong) CKContainer *container;
 @end
 
 @implementation HistoryManager
@@ -28,6 +29,10 @@
 - (instancetype)init {
     if (self = [super init]) {
         _moc = ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
+#if defined(OSS)
+#else
+        _container = [CKContainer containerWithIdentifier:@"iCloud.moe.malupdaterosx.Shukofukurou"];
+#endif
     }
     return self;
 }
@@ -59,6 +64,8 @@
 }
 
 - (void)insertHistoryRecordWithCKRecord:(CKRecord *)record {
+    #if defined(OSS)
+    #else
     [_moc performBlockAndWait:^{
         NSManagedObject *historyobj = [NSEntityDescription insertNewObjectForEntityForName:@"UpdateHistory" inManagedObjectContext:_moc];
         [historyobj setValue:record[@"historyactiondate"] forKey:@"historyactiondate"];
@@ -73,6 +80,7 @@
         [_moc save:nil];
         [NSNotificationCenter.defaultCenter postNotificationName:@"HistoryEntryInserted" object:nil];
     }];
+    #endif
 }
 
 - (void)deleteHistoryRecord:(NSManagedObject *)obj {
@@ -83,7 +91,9 @@
 }
 
 - (void)inserticloudrecord:(NSManagedObject *)object {
-    CKRecord *record = [[CKRecord alloc] initWithRecordType:@"historyRecord"];
+    #if defined(OSS)
+    #else
+        CKRecord *record = [[CKRecord alloc] initWithRecordType:@"historyRecord"];
         record[@"historyactiondate"] = [object valueForKey:@"historyactiondate"];
         record[@"historyactiontype"] = [object valueForKey:@"historyactiontype"];
         record[@"historyid"] = [object valueForKey:@"historyid"];
@@ -93,26 +103,39 @@
         record[@"title"] = [object valueForKey:@"title"];
         record[@"titleid"] = [object valueForKey:@"titleid"];
         record[@"user"] = [object valueForKey:@"user"];
-    [CKContainer.defaultContainer.privateCloudDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
-        
+    [_container.privateCloudDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error inserting record on iCloud: %@", error);
+        }
     }];
+    #endif
     
 }
 
 - (void)deleteticloudrecord:(NSString *)historyEntryRecordID {
+    #if defined(OSS)
+    #else
     CKRecordID *recordID = [[CKRecordID alloc] initWithRecordName:historyEntryRecordID];
-    [[CKContainer defaultContainer].privateCloudDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error) {
+    [_container.privateCloudDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error deleting record on iCloud: %@", error);
+        }
     }];
+    #endif
 }
 
 
 - (void)synchistory:(void (^)(NSArray *history)) completionHandler  {
+    #if defined(OSS)
+    completionHandler([self retrieveHistoryList]);
+    #else
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     long syncdate = [defaults integerForKey:@"historysyncdate"] ? [defaults integerForKey:@"historysyncdate"] : 0;
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:@"historyRecord" predicate:predicate];
-    [CKContainer.defaultContainer.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable results, NSError * _Nullable error) {
+    [_container.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable results, NSError * _Nullable error) {
         if (error) {
+            NSLog(@"%@", error);
             completionHandler([self retrieveHistoryList]);
             return;
         }
@@ -131,7 +154,7 @@
             }
         }
         [self.moc save:nil];
-        [CKContainer.defaultContainer.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable nresults, NSError * _Nullable error) {
+        [_container.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable nresults, NSError * _Nullable error) {
             if (error) {
                 completionHandler([self retrieveHistoryList]);
                 return;
@@ -158,6 +181,7 @@
         }];
         
     }];
+#endif
 }
 
 - (bool)historyentryexists:(NSString *)historyEntryID {
@@ -170,9 +194,13 @@
 }
 
 - (bool)checkicloudentryexists:(NSString *)historyEntryID withArray:(NSArray *)array {
+    #if defined(OSS)
+    return false;
+    #else
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"historyid ==[c] %@", historyEntryID];
     NSArray *filteredArray = [array filteredArrayUsingPredicate:predicate];
     return filteredArray.count > 0;
+    #endif
 }
 
 - (NSArray *)retrieveHistoryList {
@@ -208,6 +236,9 @@
 }
 
 - (void)pruneicloudHistory:(void (^)(void)) completionHandler {
+    #if defined(OSS)
+        completionHandler();
+    #else
     if (![NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
         completionHandler();
         return;
@@ -215,7 +246,7 @@
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:@"historyRecord" predicate:predicate];
         
-    [[CKContainer defaultContainer].publicCloudDatabase performQuery:query
+    [_container.privateCloudDatabase performQuery:query
                                                         inZoneWithID:nil
                                                     completionHandler:^(NSArray *results, NSError *error) {
         for (CKRecord *record in results) {
@@ -228,6 +259,7 @@
             completionHandler();
         }
     }];
+    #endif
 }
 
 - (void)removeAllHistoryRecords {
@@ -243,6 +275,9 @@
 }
 
 - (void)removeAlliCloudHistoryRecords:(void (^)(void)) completionHandler {
+    #if defined(OSS)
+        completionHandler();
+    #else
     if (![NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
         completionHandler();
         return;
@@ -250,7 +285,7 @@
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:@"historyRecord" predicate:predicate];
         
-    [[CKContainer defaultContainer].publicCloudDatabase performQuery:query
+    [_container.privateCloudDatabase performQuery:query
                                                         inZoneWithID:nil
                                                     completionHandler:^(NSArray *results, NSError *error) {
         if (error) {
@@ -263,6 +298,7 @@
         [NSUserDefaults.standardUserDefaults setInteger:0 forKey:@"historysyncdate"];
         completionHandler();
     }];
+    #endif
 }
 
 @end
