@@ -514,8 +514,16 @@
 }
 
 - (void)setUpdateActionCell:(bool)isActionCell {
-    self.textLabel.textColor = [UIColor systemGreenColor];
-    self.textLabel.font = [UIFont boldSystemFontOfSize:self.textLabel.font.pointSize];
+    if (isActionCell) {
+        self.textLabel.textColor = [UIColor systemGreenColor];
+        self.textLabel.font = [UIFont boldSystemFontOfSize:self.textLabel.font.pointSize];
+    }
+    else {
+        if (@available(iOS 13.0, *)) {
+            self.textLabel.textColor = [UIColor labelColor];
+        } else {
+        }
+    }
 }
 
 @end

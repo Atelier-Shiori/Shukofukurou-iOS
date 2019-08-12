@@ -587,6 +587,7 @@
                 cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
             }
             cell.textLabel.font = [UIFont systemFontOfSize:cell.textLabel.font.pointSize];
+            [cell setUpdateActionCell:NO];
             break;
         default:
             break;
