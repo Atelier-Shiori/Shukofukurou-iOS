@@ -125,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param view The view that is going to be searched.
  * @return A reference to the last HUD subview discovered.
  */
-+ (nullable MBProgressHUD *)HUDForView:(UIView *)view;
++ (nullable MBProgressHUD *)HUDForView:(UIView *)view NS_SWIFT_NAME(forView(_:));
 
 /**
  * A convenience constructor that initializes the HUD with the view's bounds. Calls the designated constructor with
@@ -179,11 +179,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) id<MBProgressHUDDelegate> delegate;
 
 /**
- * Called after the HUD is hiden.
+ * Called after the HUD is hidden.
  */
 @property (copy, nullable) MBProgressHUDCompletionBlock completionBlock;
 
-/*
+/**
  * Grace period is the time (in seconds) that the invoked method may be run without
  * showing the HUD. If the task finishes before the grace time runs out, the HUD will
  * not be shown at all.
@@ -252,7 +252,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * When enabled, the bezel center gets slightly affected by the device accelerometer data.
- * Has no effect on iOS < 7.0. Defaults to YES.
+ * Defaults to NO.
+ *
+ * @note This can cause main thread checker assertions on certain devices. https://github.com/jdg/MBProgressHUD/issues/552
  */
 @property (assign, nonatomic, getter=areDefaultMotionEffectsEnabled) BOOL defaultMotionEffectsEnabled UI_APPEARANCE_SELECTOR;
 
