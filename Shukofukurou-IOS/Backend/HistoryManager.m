@@ -60,6 +60,7 @@
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
             [self inserticloudrecord:historyobj];
         }
+        [NSNotificationCenter.defaultCenter postNotificationName:@"HistoryEntryInserted" object:nil];
     }];
 }
 
@@ -78,7 +79,6 @@
         [historyobj setValue:record[@"titleid"] forKey:@"titleid"];
         [historyobj setValue:record[@"user"] forKey:@"user"];
         [_moc save:nil];
-        [NSNotificationCenter.defaultCenter postNotificationName:@"HistoryEntryInserted" object:nil];
     }];
     #endif
 }
@@ -154,7 +154,7 @@
             }
         }
         [self.moc save:nil];
-        [_container.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable nresults, NSError * _Nullable error) {
+        [self.container.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable nresults, NSError * _Nullable error) {
             if (error) {
                 completionHandler([self retrieveHistoryList]);
                 return;

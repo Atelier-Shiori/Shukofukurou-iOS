@@ -17,6 +17,7 @@
 #import "AnimeRelations.h"
 #import "AppDelegate.h"
 #import "ThemeManager.h"
+#import "HistoryManager.h"
 
 @interface ScrobbleManager ()
 @property (strong) MBProgressHUD *hud;
@@ -144,6 +145,7 @@
         watchstatus = @"completed";
         _episode = totalepisodes;
     }
+    [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).stringValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeScrobbleTitle withSegment:_episode withMediaType:0 withService:listservice.sharedInstance.getCurrentServiceID];
     if (exists) {
         [self updateEntryWithEntryID:entryid withStatus:watchstatus withRewatch:rewatching withScore:score];
     }
