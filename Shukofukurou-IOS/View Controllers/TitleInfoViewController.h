@@ -23,4 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)checkUnsavedChangesWithBlock:(void (^)(void))actionBlock;
 @end
 
+@interface TitleInfoViewControllerView : UIView
+
+@end
+
 NS_ASSUME_NONNULL_END

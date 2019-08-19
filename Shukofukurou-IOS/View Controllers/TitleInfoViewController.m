@@ -1404,3 +1404,7 @@
     }];
 }
 @end
+
+@implementation TitleInfoViewControllerView
+
+@end

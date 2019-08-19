@@ -25,6 +25,7 @@
 #import <MBProgressHudFramework/MBProgressHUD.h>
 #import "TableViewCellBackgroundView.h"
 #import "UITableViewCellSelBackground.h"
+#import "TitleInfoViewController.h"
 
 @interface ThemeManager ()
 @property ThemeManagerTheme *lightTheme;
@@ -48,7 +49,13 @@
 }
 - (void)setTheme {
     if (@available (iOS 13, *)) {
-        // Do not set appearence in iOS/iPadOS 13 or later
+        // iOS13 Theme fixes
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[UISwipeCellNoBackground class]]].tintColor = [UIColor whiteColor];
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MGSwipeButton class]]].tintColor = [UIColor whiteColor];
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
+        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[TitleInfoViewControllerView class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
         return;
     }
     else {
