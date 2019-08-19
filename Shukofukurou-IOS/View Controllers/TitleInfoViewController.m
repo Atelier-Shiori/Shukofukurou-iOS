@@ -76,6 +76,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"EntryUpdated" object:nil];
     _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
     [self setToolbar];
+    _scoreimage.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
