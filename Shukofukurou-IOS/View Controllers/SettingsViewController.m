@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import <SDWebImage/SDWebImage.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TitleInfoCache.h"
 #import "ViewControllerManager.h"
@@ -163,7 +164,7 @@
 }
 
 - (void)loadImageCacheSize {
-    _imagecachesize.detailTextLabel.text = [NSString stringWithFormat:@"%.2f MB", @(SDImageCache.sharedImageCache.getSize/1000000).doubleValue];
+    _imagecachesize.detailTextLabel.text = [NSString stringWithFormat:@"%.2f MB", @(SDImageCache.sharedImageCache.totalDiskSize/1000000).doubleValue];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

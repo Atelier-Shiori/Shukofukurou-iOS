@@ -11,6 +11,7 @@
 #import "AutoRefreshTimer.h"
 #import "StreamDataRetriever.h"
 #import "AiringSchedule.h"
+#import <SDWebImage/SDWebImage.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ThemeManager.h"
 #import <Hakuchou_iOS/OAuthCredManager.h>
@@ -128,7 +129,7 @@
     // Set Background Fetch
     [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     // Set Image Disk Cache Size
-    SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 96;
+    SDImageCache.sharedImageCache.config.maxDiskSize = 1000000 * 96;
     [ScrobbleManager.sharedInstance checkScrobble];
     return YES;
 }
