@@ -21,4 +21,8 @@ typedef NS_ENUM(unsigned int, ThemeManagerThemes) {
 - (void)setTheme;
 @end
 
+@interface HighLightView : UIImageView
+
+@end
+
 NS_ASSUME_NONNULL_END

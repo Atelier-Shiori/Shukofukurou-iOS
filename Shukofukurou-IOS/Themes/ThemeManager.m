@@ -52,8 +52,8 @@
         // iOS13 Theme fixes
         [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[UISwipeCellNoBackground class]]].tintColor = [UIColor whiteColor];
         [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MGSwipeButton class]]].tintColor = [UIColor whiteColor];
-        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
-        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
+        [HighLightView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
+        [HighLightView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
         [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
         [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[TitleInfoViewControllerView class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
         return;
@@ -108,4 +108,8 @@
         [NSNotificationCenter.defaultCenter postNotificationName:@"ThemeChanged" object:nil];
     }
 }
+@end
+
+@implementation HighLightView
+
 @end

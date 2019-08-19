@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bnb-Qg-Z8N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bnb-Qg-Z8N">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,7 +62,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="6gO-27-Tmc" secondAttribute="bottom" id="TvT-WF-xEY"/>
                                             </constraints>
                                         </stackView>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1J-oz-bwm">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1J-oz-bwm" customClass="HighLightView">
                                             <rect key="frame" x="334" y="84" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="9Sb-ut-24H"/>
@@ -143,7 +143,7 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S7Y-Ms-2Cs">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-active" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S7Y-Ms-2Cs" customClass="HighLightView">
                                             <rect key="frame" x="334" y="84" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="84g-gd-a9J"/>
