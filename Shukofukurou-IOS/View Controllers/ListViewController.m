@@ -300,7 +300,6 @@
 - (bool)hasListEntriesWithType:(int)type {
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            return [AtarashiiListCoreData hasListEntriesWithUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:0 withType:_listtype];
         case 2:
         case 3:
             return [AtarashiiListCoreData hasListEntriesWithUserID:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:_listtype];
@@ -312,7 +311,6 @@
 - (NSArray *)retrieveEntriesWithType:(int)type withFilterPredicate:(NSPredicate *)predicate {
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            return [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:type withPredicate:predicate];
         case 2:
         case 3:
             return [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type withPredicate:predicate];
@@ -324,8 +322,6 @@
 - (void)saveEntriesWithDictionary:(NSDictionary *)data withType:(int)type {
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
-            break;
         case 2:
         case 3:
             [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
@@ -785,7 +781,7 @@
         [listservice.sharedInstance removeTitleFromList:ntitleid withType:weakSelf.listtype completion:^(id responseObject) {
             switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
-                    [AtarashiiListCoreData removeSingleEntrywithUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:weakSelf.listtype withId:ntitleid withIdType:0];
+                    [AtarashiiListCoreData removeSingleEntrywithUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:weakSelf.listtype withId:ntitleid withIdType:0];
                     break;
                 case 2:
                 case 3:
@@ -877,7 +873,7 @@
         NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]};
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:titleid withIdType:0];
                 break;
             case 2:
             case 3:
@@ -962,7 +958,7 @@
         NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice.sharedInstance getCurrentServiceID]]};
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:titleid withIdType:0];
                 break;
             case 2:
             case 3:

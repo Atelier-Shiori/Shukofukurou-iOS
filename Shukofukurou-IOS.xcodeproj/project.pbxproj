@@ -74,7 +74,6 @@
 		5934E226220F7539002B8311 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596240BA2155622F001995AD /* main.m */; };
 		5934E229220F7539002B8311 /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */; };
 		5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC69220926020050662A /* UIColor+GraphKit.m */; };
-		5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
 		5934E22C220F7539002B8311 /* OAuthLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59325ED5216BBF1F00430ED7 /* OAuthLogin.m */; };
 		5934E22E220F7539002B8311 /* ReviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4F02162976100979C19 /* ReviewTableViewController.m */; };
 		5934E22F220F7539002B8311 /* ListRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241E7215564FB001995AD /* ListRootViewController.m */; };
@@ -206,7 +205,6 @@
 		59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */; };
 		5962418A215563D2001995AD /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417B215563CB001995AD /* Utility.m */; };
 		5962418C215563D2001995AD /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624180215563CE001995AD /* listservice.m */; };
-		5962418E215563D2001995AD /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624184215563D0001995AD /* MyAnimeList.m */; };
 		5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624185215563D1001995AD /* RatingTwentyConvert.m */; };
 		5962419921556406001995AD /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962419221556402001995AD /* AuthViewController.m */; };
 		596241A72155642E001995AD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A12155642B001995AD /* RootViewController.m */; };
@@ -371,6 +369,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CocoaOniguruma;
+		};
+		5928E16423107492000DD977 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80B6DFEE2142B71600BCB334;
+			remoteInfo = SDWebImageMapKit;
 		};
 		592B8CA92236E0BF007D43F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -659,40 +664,12 @@
 			remoteGlobalIDString = 53761325155AD0D5005750A4;
 			remoteInfo = "SDWebImage iOS static";
 		};
-		59B22D1F21FE62F400627172 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4314D1991D0E0E3B004B36C9;
-			remoteInfo = "SDWebImage watchOS static";
-		};
 		59B22D2121FE62F400627172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4A2CADFF1AB4BB5300B6BC39;
 			remoteInfo = "SDWebImage iOS";
-		};
-		59B22D2321FE62F400627172 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 00733A4C1BC487C000A5A117;
-			remoteInfo = "SDWebImage tvOS";
-		};
-		59B22D2521FE62F400627172 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 431BB7031D06D2C1006A3455;
-			remoteInfo = "SDWebImage watchOS";
-		};
-		59B22D2721FE62F400627172 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4397D2F21D0DDD8C00BB2784;
-			remoteInfo = "SDWebImage OSX";
 		};
 		59B22D2B21FE630000627172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -876,14 +853,12 @@
 		59624173215563B5001995AD /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
 		59624176215563C9001995AD /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
 		59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
-		59624178215563CA001995AD /* MyAnimeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimeList.h; sourceTree = "<group>"; };
 		5962417A215563CB001995AD /* listservice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listservice.h; sourceTree = "<group>"; };
 		5962417B215563CB001995AD /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		5962417D215563CD001995AD /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		5962417F215563CE001995AD /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		59624180215563CE001995AD /* listservice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listservice.m; sourceTree = "<group>"; };
 		59624181215563CF001995AD /* NSString+HTMLtoNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLtoNSAttributedString.h"; sourceTree = "<group>"; };
-		59624184215563D0001995AD /* MyAnimeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimeList.m; sourceTree = "<group>"; };
 		59624185215563D1001995AD /* RatingTwentyConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
 		59624187215563D2001995AD /* RatingTwentyConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
 		5962419221556402001995AD /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
@@ -1506,8 +1481,6 @@
 				59624176215563C9001995AD /* Keychain.m */,
 				5962417A215563CB001995AD /* listservice.h */,
 				59624180215563CE001995AD /* listservice.m */,
-				59624178215563CA001995AD /* MyAnimeList.h */,
-				59624184215563D0001995AD /* MyAnimeList.m */,
 				59624181215563CF001995AD /* NSString+HTMLtoNSAttributedString.h */,
 				59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */,
 				59624187215563D2001995AD /* RatingTwentyConvert.h */,
@@ -1804,11 +1777,8 @@
 			isa = PBXGroup;
 			children = (
 				59B22D1E21FE62F400627172 /* libSDWebImage iOS static.a */,
-				59B22D2021FE62F400627172 /* libSDWebImage watchOS static.a */,
 				59B22D2221FE62F400627172 /* SDWebImage.framework */,
-				59B22D2421FE62F400627172 /* SDWebImage.framework */,
-				59B22D2621FE62F400627172 /* SDWebImage.framework */,
-				59B22D2821FE62F400627172 /* SDWebImage.framework */,
+				5928E16523107492000DD977 /* SDWebImageMapKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2105,6 +2075,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		5928E16523107492000DD977 /* SDWebImageMapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImageMapKit.framework;
+			remoteRef = 5928E16423107492000DD977 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		592B8CAA2236E0BF007D43F4 /* Hakuchou.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -2269,15 +2246,8 @@
 		59B22D1E21FE62F400627172 /* libSDWebImage iOS static.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libSDWebImage iOS static.a";
+			path = libSDWebImage.a;
 			remoteRef = 59B22D1D21FE62F400627172 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59B22D2021FE62F400627172 /* libSDWebImage watchOS static.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libSDWebImage watchOS static.a";
-			remoteRef = 59B22D1F21FE62F400627172 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		59B22D2221FE62F400627172 /* SDWebImage.framework */ = {
@@ -2285,27 +2255,6 @@
 			fileType = wrapper.framework;
 			path = SDWebImage.framework;
 			remoteRef = 59B22D2121FE62F400627172 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59B22D2421FE62F400627172 /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 59B22D2321FE62F400627172 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59B22D2621FE62F400627172 /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 59B22D2521FE62F400627172 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59B22D2821FE62F400627172 /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 59B22D2721FE62F400627172 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2470,7 +2419,6 @@
 				5934E226220F7539002B8311 /* main.m in Sources */,
 				5934E229220F7539002B8311 /* EpisodeDetailViewController.m in Sources */,
 				5934E22A220F7539002B8311 /* UIColor+GraphKit.m in Sources */,
-				5934E22B220F7539002B8311 /* MyAnimeList.m in Sources */,
 				5934E22C220F7539002B8311 /* OAuthLogin.m in Sources */,
 				5934E22E220F7539002B8311 /* ReviewTableViewController.m in Sources */,
 				5934E22F220F7539002B8311 /* ListRootViewController.m in Sources */,
@@ -2615,7 +2563,6 @@
 				595A96232240120A00E3C245 /* TitleSearch.m in Sources */,
 				592A69602190C1E800F1CBA3 /* EpisodeDetailViewController.m in Sources */,
 				595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */,
-				5962418E215563D2001995AD /* MyAnimeList.m in Sources */,
 				59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */,
 				598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */,
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,

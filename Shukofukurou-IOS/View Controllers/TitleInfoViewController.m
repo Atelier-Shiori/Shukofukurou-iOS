@@ -1053,7 +1053,7 @@
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     switch (currentservice) {
         case 1: {
-            extraparameters = @{@"rewatching" : @(self.selectedreconsuming)};
+            extraparameters = @{@"is_rewatching" : @(self.selectedreconsuming)};
             selectededitid = self.titleid;
             break;
         }
@@ -1074,7 +1074,7 @@
         NSDictionary *updatedfields = @{@"watched_episodes" : entry[@"episode"], @"watched_status" : entry[@"status"], @"score" : entry[@"score"], @"rewatching" : @(weakSelf.selectedreconsuming), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]};
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:weakSelf.titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:weakSelf.titleid withIdType:0];
                 break;
             case 2:
             case 3:
@@ -1109,7 +1109,7 @@
     int selectededitid = 0;
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
-            extraparameters = @{@"rereading" : @(self.selectedreconsuming)};
+            extraparameters = @{@"is_rereading" : @(self.selectedreconsuming)};
             selectededitid = self.titleid;
             break;
         }
@@ -1130,7 +1130,7 @@
         NSDictionary *updatedfields = @{@"chapters_read" : entry[@"chapter"], @"volumes_read" : entry[@"volume"], @"read_status" : entry[@"status"], @"score" : entry[@"score"], @"rereading" : @(weakSelf.selectedreconsuming), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]};
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:selectededitid withIdType:1];
                 break;
             case 2:
             case 3:

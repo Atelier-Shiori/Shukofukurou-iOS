@@ -10,6 +10,13 @@
 
 @implementation ClientConstants
     //
+    // These constants specify the secret and client key for MyAnimeList
+    // You can obtain them at
+    //
+    NSString *const kMALClient = @"";
+    NSString *const kMALRedirectURL = @"hiyokoauth://malauth/";
+
+    //
     // These constants specify the secret and client key for Kitsu
     // You can obtain them at
     //

@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MyAnimeList.h"
 #import "TitleIDMapper.h"
 #import <Hakuchou_iOS/Hakuchou_iOS.h>
 
 @interface listservice : NSObject
 @property (strong) AniList *anilistManager;
 @property (strong) Kitsu *kitsuManager;
+@property (strong) MyAnimeList *myanimelistManager;
 
 + (instancetype)sharedInstance;
 - (int)getCurrentServiceID;

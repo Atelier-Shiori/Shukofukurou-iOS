@@ -20,27 +20,15 @@
     return [self retrieveEntriesWithUserID:userid withService:service withType:type withPredicate:nil].count > 0;
 }
 
-+ (bool)hasListEntriesWithUserName:(NSString *)username withService:(int)service withType:(int)type {
-    return [self retrieveEntriesWithUserName:username withService:service withType:type withPredicate:nil].count > 0;
-}
-
 + (NSDictionary *)retrieveEntriesForUserId:(int)userid withService:(int)service withType:(int)type {
     NSArray *entries = [self retrieveEntriesWithUserID:userid withService:service withType:type withPredicate:nil];
-    return [self processEntityArray:entries withType:type withService:service];
-}
-
-+ (NSDictionary *)retrieveEntriesForUserName:(NSString *)username withService:(int)service withType:(int)type {
-    NSArray *entries = [self retrieveEntriesWithUserName:username withService:service withType:type withPredicate:nil];
     return [self processEntityArray:entries withType:type withService:service];
 }
 
 + (NSDictionary *)retrieveSingleEntryForTitleID:(int)titleid withService:(int)service withType:(int)type {
     NSArray *entries;
     switch (service) {
-        case 1: {
-            entries = [self retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:service withType:type withPredicate:[NSPredicate predicateWithFormat:@"id == %i", titleid]];
-            break;
-        }
+        case 1:
         case 2:
         case 3:
             entries = [self retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:service withType:type withPredicate:[NSPredicate predicateWithFormat:@"id == %i", titleid]];
@@ -54,17 +42,6 @@
 
 + (NSArray *)retrieveEntriesForUserId:(int)userid withService:(int)service withType:(int)type withPredicate:(NSPredicate *)filterpredicate {
     NSArray *entries = [self retrieveEntriesWithUserID:userid withService:service withType:type withPredicate:filterpredicate];
-    NSMutableArray *tmplist = [NSMutableArray new];
-    for (NSManagedObject *obj in entries) {
-        NSArray *keys = obj.entity.attributesByName.allKeys;
-        [tmplist addObject:[obj dictionaryWithValuesForKeys:keys]];
-    }
-    NSArray *uentries = tmplist.copy;
-    return uentries;
-}
-
-+ (NSArray *)retrieveEntriesForUserName:(NSString *)username withService:(int)service withType:(int)type withPredicate:(NSPredicate *)filterpredicate {
-    NSArray *entries = [self retrieveEntriesWithUserName:username withService:service withType:type withPredicate:filterpredicate];
     NSMutableArray *tmplist = [NSMutableArray new];
     for (NSManagedObject *obj in entries) {
         NSArray *keys = obj.entity.attributesByName.allKeys;
@@ -91,23 +68,6 @@
     [self processListUpdate:newlist withListArray:existinglist withUserInfo:userInfo];
 }
 
-+ (void)insertorupdateentriesWithDictionary:(NSDictionary *)data withUserName:(NSString *)username withService:(int)service withType:(int)type {
-    NSArray *newlist;
-    switch (type) {
-        case 0:
-            newlist = data[@"anime"];
-            break;
-        case 1:
-            newlist = data[@"manga"];
-            break;
-        default:
-            return;
-    }
-    NSArray *existinglist = [self retrieveEntriesWithUserName:username withService:service withType:type withPredicate:nil];
-    NSDictionary *userInfo = @{ @"username" : username, @"service" : @(service), @"type" : @(type) };
-    [self processListUpdate:newlist withListArray:existinglist withUserInfo:userInfo];
-}
-
 + (void)updateSingleEntry:(NSDictionary *)parameters withUserId:(int)userid withService:(int)service withType:(int)type withId:(int)Id withIdType:(int)idtype {
     NSArray *listarray = [self retrieveEntriesWithUserID:userid withService:service withType:type withPredicate:nil];
     NSArray *existing;
@@ -116,20 +76,6 @@
     }
     else {
         existing = [listarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"entryid == %i AND service == %i AND user_id == %i", Id, service, userid]];
-    }
-    if (existing.count > 0) {
-        [self performSingleEntryUpdate:parameters withExistingEntry:existing[0]];
-    }
-}
-
-+ (void)updateSingleEntry:(NSDictionary *)parameters withUserName:(NSString *)username withService:(int)service withType:(int)type withId:(int)Id withIdType:(int)idtype {
-    NSArray *listarray = [self retrieveEntriesWithUserName:username withService:service withType:type withPredicate:nil];
-    NSArray *existing;
-    if (idtype == 0) {
-        existing = [listarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i AND service == %i AND username ==[c] %@", Id, service, username]];
-    }
-    else {
-        existing = [listarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"entryid == %i AND service == %i AND username ==[c] %@", Id, service, username]];
     }
     if (existing.count > 0) {
         [self performSingleEntryUpdate:parameters withExistingEntry:existing[0]];
@@ -151,20 +97,6 @@
     }
     else {
         existing = [listarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"entryid == %i AND service == %i AND user_id == %i", Id, service, userid]];
-    }
-    if (existing.count > 0) {
-        [[self managedObjectContext] deleteObject:existing[0]];
-    }
-}
-
-+ (void)removeSingleEntrywithUserName:(NSString *)username withService:(int)service withType:(int)type withId:(int)Id withIdType:(int)idtype {
-    NSArray *listarray = [self retrieveEntriesWithUserName:username withService:service withType:type withPredicate:nil];
-    NSArray *existing;
-    if (idtype == 0) {
-        existing = [listarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i AND service == %i AND username ==[c] %@", Id, service, username]];
-    }
-    else {
-        existing = [listarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"entryid == %i AND service == %i AND username ==[c] %@", Id, service, username]];
     }
     if (existing.count > 0) {
         [[self managedObjectContext] deleteObject:existing[0]];
@@ -209,30 +141,6 @@
             return @[];
     }
     predicate = [NSPredicate predicateWithFormat:@"user_id == %i AND service == %i",userid,service];
-    if (filterpredicate) {
-        predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate.copy, filterpredicate]];
-    }
-    fetchRequest.predicate = predicate;
-    NSError *error = nil;
-    NSArray *listentries = [moc executeFetchRequest:fetchRequest error:&error];
-    return listentries;
-}
-
-+ (NSArray *)retrieveEntriesWithUserName:(NSString *)username withService:(int)service withType:(int)type withPredicate:(NSPredicate *)filterpredicate {
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    NSPredicate *predicate;
-    switch (type) {
-        case 0:
-            fetchRequest.entity = [NSEntityDescription entityForName:@"AnimeListEntries" inManagedObjectContext:moc];
-            break;
-        case 1:
-            fetchRequest.entity = [NSEntityDescription entityForName:@"MangaListEntries" inManagedObjectContext:moc];
-            break;
-        default:
-            return @[];
-    }
-    predicate = [NSPredicate predicateWithFormat:@"username ==[c] %@ AND service == %i",username,service];
     if (filterpredicate) {
         predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate.copy, filterpredicate]];
     }

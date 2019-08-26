@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OAuthLogin : NSObject
 #endif
 @property (nonatomic, weak) id <AuthViewControllerDelegate> delegate;
-- (void)startAniListOAuthSession;
+- (void)startOAuthSession;
 @end
 
 NS_ASSUME_NONNULL_END

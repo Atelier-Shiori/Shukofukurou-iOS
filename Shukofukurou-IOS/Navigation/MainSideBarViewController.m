@@ -110,10 +110,10 @@
     if ([_logintoolbarbtn.title isEqualToString:@"Login"]) {
         // Show Login Dialog
         switch ([listservice.sharedInstance getCurrentServiceID]) {
-            case 1:
             case 2:
                 [self performusernamepassLogin];
                 break;
+            case 1:
             case 3:
                 [self performOAuthLogin];
                 break;
@@ -140,7 +140,7 @@
 
 - (void)performOAuthLogin {
     OAuthLogin *login = [OAuthLogin new];
-    [login startAniListOAuthSession];
+    [login startOAuthSession];
 }
 
 - (void)performlogout {
@@ -162,8 +162,13 @@
     bool accountexists = true;
     switch (service) {
         case 1:
-            [Keychain removeaccount];
-            accountexists = [Keychain checkaccount];
+            [listservice.sharedInstance.myanimelistManager removeAccount];
+            accountexists = [listservice.sharedInstance.myanimelistManager getFirstAccount];
+            if (!accountexists) {
+                [defaults setValue:@"" forKey:@"mal-username"];
+                [defaults setValue:@(0) forKey:@"mal-userid"];
+                [defaults setValue:@"" forKey:@"mal-avatar"];
+            }
             break;
         case 2:
             [listservice.sharedInstance .kitsuManager removeAccount];
@@ -176,7 +181,7 @@
             }
             break;
         case 3:
-            [listservice.sharedInstance .anilistManager removeAccount];
+            [listservice.sharedInstance.anilistManager removeAccount];
             accountexists = [listservice.sharedInstance .anilistManager getFirstAccount];
             if (!accountexists) {
                 [defaults setValue:@(0) forKey:@"anilist-userid"];

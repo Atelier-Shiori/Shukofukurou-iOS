@@ -109,7 +109,7 @@
     _sections = @[@"Rating", @"Status", @"Progress"];
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            anime = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime];
+            anime = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime];
             break;
         case 2:
         case 3:
@@ -122,7 +122,7 @@
     NSDictionary *manga;
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            manga = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga];
+            manga = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga];
             break;
         case 2:
         case 3:

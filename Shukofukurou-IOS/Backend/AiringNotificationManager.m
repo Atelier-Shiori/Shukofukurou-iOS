@@ -97,12 +97,16 @@
     NSArray *list;
     switch (service) {
         case 1: {
-            NSDictionary *udict = [listservice.sharedInstance getAllUserNames];
-            if (udict[@"myanimelist"] != [NSNull null]) {
-                list = [AtarashiiListCoreData retrieveEntriesForUserName:udict[@"myanimelist"] withService:1 withType:0 withPredicate:[NSPredicate predicateWithFormat:@"status ==[c] %@ AND (watched_status ==[c] %@ OR watched_status ==[c] %@)", @"currently airing", @"watching", @"plan to watch"]];
-                break;
+            NSDictionary *uiddict = [listservice.sharedInstance getAllUserID];
+            int uid = 0;
+            if (uiddict[@"myanimelist"] != [NSNull null]) {
+                uid = ((NSNumber *)uiddict[@"myanimelist"]).intValue;
             }
-            return;
+            else {
+                return;
+            }
+            list = [AtarashiiListCoreData retrieveEntriesForUserId:uid withService:1 withType:0 withPredicate:[NSPredicate predicateWithFormat:@"status ==[c] %@ AND (watched_status ==[c] %@ OR watched_status ==[c] %@)", @"currently airing", @"watching", @"plan to watch"]];
+            break;
         }
         case 2:
         case 3: {
