@@ -31,6 +31,9 @@
     else {
         NSMutableArray *tmplist = [NSMutableArray new];
         switch ([listservice.sharedInstance getCurrentServiceID]) {
+            case 1:
+                [self retrieveMALSeasonDataWithSeason:season withYear:year withPage:0 withArray:tmplist completion:completionHandler error:errorHandler];
+                break;
             case 2:
                 [self retrieveKitsuSeasonDataWithSeason:season withYear:year withPage:0 withArray:tmplist completion:completionHandler error:errorHandler];
                 break;
@@ -41,6 +44,47 @@
                 break;
         }
     }
+}
+
++ (void)retrieveMALSeasonDataWithSeason:(NSString *)season withYear:(int)year withPage:(int)page withArray:(NSMutableArray *)array completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler
+{
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    MyAnimeList *malmanager = [listservice.sharedInstance myanimelistManager];
+    AFOAuthCredential *cred = [malmanager getFirstAccount];
+    if (cred && cred.expired) {
+        [malmanager refreshToken:^(bool success) {
+            if (success) {
+                [self retrieveMALSeasonDataWithSeason:season withYear:year withPage:page withArray:array completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    }
+    else {
+        errorHandler(nil);
+        return;
+    }
+    [manager GET:[NSString stringWithFormat:@"https://api.myanimelist.net/v2/anime/season/%i/%@?limit=100&offset=%i&fields=nsfw,media_type,alternative_titles", year, season.lowercaseString, page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            [array addObjectsFromArray:responseObject[@"data"]];
+        }
+        if (responseObject[@"paging"][@"next"]) {
+            int newpage = page + 100;
+            [self retrieveMALSeasonDataWithSeason:season withYear:year withPage:newpage withArray:array completion:completionHandler error:errorHandler];
+        }
+        else {
+            [self processSeasonData:[AtarashiiAPIListFormatMAL normalizeSeasonData:array withSeason:season withYear:year] withSeason:season withYear:year];
+            completionHandler([self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i", season, year, [listservice.sharedInstance getCurrentServiceID]]]);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+        NSLog(@"Error: %@ Response: %@", error.localizedDescription, [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+    }];
 }
 
 + (void)retrieveKitsuSeasonDataWithSeason:(NSString *)season withYear:(int)year withPage:(int)page withArray:(NSMutableArray *)array completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler
