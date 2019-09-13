@@ -13,10 +13,10 @@ However, the source code will remain free for anyone who want it., However, you 
 
 No support will be given to self-built copies. You need to specify the OAuth Client and Secret before you can compile your own version.
 
-If you want to help support us to reach the goal of $10 a month, which will allow us to distribute the app for free while covering the costs of distribution, [become a patron](https://www.patreon.com/join/malupdaterosx) today.
+If you want to help support us to reach the goal of $17 a month, which will allow us to distribute the app for free while covering the costs of distribution, [become a patron](https://www.patreon.com/join/malupdaterosx) today.
 
 ## Community Version
-Already have a paid Apple Developer Program Membership? You may sideload and install the Community Version for free without having to compile it for youself. The community version has most of the features of the paid version except for Scrobbling extension. Install the release using Cydia impactor. List of releases can be seen in the release page.
+Already have a paid Apple Developer Program Membership? You may sideload and install the Community Version for free without having to compile it for youself. The community version has most of the features of the paid version except for Scrobbling extension and iCloud History Sync. Install the release using Cydia impactor. List of releases can be seen in the release page.
 
 ## Compiling Instructions
 **Note: Self-compiling is meant for developers and advanced users only. Apple limits provisioning profile that allows you to run your apps on your iOS device for 7 days without a paid Apple Developer membership. If you want to use the app for more than 7 days without having to reinstall it, consider downloading it from the App Store. You can support dvelopment for our App and you don't have to buy a $99 a year Apple Developer Program membership, unless you already have one.**
