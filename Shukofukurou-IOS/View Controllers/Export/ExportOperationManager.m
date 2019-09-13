@@ -60,10 +60,21 @@
     _active = true;
     _mediatype = mediatype;
     switch (_lservice.getCurrentServiceID) {
+        case 1:
         case 2:
         case 3:
             _tmplist = [AtarashiiListCoreData retrieveEntriesForUserId:_lservice.getCurrentUserID withService:_lservice.getCurrentServiceID withType:mediatype][mediatype == 0 ? @"anime" : @"manga"];
             break;
+    }
+    if (_lservice.getCurrentServiceID == 1) {
+        // Generate list without conversion
+        _finallist = [[NSMutableArray alloc] initWithArray:_tmplist];
+        NSLog(@"Conversion complete. Generating XML.");
+        self.hud.label.text = @"Generating XML...";
+        NSString *xmlstring = self.mediatype == 0 ? [self generateAnimeListXML:self.finallist] : [self generateMangaListXML:self.finallist];
+        self.completion(self.failedtitles, xmlstring);
+        self.active = false;
+        return;
     }
     [self performBuildMappings];
 }

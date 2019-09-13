@@ -94,7 +94,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
         default:
             break;
     }
-    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:exportTitle message:[NSString stringWithFormat:@"Do you want to export your %@ list?%@", [listservice.sharedInstance currentservicename], (exporttype == MALXMLAnimeExportType || exporttype == MALXMLMangaExportType) ? @"This may take some time." : @""] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:exportTitle message:[NSString stringWithFormat:@"Do you want to export your %@ list?%@", [listservice.sharedInstance currentservicename], (exporttype == MALXMLAnimeExportType || exporttype == MALXMLMangaExportType) && listservice.sharedInstance.getCurrentServiceID > 1 ? @"This may take some time." : @""] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self beginExport:exporttype];
         [self deselectcell:exporttype];
