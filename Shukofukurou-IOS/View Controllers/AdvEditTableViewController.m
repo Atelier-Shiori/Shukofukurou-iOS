@@ -286,17 +286,19 @@
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:entry[@"score"] withCellType:cellTypeEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Rewatching" withValue:entry[@"rewatching"] withCellType:cellTypeSwitch]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"# Rewatch" withValue:entry[@"rewatch_count"] withCellType:cellTypeProgressEntry]];
+    // Notes
+    [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Notes" withValue:entry[@"personal_comments"] != [NSNull null] ? entry[@"personal_comments"] : @"" withCellType:cellTypeNotes]];
     if (currentService == 2 || currentService == 3) {
-        // Notes
-        [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Notes" withValue:entry[@"personal_comments"] != [NSNull null] ? entry[@"personal_comments"] : @"" withCellType:cellTypeNotes]];
         [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Private" withValue:entry[@"private"] withCellType:cellTypeSwitch]];
     }
-    // Dates
-    NSDictionary *dates = [self generateDateArray:entry];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set Start Date" withValue:dates[@"startDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Start" withValue:dates[@"startDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set End Date" withValue:dates[@"endDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"End" withValue:dates[@"endDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
+    if (currentService == 2 || currentService == 3) {
+        // Dates
+        NSDictionary *dates = [self generateDateArray:entry];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set Start Date" withValue:dates[@"startDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Start" withValue:dates[@"startDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set End Date" withValue:dates[@"endDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"End" withValue:dates[@"endDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
+    }
 
     return entrycellarray;
 }
@@ -310,17 +312,19 @@
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Score" withValue:entry[@"score"] withCellType:cellTypeEntry]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Rereading" withValue:entry[@"rereading"] withCellType:cellTypeSwitch]];
     [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"# Reread" withValue:entry[@"reread_count"] withCellType:cellTypeProgressEntry]];
+    // Notes
+    [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Notes" withValue:entry[@"personal_comments"] != [NSNull null] ? entry[@"personal_comments"] : @"" withCellType:cellTypeNotes]];
     if (currentService == 2 || currentService == 3) {
-        // Notes
-        [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Notes" withValue:entry[@"personal_comments"] != [NSNull null] ? entry[@"personal_comments"] : @"" withCellType:cellTypeNotes]];
         [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Private" withValue:entry[@"private"] withCellType:cellTypeSwitch]];
     }
     // Dates
-    NSDictionary *dates = [self generateDateArray:entry];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set Start Date" withValue:dates[@"startDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Start" withValue:dates[@"startDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set End Date" withValue:dates[@"endDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
-    [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"End" withValue:dates[@"endDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
+    if (currentService == 2 || currentService == 3) {
+        NSDictionary *dates = [self generateDateArray:entry];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set Start Date" withValue:dates[@"startDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Start" withValue:dates[@"startDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set End Date" withValue:dates[@"endDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
+        [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"End" withValue:dates[@"endDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"endDateExists"]).boolValue]];
+    }
     return entrycellarray;
 }
 #pragma mark Helpers
@@ -475,19 +479,25 @@
              extrafields[@"tags"] = tags;
              }
              */
-            if (((NSNumber *)udict[@"set start date"]).boolValue) {
+            /*if (((NSNumber *)udict[@"set start date"]).boolValue) {
                 extrafields[@"start"] = [df stringFromDate:(NSDate *)udict[@"start"]];
             }
             if (((NSNumber *)udict[@"set end date"]).boolValue) {
                 extrafields[@"end"] = [df stringFromDate:(NSDate *)udict[@"end"]];
-            }
+            }*/
             if (type == 0) {
                 extrafields[@"is_rewatching"] = udict[@"rewatching"];
-                extrafields[@"rewatch_count"] = udict[@"# rewatch"];
+                extrafields[@"num_times_rewatched"] = udict[@"# rewatch"];
             }
             else {
                 extrafields[@"is_rereading"] = udict[@"rereading"];
-                extrafields[@"reread_count"] = udict[@"# reread"];
+                extrafields[@"num_times_reread"] = udict[@"# reread"];
+            }
+            if (((NSString *)udict[@"notes"]).length > 0) {
+                extrafields[@"comments"] = udict[@"notes"];
+            }
+            else {
+                extrafields[@"comments"] = @"";
             }
             break;
         }
