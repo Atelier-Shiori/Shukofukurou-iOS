@@ -67,10 +67,10 @@
 - (void)populateReviewData:(NSDictionary *)review withType:(int)type {
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     _type = type;
-    self.navigationItem.title = review[@"username"];
+    self.navigationItem.title = currentservice == 1 ? review[@"reviewer"][@"username"] : review[@"username"];
     NSString *score = @"0";
     if (currentservice == 1) {
-        score = ((NSNumber *)review[@"rating"]).stringValue;
+        score = ((NSNumber *)review[@"reviewer"][@"rating"]).stringValue;
         
     }
     else {
@@ -78,13 +78,14 @@
     }
     _score.text = score;
     _reviewdate.text = [NSString stringWithFormat:@"Reviewed on %@", review[@"date"]];
-    NSNumber *progress = type == 0 ? review[@"watched_episodes"] : review[@"chapters_read"];
+    NSNumber *progress = type == 0 ? currentservice == 1 ? review[@"reviewer"][@"episodes_seen"] : review[@"watched_episodes"] : currentservice == 1 ? review[@"reviewer"][@"chapters_read"]: review[@"chapters_read"];
     _progress.text = [NSString stringWithFormat:@"%@%@", _type == 0 ? @"Episodes watched:" : @"Chapters read:", progress];
-    _helpful.text = ((NSNumber *)review[@"helpful"] ).stringValue;
-    [self loadimage:review[@"avatar_url"]];
+    _helpful.text = currentservice == 1 ? ((NSNumber *)review[@"helpful_count"] ).stringValue : ((NSNumber *)review[@"helpful"] ).stringValue;
+    [self loadimage:currentservice == 1 ? review[@"reviewer"][@"image_url"] : review[@"avatar_url"]];
     self.navigationItem.hidesBackButton = YES;
     __weak ReviewDetailViewController *weakSelf = self;
-    [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
+    if (currentservice == 1) {
+        _reviewtext.text = (NSString *)review[@"content"];
         weakSelf.navigationItem.hidesBackButton = NO;
         if (@available(iOS 13, *)) {
             weakSelf.reviewtext.textColor = [UIColor labelColor];
@@ -92,7 +93,18 @@
         else {
             weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
         }
-    }];
+    }
+    else {
+        [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
+            weakSelf.navigationItem.hidesBackButton = NO;
+            if (@available(iOS 13, *)) {
+                weakSelf.reviewtext.textColor = [UIColor labelColor];
+            }
+            else {
+                weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
+            }
+        }];
+    }
 }
 
 - (void)loadimage:(NSString *)imageurl {

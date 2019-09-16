@@ -64,52 +64,61 @@
         _type = type;
     }
     self.navigationItem.hidesBackButton = YES;
-    if ([listservice.sharedInstance getCurrentServiceID] == 2) {
-        self.loadingReactions = YES;
-        [listservice.sharedInstance .kitsuManager retrieveLimitedReviewsForTitle:titleid withType:type withPageOffset:_nextPageOffset completion:^(id responseObject) {
-            [self.reviews addObjectsFromArray:responseObject[@"data"]];
-            NSDictionary *pageInfo = responseObject[@"pageInfo"];
-            if (((NSNumber *)pageInfo[@"nextPage"]).boolValue) {
-                self.nextPageOffset = ((NSNumber *)pageInfo[@"nextOffset"]).intValue;
-            }
-            else {
-                self.nextPageOffset = -1;
-            }
-            [self.tableView reloadData];
-            self.navigationItem.hidesBackButton = NO;
-            self.loadingReactions = NO;
-        } error:^(NSError *error) {
-            NSLog(@"%@",error);
-            if (self.reviews.count > 0) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
+        case 1: {
+            [self showloadingview:YES];
+            [listservice.sharedInstance.myanimelistManager retrieveReviewsForTitle:titleid withType:type withPage:1 completion:^(id responseObject) {
+                [self.reviews addObjectsFromArray:responseObject];
+                [self.tableView reloadData];
+                self.navigationItem.hidesBackButton = NO;
+                [self showloadingview:NO];
+            } error:^(NSError *error) {
+                NSLog(@"%@",error);
+                [self showloadingview:NO];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            break;
+        }
+        case 2: {
+            self.loadingReactions = YES;
+            [listservice.sharedInstance.kitsuManager retrieveLimitedReviewsForTitle:titleid withType:type withPageOffset:_nextPageOffset completion:^(id responseObject) {
+                [self.reviews addObjectsFromArray:responseObject[@"data"]];
+                NSDictionary *pageInfo = responseObject[@"pageInfo"];
+                if (((NSNumber *)pageInfo[@"nextPage"]).boolValue) {
+                    self.nextPageOffset = ((NSNumber *)pageInfo[@"nextOffset"]).intValue;
+                }
+                else {
+                    self.nextPageOffset = -1;
+                }
+                [self.tableView reloadData];
                 self.navigationItem.hidesBackButton = NO;
                 self.loadingReactions = NO;
-            }
-            else {
+            } error:^(NSError *error) {
+                NSLog(@"%@",error);
+                if (self.reviews.count > 0) {
+                    self.navigationItem.hidesBackButton = NO;
+                    self.loadingReactions = NO;
+                }
+                else {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+            break;
+        }
+        case 3: {
+            [self showloadingview:YES];
+            [listservice.sharedInstance retrieveReviewsForTitle:titleid withType:type completion:^(id responseObject) {
+                [self.reviews addObjectsFromArray:responseObject];
+                [self.tableView reloadData];
+                self.navigationItem.hidesBackButton = NO;
+                [self showloadingview:NO];
+            } error:^(NSError *error) {
+                NSLog(@"%@",error);
+                [self showloadingview:NO];
                 [self.navigationController popViewControllerAnimated:YES];
-            }
-        }];
-    }
-    else {
-        [self showloadingview:YES];
-        [listservice.sharedInstance retrieveReviewsForTitle:titleid withType:type completion:^(id responseObject) {
-            switch ([listservice.sharedInstance getCurrentServiceID]) {
-                case 1:
-                case 3: {
-                    [self.reviews addObjectsFromArray:responseObject];
-                    break;
-                }
-                default: {
-                    break;
-                }
-            }
-            [self.tableView reloadData];
-            self.navigationItem.hidesBackButton = NO;
-            [self showloadingview:NO];
-        } error:^(NSError *error) {
-            NSLog(@"%@",error);
-            [self showloadingview:NO];
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
+            }];
+            break;
+        }
     }
 }
 
@@ -137,12 +146,13 @@
         case 1:
         case 3: {
             NSDictionary *review = _reviews[indexPath.row];
-            cell.textLabel.text = review[@"username"];
             switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
-                    cell.detailTextLabel.text = ((NSNumber *)review[@"rating"]).stringValue;
+                    cell.textLabel.text = review[@"reviewer"][@"username"];
+                    cell.detailTextLabel.text = ((NSNumber *)review[@"reviewer"][@"scores"][@"overall"]).stringValue;
                     break;
                 case 3:
+                    cell.textLabel.text = review[@"username"];
                     cell.detailTextLabel.text = [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)review[@"rating"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
                     break;
                 default:
