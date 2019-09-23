@@ -885,6 +885,7 @@
     [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:[listservice.sharedInstance getCurrentServiceID] == 2 ? @"Reactions" : @"Reviews" withCellAction:cellActionViewReviews]];
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
+            break;
         case 3:
             [detailarray addObject:[[EntryCellInfo alloc] initActionCellWithTitle:@"Characters/Staff" withCellAction:cellActionViewStaff]];
             break;
