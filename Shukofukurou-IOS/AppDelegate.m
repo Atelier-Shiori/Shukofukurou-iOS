@@ -276,6 +276,14 @@
                  reloadeduserdata = true;
             }
         }
+        if ([listservice.sharedInstance.myanimelistManager getFirstAccount]) {
+            bool refreshMAL = (![defaults valueForKey:@"mal-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"mal-userinformationrefresh"]).timeIntervalSinceNow < 0);
+            if ((![defaults valueForKey:@"mal-username"] || ![defaults valueForKey:@"mal-userid"]) || ((NSString *)[defaults valueForKey:@"mal-username"]).length == 0 || refreshMAL) {
+                [listservice.sharedInstance.myanimelistManager saveuserinfoforcurrenttoken];
+                [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"mal-userinformationrefresh"];
+                reloadeduserdata = true;
+            }
+        }
         if (reloadeduserdata) {
             // Reload user data on sidebar
              dispatch_async(dispatch_get_main_queue(), ^{
