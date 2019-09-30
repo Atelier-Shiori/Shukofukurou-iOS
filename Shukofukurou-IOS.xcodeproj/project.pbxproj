@@ -1776,7 +1776,7 @@
 		59B22D1521FE62F300627172 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59B22D1E21FE62F400627172 /* libSDWebImage iOS static.a */,
+				59B22D1E21FE62F400627172 /* libSDWebImage.a */,
 				59B22D2221FE62F400627172 /* SDWebImage.framework */,
 				5928E16523107492000DD977 /* SDWebImageMapKit.framework */,
 			);
@@ -2243,7 +2243,7 @@
 			remoteRef = 5962414D2155634F001995AD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		59B22D1E21FE62F400627172 /* libSDWebImage iOS static.a */ = {
+		59B22D1E21FE62F400627172 /* libSDWebImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSDWebImage.a;
@@ -2987,6 +2987,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20190930;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = (
@@ -3013,6 +3014,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20190930;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
@@ -3036,6 +3038,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20190930;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3057,6 +3060,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20190930;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3247,6 +3251,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20190930;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3268,6 +3273,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20190930;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
