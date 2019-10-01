@@ -87,6 +87,7 @@
 
 - (UINavigationController *)currentRootView {
     NSString *identifier = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
+    int currentservice = listservice.sharedInstance.getCurrentServiceID;
     if ([identifier isEqualToString:@"anime-list"]) {
         if ([listservice.sharedInstance checkAccountForCurrentService]) {
             return (UINavigationController *)[_vcm getAnimeListRootViewController];
@@ -104,15 +105,27 @@
         }
     }
     else if ([identifier isEqualToString:@"search"]) {
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            return nil;
+        }
         return (UINavigationController *)[_vcm getSearchView];
     }
     else if ([identifier isEqualToString:@"seasons"]) {
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            return nil;
+        }
         return (UINavigationController *)[_vcm getSeasonRootViewController];
     }
     else if ([identifier isEqualToString:@"airing"]) {
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            return nil;
+        }
         return (UINavigationController *)[_vcm getAiringRootViewController];
     }
     else if ([identifier isEqualToString:@"trending"]) {
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            return nil;
+        }
         return (UINavigationController *)[_vcm getTrendingRootViewController];
     }
     else if ([identifier isEqualToString:@"settings"]) {
@@ -128,6 +141,7 @@
 }
 
 - (void)sidebarItemDidChange:(NSString *)identifier {
+    int currentservice = listservice.sharedInstance.getCurrentServiceID;
     if ([identifier isEqualToString:@"anime-list"]) {
         if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [self showAnimeListViewController];
@@ -153,16 +167,38 @@
         }
     }
     else if ([identifier isEqualToString:@"search"]) {
-        [self showSearchViewController];
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            [self showNotLoggedIn];
+        }
+        else {
+            [self showSearchViewController];
+        }
+        
     }
     else if ([identifier isEqualToString:@"seasons"]) {
-        [self showSeasonViewController];
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            [self showNotLoggedIn];
+        }
+        else {
+            [self showSeasonViewController];
+        }
+        
     }
     else if ([identifier isEqualToString:@"airing"]) {
-        [self showAiringViewController];
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            [self showNotLoggedIn];
+        }
+        else {
+            [self showAiringViewController];
+        }
     }
     else if ([identifier isEqualToString:@"trending"]) {
-        [self showTrendingViewController];
+        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+            [self showNotLoggedIn];
+        }
+        else {
+            [self showTrendingViewController];
+        }
     }
     else if ([identifier isEqualToString:@"settings"]) {
         [self showSettingsViewController];
