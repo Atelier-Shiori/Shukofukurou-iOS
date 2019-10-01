@@ -622,6 +622,7 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
     bool _overlayEnabled;
     UITableViewCellSelectionStyle _previusSelectionStyle;
     NSMutableSet * _previusHiddenViews;
+    UITableViewCellAccessoryType _previusAccessoryType;
     BOOL _triggerStateChanges;
     
     MGSwipeAnimationData * _animationData;
@@ -659,7 +660,7 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
 
 -(void) dealloc
 {
-    [self hideSwipeOverlayIfNeeded];
+    [self hideSwipeOverlayIfNeededIncludingReselect:false];
 }
 
 -(void) initViews: (BOOL) cleanButtons
@@ -904,7 +905,7 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
     [self addGestureRecognizer:_tapRecognizer];
 }
 
--(void) hideSwipeOverlayIfNeeded
+-(void) hideSwipeOverlayIfNeededIncludingReselect: (BOOL) reselectCellIfNeeded
 {
     if (!_overlayEnabled) {
         return;
@@ -921,12 +922,14 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
         [_tableInputOverlay removeFromSuperview];
         _tableInputOverlay = nil;
     }
-    
-    self.selectionStyle = _previusSelectionStyle;
-    NSArray * selectedRows = self.parentTable.indexPathsForSelectedRows;
-    if ([selectedRows containsObject:[self.parentTable indexPathForCell:self]]) {
-        self.selected = NO; //Hack: in some iOS versions setting the selected property to YES own isn't enough to force the cell to redraw the chosen selectionStyle
-        self.selected = YES;
+
+    if (reselectCellIfNeeded) {
+        self.selectionStyle = _previusSelectionStyle;
+        NSArray * selectedRows = self.parentTable.indexPathsForSelectedRows;
+        if ([selectedRows containsObject:[self.parentTable indexPathForCell:self]]) {
+            self.selected = NO; //Hack: in some iOS versions setting the selected property to YES own isn't enough to force the cell to redraw the chosen selectionStyle
+            self.selected = YES;
+        }
     }
     [self setAccesoryViewsHidden:NO];
     
@@ -973,7 +976,7 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
 -(void) willMoveToSuperview:(UIView *)newSuperview;
 {
     if (newSuperview == nil) { //remove the table overlay when a cell is removed from the table
-        [self hideSwipeOverlayIfNeeded];
+        [self hideSwipeOverlayIfNeededIncludingReselect:false];
     }
 }
 
@@ -1027,7 +1030,7 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
 
 - (UIImage *)imageFromView:(UIView *)view cropSize:(CGSize)cropSize{
     UIGraphicsBeginImageContextWithOptions(cropSize, NO, 0);
-    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:NO];
+    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
     UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
@@ -1035,6 +1038,19 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
 
 -(void) setAccesoryViewsHidden: (BOOL) hidden
 {
+    if (@available(iOS 13, *)) {
+        // Hide the accessory to prevent blank box being displayed in iOS13-beta
+        // (blank area would be overlayed in accessory area when using cell in storyboard view)
+        // This may be fixed in iOS13 production release
+        if (hidden) {
+            _previusAccessoryType = self.accessoryType;
+            self.accessoryType = UITableViewCellAccessoryNone;
+        } else if (self.accessoryType == UITableViewCellAccessoryNone) {
+            self.accessoryType = _previusAccessoryType;
+            _previusAccessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    
     if (self.accessoryView) {
         self.accessoryView.hidden = hidden;
     }
@@ -1126,7 +1142,7 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
             [_leftView endExpansionAnimated:NO];
         if (_rightView)
             [_rightView endExpansionAnimated:NO];
-        [self hideSwipeOverlayIfNeeded];
+        [self hideSwipeOverlayIfNeededIncludingReselect:true];
         _targetOffset = 0;
         [self updateState:MGSwipeStateNone];
         return;
