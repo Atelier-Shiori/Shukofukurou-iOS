@@ -15,12 +15,20 @@
 #import "UIViewThemed.h"
 #import "TitleIDMapper.h"
 
+#if defined(OSS)
+#else
+@import AppCenter;
+@import AppCenterAnalytics;
+@import AppCenterCrashes;
+#endif
+
 @interface SettingsViewController ()
 @property (strong, nonatomic) IBOutlet UITableViewCell *resetmappingscell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *clearimagecell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *imagecachesize;
 @property (strong, nonatomic) IBOutlet UILabel *versionnum;
 @property (strong, nonatomic) IBOutlet UISwitch *synctoicloud;
+@property (strong, nonatomic) IBOutlet UISwitch *analyticstoggle;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @end
 
@@ -39,6 +47,11 @@
     _synctoicloud.on = [defaults boolForKey:@"synchistorytoicloud"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
+#if defined(OSS)
+    _analyticstoggle.enabled = NO;
+#else
+    _analyticstoggle.on = [defaults boolForKey:@"sendanalytics"];
+#endif
     if (@available(iOS 13, *)) {
         // Disable Dark Mode Switch
         _darkmodeswitch.enabled = NO;
@@ -191,6 +204,14 @@
     }
     [self presentViewController:svc animated:YES completion:^{
     }];
+}
+
+- (IBAction)sendstatstoggle:(id)sender {
+#if defined(OSS)
+#else
+        [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+        [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+#endif
 }
 
 - (void)showopensourcemessage {
