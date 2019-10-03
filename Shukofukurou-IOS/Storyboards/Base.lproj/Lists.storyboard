@@ -204,18 +204,9 @@
                         <outlet property="menubtn" destination="NN4-Z1-A4i" id="aUe-Je-o3T"/>
                         <outlet property="navigationitem" destination="NEs-jJ-IkG" id="bgI-5Z-zPd"/>
                         <outlet property="refreshcontrol" destination="ZNU-5w-ohl" id="9Yd-PS-N2K"/>
-                        <outlet property="searchDisplayController" destination="WTn-hm-v5v" id="V9n-7s-AdQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgP-eg-FNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="WTn-hm-v5v">
-                    <connections>
-                        <outlet property="delegate" destination="fTu-H4-28K" id="kxb-HW-O34"/>
-                        <outlet property="searchContentsController" destination="fTu-H4-28K" id="eo0-e4-8nW"/>
-                        <outlet property="searchResultsDataSource" destination="fTu-H4-28K" id="UuD-Hm-bfK"/>
-                        <outlet property="searchResultsDelegate" destination="fTu-H4-28K" id="0Tr-Ah-gM0"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1336.8" y="-120.08995502248877"/>
         </scene>

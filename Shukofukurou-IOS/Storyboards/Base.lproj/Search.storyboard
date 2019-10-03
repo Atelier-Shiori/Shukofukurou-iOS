@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,8 +45,8 @@
                                 <action selector="showLeftViewAnimated:" destination="mYk-uX-dIE" id="5TG-r4-QCe"/>
                             </connections>
                         </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="1J1-YA-Klo">
-                            <rect key="frame" x="49" y="7" width="303" height="30"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="1J1-YA-Klo">
+                            <rect key="frame" x="58" y="6" width="309" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Anime"/>
@@ -65,19 +65,10 @@
                         <outlet property="advsearchtoolbaritem" destination="NT8-h8-Tgk" id="3sJ-VW-Aqt"/>
                         <outlet property="menubtn" destination="I2X-5t-HXG" id="bTl-Ui-jim"/>
                         <outlet property="navitem" destination="FQd-Jp-2Gg" id="vIt-0o-VRK"/>
-                        <outlet property="searchDisplayController" destination="fgt-rV-hPh" id="M68-TQ-ORT"/>
                         <outlet property="searchselector" destination="1J1-YA-Klo" id="TMs-Qp-oHe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITB-uy-GVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="fgt-rV-hPh">
-                    <connections>
-                        <outlet property="delegate" destination="mYk-uX-dIE" id="ww8-3U-vGK"/>
-                        <outlet property="searchContentsController" destination="mYk-uX-dIE" id="UwQ-gy-JId"/>
-                        <outlet property="searchResultsDataSource" destination="mYk-uX-dIE" id="V0h-75-E1v"/>
-                        <outlet property="searchResultsDelegate" destination="mYk-uX-dIE" id="ge9-9C-c8Y"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="198" y="-152"/>
         </scene>
