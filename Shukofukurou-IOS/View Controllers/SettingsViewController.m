@@ -40,6 +40,7 @@
     
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ThemeManager fixTableView:self.tableView];
     // Do any additional setup after loading the view.
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     _refreshlistonstart.on = [defaults boolForKey:@"refreshlistonstart"];
@@ -60,6 +61,7 @@
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"SettingsViewLoaded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     [self hidemenubtn];
 }
 
@@ -82,6 +84,9 @@
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"SettingsViewLoaded"]) {
         [self loadImageCacheSize];
+    }
+    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        [ThemeManager fixTableView:self.tableView];
     }
 }
 

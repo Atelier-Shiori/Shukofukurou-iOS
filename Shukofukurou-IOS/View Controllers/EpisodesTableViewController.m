@@ -10,6 +10,7 @@
 #import "EpisodeDetailViewController.h"
 #import "EpisodesTableViewCell.h"
 #import "listservice.h"
+#import "ThemeManager.h"
 
 @interface EpisodesTableViewController ()
 @property (strong) NSArray *episodes;
@@ -19,12 +20,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ThemeManager fixTableView:self.tableView];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"ThemeChanged" object:nil];
+}
+
+- (void)didReceiveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        [ThemeManager fixTableView:self.tableView];
+    }
 }
 
 - (void)loadEpisodeListForTitleId:(int)titleid {

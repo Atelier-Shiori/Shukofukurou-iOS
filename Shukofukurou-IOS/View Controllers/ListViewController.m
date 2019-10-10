@@ -47,6 +47,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ThemeManager fixTableView:self.tableView];
     // Do any additional setup after loading the view.
     _filteredlist = @[];
     _list = [NSMutableArray new];
@@ -78,6 +79,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     [self hidemenubtn];
     [self setupsearch];
 }
@@ -127,6 +129,9 @@
         // Clear List
         NSLog(@"Clearing Lists");
         [self clearlists];
+    }
+    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
+        [ThemeManager fixTableView:self.tableView];
     }
 }
 

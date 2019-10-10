@@ -9,6 +9,7 @@
 #import "SearchAdvSettings.h"
 #import "listservice.h"
 #import "AdvSearchSelectionCell.h"
+#import "ThemeManager.h"
 
 @interface SearchAdvSettings()
 @property (strong) NSMutableDictionary *tmpsearchoptions;
@@ -91,6 +92,15 @@
     return years;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [ThemeManager fixTableView:self.tableView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [ThemeManager fixTableView:self.tableView];
+}
 #pragma mark methods
 
 - (void)populateSearchOptionsForType:(int)type {

@@ -9,6 +9,7 @@
 #import "StreamingRegionTableViewController.h"
 #import "UITableViewCellSelBackground.h"
 #import "StreamDataRetriever.h"
+#import "ThemeManager.h"
 
 @interface StreamingRegionTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableViewCellSelBackground *usStreamRegion;
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ThemeManager fixTableView:self.tableView];
     
     [self setcellstate];
 }

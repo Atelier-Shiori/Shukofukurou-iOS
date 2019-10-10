@@ -18,6 +18,7 @@ typedef NS_ENUM(unsigned int, ThemeManagerThemes) {
 };
 @property ThemeManagerTheme *currentTheme;
 + (ThemeManagerTheme *)sharedCurrentTheme;
++ (void)fixTableView:(UITableView *)tableView;
 - (void)setTheme;
 @end
 

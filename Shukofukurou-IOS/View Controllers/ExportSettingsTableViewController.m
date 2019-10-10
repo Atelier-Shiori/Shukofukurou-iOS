@@ -7,6 +7,7 @@
 //
 
 #import "ExportSettingsTableViewController.h"
+#import "ThemeManager.h"
 #import "UIViewThemed.h"
 
 @interface ExportSettingsTableViewController ()
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ThemeManager fixTableView:self.tableView];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

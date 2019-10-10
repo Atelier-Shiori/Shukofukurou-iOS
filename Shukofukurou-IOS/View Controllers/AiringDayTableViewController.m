@@ -32,7 +32,11 @@
         if (@available(iOS 13, *)) { }
         else {
             self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
+            [ThemeManager fixTableView:self.tableView];
         }
+    }
+    else {
+        [ThemeManager fixTableView:self.tableView];
     }
 }
 

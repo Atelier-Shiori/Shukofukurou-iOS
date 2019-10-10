@@ -108,6 +108,15 @@
         [NSNotificationCenter.defaultCenter postNotificationName:@"ThemeChanged" object:nil];
     }
 }
++ (void)fixTableView:(UITableView *)tableView {
+    // Fixes Dark Mode under iOS 12
+    if (@available(iOS 13, *)) {}
+    else {
+        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
+        [tableView setBackgroundView:nil];
+        tableView.backgroundColor = darkmode ? ThemeManager.sharedCurrentTheme.viewBackgroundColor : ThemeManager.sharedCurrentTheme.viewAltBackgroundColor;
+    }
+}
 @end
 
 @implementation HighLightView

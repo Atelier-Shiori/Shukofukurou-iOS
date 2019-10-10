@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setTheme];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults boolForKey:@"firstload"]) {
         [self showloadingview:YES];
@@ -37,6 +38,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(serviceChangedNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChangedNotification:) name:@"ThemeChanged" object:nil];
     [self hidemenubtn];
     [self setTheme];
     [self setLoginLabel];
@@ -57,6 +59,10 @@
 
 - (void)serviceChangedNotification:(NSNotification *)notification {
     [self setLoginLabel];
+}
+
+- (void)themeChangedNotification:(NSNotification *)notification {
+    [self setTheme];
 }
 
 - (void)setLoginLabel {
@@ -83,9 +89,7 @@
 }
 
 - (void)setTheme {
-   /* ThemeManagerTheme *theme = [ThemeManager sharedCurrentTheme];
-    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-    self.view.backgroundColor = darkmode ? theme.viewAltBackgroundColor : theme.viewBackgroundColor;*/
+   [ThemeManager fixTableView:self.tableView];
 }
 
 - (void)showloadingview:(bool)show {
