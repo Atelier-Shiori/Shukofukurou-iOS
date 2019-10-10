@@ -144,7 +144,7 @@
 }
 
 - (void)openManual {
-    [self openWebBrowserView:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"]];
+    [self openWebBrowserView:[NSURL URLWithString:@"https://help.malupdaterosx.moe/shukofukurou-for-ios/"]];
 }
     
 - (void)clearImages {
