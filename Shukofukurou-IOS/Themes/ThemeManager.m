@@ -77,6 +77,7 @@
         [UITableViewCell appearance].selectionStyle = UITableViewCellSelectionStyleDefault;
         [TableViewCellBackgroundView appearance].backgroundColor = _currentTheme.tableCellSelectionBackgroundColor;
         [UISegmentedControl appearance].tintColor = _currentTheme.tintColor;
+        [UIToolbar appearance].tintColor = _currentTheme.tintColor;
         [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]].textColor = _currentTheme.groupHeaderTextColor;
         [UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewCell class]]].textColor = _currentTheme.textColor;
         [UILabel appearanceWhenContainedInInstancesOfClasses:@[[SeasonCollectionViewCell class]]].textColor = _currentTheme.textColor;

@@ -40,6 +40,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ThemeManager fixTableView:self.tableView];
     _moc = ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
     if (![listservice.sharedInstance checkAccountForCurrentService]) {
         // Show Error
