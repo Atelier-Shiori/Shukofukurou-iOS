@@ -117,12 +117,12 @@
             break;
         }
         case 2: {
-            [self openWebBrowserView:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou-ios-manual.pdf"]];
+            [self openWebBrowserView:[NSURL URLWithString:@"https://help.malupdaterosx.moe/shukofukurou-for-ios/"]];
             [cell setSelected:NO animated:YES];
             break;
         }
         case 3: {
-            [self openWebBrowserView:[NSURL URLWithString:@"https://malupdaterosx.moe/scrobbleguide.pdf"]];
+            [self openWebBrowserView:[NSURL URLWithString:@"https://help.malupdaterosx.moe/shukofukurou-for-ios/scrobble-manual/"]];
             [cell setSelected:NO animated:YES];
             break;
         }

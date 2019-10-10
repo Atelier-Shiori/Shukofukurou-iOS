@@ -107,7 +107,7 @@
 }
 
 - (void)performOpenScrobbleGuide {
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[[NSURL alloc] initWithString:@"https://malupdaterosx.moe/scrobbleguide.pdf"]];
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[[NSURL alloc] initWithString:@"https://help.malupdaterosx.moe/shukofukurou-for-ios/scrobble-manual/"]];
     if (@available(iOS 13, *)) { }
     else {
         svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
