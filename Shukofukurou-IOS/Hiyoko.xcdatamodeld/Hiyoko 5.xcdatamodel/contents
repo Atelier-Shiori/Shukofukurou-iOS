@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14886.2" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Airing" representedClassName="Airing" syncable="YES" codeGenerationType="class">
         <attribute name="day" optional="YES" attributeType="String"/>
         <attribute name="episodes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -160,6 +160,7 @@
         <attribute name="mediatype" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="segment" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="service" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="synced" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="titleid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="user" optional="YES" attributeType="String"/>
@@ -179,6 +180,6 @@
         <element name="StreamSites" positionX="-45" positionY="135" width="128" height="75"/>
         <element name="Titleidmappings" positionX="-54" positionY="-9" width="128" height="120"/>
         <element name="Trending" positionX="-45" positionY="135" width="128" height="105"/>
-        <element name="UpdateHistory" positionX="-45" positionY="135" width="128" height="178"/>
+        <element name="UpdateHistory" positionX="-45" positionY="135" width="128" height="193"/>
     </elements>
 </model>

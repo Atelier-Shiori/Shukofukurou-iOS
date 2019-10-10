@@ -66,7 +66,6 @@
 		5934E21D220F7539002B8311 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
 		5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F521556503001995AD /* ServiceSwitcherViewController.m */; };
-		5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
 		5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 		5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */; };
 		5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
@@ -237,7 +236,6 @@
 		5962422621556514001995AD /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420C21556510001995AD /* LoadViewController.m */; };
 		5962422721556514001995AD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
 		5962422821556514001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
-		5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */; };
 		59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
 		59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
@@ -332,6 +330,8 @@
 		59C3CAFE22CA81F30007786A /* Hakuchou_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */; };
 		59C3CAFF22CA81F30007786A /* Hakuchou_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 592B8CAC2236E0BF007D43F4 /* Hakuchou_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
+		59DB9A65234F78710098AE19 /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */; };
+		59DB9A66234F78710098AE19 /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */; };
 		59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
 		59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
 		59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
@@ -749,7 +749,6 @@
 		59282C87220F46C40017DEF4 /* TitleIDMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIDMapper.m; sourceTree = "<group>"; };
 		592A695E2190C1E800F1CBA3 /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
 		592A695F2190C1E800F1CBA3 /* EpisodeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailViewController.m; sourceTree = "<group>"; };
-		592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 2.xcdatamodel"; sourceTree = "<group>"; };
 		592B8CA42236E0BF007D43F4 /* Hakuchou.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Hakuchou.xcodeproj; sourceTree = "<group>"; };
 		592DA183216BCE88008C99B3 /* SortTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTableViewController.h; sourceTree = "<group>"; };
 		592DA184216BCE88008C99B3 /* SortTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
@@ -820,7 +819,6 @@
 		595A9610224002B600E3C245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		595A96212240120A00E3C245 /* TitleSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleSearch.h; sourceTree = "<group>"; };
 		595A96222240120A00E3C245 /* TitleSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleSearch.m; sourceTree = "<group>"; };
-		595A9625224012FC00E3C245 /* Hiyoko 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 4.xcdatamodel"; sourceTree = "<group>"; };
 		595A9627224013A700E3C245 /* string_score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_score.h; sourceTree = "<group>"; };
 		595A9628224013A700E3C245 /* string_score.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string_score.c; sourceTree = "<group>"; };
 		595A962B2240201C00E3C245 /* AnimeRelations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeRelations.h; sourceTree = "<group>"; };
@@ -940,7 +938,6 @@
 		5962421021556512001995AD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5962421121556512001995AD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5962421221556513001995AD /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
-		5962422B2155653D001995AD /* Hiyoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hiyoko.xcdatamodel; sourceTree = "<group>"; };
 		596242742155D2C9001995AD /* OnePasswordExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		596890012190AC6C0029F0FC /* EpisodesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodesTableViewCell.h; sourceTree = "<group>"; };
@@ -994,7 +991,6 @@
 		599121FE224BCE5E00896BEF /* ExportSettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportSettingsTableViewController.m; sourceTree = "<group>"; };
 		5997B4BD2162A6AA005E894A /* TopAlignedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopAlignedLabel.h; sourceTree = "<group>"; };
 		5997B4BE2162A6AA005E894A /* TopAlignedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopAlignedLabel.m; sourceTree = "<group>"; };
-		599CF00D220B61280063EBB9 /* Hiyoko 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 3.xcdatamodel"; sourceTree = "<group>"; };
 		59A0C6F3215A883E00B15F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdvancedEdit.storyboard; sourceTree = "<group>"; };
 		59A0C6F5215A983600B15F9F /* AdvEditTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvEditTableViewController.h; sourceTree = "<group>"; };
 		59A0C6F6215A983600B15F9F /* AdvEditTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvEditTableViewController.m; sourceTree = "<group>"; };
@@ -1030,6 +1026,12 @@
 		59B8047D2344ED6E00B9F989 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenterCrashes.framework; sourceTree = "<group>"; };
 		59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
 		59D9159E2162C1B800B5A61B /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
+		59DB9A5F234F78710098AE19 /* Hiyoko 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 2.xcdatamodel"; sourceTree = "<group>"; };
+		59DB9A60234F78710098AE19 /* Hiyoko 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 4.xcdatamodel"; sourceTree = "<group>"; };
+		59DB9A61234F78710098AE19 /* Hiyoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hiyoko.xcdatamodel; sourceTree = "<group>"; };
+		59DB9A62234F78710098AE19 /* Hiyoko 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 6.xcdatamodel"; sourceTree = "<group>"; };
+		59DB9A63234F78710098AE19 /* Hiyoko 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 3.xcdatamodel"; sourceTree = "<group>"; };
+		59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 5.xcdatamodel"; sourceTree = "<group>"; };
 		59EBC1EC21FD2FCA00481D33 /* ThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
 		59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeManager.m; sourceTree = "<group>"; };
 		59EBC1EF21FD2FFB00481D33 /* ThemeManagerTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeManagerTheme.h; sourceTree = "<group>"; };
@@ -1059,7 +1061,6 @@
 		91DA28B522F095A900255735 /* HistoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryManager.h; sourceTree = "<group>"; };
 		91DA28B622F095A900255735 /* HistoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryManager.m; sourceTree = "<group>"; };
 		91DA28B922F0A9EF00255735 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		91DA28BB22F0AA7300255735 /* Hiyoko 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 5.xcdatamodel"; sourceTree = "<group>"; };
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1313,7 +1314,6 @@
 				596240BA2155622F001995AD /* main.m */,
 				596240B42155622F001995AD /* Assets.xcassets */,
 				5962414F21556362001995AD /* Backend */,
-				5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */,
 				596240B92155622F001995AD /* Info.plist */,
 				59624191215563E8001995AD /* Auth View Controllers */,
 				5962419C21556413001995AD /* Navigation */,
@@ -1516,6 +1516,7 @@
 				914C3BB522EF50C7001893FD /* CellActionEnum.h */,
 				91DA28B522F095A900255735 /* HistoryManager.h */,
 				91DA28B622F095A900255735 /* HistoryManager.m */,
+				59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -2430,7 +2431,6 @@
 				5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */,
 				59912200224BCE5E00896BEF /* ExportSettingsTableViewController.m in Sources */,
 				5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */,
-				5934E220220F7539002B8311 /* Hiyoko.xcdatamodeld in Sources */,
 				5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */,
 				914C3B9F22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */,
 				5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */,
@@ -2494,6 +2494,7 @@
 				5934E25B220F7539002B8311 /* PersonTableViewCell.m in Sources */,
 				5934E25C220F7539002B8311 /* ListSelectorViewController.m in Sources */,
 				5934E25D220F7539002B8311 /* UITextView+SetHTMLAttributedText.m in Sources */,
+				59DB9A66234F78710098AE19 /* Hiyoko.xcdatamodeld in Sources */,
 				5934E25E220F7539002B8311 /* AiringRootViewController.m in Sources */,
 				5934E25F220F7539002B8311 /* AiringDayTableViewController.m in Sources */,
 				5934E260220F7539002B8311 /* AnimeEntryTableViewCell.m in Sources */,
@@ -2572,7 +2573,6 @@
 				59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */,
 				5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */,
 				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
-				5962422C2155653D001995AD /* Hiyoko.xcdatamodeld in Sources */,
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
 				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				597DDCE7224A6FB10005C652 /* ExportMainTableViewController.m in Sources */,
@@ -2585,6 +2585,7 @@
 				595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */,
 				59325ED6216BBF1F00430ED7 /* OAuthLogin.m in Sources */,
 				598AB4F12162976100979C19 /* ReviewTableViewController.m in Sources */,
+				59DB9A65234F78710098AE19 /* Hiyoko.xcdatamodeld in Sources */,
 				5962421521556514001995AD /* ListRootViewController.m in Sources */,
 				592EB7892209D76C004DE461 /* NSMutableArray+MK_Stack.m in Sources */,
 				592EB7872209D76C004DE461 /* NSMutableArray+MK_Queue.m in Sources */,
@@ -3417,17 +3418,19 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5962422A2155653D001995AD /* Hiyoko.xcdatamodeld */ = {
+		59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				91DA28BB22F0AA7300255735 /* Hiyoko 5.xcdatamodel */,
-				595A9625224012FC00E3C245 /* Hiyoko 4.xcdatamodel */,
-				599CF00D220B61280063EBB9 /* Hiyoko 3.xcdatamodel */,
-				592A69732190DA6200F1CBA3 /* Hiyoko 2.xcdatamodel */,
-				5962422B2155653D001995AD /* Hiyoko.xcdatamodel */,
+				59DB9A5F234F78710098AE19 /* Hiyoko 2.xcdatamodel */,
+				59DB9A60234F78710098AE19 /* Hiyoko 4.xcdatamodel */,
+				59DB9A61234F78710098AE19 /* Hiyoko.xcdatamodel */,
+				59DB9A62234F78710098AE19 /* Hiyoko 6.xcdatamodel */,
+				59DB9A63234F78710098AE19 /* Hiyoko 3.xcdatamodel */,
+				59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */,
 			);
-			currentVersion = 91DA28BB22F0AA7300255735 /* Hiyoko 5.xcdatamodel */;
-			path = Hiyoko.xcdatamodeld;
+			currentVersion = 59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */;
+			name = Hiyoko.xcdatamodeld;
+			path = ../Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

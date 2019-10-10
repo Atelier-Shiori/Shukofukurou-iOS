@@ -56,6 +56,7 @@
         [historyobj setValue:title forKey:@"title"];
         [historyobj setValue:@(titleid) forKey:@"titleid"];
         [historyobj setValue:useridentifier forKey:@"user"];
+        [historyobj setValue:@NO forKey:@"synced"];
         [_moc save:nil];
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
             [self inserticloudrecord:historyobj];
@@ -78,6 +79,7 @@
         [historyobj setValue:record[@"title"] forKey:@"title"];
         [historyobj setValue:record[@"titleid"] forKey:@"titleid"];
         [historyobj setValue:record[@"user"] forKey:@"user"];
+        [historyobj setValue:@YES forKey:@"synced"];
         [_moc save:nil];
     }];
     #endif
@@ -107,6 +109,8 @@
         if (error) {
             NSLog(@"Error inserting record on iCloud: %@", error);
         }
+        [object setValue:@YES forKey:@"synced"];
+        [self.moc save:nil];
     }];
     #endif
     
@@ -144,12 +148,17 @@
         fetchRequest.entity = [NSEntityDescription entityForName:@"UpdateHistory" inManagedObjectContext:self.moc];
         NSArray *entries = [self.moc executeFetchRequest:fetchRequest error:&error];
         for (NSManagedObject *obj in entries) {
-            if (((NSNumber *)[obj valueForKey:@"historyactiondate"]).longValue > syncdate && ![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) {
+            if ((((NSNumber *)[obj valueForKey:@"historyactiondate"]).longValue > syncdate && ![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) || !((NSNumber *)[obj valueForKey:@"synced"]).boolValue) {
                 [self inserticloudrecord:obj];
             }
             else {
                 if (![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) {
                     [self deleteHistoryRecord:obj];
+                }
+                else if (!((NSNumber *)[obj valueForKey:@"synced"]).boolValue) {
+                    // Set proper sync value
+                    [obj setValue:@YES forKey:@"synced"];
+                    [self.moc save:nil];
                 }
             }
         }
