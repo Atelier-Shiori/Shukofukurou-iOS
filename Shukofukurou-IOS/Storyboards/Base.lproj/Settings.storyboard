@@ -309,11 +309,11 @@
                                         <rect key="frame" x="0.0" y="595.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UDt-4T-9n6" id="fj7-tz-vvG">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="301" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Air Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IQb-Ew-dzl">
-                                                    <rect key="frame" x="16" y="0.0" width="269" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="278" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -329,11 +329,11 @@
                                         <rect key="frame" x="0.0" y="639.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="erh-77-NzW" id="Vm2-Qc-ZCF">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="301" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Scrobble Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jqZ-jU-Yjt">
-                                                    <rect key="frame" x="16" y="0.0" width="269" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="278" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -349,11 +349,11 @@
                                         <rect key="frame" x="0.0" y="683.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORz-tr-0Vx" id="CjR-Ko-h3I">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="301" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Export Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v7C-vl-aX9">
-                                                    <rect key="frame" x="16" y="0.0" width="269" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="278" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -979,7 +979,7 @@
                         <sections>
                             <tableViewSection id="NDb-g9-Cbt">
                                 <cells>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="6sY-QU-eSY" style="IBUITableViewCellStyleDefault" id="oe1-C0-DfP" customClass="UITableViewCellSelBackground">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="6sY-QU-eSY" style="IBUITableViewCellStyleDefault" id="oe1-C0-DfP" customClass="UITableViewCellSelBackground">
                                         <rect key="frame" x="0.0" y="18" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oe1-C0-DfP" id="oCk-RM-uvs">
