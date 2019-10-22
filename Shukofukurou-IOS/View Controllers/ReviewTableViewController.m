@@ -148,8 +148,8 @@
             NSDictionary *review = _reviews[indexPath.row];
             switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
-                    cell.textLabel.text = review[@"reviewer"][@"username"];
-                    cell.detailTextLabel.text = ((NSNumber *)review[@"reviewer"][@"scores"][@"overall"]).stringValue;
+                    cell.textLabel.text = review[@"username"];
+                    cell.detailTextLabel.text = ((NSNumber *)review[@"rating"]).stringValue;
                     break;
                 case 3:
                     cell.textLabel.text = review[@"username"];

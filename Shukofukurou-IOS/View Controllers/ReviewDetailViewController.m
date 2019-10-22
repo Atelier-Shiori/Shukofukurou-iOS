@@ -67,10 +67,10 @@
 - (void)populateReviewData:(NSDictionary *)review withType:(int)type {
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     _type = type;
-    self.navigationItem.title = currentservice == 1 ? review[@"reviewer"][@"username"] : review[@"username"];
+    self.navigationItem.title = review[@"username"];
     NSString *score = @"0";
     if (currentservice == 1) {
-        score = ((NSNumber *)review[@"reviewer"][@"rating"]).stringValue;
+        score = ((NSNumber *)review[@"rating"]).stringValue;
         
     }
     else {
@@ -78,14 +78,14 @@
     }
     _score.text = score;
     _reviewdate.text = [NSString stringWithFormat:@"Reviewed on %@", review[@"date"]];
-    NSNumber *progress = type == 0 ? currentservice == 1 ? review[@"reviewer"][@"episodes_seen"] : review[@"watched_episodes"] : currentservice == 1 ? review[@"reviewer"][@"chapters_read"]: review[@"chapters_read"];
+    NSNumber *progress = type == 0 ? review[@"watched_episodes"] : review[@"chapters_read"];
     _progress.text = [NSString stringWithFormat:@"%@%@", _type == 0 ? @"Episodes watched:" : @"Chapters read:", progress];
-    _helpful.text = currentservice == 1 ? ((NSNumber *)review[@"helpful_count"] ).stringValue : ((NSNumber *)review[@"helpful"] ).stringValue;
-    [self loadimage:currentservice == 1 ? review[@"reviewer"][@"image_url"] : review[@"avatar_url"]];
+    _helpful.text = ((NSNumber *)review[@"helpful"] ).stringValue;
+    [self loadimage:review[@"avatar_url"]];
     self.navigationItem.hidesBackButton = YES;
     __weak ReviewDetailViewController *weakSelf = self;
     if (currentservice == 1) {
-        _reviewtext.text = (NSString *)review[@"content"];
+        _reviewtext.text = [(NSString *)review[@"review"] stringByReplacingOccurrencesOfString:@"\\n\\n" withString:@"\n\n"];
         weakSelf.navigationItem.hidesBackButton = NO;
         if (@available(iOS 13, *)) {
             weakSelf.reviewtext.textColor = [UIColor labelColor];
