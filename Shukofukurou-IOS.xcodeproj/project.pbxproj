@@ -83,7 +83,6 @@
 		5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FE21556508001995AD /* SearchRootViewController.m */; };
 		5934E235220F7539002B8311 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EB215564FD001995AD /* ListViewController.m */; };
 		5934E236220F7539002B8311 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
-		5934E237220F7539002B8311 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		5934E238220F7539002B8311 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624164215563AA001995AD /* AiringSchedule.m */; };
 		5934E239220F7539002B8311 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624180215563CE001995AD /* listservice.m */; };
 		5934E23A220F7539002B8311 /* NSArray+MK_Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB77E2209D76C004DE461 /* NSArray+MK_Block.m */; };
@@ -157,7 +156,6 @@
 		594810EF219214BA000C4B5C /* TrendingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */; };
 		594810F221921713000C4B5C /* TrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F121921713000C4B5C /* TrendingViewController.m */; };
 		594810F521921FD0000C4B5C /* TrendingCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */; };
-		59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		59481D8421594078003CE863 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
 		59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D89215953C1003CE863 /* CustomListTableViewController.m */; };
 		594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D09332202019E00A37B6B /* TableViewCellBackgroundView.m */; };
@@ -264,6 +262,8 @@
 		596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B32163D11E0005A60F /* CharacterTableViewController.m */; };
 		596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B62163D1330005A60F /* CharacterDetailViewController.m */; };
 		596A01BA2163F4570005A60F /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A01B92163F4570005A60F /* PersonTableViewCell.m */; };
+		59744F18237C534400D0D8E5 /* NewStreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59744F17237C534400D0D8E5 /* NewStreamDataRetriever.m */; };
+		59744F19237C534400D0D8E5 /* NewStreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59744F17237C534400D0D8E5 /* NewStreamDataRetriever.m */; };
 		5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 597559592199E1C500C1F188 /* TitleIdEnumerator.m */; };
 		597DDB0622B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */; };
 		597DDB0722B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */; };
@@ -952,6 +952,9 @@
 		596A01B62163D1330005A60F /* CharacterDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterDetailViewController.m; sourceTree = "<group>"; };
 		596A01B82163F4570005A60F /* PersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonTableViewCell.h; sourceTree = "<group>"; };
 		596A01B92163F4570005A60F /* PersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
+		59744F02237C4C5B00D0D8E5 /* Hiyoko 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 6.xcdatamodel"; sourceTree = "<group>"; };
+		59744F16237C534400D0D8E5 /* NewStreamDataRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewStreamDataRetriever.h; sourceTree = "<group>"; };
+		59744F17237C534400D0D8E5 /* NewStreamDataRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewStreamDataRetriever.m; sourceTree = "<group>"; };
 		597559582199E1C500C1F188 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
 		597559592199E1C500C1F188 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
 		597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TitleInfoStreamSiteTableViewCell.xib; path = Base.lproj/TitleInfoStreamSiteTableViewCell.xib; sourceTree = "<group>"; };
@@ -1517,6 +1520,8 @@
 				91DA28B522F095A900255735 /* HistoryManager.h */,
 				91DA28B622F095A900255735 /* HistoryManager.m */,
 				59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */,
+				59744F16237C534400D0D8E5 /* NewStreamDataRetriever.h */,
+				59744F17237C534400D0D8E5 /* NewStreamDataRetriever.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -2443,6 +2448,7 @@
 				5934E22E220F7539002B8311 /* ReviewTableViewController.m in Sources */,
 				5934E22F220F7539002B8311 /* ListRootViewController.m in Sources */,
 				5934E230220F7539002B8311 /* NSMutableArray+MK_Stack.m in Sources */,
+				59744F19237C534400D0D8E5 /* NewStreamDataRetriever.m in Sources */,
 				5934E231220F7539002B8311 /* NSMutableArray+MK_Queue.m in Sources */,
 				5934E232220F7539002B8311 /* LoadViewController.m in Sources */,
 				595D666322416FCC00B54BCA /* ScrobbleManager.m in Sources */,
@@ -2453,7 +2459,6 @@
 				59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */,
 				5934E235220F7539002B8311 /* ListViewController.m in Sources */,
 				5934E236220F7539002B8311 /* DarkTheme.m in Sources */,
-				5934E237220F7539002B8311 /* StreamDataRetriever.m in Sources */,
 				599121FC224BC1C200896BEF /* ExportOperationManager.m in Sources */,
 				5934E238220F7539002B8311 /* AiringSchedule.m in Sources */,
 				5934E239220F7539002B8311 /* listservice.m in Sources */,
@@ -2594,7 +2599,6 @@
 				5962422121556514001995AD /* SearchRootViewController.m in Sources */,
 				5962421721556514001995AD /* ListViewController.m in Sources */,
 				59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */,
-				59481D8121591F44003CE863 /* StreamDataRetriever.m in Sources */,
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
 				592EB7882209D76C004DE461 /* NSArray+MK_Block.m in Sources */,
@@ -2608,6 +2612,7 @@
 				59481D8A215953C1003CE863 /* CustomListTableViewController.m in Sources */,
 				5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */,
 				59B3AC602209226C0050662A /* StatsViewController.m in Sources */,
+				59744F18237C534400D0D8E5 /* NewStreamDataRetriever.m in Sources */,
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
 				594D0937220207FD00A37B6B /* UITableViewCellSelBackground.m in Sources */,
 				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
@@ -3421,6 +3426,7 @@
 		59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				59744F02237C4C5B00D0D8E5 /* Hiyoko 6.xcdatamodel */,
 				59DB9A5F234F78710098AE19 /* Hiyoko 2.xcdatamodel */,
 				59DB9A60234F78710098AE19 /* Hiyoko 4.xcdatamodel */,
 				59DB9A61234F78710098AE19 /* Hiyoko.xcdatamodel */,
@@ -3428,7 +3434,7 @@
 				59DB9A63234F78710098AE19 /* Hiyoko 3.xcdatamodel */,
 				59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */,
 			);
-			currentVersion = 59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */;
+			currentVersion = 59DB9A62234F78710098AE19 /* Hiyoko 6.xcdatamodel */;
 			name = Hiyoko.xcdatamodeld;
 			path = ../Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";

@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "listservice.h"
 #import "AutoRefreshTimer.h"
-#import "StreamDataRetriever.h"
 #import "AiringSchedule.h"
 #import <SDWebImage/SDWebImage.h>
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -141,7 +140,6 @@
     [self checkaccountinformation];
     [self storeCurrentServicetoAppGroup];
     _autorefresh = [AutoRefreshTimer new];
-    [StreamDataRetriever retrieveStreamData];
     _airingnotificationmanager = [AiringNotificationManager new];
     // Set Background Fetch
     [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];

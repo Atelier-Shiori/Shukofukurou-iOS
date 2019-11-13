@@ -8,7 +8,6 @@
 
 #import "StreamingRegionTableViewController.h"
 #import "UITableViewCellSelBackground.h"
-#import "StreamDataRetriever.h"
 #import "ThemeManager.h"
 
 @interface StreamingRegionTableViewController ()
@@ -31,8 +30,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [NSUserDefaults.standardUserDefaults setInteger:indexPath.row forKey:@"stream_region"];
     [self setcellstate];
-    [StreamDataRetriever removeAllStreamEntries];
-    [StreamDataRetriever performrestrieveStreamData];
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
 }
 
