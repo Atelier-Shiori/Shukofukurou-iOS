@@ -138,55 +138,79 @@
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:@"historyRecord" predicate:predicate];
     [_container.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable results, NSError * _Nullable error) {
+        NSLog(@"iCloud Count: %li", results.count);
         if (error) {
             NSLog(@"%@", error);
             completionHandler([self retrieveHistoryList]);
             return;
         }
-        // Check Local Entries
-        NSFetchRequest *fetchRequest = [NSFetchRequest new];
-        fetchRequest.entity = [NSEntityDescription entityForName:@"UpdateHistory" inManagedObjectContext:self.moc];
-        NSArray *entries = [self.moc executeFetchRequest:fetchRequest error:&error];
-        for (NSManagedObject *obj in entries) {
-            if ((((NSNumber *)[obj valueForKey:@"historyactiondate"]).longValue > syncdate && ![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) || !((NSNumber *)[obj valueForKey:@"synced"]).boolValue) {
-                [self inserticloudrecord:obj];
-            }
-            else {
-                if (![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) {
-                    [self deleteHistoryRecord:obj];
+            // Check Local Entries
+            NSFetchRequest *fetchRequest = [NSFetchRequest new];
+            fetchRequest.entity = [NSEntityDescription entityForName:@"UpdateHistory" inManagedObjectContext:self.moc];
+            NSArray *entries = [self.moc executeFetchRequest:fetchRequest error:&error];
+            for (NSManagedObject *obj in entries) {
+                if (results.count == 0) {
+                    [self inserticloudrecord:obj];
                 }
-                else if (!((NSNumber *)[obj valueForKey:@"synced"]).boolValue) {
-                    // Set proper sync value
-                    [obj setValue:@YES forKey:@"synced"];
-                    [self.moc save:nil];
+                else if ((((NSNumber *)[obj valueForKey:@"historyactiondate"]).longValue > syncdate && ![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) || !((NSNumber *)[obj valueForKey:@"synced"]).boolValue) {
+                    [self inserticloudrecord:obj];
+                   }
+                else {
+                    if (![self checkicloudentryexists:[obj valueForKey:@"historyid"] withArray:results]) {
+                        [self deleteHistoryRecord:obj];
+                    }
+                    else if (!((NSNumber *)[obj valueForKey:@"synced"]).boolValue) {
+                        // Set proper sync value
+                        [obj setValue:@YES forKey:@"synced"];
+                        [self.moc save:nil];
+                    }
                 }
-            }
+            [self.moc save:nil];
         }
-        [self.moc save:nil];
         [self.container.privateCloudDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray<CKRecord *> * _Nullable nresults, NSError * _Nullable error) {
+             NSLog(@"iCloud Count: %li", results.count);
             if (error) {
                 completionHandler([self retrieveHistoryList]);
                 return;
             }
-            // Sync From iCloud to local database
-            for (CKRecord *record in nresults) {
-                if (((NSNumber *)record[@"historyactiondate"]).longValue > syncdate && ![self historyentryexists:record[@"historyid"]]) {
-                    // Insert Record
-                    [self insertHistoryRecordWithCKRecord:record];
-                }
-                else {
-                    if (![self historyentryexists:record[@"historyid"]]) {
-                        // Delete entry, does not exist on device and is before sync date.
-                        [self deleteticloudrecord:record.recordID.recordName];
-                        continue;
+            if (results.count > 0) {
+                // Sync From iCloud to local database
+                for (CKRecord *record in nresults) {
+                    if (((NSNumber *)record[@"historyactiondate"]).longValue > syncdate && ![self historyentryexists:record[@"historyid"]]) {
+                        // Insert Record
+                        [self insertHistoryRecordWithCKRecord:record];
+                    }
+                    else {
+                        if (![self historyentryexists:record[@"historyid"]]) {
+                            // Delete entry, does not exist on device and is before sync date.
+                            [self deleteticloudrecord:record.recordID.recordName];
+                            continue;
+                        }
                     }
                 }
             }
             [defaults setInteger:[NSDate date].timeIntervalSince1970 forKey:@"historysyncdate"];
             [self pruneLocalHistory];
+            if (results.count > 0) {
                 [self pruneicloudHistory:^{
                     completionHandler([self retrieveHistoryList]);
                 }];
+            }
+            else {
+                [self.moc performBlockAndWait:^{
+                    NSError *ferror;
+                    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+                    fetchRequest.entity = [NSEntityDescription entityForName:@"UpdateHistory" inManagedObjectContext:self.moc];
+                    NSArray *entries = [self.moc executeFetchRequest:fetchRequest error:&ferror];
+                    for (NSManagedObject *obj in entries) {
+                        if (((NSNumber *)[obj valueForKey:@"synced"]).boolValue) {
+                            // Remove only synced items
+                            [self.moc deleteObject:obj];
+                        }
+                    }
+                }];
+                completionHandler([self retrieveHistoryList]);
+            }
         }];
         
     }];
