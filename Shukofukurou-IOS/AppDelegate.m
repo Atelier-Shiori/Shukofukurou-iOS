@@ -48,7 +48,7 @@
     defaultValues[@"darkmode"] = @NO;
     defaultValues[@"cellaction"] = @(0);
     defaultValues[@"historyprunedate"] = @(90);
-    defaultValues[@"synchistorytoicloud"] = @YES;
+    defaultValues[@"synchistorytoicloud"] = @NO;
     defaultValues[@"sendanalytics"] = @YES;
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
@@ -122,6 +122,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"synchistorytoicloud"];
 #if defined(OSS)
 #else
     [MSAppCenter start:@"4e2647ac-c16c-4771-a11f-65de034d15a4" withServices:@[
