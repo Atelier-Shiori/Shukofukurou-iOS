@@ -55,6 +55,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     self.navigationController.toolbarHidden = NO;
+    if ([listservice.sharedInstance getCurrentServiceID] == 1) {
+        _advsearchtoolbaritem.enabled = NO;
+    }
+    else {
+        _advsearchtoolbaritem.enabled = YES;
+    }
 }
 
 - (void)setupsearch {
