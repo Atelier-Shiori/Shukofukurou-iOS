@@ -641,11 +641,11 @@
         [updatedfields addEntriesFromDictionary:[self generateExtraFieldsUpdateEntryWithType:0 withUpdateDictionary:entry]];
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:weakSelf.entryid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:selectededitid withIdType:1];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:weakSelf.entryid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:selectededitid withIdType:1];
                 break;
         }
         weakSelf.entryUpdated(weakSelf.currenttype);
