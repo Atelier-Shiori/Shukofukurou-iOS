@@ -50,6 +50,7 @@
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
 #if defined(OSS)
     _analyticstoggle.enabled = NO;
+    _analyticstoggle.on = NO;
 #else
     _analyticstoggle.on = [defaults boolForKey:@"sendanalytics"];
 #endif
@@ -214,6 +215,7 @@
 - (IBAction)sendstatstoggle:(id)sender {
 #if defined(OSS)
 #else
+        [NSUserDefaults.standardUserDefaults setBool:_analyticstoggle forKey:@"sendanalytics"]
         [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
         [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #endif
