@@ -215,7 +215,7 @@
 - (IBAction)sendstatstoggle:(id)sender {
 #if defined(OSS)
 #else
-        [NSUserDefaults.standardUserDefaults setBool:_analyticstoggle forKey:@"sendanalytics"]
+        [NSUserDefaults.standardUserDefaults setBool:_analyticstoggle.on forKey:@"sendanalytics"];
         [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
         [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #endif

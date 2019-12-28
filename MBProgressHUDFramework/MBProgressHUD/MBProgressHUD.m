@@ -83,7 +83,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     _margin = 20.0f;
     _defaultMotionEffectsEnabled = NO;
 
-    if (@available(iOS 13.0, *)) {
+    if (@available(iOS 13.0, tvOS 13, *)) {
        _contentColor = [[UIColor labelColor] colorWithAlphaComponent:0.7f];
     } else {
         _contentColor = [UIColor colorWithWhite:0.f alpha:0.7f];
@@ -137,7 +137,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
         NSTimer *timer = [NSTimer timerWithTimeInterval:self.graceTime target:self selector:@selector(handleGraceTimer:) userInfo:nil repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         self.graceTimer = timer;
-    }
+    } 
     // ... otherwise show the HUD immediately
     else {
         [self showUsingAnimation:self.useAnimation];
@@ -158,7 +158,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
             self.minShowTimer = timer;
             return;
-        }
+        } 
     }
     // ... otherwise hide the HUD immediately
     [self hideUsingAnimation:self.useAnimation];
@@ -392,7 +392,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
         if (mode == MBProgressHUDModeAnnularDeterminate) {
             [(MBRoundProgressView *)indicator setAnnular:YES];
         }
-    }
+    } 
     else if (mode == MBProgressHUDModeCustomView && self.customView != indicator) {
         // Update custom view indicator
         [indicator removeFromSuperview];
@@ -1048,8 +1048,12 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     if ((self = [super initWithFrame:frame])) {
         _style = MBProgressHUDBackgroundStyleBlur;
         if (@available(iOS 13.0, *)) {
+            #if TARGET_OS_TV
             _blurEffectStyle = UIBlurEffectStyleRegular;
-            _color = [[UIColor secondarySystemBackgroundColor] colorWithAlphaComponent:0.8f];
+            #else
+            _blurEffectStyle = UIBlurEffectStyleSystemThickMaterial;
+            #endif
+            // Leaving the color unassigned yields best results.
         } else {
             _blurEffectStyle = UIBlurEffectStyleLight;
             _color = [UIColor colorWithWhite:0.8f alpha:0.6f];
@@ -1152,8 +1156,9 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 }
 
 - (CGSize)intrinsicContentSize {
-    // Only show if we have associated control events
-    if (self.allControlEvents == 0) return CGSizeZero;
+    // Only show if we have associated control events and a title
+    if ((self.allControlEvents == 0) || ([self titleForState:UIControlStateNormal].length == 0))
+		return CGSizeZero;
     CGSize size = [super intrinsicContentSize];
     // Add some side padding
     size.width += 20.f;
