@@ -286,9 +286,9 @@
             sortstr = @"TRENDING_DESC";
             break;
         case TrendListTypeSeasonPopular:
-            return @"query ($type: MediaType) {\n  Page(perPage: 10) {\n    media(type: $type, sort: POPULARITY_DESC, status: RELEASING) {\n      id\n      idMal\n      isAdult\n      coverImage {\n        large\n        medium\n      }\n      title {\n        romaji\n        english\n        native\n        userPreferred\n      }\n      episodes\n      chapters\n      volumes\n      format\n      averageScore\n      status\n    }\n  }\n}";
+            return @"query ($type: MediaType) {\n  Page(perPage: 10) {\n    media(type: $type, sort: POPULARITY_DESC, status: RELEASING) {\n      id\n      idMal\n      isAdult\n      genres\n      coverImage {\n        large\n        medium\n      }\n      title {\n        romaji\n        english\n        native\n        userPreferred\n      }\n      episodes\n      chapters\n      volumes\n      format\n      averageScore\n      status\n    }\n  }\n}";
     }
-    return [NSString stringWithFormat:@"query ($type: MediaType) {\n  Page(perPage: 10) {\n    media(type: $type, sort: %@) {\n      id\n      title {\n        userPreferred\n        english\n        romaji\n      }\n      synonyms\n      coverImage {\n        medium\n        large\n      }\n      format\n      type\n      status\n      episodes\n      chapters\n      volumes\n      isAdult\n    }\n  }\n}", sortstr];
+    return [NSString stringWithFormat:@"query ($type: MediaType) {\n  Page(perPage: 10) {\n    media(type: $type, sort: %@) {\n      id\n      title {\n        userPreferred\n        english\n        romaji\n      }\n      synonyms\n      coverImage {\n        medium\n        large\n      }\n      format\n      type\n      status\n      episodes\n      chapters\n      volumes\n      isAdult\n      genres\n    }\n  }\n}", sortstr];
 }
 
 + (NSString *)serializeDictionarytoJSON:(id)responseObject {

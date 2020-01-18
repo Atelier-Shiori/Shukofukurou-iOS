@@ -69,7 +69,7 @@
         errorHandler(nil);
         return;
     }
-    [manager GET:[NSString stringWithFormat:@"https://api.myanimelist.net/v2/anime/season/%i/%@?limit=100&offset=%i&fields=nsfw,media_type,alternative_titles", year, season.lowercaseString, page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://api.myanimelist.net/v2/anime/season/%i/%@?limit=100&offset=%i&fields=nsfw,media_type,alternative_titles,genres", year, season.lowercaseString, page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
             [array addObjectsFromArray:responseObject[@"data"]];
         }

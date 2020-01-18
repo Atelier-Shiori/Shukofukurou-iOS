@@ -54,6 +54,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *scorelabel;
 @property (strong, nonatomic) IBOutlet UIImageView *scoreimage;
 @property bool entrychanged;
+@property bool isNSFW;
 @end
 
 @implementation TitleInfoViewController
@@ -250,6 +251,7 @@
 - (void)populateInfoWithType:(int)type withDictionary:(NSDictionary *)titleinfo {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.currenttype = type;
+        self.isNSFW = ((NSNumber *)titleinfo[@"isNSFW"]).boolValue;
         self.navigationitem.title = titleinfo[@"title"];
         [self.relatedtvc generateRelated:titleinfo withType:self.currenttype];
         if (type == 0) {
@@ -297,12 +299,14 @@
     __weak TitleInfoViewController *weakSelf = self;
     bool isregularclass = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
     if (!isregularclass) {
-        [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice.sharedInstance currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [weakSelf performViewOnListSite];
-        }]];
-        [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [weakSelf performShare:sender];
-        }]];
+        if (!_isNSFW) {
+            [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"View on %@", [listservice.sharedInstance currentservicename]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [weakSelf performViewOnListSite];
+            }]];
+            [options addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [weakSelf performShare:sender];
+            }]];
+        }
     }
     if ([listservice.sharedInstance checkAccountForCurrentService] && !_isNewEntry) {
         [options addAction:[UIAlertAction actionWithTitle:@"Advanced Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -764,22 +768,28 @@
     }
     // Generate Cell Array
     tmpdictionary[@"Synopsis"] = @[[[EntryCellInfo alloc] initCellWithTitle:@"" withValue:titleinfo[@"synopsis"] withCellType:cellTypeSynopsis]];
-    tmpdictionary[@"Title Details"] = type == 0 ? [self generateAnimeTitleArray:titleinfo] : [self generateMangaTitleArray:titleinfo];
+    if (!_isNSFW) {
+        tmpdictionary[@"Title Details"] = type == 0 ? [self generateAnimeTitleArray:titleinfo] : [self generateMangaTitleArray:titleinfo];
+    }
     if (userentry) {
         tmpdictionary[@"Your Entry"] = type == 0 ? [self generateUserEntryAnimeArray:userentry] : [self generateUserEntryMangaArray:userentry];
     }
-    if (_currenttype == Anime) {
-        NSDictionary *streamsites;
-        NSArray *titles = [self aggregateTitles:titleinfo];
-        for (NSString *stitle in titles) {
-            if (_streamsitelinks.count > 0) {
-                tmpdictionary[@"Stream Sites"] = [self generateStreamSitesCellArray];
-                break;
+    if (!_isNSFW) {
+        if (_currenttype == Anime) {
+            NSDictionary *streamsites;
+            NSArray *titles = [self aggregateTitles:titleinfo];
+            for (NSString *stitle in titles) {
+                if (_streamsitelinks.count > 0) {
+                    tmpdictionary[@"Stream Sites"] = [self generateStreamSitesCellArray];
+                    break;
+                }
             }
         }
     }
     _items = tmpdictionary;
     _sections = [self generateSections];
+    _shareitembaritem.enabled = !_isNSFW;
+    _titleinfobaritem.enabled = !_isNSFW;
     [_tableview reloadData];
 }
 
