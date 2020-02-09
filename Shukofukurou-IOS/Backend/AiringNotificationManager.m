@@ -228,7 +228,7 @@
 }
 
 - (void)setNotification:(NSManagedObject *)notificationobj {
-    if ([notificationobj valueForKey:@"nextairdate"] != [NSNull null]) {
+    if ([notificationobj valueForKey:@"nextairdate"] != [NSNull null] && [notificationobj valueForKey:@"anilistid"] && [notificationobj valueForKey:@"servicetitleid"]) {
         UNMutableNotificationContent *content = [UNMutableNotificationContent new];
         content.title = [notificationobj valueForKey:@"title"];
         content.body = [NSString stringWithFormat:@"Episode %@ has aired.", [notificationobj valueForKey:@"nextepisode"]];
