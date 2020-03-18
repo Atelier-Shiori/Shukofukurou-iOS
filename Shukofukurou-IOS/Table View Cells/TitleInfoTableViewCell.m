@@ -204,7 +204,15 @@
     self.selected = NO;
 }
 
+- (IBAction)progressChanging:(id)sender {
+    [self progresschanged];
+}
+
 - (IBAction)progressdidchange:(id)sender {
+    [self progresschanged];
+}
+
+- (void)progresschanged {
     if (_episodefield.text.intValue <= _stepper.maximumValue && _stepper.maximumValue && _episodefield.text.intValue >= 0) {
         _stepper.value = _episodefield.text.intValue;
         _currentprogress = _episodefield.text.intValue;
@@ -216,6 +224,7 @@
 }
 
 - (IBAction)stepperincrement:(id)sender {
+    [_episodefield resignFirstResponder];
     if ((int)_stepper.value <= _stepper.maximumValue && _stepper.maximumValue && (int)_stepper.value >= 0) {
         _episodefield.text = @(@(_stepper.value).intValue).stringValue;
         _currentprogress = _episodefield.text.intValue;

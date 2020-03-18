@@ -187,8 +187,8 @@
     }
     cell.fieldtitlelabel.text = cellInfo.cellTitle;
     cell.currentprogress = ((NSNumber *)cellInfo.cellValue).intValue;
-    cell.stepper.value = cell.currentprogress;
     cell.stepper.maximumValue = cellInfo.cellValueMax > 0 ? cellInfo.cellValueMax : 999999999;
+    cell.stepper.value = cell.currentprogress;
     cell.episodefield.text = @(cell.currentprogress).stringValue;
     cell.valueChanged = ^(NSNumber * _Nonnull newvalue, NSString * _Nonnull fieldname) {
         cellInfo.cellValue = newvalue;
