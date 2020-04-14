@@ -466,10 +466,50 @@
         aentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
         [aentrycell loadimage:entry[@"image_url"]];
         aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
-        // Geneerate Swipe Cells
-        // Left
         __weak ListViewController *weakSelf = self;
         int currentservice = [listservice.sharedInstance getCurrentServiceID];
+        if (@available(iOS 13.0, *)) {
+            // Generate Context Items
+            NSMutableArray *contextItems = [NSMutableArray new];
+            if ([self canIncrement:entry]) {
+                aentrycell.actionIncrement = [UIAction actionWithTitle:@"Increment" image:[UIImage imageNamed:@"increment"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+                    NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                    [weakSelf incrementProgress:entry];
+                }];
+                [contextItems addObject:aentrycell.actionIncrement];
+            }
+            aentrycell.actionviewonsite = [UIAction actionWithTitle:@"View on Site" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
+            }];
+            [contextItems addObject:aentrycell.actionviewonsite];
+            aentrycell.actionadvEdit = [UIAction actionWithTitle:@"Advanced Edit" image:[UIImage imageNamed:@"advedit"] identifier:@"actionAdvEdit" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
+            }];
+            [contextItems addObject:aentrycell.actionadvEdit];
+            aentrycell.actionshare = [UIAction actionWithTitle:@"Share" image:[UIImage imageNamed:@"share"] identifier:@"actionShare" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:aentrycell];
+            }];
+            [contextItems addObject:aentrycell.actionshare];
+            if (currentservice == 3) {
+                aentrycell.actioncustomlist = [UIAction actionWithTitle:@"Custom List" image:[UIImage imageNamed:@"customlist"] identifier:@"actionCustomList" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
+                }];
+                [contextItems addObject:aentrycell.actioncustomlist];
+            }
+            aentrycell.actiondelete = [UIAction actionWithTitle:@"Delete Entry" image:[UIImage imageNamed:@"delete"] identifier:@"actionDelete" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
+            }];
+            aentrycell.actiondelete.attributes = UIMenuElementAttributesDestructive;
+            [contextItems addObject:aentrycell.actiondelete];
+            aentrycell.contextActions = contextItems;
+        }
+        // Geneerate Swipe Cells
+        // Left
         aentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
@@ -591,7 +631,12 @@
         mentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
         [mentrycell loadimage:entry[@"image_url"]];
         mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
+        // Generate Context Items
         
+        
+#else
+#endif
         // Geneerate Swipe Cells
         // Left
         __weak ListViewController *weakSelf = self;
@@ -723,6 +768,25 @@
     }
     else {
         [(UITableViewCell *)cell setSelected:NO animated:NO];
+    }
+}
+
+- (UIContextMenuConfiguration *)tableView:(UITableView *)tableView
+contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
+                                    point:(CGPoint)point {
+    id selected = [tableView cellForRowAtIndexPath:indexPath];
+    if ([selected isKindOfClass:[AnimeEntryTableViewCell class]]) {
+        return [UIContextMenuConfiguration configurationWithIdentifier:nil previewProvider:nil actionProvider:^UIMenu * _Nullable(NSArray<UIMenuElement *> * _Nonnull suggestedActions) {
+            return [UIMenu menuWithTitle:@"" children:((AnimeEntryTableViewCell *)selected).contextActions];
+        }];
+    }
+    else if ([selected isKindOfClass:[AnimeEntryTableViewCell class]])  {
+        return [UIContextMenuConfiguration configurationWithIdentifier:nil previewProvider:nil actionProvider:^UIMenu * _Nullable(NSArray<UIMenuElement *> * _Nonnull suggestedActions) {
+            return [UIMenu menuWithTitle:@"" children:((MangaEntryTableViewCell *)selected).contextActions];
+        }];
+    }
+    else {
+        return nil;
     }
 }
 

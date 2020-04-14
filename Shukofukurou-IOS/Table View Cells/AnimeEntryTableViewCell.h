@@ -18,6 +18,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) MGSwipeButton *customlistbutton;
 @property (strong) MGSwipeButton *shareswipebutton;
 @property (strong) MGSwipeButton *optionswipebutton;
+// UIActions
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
+@property (strong) UIAction *actionIncrement;
+@property (strong) UIAction *actionadvEdit;
+@property (strong) UIAction *actionviewonsite;
+@property (strong) UIAction *actioncustomlist;
+@property (strong) UIAction *actionshare;
+@property (strong) UIAction *actiondelete;
+@property (strong) NSArray *contextActions;
+#else
+#endif
+
 @property (strong) NSArray *regularswipebuttons;
 @property (strong) NSArray *compactswipebuttons;
 @property (weak, nonatomic) IBOutlet UIImageView *posterimage;
