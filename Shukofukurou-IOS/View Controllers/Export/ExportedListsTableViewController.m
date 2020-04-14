@@ -91,6 +91,25 @@
     return cell;
 }
 
+- (UIContextMenuConfiguration *)tableView:(UITableView *)tableView
+contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
+                                    point:(CGPoint)point {
+     NSManagedObjectContext *obj = ((NSArray *)_exportedlists[_allsections[indexPath.section]])[indexPath.row];
+    __weak ExportedListsTableViewController *weakself = self;
+    UIAction *exportAction = [UIAction actionWithTitle:@"Export" image:[UIImage imageNamed:@"export"] identifier:@"actionexport" handler:^(__kindof UIAction * _Nonnull action) {
+        NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
+        [weakself performexport:list withCell:[tableView cellForRowAtIndexPath:indexPath]];
+    }];
+    UIAction *deleteAction = [UIAction actionWithTitle:@"Delete" image:[UIImage imageNamed:@"delete"] identifier:@"deleteaction" handler:^(__kindof UIAction * _Nonnull action) {
+                              NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
+                              [weakself promptdelete:list];
+    }];
+    deleteAction.attributes = UIMenuElementAttributesDestructive;
+        return [UIContextMenuConfiguration configurationWithIdentifier:nil previewProvider:nil actionProvider:^UIMenu * _Nullable(NSArray<UIMenuElement *> * _Nonnull suggestedActions) {
+            return [UIMenu menuWithTitle:@"" children:@[exportAction,deleteAction]];
+        }];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UISwipeCellNoBackground *cell = (UISwipeCellNoBackground *)[self.tableView cellForRowAtIndexPath:indexPath];
     [cell showSwipe:MGSwipeDirectionRightToLeft animated:YES];

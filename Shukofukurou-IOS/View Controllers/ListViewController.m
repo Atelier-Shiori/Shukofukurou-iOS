@@ -478,7 +478,7 @@
                 }];
                 [contextItems addObject:aentrycell.actionIncrement];
             }
-            aentrycell.actionviewonsite = [UIAction actionWithTitle:@"View on Site" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+            aentrycell.actionviewonsite = [UIAction actionWithTitle:@"View Title" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
             }];
@@ -631,16 +631,55 @@
         mentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
         [mentrycell loadimage:entry[@"image_url"]];
         mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
-        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
-        // Generate Context Items
-        
-        
-#else
-#endif
-        // Geneerate Swipe Cells
-        // Left
         __weak ListViewController *weakSelf = self;
         int currentservice = [listservice.sharedInstance getCurrentServiceID];
+        if (@available(iOS 13.0, *)) {
+            // Generate Context Items
+            NSMutableArray *contextItems = [NSMutableArray new];
+            if ([self canIncrement:entry]) {
+                mentrycell.actionIncrement = [UIAction actionWithTitle:@"Increment Chapter" image:[UIImage imageNamed:@"increment"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+                    NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                    [weakSelf performMangaIncrement:entry volumeIncrement:NO];
+                }];
+                [contextItems addObject:mentrycell.actionIncrement];
+                mentrycell.actionvolIncrement = [UIAction actionWithTitle:@"Increment Volume" image:[UIImage imageNamed:@"volincrement"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+                    NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                    [weakSelf performMangaIncrement:entry volumeIncrement:YES];
+                }];
+                [contextItems addObject:mentrycell.actionvolIncrement];
+            }
+            mentrycell.actionviewonsite = [UIAction actionWithTitle:@"View Title" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
+            }];
+            [contextItems addObject:mentrycell.actionviewonsite];
+            mentrycell.actionadvEdit = [UIAction actionWithTitle:@"Advanced Edit" image:[UIImage imageNamed:@"advedit"] identifier:@"actionAdvEdit" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
+            }];
+            [contextItems addObject:mentrycell.actionadvEdit];
+            mentrycell.actionshare = [UIAction actionWithTitle:@"Share" image:[UIImage imageNamed:@"share"] identifier:@"actionShare" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:mentrycell];
+            }];
+            [contextItems addObject:mentrycell.actionshare];
+            if (currentservice == 3) {
+                mentrycell.actioncustomlist = [UIAction actionWithTitle:@"Custom List" image:[UIImage imageNamed:@"customlist"] identifier:@"actionCustomList" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
+                }];
+                [contextItems addObject:mentrycell.actioncustomlist];
+            }
+            mentrycell.actiondelete = [UIAction actionWithTitle:@"Delete Entry" image:[UIImage imageNamed:@"delete"] identifier:@"actionDelete" handler:^(__kindof UIAction * _Nonnull action) {
+                NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
+                [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
+            }];
+            mentrycell.actiondelete.attributes = UIMenuElementAttributesDestructive;
+            [contextItems addObject:mentrycell.actiondelete];
+            mentrycell.contextActions = contextItems;
+        }
+        // Geneerate Swipe Cells
+        // Left
         mentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
@@ -780,7 +819,7 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
             return [UIMenu menuWithTitle:@"" children:((AnimeEntryTableViewCell *)selected).contextActions];
         }];
     }
-    else if ([selected isKindOfClass:[AnimeEntryTableViewCell class]])  {
+    else if ([selected isKindOfClass:[MangaEntryTableViewCell class]])  {
         return [UIContextMenuConfiguration configurationWithIdentifier:nil previewProvider:nil actionProvider:^UIMenu * _Nullable(NSArray<UIMenuElement *> * _Nonnull suggestedActions) {
             return [UIMenu menuWithTitle:@"" children:((MangaEntryTableViewCell *)selected).contextActions];
         }];
