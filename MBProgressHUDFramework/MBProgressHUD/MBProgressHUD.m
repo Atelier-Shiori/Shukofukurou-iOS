@@ -373,7 +373,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
             UIActivityIndicatorView *activityIndicator;
             [indicator removeFromSuperview];
 #if !TARGET_OS_MACCATALYST
-            if (@available(iOS 13.0, *)) {
+            if (@available(iOS 13.0, tvOS 13.0, *)) {
 #endif
                 activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
                 activityIndicator.color = [UIColor whiteColor];
@@ -1169,7 +1169,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 - (CGSize)intrinsicContentSize {
     // Only show if we have associated control events and a title
     if ((self.allControlEvents == 0) || ([self titleForState:UIControlStateNormal].length == 0))
-		return CGSizeZero;
+        return CGSizeZero;
     CGSize size = [super intrinsicContentSize];
     // Add some side padding
     size.width += 20.f;

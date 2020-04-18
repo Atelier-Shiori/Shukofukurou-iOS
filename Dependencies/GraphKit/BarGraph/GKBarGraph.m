@@ -26,6 +26,7 @@
 #import "GKBarGraph.h"
 
 #import "FrameAccessor.h"
+
 #import "NSArray+MK.h"
 
 #import "GKBar.h"
@@ -192,8 +193,10 @@ static CGFloat kDefaultAnimationDuration = 2.0;
         CGFloat startY = (self.height - labelHeight);
         
         UILabel *label = [self.labels objectAtIndex:idx];
-        label.x = startX;
-        label.y = startY;
+        CGRect newFrame = label.frame;
+        newFrame.origin.x = startX;
+        newFrame.origin.y = startY;
+        label.frame = newFrame;
         
         [self addSubview:label];
         

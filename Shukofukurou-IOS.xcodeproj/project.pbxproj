@@ -184,6 +184,8 @@
 		595A962A224013A700E3C245 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 595A9628224013A700E3C245 /* string_score.c */; };
 		595A962D2240201C00E3C245 /* AnimeRelations.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A962C2240201C00E3C245 /* AnimeRelations.m */; };
 		595A962E2240201C00E3C245 /* AnimeRelations.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A962C2240201C00E3C245 /* AnimeRelations.m */; };
+		595BF45B244B7B0C00AD956E /* FrameAcessorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595BF45A244B7B0C00AD956E /* FrameAcessorView.m */; };
+		595BF45C244B7B0C00AD956E /* FrameAcessorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595BF45A244B7B0C00AD956E /* FrameAcessorView.m */; };
 		595C1F7A218DF4B000953793 /* Trending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595C1F78218DF4B000953793 /* Trending.storyboard */; };
 		595CC7BB220A040D00540A94 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC69220926020050662A /* UIColor+GraphKit.m */; };
 		595D666222416FCC00B54BCA /* ScrobbleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 595D666122416FCC00B54BCA /* ScrobbleManager.m */; };
@@ -823,6 +825,8 @@
 		595A9628224013A700E3C245 /* string_score.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string_score.c; sourceTree = "<group>"; };
 		595A962B2240201C00E3C245 /* AnimeRelations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeRelations.h; sourceTree = "<group>"; };
 		595A962C2240201C00E3C245 /* AnimeRelations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeRelations.m; sourceTree = "<group>"; };
+		595BF459244B7B0C00AD956E /* FrameAcessorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FrameAcessorView.h; sourceTree = "<group>"; };
+		595BF45A244B7B0C00AD956E /* FrameAcessorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrameAcessorView.m; sourceTree = "<group>"; };
 		595C1F79218DF4B000953793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trending.storyboard; sourceTree = "<group>"; };
 		595D666022416FCC00B54BCA /* ScrobbleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrobbleManager.h; sourceTree = "<group>"; };
 		595D666122416FCC00B54BCA /* ScrobbleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrobbleManager.m; sourceTree = "<group>"; };
@@ -1167,6 +1171,8 @@
 				592EB7742209D747004DE461 /* ScrollViewFrameAccessor.m */,
 				592EB7752209D747004DE461 /* ViewFrameAccessor.h */,
 				592EB7762209D747004DE461 /* ViewFrameAccessor.m */,
+				595BF459244B7B0C00AD956E /* FrameAcessorView.h */,
+				595BF45A244B7B0C00AD956E /* FrameAcessorView.m */,
 			);
 			path = FrameAccessor;
 			sourceTree = "<group>";
@@ -2451,6 +2457,7 @@
 				59744F19237C534400D0D8E5 /* NewStreamDataRetriever.m in Sources */,
 				5934E231220F7539002B8311 /* NSMutableArray+MK_Queue.m in Sources */,
 				5934E232220F7539002B8311 /* LoadViewController.m in Sources */,
+				595BF45C244B7B0C00AD956E /* FrameAcessorView.m in Sources */,
 				595D666322416FCC00B54BCA /* ScrobbleManager.m in Sources */,
 				5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */,
 				5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */,
@@ -2554,6 +2561,7 @@
 				5962418A215563D2001995AD /* Utility.m in Sources */,
 				59225B8A22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */,
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
+				595BF45B244B7B0C00AD956E /* FrameAcessorView.m in Sources */,
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
 				59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */,
 				59B580D9220F334300EFE7AC /* UIViewThemed.m in Sources */,
@@ -3013,7 +3021,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200318;
+				CURRENT_PROJECT_VERSION = 20200418;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = (
@@ -3026,7 +3034,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3040,7 +3048,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200318;
+				CURRENT_PROJECT_VERSION = 20200418;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
@@ -3051,7 +3059,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3064,7 +3072,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200329;
+				CURRENT_PROJECT_VERSION = 20200418;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3086,7 +3094,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200329;
+				CURRENT_PROJECT_VERSION = 20200418;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3277,7 +3285,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200329;
+				CURRENT_PROJECT_VERSION = 20200418;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3304,7 +3312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200329;
+				CURRENT_PROJECT_VERSION = 20200418;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

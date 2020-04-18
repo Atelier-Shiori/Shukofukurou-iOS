@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#define View UIView
+#import "FrameAcessorView.h"
+#define View FrameAcessorView
 
 
 @interface View (FrameAccessor)

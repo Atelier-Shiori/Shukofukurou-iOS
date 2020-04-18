@@ -24,8 +24,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FrameAcessorView.h"
 
-@interface GKBar : UIView
+@interface GKBar : FrameAcessorView
 
 + (instancetype)create;
 + (instancetype)createWithFrame:(CGRect)frame;

@@ -24,10 +24,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FrameAcessorView.h"
 
 @protocol GKBarGraphDataSource;
 
-@interface GKBarGraph : UIView
+@interface GKBarGraph : FrameAcessorView
 
 @property (nonatomic, assign) BOOL animated;
 @property (nonatomic, assign) CFTimeInterval animationDuration;
