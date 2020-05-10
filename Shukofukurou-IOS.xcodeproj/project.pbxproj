@@ -339,6 +339,8 @@
 		59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
 		59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
 		59F546392301A16500E4E9CC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DA28B922F0A9EF00255735 /* CloudKit.framework */; };
+		59F941292468460D00F2F1DE /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F941282468460D00F2F1DE /* TokenReauthManager.m */; };
+		59F9412A2468460D00F2F1DE /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F941282468460D00F2F1DE /* TokenReauthManager.m */; };
 		59F9C98D2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
 		59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */; };
 		59F9C9A622932BA60054B89D /* AdvSearchSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */; };
@@ -1047,6 +1049,8 @@
 		59EBC1F321FD322900481D33 /* DefaultTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultTheme.m; sourceTree = "<group>"; };
 		59EBC1F521FD32F300481D33 /* DarkTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DarkTheme.h; sourceTree = "<group>"; };
 		59EBC1F621FD32F300481D33 /* DarkTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkTheme.m; sourceTree = "<group>"; };
+		59F941272468460D00F2F1DE /* TokenReauthManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenReauthManager.h; sourceTree = "<group>"; };
+		59F941282468460D00F2F1DE /* TokenReauthManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokenReauthManager.m; sourceTree = "<group>"; };
 		59F9C98B2292F7EB0054B89D /* SearchAdvSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchAdvSettings.h; sourceTree = "<group>"; };
 		59F9C98C2292F7EB0054B89D /* SearchAdvSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchAdvSettings.m; sourceTree = "<group>"; };
 		59F9C9A422932BA60054B89D /* AdvSearchSelectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvSearchSelectionCell.h; sourceTree = "<group>"; };
@@ -1528,6 +1532,8 @@
 				59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */,
 				59744F16237C534400D0D8E5 /* NewStreamDataRetriever.h */,
 				59744F17237C534400D0D8E5 /* NewStreamDataRetriever.m */,
+				59F941272468460D00F2F1DE /* TokenReauthManager.h */,
+				59F941282468460D00F2F1DE /* TokenReauthManager.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -2495,6 +2501,7 @@
 				5934E251220F7539002B8311 /* TitleInfoCache.m in Sources */,
 				595A962E2240201C00E3C245 /* AnimeRelations.m in Sources */,
 				5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */,
+				59F9412A2468460D00F2F1DE /* TokenReauthManager.m in Sources */,
 				595A96242240120A00E3C245 /* TitleSearch.m in Sources */,
 				5968F1B22249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */,
 				5934E253220F7539002B8311 /* EntryCellInfo.m in Sources */,
@@ -2559,6 +2566,7 @@
 				5962421921556514001995AD /* AiringViewController.m in Sources */,
 				5975595A2199E1C500C1F188 /* TitleIdEnumerator.m in Sources */,
 				5962418A215563D2001995AD /* Utility.m in Sources */,
+				59F941292468460D00F2F1DE /* TokenReauthManager.m in Sources */,
 				59225B8A22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */,
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
 				595BF45B244B7B0C00AD956E /* FrameAcessorView.m in Sources */,
@@ -3021,7 +3029,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200418;
+				CURRENT_PROJECT_VERSION = 20200510;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = (
@@ -3048,7 +3056,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200418;
+				CURRENT_PROJECT_VERSION = 20200510;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
@@ -3072,7 +3080,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200418;
+				CURRENT_PROJECT_VERSION = 20200510;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3094,7 +3102,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200418;
+				CURRENT_PROJECT_VERSION = 20200510;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3285,7 +3293,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200418;
+				CURRENT_PROJECT_VERSION = 20200510;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3312,7 +3320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20200418;
+				CURRENT_PROJECT_VERSION = 20200510;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

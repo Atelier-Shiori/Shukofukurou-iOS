@@ -143,6 +143,12 @@
     [login startOAuthSession];
 }
 
+- (void)performOAuthReauth {
+    OAuthLogin *login = [OAuthLogin new];
+    login.reauthorizing = true;
+    [login startOAuthSession];
+}
+
 - (void)performlogout {
     __weak MainSideBarViewController *weakself = self;
     UIAlertController *prompt = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Are you sure you want to logout of %@?", [listservice.sharedInstance currentservicename]] message:@"To use certain features, you need to login again." preferredStyle:UIAlertControllerStyleAlert];
@@ -271,6 +277,18 @@
         [prompt addAction:noaction];
         [weakself.mainvc presentViewController:prompt animated:YES completion:nil];
     }]];
+    if (listservice.sharedInstance.getCurrentServiceID != 2) {
+        [options addAction:[UIAlertAction actionWithTitle:@"Reauthorize Account" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertController *prompt = [UIAlertController alertControllerWithTitle:@"Do you want to reauthorize your account?" message:@"If functionality is not working, you can reauthorize your account to refresh your credentials. You must use the same credentials to reauthorize your account. To use a different account, log out first. Do you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self performOAuthReauth];
+            }];
+            UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+            [prompt addAction:yesaction];
+            [prompt addAction:noaction];
+            [weakself.mainvc presentViewController:prompt animated:YES completion:nil];
+        }]];
+    }
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {

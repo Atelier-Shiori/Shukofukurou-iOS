@@ -15,6 +15,7 @@
 #import "ThemeManager.h"
 #import <Hakuchou_iOS/OAuthCredManager.h>
 #import "ScrobbleManager.h"
+#import "TokenReauthManager.h"
 
 #if defined(OSS)
 #else
@@ -147,6 +148,7 @@
     // Set Image Disk Cache Size
     SDImageCache.sharedImageCache.config.maxDiskSize = 1000000 * 96;
     [ScrobbleManager.sharedInstance checkScrobble];
+    [TokenReauthManager checkRefreshOrReauth];
     return YES;
 }
 
@@ -201,6 +203,7 @@
     [_vcmanager.mvc hidetoolbarstate];
     [_vcmanager.mvc showtoolbarstate];
     [ScrobbleManager.sharedInstance checkScrobble];
+    [TokenReauthManager checkRefreshOrReauth];
     [NSNotificationCenter.defaultCenter postNotificationName:@"becameActive" object:nil];
 }
 

@@ -69,24 +69,78 @@
             break;
     }
     NSString *pin = [callbackURL.absoluteString stringByReplacingOccurrencesOfString:callbackURLStrReplace withString:@""];
-    [listservice.sharedInstance verifyAccountWithUsername:@"" password:pin withServiceID:[listservice.sharedInstance getCurrentServiceID] completion:^(id responseObject) {
-        // Callback
-        switch ([listservice.sharedInstance getCurrentServiceID]) {
-            case 1:
-                //[NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"mal-userinformationrefresh"];
-                break;
-            case 3:
-                [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
-                break;
-        }
-        // Call delegate
-        [self.delegate authSuccessful:[listservice.sharedInstance getCurrentServiceID]];
-    } error:^(NSError *error) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"OAuth Failed" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    if (!_reauthorizing) {
+        // New Login
+        [listservice.sharedInstance verifyAccountWithUsername:@"" password:pin withServiceID:[listservice.sharedInstance getCurrentServiceID] completion:^(id responseObject) {
+            // Callback
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
+                case 1:
+                    //[NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"mal-userinformationrefresh"];
+                    break;
+                case 3:
+                    [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
+                    break;
+            }
+            // Call delegate
+            [self.delegate authSuccessful:[listservice.sharedInstance getCurrentServiceID]];
+        } error:^(NSError *error) {
+            [self showreautherrormessage:error];
         }];
-        [alert addAction:defaultAction];
-        [ViewControllerManager.getAppDelegateViewControllerManager.mvc presentViewController:alert animated:YES completion:nil];
+    }
+    else {
+        // Reauthorize Account
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
+            case 1: {
+                [listservice.sharedInstance.myanimelistManager reauthAccountWithPin:pin completion:^(id responseObject) {
+                    if (((NSNumber *)responseObject[@"success"]).boolValue) {
+                        [self showreauthsuccessfulmessage];
+                    }
+                    else {
+                        [self showreauthunsuccessfulmessage];
+                    }
+                } error:^(NSError *error) {
+                    [self showreautherrormessage:error];
+                }];
+                break;
+            }
+            case 3: {
+                [listservice.sharedInstance.anilistManager reauthAccountWithPin:pin completion:^(id responseObject) {
+                    if (((NSNumber *)responseObject[@"success"]).boolValue) {
+                        [self showreauthsuccessfulmessage];
+                    }
+                    else {
+                        [self showreauthunsuccessfulmessage];
+                    }
+                } error:^(NSError *error) {
+                    [self showreautherrormessage:error];
+                }];
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    }
+}
+- (void)showreautherrormessage:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"OAuth Failed" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
+    [alert addAction:defaultAction];
+    [ViewControllerManager.getAppDelegateViewControllerManager.mvc presentViewController:alert animated:YES completion:nil];
+}
+- (void)showreauthunsuccessfulmessage {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reauthorization Failed" message:@"You must reauthorize with the same logged in account. If you want to use a different account, please logout first." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:defaultAction];
+    [ViewControllerManager.getAppDelegateViewControllerManager.mvc presentViewController:alert animated:YES completion:nil];
+}
+- (void)showreauthsuccessfulmessage {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reauthorization Completed" message:@"Your account has been reauthorized." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:defaultAction];
+    [ViewControllerManager.getAppDelegateViewControllerManager.mvc presentViewController:alert animated:YES completion:nil];
 }
 @end
