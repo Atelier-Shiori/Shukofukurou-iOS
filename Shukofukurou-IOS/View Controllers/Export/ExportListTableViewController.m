@@ -240,7 +240,7 @@ typedef NS_ENUM(unsigned int, ExportType) {
 
 - (void)saveToCoreData:(NSString *)stringData withType:(int)exporttype {
     NSString *format;
-    int mediatype = (exporttype == MALXMLAnimeExportType || exporttype == JsonAnimeExportType) ? 0 : 1;
+    int mediatype = (exporttype == MALXMLAnimeExportType || exporttype == JsonAnimeExportType || exporttype == CsvAnimeExportType) ? 0 : 1;
     switch (exporttype) {
         case MALXMLAnimeExportType:
         case MALXMLMangaExportType:
