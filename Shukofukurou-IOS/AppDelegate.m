@@ -344,6 +344,9 @@
 #pragma mark ServiceSwitcherView Delegate
 - (void)listserviceDidChange:(int)oldservice newService:(int)newservice {
     NSLog(@"New Service: %i oldserivce: %i", newservice, oldservice);
+    if (newservice != 2) {
+        [TokenReauthManager checkRefreshOrReauth];
+    }
     [_vcmanager.mainsidebar setLoggedinUser];
     [_vcmanager.mvc loadfromdefaults];
     [self storeCurrentServicetoAppGroup];
