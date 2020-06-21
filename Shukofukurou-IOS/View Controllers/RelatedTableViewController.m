@@ -154,6 +154,7 @@
     [websites addObject:@{@"title" : @"Wikipedia", @"tag" : @(6)}];
     [websites addObject:@{@"title" : @"Pixiv Encyclopedia (Japanese)", @"tag" : @(7)}];
     [websites addObject:@{@"title" : @"Pixiv Encyclopedia (English)", @"tag" : @(8)}];
+    [websites addObject:@{@"title" : @"Wordpress.com", @"tag" : @(9)}];
     return websites.copy;
 }
 
@@ -203,6 +204,10 @@
         }
         case 8: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en-dic.pixiv.net/search?query=%@",[Utility urlEncodeString:_ctitle]]];
+            break;
+        }
+        case 9: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://wordpress.com/read/search?q=%@&focus=1",[Utility urlEncodeString:_ctitle]]];
             break;
         }
         default: {
