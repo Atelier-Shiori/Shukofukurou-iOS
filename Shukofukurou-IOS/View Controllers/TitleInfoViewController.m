@@ -55,6 +55,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *scoreimage;
 @property bool entrychanged;
 @property bool isNSFW;
+@property bool surpressscoreprompt;
 @end
 
 @implementation TitleInfoViewController
@@ -1034,6 +1035,10 @@
 
 - (void)addAnimeEntry:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
+    if ([self shouldShowScorePrompt:entry]) {
+        [self showScorePrompt:updatecell];
+        return;
+    }
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
     [self showloadingview:YES];
@@ -1067,6 +1072,10 @@
 
 - (void)addMangaEntry:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
+    if ([self shouldShowScorePrompt:entry]) {
+        [self showScorePrompt:updatecell];
+        return;
+    }
     __weak TitleInfoViewController *weakSelf = self;
     [updatecell setEnabled: NO];
     [self showloadingview:YES];
@@ -1098,6 +1107,10 @@
 
 - (void)updateAnime:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
+    if ([self shouldShowScorePrompt:entry]) {
+        [self showScorePrompt:updatecell];
+        return;
+    }
     NSDictionary * extraparameters = @{};
     int selectededitid = 0;
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
@@ -1155,6 +1168,10 @@
 
 - (void)updateManga:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
+    if ([self shouldShowScorePrompt:entry]) {
+        [self showScorePrompt:updatecell];
+        return;
+    }
     NSDictionary * extraparameters = @{};
     int selectededitid = 0;
     switch ([listservice.sharedInstance getCurrentServiceID]) {
@@ -1289,6 +1306,55 @@
     }
     return false;
 }
+
+#pragma mark Score Prompt
+- (bool)shouldShowScorePrompt:(NSDictionary *)entry {
+    if (self.surpressscoreprompt) {
+        return false;
+    }
+    else if (self.currenttype == 0) {
+        if (_entrychanged && [(NSString *)entry[@"status"] isEqualToString:@"completed"] && ((NSNumber *)entry[@"score"]).doubleValue == 0) {
+            return true;
+        }
+        return false;
+    }
+    else {
+        if (_entrychanged && [(NSString *)entry[@"status"] isEqualToString:@"completed"] && ((NSNumber *)entry[@"score"]).doubleValue == 0) {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+- (void)showScorePrompt:(TitleInfoUpdateTableViewCell *)updatecell {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Set a score?" message:@"It looks like you completed a title. Do you want to set a score before saving the entry? You can always set a score later." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.surpressscoreprompt = true;
+        if (self.isNewEntry) {
+            if (self.currenttype == 0) {
+                [self addAnimeEntry:updatecell];
+            }
+            else {
+                [self addMangaEntry:updatecell];
+            }
+        }
+        else {
+            if (self.currenttype == 0) {
+                [self updateAnime:updatecell];
+            }
+            else {
+                [self updateManga:updatecell];
+            }
+        }
+    }];
+    [alertcontroller addAction:noaction];
+    [alertcontroller addAction:yesaction];
+    [self presentViewController:alertcontroller animated:YES completion:nil];
+}
+
 
 - (NSDictionary *)generateUpdateDictionary {
     NSMutableDictionary *info = [NSMutableDictionary new];

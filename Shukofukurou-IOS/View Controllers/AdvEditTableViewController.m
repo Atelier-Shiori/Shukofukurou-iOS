@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *savebtn;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelbtn;
 @property (strong) MBProgressHUD *hud;
+@property bool surpressscoreprompt;
 @end
 
 @implementation AdvEditTableViewController
@@ -617,6 +618,10 @@
 
 - (void)updateAnime {
     NSDictionary *entry = [self generateUpdateDictionary];
+    if ([self shouldShowScorePrompt:entry]) {
+        [self showScorePrompt];
+        return;
+    }
     NSDictionary * extraparameters = [self generateExtraFieldsWithType:_currenttype withUpdateDictionary:entry];
     int selectededitid = 0;
     switch ([listservice.sharedInstance getCurrentServiceID]) {
@@ -673,6 +678,10 @@
 
 - (void)updateManga {
     NSDictionary *entry = [self generateUpdateDictionary];
+    if ([self shouldShowScorePrompt:entry]) {
+        [self showScorePrompt];
+        return;
+    }
     NSDictionary * extraparameters = [self generateExtraFieldsWithType:_currenttype withUpdateDictionary:entry];
     int selectededitid = 0;
     switch ([listservice.sharedInstance getCurrentServiceID]) {
@@ -760,5 +769,43 @@
     for (NSString *nibName in cells.allKeys) {
         [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:cells[nibName]];
     }
+}
+
+#pragma mark Score Prompt
+- (bool)shouldShowScorePrompt:(NSDictionary *)entry {
+    if (self.surpressscoreprompt) {
+        return false;
+    }
+    else if (self.currenttype == 0) {
+        if (![(NSString *)_origentry[@"watched_status"] isEqualToString:@"completed"] && [(NSString *)entry[@"status"] isEqualToString:@"completed"] && ((NSNumber *)entry[@"score"]).doubleValue == 0) {
+            return true;
+        }
+        return false;
+    }
+    else {
+        if (![(NSString *)_origentry[@"read_status"] isEqualToString:@"completed"] && [(NSString *)entry[@"status"] isEqualToString:@"completed"] && ((NSNumber *)entry[@"score"]).doubleValue == 0) {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+- (void)showScorePrompt {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Set a score?" message:@"It looks like you completed a title. Do you want to set a score before saving the entry? You can always set a score later." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.surpressscoreprompt = true;
+        if (self.currenttype == 0) {
+            [self updateAnime];
+        }
+        else {
+            [self updateManga];
+        }
+    }];
+    [alertcontroller addAction:noaction];
+    [alertcontroller addAction:yesaction];
+    [self presentViewController:alertcontroller animated:YES completion:nil];
 }
 @end

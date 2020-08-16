@@ -933,6 +933,7 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     bool rewatching = ((NSNumber *)entry[@"rewatching"]).boolValue;
+    bool completed = false;
     NSString *airingstatus = entry[@"status"];
     bool selectedaircompleted;
     bool selectedaired;
@@ -962,6 +963,7 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         watchstatus = @"completed";
         watchedepisodes = episodes;
         rewatching = false;
+        completed = true;
     }
     else if (watchedepisodes > episodes && episodes > 0) {
         return;
@@ -991,6 +993,9 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:watchedepisodes withMediaType:self.listtype withService:listservice.sharedInstance.getCurrentServiceID];
         [self reloadList];
         [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(self.listtype), @"id": entry[@"id"]}];
+        if (completed) {
+            [self showScorePrompt:entry];
+        }
     }
     error:^(NSError * error) {
         NSLog(@"%@", error.localizedDescription);
@@ -1000,6 +1005,7 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)performMangaIncrement:(NSDictionary *)entry volumeIncrement:(bool)volumeIncrement {
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     int titleid = -1;
+    bool completed = false;
     switch (currentservice) {
         case 1:
             titleid = ((NSNumber *)entry[@"id"]).intValue;
@@ -1047,6 +1053,7 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         readchapters = chapters;
         readvolumes = volumes;
         rereading = false;
+        completed = true;
     }
     else if (readchapters > chapters && chapters > 0) {
         return;
@@ -1076,6 +1083,9 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         [self reloadList];
         [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(self.listtype), @"id": entry[@"id"]}];
         [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:readchapters withMediaType:self.listtype withService:listservice.sharedInstance.getCurrentServiceID];
+        if (completed) {
+            [self showScorePrompt:entry];
+        }
     } error:^(NSError *error) {
         NSLog(@"%@", error.localizedDescription);
     }];
@@ -1150,6 +1160,18 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         default:
             return false;
     }
+}
+
+- (void)showScorePrompt:(NSDictionary *)entry {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Set a score?" message:[NSString stringWithFormat:@"It looks like you completed a title. Do you want to open the advanced entry editor for %@ to set a score?", entry[@"title"]] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performAdvancedEditwithEntry:[AtarashiiListCoreData retrieveSingleEntryForTitleID:((NSNumber *)entry[@"id"]).intValue withService:listservice.sharedInstance.getCurrentServiceID withType:self.listtype] withType:self.listtype];
+    }];
+    UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertcontroller addAction:noaction];
+    [alertcontroller addAction:yesaction];
+    [[ViewControllerManager getAppDelegateViewControllerManager].mvc presentViewController:alertcontroller animated:YES completion:nil];
 }
 
 - (void)showOtherOptions:(NSDictionary *)entry withIndexPath:(NSIndexPath *)indexpath {
