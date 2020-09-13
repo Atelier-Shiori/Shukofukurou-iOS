@@ -125,7 +125,12 @@
     int totalepisodes = ((NSNumber *)_titleinformation[@"episodes"]).intValue;
     if (entry) {
         exists = true;
-        entryid = ((NSNumber *)entry[@"entryid"]).intValue;
+        if (listservice.sharedInstance.getCurrentServiceID == 1) {
+            entryid = _titleid;
+        }
+        else {
+            entryid = ((NSNumber *)entry[@"entryid"]).intValue;
+        }
         watchstatus = entry[@"watched_status"];
         rewatching = ((NSNumber *)entry[@"rewatching"]).boolValue;
         score =((NSNumber *)entry[@"score"]).intValue;
@@ -158,6 +163,7 @@
         [NSNotificationCenter.defaultCenter postNotificationName:@"AnimeRefreshList" object:nil];
         [self scrobbleSuccessful];
     } error:^(NSError *error) {
+        NSLog(@"Add Failed! Error: %@", error);
         [self scrobbleUpdateFailed];
     }];
 }
@@ -188,6 +194,7 @@
         [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(0), @"id": @(self.titleid)}];
         [self scrobbleSuccessful];
     } error:^(NSError *error) {
+        NSLog(@" Update Failed Error: %@", error);
         [self scrobbleUpdateFailed];
     }];
 }

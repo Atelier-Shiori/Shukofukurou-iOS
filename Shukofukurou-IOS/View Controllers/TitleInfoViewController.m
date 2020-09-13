@@ -1035,7 +1035,7 @@
 
 - (void)addAnimeEntry:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
-    if ([self shouldShowScorePrompt:entry]) {
+    if ([self shouldShowScorePrompt:entry] && [NSUserDefaults.standardUserDefaults boolForKey:@"scoreprompt"]) {
         [self showScorePrompt:updatecell];
         return;
     }
@@ -1072,7 +1072,7 @@
 
 - (void)addMangaEntry:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
-    if ([self shouldShowScorePrompt:entry]) {
+    if ([self shouldShowScorePrompt:entry] && [NSUserDefaults.standardUserDefaults boolForKey:@"scoreprompt"]) {
         [self showScorePrompt:updatecell];
         return;
     }
@@ -1107,7 +1107,7 @@
 
 - (void)updateAnime:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
-    if ([self shouldShowScorePrompt:entry]) {
+    if ([self shouldShowScorePrompt:entry] && [NSUserDefaults.standardUserDefaults boolForKey:@"scoreprompt"]) {
         [self showScorePrompt:updatecell];
         return;
     }
@@ -1168,7 +1168,7 @@
 
 - (void)updateManga:(TitleInfoUpdateTableViewCell *)updatecell {
     NSDictionary *entry = [self generateUpdateDictionary];
-    if ([self shouldShowScorePrompt:entry]) {
+    if ([self shouldShowScorePrompt:entry] && [NSUserDefaults.standardUserDefaults boolForKey:@"scoreprompt"]) {
         [self showScorePrompt:updatecell];
         return;
     }

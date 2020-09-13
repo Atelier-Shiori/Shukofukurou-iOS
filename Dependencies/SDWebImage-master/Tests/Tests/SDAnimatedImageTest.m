@@ -8,6 +8,7 @@
  */
 
 #import "SDTestCase.h"
+#import "SDInternalMacros.h"
 #import <KVOController/KVOController.h>
 
 static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop count
@@ -16,6 +17,13 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
 @interface SDAnimatedImageView ()
 
 @property (nonatomic, assign) BOOL isProgressive;
+@property (nonatomic, strong) SDAnimatedImagePlayer *player;
+
+@end
+
+@interface SDAnimatedImagePlayer ()
+
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, UIImage *> *frameBuffer;
 
 @end
 
@@ -47,7 +55,13 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
     SDAnimatedImage *image = [[SDAnimatedImage alloc] initWithContentsOfFile:[self testGIFPath]];
     expect(image).notTo.beNil();
     expect(image.scale).equal(1); // scale
-    // enough, other can be test with InitWithData
+    
+    // Test Retina File Path should result @2x scale
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSString *testPath = [testBundle pathForResource:@"1@2x" ofType:@"gif"];
+    image = [[SDAnimatedImage alloc] initWithContentsOfFile:testPath];
+    expect(image).notTo.beNil();
+    expect(image.scale).equal(2); // scale
 }
 
 - (void)test03AnimatedImageInitWithAnimatedCoder {
@@ -101,7 +115,7 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
     SDAnimatedImage *image = [SDAnimatedImage imageWithData:[self testGIFData]];
     imageView.image = image;
     expect(imageView.image).notTo.beNil();
-    expect(imageView.currentFrame).notTo.beNil(); // current frame
+    expect(imageView.player).notTo.beNil();
 }
 
 - (void)test09AnimatedImageViewSetAnimatedImageAPNG {
@@ -109,7 +123,7 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
     SDAnimatedImage *image = [SDAnimatedImage imageWithData:[self testAPNGPData]];
     imageView.image = image;
     expect(imageView.image).notTo.beNil();
-    expect(imageView.currentFrame).notTo.beNil(); // current frame
+    expect(imageView.player).notTo.beNil();
 }
 
 - (void)test10AnimatedImageInitWithCoder {
@@ -152,11 +166,7 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
 #if SD_MAC
     expect(imageView.wantsUpdateLayer).beTruthy();
 #else
-#if TARGET_OS_MACCATALYST
-    // macOS's UIImageView seems does not setup layer.contents until render on screen
-#else
-    expect(imageView.layer.contents).notTo.beNil();
-#endif
+    expect(imageView.layer).notTo.beNil();
 #endif
 }
 
@@ -172,6 +182,27 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
     }
 #endif
     expect(imageView.image).equal(image);
+}
+
+- (void)test14AnimatedImageViewStopPlayingWhenHidden {
+    SDAnimatedImageView *imageView = [SDAnimatedImageView new];
+#if SD_UIKIT
+    [self.window addSubview:imageView];
+#else
+    [self.window.contentView addSubview:imageView];
+#endif
+    SDAnimatedImage *image = [SDAnimatedImage imageWithData:[self testGIFData]];
+    imageView.image = image;
+#if SD_UIKIT
+    [imageView startAnimating];
+#else
+    imageView.animates = YES;
+#endif
+    SDAnimatedImagePlayer *player = imageView.player;
+    expect(player).notTo.beNil();
+    expect(player.isPlaying).beTruthy();
+    imageView.hidden = YES;
+    expect(player.isPlaying).beFalsy();
 }
 
 - (void)test20AnimatedImageViewRendering {
@@ -206,6 +237,7 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
 #else
             imageView.animates = NO;
 #endif
+            [imageView removeFromSuperview];
             [expectation fulfill];
         }
     }];
@@ -295,6 +327,238 @@ static const NSUInteger kTestGIFFrameCount = 5; // local TestImage.gif loop coun
         expect([image isKindOfClass:[SDAnimatedImage class]]).beTruthy();
         [expectation fulfill];
     }];
+    [self waitForExpectationsWithCommonTimeout];
+}
+
+- (void)test25AnimatedImageStopAnimatingNormal {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test SDAnimatedImageView stopAnimating normal behavior"];
+    
+    SDAnimatedImageView *imageView = [SDAnimatedImageView new];
+    
+#if SD_UIKIT
+    [self.window addSubview:imageView];
+#else
+    [self.window.contentView addSubview:imageView];
+#endif
+    // This APNG duration is 2s
+    SDAnimatedImage *image = [SDAnimatedImage imageWithData:[self testAPNGPData]];
+    imageView.image = image;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 0.5s is not finished, frame index should not be 0
+        expect(imageView.player.frameBuffer.count).beGreaterThan(0);
+        expect(imageView.currentFrameIndex).beGreaterThan(0);
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+#if SD_UIKIT
+        [imageView stopAnimating];
+#else
+        imageView.animates = NO;
+#endif
+        expect(imageView.player.frameBuffer.count).beGreaterThan(0);
+        expect(imageView.currentFrameIndex).beGreaterThan(0);
+        
+        [imageView removeFromSuperview];
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithCommonTimeout];
+}
+
+- (void)test26AnimatedImageStopAnimatingClearBuffer {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test SDAnimatedImageView stopAnimating clear buffer when stopped"];
+    
+    SDAnimatedImageView *imageView = [SDAnimatedImageView new];
+    imageView.clearBufferWhenStopped = YES;
+    imageView.resetFrameIndexWhenStopped = YES;
+    
+#if SD_UIKIT
+    [self.window addSubview:imageView];
+#else
+    [self.window.contentView addSubview:imageView];
+#endif
+    // This APNG duration is 2s
+    SDAnimatedImage *image = [SDAnimatedImage imageWithData:[self testAPNGPData]];
+    imageView.image = image;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 0.5s is not finished, frame index should not be 0
+        expect(imageView.player.frameBuffer.count).beGreaterThan(0);
+        expect(imageView.currentFrameIndex).beGreaterThan(0);
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+#if SD_UIKIT
+        [imageView stopAnimating];
+#else
+        imageView.animates = NO;
+#endif
+        expect(imageView.player.frameBuffer.count).equal(0);
+        expect(imageView.currentFrameIndex).equal(0);
+        
+        [imageView removeFromSuperview];
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithCommonTimeout];
+}
+
+- (void)test27AnimatedImageProgressiveAnimation {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test SDAnimatedImageView progressive animation rendering"];
+    
+    // Simulate progressive download
+    NSData *fullData = [self testAPNGPData];
+    NSUInteger length = fullData.length;
+    
+    SDAnimatedImageView *imageView = [SDAnimatedImageView new];
+#if SD_UIKIT
+    [self.window addSubview:imageView];
+#else
+    [self.window.contentView addSubview:imageView];
+#endif
+    
+    __block NSUInteger previousFrameIndex = 0;
+    @weakify(imageView);
+    // Observe to check rendering behavior using frame index
+    [self.KVOController observe:imageView keyPath:NSStringFromSelector(@selector(currentFrameIndex)) options:NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        @strongify(imageView);
+        NSUInteger currentFrameIndex = [change[NSKeyValueChangeNewKey] unsignedIntegerValue];
+        printf("Animation Frame Index: %lu\n", (unsigned long)currentFrameIndex);
+        
+        // The last time should not be progressive
+        if (currentFrameIndex == 0 && !imageView.isProgressive) {
+            [self.KVOController unobserve:imageView];
+            [expectation fulfill];
+        } else {
+            // Each progressive rendering should render new frame index, no backward and should stop at last frame index
+            expect(currentFrameIndex - previousFrameIndex).beGreaterThanOrEqualTo(0);
+            previousFrameIndex = currentFrameIndex;
+        }
+    }];
+    
+    SDImageAPNGCoder *coder = [[SDImageAPNGCoder alloc] initIncrementalWithOptions:nil];
+    // Setup Data
+    NSData *setupData = [fullData subdataWithRange:NSMakeRange(0, length / 3.0)];
+    [coder updateIncrementalData:setupData finished:NO];
+    imageView.shouldIncrementalLoad = YES;
+    __block SDAnimatedImage *progressiveImage = [[SDAnimatedImage alloc] initWithAnimatedCoder:coder scale:1];
+    progressiveImage.sd_isIncremental = YES;
+    imageView.image = progressiveImage;
+    expect(imageView.isProgressive).beTruthy();
+    
+    __block NSUInteger partialFrameCount;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // Partial Data
+        NSData *partialData = [fullData subdataWithRange:NSMakeRange(0, length * 2.0 / 3.0)];
+        [coder updateIncrementalData:partialData finished:NO];
+        partialFrameCount = [coder animatedImageFrameCount];
+        expect(partialFrameCount).beGreaterThan(1);
+        progressiveImage = [[SDAnimatedImage alloc] initWithAnimatedCoder:coder scale:1];
+        progressiveImage.sd_isIncremental = YES;
+        imageView.image = progressiveImage;
+        expect(imageView.isProgressive).beTruthy();
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // Full Data
+        [coder updateIncrementalData:fullData finished:YES];
+        progressiveImage = [[SDAnimatedImage alloc] initWithAnimatedCoder:coder scale:1];
+        progressiveImage.sd_isIncremental = NO;
+        imageView.image = progressiveImage;
+        NSUInteger fullFrameCount = [coder animatedImageFrameCount];
+        expect(fullFrameCount).beGreaterThan(partialFrameCount);
+        expect(imageView.isProgressive).beFalsy();
+    });
+    
+    [self waitForExpectationsWithCommonTimeout];
+}
+
+- (void)test28AnimatedImageAutoPlayAnimatedImage {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test SDAnimatedImageView AutoPlayAnimatedImage behavior"];
+    
+    SDAnimatedImageView *imageView = [SDAnimatedImageView new];
+    imageView.autoPlayAnimatedImage = NO;
+    
+#if SD_UIKIT
+    [self.window addSubview:imageView];
+#else
+    [self.window.contentView addSubview:imageView];
+#endif
+    // This APNG duration is 2s
+    SDAnimatedImage *image = [SDAnimatedImage imageWithData:[self testAPNGPData]];
+    imageView.image = image;
+
+    #if SD_UIKIT
+        expect(imageView.animating).equal(NO);
+    #else
+        expect(imageView.animates).equal(NO);
+    #endif
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        #if SD_UIKIT
+            expect(imageView.animating).equal(NO);
+        #else
+            expect(imageView.animates).equal(NO);
+        #endif
+        
+        #if SD_UIKIT
+            [imageView startAnimating];
+        #else
+            imageView.animates = YES;
+        #endif
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        #if SD_UIKIT
+            expect(imageView.animating).equal(YES);
+        #else
+            expect(imageView.animates).equal(YES);
+        #endif
+        
+        #if SD_UIKIT
+            [imageView stopAnimating];
+        #else
+            imageView.animates = NO;
+        #endif
+        
+        [imageView removeFromSuperview];
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithCommonTimeout];
+}
+
+- (void)test29AnimatedImageSeekFrame {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test SDAnimatedImageView stopAnimating normal behavior"];
+    
+    SDAnimatedImageView *imageView = [SDAnimatedImageView new];
+    
+#if SD_UIKIT
+    [self.window addSubview:imageView];
+#else
+    [self.window.contentView addSubview:imageView];
+#endif
+    // seeking through local image should return non-null images
+    SDAnimatedImage *image = [SDAnimatedImage imageWithData:[self testAPNGPData]];
+    imageView.autoPlayAnimatedImage = NO;
+    imageView.image = image;
+    
+    __weak SDAnimatedImagePlayer *player = imageView.player;
+
+    __block NSUInteger i = 0;
+    [player setAnimationFrameHandler:^(NSUInteger index, UIImage * _Nonnull frame) {
+        expect(index).equal(i);
+        expect(frame).notTo.beNil();
+        i++;
+        if (i < player.totalFrameCount) {
+            [player seekToFrameAtIndex:i loopCount:0];
+        } else {
+            [expectation fulfill];
+        }
+    }];
+    [player seekToFrameAtIndex:i loopCount:0];
+    
     [self waitForExpectationsWithCommonTimeout];
 }
 

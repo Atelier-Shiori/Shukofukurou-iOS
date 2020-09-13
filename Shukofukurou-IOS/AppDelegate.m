@@ -51,6 +51,7 @@
     defaultValues[@"historyprunedate"] = @(90);
     defaultValues[@"synchistorytoicloud"] = @NO;
     defaultValues[@"sendanalytics"] = @YES;
+    defaultValues[@"scoreprompt"] = @YES;
     // Viewed List
     defaultValues[@"myanimelist-selectedanimelist"] = @"watching";
     defaultValues[@"myanimelist-selectedmangalist"] = @"reading";

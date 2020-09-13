@@ -993,7 +993,7 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:watchedepisodes withMediaType:self.listtype withService:listservice.sharedInstance.getCurrentServiceID];
         [self reloadList];
         [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(self.listtype), @"id": entry[@"id"]}];
-        if (completed) {
+        if (completed && [NSUserDefaults.standardUserDefaults boolForKey:@"scoreprompt"]) {
             [self showScorePrompt:entry];
         }
     }
@@ -1083,7 +1083,7 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         [self reloadList];
         [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(self.listtype), @"id": entry[@"id"]}];
         [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:readchapters withMediaType:self.listtype withService:listservice.sharedInstance.getCurrentServiceID];
-        if (completed) {
+        if (completed && [NSUserDefaults.standardUserDefaults boolForKey:@"scoreprompt"]) {
             [self showScorePrompt:entry];
         }
     } error:^(NSError *error) {

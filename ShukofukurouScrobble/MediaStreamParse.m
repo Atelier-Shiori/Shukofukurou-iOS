@@ -88,6 +88,20 @@
                     continue;
                 }
             }
+            else if ([site isEqualToString:@"funimation"]) {
+                if ([ez checkMatch:url pattern:@"shows\\/.*\\/.*\\/.*"]) {
+                    regextitle = [regextitle stringByReplacingOccurrencesOfString:@"Watch " withString:@""];
+                    regextitle = [ez findMatch:regextitle pattern:@".* Season \\d+ Episode \\d+" rangeatindex:0];
+                    tmpepisode = [ez findMatch:regextitle pattern:@"Episode \\d+" rangeatindex:0];
+                    tmpepisode = [tmpepisode stringByReplacingOccurrencesOfString:@"Episode " withString:@""];
+                    tmpseason = [ez findMatch:regextitle pattern:@"Season \\d+" rangeatindex:0];
+                    tmpseason = [tmpseason stringByReplacingOccurrencesOfString:@"Season "  withString:@""];
+                    title = [ez searchreplace:regextitle pattern:@"Season \\d+ Episode \\d+"];
+                }
+                else {
+                    continue; // Invalid address
+                }
+            }
             else {
                 continue;
             }

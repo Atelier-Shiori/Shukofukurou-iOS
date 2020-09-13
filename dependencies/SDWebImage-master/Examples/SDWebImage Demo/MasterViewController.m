@@ -9,7 +9,6 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import <SDWebImage/SDWebImage.h>
-#import <SDWebImageWebPCoder/SDWebImageWebPCoder.h>
 
 @interface MyCustomTableViewCell : UITableViewCell
 
@@ -52,8 +51,6 @@
                                                                                target:self
                                                                                action:@selector(flushCache)];
         
-        [[SDImageCodersManager sharedManager] addCoder:[SDImageWebPCoder sharedCoder]];
-        
         // HTTP NTLM auth example
         // Add your NTLM image url to the array below and replace the credentials
         [SDWebImageDownloader sharedDownloader].config.username = @"httpwatch";
@@ -72,6 +69,9 @@
                     @"http://littlesvr.ca/apng/images/world-cup-2014-42.webp",
                     @"https://isparta.github.io/compare-webp/image/gif_webp/webp/2.webp",
                     @"https://nokiatech.github.io/heif/content/images/ski_jump_1440x960.heic",
+                    @"https://nokiatech.github.io/heif/content/image_sequences/starfield_animation.heic",
+                    @"https://s2.ax1x.com/2019/11/01/KHYIgJ.gif",
+                    @"https://raw.githubusercontent.com/icons8/flat-color-icons/master/pdf/stack_of_photos.pdf",
                     @"https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
                     @"http://via.placeholder.com/200x200.jpg",
                     nil];
@@ -110,9 +110,22 @@
     }
     
     cell.customTextLabel.text = [NSString stringWithFormat:@"Image #%ld", (long)indexPath.row];
-    [cell.customImageView sd_setImageWithURL:[NSURL URLWithString:self.objects[indexPath.row]]
-                            placeholderImage:placeholderImage
-                                     options:indexPath.row == 0 ? SDWebImageRefreshCached : 0];
+    __weak SDAnimatedImageView *imageView = cell.customImageView;
+    [imageView sd_setImageWithURL:[NSURL URLWithString:self.objects[indexPath.row]]
+                 placeholderImage:placeholderImage
+                          options:indexPath.row == 0 ? SDWebImageRefreshCached : 0
+                          context:@{SDWebImageContextImageThumbnailPixelSize : @(CGSizeMake(180, 120))}
+                         progress:nil
+                        completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        SDWebImageCombinedOperation *operation = [imageView sd_imageLoadOperationForKey:imageView.sd_latestOperationKey];
+        SDWebImageDownloadToken *token = operation.loaderOperation;
+        if (@available(iOS 10.0, *)) {
+            NSURLSessionTaskMetrics *metrics = token.metrics;
+            if (metrics) {
+                printf("Metrics: %s download in (%f) seconds\n", [imageURL.absoluteString cStringUsingEncoding:NSUTF8StringEncoding], metrics.taskInterval.duration);
+            }
+        }
+    }];
     return cell;
 }
 

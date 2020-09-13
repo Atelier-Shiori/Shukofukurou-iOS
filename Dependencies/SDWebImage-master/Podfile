@@ -1,5 +1,3 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
 use_frameworks!
 
 def all_example_pods
@@ -48,7 +46,7 @@ target 'SDWebImage Watch Demo Extension' do
 end
 
 # Test Project
-target 'Tests' do
+target 'Tests iOS' do
   project test_project_path
   platform :ios, '8.0'
   all_test_pods
@@ -57,5 +55,11 @@ end
 target 'Tests Mac' do
   project test_project_path
   platform :osx, '10.10'
+  all_test_pods
+end
+
+target 'Tests TV' do
+  project test_project_path
+  platform :tvos, '9.2'
   all_test_pods
 end

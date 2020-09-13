@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *versionnum;
 @property (strong, nonatomic) IBOutlet UISwitch *synctoicloud;
 @property (strong, nonatomic) IBOutlet UISwitch *analyticstoggle;
+@property (strong, nonatomic) IBOutlet UISwitch *scoretoggle;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @end
 
@@ -48,6 +49,7 @@
     _synctoicloud.on = [defaults boolForKey:@"synchistorytoicloud"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
     _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
+    _scoretoggle.on = [defaults boolForKey:@"scoreprompt"];
 #if defined(OSS)
     _analyticstoggle.enabled = NO;
     _analyticstoggle.on = NO;
@@ -108,6 +110,10 @@
     if (!_cachetitleinfo.on) {
         [TitleInfoCache cleanupcacheShouldRemoveAll:YES];
     }
+}
+
+- (IBAction)setScorePrompt:(id)sender {
+    [NSUserDefaults.standardUserDefaults setBool:_scoretoggle.on forKey:@"scoreprompt"];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

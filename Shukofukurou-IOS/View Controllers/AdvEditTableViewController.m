@@ -776,6 +776,9 @@
     if (self.surpressscoreprompt) {
         return false;
     }
+    else if (![NSUserDefaults.standardUserDefaults boolForKey:@"scoreprompt"]) {
+        return false;
+    }
     else if (self.currenttype == 0) {
         if (![(NSString *)_origentry[@"watched_status"] isEqualToString:@"completed"] && [(NSString *)entry[@"status"] isEqualToString:@"completed"] && ((NSNumber *)entry[@"score"]).doubleValue == 0) {
             return true;

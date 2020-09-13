@@ -15,13 +15,14 @@
 
 @interface ShareViewController ()
 @property bool validurl;
+@property bool textused;
 @property (strong) NSDictionary *streamdata;
 @property (strong) MBProgressHUD *hud;
 @end
 
 @implementation ShareViewController
 
-NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive)";
+NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive|funimation)";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,6 +69,11 @@ NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive)";
         [itemProvider loadItemForTypeIdentifier:@"public.plain-text" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error) {
             validitem = true;
             if ([(NSObject *)item isKindOfClass:[NSString class]]) {
+                if ([(NSString *) item containsString:@"Funimation"]) {
+                    _textused = true;
+                    [self populateDataUsingText:(NSString *)item];
+                    return;
+                }
                 OnigRegexp *regex = [OnigRegexp compile:@"(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})" options:OnigOptionIgnorecase];
                 NSArray *results = [regex search:(NSString *)item].strings;
                 if (results.count > 0) {
@@ -81,6 +87,9 @@ NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive)";
 }
 
 - (void)retrieveAndPopulateData:(NSString *)url {
+    if (_textused) {
+        return;
+    }
     NSDictionary *tmpstreamdata = [StreamInfoRetrieval retrieveStreamInfo:url];
     if (tmpstreamdata) {
         NSArray *tmparray =  [MediaStreamParse parse:@[tmpstreamdata]];
@@ -92,13 +101,41 @@ NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive)";
             });
         }
         else {
-            [self showError];
-            [self showloadingview:NO withText:@""];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showError];
+                [self showloadingview:NO withText:@""];
+            });
         }
     }
     else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showloadingview:NO withText:@""];
+            [self showError];
+        });
+    }
+}
+
+- (void)populateDataUsingText:(NSString *)text {
+    OnigRegexp * regex = [OnigRegexp compile:@"watching .*( - Episode \\d+|):" ignorecase:YES multiline:YES];
+    NSArray *strings = [regex search:text].strings;
+    if (strings.count > 0) {
+        NSString *tmpstring = [[[(NSString *)strings[0] stringByReplacingOccurrencesOfString:@"watching " withString:@""] stringByReplacingOccurrencesOfString:@":" withString:@""] stringByReplacingOccurrencesOfString:@" -" withString:@""];
+        OnigRegexp *epregex = [OnigRegexp compile:@"Episode \\d+" ignorecase:YES multiline:YES];
+        NSString *episodestring = [epregex search:tmpstring].strings.count > 0 ? [epregex search:tmpstring].strings[0] : @"1";
+        tmpstring = [tmpstring stringByReplacingOccurrencesOfString:episodestring withString:@""];
+        episodestring = [episodestring stringByReplacingOccurrencesOfString:@"Episode " withString:@""];
+        NSString * titlestring = [tmpstring stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        _streamdata = @{@"title" : titlestring, @"episode" : @(episodestring.intValue), @"season" : @(1), @"browser" : @"Funimation Now", @"site" : @"Funimation", @"type" : @"anime" };
         [self showloadingview:NO withText:@""];
-        [self showError];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showloadingview:NO withText:@""];
+            [self showError];
+        });
     }
 }
 
