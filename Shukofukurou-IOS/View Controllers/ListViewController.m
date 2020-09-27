@@ -230,10 +230,20 @@
     else {
         switch (_listtype) {
             case Anime:
-                filterpredicate = [NSPredicate predicateWithFormat:@"watched_status ==[c] %@", _selectedlist];
+                if ([_selectedlist isEqualToString:@"airing"]) {
+                    filterpredicate = [NSPredicate predicateWithFormat:@"status ==[c] %@", @"currently airing"];
+                }
+                else {
+                    filterpredicate = [NSPredicate predicateWithFormat:@"watched_status ==[c] %@", _selectedlist];
+                }
                 break;
             case Manga:
-                filterpredicate = [NSPredicate predicateWithFormat:@"read_status ==[c] %@", _selectedlist];
+                if ([_selectedlist isEqualToString:@"publishing"]) {
+                    filterpredicate = [NSPredicate predicateWithFormat:@"status ==[c] %@", @"publishing"];
+                }
+                else {
+                    filterpredicate = [NSPredicate predicateWithFormat:@"read_status ==[c] %@", _selectedlist];
+                }
                 break;
             default:
                 return;

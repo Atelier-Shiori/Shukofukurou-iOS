@@ -54,7 +54,8 @@
         NSNumber *onhold;
         NSNumber *dropped;
         NSNumber *plantowatch;
-        for (int i = 0; i < 5; i++) {
+        NSNumber *airing;
+        for (int i = 0; i < 6; i++) {
             switch(i) {
                 case 0:
                     filtered = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"watching"]];
@@ -76,11 +77,14 @@
                     filtered = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"plan to watch"]];
                     plantowatch = @(filtered.count);
                     break;
+                case 5:
+                    filtered = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"status ==[cd] %@", @"currently airing"]];
+                    airing = @(filtered.count);
                 default:
                     break;
             }
         }
-        return @[@{@"name" : @"watching", @"count" : watching}, @{@"name" : @"completed", @"count" : completed}, @{@"name" : @"on-hold", @"count" : onhold}, @{@"name" : @"dropped", @"count" : dropped}, @{@"name" : @"plan to watch", @"count" : plantowatch}];
+        return @[@{@"name" : @"airing", @"count" : airing}, @{@"name" : @"watching", @"count" : watching}, @{@"name" : @"completed", @"count" : completed}, @{@"name" : @"on-hold", @"count" : onhold}, @{@"name" : @"dropped", @"count" : dropped}, @{@"name" : @"plan to watch", @"count" : plantowatch}];
     }
     else {
         NSNumber *reading;
@@ -88,7 +92,8 @@
         NSNumber *onhold;
         NSNumber *dropped;
         NSNumber *plantoread;
-        for (int i = 0; i < 5; i++) {
+        NSNumber *publishing;
+        for (int i = 0; i < 6; i++) {
             switch(i) {
                 case 0:
                     filtered = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"reading"]];
@@ -110,11 +115,14 @@
                     filtered = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"plan to read"]];
                     plantoread = @(filtered.count);
                     break;
+                case 5:
+                    filtered = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"status ==[cd] %@", @"publishing"]];
+                    publishing = @(filtered.count);
                 default:
                     break;
             }
         }
-        return @[@{@"name" : @"reading", @"count" : reading}, @{@"name" : @"completed", @"count" : completed}, @{@"name" : @"on-hold", @"count" : onhold}, @{@"name" : @"dropped", @"count" : dropped}, @{@"name" : @"plan to read", @"count" : plantoread}];
+        return @[ @{@"name" : @"publishing", @"count" : publishing}, @{@"name" : @"reading", @"count" : reading}, @{@"name" : @"completed", @"count" : completed}, @{@"name" : @"on-hold", @"count" : onhold}, @{@"name" : @"dropped", @"count" : dropped}, @{@"name" : @"plan to read", @"count" : plantoread}];
     }
 }
 
