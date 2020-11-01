@@ -478,17 +478,18 @@
         aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
         __weak ListViewController *weakSelf = self;
         int currentservice = [listservice.sharedInstance getCurrentServiceID];
+        bool incrementable = [self canIncrement:entry];
         if (@available(iOS 13.0, *)) {
             // Generate Context Items
             NSMutableArray *contextItems = [NSMutableArray new];
-            if ([self canIncrement:entry]) {
+            if (incrementable) {
                 aentrycell.actionIncrement = [UIAction actionWithTitle:@"Increment" image:[UIImage imageNamed:@"increment"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
                     NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                     [weakSelf incrementProgress:entry];
                 }];
                 [contextItems addObject:aentrycell.actionIncrement];
             }
-            aentrycell.actionviewonsite = [UIAction actionWithTitle:@"View Title" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+            aentrycell.actionviewonsite = [UIAction actionWithTitle:@"View Title" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionViewonsite" handler:^(__kindof UIAction * _Nonnull action) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
             }];
@@ -585,7 +586,7 @@
         if (aentrycell.viewonsiteswipebutton) {
             [rightcompactbuttons addObject:aentrycell.viewonsiteswipebutton];
         }
-        if ([self canIncrement:entry]) {
+        if (incrementable) {
             aentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf incrementProgress:entry];
@@ -643,22 +644,23 @@
         mentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"publishing"];
         __weak ListViewController *weakSelf = self;
         int currentservice = [listservice.sharedInstance getCurrentServiceID];
+        bool incrementable = [self canIncrement:entry];
         if (@available(iOS 13.0, *)) {
             // Generate Context Items
             NSMutableArray *contextItems = [NSMutableArray new];
-            if ([self canIncrement:entry]) {
-                mentrycell.actionIncrement = [UIAction actionWithTitle:@"Increment Chapter" image:[UIImage imageNamed:@"increment"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+            if (incrementable) {
+                mentrycell.actionIncrement = [UIAction actionWithTitle:@"Increment Chapter" image:[UIImage imageNamed:@"increment"] identifier:@"actionChIncrement" handler:^(__kindof UIAction * _Nonnull action) {
                     NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                     [weakSelf performMangaIncrement:entry volumeIncrement:NO];
                 }];
                 [contextItems addObject:mentrycell.actionIncrement];
-                mentrycell.actionvolIncrement = [UIAction actionWithTitle:@"Increment Volume" image:[UIImage imageNamed:@"volincrement"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+                mentrycell.actionvolIncrement = [UIAction actionWithTitle:@"Increment Volume" image:[UIImage imageNamed:@"volincrement"] identifier:@"actionVolIncrement" handler:^(__kindof UIAction * _Nonnull action) {
                     NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                     [weakSelf performMangaIncrement:entry volumeIncrement:YES];
                 }];
                 [contextItems addObject:mentrycell.actionvolIncrement];
             }
-            mentrycell.actionviewonsite = [UIAction actionWithTitle:@"View Title" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionIncrement" handler:^(__kindof UIAction * _Nonnull action) {
+            mentrycell.actionviewonsite = [UIAction actionWithTitle:@"View Title" image:[UIImage imageNamed:@"TitleInfo"] identifier:@"actionViewOnSite" handler:^(__kindof UIAction * _Nonnull action) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
             }];
@@ -758,7 +760,7 @@
         if (mentrycell.viewonsiteswipebutton) {
             [rightcompactbuttons addObject:mentrycell.viewonsiteswipebutton];
         }
-        if ([self canIncrement:entry]) {
+        if (incrementable) {
             mentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"volincrement"] backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performMangaIncrement:entry volumeIncrement:YES];
