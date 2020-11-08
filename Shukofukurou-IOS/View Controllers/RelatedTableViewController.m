@@ -145,6 +145,7 @@
     if (_type == 0) {
         [websites addObject:@{@"title" : @"AniDB", @"tag" : @(1)}];
     }
+    [websites addObject:@{@"title" : @"Anime Blog Tracker", @"tag" : @(10)}];
     [websites addObject:@{@"title" : @"AnimeNewsNetwork", @"tag" : @(2)}];
     if (_type == 1) {
         [websites addObject:@{@"title" : @"MangaUpdates", @"tag" : @(3)}];
@@ -208,6 +209,10 @@
         }
         case 9: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://wordpress.com/read/search?q=%@&focus=1",[Utility urlEncodeString:_ctitle]]];
+            break;
+        }
+        case 10: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://aniblogtracker.com/?query=%@&submit=&start=0",[Utility urlEncodeString:_ctitle]]];
             break;
         }
         default: {
