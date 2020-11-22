@@ -147,6 +147,9 @@
     }
     [websites addObject:@{@"title" : @"Anime Blog Tracker", @"tag" : @(10)}];
     [websites addObject:@{@"title" : @"AnimeNewsNetwork", @"tag" : @(2)}];
+    if (_type == 0) {
+        [websites addObject:@{@"title" : @"LiveChart", @"tag" : @(11)}];
+    }
     if (_type == 1) {
         [websites addObject:@{@"title" : @"MangaUpdates", @"tag" : @(3)}];
     }
@@ -213,6 +216,10 @@
         }
         case 10: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://aniblogtracker.com/?query=%@&submit=&start=0",[Utility urlEncodeString:_ctitle]]];
+            break;
+        }
+        case 11: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.livechart.me/search?q=%@",[Utility urlEncodeString:_ctitle]]];
             break;
         }
         default: {

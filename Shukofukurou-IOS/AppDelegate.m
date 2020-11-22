@@ -127,12 +127,12 @@
     [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"synchistorytoicloud"];
 #if defined(OSS)
 #else
-    [MSAppCenter start:@"4e2647ac-c16c-4771-a11f-65de034d15a4" withServices:@[
-      [MSAnalytics class],
-      [MSCrashes class]
+    [MSACAppCenter start:@"4e2647ac-c16c-4771-a11f-65de034d15a4" withServices:@[
+        [MSACAnalytics class],
+        [MSACCrashes class]
     ]];
-    [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
-    [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #endif
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FixKeychainItems"]) {
         [[OAuthCredManager sharedInstance] fixkeychainaccessability];
