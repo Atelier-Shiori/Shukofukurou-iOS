@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import <LGSideMenuController/LGSideMenuController.h>
-#import <MGSwipeTableCell/MGSwipeButton.h>
 #import "ThemeManager.h"
 #import "DefaultTheme.h"
 #import "DarkTheme.h"
@@ -51,7 +50,6 @@
     if (@available (iOS 13, *)) {
         // iOS13 Theme fixes
         [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[UISwipeCellNoBackground class]]].tintColor = [UIColor whiteColor];
-        [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[MGSwipeButton class]]].tintColor = [UIColor whiteColor];
         [HighLightView appearanceWhenContainedInInstancesOfClasses:@[[MangaEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
         [HighLightView appearanceWhenContainedInInstancesOfClasses:@[[AnimeEntryTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];
         [UIImageView appearanceWhenContainedInInstancesOfClasses:@[[SearchTableViewCell class]]].tintColor = [UIColor colorNamed:@"IconImageColor"];

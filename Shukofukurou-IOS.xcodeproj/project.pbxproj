@@ -121,7 +121,6 @@
 		5934E260220F7539002B8311 /* AnimeEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241D6215564CB001995AD /* AnimeEntryTableViewCell.m */; };
 		5934E261220F7539002B8311 /* SeasonsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F321556502001995AD /* SeasonsRootViewController.m */; };
 		5934E262220F7539002B8311 /* TrendingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */; };
-		5934E264220F7539002B8311 /* MGSwipeTableCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; };
 		5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
 		5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; };
 		5934E267220F7539002B8311 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
@@ -142,7 +141,6 @@
 		5934E277220F7539002B8311 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
 		5934E278220F7539002B8311 /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
 		5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
-		5934E27C220F7539002B8311 /* MGSwipeTableCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E27E220F7539002B8311 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E27F220F7539002B8311 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -244,8 +242,6 @@
 		5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; };
 		59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		59624249215565E9001995AD /* MGSwipeTableCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; };
-		5962424A215565E9001995AD /* MGSwipeTableCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962414E2155634F001995AD /* MGSwipeTableCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5962424D2155660C001995AD /* Airing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BB21556481001995AD /* Airing.storyboard */; };
 		5962424E2155660F001995AD /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BD21556486001995AD /* Auth.storyboard */; };
 		5962424F21556612001995AD /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BF21556489001995AD /* InfoView.storyboard */; };
@@ -360,6 +356,8 @@
 		91DA28B822F095A900255735 /* HistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DA28B622F095A900255735 /* HistoryManager.m */; };
 		91DA28BA22F0A9EF00255735 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DA28B922F0A9EF00255735 /* CloudKit.framework */; };
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
+		FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
+		FFB17BD5256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -432,13 +430,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4AF139BF1BF384DA0037B073;
 			remoteInfo = LGSideMenuController;
-		};
-		5934E1F3220F7539002B8311 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C63EE56A1BBA07ED008F46BB;
-			remoteInfo = MGSwipeTableCell;
 		};
 		5934E1F5220F7539002B8311 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -622,13 +613,6 @@
 			remoteGlobalIDString = 4AF139C01BF384DA0037B073;
 			remoteInfo = LGSideMenuController;
 		};
-		5962414D2155634F001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C63EE56B1BBA07ED008F46BB;
-			remoteInfo = MGSwipeTableCell;
-		};
 		59624237215565CC001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596240FE2155631F001995AD /* SAMKeychain.xcodeproj */;
@@ -656,13 +640,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4AF139BF1BF384DA0037B073;
 			remoteInfo = LGSideMenuController;
-		};
-		5962424B215565E9001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C63EE56A1BBA07ED008F46BB;
-			remoteInfo = MGSwipeTableCell;
 		};
 		59B22D1D21FE62F400627172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -701,7 +678,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5934E27C220F7539002B8311 /* MGSwipeTableCell.framework in Embed Frameworks */,
 				595A961B2240030200E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */,
 				5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */,
 				5934E27E220F7539002B8311 /* AFNetworking.framework in Embed Frameworks */,
@@ -732,7 +708,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				595A95FF223FE3CD00E3C245 /* CocoaOniguruma.framework in Embed Frameworks */,
-				5962424A215565E9001995AD /* MGSwipeTableCell.framework in Embed Frameworks */,
 				592B8CB02236E17A007D43F4 /* Hakuchou_iOS.framework in Embed Frameworks */,
 				595A9615224002B600E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */,
 				5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */,
@@ -845,7 +820,6 @@
 		5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreActionSheetPicker.xcodeproj; path = CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj; sourceTree = "<group>"; };
 		5962411F21556336001995AD /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AFNetworking.xcodeproj; sourceTree = "<group>"; };
 		596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = LGSideMenuControllerFramework.xcodeproj; sourceTree = "<group>"; };
-		596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MGSwipeTableCell.xcodeproj; sourceTree = "<group>"; };
 		596241532155638C001995AD /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		596241542155638C001995AD /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59624164215563AA001995AD /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
@@ -1074,6 +1048,8 @@
 		91DA28B922F0A9EF00255735 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
+		FFB17BD2256BE98C003E2C8F /* UIContextualAction+ActionCreation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIContextualAction+ActionCreation.h"; sourceTree = "<group>"; };
+		FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIContextualAction+ActionCreation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1081,7 +1057,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5934E264220F7539002B8311 /* MGSwipeTableCell.framework in Frameworks */,
 				595A961A2240030200E3C245 /* MBProgressHUDFramework.framework in Frameworks */,
 				5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */,
 				5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */,
@@ -1114,7 +1089,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59624249215565E9001995AD /* MGSwipeTableCell.framework in Frameworks */,
 				59B8047E2344ED6E00B9F989 /* AppCenterCrashes.framework in Frameworks */,
 				59B8047A2344ED5900B9F989 /* AppCenter.framework in Frameworks */,
 				59B8047C2344ED6000B9F989 /* AppCenterAnalytics.framework in Frameworks */,
@@ -1369,7 +1343,6 @@
 				596240DA2155628C001995AD /* ActionSheetPicker */,
 				596240DB21556296001995AD /* AFNetworking */,
 				596240DD215562A8001995AD /* LGSideMenuControllerFramework */,
-				596240DE215562B0001995AD /* MGSwipeTableCell */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -1405,14 +1378,6 @@
 				596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */,
 			);
 			path = LGSideMenuControllerFramework;
-			sourceTree = "<group>";
-		};
-		596240DE215562B0001995AD /* MGSwipeTableCell */ = {
-			isa = PBXGroup;
-			children = (
-				596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */,
-			);
-			path = MGSwipeTableCell;
 			sourceTree = "<group>";
 		};
 		596240E0215562CB001995AD /* SAMKeychain */ = {
@@ -1476,14 +1441,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5962414A2155634F001995AD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5962414E2155634F001995AD /* MGSwipeTableCell.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		5962414F21556362001995AD /* Backend */ = {
 			isa = PBXGroup;
 			children = (
@@ -1534,6 +1491,8 @@
 				59744F17237C534400D0D8E5 /* NewStreamDataRetriever.m */,
 				59F941272468460D00F2F1DE /* TokenReauthManager.h */,
 				59F941282468460D00F2F1DE /* TokenReauthManager.m */,
+				FFB17BD2256BE98C003E2C8F /* UIContextualAction+ActionCreation.h */,
+				FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1920,7 +1879,6 @@
 				5934E1EC220F7539002B8311 /* PBXTargetDependency */,
 				5934E1EE220F7539002B8311 /* PBXTargetDependency */,
 				5934E1F0220F7539002B8311 /* PBXTargetDependency */,
-				5934E1F2220F7539002B8311 /* PBXTargetDependency */,
 				5934E1F4220F7539002B8311 /* PBXTargetDependency */,
 				595A961D2240030200E3C245 /* PBXTargetDependency */,
 				59C3CB0122CA81F30007786A /* PBXTargetDependency */,
@@ -1983,7 +1941,6 @@
 				5962423C215565D2001995AD /* PBXTargetDependency */,
 				59624240215565D7001995AD /* PBXTargetDependency */,
 				59624248215565E3001995AD /* PBXTargetDependency */,
-				5962424C215565E9001995AD /* PBXTargetDependency */,
 				59B22D2C21FE630000627172 /* PBXTargetDependency */,
 				592B8CB22236E17A007D43F4 /* PBXTargetDependency */,
 				595A95CE223FD90100E3C245 /* PBXTargetDependency */,
@@ -2087,10 +2044,6 @@
 				{
 					ProductGroup = 596241442155634A001995AD /* Products */;
 					ProjectRef = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
-				},
-				{
-					ProductGroup = 5962414A2155634F001995AD /* Products */;
-					ProjectRef = 596241492155634F001995AD /* MGSwipeTableCell.xcodeproj */;
 				},
 				{
 					ProductGroup = 596240FF2155631F001995AD /* Products */;
@@ -2272,13 +2225,6 @@
 			fileType = wrapper.framework;
 			path = LGSideMenuController.framework;
 			remoteRef = 596241472155634A001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5962414E2155634F001995AD /* MGSwipeTableCell.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MGSwipeTableCell.framework;
-			remoteRef = 5962414D2155634F001995AD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		59B22D1E21FE62F400627172 /* libSDWebImage.a */ = {
@@ -2498,6 +2444,7 @@
 				5934E24B220F7539002B8311 /* TrendingCollectionHeaderView.m in Sources */,
 				5934E24C220F7539002B8311 /* GKBar.m in Sources */,
 				5934E24D220F7539002B8311 /* TableViewCellBackgroundView.m in Sources */,
+				FFB17BD5256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */,
 				5934E251220F7539002B8311 /* TitleInfoCache.m in Sources */,
 				595A962E2240201C00E3C245 /* AnimeRelations.m in Sources */,
 				5934E252220F7539002B8311 /* MangaEntryTableViewCell.m in Sources */,
@@ -2581,6 +2528,7 @@
 				596241A72155642E001995AD /* RootViewController.m in Sources */,
 				5962421821556514001995AD /* MainViewController.m in Sources */,
 				596241DF215564D1001995AD /* TitleInfoTableViewCell.m in Sources */,
+				FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */,
 				5962419921556406001995AD /* AuthViewController.m in Sources */,
 				59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */,
 				5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */,
@@ -2715,11 +2663,6 @@
 			name = LGSideMenuController;
 			targetProxy = 5934E1F1220F7539002B8311 /* PBXContainerItemProxy */;
 		};
-		5934E1F2220F7539002B8311 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MGSwipeTableCell;
-			targetProxy = 5934E1F3220F7539002B8311 /* PBXContainerItemProxy */;
-		};
 		5934E1F4220F7539002B8311 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SDWebImage iOS";
@@ -2769,11 +2712,6 @@
 			isa = PBXTargetDependency;
 			name = LGSideMenuController;
 			targetProxy = 59624247215565E3001995AD /* PBXContainerItemProxy */;
-		};
-		5962424C215565E9001995AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MGSwipeTableCell;
-			targetProxy = 5962424B215565E9001995AD /* PBXContainerItemProxy */;
 		};
 		59B22D2C21FE630000627172 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3029,7 +2967,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20201101;
+				CURRENT_PROJECT_VERSION = 20201123;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = (
@@ -3056,7 +2994,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20201101;
+				CURRENT_PROJECT_VERSION = 20201123;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
@@ -3080,7 +3018,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20201101;
+				CURRENT_PROJECT_VERSION = 20201123;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3102,7 +3040,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20201101;
+				CURRENT_PROJECT_VERSION = 20201123;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3293,7 +3231,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20201101;
+				CURRENT_PROJECT_VERSION = 20201123;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3320,7 +3258,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20201101;
+				CURRENT_PROJECT_VERSION = 20201123;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

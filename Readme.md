@@ -36,7 +36,6 @@ All the frameworks are included. Just build! Here are the frameworks that are us
 * AFNetworking.framework
 * Hakuchou_iOS.framework
 * LGSideMenuController.framework
-* MGSwipeTableCell.framework
 * SAMKeychain.framework
 * SDWebImage.framework
 

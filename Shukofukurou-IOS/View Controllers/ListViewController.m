@@ -25,6 +25,7 @@
 #import "HistoryManager.h"
 #import "Utility.h"
 #import "CellActionEnum.h"
+#import "UIContextualAction+ActionCreation.h"
 
 @interface ListViewController ()
 @property (strong) NSMutableArray *list;
@@ -48,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [ThemeManager fixTableView:self.tableView];
+    self.tableView.delegate = self;
     // Do any additional setup after loading the view.
     _filteredlist = @[];
     _list = [NSMutableArray new];
@@ -521,45 +523,37 @@
         }
         // Geneerate Swipe Cells
         // Left
-        aentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        aentrycell.deleteswipeaction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"" image:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
-            return true;
-        }]];
-        aentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
+        }];
         
         //Right
         NSMutableArray *rightregularbuttons = [NSMutableArray new];
         NSMutableArray *rightcompactbuttons = [NSMutableArray new];
-        aentrycell.viewonsiteswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        aentrycell.viewonsiteswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
-            return true;
         }];
         if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-            aentrycell.adveditswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            aentrycell.adveditswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
-                return true;
             }];
             if (currentservice == 3) {
-                aentrycell.customlistbutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                aentrycell.customlistbutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                     NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                     [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
-                    return true;
                 }];
             }
-            aentrycell.shareswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            aentrycell.shareswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:aentrycell];
-                return true;
             }];
         }
-        
-        aentrycell.optionswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        aentrycell.optionswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf showOtherOptions:entry withIndexPath:indexPath];
-            return true;
         }];
         
         // Set Swipe Button Array
@@ -576,9 +570,6 @@
             if (aentrycell.viewonsiteswipebutton) {
                 [rightregularbuttons addObject:aentrycell.viewonsiteswipebutton];
             }
-            for (MGSwipeButton *btn in rightregularbuttons) {
-                [btn iconTintColor:[UIColor whiteColor]];
-            }
         }
         if (aentrycell.optionswipebutton) {
             [rightcompactbuttons addObject:aentrycell.optionswipebutton];
@@ -587,10 +578,9 @@
             [rightcompactbuttons addObject:aentrycell.viewonsiteswipebutton];
         }
         if (incrementable) {
-            aentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            aentrycell.incrementswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf incrementProgress:entry];
-                return true;
             }];
             if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 if (aentrycell.incrementswipebutton) {
@@ -601,13 +591,8 @@
                 [rightcompactbuttons addObject:aentrycell.incrementswipebutton];
             }
         }
-        for (MGSwipeButton *btn in rightcompactbuttons) {
-            [btn iconTintColor:[UIColor whiteColor]];
-        }
         aentrycell.regularswipebuttons = rightregularbuttons.copy;
         aentrycell.compactswipebuttons = rightcompactbuttons.copy;
-        [aentrycell setSwipeButtons];
-        aentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
         return aentrycell;
     }
     else {
@@ -692,48 +677,41 @@
         }
         // Geneerate Swipe Cells
         // Left
-        mentrycell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        mentrycell.deleteswipeaction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"" image:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
-            return true;
-        }]];
-        mentrycell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
+        }];
         
         //Right
         NSMutableArray *rightregularbuttons = [NSMutableArray new];
         NSMutableArray *rightcompactbuttons = [NSMutableArray new];
         
-        mentrycell.viewonsiteswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        mentrycell.viewonsiteswipebutton =
+        mentrycell.viewonsiteswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
-            return true;
         }];
         
         if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-            mentrycell.adveditswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            mentrycell.adveditswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
-                return true;
             }];
             if (currentservice == 3) {
-                mentrycell.customlistbutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+                mentrycell.customlistbutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                     NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                     [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
-                    return true;
                 }];
             }
-            mentrycell.shareswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            mentrycell.shareswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:mentrycell];
-                return true;
             }];
         }
         
-        mentrycell.optionswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        mentrycell.optionswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf showOtherOptions:entry withIndexPath:indexPath];
-            return true;
-            
         }];
         
         // Set Swipe Button Array
@@ -750,9 +728,6 @@
             if (mentrycell.viewonsiteswipebutton) {
                 [rightregularbuttons addObject:mentrycell.viewonsiteswipebutton];
             }
-            for (MGSwipeButton *btn in rightregularbuttons) {
-                [btn iconTintColor:[UIColor whiteColor]];
-            }
         }
         if (mentrycell.optionswipebutton) {
             [rightcompactbuttons addObject:mentrycell.optionswipebutton];
@@ -761,15 +736,13 @@
             [rightcompactbuttons addObject:mentrycell.viewonsiteswipebutton];
         }
         if (incrementable) {
-            mentrycell.incrementswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"volincrement"] backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            mentrycell.incrementswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"volincrement"] backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performMangaIncrement:entry volumeIncrement:YES];
-                return true;
             }];
-            mentrycell.incrementvolswipebutton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+            mentrycell.incrementvolswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performMangaIncrement:entry volumeIncrement:NO];
-                return true;
             }];
             if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 if (mentrycell.incrementswipebutton && mentrycell.incrementvolswipebutton) {
@@ -782,13 +755,8 @@
                 [rightcompactbuttons addObject:mentrycell.incrementvolswipebutton];
             }
         }
-        for (MGSwipeButton *btn in rightcompactbuttons) {
-            [btn iconTintColor:[UIColor whiteColor]];
-        }
         mentrycell.regularswipebuttons = rightregularbuttons.copy;
         mentrycell.compactswipebuttons = rightcompactbuttons.copy;
-        [mentrycell setSwipeButtons];
-        mentrycell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
         return mentrycell;
     }
     else {
@@ -810,9 +778,7 @@
                 [self performAdvancedEditwithEntry:entry withType:_listtype];
                 break;
             case ListActionShowEntryOptions:
-                [(MGSwipeTableCell *)cell showSwipe:MGSwipeDirectionRightToLeft animated:YES];
-                break;
-            default:
+                    [self showOtherOptions:entry withIndexPath:indexPath];
                 break;
             }
         }
@@ -850,6 +816,49 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
         [sender endRefreshing];
         [weakSelf.listselector generateLists:[weakSelf retrieveEntriesWithType:weakSelf.listtype withFilterPredicate:nil] withListType:weakSelf.listtype];
     }];
+}
+
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView
+leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIContextualAction *deleteAction;
+    if (self.listtype == 0) {
+        AnimeEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        deleteAction = cell.deleteswipeaction;
+    }
+    else {
+        MangaEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        deleteAction = cell.deleteswipeaction;
+    }
+    return [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+}
+
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView
+trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UISwipeActionsConfiguration *full;
+    UISwipeActionsConfiguration *compact;
+    if (self.listtype == 0) {
+        AnimeEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        full = [UISwipeActionsConfiguration configurationWithActions:cell.regularswipebuttons];
+        compact = [UISwipeActionsConfiguration configurationWithActions:cell.compactswipebuttons];
+    }
+    else {
+        MangaEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        full = [UISwipeActionsConfiguration configurationWithActions:cell.regularswipebuttons];
+        compact = [UISwipeActionsConfiguration configurationWithActions:cell.compactswipebuttons];
+    }
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        bool isregular = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
+        if (isregular) {
+            return full;
+        }
+        else {
+            return compact;
+        }
+    }
+    else {
+        return compact;
+    }
+    return compact;
 }
 
 #pragma mark UISearchBarDelegate

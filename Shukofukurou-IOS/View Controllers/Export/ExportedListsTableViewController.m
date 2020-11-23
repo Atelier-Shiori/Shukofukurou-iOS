@@ -28,6 +28,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.delegate = self;
     [self populateDictionaries];
 }
 
@@ -79,15 +80,6 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     __weak ExportedListsTableViewController *weakself = self;
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
-        NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
-        [weakself promptdelete:list];
-        return true;
-    }], [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"export"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
-        NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
-        [weakself performexport:list withCell:cell];
-        return true;
-    }]];
     return cell;
 }
 
@@ -112,7 +104,6 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UISwipeCellNoBackground *cell = (UISwipeCellNoBackground *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell showSwipe:MGSwipeDirectionRightToLeft animated:YES];
 }
 
 - (void)promptdelete:(NSManagedObject *)obj {
@@ -155,6 +146,25 @@ contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     NSLog(@"Error writing file: %@", error);
     return nil;
+}
+
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView
+trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __weak ExportedListsTableViewController *weakself = self;
+    UIContextualAction * exportAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
+        [weakself performexport:list withCell:[weakself.tableView cellForRowAtIndexPath:indexPath]];
+    }];
+    exportAction.image = [UIImage imageNamed:@"export"];
+    exportAction.backgroundColor = [UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0];
+    UIContextualAction * deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
+        [weakself promptdelete:list];
+    }];
+    deleteAction.image = [UIImage imageNamed:@"delete"];
+    deleteAction.backgroundColor = UIColor.redColor;
+    UISwipeActionsConfiguration *swipeconfiguration = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction, exportAction]];
+    return swipeconfiguration;
 }
 
 @end

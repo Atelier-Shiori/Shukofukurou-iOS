@@ -7,18 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MGSwipeTableCell/MGSwipeTableCell.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MangaEntryTableViewCell : MGSwipeTableCell
-@property (strong) MGSwipeButton *incrementswipebutton;
-@property (strong) MGSwipeButton *incrementvolswipebutton;
-@property (strong) MGSwipeButton *adveditswipebutton;
-@property (strong) MGSwipeButton *viewonsiteswipebutton;
-@property (strong) MGSwipeButton *customlistbutton;
-@property (strong) MGSwipeButton *shareswipebutton;
-@property (strong) MGSwipeButton *optionswipebutton;
+@interface MangaEntryTableViewCell : UITableViewCell
+@property (strong) UIContextualAction *incrementswipebutton;
+@property (strong) UIContextualAction *incrementvolswipebutton;
+@property (strong) UIContextualAction *adveditswipebutton;
+@property (strong) UIContextualAction *viewonsiteswipebutton;
+@property (strong) UIContextualAction *customlistbutton;
+@property (strong) UIContextualAction *shareswipebutton;
+@property (strong) UIContextualAction *optionswipebutton;
+@property (strong) UIContextualAction *deleteswipeaction;
+
 // UIActions
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
 @property (strong) UIAction *actionIncrement;

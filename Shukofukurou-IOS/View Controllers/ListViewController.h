@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListViewController : UITableViewController <UISearchBarDelegate>
+@interface ListViewController : UITableViewController <UISearchBarDelegate, UITableViewDelegate>
 typedef NS_ENUM(unsigned int, ListMediaType) {
     Anime = 0,
     Manga = 1
