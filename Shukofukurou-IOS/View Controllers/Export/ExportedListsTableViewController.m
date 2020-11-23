@@ -154,12 +154,14 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIContextualAction * exportAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
         [weakself performexport:list withCell:[weakself.tableView cellForRowAtIndexPath:indexPath]];
+        completionHandler(YES);
     }];
     exportAction.image = [UIImage imageNamed:@"export"];
     exportAction.backgroundColor = [UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0];
     UIContextualAction * deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         NSManagedObject *list = ((NSArray *)weakself.exportedlists[weakself.allsections[indexPath.section]])[indexPath.row];
         [weakself promptdelete:list];
+        completionHandler(YES);
     }];
     deleteAction.image = [UIImage imageNamed:@"delete"];
     deleteAction.backgroundColor = UIColor.redColor;

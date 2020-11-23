@@ -27,17 +27,8 @@ Already have a paid Apple Developer Program Membership? You may sideload and ins
 3. Specify the API keys and secrets for Kitsu, Anilist, and MyAnimeList. Kitsu can be found [here](https://kitsu.docs.apiary.io/#) and AniList can be found [here](https://anilist.co/settings/developer/client/). The redirect URL should be set to "hiyokoauth://anilistauth/" for anilist. Note that you won't be able to obtain an API key for MyAnimeList until after the API enters open beta.
 4. Open the project in Xcode. To install the app, choose the "Shukofukurou-IOS-OSS" as the target, and  select your device on the device popup menu on the XCode toolbar . **Note: If you are not using a paid Apple Developer Membership, the app will ony run for 7 days before you need to reinstall it.**
 
-## macOS Release?
-There is no plans for a macOS release using Project Catalyst.
-
 ## Dependencies
-All the frameworks are included. Just build! Here are the frameworks that are used in this app so far:
-* ActionSheetPicker.framework
-* AFNetworking.framework
-* Hakuchou_iOS.framework
-* LGSideMenuController.framework
-* SAMKeychain.framework
-* SDWebImage.framework
+All the frameworks are included. Just build!
 
 See Third Party in the Settings view for third-party licenses terms.
 

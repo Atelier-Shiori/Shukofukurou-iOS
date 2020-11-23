@@ -526,6 +526,7 @@
         aentrycell.deleteswipeaction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"" image:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
+            completionHandler(YES);
         }];
         
         //Right
@@ -534,26 +535,31 @@
         aentrycell.viewonsiteswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
+            completionHandler(YES);
         }];
         if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
             aentrycell.adveditswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
+                completionHandler(YES);
             }];
             if (currentservice == 3) {
                 aentrycell.customlistbutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                     NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                     [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
+                    completionHandler(YES);
                 }];
             }
             aentrycell.shareswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:aentrycell];
+                completionHandler(YES);
             }];
         }
         aentrycell.optionswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf showOtherOptions:entry withIndexPath:indexPath];
+            completionHandler(YES);
         }];
         
         // Set Swipe Button Array
@@ -680,6 +686,7 @@
         mentrycell.deleteswipeaction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"" image:[UIImage imageNamed:@"delete"] backgroundColor:UIColor.redColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf deleteTitle:((NSNumber *)entry[@"id"]).intValue withInfo:entry];
+            completionHandler(YES);
         }];
         
         //Right
@@ -690,28 +697,33 @@
         mentrycell.viewonsiteswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"TitleInfo"] backgroundColor:[UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
+            completionHandler(YES);
         }];
         
         if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
             mentrycell.adveditswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"advedit"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
+                completionHandler(YES);
             }];
             if (currentservice == 3) {
                 mentrycell.customlistbutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"customlist"] backgroundColor:[UIColor colorWithRed:0.35 green:0.34 blue:0.84 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                     NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                     [weakSelf performCustomListEdit:((NSNumber *)entry[@"entryid"]).intValue withEntry:entry];
+                    completionHandler(YES);
                 }];
             }
             mentrycell.shareswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"share"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performShare:((NSNumber *)entry[@"id"]).intValue withCell:mentrycell];
+                completionHandler(YES);
             }];
         }
         
         mentrycell.optionswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"option"] backgroundColor:UIColor.grayColor handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
             [weakSelf showOtherOptions:entry withIndexPath:indexPath];
+            completionHandler(YES);
         }];
         
         // Set Swipe Button Array
@@ -739,10 +751,12 @@
             mentrycell.incrementswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"volincrement"] backgroundColor:[UIColor colorWithRed:0.37 green:0.79 blue:0.97 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performMangaIncrement:entry volumeIncrement:YES];
+                completionHandler(YES);
             }];
             mentrycell.incrementvolswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage imageNamed:@"increment"] backgroundColor:[UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performMangaIncrement:entry volumeIncrement:NO];
+                completionHandler(YES);
             }];
             if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 if (mentrycell.incrementswipebutton && mentrycell.incrementvolswipebutton) {
