@@ -270,7 +270,7 @@
     for (id cell in self.tableView.visibleCells) {
         if ([cell isKindOfClass:[TitleInfoListEntryTableViewCell class]]) {
             TitleInfoListEntryTableViewCell *ecell = (TitleInfoListEntryTableViewCell *)cell;
-            if ([ecell.textLabel.text isEqualToString:@"Start"] || [ecell.textLabel.text isEqualToString:@"End"]) {
+            if ([ecell.textLabel.text isEqualToString:fieldName]) {
                 return ecell;
             }
         }
@@ -292,7 +292,7 @@
     if (currentService == 2 || currentService == 3) {
         [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Private" withValue:entry[@"private"] withCellType:cellTypeSwitch]];
     }
-    if (currentService == 2 || currentService == 3) {
+    if (currentService == 1 || currentService == 2 || currentService == 3) {
         // Dates
         NSDictionary *dates = [self generateDateArray:entry];
         [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set Start Date" withValue:dates[@"startDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
@@ -319,7 +319,7 @@
         [entrycellarray addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Private" withValue:entry[@"private"] withCellType:cellTypeSwitch]];
     }
     // Dates
-    if (currentService == 2 || currentService == 3) {
+    if (currentService == 1 || currentService == 2 || currentService == 3) {
         NSDictionary *dates = [self generateDateArray:entry];
         [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Set Start Date" withValue:dates[@"startDateExists"] withCellType:cellTypeSwitch withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
         [entrycellarray addObject:[[EntryCellInfo alloc] initDateCellWithTitle:@"Start" withValue:dates[@"startDate"] withCellType:cellTypeEntry withDateExists:((NSNumber *)dates[@"startDateExists"]).boolValue]];
@@ -480,12 +480,12 @@
              extrafields[@"tags"] = tags;
              }
              */
-            /*if (((NSNumber *)udict[@"set start date"]).boolValue) {
-                extrafields[@"start"] = [df stringFromDate:(NSDate *)udict[@"start"]];
+            if (((NSNumber *)udict[@"set start date"]).boolValue) {
+                extrafields[@"start_date"] = [df stringFromDate:(NSDate *)udict[@"start"]];
             }
             if (((NSNumber *)udict[@"set end date"]).boolValue) {
-                extrafields[@"end"] = [df stringFromDate:(NSDate *)udict[@"end"]];
-            }*/
+                extrafields[@"finish_date"] = [df stringFromDate:(NSDate *)udict[@"end"]];
+            }
             if (type == 0) {
                 extrafields[@"is_rewatching"] = udict[@"rewatching"];
                 extrafields[@"num_times_rewatched"] = udict[@"# rewatch"];
