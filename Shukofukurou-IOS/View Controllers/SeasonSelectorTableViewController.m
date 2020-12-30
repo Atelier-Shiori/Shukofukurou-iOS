@@ -131,7 +131,7 @@
     NSMutableArray *tmparray = [NSMutableArray new];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear fromDate:[NSDate date]];
-    int currentyear = (int)components.year;
+    int currentyear = (int)components.year+1;
     while (currentyear >= 1990) {
         [tmparray addObject:@(currentyear)];
         currentyear--;
