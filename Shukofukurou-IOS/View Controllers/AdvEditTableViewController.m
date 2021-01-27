@@ -73,7 +73,7 @@
         else {
             self.selectedaircompleted = false;
         }
-        if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]) {
+        if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]||[airingstatus isEqualToString:@"on hiatus"]) {
             self.selectedaired = true;
         }
         else {
@@ -88,7 +88,7 @@
         else {
             self.selectedfinished = false;
         }
-        if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]) {
+        if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]||[publishtatus isEqualToString:@"on hiatus"]) {
             self.selectedpublished = true;
         }
         else {

@@ -265,7 +265,7 @@
             else {
                 self.selectedaircompleted = false;
             }
-            if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]) {
+            if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]||[airingstatus isEqualToString:@"on hiatus"]) {
                 self.selectedaired = true;
             }
             else {
@@ -273,16 +273,16 @@
             }
         }
         else {
-            NSString *publishtatus = titleinfo[@"status"];
-            self.titlestatus.text = publishtatus;
+            NSString *publishstatus = titleinfo[@"status"];
+            self.titlestatus.text = publishstatus;
             self.titletype.text = titleinfo[@"type"];
-            if ([publishtatus isEqualToString:@"finished"]) {
+            if ([publishstatus isEqualToString:@"finished"]) {
                 self.selectedfinished = true;
             }
             else {
                 self.selectedfinished = false;
             }
-            if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]) {
+            if ([publishstatus isEqualToString:@"finished"]||[publishstatus isEqualToString:@"publishing"]||[publishstatus isEqualToString:@"on hiatus"]) {
                 self.selectedpublished = true;
             }
             else {

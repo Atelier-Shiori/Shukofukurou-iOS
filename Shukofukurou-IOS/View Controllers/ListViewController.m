@@ -1141,7 +1141,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
             else {
                 selectedaircompleted = false;
             }
-            if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]) {
+            if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]||[airingstatus isEqualToString:@"on hiatus"]) {
                 selectedaired = true;
             }
             else {
@@ -1174,7 +1174,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
             else {
                 selectedfinished = false;
             }
-            if ([publishstatus isEqualToString:@"finished"]||[publishstatus isEqualToString:@"publishing"]) {
+            if ([publishstatus isEqualToString:@"finished"]||[publishstatus isEqualToString:@"publishing"]||[publishstatus isEqualToString:@"on hiatus"]) {
                 selectedpublished = true;
             }
             else {
