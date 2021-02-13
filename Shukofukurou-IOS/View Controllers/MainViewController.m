@@ -44,7 +44,14 @@
 - (void)setsidebar:(CGSize)size {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         // Always Shows Sidebar if in Landscape orientation
-        if (size.width/size.height >= .75) {
+        bool iOSApponMac = false; // Apple Silicon App Debugging Only
+        if (@available(iOS 14, *)) {
+            iOSApponMac = NSProcessInfo.processInfo.iOSAppOnMac;
+        }
+        if (iOSApponMac) {
+            self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnAll;
+        }
+        else if (size.width/size.height >= .75) {
             self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
         }
         else {
