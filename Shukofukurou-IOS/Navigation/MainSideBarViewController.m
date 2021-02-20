@@ -96,6 +96,10 @@
         _avatar.image = [UIImage new];
         _avatar.layer.masksToBounds = NO;
         _avatar.layer.borderWidth = 0;
+        if ([listservice.sharedInstance getCurrentServiceUsername].length > 0 || [listservice.sharedInstance getCurrentUserAvatar].length > 0) {
+            // Failsafe, remove existing content and have user login again
+            [self removeAccount:listservice.sharedInstance.getCurrentServiceID];
+        }
     }
     _servicelogo.image = [UIImage imageNamed:[listservice.sharedInstance currentservicename].lowercaseString];
 }

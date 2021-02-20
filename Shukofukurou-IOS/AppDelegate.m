@@ -140,6 +140,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LoadTheme" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"RefreshUserInfo" object:nil];
     // Override point for customization after application launch.
+    [self setUserInfoFailureBlocks];
     [self checkaccountinformation];
     [self storeCurrentServicetoAppGroup];
     _autorefresh = [AutoRefreshTimer new];
@@ -162,6 +163,30 @@
         _tmanager = [ThemeManager new];
     }
     [_tmanager setTheme];
+}
+
+- (void)setUserInfoFailureBlocks {
+    listservice.sharedInstance.anilistManager.userInfoFailure = ^(bool failed) {
+        if (failed && listservice.sharedInstance.getCurrentServiceID == 3) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [TokenReauthManager showReAuthMessage];
+            });
+        }
+    };
+    listservice.sharedInstance.kitsuManager.userInfoFailure = ^(bool failed) {
+        if (failed && listservice.sharedInstance.getCurrentServiceID == 2) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [TokenReauthManager showReAuthMessage];
+            });
+        }
+    };
+    listservice.sharedInstance.myanimelistManager.userInfoFailure = ^(bool failed) {
+        if (failed && listservice.sharedInstance.getCurrentServiceID == 1) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [TokenReauthManager showReAuthMessage];
+            });
+        }
+    };
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
