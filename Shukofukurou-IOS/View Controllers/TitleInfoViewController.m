@@ -22,7 +22,7 @@
 #import "AniListScoreConvert.h"
 #import "RatingTwentyConvert.h"
 #import "ViewControllerManager.h"
-#import "NewStreamDataRetriever.h"
+#import "StreamDataRetriever.h"
 #import "TitleInfoCache.h"
 #import "ThemeManager.h"
 #import "HistoryManager.h"
@@ -169,14 +169,14 @@
         NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice.sharedInstance getCurrentServiceID] withType:type ignoreLastUpdated:NO];
         if (titleinfo) {
             if (type == Anime) {
-                   [NewStreamDataRetriever retrieveStreamDataForTitleID:titleid withService:listservice.sharedInstance.getCurrentServiceID completion:^(NSArray * _Nonnull entries, bool success) {
-                       if (success) {
-                           self.streamsitelinks = entries;
-                       }
-                       [self populateInfoWithType:type withDictionary:titleinfo];
-                       [self view];
-                       [self showloadingview:NO];
-                   }];
+                [StreamDataRetriever retrieveSitesForTitle:titleid completion:^(id responseObject) {
+                    if (((NSArray *)responseObject).count > 0) {
+                        self.streamsitelinks = responseObject;
+                    }
+                    [self populateInfoWithType:type withDictionary:titleinfo];
+                    [self view];
+                    [self showloadingview:NO];
+                }];
             }
             else {
                 [self populateInfoWithType:type withDictionary:titleinfo];
@@ -192,9 +192,9 @@
     [listservice.sharedInstance retrieveTitleInfo:titleid withType:type useAccount:NO completion:^(id responseObject) {
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
             if (type == Anime) {
-                [NewStreamDataRetriever retrieveStreamDataForTitleID:titleid withService:listservice.sharedInstance.getCurrentServiceID completion:^(NSArray * _Nonnull entries, bool success) {
-                    if (success) {
-                        weakSelf.streamsitelinks = entries;
+                [StreamDataRetriever retrieveSitesForTitle:titleid completion:^(id streamresponseObject) {
+                    if (((NSArray *)streamresponseObject).count > 0) {
+                        weakSelf.streamsitelinks = streamresponseObject;
                     }
                     [weakSelf populateInfoWithType:type withDictionary:[TitleInfoCache saveTitleInfoWithTitleID:titleid withServiceID:[listservice.sharedInstance getCurrentServiceID] withType:type withResponseObject:responseObject]];
                     weakSelf.forcerefresh = false;
@@ -210,9 +210,9 @@
         }
         else {
             if (type == Anime) {
-                [NewStreamDataRetriever retrieveStreamDataForTitleID:titleid withService:listservice.sharedInstance.getCurrentServiceID completion:^(NSArray * _Nonnull entries, bool success) {
-                    if (success) {
-                        weakSelf.streamsitelinks = entries;
+                [StreamDataRetriever retrieveSitesForTitle:titleid completion:^(id responseObject) {
+                    if (((NSArray *)responseObject).count > 0) {
+                        weakSelf.streamsitelinks = responseObject;
                     }
                     [weakSelf populateInfoWithType:type withDictionary:responseObject];
                     weakSelf.navigationItem.hidesBackButton = NO;
@@ -1026,7 +1026,7 @@
 - (NSArray *)generateStreamSitesCellArray {
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *link in _streamsitelinks) {
-        [tmparray addObject:[[EntryCellInfo alloc] initCellWithTitle:link[@"sitename"] withValue:[NSURL URLWithString:link[@"url"]] withCellType:cellTypeStreamSite]];
+        [tmparray addObject:[[EntryCellInfo alloc] initCellWithTitle:link[@"site"] withValue:[NSURL URLWithString:link[@"url"]] withCellType:cellTypeStreamSite]];
     }
     return tmparray;
 }
