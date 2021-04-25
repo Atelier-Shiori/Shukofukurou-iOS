@@ -1050,6 +1050,7 @@
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 		FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 7.xcdatamodel"; sourceTree = "<group>"; };
+		FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 8.xcdatamodel"; sourceTree = "<group>"; };
 		FFB17BD2256BE98C003E2C8F /* UIContextualAction+ActionCreation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIContextualAction+ActionCreation.h"; sourceTree = "<group>"; };
 		FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIContextualAction+ActionCreation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3239,7 +3240,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3266,7 +3267,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3375,6 +3376,7 @@
 		59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */,
 				FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */,
 				59744F02237C4C5B00D0D8E5 /* Hiyoko 6.xcdatamodel */,
 				59DB9A5F234F78710098AE19 /* Hiyoko 2.xcdatamodel */,
@@ -3384,7 +3386,7 @@
 				59DB9A63234F78710098AE19 /* Hiyoko 3.xcdatamodel */,
 				59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */,
 			);
-			currentVersion = FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */;
+			currentVersion = FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */;
 			name = Hiyoko.xcdatamodeld;
 			path = ../Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";
