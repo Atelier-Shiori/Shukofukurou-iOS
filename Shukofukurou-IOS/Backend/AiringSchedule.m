@@ -89,7 +89,7 @@
         NSArray *existingairingdata = [self retrieveFromCoreData:nil];
         for (NSDictionary *airingentry in existingairingdata) {
             NSArray *filteredarray = [airingdata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", ((NSNumber *)airingentry[@"id"]).intValue]];
-            if (filteredarray.count == 0) {
+            if (filteredarray.count == 0 || ((NSNumber *)airingentry[@"idMal"]).intValue == 0) {
                 [self deleteFromCoreData:((NSNumber *)airingentry[@"id"]).intValue];
             }
         }
