@@ -40,7 +40,7 @@
         return;
     }
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute 
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond
                                                         fromDate:[NSDate date]
                                                           toDate:_airingDate
                                                          options:0];
@@ -61,7 +61,7 @@
             [fstring appendFormat:hours > 1 ? @"%li hrs " : @"%li hr ", hours];
         }
         if (minutes > 0) {
-            [fstring appendFormat:minutes > 1 ? @"%li mins" : @"%li min", days];
+            [fstring appendFormat:minutes > 1 ? @"%li mins" : @"%li min", minutes];
         }
     }
     else {
