@@ -356,7 +356,11 @@
 		91DA28B822F095A900255735 /* HistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DA28B622F095A900255735 /* HistoryManager.m */; };
 		91DA28BA22F0A9EF00255735 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DA28B922F0A9EF00255735 /* CloudKit.framework */; };
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
+		FF0B4C1326497C9A00CA5D16 /* AiringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */; };
+		FF0B4C1426497C9A00CA5D16 /* AiringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */; };
 		FF47CA00261A22610068F172 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
+		FF856C2026513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
+		FF856C2126513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
 		FFB17BD5256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
 /* End PBXBuildFile section */
@@ -1049,8 +1053,12 @@
 		91DA28B922F0A9EF00255735 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F8C10F8221766DED004D4FE3 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
+		FF0B4C1126497C9A00CA5D16 /* AiringTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringTableViewCell.h; sourceTree = "<group>"; };
+		FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringTableViewCell.m; sourceTree = "<group>"; };
 		FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 7.xcdatamodel"; sourceTree = "<group>"; };
 		FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 8.xcdatamodel"; sourceTree = "<group>"; };
+		FF856C0C26513FA600D3CA4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringTableViewCell.xib; sourceTree = "<group>"; };
+		FF8B4EEA2649539D00EB6181 /* Hiyoko 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 9.xcdatamodel"; sourceTree = "<group>"; };
 		FFB17BD2256BE98C003E2C8F /* UIContextualAction+ActionCreation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIContextualAction+ActionCreation.h"; sourceTree = "<group>"; };
 		FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIContextualAction+ActionCreation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1584,12 +1592,14 @@
 				596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */,
 				594810F321921FCF000C4B5C /* TrendingCollectionHeaderView.h */,
 				594810F421921FCF000C4B5C /* TrendingCollectionHeaderView.m */,
-				594D0935220207FD00A37B6B /* UITableViewCellSelBackground.h */,
 				594D0936220207FD00A37B6B /* UITableViewCellSelBackground.m */,
 				59F9C9A422932BA60054B89D /* AdvSearchSelectionCell.h */,
 				59F9C9A522932BA60054B89D /* AdvSearchSelectionCell.m */,
 				91A27F4D22F3328700937F1E /* HistoryCell.h */,
 				91A27F4E22F3328700937F1E /* HistoryCell.m */,
+				FF0B4C1126497C9A00CA5D16 /* AiringTableViewCell.h */,
+				FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */,
+				594D0935220207FD00A37B6B /* UITableViewCellSelBackground.h */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -1692,6 +1702,7 @@
 		597DDAE522B939FD00B7227C /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */,
 				597DDB2C22B950A700B7227C /* TitleInfoBasicExpandTableViewCell.xib */,
 				597DDB0522B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib */,
 				597DDB3022B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib */,
@@ -2256,6 +2267,7 @@
 				5934E271220F7539002B8311 /* Stats.storyboard in Resources */,
 				5934E272220F7539002B8311 /* ServiceSwitcher.storyboard in Resources */,
 				5934E273220F7539002B8311 /* LaunchScreen.storyboard in Resources */,
+				FF856C2126513FA600D3CA4B /* AiringTableViewCell.xib in Resources */,
 				597DDB3222B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
 				597DDB5222B950FE00B7227C /* PersonTableViewCell.xib in Resources */,
 				5934E274220F7539002B8311 /* AdvancedEdit.storyboard in Resources */,
@@ -2299,6 +2311,7 @@
 				5962424E2155660F001995AD /* Auth.storyboard in Resources */,
 				597DDB0622B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */,
 				5962425521556622001995AD /* Search.storyboard in Resources */,
+				FF856C2026513FA600D3CA4B /* AiringTableViewCell.xib in Resources */,
 				597DDB2D22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
 				597DDB4D22B950FA00B7227C /* SearchTableViewCell.xib in Resources */,
 				597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */,
@@ -2347,6 +2360,7 @@
 				5934E1F9220F7539002B8311 /* AniListSeasonListGenerator.m in Sources */,
 				91A27F5022F3328700937F1E /* HistoryCell.m in Sources */,
 				5934E1FA220F7539002B8311 /* TitleInfoViewController.m in Sources */,
+				FF0B4C1426497C9A00CA5D16 /* AiringTableViewCell.m in Sources */,
 				5934E1FB220F7539002B8311 /* AniListScoreConvert.m in Sources */,
 				5934E1FC220F7539002B8311 /* AiringNotificationServiceSelector.m in Sources */,
 				5934E1FD220F7539002B8311 /* TrendingViewController.m in Sources */,
@@ -2595,6 +2609,7 @@
 				599121F7224BBBF600896BEF /* ExportOperationManager.m in Sources */,
 				594810DA2191D645000C4B5C /* TrendingRetriever.m in Sources */,
 				596A01B72163D1330005A60F /* CharacterDetailViewController.m in Sources */,
+				FF0B4C1326497C9A00CA5D16 /* AiringTableViewCell.m in Sources */,
 				595A9629224013A700E3C245 /* string_score.c in Sources */,
 				59A0C6F7215A983600B15F9F /* AdvEditTableViewController.m in Sources */,
 				59A7A7EF220F95C8009563CA /* SKProduct+LocalizedPrice.m in Sources */,
@@ -2952,6 +2967,14 @@
 				59B3AC62220922930050662A /* Base */,
 			);
 			name = Stats.storyboard;
+			sourceTree = "<group>";
+		};
+		FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF856C0C26513FA600D3CA4B /* Base */,
+			);
+			name = AiringTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -3376,6 +3399,7 @@
 		59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FF8B4EEA2649539D00EB6181 /* Hiyoko 9.xcdatamodel */,
 				FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */,
 				FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */,
 				59744F02237C4C5B00D0D8E5 /* Hiyoko 6.xcdatamodel */,
@@ -3386,7 +3410,7 @@
 				59DB9A63234F78710098AE19 /* Hiyoko 3.xcdatamodel */,
 				59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */,
 			);
-			currentVersion = FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */;
+			currentVersion = FF8B4EEA2649539D00EB6181 /* Hiyoko 9.xcdatamodel */;
 			name = Hiyoko.xcdatamodeld;
 			path = ../Hiyoko.xcdatamodeld;
 			sourceTree = "<group>";

@@ -9,7 +9,7 @@
 #import "AiringViewController.h"
 #import "AiringDayTableViewController.h"
 #import "ViewControllerManager.h"
-#import "SearchTableViewCell.h"
+#import "AiringTableViewCell.h"
 #import "AiringSchedule.h"
 #import "listservice.h"
 #import "RatingTwentyConvert.h"
@@ -29,6 +29,7 @@
 @property (strong) AiringDayTableViewController *airingdaycontroller;
 @property (strong) MBProgressHUD *hud;
 @property bool refreshing;
+@property NSTimer *countdowntimerrefresh;
 @end
 
 @implementation AiringViewController
@@ -37,9 +38,27 @@
     [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.countdowntimerrefresh = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(fireTimer) userInfo:nil repeats:YES];
+    NSLog(@"Starting Timer");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.countdowntimerrefresh invalidate];
+    NSLog(@"Stopping Timer");
+}
+
+- (void)fireTimer {
+    for (AiringTableViewCell *cell in self.tableView.visibleCells) {
+        [(AiringTableViewCell *)cell updateCountdown];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"searchcell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"AiringTableViewCell" bundle:nil] forCellReuseIdentifier:@"airingcell"];
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     AiringRootViewController *airingvc = [vcm getAiringRootViewController];
     airingvc.airingviewcontroller = self;
@@ -109,7 +128,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *entry = _airinglist[indexPath.row];
-    SearchTableViewCell *aentrycell = [tableView dequeueReusableCellWithIdentifier:@"searchcell"];
+    AiringTableViewCell *aentrycell = [tableView dequeueReusableCellWithIdentifier:@"airingcell"];
     if (aentrycell == nil && tableView != self.tableView) {
         aentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"airingcell"];
         if (!aentrycell) {
@@ -120,6 +139,12 @@
     aentrycell.progress.text = [NSString stringWithFormat:@"Episodes: %@", entry[@"episodes"]];
     aentrycell.type.text = [NSString stringWithFormat:@"Type: %@", entry[@"type"]];
     [aentrycell loadimage:entry[@"image_url"]];
+    if (entry[@"nextairdate"] != [NSNull null] && entry[@"nextepisode"] != [NSNull null]) {
+        aentrycell.airingDate = entry[@"nextairdate"];
+        aentrycell.nextEpisode = ((NSNumber *)entry[@"nextepisode"]).intValue;
+        aentrycell.enablecountdown = YES;
+        [aentrycell updateCountdown];
+    }
     return aentrycell ? aentrycell : [UITableViewCell new];
 }
 

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AiringSchedule.h"
+#import "TitleIDMapper.h"
 #import <AFNetworking/AFNetworking.h>
 #import <Hakuchou_iOS/AniListConstants.h>
 #import <Hakuchou_iOS/AtarashiiAPIListFormatAniList.h>
@@ -27,7 +28,7 @@
     if (![defaults valueForKey:@"airschedulerefreshdate"] || ((NSDate *)[defaults valueForKey:@"airschedulerefreshdate"]).timeIntervalSinceNow < 0) {
         [self retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success, bool refreshed) {
             if (success && refreshed) {
-                [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*72] forKey:@"airschedulerefreshdate"];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*2] forKey:@"airschedulerefreshdate"];
             }
             completionHandler(success, refreshed);
         }];
@@ -97,20 +98,30 @@
 }
 
 + (void)saveToCoreData:(NSDictionary *)airingdata {
-    NSManagedObject *aentry = [self retrieveExistingEntry:((NSNumber *)airingdata[@"id"]).intValue];
-    if (!aentry) {
-        aentry = [NSEntityDescription insertNewObjectForEntityForName:@"Airing" inManagedObjectContext:[self managedObjectContext]];
-    }
-    [aentry setValue:airingdata[@"id"] forKey:@"id"];
-    [aentry setValue:airingdata[@"idMal"] forKey:@"idMal"];
-    [aentry setValue:airingdata[@"title"] forKey:@"title"];
-    NSString *othertitlejson = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:airingdata[@"other_titles"] options:NSJSONWritingSortedKeys error:nil] encoding:NSUTF8StringEncoding];
-    [aentry setValue:othertitlejson forKey:@"other_titles"];
-    [aentry setValue:airingdata[@"episodes"] forKey:@"episodes"];
-    [aentry setValue:airingdata[@"image_url"] forKey:@"image_url"];
-    [aentry setValue:airingdata[@"status"] forKey:@"status"];
-    [aentry setValue:airingdata[@"type"] forKey:@"type"];
-    [aentry setValue:airingdata[@"day"] forKey:@"day"];
+    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)airingdata[@"id"]).stringValue withTargetServiceId:2 withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
+        if ((NSNumber *)airingdata[@"idMal"] == 0) {
+            return;
+        }
+        NSManagedObject *aentry = [self retrieveExistingEntry:((NSNumber *)airingdata[@"id"]).intValue];
+        if (!aentry) {
+            aentry = [NSEntityDescription insertNewObjectForEntityForName:@"Airing" inManagedObjectContext:[self managedObjectContext]];
+        }
+        [aentry setValue:airingdata[@"id"] forKey:@"id"];
+        [aentry setValue:airingdata[@"idMal"] forKey:@"idMal"];
+        if (success && titleid != [NSNull null]) {
+            [aentry setValue:titleid forKey:@"idKitsu"];
+        }
+        [aentry setValue:airingdata[@"title"] forKey:@"title"];
+        NSString *othertitlejson = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:airingdata[@"other_titles"] options:NSJSONWritingSortedKeys error:nil] encoding:NSUTF8StringEncoding];
+        [aentry setValue:othertitlejson forKey:@"other_titles"];
+        [aentry setValue:airingdata[@"episodes"] forKey:@"episodes"];
+        [aentry setValue:airingdata[@"image_url"] forKey:@"image_url"];
+        [aentry setValue:airingdata[@"status"] forKey:@"status"];
+        [aentry setValue:airingdata[@"type"] forKey:@"type"];
+        [aentry setValue:airingdata[@"day"] forKey:@"day"];
+        [aentry setValue:airingdata[@"nextairdate"] != 0 ? [NSDate dateWithTimeIntervalSince1970:((NSNumber *)airingdata[@"nextairdate"]).longValue] : nil forKey:@"nextairdate"];
+        [aentry setValue:airingdata[@"nextepisode"] forKey:@"nextepisode"];
+    }];
 }
 
 + (void)deleteFromCoreData:(int)titleid {
