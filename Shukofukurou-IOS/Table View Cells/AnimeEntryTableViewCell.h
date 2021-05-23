@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) UIContextualAction *shareswipebutton;
 @property (strong) UIContextualAction *optionswipebutton;
 @property (strong) UIContextualAction *deleteswipeaction;
+@property (weak, nonatomic) IBOutlet UILabel *airingCountdown;
+@property bool enablecountdown;
+@property (strong) NSDate *airingDate;
+@property int nextEpisode;
+@property int titleid;
 
 // UIActions
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
@@ -39,7 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *progress;
 @property (weak, nonatomic) IBOutlet UIImageView *active;
 - (void)loadimage:(NSString *)imageurl;
+- (void)loadAiringData;
 - (void)setSwipeButtons;
+- (void)updateCountdown;
 @end
 
 NS_ASSUME_NONNULL_END

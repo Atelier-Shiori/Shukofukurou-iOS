@@ -51,9 +51,7 @@
 }
 
 - (void)fireTimer {
-    for (AiringTableViewCell *cell in self.tableView.visibleCells) {
-        [(AiringTableViewCell *)cell updateCountdown];
-    }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"airDataRefreshed" object:nil];
 }
 
 - (void)viewDidLoad {

@@ -23,12 +23,17 @@
     return [self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"day ==[c] %@", day]];
 }
 
++ (NSArray *)retrieveAllAiringData {
+    return [self retrieveFromCoreData:nil];
+}
+
 + (void)autofetchAiringScheduleWithCompletionHandler: (void (^)(bool success, bool refreshed))completionHandler {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     if (![defaults valueForKey:@"airschedulerefreshdate"] || ((NSDate *)[defaults valueForKey:@"airschedulerefreshdate"]).timeIntervalSinceNow < 0) {
         [self retrieveAiringScheduleShouldRefresh:true completionhandler:^(bool success, bool refreshed) {
             if (success && refreshed) {
                 [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*2] forKey:@"airschedulerefreshdate"];
+                [NSNotificationCenter.defaultCenter postNotificationName:@"airDataRefreshed" object:nil];
             }
             completionHandler(success, refreshed);
         }];
@@ -44,6 +49,7 @@
         [self retrieveAiringSchedule:^(id responseobject) {
             [self processAiringData:responseobject];
             completionHandler(true , true);
+            [NSNotificationCenter.defaultCenter postNotificationName:@"airDataRefreshed" object:nil];
         } error:^(NSError *error) {
             completionHandler(false, false);
         }];

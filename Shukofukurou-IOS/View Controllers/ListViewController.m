@@ -26,6 +26,7 @@
 #import "Utility.h"
 #import "CellActionEnum.h"
 #import "UIContextualAction+ActionCreation.h"
+#import "AiringSchedule.h"
 
 @interface ListViewController ()
 @property (strong) NSMutableArray *list;
@@ -38,12 +39,37 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menubtn;
 @property (strong) MBProgressHUD *hud;
 @property bool refreshing;
+@property NSTimer *countdowntimerrefresh;
 @end
 
 @implementation ListViewController
 
 - (void)dealloc {
     [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.listtype == Anime) {
+        self.countdowntimerrefresh = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(fireTimer) userInfo:nil repeats:YES];
+        NSLog(@"Starting Timer");
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.listtype == Anime) {
+        [self.countdowntimerrefresh invalidate];
+        NSLog(@"Stopping Timer");
+    }
+}
+
+- (void)fireTimer {
+    for (AnimeEntryTableViewCell *cell in self.tableView.visibleCells) {
+        if (self.listtype == Anime) {
+            [(AnimeEntryTableViewCell *)cell updateCountdown];
+        }
+    }
 }
 
 - (void)viewDidLoad {
@@ -151,13 +177,26 @@
             return;
         }
     }
-    [self retrieveList:true completion:^(bool success) {
-        NSLog(@"Refreshed: %i", success);
-        [self.tableView reloadData];
-        [self.listselector generateLists:[self retrieveEntriesWithType:self.listtype withFilterPredicate:nil] withListType:self.listtype];
-        [self.refreshControl endRefreshing];
-        completionHandler(success);
-    }];
+    if (_listtype == Anime) {
+        [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
+            [self retrieveList:true completion:^(bool success) {
+                NSLog(@"Refreshed: %i", success);
+                [self.tableView reloadData];
+                [self.listselector generateLists:[self retrieveEntriesWithType:self.listtype withFilterPredicate:nil] withListType:self.listtype];
+                [self.refreshControl endRefreshing];
+                completionHandler(success);
+            }];
+        }];
+    }
+    else {
+        [self retrieveList:true completion:^(bool success) {
+            NSLog(@"Refreshed: %i", success);
+            [self.tableView reloadData];
+            [self.listselector generateLists:[self retrieveEntriesWithType:self.listtype withFilterPredicate:nil] withListType:self.listtype];
+            [self.refreshControl endRefreshing];
+            completionHandler(success);
+        }];
+    }
 }
 
 - (void)retrieveList:(bool)refresh completion:(void (^)(bool success)) completionHandler {
@@ -442,6 +481,12 @@
     return tableView.sectionHeaderHeight;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (_listtype == Anime) {
+        [(AnimeEntryTableViewCell *)cell updateCountdown];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_listtype == Anime) {
         return [self generateAnimeEntryCellAtIndexPath:indexPath tableView:tableView];
@@ -459,6 +504,7 @@
         if (aentrycell == nil && tableView != self.tableView) {
             aentrycell = [self.tableView dequeueReusableCellWithIdentifier:@"animeentrycell"];
         }
+        aentrycell.titleid = ((NSNumber *)entry[@"id"]).intValue;
         aentrycell.title.text = entry[@"title"];
         aentrycell.progress.text = [NSString stringWithFormat:@"Episode: %@/%@", entry[@"watched_episodes"], entry[@"episodes"]];
         NSString *score = @"";
@@ -478,6 +524,9 @@
         aentrycell.score.text = [NSString stringWithFormat:@"Score: %@",score];
         [aentrycell loadimage:entry[@"image_url"]];
         aentrycell.active.hidden = ![(NSString *)entry[@"status"] isEqualToString:@"currently airing"];
+        if (!aentrycell.active.hidden) {
+            [aentrycell loadAiringData];
+        }
         __weak ListViewController *weakSelf = self;
         int currentservice = [listservice.sharedInstance getCurrentServiceID];
         bool incrementable = [self canIncrement:entry];
