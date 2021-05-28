@@ -110,8 +110,9 @@
 }
 
 - (void)updateCountdown {
-    if (!_enablecountdown || _active.hidden) {
+    if (!_enablecountdown || _active.hidden || !_airingDate) {
         _airingCountdown.hidden = true;
+        _enablecountdown = false;
         return;
     }
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
