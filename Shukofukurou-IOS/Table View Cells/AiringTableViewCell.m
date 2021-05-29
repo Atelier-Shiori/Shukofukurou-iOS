@@ -36,7 +36,8 @@
 }
 
 - (void)updateCountdown {
-    if (!_enablecountdown) {
+    if (!_enablecountdown || [_airingDate isKindOfClass:[NSNull class]]) {
+        _enablecountdown = false;
         return;
     }
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];

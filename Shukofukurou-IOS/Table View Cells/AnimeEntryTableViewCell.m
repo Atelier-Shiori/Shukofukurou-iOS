@@ -110,7 +110,7 @@
 }
 
 - (void)updateCountdown {
-    if (!_enablecountdown || _active.hidden || !_airingDate) {
+    if (!_enablecountdown || _active.hidden || [_airingDate isKindOfClass:[NSNull class]]) {
         _airingCountdown.hidden = true;
         _enablecountdown = false;
         return;
