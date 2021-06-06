@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadAiringData;
 - (void)setSwipeButtons;
 - (void)updateCountdown;
+- (void)setEpisodeText:(id)watchedepisodes withEpisodes:(id)episodes;
 @end
 
 NS_ASSUME_NONNULL_END

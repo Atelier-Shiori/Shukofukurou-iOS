@@ -40,6 +40,7 @@
 @property (strong) MBProgressHUD *hud;
 @property bool refreshing;
 @property NSTimer *countdowntimerrefresh;
+@property bool refreshcountdowndata;
 @end
 
 @implementation ListViewController
@@ -53,6 +54,9 @@
     if (self.listtype == Anime) {
         self.countdowntimerrefresh = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(fireTimer) userInfo:nil repeats:YES];
         NSLog(@"Starting Timer");
+        if (_refreshcountdowndata) {
+            [self refreshAirData];
+        }
     }
 }
 
@@ -68,6 +72,14 @@
     for (AnimeEntryTableViewCell *cell in self.tableView.visibleCells) {
         if (self.listtype == Anime) {
             [(AnimeEntryTableViewCell *)cell updateCountdown];
+        }
+    }
+}
+
+- (void)refreshAirData {
+    for (AnimeEntryTableViewCell *cell in self.tableView.visibleCells) {
+        if (self.listtype == Anime) {
+            [(AnimeEntryTableViewCell *)cell loadAiringData];
         }
     }
 }
@@ -108,6 +120,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"airDataRefreshed" object:nil];
     [self hidemenubtn];
     [self setupsearch];
 }
@@ -160,6 +173,10 @@
     }
     else if ([notification.name isEqualToString:@"ThemeChanged"]) {
         [ThemeManager fixTableView:self.tableView];
+    }
+    else if ([notification.name isEqualToString:@"airDataRefreshed"] && _listtype == Anime) {
+        NSLog(@"Queuing Air Data Cell Refresh");
+        _refreshcountdowndata = true;
     }
 }
 
@@ -506,7 +523,7 @@
         }
         aentrycell.titleid = ((NSNumber *)entry[@"id"]).intValue;
         aentrycell.title.text = entry[@"title"];
-        aentrycell.progress.text = [NSString stringWithFormat:@"Episode: %@/%@", entry[@"watched_episodes"], entry[@"episodes"]];
+        [aentrycell setEpisodeText:entry[@"watched_episodes"] withEpisodes:entry[@"episodes"]];
         NSString *score = @"";
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:

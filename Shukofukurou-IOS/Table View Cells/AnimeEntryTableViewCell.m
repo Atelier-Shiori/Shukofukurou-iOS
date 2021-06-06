@@ -12,12 +12,18 @@
 #import "AiringSchedule.h"
 #import "listservice.h"
 
+@interface AnimeEntryTableViewCell ()
+@property (strong) NSNumber *watchedepisodes;
+@property (strong) NSNumber *numepisodes;
+@end
+
 @implementation AnimeEntryTableViewCell
+
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"airDataRefreshed" object:nil];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"airTimerFire" object:nil];
     }
     return self;
 }
@@ -27,10 +33,7 @@
 }
 
 - (void)receivedNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"airDataRefreshed"]) {
-        [self loadAiringData];
-    }
-    else if ([notification.name isEqualToString:@"airTimerFire"]) {
+    if ([notification.name isEqualToString:@"airTimerFire"]) {
         [self updateCountdown];
     }
 }
@@ -90,6 +93,7 @@
                 _nextEpisode = ((NSNumber *)airdata[@"nextepisode"]).intValue;
                 _enablecountdown = true;
                 [self updateCountdown];
+                [self setEpisodeText:self.watchedepisodes withEpisodes:self.numepisodes];
                 [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"airTimerFire" object:nil];
             }
             else {
@@ -144,6 +148,12 @@
         [fstring appendFormat:@"Ep %i aired!", _nextEpisode];
     }
     _airingCountdown.text = fstring;
+}
+
+- (void)setEpisodeText:(id)watchedepisodes withEpisodes:(id)episodes {
+    self.watchedepisodes = watchedepisodes;
+    self.numepisodes = episodes;
+    self.progress.text = !_active.hidden && (_nextEpisode-1)-((NSNumber *)self.watchedepisodes).intValue > 0 && _nextEpisode > 0 ? [NSString stringWithFormat:@"Episode: %@/%@ (%i %@ Behind)", self.watchedepisodes, self.numepisodes , (_nextEpisode-1)-((NSNumber *)watchedepisodes).intValue, (_nextEpisode-1)-((NSNumber *)watchedepisodes).intValue > 1 ? @"Eps" : @"Ep"] : [NSString stringWithFormat:@"Episode: %@/%@", self.watchedepisodes, self.numepisodes];
 }
 
 @end
