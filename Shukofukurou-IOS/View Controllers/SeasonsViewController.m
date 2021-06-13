@@ -197,6 +197,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)startselector:(id)sender {
+    @try {
     UINavigationController *navcontroller = [UINavigationController new];
     navcontroller.viewControllers = @[_seasonselector];
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
@@ -204,6 +205,10 @@ static NSString * const reuseIdentifier = @"Cell";
         navcontroller.popoverPresentationController.barButtonItem = sender;
     }
     [self presentViewController:navcontroller animated:YES completion:nil];
+    }
+    @catch (NSException *ex) {
+        NSLog(@"Error: %@", ex);
+    }
 }
 
 - (IBAction)refresh:(UIRefreshControl *)sender {

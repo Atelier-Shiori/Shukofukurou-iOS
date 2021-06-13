@@ -89,6 +89,7 @@
         }
     };
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(airScheduleHasNewDataNotification:) name:@"airscheduleHasNewData" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(airScheduleHasNewDataNotification:) name:@"airDataRefreshed" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [self hidemenubtn];
 }

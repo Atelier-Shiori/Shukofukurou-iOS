@@ -196,6 +196,7 @@
     }
     if (_listtype == Anime) {
         [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
+            NSLog(@"Refreshed: %i Success: %i",refreshed, success);
             [self retrieveList:true completion:^(bool success) {
                 NSLog(@"Refreshed: %i", success);
                 [self.tableView reloadData];
@@ -230,29 +231,48 @@
         else {
             [self showloadingview:YES];
         }
-        [listservice.sharedInstance retrieveownListWithType:_listtype completion:^(id responseObject) {
-            [self saveEntriesWithDictionary:responseObject withType:self.listtype];
-            // populate list
-            [self reloadList];
-            if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice.sharedInstance getCurrentServiceID]) {
-                AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
-                [anm checknotifications:^(bool success) {
+        if (_listtype == Anime) {
+            [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
+                [listservice.sharedInstance retrieveownListWithType:_listtype completion:^(id responseObject) {
+                    [self saveEntriesWithDictionary:responseObject withType:self.listtype];
+                    // populate list
+                    [self reloadList];
+                    if (self.listtype == Anime && [AiringNotificationManager airingNotificationServiceSource] == [listservice.sharedInstance getCurrentServiceID]) {
+                        AiringNotificationManager *anm = [AiringNotificationManager sharedAiringNotificationManager];
+                        [anm checknotifications:^(bool success) {
+                            [self.refreshControl endRefreshing];
+                            [self showloadingview:NO];
+                            completionHandler(true);
+                        }];
+                    }
+                    else {
+                        [self.refreshControl endRefreshing];
+                        [self showloadingview:NO];
+                        completionHandler(true);
+                    }
+                } error:^(NSError *error) {
+                    NSLog(@"%@", error.userInfo);
                     [self.refreshControl endRefreshing];
                     [self showloadingview:NO];
-                    completionHandler(true);
+                    completionHandler(false);
                 }];
-            }
-            else {
+            }];
+        }
+        else {
+            [listservice.sharedInstance retrieveownListWithType:_listtype completion:^(id responseObject) {
+                [self saveEntriesWithDictionary:responseObject withType:self.listtype];
+                // populate list
+                [self reloadList];
                 [self.refreshControl endRefreshing];
                 [self showloadingview:NO];
                 completionHandler(true);
-            }
-        } error:^(NSError *error) {
-            NSLog(@"%@", error.userInfo);
-            [self.refreshControl endRefreshing];
-            [self showloadingview:NO];
-            completionHandler(false);
-        }];
+            } error:^(NSError *error) {
+                NSLog(@"%@", error.userInfo);
+                [self.refreshControl endRefreshing];
+                [self showloadingview:NO];
+                completionHandler(false);
+            }];
+        }
     }
 }
 - (void)populateList:(NSDictionary *)list {
