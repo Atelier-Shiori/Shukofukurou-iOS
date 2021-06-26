@@ -56,13 +56,13 @@
     if (days > 0 || hours > 0 || minutes > 0) {
         [fstring appendFormat:@"Ep %i in ", _nextEpisode];
         if (days > 0) {
-            [fstring appendFormat:days > 1 ? @"%li days " : @"%li day ", days];
+            [fstring appendFormat:days > 1 ? @"%lid " : @"%lid ", days];
         }
         if (hours  > 0) {
-            [fstring appendFormat:hours > 1 ? @"%li hrs " : @"%li hr ", hours];
+            [fstring appendFormat:hours > 1 ? @"%lih " : @"%lih ", hours];
         }
         if (minutes > 0) {
-            [fstring appendFormat:minutes > 1 ? @"%li mins" : @"%li min", minutes];
+            [fstring appendFormat:minutes > 1 ? @"%lim" : @"%lim", minutes];
         }
     }
     else {

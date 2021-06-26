@@ -34,7 +34,7 @@
             authURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/api/v2/oauth/authorize?client_id=%@&response_type=code",kanilistclient]];
             break;
     }
-    self.session = [[ASWebAuthenticationSession alloc] initWithURL:authURL callbackURLScheme:@"hiyokoauth://" completionHandler:^(NSURL * _Nullable callbackURL, NSError * _Nullable error) {
+    self.session = [[ASWebAuthenticationSession alloc] initWithURL:authURL callbackURLScheme:@"hiyokoauth" completionHandler:^(NSURL * _Nullable callbackURL, NSError * _Nullable error) {
         if (!error) {
             [self performOAuthWithCallBackURL:callbackURL];
         }
