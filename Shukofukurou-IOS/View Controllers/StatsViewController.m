@@ -14,7 +14,6 @@
 #import "TitleInfoTableViewCell.h"
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
-#import "ThemeManager.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
 
 @interface StatsViewController ()
@@ -36,7 +35,6 @@
     NSLog(@"View Loaded");
     self.graphView.animationDuration = 2.0;
     self.graphView.dataSource = self;
-    [self setTheme];
     [self showloadingview:YES];
 }
 
@@ -44,17 +42,6 @@
     [super viewDidAppear:animated];
     [self populateValues];
     [self performLoadStats];
-}
-
-- (void)setTheme {
-    bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-    if (@available(iOS 13, *)) { }
-    else {
-        ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-        self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        self.graphView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        _tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-    }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -389,7 +376,6 @@
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
         _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
     }
     else {
         [_hud hideAnimated:YES];

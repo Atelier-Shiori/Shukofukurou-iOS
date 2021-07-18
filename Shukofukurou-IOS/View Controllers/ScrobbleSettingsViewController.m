@@ -11,7 +11,6 @@
 #import "AnimeRelations.h"
 #import <MBProgressHUDFramework/MBProgressHUD.h>
 #import <SafariServices/SafariServices.h>
-#import "ThemeManager.h"
 
 @interface ScrobbleSettingsViewController ()
 @property (strong, nonatomic) IBOutlet UITableViewCell *clearcachecell;
@@ -24,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -94,11 +92,6 @@
     if (show) {
         self.hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         self.hud.label.text = text;
-        if (@available(iOS 13, *)) { }
-        else {
-            self.hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            self.hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
     }
     else {
         [self.hud hideAnimated:YES];
@@ -108,11 +101,6 @@
 
 - (void)performOpenScrobbleGuide {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[[NSURL alloc] initWithString:@"https://help.malupdaterosx.moe/shukofukurou-for-ios/scrobble-manual/"]];
-    if (@available(iOS 13, *)) { }
-    else {
-        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
-    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

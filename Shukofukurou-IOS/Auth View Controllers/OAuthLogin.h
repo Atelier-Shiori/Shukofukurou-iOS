@@ -11,11 +11,7 @@
 #import <AuthenticationServices/AuthenticationServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
 @interface OAuthLogin : NSObject <ASWebAuthenticationPresentationContextProviding>
-#else
-@interface OAuthLogin : NSObject
-#endif
 @property (nonatomic, weak) id <AuthViewControllerDelegate> delegate;
 @property bool reauthorizing;
 - (void)startOAuthSession;

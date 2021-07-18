@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "ViewControllerManager.h"
-#import "ThemeManager.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
 #import "listservice.h"
 
@@ -22,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTheme];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults boolForKey:@"firstload"]) {
         [self showloadingview:YES];
@@ -38,9 +36,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(serviceChangedNotification:) name:@"ServiceChanged" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChangedNotification:) name:@"ThemeChanged" object:nil];
     [self hidemenubtn];
-    [self setTheme];
     [self setLoginLabel];
 }
 
@@ -50,7 +46,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setTheme];
 }
 
 - (void)sidebarShowAlwaysNotification:(NSNotification *)notification {
@@ -61,9 +56,6 @@
     [self setLoginLabel];
 }
 
-- (void)themeChangedNotification:(NSNotification *)notification {
-    [self setTheme];
-}
 
 - (void)setLoginLabel {
     _logincell.textLabel.text = [NSString stringWithFormat:@"Log into %@", [listservice.sharedInstance currentservicename]];
@@ -88,19 +80,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setTheme {
-   [ThemeManager fixTableView:self.tableView];
-}
-
 - (void)showloadingview:(bool)show {
     if (show) {
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Please Wait";
-        if (@available(iOS 13, *)) { }
-        else {
-            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
     }
     else {
         [_hud hideAnimated:YES];
@@ -144,11 +127,6 @@
 
 - (void)openWebBrowserView:(NSURL *)url {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    if (@available(iOS 13, *)) { }
-    else {
-        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
-    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

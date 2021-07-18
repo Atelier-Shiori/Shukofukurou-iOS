@@ -9,7 +9,6 @@
 #import "NotifyingTitlesTableViewController.h"
 #import "AiringNotificationManager.h"
 #import "AppDelegate.h"
-#import "ThemeManager.h"
 
 @import CoreData;
 
@@ -21,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

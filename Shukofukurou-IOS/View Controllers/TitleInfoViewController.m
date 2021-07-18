@@ -24,7 +24,6 @@
 #import "ViewControllerManager.h"
 #import "StreamDataRetriever.h"
 #import "TitleInfoCache.h"
-#import "ThemeManager.h"
 #import "HistoryManager.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
 #import "UIViewController+BackButtonHandler.h"
@@ -49,7 +48,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *shareitembaritem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *optionsitembaritem;
 @property (strong) MBProgressHUD *hud;
-@property bool setthemecolors;
 @property bool refreshing;
 @property (strong, nonatomic) IBOutlet UILabel *scorelabel;
 @property (strong, nonatomic) IBOutlet UIImageView *scoreimage;
@@ -68,14 +66,10 @@
     [super viewDidLoad];
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
     [self registerTableViewCells];
-    // Set Background Color
-    [self setThemeColors];
-    _setthemecolors = true;
     // Do any additional setup after loading the view.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedIn" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"EntryUpdated" object:nil];
     _relatedtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"relatedview"];
     [self setToolbar];
@@ -84,8 +78,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setThemeColors];
-    _setthemecolors = true;
     NSIndexPath *indexPath = self.tableview.indexPathForSelectedRow;
     if (indexPath) {
         [self.tableview deselectRowAtIndexPath:indexPath animated:animated];
@@ -100,33 +92,6 @@
         return NO;
     }
     return YES;
-}
-
-- (void)setThemeColors {
-    if (!_setthemecolors) {
-        if (@available(iOS 13, *)) { }
-        else {
-            bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-            ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-            self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-            self.tableview.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-            self.scoreimage.tintColor = darkmode ? current.tintColor : current.textColor;
-            self.titlestatus.textColor = current.textColor;
-            self.titletype.textColor = current.textColor;
-            self.scorelabel.textColor = current.textColor;
-            int synopsissection = 0;
-            for (NSString *section in _sections) {
-                if ([section isEqualToString:@"Synopsis"]) {
-                    break;
-                }
-                synopsissection++;
-            }
-            if (synopsissection < 2) {
-                TitleInfoSynopsisTableViewCell *synopsis = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:synopsissection]];
-                [synopsis fixTextColor];
-            }
-        }
-    }
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
@@ -150,9 +115,6 @@
         self.navigationItem.hidesBackButton = NO;
         [self showloadingview:NO];
         [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        _setthemecolors = false;
     }
     else if ([notification.name isEqualToString:@"EntryUpdated"]) {
         NSDictionary *info = notification.object;
@@ -628,10 +590,6 @@
         case cellActionViewRelated:
         case cellActionViewEpisodes:
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            if (@available(iOS 13, *)) { }
-            else {
-                cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
-            }
             cell.textLabel.font = [UIFont systemFontOfSize:cell.textLabel.font.pointSize];
             [cell setUpdateActionCell:NO];
             break;
@@ -1443,11 +1401,6 @@
     if (show && !_refreshing) {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.label.text = @"Loading";
-        if (@available(iOS 13, *)) { }
-        else {
-            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
         _refreshing = YES;
     }
     else if (!show) {
@@ -1511,11 +1464,6 @@
 
 - (void)openWebBrowserView:(NSURL *)url {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    if (@available(iOS 13, *)) { }
-    else {
-        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
-    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

@@ -13,55 +13,19 @@
 #import "UITextView+SetHTMLAttributedText.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIImageView+Letters.h"
-#import "ThemeManager.h"
 
 @interface ReviewDetailViewController ()
-@property bool setthemecolors;
 @end
 
 @implementation ReviewDetailViewController
 
--(void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setThemeColors];
-    _setthemecolors = true;
     // Do view setup here.
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setThemeColors];
-    _setthemecolors = true;
-}
-
-- (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        _setthemecolors = false;
-    }
-}
-
-- (void)setThemeColors {
-    if (!_setthemecolors) {
-        if (@available(iOS 13, *)) {
-            self.reviewtext.textColor = [UIColor labelColor];
-        }
-        else {
-            bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-            ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-            UIColor *textcolor = [ThemeManager sharedCurrentTheme].textColor;;
-            self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-            self.reviewtext.textColor = textcolor;
-            self.progress.textColor = textcolor;
-            self.reviewdate.textColor = textcolor;
-            self.helpful.textColor = textcolor;
-            self.score.textColor = textcolor;
-        }
-    }
 }
 
 - (void)populateReviewData:(NSDictionary *)review withType:(int)type {
@@ -87,22 +51,12 @@
     if (currentservice == 1) {
         _reviewtext.text = [(NSString *)review[@"review"] stringByReplacingOccurrencesOfString:@"\\n\\n" withString:@"\n\n"];
         weakSelf.navigationItem.hidesBackButton = NO;
-        if (@available(iOS 13, *)) {
-            weakSelf.reviewtext.textColor = [UIColor labelColor];
-        }
-        else {
-            weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
+        weakSelf.reviewtext.textColor = [UIColor labelColor];
     }
     else {
         [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading Review" completion:^(NSAttributedString * _Nonnull astr) {
             weakSelf.navigationItem.hidesBackButton = NO;
-            if (@available(iOS 13, *)) {
-                weakSelf.reviewtext.textColor = [UIColor labelColor];
-            }
-            else {
-                weakSelf.reviewtext.textColor = [ThemeManager sharedCurrentTheme].textColor;
-            }
+            weakSelf.reviewtext.textColor = [UIColor labelColor];
         }];
     }
 }

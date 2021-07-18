@@ -14,8 +14,6 @@
 #import "MainSideBarViewDelegate.h"
 #import "AiringNotificationManager.h"
 
-@class ThemeManager;
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate, AuthViewControllerDelegate, ServiceSwitcherViewDelegate, MainSideBarViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -26,9 +24,6 @@
 
 @property (strong) AiringNotificationManager *airingnotificationmanager;
 
-@property (strong) ThemeManager *tmanager;
-
-- (void)loadtheme;
 - (NSManagedObjectContext *)managedObjectContext;
 - (void)saveContext;
 - (ViewControllerManager *)getvcmanager;

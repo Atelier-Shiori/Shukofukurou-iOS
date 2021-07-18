@@ -12,7 +12,6 @@
 #import "AiringSchedule.h"
 #import <SDWebImage/SDWebImage.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "ThemeManager.h"
 #import <Hakuchou_iOS/OAuthCredManager.h>
 #import "ScrobbleManager.h"
 #import "TokenReauthManager.h"
@@ -158,13 +157,6 @@
     [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
-- (void)loadtheme {
-    if (!_tmanager) {
-        _tmanager = [ThemeManager new];
-    }
-    [_tmanager setTheme];
-}
-
 - (void)setUserInfoFailureBlocks {
     listservice.sharedInstance.anilistManager.userInfoFailure = ^(bool failed) {
         if (failed && listservice.sharedInstance.getCurrentServiceID == 3) {
@@ -190,10 +182,7 @@
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"LoadTheme"]) {
-        [self loadtheme];
-    }
-    else if ([notification.name isEqualToString:@"RefreshUserInfo"]) {
+    if ([notification.name isEqualToString:@"RefreshUserInfo"]) {
         NSLog(@"Reloading user information for all accounts");
         [self checkaccountinformation:YES];
     }

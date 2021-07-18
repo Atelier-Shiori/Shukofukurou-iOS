@@ -9,7 +9,6 @@
 #import "CustomListTableViewController.h"
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
-#import "ThemeManager.h"
 #import "Utility.h"
 #import "HistoryManager.h"
 
@@ -24,17 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadTheme];
     _customListArray = [NSMutableArray new];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-}
-
-- (void)loadTheme {
-    if (@available(iOS 13, *)) { }
-    else {
-        self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    }
 }
 
 - (void)populateCustomLists:(NSDictionary *)entry withCurrentType:(int)type withSelectedId:(int)selid {

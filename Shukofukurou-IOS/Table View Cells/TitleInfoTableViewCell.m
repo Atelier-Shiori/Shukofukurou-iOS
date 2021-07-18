@@ -12,7 +12,6 @@
 #import "AniListScoreConvert.h"
 #import "RatingTwentyConvert.h"
 #import "UILabel+Copyable.h"
-#import "ThemeManager.h"
 #import "TableViewCellBackgroundView.h"
 
 @implementation TitleInfoBasicTableViewCell
@@ -70,18 +69,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     }
     return self;
-}
-
-- (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        if (@available(iOS 13, *)) { }
-        else {
-            _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
-    }
 }
 
 - (void)awakeFromNib {
@@ -93,13 +82,8 @@
 }
 
 - (void)fixTextColor {
-    if (@available(iOS 13, *)) {
-        _valueText.textColor = [UIColor labelColor];
-        _valueText.backgroundColor = [UIColor clearColor];
-    }
-    else {
-        _valueText.textColor = [ThemeManager sharedCurrentTheme].textColor;
-    }
+    _valueText.textColor = [UIColor labelColor];
+    _valueText.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -409,38 +393,15 @@
 
 @implementation TitleInfoNotesEntryTableViewCell
 
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
-
 - (instancetype)init {
     if (self = [super init]) {
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     }
     return self;
-}
-
-- (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString: @"ThemeChanged"]) {
-        [self setKeyboardAppearence];
-    }
-}
-
-- (void)setKeyboardAppearence {
-    if (@available(iOS 13, *)) { }
-    else {
-        _notes.keyboardAppearance = [ThemeManager sharedCurrentTheme].keyboardappearence;
-    }
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    if (@available(iOS 13, *)) { }
-    else {
-        self.selectedBackgroundView = [TableViewCellBackgroundView new];
-    }
-    [self setKeyboardAppearence];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -528,10 +489,7 @@
         self.textLabel.font = [UIFont boldSystemFontOfSize:self.textLabel.font.pointSize];
     }
     else {
-        if (@available(iOS 13.0, *)) {
-            self.textLabel.textColor = [UIColor labelColor];
-        } else {
-        }
+        self.textLabel.textColor = [UIColor labelColor];
     }
 }
 

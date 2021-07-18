@@ -10,7 +10,6 @@
 #import "ViewControllerManager.h"
 #import "ListService.h"
 #import "AppDelegate.h"
-#import "ThemeManager.h"
 
 @interface ServiceSwitcherViewController ()
 @property (strong, nonatomic) IBOutlet UITableViewCell *myanimelistservicecell;
@@ -23,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTheme];
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     ServiceSwitcherRootViewController *serviceswitcherrootvc = [vcm getServiceSwitcherRootViewController];
     serviceswitcherrootvc.serviceswitchervc = self;
@@ -37,20 +35,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setTheme];
-}
-
-- (void)setTheme {
-    if (self.navigationController.popoverPresentationController) {
-        if (@available(iOS 13, *)) { }
-        else {
-            self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-            [ThemeManager fixTableView:self.tableView];
-        }
-    }
-    else {
-        [ThemeManager fixTableView:self.tableView];
-    }
 }
 
 - (void)viewDidLayoutSubviews {

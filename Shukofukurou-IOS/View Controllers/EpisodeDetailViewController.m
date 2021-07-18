@@ -12,14 +12,12 @@
 #import "listservice.h"
 #import "TitleInfoTableViewCell.h"
 #import "NSString+HTMLtoNSAttributedString.h"
-#import "ThemeManager.h"
 
 @interface EpisodeDetailViewController ()
 @property (strong) NSMutableDictionary *items;
 @property (strong) NSArray *sections;
 @property int episodeid;
 @property int titleid;
-@property bool setthemecolors;
 @end
 
 @implementation EpisodeDetailViewController
@@ -33,16 +31,11 @@
     [self registerTableViewCells];
     // Do any additional setup after loading the view.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     _items = [NSMutableDictionary new];
-    [self setThemeColors];
-    _setthemecolors = true;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setThemeColors];
-    _setthemecolors = true;
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
@@ -50,26 +43,6 @@
         // Leave Episode Detail
         self.navigationItem.hidesBackButton = NO;
         [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        [self setThemeColors];
-        _setthemecolors = false;
-    }
-}
-
-- (void)setThemeColors {
-    if (!_setthemecolors) {
-        if (@available(iOS 13, *)) { }
-        else {
-            bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-            ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-            self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-            self.tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-            UITableViewCell *synopsis = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            if ([synopsis isKindOfClass:[TitleInfoSynopsisTableViewCell class]]) {
-                [(TitleInfoSynopsisTableViewCell*)synopsis fixTextColor];
-            }
-        }
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "AiringDayTableViewController.h"
-#import "ThemeManager.h"
 
 @interface AiringDayTableViewController ()
 @property (strong) NSArray *days;
@@ -17,27 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTheme];
     _days = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", @"Unknown"];
     [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setTheme];
-}
-
-- (void)setTheme {
-    if (self.navigationController.popoverPresentationController) {
-        if (@available(iOS 13, *)) { }
-        else {
-            self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-            [ThemeManager fixTableView:self.tableView];
-        }
-    }
-    else {
-        [ThemeManager fixTableView:self.tableView];
-    }
 }
 
 - (void)viewDidLayoutSubviews {

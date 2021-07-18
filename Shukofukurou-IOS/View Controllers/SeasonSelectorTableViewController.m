@@ -7,7 +7,6 @@
 //
 
 #import "SeasonSelectorTableViewController.h"
-#import "ThemeManager.h"
 
 @interface SeasonSelectorTableViewController ()
 @property (strong) NSArray *selections;
@@ -19,25 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTheme];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setTheme];
-}
-
-- (void)setTheme {
-    if (self.navigationController.popoverPresentationController) {
-        if (@available(iOS 13, *)) { }
-        else {
-            self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-            [ThemeManager fixTableView:self.tableView];
-        }
-    }
-    else {
-        [ThemeManager fixTableView:self.tableView];
-    }
 }
 
 - (void)viewDidLayoutSubviews {

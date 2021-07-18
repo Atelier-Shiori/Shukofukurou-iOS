@@ -8,7 +8,6 @@
 
 #import "AiringNotifySettingsTableViewController.h"
 #import "NotifyingTitlesTableViewController.h"
-#import "ThemeManager.h"
 
 @import UserNotifications;
 
@@ -20,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     _airnotifyswitch.on = [defaults boolForKey:@"airnotificationsenabled"];
     [self setairingcellsenabled:_airnotifyswitch.on];

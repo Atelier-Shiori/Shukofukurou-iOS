@@ -11,7 +11,6 @@
 #import "listservice.h"
 #import "PersonTableViewCell.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
-#import "ThemeManager.h"
 
 @interface CharacterTableViewController ()
 @property int titleid;
@@ -23,28 +22,9 @@
 
 @implementation CharacterTableViewController
 
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerTableViewCells];
-    [self loadTheme];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"ThemeChanged" object:nil];
-}
-
-- (void)receivedNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        [self loadTheme];
-    }
-}
-
-- (void)loadTheme {
-    if (@available(iOS 13, *)) { }
-    else {
-        self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    }
 }
 
 - (void)retrievePersonList:(int)titleid withType:(int)type {
@@ -166,11 +146,6 @@
     if (show) {
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
-        if (@available(iOS 13, *)) { }
-        else {
-            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
     }
     else {
         [_hud hideAnimated:YES];

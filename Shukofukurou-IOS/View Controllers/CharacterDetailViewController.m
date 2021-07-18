@@ -13,7 +13,6 @@
 #import "PersonTableViewCell.h"
 #import "TitleInfoViewController.h"
 #import "NSString+HTMLtoNSAttributedString.h"
-#import "ThemeManager.h"
 
 @interface CharacterDetailViewController ()
 @property (strong) NSDictionary *items;
@@ -41,14 +40,12 @@
     // Do any additional setup after loading the view.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
-    [self setThemeColors];
     _setthemecolors = true;
     [self setToolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setThemeColors];
     _setthemecolors = true;
     NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
     if (indexPath) {
@@ -61,26 +58,6 @@
         // Leave Character Information
         self.navigationItem.hidesBackButton = NO;
         [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        [self setThemeColors];
-        _setthemecolors = false;
-    }
-}
-
-- (void)setThemeColors {
-    if (!_setthemecolors) {
-        bool darkmode = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"];
-        if (@available(iOS 13, *)) { }
-        else {
-            ThemeManagerTheme *current = [ThemeManager sharedCurrentTheme];
-            self.view.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-            self.tableView.backgroundColor = darkmode ? current.viewAltBackgroundColor : current.viewBackgroundColor;
-        }
-        UITableViewCell *synopsis = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        if ([synopsis isKindOfClass:[TitleInfoSynopsisTableViewCell class]]) {
-            [(TitleInfoSynopsisTableViewCell*)synopsis fixTextColor];
-        }
     }
 }
 
@@ -505,11 +482,6 @@
 
 - (void)openWebBrowserView:(NSURL *)url {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    if (@available(iOS 13, *)) { }
-    else {
-        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
-    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

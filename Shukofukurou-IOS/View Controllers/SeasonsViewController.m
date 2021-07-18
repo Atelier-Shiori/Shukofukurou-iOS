@@ -15,7 +15,6 @@
 #import "listservice.h"
 #import "TitleInfoViewController.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
-#import "ThemeManager.h"
 
 @interface SeasonsViewController ()
 @property (strong) NSArray *seasonlist;
@@ -228,11 +227,6 @@ static NSString * const reuseIdentifier = @"Cell";
     if (show) {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.label.text = @"Loading";
-        if (@available(iOS 13, *)) { }
-        else {
-            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
     }
     else {
         [_hud hideAnimated:YES];

@@ -12,7 +12,6 @@
 #import "AniListScoreConvert.h"
 #import "listservice.h"
 #import "ReviewDetailViewController.h"
-#import "ThemeManager.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
 
 @interface ReviewTableViewController ()
@@ -26,15 +25,9 @@
 
 @implementation ReviewTableViewController
 
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadTheme];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receivedNotification:) name:@"ThemeChanged" object:nil];
-    
+
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2:
             self.navigationItem.title = @"Reactions";
@@ -43,19 +36,6 @@
             break;
     }
     _reviews = [NSMutableArray new];
-}
-
-- (void)receivedNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        [self loadTheme];
-    }
-}
-
-- (void)loadTheme {
-    if (@available(iOS 13, *)) { }
-    else {
-        self.tableView.backgroundColor = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ?  [ThemeManager sharedCurrentTheme].viewAltBackgroundColor : [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-    }
 }
 
 - (void)retrieveReviewsForTitleID:(int)titleid withType:(int)type {
@@ -203,11 +183,6 @@
     if (show) {
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
-        if (@available(iOS 13, *)) { }
-        else {
-            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
     }
     else {
         [_hud hideAnimated:YES];

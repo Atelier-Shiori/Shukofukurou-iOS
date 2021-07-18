@@ -19,7 +19,6 @@
 #import "Keychain.h"
 #import "AtarashiiListCoreData.h"
 #import "StatsViewController.h"
-#import "ThemeManager.h"
 #import "ExportMainTableViewController.h"
 
 @interface MainSideBarViewController ()
@@ -35,31 +34,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setLoggedinUser];
-    if (@available(iOS 13, *)) { }
-    else {
-        _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
-        _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
-    }
     // Register with view controller manager
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     vcm.mainsidebar = self;
     self.navigationController.toolbarHidden = NO;
     _delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"ThemeChanged" object:nil];
-}
-
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
-
-- (void)didReceiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        if (@available(iOS 13, *)) { }
-        else {
-            _username.textColor = [ThemeManager sharedCurrentTheme].textColor;
-            _toolbar.tintColor = [ThemeManager sharedCurrentTheme].tintColor;
-        }
-    }
 }
 
 /*

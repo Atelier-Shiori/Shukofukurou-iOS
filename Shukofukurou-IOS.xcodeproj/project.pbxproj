@@ -28,7 +28,6 @@
 		5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */; };
 		5934AD19216567E800EC6773 /* UITextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5934AD18216567E800EC6773 /* UITextView+SetHTMLAttributedText.m */; };
 		5934E1F7220F7539002B8311 /* GKBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC6F2209266C0050662A /* GKBarGraph.m */; };
-		5934E1F8220F7539002B8311 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
 		5934E1F9220F7539002B8311 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624168215563AD001995AD /* AniListSeasonListGenerator.m */; };
 		5934E1FA220F7539002B8311 /* TitleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242042155650B001995AD /* TitleInfoViewController.m */; };
 		5934E1FB220F7539002B8311 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624169215563AE001995AD /* AniListScoreConvert.m */; };
@@ -46,7 +45,6 @@
 		5934E207220F7539002B8311 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962417B215563CB001995AD /* Utility.m */; };
 		5934E208220F7539002B8311 /* SeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242062155650C001995AD /* SeasonsViewController.m */; };
 		5934E209220F7539002B8311 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
-		5934E20A220F7539002B8311 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
 		5934E20B220F7539002B8311 /* UIViewThemed.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B580D8220F334300EFE7AC /* UIViewThemed.m */; };
 		5934E20C220F7539002B8311 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624185215563D1001995AD /* RatingTwentyConvert.m */; };
 		5934E20D220F7539002B8311 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624176215563C9001995AD /* Keychain.m */; };
@@ -63,7 +61,6 @@
 		5934E218220F7539002B8311 /* RelatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598AB4D32162658700979C19 /* RelatedTableViewController.m */; };
 		5934E21B220F7539002B8311 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59282C87220F46C40017DEF4 /* TitleIDMapper.m */; };
 		5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A52155642D001995AD /* MainSideBarViewController.m */; };
-		5934E21D220F7539002B8311 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
 		5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F521556503001995AD /* ServiceSwitcherViewController.m */; };
 		5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
@@ -82,7 +79,6 @@
 		5934E233220F7539002B8311 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B5BC34220DF8B900F904B4 /* UIImageView+Letters.m */; };
 		5934E234220F7539002B8311 /* SearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FE21556508001995AD /* SearchRootViewController.m */; };
 		5934E235220F7539002B8311 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241EB215564FD001995AD /* ListViewController.m */; };
-		5934E236220F7539002B8311 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
 		5934E238220F7539002B8311 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624164215563AA001995AD /* AiringSchedule.m */; };
 		5934E239220F7539002B8311 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624180215563CE001995AD /* listservice.m */; };
 		5934E23A220F7539002B8311 /* NSArray+MK_Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 592EB77E2209D76C004DE461 /* NSArray+MK_Block.m */; };
@@ -330,10 +326,6 @@
 		59D9159F2162C1B800B5A61B /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9159D2162C1B800B5A61B /* UILabel+Copyable.m */; };
 		59DB9A65234F78710098AE19 /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */; };
 		59DB9A66234F78710098AE19 /* Hiyoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59DB9A5E234F78710098AE19 /* Hiyoko.xcdatamodeld */; };
-		59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */; };
-		59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */; };
-		59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F321FD322900481D33 /* DefaultTheme.m */; };
-		59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EBC1F621FD32F300481D33 /* DarkTheme.m */; };
 		59F546392301A16500E4E9CC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DA28B922F0A9EF00255735 /* CloudKit.framework */; };
 		59F941292468460D00F2F1DE /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F941282468460D00F2F1DE /* TokenReauthManager.m */; };
 		59F9412A2468460D00F2F1DE /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F941282468460D00F2F1DE /* TokenReauthManager.m */; };
@@ -1020,14 +1012,6 @@
 		59DB9A62234F78710098AE19 /* Hiyoko 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 6.xcdatamodel"; sourceTree = "<group>"; };
 		59DB9A63234F78710098AE19 /* Hiyoko 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 3.xcdatamodel"; sourceTree = "<group>"; };
 		59DB9A64234F78710098AE19 /* Hiyoko 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 5.xcdatamodel"; sourceTree = "<group>"; };
-		59EBC1EC21FD2FCA00481D33 /* ThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
-		59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeManager.m; sourceTree = "<group>"; };
-		59EBC1EF21FD2FFB00481D33 /* ThemeManagerTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeManagerTheme.h; sourceTree = "<group>"; };
-		59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeManagerTheme.m; sourceTree = "<group>"; };
-		59EBC1F221FD322900481D33 /* DefaultTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultTheme.h; sourceTree = "<group>"; };
-		59EBC1F321FD322900481D33 /* DefaultTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultTheme.m; sourceTree = "<group>"; };
-		59EBC1F521FD32F300481D33 /* DarkTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DarkTheme.h; sourceTree = "<group>"; };
-		59EBC1F621FD32F300481D33 /* DarkTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkTheme.m; sourceTree = "<group>"; };
 		59F941272468460D00F2F1DE /* TokenReauthManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenReauthManager.h; sourceTree = "<group>"; };
 		59F941282468460D00F2F1DE /* TokenReauthManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokenReauthManager.m; sourceTree = "<group>"; };
 		59F9C98B2292F7EB0054B89D /* SearchAdvSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchAdvSettings.h; sourceTree = "<group>"; };
@@ -1841,14 +1825,6 @@
 		59EBC1D921FD231900481D33 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				59EBC1EC21FD2FCA00481D33 /* ThemeManager.h */,
-				59EBC1ED21FD2FCA00481D33 /* ThemeManager.m */,
-				59EBC1EF21FD2FFB00481D33 /* ThemeManagerTheme.h */,
-				59EBC1F021FD2FFB00481D33 /* ThemeManagerTheme.m */,
-				59EBC1F221FD322900481D33 /* DefaultTheme.h */,
-				59EBC1F321FD322900481D33 /* DefaultTheme.m */,
-				59EBC1F521FD32F300481D33 /* DarkTheme.h */,
-				59EBC1F621FD32F300481D33 /* DarkTheme.m */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -2356,7 +2332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5934E1F7220F7539002B8311 /* GKBarGraph.m in Sources */,
-				5934E1F8220F7539002B8311 /* ThemeManagerTheme.m in Sources */,
 				5934E1F9220F7539002B8311 /* AniListSeasonListGenerator.m in Sources */,
 				91A27F5022F3328700937F1E /* HistoryCell.m in Sources */,
 				5934E1FA220F7539002B8311 /* TitleInfoViewController.m in Sources */,
@@ -2378,7 +2353,6 @@
 				5934E207220F7539002B8311 /* Utility.m in Sources */,
 				5934E208220F7539002B8311 /* SeasonsViewController.m in Sources */,
 				5934E209220F7539002B8311 /* SearchViewController.m in Sources */,
-				5934E20A220F7539002B8311 /* DefaultTheme.m in Sources */,
 				5934E20B220F7539002B8311 /* UIViewThemed.m in Sources */,
 				5934E20C220F7539002B8311 /* RatingTwentyConvert.m in Sources */,
 				597DDCEC224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */,
@@ -2399,7 +2373,6 @@
 				5934E218220F7539002B8311 /* RelatedTableViewController.m in Sources */,
 				5934E21B220F7539002B8311 /* TitleIDMapper.m in Sources */,
 				5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */,
-				5934E21D220F7539002B8311 /* ThemeManager.m in Sources */,
 				5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */,
 				59912200224BCE5E00896BEF /* ExportSettingsTableViewController.m in Sources */,
 				5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */,
@@ -2426,7 +2399,6 @@
 				59B155C72301E8BF004BE7B2 /* StreamingRegionTableViewController.m in Sources */,
 				59F9C98E2292F7EB0054B89D /* SearchAdvSettings.m in Sources */,
 				5934E235220F7539002B8311 /* ListViewController.m in Sources */,
-				5934E236220F7539002B8311 /* DarkTheme.m in Sources */,
 				599121FC224BC1C200896BEF /* ExportOperationManager.m in Sources */,
 				5934E238220F7539002B8311 /* AiringSchedule.m in Sources */,
 				5934E239220F7539002B8311 /* listservice.m in Sources */,
@@ -2504,7 +2476,6 @@
 			files = (
 				59B3AC732209266C0050662A /* GKBarGraph.m in Sources */,
 				5945CD9A2252573F00F164E1 /* PatronTableViewController.m in Sources */,
-				59EBC1F121FD2FFB00481D33 /* ThemeManagerTheme.m in Sources */,
 				5962416E215563AF001995AD /* AniListSeasonListGenerator.m in Sources */,
 				5962422421556514001995AD /* TitleInfoViewController.m in Sources */,
 				5962416F215563AF001995AD /* AniListScoreConvert.m in Sources */,
@@ -2528,7 +2499,6 @@
 				5962422521556514001995AD /* SeasonsViewController.m in Sources */,
 				595BF45B244B7B0C00AD956E /* FrameAcessorView.m in Sources */,
 				5962422721556514001995AD /* SearchViewController.m in Sources */,
-				59EBC1F421FD322900481D33 /* DefaultTheme.m in Sources */,
 				59B580D9220F334300EFE7AC /* UIViewThemed.m in Sources */,
 				91A27F3622F3291600937F1E /* HistoryViewController.m in Sources */,
 				5962418F215563D2001995AD /* RatingTwentyConvert.m in Sources */,
@@ -2549,7 +2519,6 @@
 				59282C88220F46C40017DEF4 /* TitleIDMapper.m in Sources */,
 				597DDCEB224A6FC50005C652 /* ExportedListsTableViewController.m in Sources */,
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
-				59EBC1EE21FD2FCA00481D33 /* ThemeManager.m in Sources */,
 				5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */,
 				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
 				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
@@ -2572,7 +2541,6 @@
 				59B5BC35220DF8B900F904B4 /* UIImageView+Letters.m in Sources */,
 				5962422121556514001995AD /* SearchRootViewController.m in Sources */,
 				5962421721556514001995AD /* ListViewController.m in Sources */,
-				59EBC1F721FD32F300481D33 /* DarkTheme.m in Sources */,
 				5962416C215563AF001995AD /* AiringSchedule.m in Sources */,
 				5962418C215563D2001995AD /* listservice.m in Sources */,
 				592EB7882209D76C004DE461 /* NSArray+MK_Block.m in Sources */,
@@ -2994,12 +2962,12 @@
 					"OSS=true",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3019,12 +2987,12 @@
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
 				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "OSS=true";
 				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3046,7 +3014,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.9;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS.ShukofukurouScrobble";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -3068,7 +3036,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.9;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS.ShukofukurouScrobble";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -3258,12 +3226,12 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.9;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3285,12 +3253,12 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.9;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;

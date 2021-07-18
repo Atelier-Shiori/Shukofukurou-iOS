@@ -11,7 +11,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TitleInfoCache.h"
 #import "ViewControllerManager.h"
-#import "ThemeManager.h"
 #import "UIViewThemed.h"
 #import "TitleIDMapper.h"
 
@@ -41,14 +40,12 @@
     
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     // Do any additional setup after loading the view.
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     _refreshlistonstart.on = [defaults boolForKey:@"refreshlistonstart"];
     _refreshlistautomatically.on = [defaults boolForKey:@"refreshautomatically"];
     _synctoicloud.on = [defaults boolForKey:@"synchistorytoicloud"];
     _cachetitleinfo.on = [defaults boolForKey:@"cachetitleinfo"];
-    _darkmodeswitch.on = [defaults boolForKey:@"darkmode"];
     _scoretoggle.on = [defaults boolForKey:@"scoreprompt"];
 #if defined(OSS)
     _analyticstoggle.enabled = NO;
@@ -56,15 +53,10 @@
 #else
     _analyticstoggle.on = [defaults boolForKey:@"sendanalytics"];
 #endif
-    if (@available(iOS 13, *)) {
-        // Disable Dark Mode Switch
-        _darkmodeswitch.enabled = NO;
-    }
     _versionnum.text = [NSString stringWithFormat:@"%@ (Build %@)",[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
     [self loadImageCacheSize];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"SettingsViewLoaded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(sidebarShowAlwaysNotification:) name:@"sidebarStateDidChange" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ThemeChanged" object:nil];
     [self hidemenubtn];
 }
 
@@ -87,9 +79,6 @@
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"SettingsViewLoaded"]) {
         [self loadImageCacheSize];
-    }
-    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        [ThemeManager fixTableView:self.tableView];
     }
 }
 
@@ -180,10 +169,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (IBAction)toggledarkmode:(id)sender {
-    [NSUserDefaults.standardUserDefaults setBool:_darkmodeswitch.on forKey:@"darkmode"];
-    [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTheme" object:nil];
-}
 - (IBAction)synctoicloudtoggle:(id)sender {
     [NSUserDefaults.standardUserDefaults setBool:_synctoicloud.on forKey:@"synchistorytoicloud"];
 }
@@ -209,11 +194,6 @@
 
 - (void)openWebBrowserView:(NSURL *)url {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    if (@available(iOS 13, *)) { }
-    else {
-        svc.preferredBarTintColor = [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-        svc.preferredControlTintColor = [ThemeManager sharedCurrentTheme].tintColor;
-    }
     [self presentViewController:svc animated:YES completion:^{
     }];
 }

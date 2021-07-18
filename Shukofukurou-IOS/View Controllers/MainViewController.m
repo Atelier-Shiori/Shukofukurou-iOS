@@ -29,8 +29,6 @@
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.mvc = self;
     [self setsidebar:self.view.bounds.size];
-    AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
-    [del loadtheme];
 #if defined(OSS)
     [self showopensourcemessage];
 #endif

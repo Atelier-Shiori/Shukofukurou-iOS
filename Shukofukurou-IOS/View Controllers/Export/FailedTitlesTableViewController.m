@@ -7,7 +7,6 @@
 //
 
 #import "FailedTitlesTableViewController.h"
-#import "ThemeManager.h"
 
 @interface FailedTitlesTableViewController ()
 
@@ -17,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -38,10 +36,6 @@
     NSDictionary *entry = _failedexports[indexPath.row];
     // Configure the cell...
     cell.textLabel.text = entry[@"title"];
-    if (@available(iOS 13, *)) { }
-    else {
-        cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
-    }
     return cell;
 }
 

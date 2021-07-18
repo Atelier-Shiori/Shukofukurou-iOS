@@ -45,18 +45,13 @@
             }
         }
     }];
-    if (@available(iOS 13, *)) {
-        self.session.prefersEphemeralWebBrowserSession = NO;
-        self.session.presentationContextProvider = self;
-    }
+    self.session.prefersEphemeralWebBrowserSession = NO;
+    self.session.presentationContextProvider = self;
     [self.session start];
 }
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
 - (ASPresentationAnchor)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession *)session {
     return ((AppDelegate *)UIApplication.sharedApplication.delegate).window;
 }
-#endif
 
 - (void)performOAuthWithCallBackURL:(NSURL *)callbackURL {
     NSString *callbackURLStrReplace = @"";

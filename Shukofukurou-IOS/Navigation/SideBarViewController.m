@@ -12,7 +12,6 @@
 #import "ViewController.h"
 #import <LGSideMenuController/UIViewController+LGSideMenuController.h>
 #import "ViewControllerManager.h"
-#import "ThemeManager.h"
 #import "UIViewThemed.h"
 
 @interface SideBarViewController ()
@@ -34,7 +33,6 @@ struct {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     [self generateSideBarItems];
     
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
@@ -45,7 +43,6 @@ struct {
     [self.tableView selectRowAtIndexPath:[self getSidebarItemIndexForIdentifier:selectedrow] animated:NO scrollPosition:UITableViewScrollPositionNone];
     [self setselectedcellbackground];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"SideBarSelectionChanged" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"ThemeChanged" object:nil];
 }
 
 - (void)didReceiveNotification:(NSNotification *)notification {
@@ -53,9 +50,6 @@ struct {
         [self.tableView selectRowAtIndexPath:[self getSidebarItemIndexForIdentifier:notification.object] animated:NO scrollPosition:UITableViewScrollPositionNone];
         [NSUserDefaults.standardUserDefaults setValue:notification.object forKey:@"selectedmainview"];
         [self setselectedcellbackground];
-    }
-    else if ([notification.name isEqualToString:@"ThemeChanged"]) {
-        [ThemeManager fixTableView:self.tableView];
     }
 }
 
@@ -183,14 +177,12 @@ struct {
 
 - (void)setselectedcellbackground {
     // This brings back the behavior of the cell background for selected cell from iOS 12 and earlier
-    if (@available(iOS 13.0, *)) {
-        for (UITableViewCell *cell in self.tableView.visibleCells) {
-            cell.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
-        }
-        NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
-        UITableViewCell *selectedcell = [self.tableView cellForRowAtIndexPath:[self getSidebarItemIndexForIdentifier:selectedrow]];
-        selectedcell.backgroundColor = [UIColor systemGray5Color];
+    for (UITableViewCell *cell in self.tableView.visibleCells) {
+        cell.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
     }
+    NSString *selectedrow = [NSUserDefaults.standardUserDefaults valueForKey:@"selectedmainview"];
+    UITableViewCell *selectedcell = [self.tableView cellForRowAtIndexPath:[self getSidebarItemIndexForIdentifier:selectedrow]];
+    selectedcell.backgroundColor = [UIColor systemGray5Color];
 }
 
 @end

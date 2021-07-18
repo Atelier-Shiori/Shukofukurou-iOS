@@ -9,7 +9,6 @@
 #import "PatronTableViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import <MBProgressHUDFramework/MBProgressHUDFramework.h>
-#import "ThemeManager.h"
 #import "Utility.h"
 
 @interface PatronTableViewController ()
@@ -21,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -63,11 +61,6 @@
     if (show ) {
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Loading";
-        if (@available(iOS 13, *)) { }
-        else {
-            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
     }
     else if (!show) {
         [_hud hideAnimated:YES];

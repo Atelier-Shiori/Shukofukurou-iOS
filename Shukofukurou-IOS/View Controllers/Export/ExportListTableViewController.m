@@ -11,7 +11,6 @@
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
-#import "ThemeManager.h"
 #import "ExportOperationManager.h"
 #import "FailedTitlesTableViewController.h"
 #import "RatingTwentyConvert.h"
@@ -40,7 +39,6 @@ typedef NS_ENUM(unsigned int, ExportType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     _moc = ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
     if (![listservice.sharedInstance checkAccountForCurrentService]) {
         // Show Error
@@ -275,11 +273,6 @@ typedef NS_ENUM(unsigned int, ExportType) {
         self.navigationItem.backBarButtonItem.enabled = NO;
         _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         _hud.label.text = @"Exporting...";
-        if (@available(iOS 13, *)) { }
-        else {
-            _hud.bezelView.blurEffectStyle = [NSUserDefaults.standardUserDefaults boolForKey:@"darkmode"] ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-            _hud.contentColor = [ThemeManager sharedCurrentTheme].textColor;
-        }
     }
     else {
         [_hud hideAnimated:YES];

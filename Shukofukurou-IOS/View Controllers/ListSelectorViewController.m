@@ -8,7 +8,6 @@
 
 #import "ListSelectorViewController.h"
 #import "listservice.h"
-#import "ThemeManager.h"
 #import "UIViewThemed.h"
 
 @interface ListSelectorViewController ()
@@ -21,12 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTheme];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setTheme];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -196,19 +193,6 @@
 
 - (IBAction)closelistselector:(id)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)setTheme {
-    if (self.navigationController.popoverPresentationController) {
-        if (@available(iOS 13, *)) { }
-        else {
-            self.navigationController.popoverPresentationController.backgroundColor =  [ThemeManager sharedCurrentTheme].viewBackgroundColor;
-            [ThemeManager fixTableView:self.tableView];
-        }
-    }
-    else {
-        [ThemeManager fixTableView:self.tableView];
-    }
 }
 
 @end

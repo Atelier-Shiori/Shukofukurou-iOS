@@ -9,7 +9,6 @@
 #import "ExportedListsTableViewController.h"
 #import "AppDelegate.h"
 #import "UITableViewCellSelBackground.h"
-#import "ThemeManager.h"
 
 @interface ExportedListsTableViewController ()
 @property (strong) NSDictionary *exportedlists;
@@ -21,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ThemeManager fixTableView:self.tableView];
     _moc = ((AppDelegate *)UIApplication.sharedApplication.delegate).managedObjectContext;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -74,10 +72,6 @@
     NSManagedObjectContext *obj = ((NSArray *)_exportedlists[_allsections[indexPath.section]])[indexPath.row];
     // Configure the cell
     cell.textLabel.text = [obj valueForKey:@"title"];
-    if (@available(iOS 13, *)) { }
-    else {
-        cell.textLabel.textColor = [ThemeManager.sharedCurrentTheme textColor];
-    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     __weak ExportedListsTableViewController *weakself = self;
     return cell;
