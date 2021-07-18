@@ -58,18 +58,18 @@ struct {
     NSMutableArray *listitems = [NSMutableArray new];
     NSMutableArray *discoveritems = [NSMutableArray new];
     NSMutableArray *otheritems = [NSMutableArray new];
-    [listitems addObject:@{@"image" : @"anime" , @"title" : @"Anime", @"identifier" : @"anime-list", @"type" : @"cell"}];
-    [listitems addObject:@{@"image" : @"manga" , @"title" : @"Manga", @"identifier" : @"manga-list", @"type" : @"cell"}];
-    [listitems addObject:@{@"image" : @"history" , @"title" : @"History", @"identifier" : @"history", @"type" : @"cell"}];
-    [discoveritems addObject:@{@"image" : @"search" , @"title" : @"Search", @"identifier" : @"search", @"type" : @"cell"}];
-    [discoveritems addObject:@{@"image" : @"seasons" , @"title" : @"Seasons", @"identifier" : @"seasons", @"type" : @"cell"}];
-    [discoveritems addObject:@{@"image" : @"airing" , @"title" : @"Airing", @"identifier" : @"airing", @"type" : @"cell"}];
-    [discoveritems addObject:@{@"image" : @"trending" , @"title" : @"Trending", @"identifier" : @"trending", @"type" : @"cell"}];
+    [listitems addObject:@{@"image" : @"tv" , @"title" : @"Anime", @"identifier" : @"anime-list", @"type" : @"cell"}];
+    [listitems addObject:@{@"image" : @"book" , @"title" : @"Manga", @"identifier" : @"manga-list", @"type" : @"cell"}];
+    [listitems addObject:@{@"image" : @"clock" , @"title" : @"History", @"identifier" : @"history", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"magnifyingglass" , @"title" : @"Search", @"identifier" : @"search", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"calendar" , @"title" : @"Seasons", @"identifier" : @"seasons", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"calendar.badge.clock" , @"title" : @"Airing", @"identifier" : @"airing", @"type" : @"cell"}];
+    [discoveritems addObject:@{@"image" : @"star" , @"title" : @"Trending", @"identifier" : @"trending", @"type" : @"cell"}];
     //[items addObject:@{@"image" : @"profilebrowser" , @"title" : @"Profile Browser", @"identifier" : @"profiles", @"type" : @"cell"}];
-    [otheritems addObject:@{@"image" : @"settings" , @"title" : @"Settings", @"identifier" : @"settings", @"type" : @"cell"}];
+    [otheritems addObject:@{@"image" : @"gearshape" , @"title" : @"Settings", @"identifier" : @"settings", @"type" : @"cell"}];
 #if defined(OSS)
 #else
-    [otheritems addObject:@{@"image" : @"tipjar" , @"title" : @"Tip Jar", @"identifier" : @"tipjar", @"type" : @"cell"}];
+    [otheritems addObject:@{@"image" : @"heart" , @"title" : @"Tip Jar", @"identifier" : @"tipjar", @"type" : @"cell"}];
 #endif
     _items = @{@"" : listitems, @"Discover" : discoveritems, @"Other" : otheritems };
     _sections = @[@"", @"Discover", @"Other"];
@@ -126,7 +126,7 @@ struct {
     SideBarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     cell.titleLabel.text = cellInfo[@"title"];
-    cell.imageView.image = cellInfo[@"image"] ? [UIImage imageNamed:cellInfo[@"image"]] : [UIImage new];
+    cell.imageView.image = cellInfo[@"image"] ? [UIImage systemImageNamed:cellInfo[@"image"]] : [UIImage new];
     //cell.separatorView.hidden = (indexPath.row <= 3 || indexPath.row == self.sidebarItems.count-1);
     return cell;
 }
