@@ -4,7 +4,7 @@
 
 Shukofukurou for iOS/iPadOS is the iOS/iPadOS port of [Shukofukurou](https://github.com/Atelier-Shiori/Shukofukurou), which is a lightweight, open source, multiservice Anime and Manga library management and discovery app that works with [Kitsu](https://kitsu.io/), [AniList](https://anilist.co/), and [MyAnimeList](https://myanimelist.net). 
 
-Requires the latest SDK (iOS 14), Xcode 12 or later. This app will run on iOS 12 or later.
+Requires the latest SDK (iOS 14), Xcode 12 or later. This app will run on iOS 14 or later.
 
 ## App Store Release
 Since an Apple Developer Program is required to distribute apps for iOS/iPadOS, Shukofukurou for iOS/iPadOS will cost $2.99 to download, which will have no restrictions and will recieve lifetime updates. The proceeds will go back into supporting the development of our applications. We have to charge for the iOS/iPadOS version since the Apple Developers Program costs $99 a year and we put a lot of work in developing this App. Charging for open source software, believe it or not is [encouraged by the FSF](http://www.gnu.org/philosophy/selling.html).
