@@ -56,10 +56,10 @@ typedef NS_ENUM(unsigned int, ExportType) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     int exporttype = 0;
-    if ([cell.textLabel.text isEqualToString:@"Export MAL XML Converted (Anime)"]) {
+    if ([cell.textLabel.text isEqualToString:@"Export MAL XML Converted (Anime)"] || [cell.textLabel.text isEqualToString:@"Export MAL XML (Anime)"]) {
         exporttype = MALXMLAnimeExportType;
     }
-    else if ([cell.textLabel.text isEqualToString:@"Export MAL XML Converted (Manga)"]) {
+    else if ([cell.textLabel.text isEqualToString:@"Export MAL XML Converted (Manga)"] || [cell.textLabel.text isEqualToString:@"Export MAL XML (Manga)"]) {
         exporttype = MALXMLMangaExportType;
     }
     else if ([cell.textLabel.text isEqualToString:@"Export to JSON (Anime)"]) {
