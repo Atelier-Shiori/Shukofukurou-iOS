@@ -67,8 +67,11 @@
             break;
     }
     if (_lservice.getCurrentServiceID == 1) {
-        // Generate list without conversion
-        _finallist = [[NSMutableArray alloc] initWithArray:_tmplist];
+        // No mapping required, convert list
+        _finallist = [NSMutableArray new];
+        for (NSDictionary *d in _tmplist) {
+            [self.finallist addObject:[self convertToMALXMLDictionary:d]];
+        }
         NSLog(@"Conversion complete. Generating XML.");
         self.hud.label.text = @"Generating XML...";
         NSString *xmlstring = self.mediatype == 0 ? [self generateAnimeListXML:self.finallist] : [self generateMangaListXML:self.finallist];
