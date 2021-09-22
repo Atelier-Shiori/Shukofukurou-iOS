@@ -63,7 +63,6 @@
 		5934E21C220F7539002B8311 /* MainSideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241A52155642D001995AD /* MainSideBarViewController.m */; };
 		5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981223A21935C7200117FA0 /* AiringNotificationManager.m */; };
 		5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F521556503001995AD /* ServiceSwitcherViewController.m */; };
-		5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 		5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59624177215563C9001995AD /* NSString+HTMLtoNSAttributedString.m */; };
 		5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE3E51219B65990035E2E5 /* NotifyingTitlesTableViewController.m */; };
 		5934E225220F7539002B8311 /* ServiceSwitcherRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241FF21556508001995AD /* ServiceSwitcherRootViewController.m */; };
@@ -248,7 +247,6 @@
 		5962425621556624001995AD /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
 		5962425721556627001995AD /* ServiceSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CF215564AD001995AD /* ServiceSwitcher.storyboard */; };
 		596242582155662A001995AD /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241D1215564B4001995AD /* Settings.storyboard */; };
-		596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 596242752155D2CF001995AD /* OnePasswordExtension.m */; };
 		596890032190AC6C0029F0FC /* EpisodesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */; };
 		596890182190ADF30029F0FC /* EpisodesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596890172190ADF30029F0FC /* EpisodesTableViewController.m */; };
 		5968F1B12249199E00A048D4 /* ScrobbleSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5968F1B02249199E00A048D4 /* ScrobbleSettingsViewController.m */; };
@@ -350,11 +348,24 @@
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
 		FF0B4C1326497C9A00CA5D16 /* AiringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */; };
 		FF0B4C1426497C9A00CA5D16 /* AiringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */; };
+		FF23FC0826FA4FFA0040E446 /* SafariWebExtensionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23FC0726FA4FFA0040E446 /* SafariWebExtensionHandler.m */; };
+		FF23FC0B26FA4FFA0040E446 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC0A26FA4FFA0040E446 /* _locales */; };
+		FF23FC0D26FA4FFA0040E446 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC0C26FA4FFA0040E446 /* images */; };
+		FF23FC0F26FA4FFA0040E446 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC0E26FA4FFA0040E446 /* manifest.json */; };
+		FF23FC1126FA4FFA0040E446 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1026FA4FFA0040E446 /* background.js */; };
+		FF23FC1326FA4FFA0040E446 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1226FA4FFA0040E446 /* content.js */; };
+		FF23FC1526FA4FFA0040E446 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1426FA4FFA0040E446 /* popup.html */; };
+		FF23FC1726FA4FFA0040E446 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1626FA4FFA0040E446 /* popup.css */; };
+		FF23FC1926FA4FFA0040E446 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1826FA4FFA0040E446 /* popup.js */; };
+		FF23FC1D26FA4FFA0040E446 /* HachidoriLite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF23FC0426FA4FFA0040E446 /* HachidoriLite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF47CA00261A22610068F172 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		FF856C2026513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FF856C2126513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
 		FFB17BD5256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
+		FFFB3E8E26FAC86A00685A57 /* MediaStreamParse.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB3E8A26FAC86900685A57 /* MediaStreamParse.m */; };
+		FFFB3E8F26FAC86A00685A57 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB3E8D26FAC86900685A57 /* NSString+HTML.m */; };
+		FFFB3E9226FAC87600685A57 /* ezregex.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB3E9126FAC87500685A57 /* ezregex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -666,6 +677,13 @@
 			remoteGlobalIDString = 590B5E86222D785F0099D056;
 			remoteInfo = "Hakuchou-iOS";
 		};
+		FF23FC1B26FA4FFA0040E446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5962409D2155622E001995AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF23FC0326FA4FFA0040E446;
+			remoteInfo = HachidoriLite;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -693,6 +711,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				FF23FC1D26FA4FFA0040E446 /* HachidoriLite.appex in Embed App Extensions */,
 				595A95CF223FD90100E3C245 /* ShukofukurouScrobble.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -915,8 +934,6 @@
 		5962421021556512001995AD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5962421121556512001995AD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5962421221556513001995AD /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
-		596242742155D2C9001995AD /* OnePasswordExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
-		596242752155D2CF001995AD /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		596890012190AC6C0029F0FC /* EpisodesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodesTableViewCell.h; sourceTree = "<group>"; };
 		596890022190AC6C0029F0FC /* EpisodesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodesTableViewCell.m; sourceTree = "<group>"; };
 		596890162190ADF30029F0FC /* EpisodesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodesTableViewController.h; sourceTree = "<group>"; };
@@ -1039,12 +1056,30 @@
 		F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 		FF0B4C1126497C9A00CA5D16 /* AiringTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiringTableViewCell.h; sourceTree = "<group>"; };
 		FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiringTableViewCell.m; sourceTree = "<group>"; };
+		FF23FC0426FA4FFA0040E446 /* HachidoriLite.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HachidoriLite.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF23FC0626FA4FFA0040E446 /* SafariWebExtensionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafariWebExtensionHandler.h; sourceTree = "<group>"; };
+		FF23FC0726FA4FFA0040E446 /* SafariWebExtensionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafariWebExtensionHandler.m; sourceTree = "<group>"; };
+		FF23FC0A26FA4FFA0040E446 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
+		FF23FC0C26FA4FFA0040E446 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		FF23FC0E26FA4FFA0040E446 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		FF23FC1026FA4FFA0040E446 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		FF23FC1226FA4FFA0040E446 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
+		FF23FC1426FA4FFA0040E446 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		FF23FC1626FA4FFA0040E446 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
+		FF23FC1826FA4FFA0040E446 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
+		FF23FC1A26FA4FFA0040E446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 7.xcdatamodel"; sourceTree = "<group>"; };
 		FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 8.xcdatamodel"; sourceTree = "<group>"; };
 		FF856C0C26513FA600D3CA4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringTableViewCell.xib; sourceTree = "<group>"; };
 		FF8B4EEA2649539D00EB6181 /* Hiyoko 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 9.xcdatamodel"; sourceTree = "<group>"; };
 		FFB17BD2256BE98C003E2C8F /* UIContextualAction+ActionCreation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIContextualAction+ActionCreation.h"; sourceTree = "<group>"; };
 		FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIContextualAction+ActionCreation.m"; sourceTree = "<group>"; };
+		FFFB3E8A26FAC86900685A57 /* MediaStreamParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaStreamParse.m; sourceTree = "<group>"; };
+		FFFB3E8B26FAC86900685A57 /* MediaStreamParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaStreamParse.h; sourceTree = "<group>"; };
+		FFFB3E8C26FAC86900685A57 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		FFFB3E8D26FAC86900685A57 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		FFFB3E9026FAC87500685A57 /* ezregex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ezregex.h; sourceTree = "<group>"; };
+		FFFB3E9126FAC87500685A57 /* ezregex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ezregex.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1101,6 +1136,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		596240BD2155622F001995AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF23FC0126FA4FFA0040E446 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1264,6 +1306,7 @@
 				596240C32155622F001995AD /* Shukofukurou-IOSTests */,
 				595A95C5223FD90100E3C245 /* ShukofukurouScrobble */,
 				595A960E224002B600E3C245 /* MBProgressHUDFramework */,
+				FF23FC0526FA4FFA0040E446 /* HachidoriLite */,
 				596240A62155622E001995AD /* Products */,
 				5934E286220F753A002B8311 /* Shukofukurou-IOS copy-Info.plist */,
 				5934E299220F7572002B8311 /* Frameworks */,
@@ -1278,6 +1321,7 @@
 				5934E285220F7539002B8311 /* Shukofukurou-IOS-OSS.app */,
 				595A95C4223FD90100E3C245 /* ShukofukurouScrobble.appex */,
 				595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */,
+				FF23FC0426FA4FFA0040E446 /* HachidoriLite.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1333,21 +1377,11 @@
 				5997B4A82162A68C005E894A /* TopAlignedLabel */,
 				596240E1215562D2001995AD /* SDWebImage-master */,
 				596240E0215562CB001995AD /* SAMKeychain */,
-				596240D921556282001995AD /* 1Password */,
 				596240DA2155628C001995AD /* ActionSheetPicker */,
 				596240DB21556296001995AD /* AFNetworking */,
 				596240DD215562A8001995AD /* LGSideMenuControllerFramework */,
 			);
 			path = Dependencies;
-			sourceTree = "<group>";
-		};
-		596240D921556282001995AD /* 1Password */ = {
-			isa = PBXGroup;
-			children = (
-				596242742155D2C9001995AD /* OnePasswordExtension.h */,
-				596242752155D2CF001995AD /* OnePasswordExtension.m */,
-			);
-			path = 1Password;
 			sourceTree = "<group>";
 		};
 		596240DA2155628C001995AD /* ActionSheetPicker */ = {
@@ -1829,6 +1863,38 @@
 			path = Themes;
 			sourceTree = "<group>";
 		};
+		FF23FC0526FA4FFA0040E446 /* HachidoriLite */ = {
+			isa = PBXGroup;
+			children = (
+				FFFB3E9026FAC87500685A57 /* ezregex.h */,
+				FFFB3E9126FAC87500685A57 /* ezregex.m */,
+				FF23FC0626FA4FFA0040E446 /* SafariWebExtensionHandler.h */,
+				FF23FC0726FA4FFA0040E446 /* SafariWebExtensionHandler.m */,
+				FFFB3E8B26FAC86900685A57 /* MediaStreamParse.h */,
+				FFFB3E8A26FAC86900685A57 /* MediaStreamParse.m */,
+				FFFB3E8C26FAC86900685A57 /* NSString+HTML.h */,
+				FFFB3E8D26FAC86900685A57 /* NSString+HTML.m */,
+				FF23FC1A26FA4FFA0040E446 /* Info.plist */,
+				FF23FC0926FA4FFA0040E446 /* Resources */,
+			);
+			path = HachidoriLite;
+			sourceTree = "<group>";
+		};
+		FF23FC0926FA4FFA0040E446 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF23FC0A26FA4FFA0040E446 /* _locales */,
+				FF23FC0C26FA4FFA0040E446 /* images */,
+				FF23FC0E26FA4FFA0040E446 /* manifest.json */,
+				FF23FC1026FA4FFA0040E446 /* background.js */,
+				FF23FC1226FA4FFA0040E446 /* content.js */,
+				FF23FC1426FA4FFA0040E446 /* popup.html */,
+				FF23FC1626FA4FFA0040E446 /* popup.css */,
+				FF23FC1826FA4FFA0040E446 /* popup.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1928,6 +1994,7 @@
 				595A95CE223FD90100E3C245 /* PBXTargetDependency */,
 				595A9601223FE3CD00E3C245 /* PBXTargetDependency */,
 				595A9613224002B600E3C245 /* PBXTargetDependency */,
+				FF23FC1C26FA4FFA0040E446 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou-IOS";
 			productName = "Shukofukurou-IOS";
@@ -1951,6 +2018,23 @@
 			productName = "Shukofukurou-IOSTests";
 			productReference = 596240C02155622F001995AD /* Shukofukurou-IOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF23FC0326FA4FFA0040E446 /* HachidoriLite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF23FC1E26FA4FFA0040E446 /* Build configuration list for PBXNativeTarget "HachidoriLite" */;
+			buildPhases = (
+				FF23FC0026FA4FFA0040E446 /* Sources */,
+				FF23FC0126FA4FFA0040E446 /* Frameworks */,
+				FF23FC0226FA4FFA0040E446 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HachidoriLite;
+			productName = HachidoriLite;
+			productReference = FF23FC0426FA4FFA0040E446 /* HachidoriLite.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1992,6 +2076,9 @@
 					596240BF2155622F001995AD = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = 596240A42155622E001995AD;
+					};
+					FF23FC0326FA4FFA0040E446 = {
+						CreatedOnToolsVersion = 13.0;
 					};
 				};
 			};
@@ -2043,6 +2130,7 @@
 				5934E1E9220F7539002B8311 /* Shukofukurou-IOS-OSS */,
 				595A95C3223FD90100E3C245 /* ShukofukurouScrobble */,
 				595A960C224002B600E3C245 /* MBProgressHUDFramework */,
+				FF23FC0326FA4FFA0040E446 /* HachidoriLite */,
 			);
 		};
 /* End PBXProject section */
@@ -2324,6 +2412,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF23FC0226FA4FFA0040E446 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF23FC1126FA4FFA0040E446 /* background.js in Resources */,
+				FF23FC1726FA4FFA0040E446 /* popup.css in Resources */,
+				FF23FC1526FA4FFA0040E446 /* popup.html in Resources */,
+				FF23FC0D26FA4FFA0040E446 /* images in Resources */,
+				FF23FC0F26FA4FFA0040E446 /* manifest.json in Resources */,
+				FF23FC0B26FA4FFA0040E446 /* _locales in Resources */,
+				FF23FC1326FA4FFA0040E446 /* content.js in Resources */,
+				FF23FC1926FA4FFA0040E446 /* popup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2376,7 +2479,6 @@
 				5934E21E220F7539002B8311 /* AiringNotificationManager.m in Sources */,
 				59912200224BCE5E00896BEF /* ExportSettingsTableViewController.m in Sources */,
 				5934E21F220F7539002B8311 /* ServiceSwitcherViewController.m in Sources */,
-				5934E221220F7539002B8311 /* OnePasswordExtension.m in Sources */,
 				914C3B9F22EF4CF3001893FD /* ListEntryActionTableViewController.m in Sources */,
 				5934E223220F7539002B8311 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				5934E224220F7539002B8311 /* NotifyingTitlesTableViewController.m in Sources */,
@@ -2521,7 +2623,6 @@
 				596241AA2155642E001995AD /* MainSideBarViewController.m in Sources */,
 				5981223B21935C7200117FA0 /* AiringNotificationManager.m in Sources */,
 				5962421C21556514001995AD /* ServiceSwitcherViewController.m in Sources */,
-				596242762155D2CF001995AD /* OnePasswordExtension.m in Sources */,
 				59624189215563D2001995AD /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				597DDCE7224A6FB10005C652 /* ExportMainTableViewController.m in Sources */,
 				59A7A7F2220F95FA009563CA /* TipJar.m in Sources */,
@@ -2601,6 +2702,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				596240C52155622F001995AD /* Shukofukurou_IOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF23FC0026FA4FFA0040E446 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFFB3E8E26FAC86A00685A57 /* MediaStreamParse.m in Sources */,
+				FFFB3E8F26FAC86A00685A57 /* NSString+HTML.m in Sources */,
+				FFFB3E9226FAC87600685A57 /* ezregex.m in Sources */,
+				FF23FC0826FA4FFA0040E446 /* SafariWebExtensionHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2701,6 +2813,11 @@
 			isa = PBXTargetDependency;
 			name = "Hakuchou-iOS";
 			targetProxy = 59C3CB0022CA81F30007786A /* PBXContainerItemProxy */;
+		};
+		FF23FC1C26FA4FFA0040E446 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF23FC0326FA4FFA0040E446 /* HachidoriLite */;
+			targetProxy = FF23FC1B26FA4FFA0040E446 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3304,6 +3421,68 @@
 			};
 			name = Release;
 		};
+		FF23FC1F26FA4FFA0040E446 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HachidoriLite/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HachidoriLite;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 MAL Updater OS X Group. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS.HachidoriLite";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF23FC2026FA4FFA0040E446 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HachidoriLite/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HachidoriLite;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 MAL Updater OS X Group. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS.HachidoriLite";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3357,6 +3536,15 @@
 			buildConfigurations = (
 				596240CD2155622F001995AD /* Debug */,
 				596240CE2155622F001995AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF23FC1E26FA4FFA0040E446 /* Build configuration list for PBXNativeTarget "HachidoriLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF23FC1F26FA4FFA0040E446 /* Debug */,
+				FF23FC2026FA4FFA0040E446 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

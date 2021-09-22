@@ -9,14 +9,12 @@
 #import "AuthViewController.h"
 #import "ListService.h"
 #import "AppDelegate.h"
-#import "OnePasswordExtension.h"
 
 @interface AuthViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *loginbtn;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelbtn;
 @property (strong, nonatomic) IBOutlet UITextField *username;
 @property (strong, nonatomic) IBOutlet UITextField *password;
-@property (weak, nonatomic) IBOutlet UIButton *onepasswordSigninButton;
 @end
 
 @implementation AuthViewController
@@ -30,6 +28,8 @@
             self.navigationItem.title = @"Kitsu Login";
             break;
     }
+    self.username.textContentType = UITextContentTypeUsername;
+    self.password.textContentType = UITextContentTypePassword;
 }
 
 /*
@@ -94,29 +94,5 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (IBAction)findLoginFrom1Password:(id)sender {
-    NSString *URLString = @"";
-    switch ([listservice.sharedInstance getCurrentServiceID]) {
-        case 1:
-            URLString = @"https://www.myanimelist.net/";
-            break;
-        case 2:
-            URLString = @"https://kitsu.io/";
-            break;
-        default:
-            break;
-    }
-    [[OnePasswordExtension sharedExtension] findLoginForURLString:URLString forViewController:self sender:sender completion:^(NSDictionary *loginDictionary, NSError *error) {
-        if (loginDictionary.count == 0) {
-            if (error.code != AppExtensionErrorCodeCancelledByUser) {
-                NSLog(@"Error invoking 1Password App Extension for find login: %@", error);
-            }
-            return;
-        }
-        
-        self.username.text = loginDictionary[AppExtensionUsernameKey];
-        self.password.text = loginDictionary[AppExtensionPasswordKey];
-    }];
-}
 
 @end
