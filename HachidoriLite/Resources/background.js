@@ -1,17 +1,48 @@
+//
+//  background.js
+//  Hachidori Lite Extension
+//
+//  Created by 千代田桃 on 9/21/21.
+//  Copyright © 2021 MAL Updater OS X Group. All rights reserved.
+
 function sendMessageToTabs(tabs) {
     console.log("detecting");
   for (let tab of tabs) {
-      let result = detectStream(tab);
-      console.log(result);
+      browser.runtime.sendNativeMessage("application.id", {"type" : "checklogin"}, function(response) {
+          console.log("Received sendNativeMessage response:");
+          console.log(response);
+          if (response["result"]) {
+              browser.runtime.sendNativeMessage("application.id", {"type" : "promptexisting"}, function(response) {
+                  console.log("Received sendNativeMessage response:");
+                  console.log(response);
+                  if (response["result"]) {
+                      let executing = browser.tabs.executeScript(tab.id, { code: 'window.confirm("There is an scrobble that is pending. If you continue, it will be overwritten. Is this okay?");'});
+                      executing.then((value) => {
+                          return promptUpdateOverwrite(tab,value);
+                      });
+                  }
+                  else {
+                      let result = detectStream(tab);
+                  }
+              });
+          }
+          else {
+              showalert(tab,"You cannot scrobble a title unless you are logged in. Launch Shukofukurou, log into an account and try again.")
+          }
+      });
   }
 }
 
 browser.browserAction.onClicked.addListener(() => {
-  browser.tabs.query({
-    currentWindow: true,
-    active: true
-  }).then(sendMessageToTabs);
+    performScrobble();
 });
+
+function performScrobble() {
+    browser.tabs.query({
+      currentWindow: true,
+      active: true
+    }).then(sendMessageToTabs);
+}
 
 function detectStream(tab) {
     var url = tab.url;
@@ -25,7 +56,13 @@ function detectStream(tab) {
     }
     else if (url.includes("funimation")) {
         if (url.includes("account")) {
-            detectFunimationHistory(tab)
+            detectFunimationHistory(tab);
+        }
+        else if (url.includes("/v/")) {
+            detectFunimationNewPlayer(tab);
+        }
+        else {
+            getDOM(tab);
         }
     }
     else {
@@ -36,34 +73,44 @@ function detectStream(tab) {
 function generateResult(tab,value) {
     let dom = value[0];
     let result = {};
-    if (dom.length > 0) {
-        result = {"title" : tab.title, "url" : tab.url, "DOM" : dom, "type" : "detection"};
+    if (dom) {
+        if (dom.length > 0) {
+            result = {"title" : tab.title, "url" : tab.url, "DOM" : dom, "type" : "detection"};
+        }
+        else {
+            result = {"message" : "invalid page", "type" : "error"};
+            showalert(tab,"This is not a valid page to Scrobble.");
+        }
+        browser.runtime.sendNativeMessage("application.id", result , function(response) {
+            console.log("Received sendNativeMessage response:");
+            console.log(response);
+            let result = response["results"][0];
+            let executing = browser.tabs.executeScript(tab.id, { code: 'window.confirm("Update ' + result["title"] + ' Episode ' + result["episode"] + '?");'});
+            executing.then((value) => {
+                return promptUpdate(tab,value,result);
+            });
+        });
     }
     else {
         result = {"message" : "invalid page", "type" : "error"};
         showalert(tab,"This is not a valid page to Scrobble.");
     }
-    let fresult = JSON.stringify(result);
-    console.log(fresult);
-    browser.runtime.sendNativeMessage("application.id", result , function(response) {
-        console.log("Received sendNativeMessage response:");
-        console.log(response);
-        let result = response["results"][0];
-        let executing = browser.tabs.executeScript(tab.id, { code: 'window.confirm("Update ' + result["title"] + ' Episode ' + result["episode"] + '?");'});
-        executing.then((value) => {
-            return promptUpdate(tab,value,result);
-        });
-    });
 }
 
 function promptUpdate(tab,value,result) {
-    console.log(value[0]);
     if (value[0]) {
         browser.runtime.sendNativeMessage("application.id", {"type" : "update", "data" : result}, function(response) {
             console.log("Received sendNativeMessage response:");
             console.log(response);
             showalert(tab,"Open the Shukofukurou app to finish the scrobble process.")
         });
+    }
+}
+
+function promptUpdateOverwrite(tab,value) {
+    if (value[0]) {
+        let result = detectStream(tab);
+        console.log(result);
     }
 }
 
@@ -101,4 +148,9 @@ function detectFunimationHistory(tab) {
     });
 }
 
-
+function detectFunimationNewPlayer(tab) {
+    let executing = browser.tabs.executeScript(tab.id, { code: "document.querySelector('.meta-overlay__data-block--title').innerHTML + ' | ' + document.querySelector('.meta-overlay__data-block--episode-and-season').innerHTML;"});
+    executing.then((value) => {
+        return generateResult(tab,value);
+    });
+}

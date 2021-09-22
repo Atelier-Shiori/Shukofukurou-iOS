@@ -27,7 +27,10 @@
             "*://www.funimation.com/*",
             "*://funimation.com/*",
             "*://www.hidive.com/*",
-        "*://hidive.com/*" ]
+            "*://hidive.com/*",
+            "*://vrv.co/*",
+            "*://www.vrv.co/*"
+        ]
     }],
 
     "browser_action": {
@@ -47,6 +50,8 @@
         "*://funimation.com/*",
         "*://www.hidive.com/*",
         "*://hidive.com/*",
+        "*://vrv.co/*",
+        "*://www.vrv.co/*",
         "nativeMessaging"
     ]
 }
