@@ -70,7 +70,7 @@ NSString *const sharesupportedSites = @"(crunchyroll|vrv|hidive|funimation)";
             validitem = true;
             if ([(NSObject *)item isKindOfClass:[NSString class]]) {
                 if ([(NSString *) item containsString:@"Funimation"]) {
-                    _textused = true;
+                    self.textused = true;
                     [self populateDataUsingText:(NSString *)item];
                     return;
                 }
