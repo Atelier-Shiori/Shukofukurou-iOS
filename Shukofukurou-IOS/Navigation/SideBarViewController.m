@@ -155,7 +155,7 @@ struct {
 - (void)setMainViewController {
         static dispatch_once_t sidebarToken;
         dispatch_once(&sidebarToken, ^{
-            MainViewController *mainViewController = (MainViewController *)self.sideMenuController;
+            MainViewController *mainViewController = _vcm.mvc;
             [self setDelegate:mainViewController];
         });
 }

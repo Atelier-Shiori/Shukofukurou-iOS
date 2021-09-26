@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "SideBarMenuDelegate.h"
 @interface SideBarViewController : UITableViewController
-@property (nonatomic, weak) id <SideBarMenuDelegate> delegate;
+@property (nonatomic, strong) id <SideBarMenuDelegate> delegate;
 @end

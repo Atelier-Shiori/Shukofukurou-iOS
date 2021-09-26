@@ -293,7 +293,8 @@
 - (void)setMainViewController {
     static dispatch_once_t sidebarToken;
     dispatch_once(&sidebarToken, ^{
-        self.mainvc = (MainViewController *)self.sideMenuController;
+        ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
+        self.mainvc = vcm.mvc;
     });
 }
 @end
