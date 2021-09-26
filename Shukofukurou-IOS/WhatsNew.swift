@@ -42,7 +42,7 @@ import WhatsNewKit
         let prevversionNum = UserDefaults.standard.string(forKey: "curVersionNum")
         let prevbuildNum = UserDefaults.standard.string(forKey: "curBuildNum")
         
-        if curversionNum as! String == prevversionNum && curbuildNum as! String == prevbuildNum {
+        if (curversionNum as! String) == prevversionNum && (curbuildNum as! String) == prevbuildNum {
             return true
         }
         return false;

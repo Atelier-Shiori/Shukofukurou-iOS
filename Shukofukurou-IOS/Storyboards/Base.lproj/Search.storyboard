@@ -76,10 +76,9 @@
         <scene sceneID="p0u-pK-d5A">
             <objects>
                 <tableViewController storyboardIdentifier="advsearchopt" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eqN-GG-9CD" customClass="SearchAdvSettings" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6zO-z7-CnM">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6zO-z7-CnM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="eqN-GG-9CD" id="RdT-Xw-51r"/>
@@ -108,8 +107,5 @@
     <resources>
         <image name="Menu" width="25" height="25"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="107" height="128"/>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
