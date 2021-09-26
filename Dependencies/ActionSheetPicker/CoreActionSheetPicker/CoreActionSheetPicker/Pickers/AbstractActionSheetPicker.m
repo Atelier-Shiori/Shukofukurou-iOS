@@ -48,9 +48,6 @@ CG_INLINE BOOL isIPhone4() {
 // UIInterfaceOrientationMask.
 #define OrientationMaskSupportsOrientation(mask, orientation)   ((mask & (1 << orientation)) == (1 << orientation))
 
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
-
 @interface MyPopoverController : UIPopoverPresentationController <UIAdaptivePresentationControllerDelegate>
 @end
 
@@ -71,19 +68,6 @@ CG_INLINE BOOL isIPhone4() {
     return UIModalPresentationNone;
 }
 @end
-
-#else
-
-@interface MyPopoverController:UIPopoverController
-@end
-
-@implementation MyPopoverController
-+(BOOL)canShowPopover {
-    return IS_IPAD;
-}
-@end
-
-#endif
 
 @interface AbstractActionSheetPicker () <UIGestureRecognizerDelegate>
 
@@ -160,7 +144,7 @@ CG_INLINE BOOL isIPhone4() {
         [self setCancelBarButtonItem:sysCancelButton];
         [self setDoneBarButtonItem:sysDoneButton];
 
-        self.tapDismissAction = TapActionNone;
+        self.tapDismissAction = TapActionDismiss;
         //allows us to use this without needing to store a reference in calling class
         self.selfReference = self;
 
@@ -268,19 +252,16 @@ CG_INLINE BOOL isIPhone4() {
     self.toolbar = [self createPickerToolbarWithTitle:self.title];
     [masterView addSubview:self.toolbar];
 
-    //ios7 picker draws a darkened alpha-only region on the first and last 8 pixels horizontally, but blurs the rest of its background.  To make the whole popup appear to be edge-to-edge, we have to add blurring to the remaining left and right edges.
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-        CGRect rect = CGRectMake(0, self.toolbar.frame.origin.y, _borderWidth, masterView.frame.size.height - self.toolbar.frame.origin.y);
-        UIToolbar *leftEdge = [[UIToolbar alloc] initWithFrame:rect];
-        rect.origin.x = masterView.frame.size.width - _borderWidth;
-        UIToolbar *rightEdge = [[UIToolbar alloc] initWithFrame:rect];
+    CGRect rect = CGRectMake(0, self.toolbar.frame.origin.y, _borderWidth, masterView.frame.size.height - self.toolbar.frame.origin.y);
+    UIToolbar *leftEdge = [[UIToolbar alloc] initWithFrame:rect];
+    rect.origin.x = masterView.frame.size.width - _borderWidth;
+    UIToolbar *rightEdge = [[UIToolbar alloc] initWithFrame:rect];
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
-        leftEdge.barTintColor = rightEdge.barTintColor = self.toolbar.barTintColor;
+    leftEdge.barTintColor = rightEdge.barTintColor = self.toolbar.barTintColor;
 #pragma clang diagnostic pop
-        [masterView insertSubview:leftEdge atIndex:0];
-        [masterView insertSubview:rightEdge atIndex:0];
-    }
+    [masterView insertSubview:leftEdge atIndex:0];
+    [masterView insertSubview:rightEdge atIndex:0];
 
     self.pickerView = [self configuredPickerView];
     NSAssert(_pickerView != NULL, @"Picker view failed to instantiate, perhaps you have invalid component data.");
@@ -310,10 +291,16 @@ CG_INLINE BOOL isIPhone4() {
 #pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
     {
         switch (self.tapDismissAction) {
-            case TapActionNone:
-                break;
-            case TapActionSuccess: {
+            case TapActionDismiss: {
                 // add tap dismiss action
+                self.actionSheet.window.userInteractionEnabled = YES;
+                UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissPicker)];
+                tapAction.delegate = self;
+                [self.actionSheet.window addGestureRecognizer:tapAction];
+                break;
+            }
+            case TapActionSuccess: {
+                // add tap success action with dismissPicker
                 self.actionSheet.window.userInteractionEnabled = YES;
                 UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionPickerDone:)];
                 tapAction.delegate = self;
@@ -321,7 +308,7 @@ CG_INLINE BOOL isIPhone4() {
                 break;
             }
             case TapActionCancel: {
-                // add tap dismiss action
+                // add tap cancel action with dismissPicker
                 self.actionSheet.window.userInteractionEnabled = YES;
                 UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionPickerCancel:)];
                 tapAction.delegate = self;
@@ -345,11 +332,7 @@ CG_INLINE BOOL isIPhone4() {
 }
 
 - (void)dismissPicker {
-#if __IPHONE_4_1 <= __IPHONE_OS_VERSION_MAX_ALLOWED
     if (self.actionSheet)
-#else
-        if (self.actionSheet && [self.actionSheet isVisible])
-#endif
         [_actionSheet dismissWithClickedButtonIndex:0 animated:YES];
     else if (self.popOverViewController)
         [_popOverViewController dismissViewControllerAnimated:YES completion:nil];
@@ -501,7 +484,7 @@ CG_INLINE BOOL isIPhone4() {
 - (UIToolbar *)createPickerToolbarWithTitle:(NSString *)title {
     CGRect frame = CGRectMake(0, 0, self.viewSize.width, 44);
     UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:frame];
-    pickerToolbar.barStyle = (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) ? UIBarStyleDefault : UIBarStyleBlackTranslucent;
+    pickerToolbar.barStyle = UIBarStyleDefault;
 
     pickerToolbar.barTintColor = self.toolbarBackgroundColor;
     pickerToolbar.tintColor = self.toolbarButtonsColor;
@@ -517,17 +500,8 @@ CG_INLINE BOOL isIPhone4() {
         NSString *buttonTitle = buttonDetails[kButtonTitle];
 
         UIBarButtonItem *button;
-        if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-            button = [[UIBarButtonItem alloc] initWithTitle:buttonTitle style:UIBarButtonItemStylePlain
-                                                     target:self action:@selector(customButtonPressed:)];
-        }
-        else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            button = [[UIBarButtonItem alloc] initWithTitle:buttonTitle style:UIBarButtonItemStyleBordered
-                                                     target:self action:@selector(customButtonPressed:)];
-#pragma clang diagnostic pop
-        }
+        button = [[UIBarButtonItem alloc] initWithTitle:buttonTitle style:UIBarButtonItemStylePlain
+                                                 target:self action:@selector(customButtonPressed:)];
 
         button.tag = index;
         [barItems addObject:button];
@@ -578,26 +552,19 @@ CG_INLINE BOOL isIPhone4() {
             [toolBarItemLabel setTextColor: [UIColor labelColor]];
         }
         else {
-            [toolBarItemLabel setTextColor:(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) ? [UIColor blackColor] : [UIColor whiteColor]];
+            [toolBarItemLabel setTextColor:[UIColor blackColor]];
         }
         #else
-           [toolBarItemLabel setTextColor:(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) ? [UIColor blackColor] : [UIColor whiteColor]];
+           [toolBarItemLabel setTextColor:[UIColor blackColor]];
         #endif
 
         [toolBarItemLabel setFont:[UIFont boldSystemFontOfSize:16]];
         toolBarItemLabel.text = aTitle;
 
-        if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
-            textSize = [[toolBarItemLabel text] sizeWithAttributes:@{NSFontAttributeName : [toolBarItemLabel font]}];
+        textSize = [[toolBarItemLabel text] sizeWithAttributes:@{NSFontAttributeName : [toolBarItemLabel font]}];
 #pragma clang diagnostic pop
-        } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            textSize = [[toolBarItemLabel text] sizeWithFont:[toolBarItemLabel font]];
-#pragma clang diagnostic pop
-        }
     }
 
     strikeWidth = textSize.width;
@@ -671,23 +638,7 @@ CG_INLINE BOOL isIPhone4() {
             return CGSizeMake(320, 320);
         return [UIApplication sharedApplication].keyWindow.bounds.size;
     }
-
-#if defined(__IPHONE_8_0)
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
-        //iOS 7.1 or earlier
-        if ([self isViewPortrait])
-            return CGSizeMake(320, IS_WIDESCREEN ? 568 : 480);
-        return CGSizeMake(IS_WIDESCREEN ? 568 : 480, 320);
-
-    } else {
-        //iOS 8 or later
-        return [[UIScreen mainScreen] bounds].size;
-    }
-#else
-    if ( [self isViewPortrait] )
-        return CGSizeMake(320 , IS_WIDESCREEN ? 568 : 480);
-    return CGSizeMake(IS_WIDESCREEN ? 568 : 480, 320);
-#endif
+    return [[UIScreen mainScreen] bounds].size;
 }
 
 - (BOOL)isViewPortrait {
@@ -779,18 +730,10 @@ CG_INLINE BOOL isIPhone4() {
         viewController.view = aView;
     }
 
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
-        viewController.preferredContentSize = aView.frame.size;
+    viewController.preferredContentSize = aView.frame.size;
 #pragma clang diagnostic pop
-    }
-    else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        viewController.contentSizeForViewInPopover = viewController.view.frame.size;
-#pragma clang diagnostic pop
-    }
 
     self.popOverViewController = viewController;
     [self presentPopover:viewController];

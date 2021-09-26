@@ -126,7 +126,7 @@ static CGFloat SDImageScaleFromPath(NSString *string) {
     }
     data = [data copy]; // avoid mutable data
     id<SDAnimatedImageCoder> animatedCoder = nil;
-    for (id<SDImageCoder>coder in [SDImageCodersManager sharedManager].coders) {
+    for (id<SDImageCoder>coder in [SDImageCodersManager sharedManager].coders.reverseObjectEnumerator) {
         if ([coder conformsToProtocol:@protocol(SDAnimatedImageCoder)]) {
             if ([coder canDecodeFromData:data]) {
                 if (!options) {
@@ -207,7 +207,7 @@ static CGFloat SDImageScaleFromPath(NSString *string) {
         }
         CGFloat scale = self.scale;
         id<SDAnimatedImageCoder> animatedCoder = nil;
-        for (id<SDImageCoder>coder in [SDImageCodersManager sharedManager].coders) {
+        for (id<SDImageCoder>coder in [SDImageCodersManager sharedManager].coders.reverseObjectEnumerator) {
             if ([coder conformsToProtocol:@protocol(SDAnimatedImageCoder)]) {
                 if ([coder canDecodeFromData:animatedImageData]) {
                     animatedCoder = [[[coder class] alloc] initWithAnimatedImageData:animatedImageData options:@{SDImageCoderDecodeScaleFactor : @(scale)}];
@@ -312,6 +312,10 @@ static CGFloat SDImageScaleFromPath(NSString *string) {
 
 - (void)setSd_imageLoopCount:(NSUInteger)sd_imageLoopCount {
     return;
+}
+
+- (NSUInteger)sd_imageFrameCount {
+    return self.animatedImageFrameCount;
 }
 
 - (SDImageFormat)sd_imageFormat {
