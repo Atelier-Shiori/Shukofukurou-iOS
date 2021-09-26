@@ -7,8 +7,14 @@
     },
     {
         "title" : "Hachidori Lite Extension",
-        "description" : "Shukofukurou under iOS/iPadOS now takes advantage of the new Safari Extension feature with the Hachidori Lite extension. This extension allows you to update your lists based on what Anime you are watching from legal streaming services like Crunchyroll, Funimation, and Hidive in Safari.",
+        "description" : "You can now update your lists based on what Anime you are watching from legal streaming services like Crunchyroll, Funimation, and Hidive in Safari on iOS/iPadOS 15.",
         "icon" : "tv.and.mediabox"
+        
+    },
+    {
+        "title" : "Bug Fixes and Improvements",
+        "description" : "Various bug fixes and improvements are made from the previous release.",
+        "icon" : "ladybug.fill"
         
     }
     ]
