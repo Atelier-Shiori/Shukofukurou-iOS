@@ -360,6 +360,11 @@
 		FF856C2126513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
 		FFB17BD5256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
+		FFBF71C926FFFECD00C1DA74 /* WhatsNewKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBF71C426FFFEAB00C1DA74 /* WhatsNewKit.framework */; };
+		FFBF71CA26FFFECD00C1DA74 /* WhatsNewKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFBF71C426FFFEAB00C1DA74 /* WhatsNewKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFBF71CF270002F900C1DA74 /* WhatsNew.json in Resources */ = {isa = PBXBuildFile; fileRef = FFBF71CE2700013B00C1DA74 /* WhatsNew.json */; };
+		FFBF71D12700093E00C1DA74 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF71D02700093E00C1DA74 /* WhatsNew.swift */; };
+		FFBF71D22700093E00C1DA74 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF71D02700093E00C1DA74 /* WhatsNew.swift */; };
 		FFFB3E8E26FAC86A00685A57 /* MediaStreamParse.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB3E8A26FAC86900685A57 /* MediaStreamParse.m */; };
 		FFFB3E8F26FAC86A00685A57 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB3E8D26FAC86900685A57 /* NSString+HTML.m */; };
 		FFFB3E9226FAC87600685A57 /* ezregex.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB3E9126FAC87500685A57 /* ezregex.m */; };
@@ -682,6 +687,27 @@
 			remoteGlobalIDString = 595A95C3223FD90100E3C245;
 			remoteInfo = ShukofukurouScrobble;
 		};
+		FFBF71C326FFFEAB00C1DA74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFBF71BD26FFFEAB00C1DA74 /* WhatsNewKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52D6D97C1BEFF229002C0205;
+			remoteInfo = "WhatsNewKit-iOS";
+		};
+		FFBF71C526FFFEAB00C1DA74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFBF71BD26FFFEAB00C1DA74 /* WhatsNewKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52D6D9861BEFF229002C0205;
+			remoteInfo = "WhatsNewKit-iOS Tests";
+		};
+		FFBF71C726FFFEAB00C1DA74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFBF71BD26FFFEAB00C1DA74 /* WhatsNewKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DC8A6A820AED02400292C94;
+			remoteInfo = "WhatsNewKit-Example";
+		};
 		FFFB3E9426FB3EF500685A57 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5962409D2155622E001995AD /* Project object */;
@@ -737,6 +763,7 @@
 			files = (
 				595A95FF223FE3CD00E3C245 /* CocoaOniguruma.framework in Embed Frameworks */,
 				592B8CB02236E17A007D43F4 /* Hakuchou_iOS.framework in Embed Frameworks */,
+				FFBF71CA26FFFECD00C1DA74 /* WhatsNewKit.framework in Embed Frameworks */,
 				595A9615224002B600E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */,
 				5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */,
 				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
@@ -1094,6 +1121,11 @@
 		FF8B4EEA2649539D00EB6181 /* Hiyoko 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 9.xcdatamodel"; sourceTree = "<group>"; };
 		FFB17BD2256BE98C003E2C8F /* UIContextualAction+ActionCreation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIContextualAction+ActionCreation.h"; sourceTree = "<group>"; };
 		FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIContextualAction+ActionCreation.m"; sourceTree = "<group>"; };
+		FFBF71A326FFFC6600C1DA74 /* Shukofukurou-IOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shukofukurou-IOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		FFBF71A426FFFC6600C1DA74 /* Shukofukurou-IOS-OSS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shukofukurou-IOS-OSS-Bridging-Header.h"; sourceTree = "<group>"; };
+		FFBF71BD26FFFEAB00C1DA74 /* WhatsNewKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = WhatsNewKit.xcodeproj; sourceTree = "<group>"; };
+		FFBF71CE2700013B00C1DA74 /* WhatsNew.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WhatsNew.json; sourceTree = "<group>"; };
+		FFBF71D02700093E00C1DA74 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		FFFB3E8A26FAC86900685A57 /* MediaStreamParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaStreamParse.m; sourceTree = "<group>"; };
 		FFFB3E8B26FAC86900685A57 /* MediaStreamParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaStreamParse.h; sourceTree = "<group>"; };
 		FFFB3E8C26FAC86900685A57 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
@@ -1146,6 +1178,7 @@
 				5934E29B220F7572002B8311 /* StoreKit.framework in Frameworks */,
 				59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */,
 				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
+				FFBF71C926FFFECD00C1DA74 /* WhatsNewKit.framework in Frameworks */,
 				592B8CAF2236E17A007D43F4 /* Hakuchou_iOS.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
 				595A9614224002B600E3C245 /* MBProgressHUDFramework.framework in Frameworks */,
@@ -1356,6 +1389,8 @@
 				5981223821935C1900117FA0 /* Shukofukurou-IOS.entitlements */,
 				596240A82155622E001995AD /* AppDelegate.h */,
 				596240A92155622E001995AD /* AppDelegate.m */,
+				FFBF71A326FFFC6600C1DA74 /* Shukofukurou-IOS-Bridging-Header.h */,
+				FFBF71A426FFFC6600C1DA74 /* Shukofukurou-IOS-OSS-Bridging-Header.h */,
 				596240BA2155622F001995AD /* main.m */,
 				596240B42155622F001995AD /* Assets.xcassets */,
 				5962414F21556362001995AD /* Backend */,
@@ -1367,6 +1402,8 @@
 				596241E5215564E2001995AD /* View Controllers */,
 				5933CEC42174F0F000EAE7E6 /* AutoRefreshTimer.h */,
 				5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */,
+				FFBF71CE2700013B00C1DA74 /* WhatsNew.json */,
+				FFBF71D02700093E00C1DA74 /* WhatsNew.swift */,
 			);
 			path = "Shukofukurou-IOS";
 			sourceTree = "<group>";
@@ -1383,6 +1420,7 @@
 		596240D82155625C001995AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				FFBF71A226FFFC4A00C1DA74 /* WhatsNewKit */,
 				59B804152344EB2B00B9F989 /* AppCenter */,
 				59225B7222A6B053000B8675 /* UIViewController-BackButtonHandler */,
 				595A96262240139100E3C245 /* string score */,
@@ -1906,6 +1944,24 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FFBF71A226FFFC4A00C1DA74 /* WhatsNewKit */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF71BD26FFFEAB00C1DA74 /* WhatsNewKit.xcodeproj */,
+			);
+			path = WhatsNewKit;
+			sourceTree = "<group>";
+		};
+		FFBF71BE26FFFEAB00C1DA74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF71C426FFFEAB00C1DA74 /* WhatsNewKit.framework */,
+				FFBF71C626FFFEAB00C1DA74 /* WhatsNewKit-iOS Tests.xctest */,
+				FFBF71C826FFFEAB00C1DA74 /* WhatsNewKit-Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2059,6 +2115,9 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "MAL Updater OS X Group";
 				TargetAttributes = {
+					5934E1E9220F7539002B8311 = {
+						LastSwiftMigration = 1300;
+					};
 					595A95C3223FD90100E3C245 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
@@ -2072,6 +2131,7 @@
 					};
 					596240A42155622E001995AD = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1300;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2135,6 +2195,10 @@
 				{
 					ProductGroup = 59B22D1521FE62F300627172 /* Products */;
 					ProjectRef = 59B22D1421FE62F300627172 /* SDWebImage.xcodeproj */;
+				},
+				{
+					ProductGroup = FFBF71BE26FFFEAB00C1DA74 /* Products */;
+					ProjectRef = FFBF71BD26FFFEAB00C1DA74 /* WhatsNewKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -2325,6 +2389,27 @@
 			remoteRef = 59B22D2121FE62F400627172 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		FFBF71C426FFFEAB00C1DA74 /* WhatsNewKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WhatsNewKit.framework;
+			remoteRef = FFBF71C326FFFEAB00C1DA74 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FFBF71C626FFFEAB00C1DA74 /* WhatsNewKit-iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "WhatsNewKit-iOS Tests.xctest";
+			remoteRef = FFBF71C526FFFEAB00C1DA74 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FFBF71C826FFFEAB00C1DA74 /* WhatsNewKit-Example.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "WhatsNewKit-Example.app";
+			remoteRef = FFBF71C726FFFEAB00C1DA74 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -2384,6 +2469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFBF71CF270002F900C1DA74 /* WhatsNew.json in Resources */,
 				596242522155661A001995AD /* Main.storyboard in Resources */,
 				5962425121556617001995AD /* Lists.storyboard in Resources */,
 				5962424E2155660F001995AD /* Auth.storyboard in Resources */,
@@ -2447,6 +2533,7 @@
 			files = (
 				5934E1F7220F7539002B8311 /* GKBarGraph.m in Sources */,
 				5934E1F9220F7539002B8311 /* AniListSeasonListGenerator.m in Sources */,
+				FFBF71D22700093E00C1DA74 /* WhatsNew.swift in Sources */,
 				91A27F5022F3328700937F1E /* HistoryCell.m in Sources */,
 				5934E1FA220F7539002B8311 /* TitleInfoViewController.m in Sources */,
 				FF0B4C1426497C9A00CA5D16 /* AiringTableViewCell.m in Sources */,
@@ -2679,6 +2766,7 @@
 				5962421D21556514001995AD /* SettingsViewController.m in Sources */,
 				596A01B42163D11E0005A60F /* CharacterTableViewController.m in Sources */,
 				594810F521921FD0000C4B5C /* TrendingCollectionHeaderView.m in Sources */,
+				FFBF71D12700093E00C1DA74 /* WhatsNew.swift in Sources */,
 				59B3AC742209266C0050662A /* GKBar.m in Sources */,
 				594D09342202019E00A37B6B /* TableViewCellBackgroundView.m in Sources */,
 				59A75818215D3A8800B36F9C /* TitleInfoCache.m in Sources */,
@@ -3090,6 +3178,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20210925;
@@ -3109,6 +3198,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-OSS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3117,6 +3209,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20210925;
@@ -3134,6 +3227,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS-OSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-OSS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3353,10 +3448,13 @@
 		596240CA2155622F001995AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20210925;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3373,6 +3471,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3380,10 +3482,13 @@
 		596240CB2155622F001995AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20210925;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3400,6 +3505,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3407,6 +3515,7 @@
 		596240CD2155622F001995AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;
@@ -3426,6 +3535,7 @@
 		596240CE2155622F001995AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HDZTER525;

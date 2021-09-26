@@ -39,6 +39,7 @@
     vcm.mainsidebar = self;
     self.navigationController.toolbarHidden = NO;
     _delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
+    [vcm.mvc showWhatsNew:true];
 }
 
 /*
@@ -272,6 +273,10 @@
             [weakself.mainvc presentViewController:prompt animated:YES completion:nil];
         }]];
     }
+    [options addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"What's New"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakself.mainvc showWhatsNew:false];
+        [weakself hideLeftViewAnimated:weakself];
+    }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {

@@ -1,0 +1,15 @@
+{
+    "items" : [
+    {
+        "title" : "iOS/iPadOS 15 Support",
+        "description" : "Shukofukurou now officially supports iOS/iPadOS 15 and takes advantage of new features from iOS/iPadOS 13 and 14",
+        "icon" : "iphone"
+    },
+    {
+        "title" : "Hachidori Lite Extension",
+        "description" : "Shukofukurou under iOS/iPadOS now takes advantage of the new Safari Extension feature with the Hachidori Lite extension. This extension allows you to update your lists based on what Anime you are watching from legal streaming services like Crunchyroll, Funimation, and Hidive in Safari.",
+        "icon" : "tv.and.mediabox"
+        
+    }
+    ]
+}

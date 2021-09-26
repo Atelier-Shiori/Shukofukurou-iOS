@@ -13,10 +13,13 @@
 #import "listservice.h"
 #import "TitleInfoViewController.h"
 #import "ScrobbleManager.h"
+#import <Shukofukurou_IOS-Swift.h>
 #if defined(OSS)
 #else
 #import "TipJar.h"
 #endif
+
+@import WhatsNewKit;
 
 @interface MainViewController ()
 @property (strong) ViewControllerManager *vcm;
@@ -32,6 +35,14 @@
 #if defined(OSS)
     [self showopensourcemessage];
 #endif
+}
+
+- (void)showWhatsNew:(bool)showatlaunch {
+    SWhatsNew *wn = [SWhatsNew new];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"WhatsNew" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    [wn showWhatsNewWithWitems:json[@"items"] vc:self showAtLaunch:showatlaunch];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size

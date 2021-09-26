@@ -32,6 +32,8 @@
 + (void)initialize {
     //Create a Dictionary
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+    defaultValues[@"curVersionNum"] = @"1";
+    defaultValues[@"curBuildNum"] = @"1";
     defaultValues[@"selectedmainview"] = @"anime-list";
     defaultValues[@"refreshlistonstart"] = @(0);
     defaultValues[@"refreshautomatically"] = @(1);
