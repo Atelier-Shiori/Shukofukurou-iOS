@@ -118,7 +118,7 @@
 #if defined(OSS)
         [self showopensourcemessage];
 #else
-        [self openWebBrowserView:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/Shukofukurou-iOS/issues"]];
+        [self openWebBrowserView:[NSURL URLWithString:@"https://support.malupdaterosx.moe/index.php?forums/shukofukurou-for-ios-issue-tracker-support.4/"]];
         [cell setSelected:NO animated:YES];
 #endif
     }
