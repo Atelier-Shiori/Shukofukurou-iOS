@@ -117,6 +117,7 @@
     if (!_enablecountdown || _active.hidden || [_airingDate isKindOfClass:[NSNull class]]) {
         _airingCountdown.hidden = true;
         _enablecountdown = false;
+        _nextEpisode = 0;
         return;
     }
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -153,7 +154,15 @@
 - (void)setEpisodeText:(id)watchedepisodes withEpisodes:(id)episodes {
     self.watchedepisodes = watchedepisodes;
     self.numepisodes = episodes;
-    self.progress.text = !_active.hidden && (_nextEpisode-1)-((NSNumber *)self.watchedepisodes).intValue > 0 && _nextEpisode > 0 ? [NSString stringWithFormat:@"Episode: %@/%@ (%i %@ Behind)", self.watchedepisodes, self.numepisodes , (_nextEpisode-1)-((NSNumber *)watchedepisodes).intValue, (_nextEpisode-1)-((NSNumber *)watchedepisodes).intValue > 1 ? @"Eps" : @"Ep"] : [NSString stringWithFormat:@"Episode: %@/%@", self.watchedepisodes, self.numepisodes];
+    self.progress.text = _airingCountdown && (_nextEpisode-1)-((NSNumber *)self.watchedepisodes).intValue > 0 && _nextEpisode > 0 ? [NSString stringWithFormat:@"Episode: %@/%@ (%i %@ Behind)", self.watchedepisodes, self.numepisodes , (_nextEpisode-1)-((NSNumber *)watchedepisodes).intValue, (_nextEpisode-1)-((NSNumber *)watchedepisodes).intValue > 1 ? @"Eps" : @"Ep"] : [NSString stringWithFormat:@"Episode: %@/%@", self.watchedepisodes, self.numepisodes];
+}
+
+- (void)resetAirParameters {
+    _airingCountdown.hidden = true;
+    [NSNotificationCenter.defaultCenter removeObserver:self name:@"airTimerFire" object:nil];
+    _nextEpisode = 0;
+    _enablecountdown = false;
+    _airingDate = nil;
 }
 
 @end
