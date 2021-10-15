@@ -39,7 +39,7 @@
     defaultValues[@"donated"] = @(1);
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"stream_region"] = @(0);
-    defaultValues[@"currentservice"] = @(3);
+    defaultValues[@"currentservice"] = @(1);
     defaultValues[@"seasonselect"] = @"Winter";
     defaultValues[@"selectedsearchtype"] = @(0);
     defaultValues[@"cachetitleinfo"] = @YES;

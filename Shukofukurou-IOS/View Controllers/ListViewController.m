@@ -285,6 +285,12 @@
     }
 }
 
+- (void)resetCountdowns {
+    for (AnimeEntryTableViewCell *cell in self.tableView.visibleCells) {
+        [cell resetAirParameters];
+    }
+}
+
 - (void)reloadList {
     if (_searchController.searchBar.text.length > 0) {
         [self filterWithSearchText:_searchController.searchBar.text];
@@ -308,6 +314,7 @@
     else {
         switch (_listtype) {
             case Anime:
+                [self resetCountdowns];
                 if ([_selectedlist isEqualToString:@"airing"]) {
                     filterpredicate = [NSPredicate predicateWithFormat:@"status ==[c] %@", @"currently airing"];
                 }
