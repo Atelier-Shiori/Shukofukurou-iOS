@@ -159,10 +159,10 @@
 
 - (void)resetAirParameters {
     _airingCountdown.hidden = true;
-    [NSNotificationCenter.defaultCenter removeObserver:self name:@"airTimerFire" object:nil];
     _nextEpisode = 0;
     _enablecountdown = false;
     _airingDate = nil;
+    [NSNotificationCenter.defaultCenter removeObserver:self name:@"airTimerFire" object:nil];
 }
 
 @end
