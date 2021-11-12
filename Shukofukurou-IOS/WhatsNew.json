@@ -1,19 +1,8 @@
 {
     "items" : [
     {
-        "title" : "iOS/iPadOS 15 Support",
-        "description" : "Shukofukurou now officially supports iOS/iPadOS 15 and takes advantage of new features from iOS/iPadOS 13 and 14",
-        "icon" : "iphone"
-    },
-    {
-        "title" : "Hachidori Lite Extension",
-        "description" : "You can now update your lists based on what Anime you are watching from legal streaming services like Crunchyroll, Funimation, and Hidive in Safari on iOS/iPadOS 15.",
-        "icon" : "tv.and.mediabox"
-        
-    },
-    {
         "title" : "Bug Fixes and Improvements",
-        "description" : "Various bug fixes and improvements are made from the previous release.",
+        "description" : "Finally fixed the phantom X Episodes Behind on non-airing anime list entries when user switches from Airing/Watching to other lists.",
         "icon" : "ladybug.fill"
         
     }
