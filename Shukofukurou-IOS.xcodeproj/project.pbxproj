@@ -355,7 +355,6 @@
 		FF23FC1326FA4FFA0040E446 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1226FA4FFA0040E446 /* content.js */; };
 		FF23FC1D26FA4FFA0040E446 /* HachidoriLite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF23FC0426FA4FFA0040E446 /* HachidoriLite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF47CA00261A22610068F172 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
-		FF64D91126FB698A00EE2566 /* ShukofukurouScrobble.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 595A95C4223FD90100E3C245 /* ShukofukurouScrobble.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF856C2026513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FF856C2126513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
@@ -750,7 +749,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				FF23FC1D26FA4FFA0040E446 /* HachidoriLite.appex in Embed App Extensions */,
-				FF64D91126FB698A00EE2566 /* ShukofukurouScrobble.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3453,7 +3451,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20211111;
+				CURRENT_PROJECT_VERSION = 20211211;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
@@ -3467,7 +3465,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -3487,7 +3485,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20211111;
+				CURRENT_PROJECT_VERSION = 20211211;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = YES;
@@ -3501,7 +3499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;

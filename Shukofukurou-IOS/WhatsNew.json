@@ -1,9 +1,21 @@
 {
     "items" : [
     {
+        "title" : "Browsing MyAnimeList without Login",
+        "description" : "Now it's possible to browse and search anime and manga titles on MyAnimeList without logging in first.",
+        "icon" : "doc.text.magnifyingglass"
+            
+    },
+    {
         "title" : "Bug Fixes and Improvements",
-        "description" : "Finally fixed the phantom X Episodes Behind on non-airing anime list entries when user switches from Airing/Watching to other lists.",
+        "description" : "Various Bugfixes.",
         "icon" : "ladybug.fill"
+        
+    },
+    {
+        "title" : "Shukofukurou Scrobble Share Extension Deprecated",
+        "description" : "The legacy Shukofukurou Scrobble Share Extension is now removed due to site changes on Crunchyroll and Funimation rendering the extension useless.",
+        "icon" : "puzzlepiece.extension"
         
     }
     ]

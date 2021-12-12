@@ -183,38 +183,16 @@
         }
     }
     else if ([identifier isEqualToString:@"search"]) {
-        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
-            [self showNotLoggedIn];
-        }
-        else {
-            [self showSearchViewController];
-        }
-        
+        [self showSearchViewController];
     }
     else if ([identifier isEqualToString:@"seasons"]) {
-        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
-            [self showNotLoggedIn];
-        }
-        else {
-            [self showSeasonViewController];
-        }
-        
+        [self showSeasonViewController];
     }
     else if ([identifier isEqualToString:@"airing"]) {
-        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
-            [self showNotLoggedIn];
-        }
-        else {
-            [self showAiringViewController];
-        }
+        [self showAiringViewController];
     }
     else if ([identifier isEqualToString:@"trending"]) {
-        if (currentservice == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
-            [self showNotLoggedIn];
-        }
-        else {
-            [self showTrendingViewController];
-        }
+        [self showTrendingViewController];
     }
     else if ([identifier isEqualToString:@"settings"]) {
         [self showSettingsViewController];

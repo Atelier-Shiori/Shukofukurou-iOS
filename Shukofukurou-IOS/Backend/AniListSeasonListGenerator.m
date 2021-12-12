@@ -13,6 +13,7 @@
 #import <Hakuchou_iOS/AniListConstants.h>
 #import "listservice.h"
 #import "Utility.h"
+#import "ClientConstants.h"
 
 @interface AniListSeasonListGenerator ()
 
@@ -64,12 +65,12 @@
     }
     if (cred) {
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+        [manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-MAL-CLIENT-ID"];
     }
     else {
-        errorHandler(nil);
-        return;
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@",kMALClient] forHTTPHeaderField:@"X-MAL-CLIENT-ID"];
     }
-    [manager GET:[NSString stringWithFormat:@"https://api.myanimelist.net/v2/anime/season/%i/%@?limit=100&offset=%i&fields=nsfw,media_type,alternative_titles,genres", year, season.lowercaseString, page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://api.myanimelist.net/v3/anime/season/%i/%@?limit=100&offset=%i&fields=nsfw,media_type,alternative_titles,genres", year, season.lowercaseString, page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
             [array addObjectsFromArray:responseObject[@"data"]];
         }
