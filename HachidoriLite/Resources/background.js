@@ -149,7 +149,7 @@ function detectFunimationHistory(tab) {
 }
 
 function detectFunimationNewPlayer(tab) {
-    let executing = browser.tabs.executeScript(tab.id, { code: "document.querySelector('.meta-overlay__data-block--title').innerHTML + ' | ' + document.querySelector('.meta-overlay__data-block--episode-and-season').innerHTML;"});
+    let executing = browser.tabs.executeScript(tab.id, { code: "document.querySelector('.meta-overlay__data-block--title').innerHTML + ' | ' + document.querySelector('.meta-overlay__data-block--episode-name').innerHTML;"});
     executing.then((value) => {
         return generateResult(tab,value);
     });

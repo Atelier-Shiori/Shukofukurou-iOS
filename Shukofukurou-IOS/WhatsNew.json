@@ -17,6 +17,12 @@
         "description" : "The legacy Shukofukurou Scrobble Share Extension is now removed due to site changes on Crunchyroll and Funimation rendering the extension useless.",
         "icon" : "puzzlepiece.extension"
         
+    },
+    {
+        "title" : "Crunchyroll Detection Improvements",
+        "description" : "Fixes detection of episode titles being the same as the show title, episode nunber detection, and the ability to update using Crunchyroll's watch history.",
+        "icon" : "play.tv"
+        
     }
     ]
 }
