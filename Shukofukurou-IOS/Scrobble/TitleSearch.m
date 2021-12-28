@@ -171,6 +171,9 @@ typedef NS_ENUM(unsigned int, matchtype) {
                 //Return titleid if episode is valid
                 int episodes = !searchentry[@"episodes"] ? 0 : ((NSNumber *)searchentry[@"episodes"]).intValue;
                 if (episodes == 0 || ((episodes >= self.DetectedEpisode.intValue) && self.DetectedEpisode.intValue > 0)) {
+                    if (((NSNumber *)searchentry[@"parsed_season"]).intValue >= 2 && ((NSNumber *)searchentry[@"parsed_season"]).intValue != self.DetectedSeason) {
+                        continue;
+                    }
                     NSLog(@"Valid Episode Count");
                     if (sortedArray.count == 1 || self.DetectedSeason >= 2) {
                         // Only Result, return
