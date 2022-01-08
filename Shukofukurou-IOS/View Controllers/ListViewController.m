@@ -70,7 +70,9 @@
 - (void)fireTimer {
     for (AnimeEntryTableViewCell *cell in self.tableView.visibleCells) {
         if (self.listtype == Anime) {
-            [(AnimeEntryTableViewCell *)cell updateCountdown];
+            if ([cell.class isSubclassOfClass:AnimeEntryTableViewCell.class]) {
+                [(AnimeEntryTableViewCell *)cell updateCountdown];
+            }
         }
     }
 }
@@ -522,7 +524,9 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_listtype == Anime) {
-        [(AnimeEntryTableViewCell *)cell updateCountdown];
+        if ([cell.class isSubclassOfClass:AnimeEntryTableViewCell.class]) {
+            [(AnimeEntryTableViewCell *)cell updateCountdown];
+        }
     }
 }
 
