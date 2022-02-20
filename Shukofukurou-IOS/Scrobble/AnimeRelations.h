@@ -12,5 +12,6 @@
 - (void)autoupdateRelations:(void (^)(bool success)) completionHandler;
 - (void)updateRelations:(void (^)(bool success)) completionHandler;
 - (NSArray *)retrieveRelationsEntriesForTitleID:(int)titleid withService:(int)service;
+- (NSArray *)retrieveTargetRelationsEntriesForTitleID:(int)titleid withService:(int)service;
 - (void)clearAnimeRelations;
 @end

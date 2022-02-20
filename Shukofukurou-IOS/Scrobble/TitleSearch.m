@@ -114,6 +114,52 @@ typedef NS_ENUM(unsigned int, matchtype) {
     return -1;
 }
 
+- (bool)checkAnimeRelationsForExisting:(int)titleid {
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
+    NSArray *relations = [AnimeRelations.sharedInstance retrieveTargetRelationsEntriesForTitleID:titleid withService:currentservice];
+    for (NSManagedObject *relation in relations) {
+        @autoreleasepool {
+            NSNumber *sourcefromepisode = [relation valueForKey:@"source_ep_from"];
+            NSNumber *sourcetoepisode = [relation valueForKey:@"source_ep_to"];
+            NSNumber *targetfromepisode = [relation valueForKey:@"target_ep_from"];
+            NSNumber *targettoepisode = [relation valueForKey:@"target_ep_to"];
+            NSNumber *iszeroepisode = [relation valueForKey:@"is_zeroepisode"];
+            NSNumber *targetid;
+            switch (currentservice) {
+                case 0:
+                    targetid = [relation valueForKey:@"target_kitsuid"];
+                    break;
+                case 1:
+                    targetid = [relation valueForKey:@"target_anilistid"];
+                    break;
+                case 2:
+                    targetid = [relation valueForKey:@"target_malid"];
+                    break;
+                default:
+                    break;
+            }
+                    
+            if (self.DetectedEpisode.intValue < sourcefromepisode.intValue && self.DetectedEpisode.intValue > sourcetoepisode.intValue) {
+                continue;
+            }
+            int tmpep = self.DetectedEpisode.intValue - (sourcefromepisode.intValue-1);
+            if (tmpep > 0 && tmpep <= targettoepisode.intValue) {
+                self.DetectedEpisode = @(tmpep).stringValue;
+                return YES;
+            }
+            else if (self.DetectedTitleisEpisodeZero && iszeroepisode.boolValue) {
+                self.DetectedEpisode = targetfromepisode.stringValue;
+                return YES;
+            }
+            else if (self.DetectedTitleisMovie && targetfromepisode.intValue == targettoepisode.intValue) {
+                self.DetectedEpisode = targetfromepisode.stringValue;
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 #pragma mark Title Id
 - (NSString *)findaniid:(id)responseObject searchterm:(NSString *) term {
     //Initalize NSString to dump the title temporarily
@@ -148,64 +194,87 @@ typedef NS_ENUM(unsigned int, matchtype) {
             // Populate titles
             theshowtitle = [NSString stringWithFormat:@"%@",searchentry[@"title"]];
             alttitle = ((NSArray *)searchentry[@"other_titles"][@"english"]).count > 0 ? searchentry[@"other_titles"][@"english"][0] : ((NSArray *)searchentry[@"other_titles"][@"japanese"]).count ? searchentry[@"other_titles"][@"japanese"][0] : @"";
+            int matchstatus = 0;
             // Remove colons as they are invalid characters for filenames and to improve accuracy
             theshowtitle = [theshowtitle stringByReplacingOccurrencesOfString:@":" withString:@""];
             alttitle = [alttitle stringByReplacingOccurrencesOfString:@":" withString:@""];
             // Perform Recognition
-            int matchstatus = i > 0 ? [self checkMatch:theshowtitle alttitle:alttitle regex:regex option:i] : [term caseInsensitiveCompare:theshowtitle] == NSOrderedSame ? PrimaryTitleMatch : [term caseInsensitiveCompare:alttitle] == NSOrderedSame ? AlternateTitleMatch : NoMatch;
+            matchstatus = i > 0 ? [self checkMatch:theshowtitle alttitle:alttitle regex:regex option:i] : [term caseInsensitiveCompare:theshowtitle] == NSOrderedSame ? PrimaryTitleMatch : [term caseInsensitiveCompare:alttitle] == NSOrderedSame ? AlternateTitleMatch : NoMatch;
             if (matchstatus == PrimaryTitleMatch || matchstatus == AlternateTitleMatch) {
-                if (self.DetectedTitleisMovie) {
-                    self.DetectedEpisode = @"1"; // Usually, there is one episode in a movie.
-                    if ([[NSString stringWithFormat:@"%@", searchentry[@"type"]] isEqualToString:@"Special"]) {
-                        self.DetectedTitleisMovie = false;
+                    if (self.DetectedTitleisMovie) {
+                        self.DetectedEpisode = @"1"; // Usually, there is one episode in a movie.
+                        if ([[NSString stringWithFormat:@"%@", searchentry[@"type"]] isEqualToString:@"Special"]) {
+                            self.DetectedTitleisMovie = false;
+                        }
                     }
+                    else {
+                        if ([[NSString stringWithFormat:@"%@", searchentry[@"type"]] isEqualToString:@"TV"]||[[NSString stringWithFormat:@"%@", searchentry[@"type"]] isEqualToString:@"ONA"]) { // Check Seasons if the title is a TV show type
+                            // Used for Season Checking
+                            if (self.DetectedSeason != ((NSNumber *)searchentry[@"parsed_season"]).intValue && self.DetectedSeason >= 2) { // Season detected, check to see if there is a match. If not, continue.
+                                continue;
+                            }
+                        }
+                    }
+            }
+            else if (matchstatus == NoMatch) {
+                continue;
+            }
+            //Return titleid if episode is valid
+            int episodes = !searchentry[@"episodes"] ? 0 : ((NSNumber *)searchentry[@"episodes"]).intValue;
+            if (episodes == 0 || ((episodes >= self.DetectedEpisode.intValue) && self.DetectedEpisode.intValue > 0)) {
+                if (((NSNumber *)searchentry[@"parsed_season"]).intValue >= 2 && ((NSNumber *)searchentry[@"parsed_season"]).intValue != self.DetectedSeason && (![self.DetectedTitle isEqualToString:theshowtitle])) {
+                    continue;
+                }
+                NSLog(@"Valid Episode Count");
+                if (sortedArray.count == 1 || self.DetectedSeason >= 2) {
+                    // Only Result, return
+                    return [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
+                }
+                else if (episodes >= self.DetectedEpisode.intValue && !titlematch1 && sortedArray.count > 1 && ((term.length < theshowtitle.length+1)||(term.length< alttitle.length+1 && alttitle.length > 0 && matchstatus == AlternateTitleMatch))) {
+                    mstatus = matchstatus;
+                    titlematch1 = searchentry;
+                    continue;
+                }
+                else if (titlematch1 && (episodes >= self.DetectedEpisode.intValue || episodes == 0)) {
+                    titlematch2 = searchentry;
+                    return titlematch1 != titlematch2 ? [self comparetitle:term match1:titlematch1 match2:titlematch2 mstatus:mstatus mstatus2:matchstatus] : [self foundtitle:[NSString stringWithFormat:@"%@",searchentry[@"id"]] info:searchentry];
                 }
                 else {
-                    if ([[NSString stringWithFormat:@"%@", searchentry[@"type"]] isEqualToString:@"TV"]||[[NSString stringWithFormat:@"%@", searchentry[@"type"]] isEqualToString:@"ONA"]) { // Check Seasons if the title is a TV show type
-                        // Used for Season Checking
-                        if (self.DetectedSeason != ((NSNumber *)searchentry[@"parsed_season"]).intValue && self.DetectedSeason >= 2) { // Season detected, check to see if there is a match. If not, continue.
+                    if ([NSUserDefaults.standardUserDefaults boolForKey:@"UseAnimeRelations"]) {
+                        int newid = [self checkAnimeRelations:((NSNumber *)searchentry[@"id"]).intValue];
+                        if (newid > 0) {
+                            [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
+                            return @(newid).stringValue;
+                        }
+                    }
+                    // Only Result, return
+                    return [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
+                }
+            }
+            else if ((episodes < self.DetectedEpisode.intValue) && self.DetectedEpisode.intValue > 0) {
+                // Check Relations
+                if ([NSUserDefaults.standardUserDefaults boolForKey:@"UseAnimeRelations"]) {
+                    int newid = [self checkAnimeRelations:((NSNumber *)searchentry[@"id"]).intValue];
+                    if (newid > 0) {
+                        [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
+                        return @(newid).stringValue;
+                    }
+                    else {
+                        if ([self checkAnimeRelationsForExisting:((NSNumber *)searchentry[@"id"]).intValue]) {
+                            [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
+                            return @(newid).stringValue;
+                        }
+                        else {
                             continue;
                         }
                     }
                 }
-                //Return titleid if episode is valid
-                int episodes = !searchentry[@"episodes"] ? 0 : ((NSNumber *)searchentry[@"episodes"]).intValue;
-                if (episodes == 0 || ((episodes >= self.DetectedEpisode.intValue) && self.DetectedEpisode.intValue > 0)) {
-                    if (((NSNumber *)searchentry[@"parsed_season"]).intValue >= 2 && ((NSNumber *)searchentry[@"parsed_season"]).intValue != self.DetectedSeason) {
-                        continue;
-                    }
-                    NSLog(@"Valid Episode Count");
-                    if (sortedArray.count == 1 || self.DetectedSeason >= 2) {
-                        // Only Result, return
-                        return [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
-                    }
-                    else if (episodes >= self.DetectedEpisode.intValue && !titlematch1 && sortedArray.count > 1 && ((term.length < theshowtitle.length+1)||(term.length< alttitle.length+1 && alttitle.length > 0 && matchstatus == AlternateTitleMatch))) {
-                        mstatus = matchstatus;
-                        titlematch1 = searchentry;
-                        continue;
-                    }
-                    else if (titlematch1 && episodes >= self.DetectedEpisode.intValue) {
-                        titlematch2 = searchentry;
-                        return titlematch1 != titlematch2 ? [self comparetitle:term match1:titlematch1 match2:titlematch2 mstatus:mstatus mstatus2:matchstatus] : [self foundtitle:[NSString stringWithFormat:@"%@",searchentry[@"id"]] info:searchentry];
-                    }
-                    else {
-                        if ([NSUserDefaults.standardUserDefaults boolForKey:@"UseAnimeRelations"]) {
-                            int newid = [self checkAnimeRelations:((NSNumber *)searchentry[@"id"]).intValue];
-                            if (newid > 0) {
-                                [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
-                                return @(newid).stringValue;
-                            }
-                        }
-                        // Only Result, return
-                        return [self foundtitle:((NSNumber *)searchentry[@"id"]).stringValue info:searchentry];
-                    }
-                }
-                else {
-                    // Detected episodes exceed total episodes
-                    continue;
-                }
-                
             }
+            else {
+                // Detected episodes exceed total episodes
+                continue;
+            }
+            
         }
     }
     // If one match is found and not null, then return the id.
