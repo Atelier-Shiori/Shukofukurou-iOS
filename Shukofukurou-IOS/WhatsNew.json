@@ -1,26 +1,8 @@
 {
     "items" : [
     {
-        "title" : "Browsing MyAnimeList without Login",
-        "description" : "Now it's possible to browse and search on MyAnimeList without login.",
-        "icon" : "doc.text.magnifyingglass"
-            
-    },
-    {
-        "title" : "Bug Fixes and Improvements",
-        "description" : "Fixed Funimation detection and season recognition for Hachidori Lite.",
-        "icon" : "ladybug.fill"
-        
-    },
-    {
-        "title" : "Shukofukurou Scrobble Share Extension Deprecated",
-        "description" : "The legacy Shukofukurou Scrobble Share Extension is now removed due to site changes rendering the extension useless.",
-        "icon" : "puzzlepiece.extension"
-        
-    },
-    {
-        "title" : "Crunchyroll Detection Improvements",
-        "description" : "Fixes detection of episode titles being the same as the show title, episode nunber detection, and the ability to update using Crunchyroll's watch history.",
+        "title" : "Hachidori Lite Extension Improvements",
+        "description" : "Improved title recognition from the improvements made in Hachidori for macOS.",
         "icon" : "play.tv"
         
     }
