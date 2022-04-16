@@ -177,7 +177,7 @@ typedef NS_ENUM(unsigned int, matchtype) {
     NSDictionary * titlematch2;
     int mstatus = 0;
     // Search
-    for (int i = 0; i < 3; i++) {
+    for (int i = 1; i < 3; i++) {
         switch (i) {
             case 1:
                 regex = [OnigRegexp compile:[NSString stringWithFormat:@"(%@)",term] options:OnigOptionIgnorecase];
@@ -193,13 +193,38 @@ typedef NS_ENUM(unsigned int, matchtype) {
         for (NSDictionary *searchentry in sortedArray) {
             // Populate titles
             theshowtitle = [NSString stringWithFormat:@"%@",searchentry[@"title"]];
-            alttitle = ((NSArray *)searchentry[@"other_titles"][@"english"]).count > 0 ? searchentry[@"other_titles"][@"english"][0] : ((NSArray *)searchentry[@"other_titles"][@"japanese"]).count ? searchentry[@"other_titles"][@"japanese"][0] : @"";
+            NSMutableArray *tmptitles = [NSMutableArray new];
+            if (((NSArray *)searchentry[@"other_titles"][@"english"]).count > 0) {
+                [tmptitles addObjectsFromArray:searchentry[@"other_titles"][@"english"]];
+            }
+            if (((NSArray *)searchentry[@"other_titles"][@"japanese"]).count > 0) {
+                [tmptitles addObjectsFromArray:searchentry[@"other_titles"][@"japanese"]];
+            }
             int matchstatus = 0;
             // Remove colons as they are invalid characters for filenames and to improve accuracy
             theshowtitle = [theshowtitle stringByReplacingOccurrencesOfString:@":" withString:@""];
             alttitle = [alttitle stringByReplacingOccurrencesOfString:@":" withString:@""];
             // Perform Recognition
-            matchstatus = i > 0 ? [self checkMatch:theshowtitle alttitle:alttitle regex:regex option:i] : [term caseInsensitiveCompare:theshowtitle] == NSOrderedSame ? PrimaryTitleMatch : [term caseInsensitiveCompare:alttitle] == NSOrderedSame ? AlternateTitleMatch : NoMatch;
+            NSDictionary * matchstatusdict = [self checkMatch:theshowtitle alttitles:tmptitles regex:regex option:i];
+            matchstatus = ((NSNumber *)matchstatusdict[@"matchstatus"]).intValue;
+            if (matchstatus == AlternateTitleMatch) {
+                alttitle = matchstatusdict[@"matchedtitle"];
+            }
+            if (matchstatus == NoMatch) {
+                if ([term caseInsensitiveCompare:theshowtitle] == NSOrderedSame) {
+                    matchstatus =  PrimaryTitleMatch;
+                }
+                else {
+                    for (NSString *atitle in tmptitles) {
+                        NSString *atmptitle = [atitle stringByReplacingOccurrencesOfString:@":" withString:@""];
+                        if ([term caseInsensitiveCompare:atitle] == NSOrderedSame) {
+                            alttitle = atmptitle;
+                            matchstatus = AlternateTitleMatch;
+                            break;
+                        }
+                    }
+                }
+            }
             if (matchstatus == PrimaryTitleMatch || matchstatus == AlternateTitleMatch) {
                     if (self.DetectedTitleisMovie) {
                         self.DetectedEpisode = @"1"; // Usually, there is one episode in a movie.
@@ -222,7 +247,8 @@ typedef NS_ENUM(unsigned int, matchtype) {
             //Return titleid if episode is valid
             int episodes = !searchentry[@"episodes"] ? 0 : ((NSNumber *)searchentry[@"episodes"]).intValue;
             if (episodes == 0 || ((episodes >= self.DetectedEpisode.intValue) && self.DetectedEpisode.intValue > 0)) {
-                if (((NSNumber *)searchentry[@"parsed_season"]).intValue >= 2 && ((NSNumber *)searchentry[@"parsed_season"]).intValue != self.DetectedSeason && (![self.DetectedTitle isEqualToString:theshowtitle])) {
+                bool matchestitle = matchstatus == PrimaryTitleMatch ? [term caseInsensitiveCompare:theshowtitle] == NSOrderedSame : [term caseInsensitiveCompare:alttitle] == NSOrderedSame;
+                if (((NSNumber *)searchentry[@"parsed_season"]).intValue >= 2 && ((NSNumber *)searchentry[@"parsed_season"]).intValue != self.DetectedSeason && !matchestitle) {
                     continue;
                 }
                 NSLog(@"Valid Episode Count");
@@ -374,18 +400,23 @@ typedef NS_ENUM(unsigned int, matchtype) {
     //Return the AniID
     return titleid;
 }
-- (int)checkMatch:(NSString *)title
-         alttitle:(NSString *)atitle
-            regex:(OnigRegexp *)regex
-           option:(int)i {
-    //Checks for matches
-    if ([regex search:title].count > 0) {
-        return PrimaryTitleMatch;
-    }
-    else if (([regex search:atitle] && atitle.length >0 && i==0)) {
-        return AlternateTitleMatch;
-    }
-    return NoMatch;
+- (NSDictionary *)checkMatch:(NSString *)title
+                   alttitles:(NSArray *)atitles
+                      regex:(OnigRegexp *)regex
+                     option:(int)i{
+              //Checks for matches
+              if ([regex search:title].strings.count > 0) {
+                  return @{@"matchstatus" : @(PrimaryTitleMatch), @"matchedtitle" : title};
+              }
+              else if (i==1) {
+                  for (NSString *atitle in atitles) {
+                      NSString *atmptitle = [atitle stringByReplacingOccurrencesOfString:@":" withString:@""];
+                      if ([regex search:atmptitle].strings.count > 0) {
+                          return @{@"matchstatus" : @(AlternateTitleMatch), @"matchedtitle" : atmptitle};
+                      }
+                  }
+              }
+              return @{@"matchstatus" : @(NoMatch)};
 }
 
 - (void)addtoCache:(NSString *)title actualtitle:(NSString *)atitle showid:(NSString *)showid detectedSeason:(int)season totalepisodes:(int)totalEpisodes withService:(int)service {
