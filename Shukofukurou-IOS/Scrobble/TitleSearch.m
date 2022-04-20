@@ -203,7 +203,6 @@ typedef NS_ENUM(unsigned int, matchtype) {
             int matchstatus = 0;
             // Remove colons as they are invalid characters for filenames and to improve accuracy
             theshowtitle = [theshowtitle stringByReplacingOccurrencesOfString:@":" withString:@""];
-            alttitle = [alttitle stringByReplacingOccurrencesOfString:@":" withString:@""];
             // Perform Recognition
             NSDictionary * matchstatusdict = [self checkMatch:theshowtitle alttitles:tmptitles regex:regex option:i];
             matchstatus = ((NSNumber *)matchstatusdict[@"matchstatus"]).intValue;
