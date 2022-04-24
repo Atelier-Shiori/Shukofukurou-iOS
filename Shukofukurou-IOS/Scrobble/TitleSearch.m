@@ -167,6 +167,10 @@ typedef NS_ENUM(unsigned int, matchtype) {
     NSString *alttitle = @"";
     // Remove Colons
     term = [term stringByReplacingOccurrencesOfString:@":" withString:@""];
+    term = [term stringByReplacingOccurrencesOfString:@" - " withString:@" "];
+    term = [term stringByReplacingOccurrencesOfString:@" -" withString:@" "];
+    term = [term stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+    term = [term stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     //Create Regular Expression
     OnigRegexp   *regex;
     NSLog(@"%@", self.DetectedTitleisMovie ? @"Title is a movie" : @"Title is not a movie.");
@@ -203,6 +207,10 @@ typedef NS_ENUM(unsigned int, matchtype) {
             int matchstatus = 0;
             // Remove colons as they are invalid characters for filenames and to improve accuracy
             theshowtitle = [theshowtitle stringByReplacingOccurrencesOfString:@":" withString:@""];
+            theshowtitle = [theshowtitle stringByReplacingOccurrencesOfString:@" - " withString:@" "];
+            theshowtitle = [theshowtitle stringByReplacingOccurrencesOfString:@" -" withString:@" "];
+            theshowtitle = [theshowtitle stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+            theshowtitle = [theshowtitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             // Perform Recognition
             NSDictionary * matchstatusdict = [self checkMatch:theshowtitle alttitles:tmptitles regex:regex option:i];
             matchstatus = ((NSNumber *)matchstatusdict[@"matchstatus"]).intValue;
@@ -216,6 +224,10 @@ typedef NS_ENUM(unsigned int, matchtype) {
                 else {
                     for (NSString *atitle in tmptitles) {
                         NSString *atmptitle = [atitle stringByReplacingOccurrencesOfString:@":" withString:@""];
+                        atmptitle = [atmptitle stringByReplacingOccurrencesOfString:@" - " withString:@" "];
+                        atmptitle = [atmptitle stringByReplacingOccurrencesOfString:@" -" withString:@" "];
+                        atmptitle = [atmptitle stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+                        atmptitle = [atmptitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                         if ([term caseInsensitiveCompare:atitle] == NSOrderedSame) {
                             alttitle = atmptitle;
                             matchstatus = AlternateTitleMatch;
@@ -410,6 +422,10 @@ typedef NS_ENUM(unsigned int, matchtype) {
               else if (i==1) {
                   for (NSString *atitle in atitles) {
                       NSString *atmptitle = [atitle stringByReplacingOccurrencesOfString:@":" withString:@""];
+                      atmptitle = [atmptitle stringByReplacingOccurrencesOfString:@" - " withString:@" "];
+                      atmptitle = [atmptitle stringByReplacingOccurrencesOfString:@" -" withString:@" "];
+                      atmptitle = [atmptitle stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+                      atmptitle = [atmptitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                       if ([regex search:atmptitle].strings.count > 0) {
                           return @{@"matchstatus" : @(AlternateTitleMatch), @"matchedtitle" : atmptitle};
                       }
