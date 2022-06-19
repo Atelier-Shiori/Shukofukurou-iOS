@@ -85,6 +85,7 @@
 }
 
 - (void)generateRelated:(NSDictionary *)titleinfo withType:(int)type {
+    _type = type;
     _items = [NSMutableDictionary new];
     _ctitle = titleinfo[@"title"];
     if (((NSArray *)titleinfo[@"other_titles"][@"japanese"]).count > 0) {
@@ -133,6 +134,9 @@
     }
     if (_type == 1) {
         [websites addObject:@{@"title" : @"MangaUpdates", @"tag" : @(3)}];
+        [websites addObject:@{@"title" : @"BookWalker", @"tag" : @(12)}];
+        [websites addObject:@{@"title" : @"BookWalker Global", @"tag" : @(13)}];
+        [websites addObject:@{@"title" : @"LearnNatively", @"tag" : @(14)}];
     }
     [websites addObject:@{@"title" : @"Reddit", @"tag" : @(4)}];
     [websites addObject:@{@"title" : @"TVTropes", @"tag" : @(5)}];
@@ -201,6 +205,32 @@
         }
         case 11: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.livechart.me/search?q=%@",[Utility urlEncodeString:_ctitle]]];
+            break;
+        }
+        case 12: {
+            NSString *tmptitle;
+            if (_japanesetitle) {
+                tmptitle = _japanesetitle;
+            }
+            else {
+                tmptitle = _ctitle;
+            }
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://bookwalker.jp/search/?qcat=&word=%@",[Utility urlEncodeString:tmptitle]]];
+            break;
+        }
+        case 13: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://global.bookwalker.jp/search/?word=%@",[Utility urlEncodeString:_ctitle]]];
+            break;
+        }
+        case 14: {
+            NSString *tmptitle;
+            if (_japanesetitle) {
+                tmptitle = _japanesetitle;
+            }
+            else {
+                tmptitle = _ctitle;
+            }
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://learnnatively.com/resources/search/?q=%@&series=series",[Utility urlEncodeString:tmptitle]]];
             break;
         }
         default: {

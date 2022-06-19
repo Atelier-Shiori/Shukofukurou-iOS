@@ -284,7 +284,9 @@
 
 - (void)resetCountdowns {
     for (AnimeEntryTableViewCell *cell in self.tableView.visibleCells) {
-        [cell resetAirParameters];
+        if ([cell isKindOfClass:[AnimeEntryTableViewCell class]]) {
+            [cell resetAirParameters];
+        }
     }
 }
 

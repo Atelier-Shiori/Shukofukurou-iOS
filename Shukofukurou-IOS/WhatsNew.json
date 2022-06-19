@@ -1,10 +1,14 @@
 {
     "items" : [
     {
-        "title" : "Hachidori Lite Extension Improvements",
-        "description" : "Improved title recognition from the improvements made in Hachidori for macOS.",
-        "icon" : "play.tv"
-        
+        "title" : "Add Additional Related Lookup Items",
+        "description" : "You can now look up manga titles that are on BookWalker and LearnNatively.",
+        "icon" : "safari",
+    },
+    {
+        "title" : "Bug Fixes",
+        "description" : "Fixed some bugs involving the apps to crash when user switches lists.",
+        "icon" : "ladybug",
     }
     ]
 }
