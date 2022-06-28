@@ -598,73 +598,79 @@
     }
     __weak TitleInfoViewController *weakSelf = self;
     cell.cellPressed = ^(int actiontype, TitleInfoUpdateTableViewCell * _Nonnull cell) {
-        if ([weakSelf validateCells]) {
-            if (weakSelf.currenttype == 0) {
-                switch (actiontype) {
-                    case cellActionAddEntry: {
+        if (weakSelf.currenttype == 0) {
+            switch (actiontype) {
+                case cellActionAddEntry: {
+                    if ([weakSelf validateCells]) {
                         [self addAnimeEntry:cell];
-                        break;
                     }
-                    case cellActionUpdateEntry: {
+                    break;
+                }
+                case cellActionUpdateEntry: {
+                    if ([weakSelf validateCells]) {
                         [self updateAnime:cell];
-                        break;
                     }
-                    case cellActionViewRelated: {
-                        [self checkUnsavedChangesWithBlock:^{
-                            [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
-                        }];
-                        break;
-                    }
-                    case cellActionViewReviews: {
-                        [self showReviews];
-                        break;
-                    }
-                    case cellActionViewStaff: {
-                        [self checkUnsavedChangesWithBlock:^{
-                            [self showStaff];
-                        }];
-                        break;
-                    }
-                    case cellActionViewEpisodes: {
-                        [self checkUnsavedChangesWithBlock:^{
-                            [self showEpisodes];
-                        }];
-                        break;
-                    }
-                    default: {
-                        break;
-                    }
+                    break;
+                }
+                case cellActionViewRelated: {
+                    [self checkUnsavedChangesWithBlock:^{
+                        [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
+                    }];
+                    break;
+                }
+                case cellActionViewReviews: {
+                    [self showReviews];
+                    break;
+                }
+                case cellActionViewStaff: {
+                    [self checkUnsavedChangesWithBlock:^{
+                        [self showStaff];
+                    }];
+                    break;
+                }
+                case cellActionViewEpisodes: {
+                    [self checkUnsavedChangesWithBlock:^{
+                        [self showEpisodes];
+                    }];
+                    break;
+                }
+                default: {
+                    break;
                 }
             }
-            else {
-                switch (actiontype) {
-                    case cellActionAddEntry: {
+        }
+        else {
+            switch (actiontype) {
+                case cellActionAddEntry: {
+                    if ([weakSelf validateCells]) {
                         [self addMangaEntry:cell];
-                        break;
                     }
-                    case cellActionUpdateEntry: {
-                        [self updateManga:cell];
-                        break;
-                    }
-                    case cellActionViewRelated: {
-                        [self checkUnsavedChangesWithBlock:^{
-                            [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
-                        }];
-                        break;
-                    }
-                    case cellActionViewReviews: {
-                        [self showReviews];
-                        break;
-                    }
-                    case cellActionViewStaff: {
-                        [self checkUnsavedChangesWithBlock:^{
-                            [self showStaff];
-                        }];
-                        break;
-                    }
-                    default:
-                        break;
+                    break;
                 }
+                case cellActionUpdateEntry: {
+                    if ([weakSelf validateCells]) {
+                        [self updateManga:cell];
+                    }
+                    break;
+                }
+                case cellActionViewRelated: {
+                    [self checkUnsavedChangesWithBlock:^{
+                        [self.navigationController pushViewController:weakSelf.relatedtvc animated:YES];
+                    }];
+                    break;
+                }
+                case cellActionViewReviews: {
+                    [self showReviews];
+                    break;
+                }
+                case cellActionViewStaff: {
+                    [self checkUnsavedChangesWithBlock:^{
+                        [self showStaff];
+                    }];
+                    break;
+                }
+                default:
+                    break;
             }
         }
     };
