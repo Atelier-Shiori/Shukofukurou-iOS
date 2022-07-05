@@ -7,7 +7,7 @@
     },
     {
         "title" : "Bug Fixes",
-        "description" : "Fixed some bugs involving the apps to crash when user switches lists.",
+        "description" : "Fixed some bugs involving the apps to crash when user switches lists. Fixed functionality to view other details for non-airing/nonpublishing titles",
         "icon" : "ladybug",
     }
     ]
