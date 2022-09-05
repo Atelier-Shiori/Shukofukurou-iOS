@@ -117,7 +117,6 @@
 		5934E261220F7539002B8311 /* SeasonsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596241F321556502001995AD /* SeasonsRootViewController.m */; };
 		5934E262220F7539002B8311 /* TrendingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594810EE219214BA000C4B5C /* TrendingCollectionViewController.m */; };
 		5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
-		5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; };
 		5934E267220F7539002B8311 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
 		5934E268220F7539002B8311 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; };
 		5934E269220F7539002B8311 /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; };
@@ -137,7 +136,6 @@
 		5934E278220F7539002B8311 /* Seasons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241CD215564A9001995AD /* Seasons.storyboard */; };
 		5934E27A220F7539002B8311 /* CustomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59481D8221594078003CE863 /* CustomList.storyboard */; };
 		5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5934E27E220F7539002B8311 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E27F220F7539002B8311 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E280220F7539002B8311 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5934E281220F7539002B8311 /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -232,8 +230,6 @@
 		59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; };
 		5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962411C21556329001995AD /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; };
-		5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5962412A21556336001995AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; };
 		59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5962424D2155660C001995AD /* Airing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BB21556481001995AD /* Airing.storyboard */; };
@@ -355,6 +351,12 @@
 		FF23FC1326FA4FFA0040E446 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1226FA4FFA0040E446 /* content.js */; };
 		FF23FC1D26FA4FFA0040E446 /* HachidoriLite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF23FC0426FA4FFA0040E446 /* HachidoriLite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF47CA00261A22610068F172 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
+		FF4F204228C636700056F68E /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4F203528C636530056F68E /* AFNetworking.framework */; };
+		FF4F204328C636700056F68E /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF4F203528C636530056F68E /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF4F204428C6367B0056F68E /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4F203528C636530056F68E /* AFNetworking.framework */; };
+		FF4F204528C6367B0056F68E /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF4F203528C636530056F68E /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF4F204628C6369B0056F68E /* WhatsNewKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBF71C426FFFEAB00C1DA74 /* WhatsNewKit.framework */; };
+		FF4F204728C6369C0056F68E /* WhatsNewKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFBF71C426FFFEAB00C1DA74 /* WhatsNewKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF856C2026513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FF856C2126513FA600D3CA4B /* AiringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF856C0B26513FA600D3CA4B /* AiringTableViewCell.xib */; };
 		FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB17BD3256BE98C003E2C8F /* UIContextualAction+ActionCreation.m */; };
@@ -426,13 +428,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1CCA90421AE0EFB000368F5E;
 			remoteInfo = CoreActionSheetPicker;
-		};
-		5934E1EF220F7539002B8311 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 299522381BBF104D00859F49;
-			remoteInfo = "AFNetworking iOS";
 		};
 		5934E1F1220F7539002B8311 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -560,55 +555,6 @@
 			remoteGlobalIDString = 1CCA904E1AE0EFB000368F5E;
 			remoteInfo = CoreActionSheetPickerTests;
 		};
-		5962412921556336001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 299522391BBF104D00859F49;
-			remoteInfo = "AFNetworking iOS";
-		};
-		5962412B21556336001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 299522651BBF129200859F49;
-			remoteInfo = "AFNetworking watchOS";
-		};
-		5962412D21556336001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 299522771BBF136400859F49;
-			remoteInfo = "AFNetworking macOS";
-		};
-		5962412F21556336001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2987B0A51BC408A200179A4C;
-			remoteInfo = "AFNetworking tvOS";
-		};
-		5962413121556336001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 298D7C3B1BC2C79500FD3B3E;
-			remoteInfo = "AFNetworking iOS Tests";
-		};
-		5962413321556336001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 298D7C4A1BC2C7B200FD3B3E;
-			remoteInfo = "AFNetworking macOS Tests";
-		};
-		5962413521556336001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2987B0AE1BC408A200179A4C;
-			remoteInfo = "AFNetworking tvOS Tests";
-		};
 		596241472155634A001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */;
@@ -629,13 +575,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1CCA90421AE0EFB000368F5E;
 			remoteInfo = CoreActionSheetPicker;
-		};
-		5962423F215565D7001995AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 299522381BBF104D00859F49;
-			remoteInfo = "AFNetworking iOS";
 		};
 		59624247215565E3001995AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -678,6 +617,55 @@
 			proxyType = 1;
 			remoteGlobalIDString = FF23FC0326FA4FFA0040E446;
 			remoteInfo = HachidoriLite;
+		};
+		FF4F203428C636530056F68E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522391BBF104D00859F49;
+			remoteInfo = "AFNetworking iOS";
+		};
+		FF4F203628C636530056F68E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522651BBF129200859F49;
+			remoteInfo = "AFNetworking watchOS";
+		};
+		FF4F203828C636530056F68E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522771BBF136400859F49;
+			remoteInfo = "AFNetworking macOS";
+		};
+		FF4F203A28C636530056F68E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2987B0A51BC408A200179A4C;
+			remoteInfo = "AFNetworking tvOS";
+		};
+		FF4F203C28C636530056F68E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 298D7C3B1BC2C79500FD3B3E;
+			remoteInfo = "AFNetworking iOS Tests";
+		};
+		FF4F203E28C636530056F68E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 298D7C4A1BC2C7B200FD3B3E;
+			remoteInfo = "AFNetworking macOS Tests";
+		};
+		FF4F204028C636530056F68E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2987B0AE1BC408A200179A4C;
+			remoteInfo = "AFNetworking tvOS Tests";
 		};
 		FF64D91226FB698A00EE2566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -731,8 +719,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				595A961B2240030200E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */,
+				FF4F204528C6367B0056F68E /* AFNetworking.framework in Embed Frameworks */,
+				FF4F204728C6369C0056F68E /* WhatsNewKit.framework in Embed Frameworks */,
 				5934E27D220F7539002B8311 /* CoreActionSheetPicker.framework in Embed Frameworks */,
-				5934E27E220F7539002B8311 /* AFNetworking.framework in Embed Frameworks */,
 				59C3CAFF22CA81F30007786A /* Hakuchou_iOS.framework in Embed Frameworks */,
 				5934E27F220F7539002B8311 /* SAMKeychain.framework in Embed Frameworks */,
 				5921475722CA8624004ADF52 /* CocoaOniguruma.framework in Embed Frameworks */,
@@ -764,9 +753,9 @@
 				FFBF71CA26FFFECD00C1DA74 /* WhatsNewKit.framework in Embed Frameworks */,
 				595A9615224002B600E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */,
 				5962423A215565D2001995AD /* CoreActionSheetPicker.framework in Embed Frameworks */,
-				5962423E215565D7001995AD /* AFNetworking.framework in Embed Frameworks */,
 				59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */,
 				59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */,
+				FF4F204328C636700056F68E /* AFNetworking.framework in Embed Frameworks */,
 				59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -882,7 +871,6 @@
 		596240C62155622F001995AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596240FE2155631F001995AD /* SAMKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SAMKeychain.xcodeproj; sourceTree = "<group>"; };
 		5962411621556329001995AD /* CoreActionSheetPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreActionSheetPicker.xcodeproj; path = CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj; sourceTree = "<group>"; };
-		5962411F21556336001995AD /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AFNetworking.xcodeproj; sourceTree = "<group>"; };
 		596241432155634A001995AD /* LGSideMenuControllerFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = LGSideMenuControllerFramework.xcodeproj; sourceTree = "<group>"; };
 		596241532155638C001995AD /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		596241542155638C001995AD /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
@@ -1114,6 +1102,7 @@
 		FF23FC1226FA4FFA0040E446 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		FF23FC1A26FA4FFA0040E446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 7.xcdatamodel"; sourceTree = "<group>"; };
+		FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AFNetworking.xcodeproj; path = "Dependencies/AFNetworking 4/AFNetworking.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 8.xcdatamodel"; sourceTree = "<group>"; };
 		FF856C0C26513FA600D3CA4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringTableViewCell.xib; sourceTree = "<group>"; };
 		FF8B4EEA2649539D00EB6181 /* Hiyoko 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 9.xcdatamodel"; sourceTree = "<group>"; };
@@ -1138,14 +1127,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4F204628C6369B0056F68E /* WhatsNewKit.framework in Frameworks */,
 				595A961A2240030200E3C245 /* MBProgressHUDFramework.framework in Frameworks */,
 				5934E265220F7539002B8311 /* CoreActionSheetPicker.framework in Frameworks */,
-				5934E266220F7539002B8311 /* AFNetworking.framework in Frameworks */,
 				59C3CAFE22CA81F30007786A /* Hakuchou_iOS.framework in Frameworks */,
 				59F546392301A16500E4E9CC /* CloudKit.framework in Frameworks */,
 				5934E267220F7539002B8311 /* SAMKeychain.framework in Frameworks */,
 				5921475622CA8624004ADF52 /* CocoaOniguruma.framework in Frameworks */,
 				5934E268220F7539002B8311 /* SDWebImage.framework in Frameworks */,
+				FF4F204428C6367B0056F68E /* AFNetworking.framework in Frameworks */,
 				5934E269220F7539002B8311 /* LGSideMenuController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1175,11 +1165,11 @@
 				59B8047C2344ED6000B9F989 /* AppCenterAnalytics.framework in Frameworks */,
 				5934E29B220F7572002B8311 /* StoreKit.framework in Frameworks */,
 				59624239215565D2001995AD /* CoreActionSheetPicker.framework in Frameworks */,
-				5962423D215565D7001995AD /* AFNetworking.framework in Frameworks */,
 				FFBF71C926FFFECD00C1DA74 /* WhatsNewKit.framework in Frameworks */,
 				592B8CAF2236E17A007D43F4 /* Hakuchou_iOS.framework in Frameworks */,
 				59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */,
 				595A9614224002B600E3C245 /* MBProgressHUDFramework.framework in Frameworks */,
+				FF4F204228C636700056F68E /* AFNetworking.framework in Frameworks */,
 				91DA28BA22F0A9EF00255735 /* CloudKit.framework in Frameworks */,
 				595A95FE223FE3CD00E3C245 /* CocoaOniguruma.framework in Frameworks */,
 				59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */,
@@ -1451,7 +1441,7 @@
 		596240DB21556296001995AD /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				5962411F21556336001995AD /* AFNetworking.xcodeproj */,
+				FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */,
 			);
 			path = AFNetworking;
 			sourceTree = "<group>";
@@ -1499,20 +1489,6 @@
 			children = (
 				5962411C21556329001995AD /* CoreActionSheetPicker.framework */,
 				5962411E21556329001995AD /* CoreActionSheetPickerTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		5962412021556336001995AD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5962412A21556336001995AD /* AFNetworking.framework */,
-				5962412C21556336001995AD /* AFNetworking.framework */,
-				5962412E21556336001995AD /* AFNetworking.framework */,
-				5962413021556336001995AD /* AFNetworking.framework */,
-				5962413221556336001995AD /* AFNetworking iOS Tests.xctest */,
-				5962413421556336001995AD /* AFNetworking macOS Tests.xctest */,
-				5962413621556336001995AD /* AFNetworking tvOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1942,6 +1918,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FF4F202B28C636530056F68E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF4F203528C636530056F68E /* AFNetworking.framework */,
+				FF4F203728C636530056F68E /* AFNetworking.framework */,
+				FF4F203928C636530056F68E /* AFNetworking.framework */,
+				FF4F203B28C636530056F68E /* AFNetworking.framework */,
+				FF4F203D28C636530056F68E /* AFNetworking iOS Tests.xctest */,
+				FF4F203F28C636530056F68E /* AFNetworking macOS Tests.xctest */,
+				FF4F204128C636530056F68E /* AFNetworking tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FFBF71A226FFFC4A00C1DA74 /* WhatsNewKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1992,7 +1982,6 @@
 				5921473E22CA8499004ADF52 /* PBXTargetDependency */,
 				5934E1EA220F7539002B8311 /* PBXTargetDependency */,
 				5934E1EC220F7539002B8311 /* PBXTargetDependency */,
-				5934E1EE220F7539002B8311 /* PBXTargetDependency */,
 				5934E1F0220F7539002B8311 /* PBXTargetDependency */,
 				5934E1F4220F7539002B8311 /* PBXTargetDependency */,
 				595A961D2240030200E3C245 /* PBXTargetDependency */,
@@ -2055,7 +2044,6 @@
 			dependencies = (
 				59624238215565CC001995AD /* PBXTargetDependency */,
 				5962423C215565D2001995AD /* PBXTargetDependency */,
-				59624240215565D7001995AD /* PBXTargetDependency */,
 				59624248215565E3001995AD /* PBXTargetDependency */,
 				59B22D2C21FE630000627172 /* PBXTargetDependency */,
 				592B8CB22236E17A007D43F4 /* PBXTargetDependency */,
@@ -2167,8 +2155,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 5962412021556336001995AD /* Products */;
-					ProjectRef = 5962411F21556336001995AD /* AFNetworking.xcodeproj */;
+					ProductGroup = FF4F202B28C636530056F68E /* Products */;
+					ProjectRef = FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */;
 				},
 				{
 					ProductGroup = 595A95F2223FE37D00E3C245 /* Products */;
@@ -2317,55 +2305,6 @@
 			remoteRef = 5962411D21556329001995AD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5962412A21556336001995AD /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = 5962412921556336001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5962412C21556336001995AD /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = 5962412B21556336001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5962412E21556336001995AD /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = 5962412D21556336001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5962413021556336001995AD /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = 5962412F21556336001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5962413221556336001995AD /* AFNetworking iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AFNetworking iOS Tests.xctest";
-			remoteRef = 5962413121556336001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5962413421556336001995AD /* AFNetworking macOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AFNetworking macOS Tests.xctest";
-			remoteRef = 5962413321556336001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5962413621556336001995AD /* AFNetworking tvOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AFNetworking tvOS Tests.xctest";
-			remoteRef = 5962413521556336001995AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		596241482155634A001995AD /* LGSideMenuController.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -2385,6 +2324,55 @@
 			fileType = wrapper.framework;
 			path = SDWebImage.framework;
 			remoteRef = 59B22D2121FE62F400627172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4F203528C636530056F68E /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF4F203428C636530056F68E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4F203728C636530056F68E /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF4F203628C636530056F68E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4F203928C636530056F68E /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF4F203828C636530056F68E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4F203B28C636530056F68E /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF4F203A28C636530056F68E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4F203D28C636530056F68E /* AFNetworking iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking iOS Tests.xctest";
+			remoteRef = FF4F203C28C636530056F68E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4F203F28C636530056F68E /* AFNetworking macOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking macOS Tests.xctest";
+			remoteRef = FF4F203E28C636530056F68E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4F204128C636530056F68E /* AFNetworking tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking tvOS Tests.xctest";
+			remoteRef = FF4F204028C636530056F68E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		FFBF71C426FFFEAB00C1DA74 /* WhatsNewKit.framework */ = {
@@ -2841,11 +2829,6 @@
 			name = CoreActionSheetPicker;
 			targetProxy = 5934E1ED220F7539002B8311 /* PBXContainerItemProxy */;
 		};
-		5934E1EE220F7539002B8311 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "AFNetworking iOS";
-			targetProxy = 5934E1EF220F7539002B8311 /* PBXContainerItemProxy */;
-		};
 		5934E1F0220F7539002B8311 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LGSideMenuController;
@@ -2885,11 +2868,6 @@
 			isa = PBXTargetDependency;
 			name = CoreActionSheetPicker;
 			targetProxy = 5962423B215565D2001995AD /* PBXContainerItemProxy */;
-		};
-		59624240215565D7001995AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "AFNetworking iOS";
-			targetProxy = 5962423F215565D7001995AD /* PBXContainerItemProxy */;
 		};
 		59624248215565E3001995AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3187,7 +3165,7 @@
 					"OSS=true",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3216,7 +3194,7 @@
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
 				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "OSS=true";
 				INFOPLIST_FILE = "Shukofukurou-IOS copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3460,7 +3438,7 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3494,7 +3472,7 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

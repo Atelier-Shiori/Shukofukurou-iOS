@@ -74,7 +74,7 @@
     }
     NSString *hatourl = @"https://hato.malupdaterosx.moe/api/mappings/mappings/";
     NSDictionary *parameters = @{@"media_type" : mediaType == 0 ? @"anime" : @"manga", @"service" : site, @"title_ids" : titleids};
-    [_manager POST:hatourl parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [_manager POST:hatourl parameters:parameters headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"]) {
             for (NSDictionary *mapping in responseObject[@"data"]) {
                 [self.managedObjectContext performBlockAndWait:^{
@@ -119,7 +119,7 @@
             return;
     }
     NSString *hatourl = [NSString stringWithFormat:@"https://hato.malupdaterosx.moe/api/mappings/%@/%@/%@", site, type == 0 ? @"anime" : @"manga" ,titleid];
-    [_manager GET:hatourl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [_manager GET:hatourl parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
             [self.managedObjectContext performBlockAndWait:^{
                 [self saveTitleIDMappings:responseObject[@"data"] withTitleId:titleid forService:service withType:type];

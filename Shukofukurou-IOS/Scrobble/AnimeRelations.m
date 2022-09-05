@@ -48,7 +48,7 @@
 }
 
 - (void)updateRelations:(void (^)(bool success)) completionHandler {
-    [_manager GET:@"https://github.com/erengy/anime-relations/raw/master/anime-relations.txt" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [_manager GET:@"https://github.com/erengy/anime-relations/raw/master/anime-relations.txt" parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"Updating Anime Relations!");
         [self processAnimeRelations:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
         [[NSUserDefaults standardUserDefaults] setValue:[NSDate date] forKey:@"AnimeRelationsUpdateDate"];

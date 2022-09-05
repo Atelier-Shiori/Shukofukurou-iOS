@@ -28,7 +28,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [self showloadingview:YES];
-    [manager GET:@"https://patreonlicensing.malupdaterosx.moe/patronslist.php" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:@"https://patreonlicensing.malupdaterosx.moe/patronslist.php" parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.patrons = responseObject;
         [self.tableView reloadData];
         [self showloadingview:NO];

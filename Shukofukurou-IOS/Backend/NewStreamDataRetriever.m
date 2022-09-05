@@ -60,7 +60,7 @@
             return;
         }
     }
-    [[Utility jsonmanager] GET:[NSString stringWithFormat:@"https://streamdata.malupdaterosx.moe/lookup/%@/%i",region,titleid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[Utility jsonmanager] GET:[NSString stringWithFormat:@"https://streamdata.malupdaterosx.moe/lookup/%@/%i",region,titleid] parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [NewStreamDataRetriever processLinksWithArray:responseObject[@"data"] withTitleId:titleid withRegion:region];
         completionHandler([NewStreamDataRetriever retrieveExistingStreamLink:titleid withRegion:region], true);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

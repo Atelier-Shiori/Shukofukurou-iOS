@@ -72,9 +72,9 @@
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@",kMALClient] forHTTPHeaderField:@"X-MAL-CLIENT-ID"];
     }
     if (type == 0) {
-        [manager GET:@"https://api.myanimelist.net/v2/anime/ranking?ranking_type=airing&limit=20&fields=alternative_titles,num_episodes,media_type,status,mean,nsfw" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager GET:@"https://api.myanimelist.net/v2/anime/ranking?ranking_type=airing&limit=20&fields=alternative_titles,num_episodes,media_type,status,mean,nsfw" parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             finaldict[@"Popular This Season"] = [AtarashiiAPIListFormatMAL MALAnimeSearchtoAtarashii:responseObject];
-            [manager GET:@"https://api.myanimelist.net/v2/anime/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_episodes,media_type,status,mean,nsfw" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [manager GET:@"https://api.myanimelist.net/v2/anime/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_episodes,media_type,status,mean,nsfw" parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 finaldict[@"Highest Rated"] = [AtarashiiAPIListFormatMAL MALAnimeSearchtoAtarashii:responseObject];
                 completionHandler(finaldict);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -85,7 +85,7 @@
         }];
     }
     else {
-        [manager GET:@"https://api.myanimelist.net/v2/manga/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_chapters,num_volumes,media_type,status,mean,nsfw" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager GET:@"https://api.myanimelist.net/v2/manga/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_chapters,num_volumes,media_type,status,mean,nsfw" parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             finaldict[@"Highest Rated"] = [AtarashiiAPIListFormatMAL MALMangaSearchtoAtarashii:responseObject];
             completionHandler(finaldict);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -99,20 +99,20 @@
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     __block NSDictionary *variables = @{@"type" : type == 0 ? @"ANIME" : @"MANGA"};
     __block NSDictionary *parameters = @{@"query" : [self getAnilistQueryForSort:TrendListTypeScore], @"variables" : variables};
-    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] != [NSNull null]) {
             finaldict[@"Highest Rated"] = type == 0 ? [AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatAniList AniListMangaSearchtoAtarashii:responseObject];
             parameters = @{@"query" : [self getAnilistQueryForSort:TrendListTypeNew], @"variables" : variables};
-            [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [manager POST:@"https://graphql.anilist.co" parameters:parameters headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 if (responseObject[@"data"] != [NSNull null]) {
                     finaldict[@"Newly Added"] = type == 0 ? [AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatAniList AniListMangaSearchtoAtarashii:responseObject];
                     parameters = @{@"query" : [self getAnilistQueryForSort:TrendListTypeTrending], @"variables" : variables};
-                    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    [manager POST:@"https://graphql.anilist.co" parameters:parameters headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                         if (responseObject[@"data"] != [NSNull null]) {
                             finaldict[@"Trending"] = type == 0 ? [AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatAniList AniListMangaSearchtoAtarashii:responseObject];
                             if (type == 0) {
                                 parameters = @{@"query" : [self getAnilistQueryForSort:TrendListTypeSeasonPopular], @"variables" : variables};
-                                [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                [manager POST:@"https://graphql.anilist.co" parameters:parameters headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                     if (responseObject[@"data"] != [NSNull null]) {
                                         finaldict[@"Popular This Season"] = [AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject];
                                         completionHandler(finaldict);
@@ -153,17 +153,17 @@
 + (void)retrieveKitsuTrending:(int)type completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler {
     NSMutableDictionary *finaldict = [NSMutableDictionary new];
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:[self getKitsuTrendingURLs:TrendListTypeScore withType:type] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[self getKitsuTrendingURLs:TrendListTypeScore withType:type] parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
             finaldict[@"Highest Rated"] = type == 0 ? [AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:responseObject];
-            [manager GET:[self getKitsuTrendingURLs:TrendListTypeNew withType:type] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [manager GET:[self getKitsuTrendingURLs:TrendListTypeNew withType:type] parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
                     finaldict[@"Newly Added"] = type == 0 ? [AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:responseObject];
-                    [manager GET:[self getKitsuTrendingURLs:TrendListTypeTrending withType:type] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    [manager GET:[self getKitsuTrendingURLs:TrendListTypeTrending withType:type] parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
                             finaldict[@"Trending"] = type == 0 ? [AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:responseObject] : [AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:responseObject];
                             if (type == 0) {
-                                [manager GET:[self getKitsuTrendingURLs:TrendListTypeSeasonPopular withType:type] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                [manager GET:[self getKitsuTrendingURLs:TrendListTypeSeasonPopular withType:type] parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                     if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
                                         finaldict[@"Popular This Season"] =  [AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:responseObject];
                                         completionHandler(finaldict);
