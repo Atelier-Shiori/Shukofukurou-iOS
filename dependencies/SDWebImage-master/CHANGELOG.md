@@ -1,3 +1,134 @@
+## [5.13.3 - 5.13 Crash Fix, on Sep 19th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.13.3)
+See [all tickets marked for the 5.13.3 release](https://github.com/SDWebImage/SDWebImage/milestone/100)
+
+### Fixes
+- Try to workaround iOS 15+ crash that CGImage retain the CGImageSource during animation image playing #3387
+- Fix the crash because of SDWebImageCombinedOperation recursive lock #3403
+- Synchronise getter and setter of the cancelled property of the SDWebImageCombinedOperation #3393
+- Fix the switching from animated image rendering to static image does not works on macOS 11+ #3402
+
+## [5.13.2 - 5.13 Patch, on Jul 23th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.13.2)
+See [all tickets marked for the 5.13.2 release](https://github.com/SDWebImage/SDWebImage/milestone/99)
+
+### Fixes
+- Fix the rare case when cancel an async disk cache query may cause twice callback #3380 #3374
+- This Bug effect version 5.13.0-5.13.1
+
+### Warnings
+- Fix pragma mark typo #3379
+
+## [5.13.1 - 5.13 Patch, on Jul 16th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.13.1)
+See [all tickets marked for the 5.13.1 release](https://github.com/SDWebImage/SDWebImage/milestone/98)
+
+### Features
+- Added `SDImageCoderHelper.defaultDecodeSolution` to control the force decode solution. Automatic by default #3368 #3365
+- Now imageByPreparingForDisplay is only applied for JPEG/HEIF images. If you want the 5.12.0 behavior, set the solution to `.uiKit` instead
+
+### Fixes
+- Fix the PDF image without thumbnailPixelSize will result huge bitmap size, now fixed into 72 DPI matching PDFKit #3370
+- Fix `sd_colorAtPoint` and `sd_colorsWithRect` support for grayscale image (white and alpha) #3372
+
+### Warnings
+- Fix the clang analyze issue #3373
+
+## [5.13.0 - Thumbnail, on Jun 27th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.13.0)
+See [all tickets marked for the 5.13.0 release](https://github.com/SDWebImage/SDWebImage/milestone/97)
+
+### Features
+
+#### Thumbnail
+- Change thumbnail cache behavior as expected, share cache through different loading pipeline without extra download #3362
+- Now the thumbnail behavior more like transformer. When request different thumbnail size and cache miss, it prefers to query full size disk cache again, then decode for request thumbnail size without actual network download
+
+#### Coder
+- Added new API for custom coder better handling the thumbnail size #3359
+
+#### Cache
+- Allows store image data only and introduce async API #3336
+- Now the queryCacheOperationForKey API return `SDImageCacheToken` instead of useless placeholder `NSOperation`. When you cancel the cache query from main queue, it will callback in sync instead of async
+
+### Performance
+- Support using iOS 15 UIImage new API imageByPreparingForDisplay for faster force decoding #3355 #3340
+
+### Fixes
+- Fix the encodeMaxPixelSize logic #3357
+- Fix the case when user cancel the image loading for same URL in sequence cause placeholder mass #3363
+
+## [5.12.6 - 5.12 Patch, on Jun 12th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.12.6)
+See [all tickets marked for the 5.12.6 release](https://github.com/SDWebImage/SDWebImage/milestone/95)
+
+### Fixes
+- Fix the thumbnail pixel size calculation when preserveAspectRatio is true #3354
+- Fix macOS compile on Xcode 14 which missing necessary CoreImage import #3353
+- Fix a crash of accessing +[NSScreen mainScreen] from background thread on OSX 10.11. #3337
+
+### Performance
+- Small performance improvement to generating file URLs in SDDiskCache `-setData:forKey:` #3346
+
+## [5.12.5 - 5.12 Patch, on Mar 16th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.12.5)
+See [all tickets marked for the 5.12.5 release](https://github.com/SDWebImage/SDWebImage/milestone/94)
+
+### Fixes
+- Workaround iOS 15+ force decode again using Image Renderer(preferred) and RGB888 #3334
+
+## [5.12.4 - 5.12 Patch, on Mar 8th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.12.4)
+See [all tickets marked for the 5.12.4 release](https://github.com/SDWebImage/SDWebImage/milestone/93)
+
+### Fixes
+- Fix imageView blinks with option `SDImageCacheQueryDiskDataSync` #3327
+- Workaround the iOS 15+ Force Decode may return black image because of CoreGraphics #3332
+
+## [5.12.3 - 5.12 Patch, on Jan 27th, 2022](https://github.com/rs/SDWebImage/releases/tag/5.12.3)
+See [all tickets marked for the 5.12.3 release](https://github.com/SDWebImage/SDWebImage/milestone/92)
+
+### Fixes
+- Fix #3320 decodedAndScaledDownImageWithImage does not render the image completely #3321 Thanks @ty0x2333
+
+## [5.12.2 - 5.12 Patch, on Dec 31st, 2021](https://github.com/rs/SDWebImage/releases/tag/5.12.2)
+See [all tickets marked for the 5.12.2 release](https://github.com/SDWebImage/SDWebImage/milestone/91)
+
+### Fixes
+- Eliminates accumulated floating point errors. #3312
+- Don't copy image data for incremental decoding. #3304
+
+## [5.12.1 - 5.12 Patch, on Oct 15th, 2021](https://github.com/rs/SDWebImage/releases/tag/5.12.1)
+See [all tickets marked for the 5.12.1 release](https://github.com/SDWebImage/SDWebImage/milestone/90)
+
+### Fixes
+- Fix ProMotion display issues #3280
+- Add tvos check when use targetTimestamp in displaylink #3286
+- Revert "Fix image source release in iOS 15" in 5.12.0 #3281
+
+### Warnings
+- Since UTI is an standard, we can use it directly to avoid warning on iOS 15 
+
+### Tests
+- Fix test error #3283
+- Port travis configuration to github actions #3285
+
+## [5.12.0, on Sep 30th, 2021](https://github.com/rs/SDWebImage/releases/tag/5.12.0)
+See [all tickets marked for the 5.12.0 release](https://github.com/SDWebImage/SDWebImage/milestone/89)
+
+### Features
+
+#### Cache
+- Do a extra memory cache sync when weak cache feature enabled && Change the default value for shouldUseWeakMemoryCache to NO #3239 
+- Fix imageFromCacheForKey with options and context behavior, matching the async version one. #3238 
+
+#### Downloader
+- Feature: allow user to custom acceptable status code and content type #3227
+- Change the default delegate method to allows optional cert in SSL verify, matches URLSession's behavior #3241 
+
+#### Animated Image
+- Added sd_imageFrameCount convenient API for UIAinmatedImage/NSBitmapImageRep #3243 
+- Make SDAnimatedImageRep confirms to correct copy semantic #3258
+
+### Fixes
+- Fix image source release in iOS 15 #3276 
+- Fix wrong memory cost in _UIAnimatedImage #3237 
+- Fix pixel ratio thumbnail calculation #3277
+- Fix the warning, enable APPLICATION_EXTENSION_API_ONLY for all framework target #3236 
+
 ## [5.11.1 - 5.11 Patch, on Apr 23rd, 2021](https://github.com/rs/SDWebImage/releases/tag/5.11.1)
 See [all tickets marked for the 5.11.1 release](https://github.com/SDWebImage/SDWebImage/milestone/88)
 
