@@ -350,6 +350,8 @@
 		FF23FC1126FA4FFA0040E446 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1026FA4FFA0040E446 /* background.js */; };
 		FF23FC1326FA4FFA0040E446 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC1226FA4FFA0040E446 /* content.js */; };
 		FF23FC1D26FA4FFA0040E446 /* HachidoriLite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF23FC0426FA4FFA0040E446 /* HachidoriLite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FF3A24A92904DDC4009546F0 /* ChartCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A24912904DDC3009546F0 /* ChartCreator.swift */; };
+		FF3A24AA2904DDC4009546F0 /* ChartCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A24912904DDC3009546F0 /* ChartCreator.swift */; };
 		FF47CA00261A22610068F172 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 59481D8021591F44003CE863 /* StreamDataRetriever.m */; };
 		FF4F204228C636700056F68E /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4F203528C636530056F68E /* AFNetworking.framework */; };
 		FF4F204328C636700056F68E /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF4F203528C636530056F68E /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1101,6 +1103,7 @@
 		FF23FC1026FA4FFA0040E446 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
 		FF23FC1226FA4FFA0040E446 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		FF23FC1A26FA4FFA0040E446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF3A24912904DDC3009546F0 /* ChartCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartCreator.swift; path = "../../../../Obj-C-SwiftCharts/Obj-C-SwiftCharts/ChartCreator.swift"; sourceTree = "<group>"; };
 		FF47C9C9261A1FB60068F172 /* Hiyoko 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 7.xcdatamodel"; sourceTree = "<group>"; };
 		FF4F202A28C636530056F68E /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AFNetworking.xcodeproj; path = "Dependencies/AFNetworking 4/AFNetworking.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		FF7912E12635B4190050A617 /* Hiyoko 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hiyoko 8.xcdatamodel"; sourceTree = "<group>"; };
@@ -1392,6 +1395,7 @@
 				5933CEC32174F0F000EAE7E6 /* AutoRefreshTimer.m */,
 				FFBF71CE2700013B00C1DA74 /* WhatsNew.json */,
 				FFBF71D02700093E00C1DA74 /* WhatsNew.swift */,
+				FF3A24912904DDC3009546F0 /* ChartCreator.swift */,
 			);
 			path = "Shukofukurou-IOS";
 			sourceTree = "<group>";
@@ -2576,6 +2580,7 @@
 				5934E230220F7539002B8311 /* NSMutableArray+MK_Stack.m in Sources */,
 				59744F19237C534400D0D8E5 /* NewStreamDataRetriever.m in Sources */,
 				5934E231220F7539002B8311 /* NSMutableArray+MK_Queue.m in Sources */,
+				FF3A24AA2904DDC4009546F0 /* ChartCreator.swift in Sources */,
 				5934E232220F7539002B8311 /* LoadViewController.m in Sources */,
 				595BF45C244B7B0C00AD956E /* FrameAcessorView.m in Sources */,
 				595D666322416FCC00B54BCA /* ScrobbleManager.m in Sources */,
@@ -2740,6 +2745,7 @@
 				5933CEC52174F0F100EAE7E6 /* AutoRefreshTimer.m in Sources */,
 				59B3AC602209226C0050662A /* StatsViewController.m in Sources */,
 				59744F18237C534400D0D8E5 /* NewStreamDataRetriever.m in Sources */,
+				FF3A24A92904DDC4009546F0 /* ChartCreator.swift in Sources */,
 				596241A92155642E001995AD /* SideBarViewController.m in Sources */,
 				594D0937220207FD00A37B6B /* UITableViewCellSelBackground.m in Sources */,
 				5962421F21556514001995AD /* SeasonSelectorTableViewController.m in Sources */,
@@ -3264,6 +3270,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MBProgressHUDFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3292,6 +3299,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MBProgressHUDFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3432,7 +3440,7 @@
 				CURRENT_PROJECT_VERSION = 20220704;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dependencies",
@@ -3466,7 +3474,7 @@
 				CURRENT_PROJECT_VERSION = 20220704;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dependencies",

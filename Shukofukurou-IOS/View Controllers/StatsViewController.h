@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface StatsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, GKBarGraphDataSource>
 @property (strong, nonatomic) IBOutlet UISegmentedControl *statsselector;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet GKBarGraph *graphView;
+@property (nonatomic, weak) IBOutlet UIView *graphView;
 - (void)populateValues;
 - (void)performLoadStats;
 @end

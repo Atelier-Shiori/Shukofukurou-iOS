@@ -15,6 +15,7 @@
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
 #import <MBProgressHudFramework/MBProgressHUD.h>
+#import <Shukofukurou_IOS-Swift.h>
 
 @interface StatsViewController ()
 @property (strong) NSMutableDictionary *animestats;
@@ -22,10 +23,13 @@
 @property (strong) NSDictionary *currentstats;
 @property (strong) NSArray *animescoredistribution;
 @property (strong) NSArray *mangascoredistribution;
+@property (strong) NSString *animescoredistributionjson;
+@property (strong) NSString *mangascoredistributionjson;
 @property (strong) NSArray *currentdistribution;
 @property (strong) NSArray *ratinglabels;
 @property (strong) NSArray *sections;
 @property (strong) MBProgressHUD *hud;
+@property (strong) GKBarGraph *graph;
 @end
 
 @implementation StatsViewController
@@ -33,8 +37,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"View Loaded");
-    self.graphView.animationDuration = 2.0;
-    self.graphView.dataSource = self;
+    if (@available(iOS 16, *)) {
+    }
+    else {
+        _graph = [GKBarGraph new];
+        self.graph.animationDuration = 2.0;
+        self.graph.dataSource = self;
+        [self.graphView addSubview:_graph];
+    }
     [self showloadingview:YES];
 }
 
@@ -50,17 +60,21 @@
 }
 
 - (void)loadandsizechart {
-    int width = self.view.bounds.size.width;
-    if (width == 320) {
-        self.graphView.marginBar = 10;
-    }
-    else if (width <= 414) {
-        self.graphView.marginBar = 15;
+    if (@available(iOS 16, *)) {
     }
     else {
-        self.graphView.marginBar = 20;
+        int width = self.view.bounds.size.width;
+        if (width == 320) {
+            self.graph.marginBar = 10;
+        }
+        else if (width <= 414) {
+            self.graph.marginBar = 15;
+        }
+        else {
+            self.graph.marginBar = 20;
+        }
+        [_graph draw];
     }
-    [_graphView draw];
 }
 
 - (IBAction)dismissStats:(id)sender {
@@ -81,7 +95,21 @@
         _currentdistribution = _mangascoredistribution;
     }
     [_tableView reloadData];
-    [self loadandsizechart];
+    if (@available(iOS 16, *)) {
+        for (UIView *subview in _graphView.subviews) {
+           [subview removeFromSuperview];
+        }
+        ChartCreator *cc = [ChartCreator new];
+        UIViewController *vc = [cc generateBarChartWithData:_statsselector.selectedSegmentIndex == 0 ? _animescoredistributionjson : _mangascoredistributionjson];
+        if (vc) {
+            // Add chart view
+            [_graphView addSubview:vc.view];
+            vc.view.frame = CGRectMake(0 , 0, self.graphView.frame.size.width, self.graphView.frame.size.height);
+        }
+    }
+    else {
+        [self loadandsizechart];
+    }
     [self showloadingview:NO];
 }
 
@@ -268,9 +296,11 @@
     [scorestats addObject:[[EntryCellInfo alloc] initCellWithTitle:@"Avg Score" withValue:avgscore withCellType:cellTypeInfo]];
     if (type == 0) {
         _animestats[@"Rating"] = scorestats.copy;
+        _animescoredistributionjson = [self countscoresdict:scores];
     }
     else {
         _mangastats[@"Rating"] = scorestats.copy;
+        _mangascoredistributionjson = [self countscoresdict:scores];
     }
     return [self countscores:scores];
 }
@@ -288,6 +318,33 @@
     }
     return scoredistribution;
 }
+
+- (NSString *)countscoresdict:(NSArray *)scores {
+    NSMutableDictionary *scoredistribution = [NSMutableDictionary new];
+    for (int i = 10; i > 0; i--) {
+        int scorecount = 0;
+        for (NSNumber *score in scores) {
+            if (score.intValue == i) {
+                scorecount++;
+            }
+        }
+        scoredistribution[@(i).stringValue] = @(scorecount);
+    }
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:scoredistribution
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+        return nil;
+    } else {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return nil;
+}
+
 
 #pragma mark Helpers
 
@@ -360,7 +417,7 @@
 - (CFTimeInterval)animationDurationForBarAtIndex:(NSInteger)index {
     CGFloat percentage = [[self valueForBarAtIndex:index] doubleValue];
     percentage = (percentage / 100);
-    return (self.graphView.animationDuration * percentage);
+    return (self.graph.animationDuration * percentage);
 }
 
 - (NSString *)titleForBarAtIndex:(NSInteger)index {
