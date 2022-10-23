@@ -1,14 +1,9 @@
 {
     "items" : [
-    {
-        "title" : "Add Additional Related Lookup Items",
-        "description" : "You can now look up manga titles that are on BookWalker and LearnNatively.",
-        "icon" : "safari",
-    },
-    {
-        "title" : "Bug Fixes",
-        "description" : "Fixed some bugs involving the apps to crash when user switches lists. Fixed functionality to view other details for non-airing/nonpublishing titles",
-        "icon" : "ladybug",
-    }
+{
+     "title" : "Crunchyroll Detection Improvements",
+     "description" : "Hachidori Lite extension fixes Crunchyroll detection as the beta site is now the main site.",
+     "icon" : "play.tv"
+ }
     ]
 }
