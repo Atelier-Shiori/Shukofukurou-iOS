@@ -100,7 +100,7 @@
            [subview removeFromSuperview];
         }
         ChartCreator *cc = [ChartCreator new];
-        UIViewController *vc = [cc generateBarChartWithData:_statsselector.selectedSegmentIndex == 0 ? _animescoredistributionjson : _mangascoredistributionjson];
+        UIViewController *vc = [cc generateBarChartWithData:_statsselector.selectedSegmentIndex == 0 ? _animescoredistributionjson : _mangascoredistributionjson isScoreChart:YES];
         if (vc) {
             // Add chart view
             [_graphView addSubview:vc.view];
