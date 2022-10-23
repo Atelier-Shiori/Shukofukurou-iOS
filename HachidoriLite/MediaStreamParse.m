@@ -25,20 +25,19 @@
             NSString * tmpseason = @"";
             bool isManga = false;
             if ([site isEqualToString:@"crunchyroll"]) {
-                if ([url containsString:@"beta"]) {
                     if ([ez checkMatch:url pattern:@"\\/watch\\/.+\\/.+"]) {
                         // Crunchyroll Beta Watch Page
                         // Requires Javascript Scraping
                         NSString *DOM = [NSString stringWithFormat:@"%@",m[@"DOM"]];
-                        NSString *metastring = [ez findMatch:DOM pattern:@"E\\d+ - .+<\\/h2>" rangeatindex:0];
-                        metastring = [metastring stringByReplacingOccurrencesOfString:@"</h2>" withString:@""];
+                        NSString *metastring = [ez findMatch:DOM pattern:@"E\\d+ - .+<\\/h1>" rangeatindex:0];
+                        metastring = [metastring stringByReplacingOccurrencesOfString:@"</h1>" withString:@""];
                         tmpepisode = [ez findMatch:DOM pattern:@"E\\d+ -" rangeatindex:0];
                         tmpepisode = [tmpepisode stringByReplacingOccurrencesOfString:@"E" withString:@""];
                         tmpepisode = [tmpepisode stringByReplacingOccurrencesOfString:@" -" withString:@""];
                     
-                        NSString *tmpeptitle = [ez findMatch:DOM pattern:@"<h1 class=\"c-heading c-heading--xs c-heading--family-type-one title\">.*<\\/h1><div class=\"c-meta-tags media-tags\">" rangeatindex:0];
-                        tmpeptitle = [tmpeptitle stringByReplacingOccurrencesOfString:@"<h1 class=\"c-heading c-heading--xs c-heading--family-type-one title\">" withString:@""];
-                        tmpeptitle = [tmpeptitle stringByReplacingOccurrencesOfString:@"</h1><div class=\"c-meta-tags media-tags\">" withString:@""];
+                        NSString *tmpeptitle = [ez findMatch:DOM pattern:@"<h1 class=\".+\">.(.*?)<\\/h1>" rangeatindex:0];
+                        tmpeptitle = [ez searchreplace:tmpeptitle pattern:@"<h1 class=\".+\">"];
+                        tmpeptitle = [tmpeptitle stringByReplacingOccurrencesOfString:@"</h1>" withString:@""];
                         tmpeptitle = [ez searchreplace:tmpeptitle pattern:@"E\\d+ - "];
                         tmpeptitle = [tmpeptitle stringByReplacingOccurrencesOfString:@"- " withString:@""];
                         regextitle = [regextitle stringByReplacingOccurrencesOfString:@" - Watch on Crunchyroll" withString:@""];
@@ -54,61 +53,17 @@
                         // Crunchyroll Beta History Page
                         // Requires Javascript Scraping
                         NSString * DOM = [NSString stringWithFormat:@"%@",m[@"DOM"]];
-                        regextitle = [ez findMatch:DOM pattern:@"__show-title\">.*<\\/small>" rangeatindex:0];
-                        regextitle = [ez searchreplace:regextitle pattern:@"__show-title\">"];
-                        regextitle = [ez searchreplace:regextitle pattern:@"<\\/small>"];
-                        tmpepisode = [ez findMatch:DOM pattern:@"E\\d+" rangeatindex:0];
-                        tmpepisode = [tmpepisode stringByReplacingOccurrencesOfString:@"E" withString:@""];
-                        tmpseason = [ez findMatch:DOM pattern:@"S\\d+" rangeatindex:0];
-                        tmpseason = [tmpseason stringByReplacingOccurrencesOfString:@"S" withString:@""];
-                        title = regextitle;
-                    }
-                }
-                else {
-                    //Add Regex Arguments Here
-                    if ([ez checkMatch:url pattern:@"\\/home\\/history"]) {
-                        // Scrobble from viewing history
-                        //Get the Document Object Model
-                        NSString * DOM = [NSString stringWithFormat:@"%@",m[@"DOM"]];
-                        NSArray *history = [self generateCrunchyrollHistoryQueue:DOM];
+                        NSArray *history = [self generateBetaCrunchyrollHistoryQueue:DOM];
                         if (history.count > 0) {
                             NSDictionary *historyobject = history[0];
                             title = historyobject[@"title"];
                             tmpepisode = historyobject[@"episode"];
+                            tmpseason = historyobject[@"season"];
                         }
                         else {
                             continue;
                         }
                     }
-                    else if ([ez checkMatch:url pattern:@"[^/]+\\/episode-[0-9]+.*-[0-9]+"]||[ez checkMatch:url pattern:@"[^/]+\\/.*-movie-[0-9]+"]||[ez checkMatch:url pattern:@"[^/]+\\/.*-\\d+"]) {
-                        //Perform Sanitation
-                          regextitle = [ez findMatch:regextitle pattern:@".* (Episode \\d+|\\(Movie\\))" rangeatindex:0];
-                        tmpepisode = [ez findMatch:regextitle pattern:@"\\sEpisode (\\d+)" rangeatindex:0];
-                        regextitle = [regextitle stringByReplacingOccurrencesOfString:tmpepisode withString:@""];
-                        tmpepisode = [ez searchreplace:tmpepisode pattern:@"\\sEpisode"];
-                        regextitle = [regextitle stringByReplacingOccurrencesOfString:@"(Movie)" withString:@""];
-                        title = regextitle;
-                        if ([ez checkMatch:title pattern:@"Crunchyroll"]) {
-                            continue;
-                        }
-                    }
-                    else if ([ez checkMatch:url pattern:@"\\/comics_read\\/manga\\?volume_id=\\d+&chapter_num=\\d+"]) {
-                        isManga = true;
-                        NSString * DOM = [NSString stringWithFormat:@"%@",m[@"DOM"]];
-                        regextitle = [ez findMatch:DOM pattern:@"<span itemprop=\"title\">.+</span>" rangeatindex:0];
-                        regextitle = [regextitle stringByReplacingOccurrencesOfString:@"<span itemprop=\"title\">" withString:@""];
-                        regextitle = [regextitle stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
-                        tmpepisode = [ez findMatch:url pattern:@"chapter_num=\\d+" rangeatindex:0];
-                        tmpepisode = [tmpepisode stringByReplacingOccurrencesOfString:@"chapter_num=" withString:@""];
-                        title = regextitle;
-                        if (title.length == 0) {
-                            continue;
-                        }
-                    }
-                    else {
-                        continue;
-                    }
-                }
             }
             // Following came from Taiga - https://github.com/erengy/taiga/ //
             else if ([site isEqualToString:@"animelab"]) {
@@ -262,6 +217,18 @@
                     else {
                         continue;
                     }
+                }
+                else {
+                    continue;
+                }
+            }
+            else if ([site isEqualToString:@"youtube"]){
+                if ([ez checkMatch:url pattern:@"\\/watch\\?v="]) {
+                    // Check if there is a usable episode number
+                        regextitle = [ez searchreplace:regextitle pattern:@" - YouTube"];
+                        // Just return title, let Anitomy pharse the rest
+                        title = regextitle;
+                        tmpepisode = @"0";
                 }
                 else {
                     continue;
@@ -567,6 +534,28 @@
                     continue;
                 }
             }
+            else if ([site isEqualToString:@"disneyplus"]) {
+                if ([ez checkMatch:url pattern:@"\\/video\\/.+"]) {
+                    NSString *DOM = [NSString stringWithFormat:@"%@",m[@"DOM"]];
+                    NSError *error;
+                    NSDictionary *metadata = [NSJSONSerialization JSONObjectWithData:[DOM dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+                    if (error) {
+                        continue;
+                    }
+                    else {
+                        regextitle = metadata[@"title"];
+                        tmpepisode = metadata[@"meta"];
+                        tmpseason = [ez findMatch:tmpepisode pattern:@"S\\d+" rangeatindex:0];
+                        tmpseason = [tmpseason stringByReplacingOccurrencesOfString:@"S" withString:@""];
+                        tmpepisode = [ez findMatch:tmpepisode pattern:@"E\\d+" rangeatindex:0];
+                        tmpepisode = [tmpepisode stringByReplacingOccurrencesOfString:@"E" withString:@""];
+                        title = regextitle;
+                    }
+                }
+                else {
+                    continue;
+                }
+            }
             else {
                 continue;
             }
@@ -654,23 +643,28 @@
         return 1;
     }
 }
-+ (NSArray *)generateCrunchyrollHistoryQueue:(NSString *)DOM {
-    // Creates an array of titles and episodes from Crunchyroll history
++ (NSArray *)generateBetaCrunchyrollHistoryQueue:(NSString *)DOM {
+    // Creates an array of titles and episodes from Crunchyroll history (Beta)
     ezregex *regex = [ezregex new];
     NSString *tmpdom = [DOM stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     NSMutableArray *tmparray = [NSMutableArray new];
-    NSArray *matches = [regex findMatches:tmpdom pattern:@"<li class=\"group-item hover-bubble\" id=\"media_group_\\d+\" group_id=\"media_group_\\d+\">(.*?)<\\/li>"];
+    NSArray *matches = [regex findMatches:tmpdom pattern:@"<div class=\"erc-my-lists-item\">(.*?)<\\/button>"];
     for (NSString *item in matches) {
-        if ([regex checkMatch:item pattern:@"<span itemprop=\"name\" class=\"series-title block ellipsis\">(.*?)<\\/span>"]) {
-            NSString *title = [regex findMatch:item pattern:@"<span itemprop=\"name\" class=\"series-title block ellipsis\">(.*?)<\\/span>" rangeatindex:0];
-            title = [title stringByReplacingOccurrencesOfString:@"<span itemprop=\"name\" class=\"series-title block ellipsis\">" withString:@""];
-            title = [title stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
+        if ([regex checkMatch:item pattern:@"<small class=\"(.*?)<\\/small>"]) {
+            NSString *title = [regex findMatch:item pattern:@"<small class=\"(.*?)<\\/small>" rangeatindex:0];
+            title = [regex searchreplace:title pattern:@"<small class=\"(.*?)\">"];
+            title = [title stringByReplacingOccurrencesOfString:@"</small>" withString:@""];
             NSString *episode = @"1";
-            if ([regex checkMatch:item pattern:@"Episode \\d+"]) {
-                episode = [regex findMatch:item pattern:@"Episode \\d+" rangeatindex:0];
-                episode = [episode stringByReplacingOccurrencesOfString:@"Episode " withString:@""];
+            NSString *season = @"1";
+            if ([regex checkMatch:item pattern:@"E\\d+"]) {
+                episode = [regex findMatch:item pattern:@"E\\d+" rangeatindex:0];
+                episode = [episode stringByReplacingOccurrencesOfString:@"E" withString:@""];
             }
-            [tmparray addObject:@{@"title":title, @"episode":episode}];
+            if ([regex checkMatch:item pattern:@"S\\d+"]) {
+                season = [regex findMatch:item pattern:@"S\\d+" rangeatindex:0];
+                season = [season stringByReplacingOccurrencesOfString:@"S" withString:@""];
+            }
+            [tmparray addObject:@{@"title":title, @"episode":episode, @"season":season}];
         }
         else {
             continue;

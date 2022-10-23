@@ -135,7 +135,7 @@ function detectCrunchyroll(tab) {
     });
 }
 function detectCrunchyrollHistory(tab) {
-    let executing =  browser.tabs.executeScript(tab.id, { code: "document.querySelector('.c-playable-card').innerHTML;"});
+    let executing =  browser.tabs.executeScript(tab.id, { code: "document.querySelector('.erc-history-content').innerHTML;"});
     executing.then((value) => {
         return generateResult(tab,value);
     });
