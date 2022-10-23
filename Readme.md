@@ -4,7 +4,7 @@
 
 Shukofukurou for iOS/iPadOS is the iOS/iPadOS port of [Shukofukurou](https://github.com/Atelier-Shiori/Shukofukurou), which is a lightweight, open source, multi-service Anime and Manga library management and discovery app that works with [Kitsu](https://kitsu.io/), [AniList](https://anilist.co/), and [MyAnimeList](https://myanimelist.net). 
 
-Requires the latest SDK (iOS 15, will be iOS 16 on final release), Xcode 13 (Xcode 14 after iOS 16 final release) or later. This app will run on iOS 15 or later.
+Requires the latest SDK (iOS 16), Xcode 14 or later. This app will only run on iOS 15 or later.
 
 ## App Store Release
 Since an Apple Developer Program is required to distribute apps for iOS/iPadOS, Shukofukurou for iOS/iPadOS will cost $2.99 to download, which will have no restrictions and will receive lifetime updates. The proceeds will go back into supporting the development of our applications. We have to charge for the iOS/iPadOS version since the Apple Developers Program costs $99 a year and we put a lot of work in developing this App. Charging for open source software, believe it or not is [encouraged by the FSF](http://www.gnu.org/philosophy/selling.html).
@@ -13,7 +13,7 @@ However, the source code will remain free for anyone who want it., However, you 
 
 No support will be given to self-built copies. You need to specify the OAuth Client and Secret before you can compile your own version.
 
-If you want to help support us to reach the goal of $24 a month, which will allow us to distribute the app for free while covering the costs of distribution, [become a patron](https://www.patreon.com/join/malupdaterosx) today.
+If you want to help support continued development of this app, [become a patron](https://www.patreon.com/join/malupdaterosx) today.
 
 ## Community Version
 Already have a paid Apple Developer Program Membership? You may sideload and install the Community Version for free without having to compile it for yourself. The community version has most of the features of the paid version except for iCloud History Sync. Install the release using Cydia impactor. List of releases can be seen in the release page.
