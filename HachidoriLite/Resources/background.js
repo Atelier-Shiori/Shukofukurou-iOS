@@ -65,6 +65,11 @@ function detectStream(tab) {
             getDOM(tab);
         }
     }
+    else if (url.includes("netflix")) {
+        if (url.includes("watch")) {
+            detectNetflix(tab);
+        }
+    }
     else {
           getDOM(tab);
     }
@@ -153,4 +158,33 @@ function detectFunimationNewPlayer(tab) {
     executing.then((value) => {
         return generateResult(tab,value);
     });
+}
+
+function detectNetflix(tab) {
+    let request = new XMLHttpRequest();
+    request.open('GET', 'https://www.netflix.com/api/shakti/mre/viewingactivity', true);
+    request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
+            // Get Video ID and Lookup
+            var data = JSON.parse(this.response);
+            if (data.viewedItems != null) {
+                var videoid = data.viewedItems[0].movieID;
+                request.open('GET', 'https://www.netflix.com/api/shakti/mre/metadata?movieid=' + movieID, true);
+                request.onload = function () {
+                    if (request.status >= 200 && request.status < 400) {
+                        return generateResult(tab,this.response);
+                    }
+                    else {
+                        return '';
+                    }
+                }
+                request.send();
+            }
+            
+        }
+        else {
+            return '';
+        }
+    }
+    request.send();
 }
