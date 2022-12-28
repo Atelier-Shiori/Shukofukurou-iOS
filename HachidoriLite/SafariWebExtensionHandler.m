@@ -24,7 +24,7 @@ NSString * const SFExtensionMessageKey = @"message";
 @end
 
 @implementation SafariWebExtensionHandler
-NSString *const supportedSites = @"(crunchyroll|hidive|funimation|vrv)";
+NSString *const supportedSites = @"(crunchyroll|hidive|funimation|vrv|netflix)";
 
 - (NSArray *)performparsing {
     NSArray *final = @[ @{@"title": _pagetitle, @"url": _pageurl, @"browser": @"Safari", @"site": _pagesite, @"DOM": _pagedom}];
@@ -48,6 +48,11 @@ NSString *const supportedSites = @"(crunchyroll|hidive|funimation|vrv)";
         self.pagetitle = message[@"title"];
         self.pagedom = message[@"DOM"];
         self.pagesite = [self checkURL:self.pageurl];
+        if ([_pagesite isEqualToString:@"netflix"]) {
+            // Do additional parsing
+            self.pagetitle = @"Netflix";
+            self.pagedom = [self parseNetflixMetaData:self.pagedom];
+        }
         _parsedresult = [self performparsing];
         response.userInfo = @{ SFExtensionMessageKey: @{ @"results": _parsedresult } };
     }
@@ -82,5 +87,45 @@ NSString *const supportedSites = @"(crunchyroll|hidive|funimation|vrv)";
 - (bool)checkaccountlogin {
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.moe.malupdaterosx.Shukofukurou-IOS.scrobbleextension"];
     return [defaults boolForKey:@"currentserviceloggedin"];
+}
+
+- (NSString *)parseNetflixMetaData:(NSString *)metadatajson {
+    NSMutableDictionary *tmp = [NSMutableDictionary new];
+    NSError *error;
+    NSDictionary *metadata = [NSJSONSerialization JSONObjectWithData:[metadatajson dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    if (error) {
+        return nil;
+    }
+    else {
+        long currentepisode = ((NSNumber *)metadata[@"video"][@"currentEpisode"]).longValue;
+        NSArray *seasons = metadata[@"video"][@"seasons"];
+        bool finish = false;
+        for (int i=0; i < seasons.count; i++) {
+            NSDictionary *season = seasons[i];
+            for (NSDictionary * episode in season[@"episodes"]) {
+                if (currentepisode == ((NSNumber *)episode[@"episodeId"]).longValue) {
+                    tmp[@"title"] = metadata[@"video"][@"title"];
+                    tmp[@"season"] = season[@"seq"];
+                    tmp[@"episode"] = episode[@"seq"];
+                    finish = true;
+                    break;
+                }
+            }
+            if (finish) {
+                break;
+            }
+        }
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:tmp
+                                                           options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                             error:&error];
+
+        if (!jsonData) {
+            NSLog(@"Got an error: %@", error);
+            return nil;
+        } else {
+           return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+    }
+    return nil;
 }
 @end

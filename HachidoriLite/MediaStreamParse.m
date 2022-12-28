@@ -141,65 +141,19 @@
                 }
             }
             else if ([site isEqualToString:@"netflix"]){
-                if([ez checkMatch:url pattern:@"WiPlayer"]){
-                    //Get the Document Object Model
-                    NSString * DOM = [NSString stringWithFormat:@"%@",m[@"DOM"]];
-                    //Get the Episode Movie ID
-                    NSArray * matches = [ez findMatches:url pattern:@"\\b(EpisodeMovieId|episodeId)=\\d+"];
-                    NSString * videoid;
-                    if (matches.count > 0) {
-                        videoid = [NSString stringWithFormat:@"%@", [[ez findMatches:url pattern:@"\\b(EpisodeMovieId|episodeId)=\\d+"] lastObject]];
-                        videoid = [ez searchreplace:videoid pattern:@"(EpisodeMovieId|episodeId)="];
-                    }
-                    NSData * jsonData;
-                    if ([ez checkMatch:DOM pattern:@"\"video\":*.*\\]\\}\\}"]){
-                        // HTML5 Player
-                        if (videoid.length == 0) {
-                            //Get Video ID
-                            videoid = [ez findMatch:[NSString stringWithFormat:@"%@", m[@"DOM"]] pattern:@"\"videoId\":\\d+" rangeatindex:0];
-                            videoid = [videoid stringByReplacingOccurrencesOfString:@"\"videoId\":" withString:@""];
-                        }
-                        DOM = [NSString stringWithFormat:@"{%@",[ez findMatch:DOM pattern:@"\"video\":*.*\\]\\}\\}" rangeatindex:0]];
-                        jsonData = [DOM dataUsingEncoding:NSUTF8StringEncoding];
-                    }
-                    else{
-                        if (videoid.length == 0) {
-                            //Get Video ID
-                            videoid = [ez findMatch:[NSString stringWithFormat:@"%@",m[@"DOM"]] pattern:@"EpisodeMovieId=\\d+" rangeatindex:0];
-                            videoid = [videoid stringByReplacingOccurrencesOfString:@"EpisodeMovieId=" withString:@""];
-                        }
-                        // Silverlight Player
-                        // Parse the DOM to get the JSON Data
-                        DOM = [ez findMatch:DOM pattern:@"\"metadata\":\"*.*\",\"initParams\"" rangeatindex:0];
-                        DOM = [DOM stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-                        DOM = [DOM stringByReplacingOccurrencesOfString:@"metadata:" withString:@""];
-                        DOM = [DOM stringByReplacingOccurrencesOfString:@",initParams" withString:@""];
-                        jsonData = [[NSData alloc] initWithBase64Encoding:DOM];
-                    }
-                    NSError* error;
-                    // Parse JSON Data
-                    NSDictionary *metadata = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-                    NSDictionary *videodata = metadata[@"video"];
-                    // Set Title
-                    title = videodata[@"title"];
-                    // Search to get the right Episode Number
-                    NSArray * seasondata = videodata[@"seasons"];
-                    for (NSUInteger i = 0; i < [seasondata count]; i++) {
-                        NSDictionary * season = seasondata[i];
-                        NSArray *episodes = season[@"episodes"];
-                        for (NSUInteger e = 0; e < [episodes count]; e++) {
-                            NSDictionary * episode = episodes[e];
-                            if (![videoid isEqualToString:[NSString stringWithFormat:@"%@", episode[@"id"]]]) {
-                                continue;
-                            }
-                            else{
-                                //Set Episode Number and Season
-                                tmpepisode = [NSString stringWithFormat:@"%@", episode[@"seq"]];
-                                tmpseason = [NSString stringWithFormat:@"%lu", (i + 1)];
-                                break;
-                            }
-                        }
-                    }
+                if([ez checkMatch:url pattern:@"\\/watch\\/\\d+"]){
+                   NSString *DOM = [NSString stringWithFormat:@"%@",m[@"DOM"]];
+                   NSError *error;
+                   NSDictionary *metadata = [NSJSONSerialization JSONObjectWithData:[DOM dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+                   if (error) {
+                       continue;
+                   }
+                   else {
+                        regextitle = metadata[@"title"];
+                        tmpepisode = ((NSNumber *)metadata[@"episode"]).stringValue;
+                        tmpseason = ((NSNumber *)(NSNumber *)metadata[@"season"]).stringValue;
+                        title = regextitle;
+                   }
                 }
                 else {
                     continue;
