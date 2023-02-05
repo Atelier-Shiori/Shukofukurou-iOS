@@ -29,7 +29,9 @@
             "*://www.hidive.com/*",
             "*://hidive.com/*",
             "*://vrv.co/*",
-            "*://www.vrv.co/*"
+            "*://www.vrv.co/*",
+            "*://www.netflix.com/*",
+            "*://netflix.com/*"
         ]
     }],
 
@@ -52,6 +54,8 @@
         "*://hidive.com/*",
         "*://vrv.co/*",
         "*://www.vrv.co/*",
+        "*://www.netflix.com/*",
+        "*://netflix.com/*",
         "nativeMessaging"
     ]
 }

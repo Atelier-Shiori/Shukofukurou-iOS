@@ -65,6 +65,11 @@ function detectStream(tab) {
             getDOM(tab);
         }
     }
+    else if (url.includes("netflix")) {
+        if (url.includes("watch")) {
+            detectNetflix(tab);
+        }
+    }
     else {
           getDOM(tab);
     }
@@ -154,3 +159,36 @@ function detectFunimationNewPlayer(tab) {
         return generateResult(tab,value);
     });
 }
+
+function sleep(ms) {
+   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function detectNetflix(tab) {
+    showalert(tab,"Unable to get Netflix Watch History.");
+    let request = new XMLHttpRequest();
+    request.open('GET', 'https://www.netflix.com/api/shakti/mre/viewingactivity', true);
+    request.send();
+    await sleep(5000);
+    if (request.status >= 200 && request.status < 400) {
+        // Get Video ID and Lookup
+        var data = JSON.parse(request.response);
+        if (data.viewedItems != null) {
+            var videoid = data.viewedItems[0].movieID;
+            request.open('GET', 'https://www.netflix.com/api/shakti/mre/metadata?movieid=' + movieID, true);
+            request.send();
+            await sleep(5000);
+            if (request.status >= 200 && request.status < 400) {
+                return generateResult(tab,this.response);
+            }
+            else {
+                result = {"message" : "invalid page", "type" : "error"};
+                showalert(tab,"Unable to get Netflix Metadata.");
+            }
+        }
+    }
+    else {
+        result = {"message" : "invalid page", "type" : "error"};
+        showalert(tab,"Unable to get Netflix Watch History.");
+    }
+|
