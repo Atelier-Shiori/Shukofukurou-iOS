@@ -191,6 +191,7 @@
         default:
             return;
     }
+    [self deleteaccountprompt];
     if (!accountexists) {
         //Remove account from keychain and account data
         [AtarashiiListCoreData removeAllEntrieswithService:service];
@@ -198,7 +199,32 @@
         [self.delegate accountRemovedForService:service];
     }
 }
-
+- (void)deleteaccountprompt {
+    __weak MainSideBarViewController *weakself = self;
+    UIAlertController *prompt = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Delete Your %@ Account?", [listservice.sharedInstance currentservicename]] message:@"Do you want to be taken to the page to delete your account? Tap no if you want to just want to remove your account from Shukofukurou." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesaction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        int currentservice = [listservice.sharedInstance getCurrentServiceID];
+        NSString *deleteurl = @"";
+        switch (currentservice) {
+            case 1:
+                deleteurl = @"https://myanimelist.net/editprofile.php?go=myoptions";
+                break;
+            case 2:
+                deleteurl = @"https://kitsu.io/settings/account";
+                break;
+            case 3:
+                deleteurl = @"https://anilist.co/settings/account";
+                break;
+            default:
+                break;
+        }
+        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://sakurajima.moe/@malupdaterosx"] options:@{} completionHandler:^(BOOL success) {}];
+    }];
+    UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    [prompt addAction:noaction];
+    [prompt addAction:yesaction];
+    [_mainvc presentViewController:prompt animated:YES completion:nil];
+}
 - (IBAction)switchservices:(id)sender {
     [self hideLeftViewAnimated:self];
     [self setMainViewController];
