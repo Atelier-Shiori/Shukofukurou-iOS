@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GraphKit.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface StatsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, GKBarGraphDataSource>
+@interface StatsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UISegmentedControl *statsselector;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIView *graphView;

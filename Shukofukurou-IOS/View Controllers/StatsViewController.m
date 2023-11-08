@@ -29,7 +29,6 @@
 @property (strong) NSArray *ratinglabels;
 @property (strong) NSArray *sections;
 @property (strong) MBProgressHUD *hud;
-@property (strong) GKBarGraph *graph;
 @end
 
 @implementation StatsViewController
@@ -37,14 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"View Loaded");
-    if (@available(iOS 16, *)) {
-    }
-    else {
-        _graph = [GKBarGraph new];
-        self.graph.animationDuration = 2.0;
-        self.graph.dataSource = self;
-        [self.graphView addSubview:_graph];
-    }
     [self showloadingview:YES];
 }
 
@@ -56,25 +47,6 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [self loadandsizechart];
-}
-
-- (void)loadandsizechart {
-    if (@available(iOS 16, *)) {
-    }
-    else {
-        int width = self.view.bounds.size.width;
-        if (width == 320) {
-            self.graph.marginBar = 10;
-        }
-        else if (width <= 414) {
-            self.graph.marginBar = 15;
-        }
-        else {
-            self.graph.marginBar = 20;
-        }
-        [_graph draw];
-    }
 }
 
 - (IBAction)dismissStats:(id)sender {
@@ -95,20 +67,15 @@
         _currentdistribution = _mangascoredistribution;
     }
     [_tableView reloadData];
-    if (@available(iOS 16, *)) {
-        for (UIView *subview in _graphView.subviews) {
-           [subview removeFromSuperview];
-        }
-        ChartCreator *cc = [ChartCreator new];
-        UIViewController *vc = [cc generateBarChartWithData:_statsselector.selectedSegmentIndex == 0 ? _animescoredistributionjson : _mangascoredistributionjson isScoreChart:YES];
-        if (vc) {
-            // Add chart view
-            [_graphView addSubview:vc.view];
-            vc.view.frame = CGRectMake(0 , 0, self.graphView.frame.size.width, self.graphView.frame.size.height);
-        }
+    for (UIView *subview in _graphView.subviews) {
+       [subview removeFromSuperview];
     }
-    else {
-        [self loadandsizechart];
+    ChartCreator *cc = [ChartCreator new];
+    UIViewController *vc = [cc generateBarChartWithData:_statsselector.selectedSegmentIndex == 0 ? _animescoredistributionjson : _mangascoredistributionjson isScoreChart:YES];
+    if (vc) {
+        // Add chart view
+        [_graphView addSubview:vc.view];
+        vc.view.frame = CGRectMake(0 , 0, self.graphView.frame.size.width, self.graphView.frame.size.height);
     }
     [self showloadingview:NO];
 }
@@ -412,12 +379,6 @@
 
 - (UIColor *)colorForBarAtIndex:(NSInteger)index {
     return [UIColor colorWithRed:0.30 green:0.85 blue:0.39 alpha:1.0];
-}
-
-- (CFTimeInterval)animationDurationForBarAtIndex:(NSInteger)index {
-    CGFloat percentage = [[self valueForBarAtIndex:index] doubleValue];
-    percentage = (percentage / 100);
-    return (self.graph.animationDuration * percentage);
 }
 
 - (NSString *)titleForBarAtIndex:(NSInteger)index {
