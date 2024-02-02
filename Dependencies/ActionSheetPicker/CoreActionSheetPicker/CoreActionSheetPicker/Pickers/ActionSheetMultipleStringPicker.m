@@ -80,10 +80,16 @@
     [self performInitialSelectionInPickerView:stringPicker];
 
     if (self.data.count == 0) {
+#if TARGET_OS_VISION
+#else
         stringPicker.showsSelectionIndicator = NO;
+#endif
         stringPicker.userInteractionEnabled = NO;
     } else {
+#if TARGET_OS_VISION
+#else
         stringPicker.showsSelectionIndicator = YES;
+#endif
         stringPicker.userInteractionEnabled = YES;
     }
 

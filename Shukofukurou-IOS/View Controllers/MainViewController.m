@@ -66,15 +66,18 @@
         else {
             self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
         }
-        
         if ((size.height == 1024 && size.width <= 768) || size.height == 1112 || size.height == 1194 || size.height == 1366|| self.leftViewAlwaysVisibleOptions == LGSideMenuAlwaysVisibleOnNone) {
             _shouldHideMenuButton = NO;
         }
         else {
             _shouldHideMenuButton = YES;
         }
+        [self setRootViewCoverColorForLeftView:UIColor.systemBackgroundColor];
         [NSNotificationCenter.defaultCenter postNotificationName:@"sidebarStateDidChange" object:@(_shouldHideMenuButton)];
     }
+#if TARGET_OS_VISION
+    self.leftViewWidth = 350;
+#else
     else if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
         // Fixes Sidebar Width when in landscape on X models
         int iPhoneHeight = (int)[[UIScreen mainScreen] nativeBounds].size.height;
@@ -89,6 +92,7 @@
             self.leftViewWidth = 250;
         }
     }
+#endif
 }
 - (void)hidetoolbarstate {
     self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
@@ -260,8 +264,12 @@
 }
 
 - (NSArray *)keyCommands {
+#if TARGET_OS_VISION
+    return @[];
+#else
     return @[[UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Anime List"],
              [UIKeyCommand keyCommandWithInput:@"2" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Manga List"],[UIKeyCommand keyCommandWithInput:@"3" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Search"],[UIKeyCommand keyCommandWithInput:@"4" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Seasons"],[UIKeyCommand keyCommandWithInput:@"5" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Airing"],[UIKeyCommand keyCommandWithInput:@"6" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Trending"],[UIKeyCommand keyCommandWithInput:@"R" modifierFlags:UIKeyModifierCommand action:@selector(refresh:) discoverabilityTitle:@"Refresh"],[UIKeyCommand keyCommandWithInput:@"B" modifierFlags:UIKeyModifierCommand action:@selector(goBack:) discoverabilityTitle:@"Back"]];
+#endif
 }
 
 - (void)toggleView:(id)sender {

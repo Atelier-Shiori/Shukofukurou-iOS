@@ -10,8 +10,11 @@
 #import <SafariServices/SafariServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+#if TARGET_OS_VISION
+@interface RelatedTableViewController : UITableViewController
+#else
 @interface RelatedTableViewController : UITableViewController <SFSafariViewControllerDelegate>
+#endif
 - (void)generateRelated:(NSDictionary *)titleinfo withType:(int)type;
 @end
 

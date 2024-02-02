@@ -15,10 +15,240 @@
 #import "UIImage+ForceDecode.h"
 #import "SDInternalMacros.h"
 
-// Specify DPI for vector format in CGImageSource, like PDF
-static NSString * kSDCGImageSourceRasterizationDPI = @"kCGImageSourceRasterizationDPI";
+#import <ImageIO/ImageIO.h>
+#import <CoreServices/CoreServices.h>
+
+#if SD_CHECK_CGIMAGE_RETAIN_SOURCE
+#import <dlfcn.h>
+
+// SPI to check thread safe during Example and Test
+static CGImageSourceRef (*SDCGImageGetImageSource)(CGImageRef);
+#endif
+
 // Specify File Size for lossy format encoding, like JPEG
 static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestinationRequestedFileSize";
+// Avoid ImageIO translate JFIF orientation to EXIF orientation which cause bug because returned CGImage already apply the orientation transform
+static NSString * kSDCGImageSourceSkipMetadata = @"kCGImageSourceSkipMetadata";
+
+// This strip the un-wanted CGImageProperty, like the internal CGImageSourceRef in iOS 15+
+// However, CGImageCreateCopy still keep those CGImageProperty, not suit for our use case
+static CGImageRef __nullable SDCGImageCreateMutableCopy(CGImageRef cg_nullable image, CGBitmapInfo bitmapInfo) {
+    if (!image) return nil;
+    size_t width = CGImageGetWidth(image);
+    size_t height = CGImageGetHeight(image);
+    size_t bitsPerComponent = CGImageGetBitsPerComponent(image);
+    size_t bitsPerPixel = CGImageGetBitsPerPixel(image);
+    size_t bytesPerRow = CGImageGetBytesPerRow(image);
+    CGColorSpaceRef space = CGImageGetColorSpace(image);
+    CGDataProviderRef provider = CGImageGetDataProvider(image);
+    const CGFloat *decode = CGImageGetDecode(image);
+    bool shouldInterpolate = CGImageGetShouldInterpolate(image);
+    CGColorRenderingIntent intent = CGImageGetRenderingIntent(image);
+    CGImageRef newImage = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, space, bitmapInfo, provider, decode, shouldInterpolate, intent);
+    return newImage;
+}
+
+static inline CGImageRef __nullable SDCGImageCreateCopy(CGImageRef cg_nullable image) {
+    if (!image) return nil;
+    return SDCGImageCreateMutableCopy(image, CGImageGetBitmapInfo(image));
+}
+
+static BOOL SDLoadOnePixelBitmapBuffer(CGImageRef imageRef, uint8_t *r, uint8_t *g, uint8_t *b, uint8_t *a) {
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+    CGImageAlphaInfo alphaInfo = bitmapInfo & kCGBitmapAlphaInfoMask;
+    CGBitmapInfo byteOrderInfo = bitmapInfo & kCGBitmapByteOrderMask;
+    
+    // Get pixels
+    CGDataProviderRef provider = CGImageGetDataProvider(imageRef);
+    if (!provider) {
+        return NO;
+    }
+    CFDataRef data = CGDataProviderCopyData(provider);
+    if (!data) {
+        return NO;
+    }
+    
+    CFRange range = CFRangeMake(0, 4); // one pixel
+    if (CFDataGetLength(data) < range.location + range.length) {
+        CFRelease(data);
+        return NO;
+    }
+    uint8_t pixel[4] = {0};
+    CFDataGetBytes(data, range, pixel);
+    CFRelease(data);
+    
+    BOOL byteOrderNormal = NO;
+    switch (byteOrderInfo) {
+        case kCGBitmapByteOrderDefault: {
+            byteOrderNormal = YES;
+        } break;
+        case kCGBitmapByteOrder16Little:
+        case kCGBitmapByteOrder32Little: {
+        } break;
+        case kCGBitmapByteOrder16Big:
+        case kCGBitmapByteOrder32Big: {
+            byteOrderNormal = YES;
+        } break;
+        default: break;
+    }
+    switch (alphaInfo) {
+        case kCGImageAlphaPremultipliedFirst:
+        case kCGImageAlphaFirst: {
+            if (byteOrderNormal) {
+                // ARGB8888
+                *a = pixel[0];
+                *r = pixel[1];
+                *g = pixel[2];
+                *b = pixel[3];
+            } else {
+                // BGRA8888
+                *b = pixel[0];
+                *g = pixel[1];
+                *r = pixel[2];
+                *a = pixel[3];
+            }
+        }
+            break;
+        case kCGImageAlphaPremultipliedLast:
+        case kCGImageAlphaLast: {
+            if (byteOrderNormal) {
+                // RGBA8888
+                *r = pixel[0];
+                *g = pixel[1];
+                *b = pixel[2];
+                *a = pixel[3];
+            } else {
+                // ABGR8888
+                *a = pixel[0];
+                *b = pixel[1];
+                *g = pixel[2];
+                *r = pixel[3];
+            }
+        }
+            break;
+        case kCGImageAlphaNone: {
+            if (byteOrderNormal) {
+                // RGB
+                *r = pixel[0];
+                *g = pixel[1];
+                *b = pixel[2];
+            } else {
+                // BGR
+                *b = pixel[0];
+                *g = pixel[1];
+                *r = pixel[2];
+            }
+        }
+            break;
+        case kCGImageAlphaNoneSkipLast: {
+            if (byteOrderNormal) {
+                // RGBX
+                *r = pixel[0];
+                *g = pixel[1];
+                *b = pixel[2];
+            } else {
+                // XBGR
+                *b = pixel[1];
+                *g = pixel[2];
+                *r = pixel[3];
+            }
+        }
+            break;
+        case kCGImageAlphaNoneSkipFirst: {
+            if (byteOrderNormal) {
+                // XRGB
+                *r = pixel[1];
+                *g = pixel[2];
+                *b = pixel[3];
+            } else {
+                // BGRX
+                *b = pixel[0];
+                *g = pixel[1];
+                *r = pixel[2];
+            }
+        }
+            break;
+        case kCGImageAlphaOnly: {
+            // A
+            *a = pixel[0];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    return YES;
+}
+
+static CGImageRef SDImageIOPNGPluginBuggyCreateWorkaround(CGImageRef cgImage) CF_RETURNS_RETAINED {
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(cgImage);
+    CGImageAlphaInfo alphaInfo = (bitmapInfo & kCGBitmapAlphaInfoMask);
+    CGImageAlphaInfo newAlphaInfo = alphaInfo;
+    if (alphaInfo == kCGImageAlphaLast) {
+        newAlphaInfo = kCGImageAlphaPremultipliedLast;
+    } else if (alphaInfo == kCGImageAlphaFirst) {
+        newAlphaInfo = kCGImageAlphaPremultipliedFirst;
+    }
+    if (newAlphaInfo != alphaInfo) {
+        CGBitmapInfo byteOrderInfo = bitmapInfo & kCGBitmapByteOrderMask;
+        CGBitmapInfo newBitmapInfo = newAlphaInfo | byteOrderInfo;
+        if (SD_OPTIONS_CONTAINS(bitmapInfo, kCGBitmapFloatComponents)) {
+            // Keep float components
+            newBitmapInfo |= kCGBitmapFloatComponents;
+        }
+        // Create new CGImage with corrected alpha info...
+        CGImageRef newCGImage = SDCGImageCreateMutableCopy(cgImage, newBitmapInfo);
+        return newCGImage;
+    } else {
+        CGImageRetain(cgImage);
+        return cgImage;
+    }
+}
+
+static BOOL SDImageIOPNGPluginBuggyNeedWorkaround(void) {
+    // See: #3605 FB13322459
+    // ImageIO on iOS 17 (17.0~17.2), there is one serious problem on ImageIO PNG plugin. The decode result for indexed color PNG use the wrong CGImageAlphaInfo
+    // The returned CGImageAlphaInfo is alpha last, but the actual bitmap data is premultiplied alpha last, which cause many runtime render bug.
+    // So, we do a hack workaround:
+    // 1. Decode a indexed color PNG in runtime
+    // 2. If the bitmap is premultiplied alpha, then assume it's buggy
+    // 3. If buggy, then all premultiplied `CGImageAlphaInfo` will assume to be non-premultiplied
+    // :)
+    
+    if (@available(iOS 17, tvOS 17, macOS 14, watchOS 11, *)) {
+        // Continue
+    } else {
+        return NO;
+    }
+    static BOOL isBuggy = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *base64String = @"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUyMjKlMgnVAAAAAXRSTlMyiDGJ5gAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=";
+        NSData *onePixelIndexedPNGData = [[NSData alloc] initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)onePixelIndexedPNGData, nil);
+        NSCParameterAssert(source);
+        CGImageRef cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil);
+        NSCParameterAssert(cgImage);
+        uint8_t r, g, b, a;
+        r = g = b = a = 0;
+        BOOL success = SDLoadOnePixelBitmapBuffer(cgImage, &r, &g, &b, &a);
+        if (!success) {
+            isBuggy = NO; // Impossible...
+        } else {
+            if (r == 50 && g == 50 && b == 50 && a == 50) {
+                // Correct value
+                isBuggy = NO;
+            } else {
+                SD_LOG("%@", @"Detected the current OS's ImageIO PNG Decoder is buggy on indexed color PNG. Perform workaround solution...");
+                isBuggy = YES;
+            }
+        }
+        CFRelease(source);
+        CGImageRelease(cgImage);
+    });
+    
+    return isBuggy;
+}
 
 @interface SDImageIOCoderFrame : NSObject
 
@@ -43,6 +273,8 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     BOOL _finished;
     BOOL _preserveAspectRatio;
     CGSize _thumbnailSize;
+    NSUInteger _limitBytes;
+    BOOL _lazyDecode;
 }
 
 - (void)dealloc
@@ -155,12 +387,8 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
 }
 
 + (NSTimeInterval)frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source {
-    NSDictionary *options = @{
-        (__bridge NSString *)kCGImageSourceShouldCacheImmediately : @(YES),
-        (__bridge NSString *)kCGImageSourceShouldCache : @(YES) // Always cache to reduce CPU usage
-    };
     NSTimeInterval frameDuration = 0.1;
-    CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, (__bridge CFDictionaryRef)options);
+    CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, NULL);
     if (!cfFrameProperties) {
         return frameDuration;
     }
@@ -190,10 +418,24 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     return frameDuration;
 }
 
-+ (UIImage *)createFrameAtIndex:(NSUInteger)index source:(CGImageSourceRef)source scale:(CGFloat)scale preserveAspectRatio:(BOOL)preserveAspectRatio thumbnailSize:(CGSize)thumbnailSize forceDecode:(BOOL)forceDecode options:(NSDictionary *)options {
-    // Some options need to pass to `CGImageSourceCopyPropertiesAtIndex` before `CGImageSourceCreateImageAtIndex`, or ImageIO will ignore them because they parse once :)
++ (UIImage *)createFrameAtIndex:(NSUInteger)index source:(CGImageSourceRef)source scale:(CGFloat)scale preserveAspectRatio:(BOOL)preserveAspectRatio thumbnailSize:(CGSize)thumbnailSize lazyDecode:(BOOL)lazyDecode animatedImage:(BOOL)animatedImage {
+    // `animatedImage` means called from `SDAnimatedImageProvider.animatedImageFrameAtIndex`
+    NSDictionary *options;
+    if (animatedImage) {
+        if (!lazyDecode) {
+            options = @{
+                // image decoding and caching should happen at image creation time.
+                (__bridge NSString *)kCGImageSourceShouldCacheImmediately : @(YES),
+            };
+        } else {
+            options = @{
+                // image decoding will happen at rendering time
+                (__bridge NSString *)kCGImageSourceShouldCacheImmediately : @(NO),
+            };
+        }
+    }
     // Parse the image properties
-    NSDictionary *properties = (__bridge_transfer NSDictionary *)CGImageSourceCopyPropertiesAtIndex(source, index, (__bridge CFDictionaryRef)options);
+    NSDictionary *properties = (__bridge_transfer NSDictionary *)CGImageSourceCopyPropertiesAtIndex(source, index, (__bridge CFDictionaryRef)@{kSDCGImageSourceSkipMetadata : @(YES)});
     CGFloat pixelWidth = [properties[(__bridge NSString *)kCGImagePropertyPixelWidth] doubleValue];
     CGFloat pixelHeight = [properties[(__bridge NSString *)kCGImagePropertyPixelHeight] doubleValue];
     CGImagePropertyOrientation exifOrientation = (CGImagePropertyOrientation)[properties[(__bridge NSString *)kCGImagePropertyOrientation] unsignedIntegerValue];
@@ -241,26 +483,54 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         } else {
             // `CGImageSourceCreateThumbnailAtIndex` take only pixel dimension, if not `preserveAspectRatio`, we should manual scale to the target size
             CGImageRef scaledImageRef = [SDImageCoderHelper CGImageCreateScaled:imageRef size:thumbnailSize];
-            CGImageRelease(imageRef);
-            imageRef = scaledImageRef;
-            isDecoded = YES;
+            if (scaledImageRef) {
+                CGImageRelease(imageRef);
+                imageRef = scaledImageRef;
+                isDecoded = YES;
+            }
         }
     }
     // Check whether output CGImage is decoded
-    if (forceDecode) {
+    if (!lazyDecode) {
         if (!isDecoded) {
             // Use CoreGraphics to trigger immediately decode
             CGImageRef decodedImageRef = [SDImageCoderHelper CGImageCreateDecoded:imageRef];
-            CGImageRelease(imageRef);
-            imageRef = decodedImageRef;
-            isDecoded = YES;
+            if (decodedImageRef) {
+                CGImageRelease(imageRef);
+                imageRef = decodedImageRef;
+                isDecoded = YES;
+            }
         }
+    } else if (animatedImage) {
+        // iOS 15+, CGImageRef now retains CGImageSourceRef internally. To workaround its thread-safe issue, we have to strip CGImageSourceRef, using Force-Decode (or have to use SPI `CGImageSetImageSource`), See: https://github.com/SDWebImage/SDWebImage/issues/3273
+        if (@available(iOS 15, tvOS 15, *)) {
+            // User pass `lazyDecode == YES`, but we still have to strip the CGImageSourceRef
+            // CGImageRef newImageRef = CGImageCreateCopy(imageRef); // This one does not strip the CGImageProperty
+            CGImageRef newImageRef = SDCGImageCreateCopy(imageRef);
+            if (newImageRef) {
+                CGImageRelease(imageRef);
+                imageRef = newImageRef;
+            }
 #if SD_CHECK_CGIMAGE_RETAIN_SOURCE
-        // Assert here to check CGImageRef should not retain the CGImageSourceRef and has possible thread-safe issue (this is behavior on iOS 15+)
-        // If assert hit, fire issue to https://github.com/SDWebImage/SDWebImage/issues and we update the condition for this behavior check
-        extern CGImageSourceRef CGImageGetImageSource(CGImageRef);
-        NSCAssert(!CGImageGetImageSource(imageRef), @"Animated Coder created CGImageRef should not retain CGImageSourceRef, which may cause thread-safe issue without lock");
+            // Assert here to check CGImageRef should not retain the CGImageSourceRef and has possible thread-safe issue (this is behavior on iOS 15+)
+            // If assert hit, fire issue to https://github.com/SDWebImage/SDWebImage/issues and we update the condition for this behavior check
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                SDCGImageGetImageSource = dlsym(RTLD_DEFAULT, "CGImageGetImageSource");
+            });
+            if (SDCGImageGetImageSource) {
+                NSCAssert(!SDCGImageGetImageSource(imageRef), @"Animated Coder created CGImageRef should not retain CGImageSourceRef, which may cause thread-safe issue without lock");
+            }
 #endif
+        }
+    }
+    // :)
+    CFStringRef uttype = CGImageSourceGetType(source);
+    SDImageFormat imageFormat = [NSData sd_imageFormatFromUTType:uttype];
+    if (imageFormat == SDImageFormatPNG && SDImageIOPNGPluginBuggyNeedWorkaround()) {
+        CGImageRef newImageRef = SDImageIOPNGPluginBuggyCreateWorkaround(imageRef);
+        CGImageRelease(imageRef);
+        imageRef = newImageRef;
     }
     
 #if SD_UIKIT || SD_WATCH
@@ -270,6 +540,8 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     UIImage *image = [[UIImage alloc] initWithCGImage:imageRef scale:scale orientation:exifOrientation];
 #endif
     CGImageRelease(imageRef);
+    image.sd_isDecoded = isDecoded;
+    
     return image;
 }
 
@@ -304,10 +576,22 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         preserveAspectRatio = preserveAspectRatioValue.boolValue;
     }
     
+    BOOL lazyDecode = YES; // Defaults YES for static image coder
+    NSNumber *lazyDecodeValue = options[SDImageCoderDecodeUseLazyDecoding];
+    if (lazyDecodeValue != nil) {
+        lazyDecode = lazyDecodeValue.boolValue;
+    }
+    
+    NSUInteger limitBytes = 0;
+    NSNumber *limitBytesValue = options[SDImageCoderDecodeScaleDownLimitBytes];
+    if (limitBytesValue != nil) {
+        limitBytes = limitBytesValue.unsignedIntegerValue;
+    }
+    
 #if SD_MAC
     // If don't use thumbnail, prefers the built-in generation of frames (GIF/APNG)
     // Which decode frames in time and reduce memory usage
-    if (thumbnailSize.width == 0 || thumbnailSize.height == 0) {
+    if (limitBytes == 0 && (thumbnailSize.width == 0 || thumbnailSize.height == 0)) {
         SDAnimatedImageRep *imageRep = [[SDAnimatedImageRep alloc] initWithData:data];
         if (imageRep) {
             NSSize size = NSMakeSize(imageRep.pixelsWide / scale, imageRep.pixelsHigh / scale);
@@ -320,21 +604,60 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     }
 #endif
     
-    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    NSString *typeIdentifierHint = options[SDImageCoderDecodeTypeIdentifierHint];
+    if (!typeIdentifierHint) {
+        // Check file extension and convert to UTI, from: https://stackoverflow.com/questions/1506251/getting-an-uniform-type-identifier-for-a-given-extension
+        NSString *fileExtensionHint = options[SDImageCoderDecodeFileExtensionHint];
+        if (fileExtensionHint) {
+            typeIdentifierHint = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExtensionHint, kUTTypeImage);
+            // Ignore dynamic UTI
+            if (UTTypeIsDynamic((__bridge CFStringRef)typeIdentifierHint)) {
+                typeIdentifierHint = nil;
+            }
+        }
+    } else if ([typeIdentifierHint isEqual:NSNull.null]) {
+        // Hack if user don't want to imply file extension
+        typeIdentifierHint = nil;
+    }
+    
+    NSDictionary *creatingOptions = nil;
+    if (typeIdentifierHint) {
+        creatingOptions = @{(__bridge NSString *)kCGImageSourceTypeIdentifierHint : typeIdentifierHint};
+    }
+    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, (__bridge CFDictionaryRef)creatingOptions);
+    if (!source) {
+        // Try again without UTType hint, the call site from user may provide the wrong UTType
+        source = CGImageSourceCreateWithData((__bridge CFDataRef)data, nil);
+    }
     if (!source) {
         return nil;
     }
-    size_t count = CGImageSourceGetCount(source);
+    
+    size_t frameCount = CGImageSourceGetCount(source);
     UIImage *animatedImage;
     
+    // Parse the image properties
+    NSDictionary *properties = (__bridge_transfer NSDictionary *)CGImageSourceCopyPropertiesAtIndex(source, 0, NULL);
+    size_t width = [properties[(__bridge NSString *)kCGImagePropertyPixelWidth] doubleValue];
+    size_t height = [properties[(__bridge NSString *)kCGImagePropertyPixelHeight] doubleValue];
+    // Scale down to limit bytes if need
+    if (limitBytes > 0) {
+        // Hack since ImageIO public API (not CGImageDecompressor/CMPhoto) always return back RGBA8888 CGImage
+        CGSize imageSize = CGSizeMake(width, height);
+        CGSize framePixelSize = [SDImageCoderHelper scaledSizeWithImageSize:imageSize limitBytes:limitBytes bytesPerPixel:4 frameCount:frameCount];
+        // Override thumbnail size
+        thumbnailSize = framePixelSize;
+        preserveAspectRatio = YES;
+    }
+    
     BOOL decodeFirstFrame = [options[SDImageCoderDecodeFirstFrameOnly] boolValue];
-    if (decodeFirstFrame || count <= 1) {
-        animatedImage = [self.class createFrameAtIndex:0 source:source scale:scale preserveAspectRatio:preserveAspectRatio thumbnailSize:thumbnailSize forceDecode:NO options:nil];
+    if (decodeFirstFrame || frameCount <= 1) {
+        animatedImage = [self.class createFrameAtIndex:0 source:source scale:scale preserveAspectRatio:preserveAspectRatio thumbnailSize:thumbnailSize lazyDecode:lazyDecode animatedImage:NO];
     } else {
-        NSMutableArray<SDImageFrame *> *frames = [NSMutableArray arrayWithCapacity:count];
+        NSMutableArray<SDImageFrame *> *frames = [NSMutableArray arrayWithCapacity:frameCount];
         
-        for (size_t i = 0; i < count; i++) {
-            UIImage *image = [self.class createFrameAtIndex:i source:source scale:scale preserveAspectRatio:preserveAspectRatio thumbnailSize:thumbnailSize forceDecode:NO options:nil];
+        for (size_t i = 0; i < frameCount; i++) {
+            UIImage *image = [self.class createFrameAtIndex:i source:source scale:scale preserveAspectRatio:preserveAspectRatio thumbnailSize:thumbnailSize lazyDecode:lazyDecode animatedImage:NO];
             if (!image) {
                 continue;
             }
@@ -390,6 +713,18 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
             preserveAspectRatio = preserveAspectRatioValue.boolValue;
         }
         _preserveAspectRatio = preserveAspectRatio;
+        NSUInteger limitBytes = 0;
+        NSNumber *limitBytesValue = options[SDImageCoderDecodeScaleDownLimitBytes];
+        if (limitBytesValue != nil) {
+            limitBytes = limitBytesValue.unsignedIntegerValue;
+        }
+        _limitBytes = limitBytes;
+        BOOL lazyDecode = NO; // Defaults NO for animated image coder
+        NSNumber *lazyDecodeValue = options[SDImageCoderDecodeUseLazyDecoding];
+        if (lazyDecodeValue != nil) {
+            lazyDecode = lazyDecodeValue.boolValue;
+        }
+        _lazyDecode = lazyDecode;
         SD_LOCK_INIT(_lock);
 #if SD_UIKIT
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
@@ -413,11 +748,7 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     CGImageSourceUpdateData(_imageSource, (__bridge CFDataRef)data, finished);
     
     if (_width + _height == 0) {
-        NSDictionary *options = @{
-            (__bridge NSString *)kCGImageSourceShouldCacheImmediately : @(YES),
-            (__bridge NSString *)kCGImageSourceShouldCache : @(YES) // Always cache to reduce CPU usage
-        };
-        CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(_imageSource, 0, (__bridge CFDictionaryRef)options);
+        CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(_imageSource, 0, NULL);
         if (properties) {
             CFTypeRef val = CFDictionaryGetValue(properties, kCGImagePropertyPixelHeight);
             if (val) CFNumberGetValue(val, kCFNumberLongType, &_height);
@@ -431,6 +762,16 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     // For animated image progressive decoding because the frame count and duration may be changed.
     [self scanAndCheckFramesValidWithImageSource:_imageSource];
     SD_UNLOCK(_lock);
+    
+    // Scale down to limit bytes if need
+    if (_limitBytes > 0) {
+        // Hack since ImageIO public API (not CGImageDecompressor/CMPhoto) always return back RGBA8888 CGImage
+        CGSize imageSize = CGSizeMake(_width, _height);
+        CGSize framePixelSize = [SDImageCoderHelper scaledSizeWithImageSize:imageSize limitBytes:_limitBytes bytesPerPixel:4 frameCount:_frameCount];
+        // Override thumbnail size
+        _thumbnailSize = framePixelSize;
+        _preserveAspectRatio = YES;
+    }
 }
 
 - (UIImage *)incrementalDecodedImageWithOptions:(SDImageCoderOptions *)options {
@@ -444,7 +785,7 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         if (scaleFactor != nil) {
             scale = MAX([scaleFactor doubleValue], 1);
         }
-        image = [self.class createFrameAtIndex:0 source:_imageSource scale:scale preserveAspectRatio:_preserveAspectRatio thumbnailSize:_thumbnailSize forceDecode:NO options:nil];
+        image = [self.class createFrameAtIndex:0 source:_imageSource scale:scale preserveAspectRatio:_preserveAspectRatio thumbnailSize:_thumbnailSize lazyDecode:_lazyDecode animatedImage:NO];
         if (image) {
             image.sd_imageFormat = self.class.imageFormat;
         }
@@ -462,19 +803,31 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     if (!image) {
         return nil;
     }
+    if (format != self.class.imageFormat) {
+        return nil;
+    }
+    
+    NSArray<SDImageFrame *> *frames = [SDImageCoderHelper framesFromAnimatedImage:image];
+    if (!frames || frames.count == 0) {
+        SDImageFrame *frame = [SDImageFrame frameWithImage:image duration:0];
+        frames = @[frame];
+    }
+    return [self encodedDataWithFrames:frames loopCount:image.sd_imageLoopCount format:format options:options];
+}
+
+- (NSData *)encodedDataWithFrames:(NSArray<SDImageFrame *> *)frames loopCount:(NSUInteger)loopCount format:(SDImageFormat)format options:(SDImageCoderOptions *)options {
+    UIImage *image = frames.firstObject.image; // Primary image
+    if (!image) {
+        return nil;
+    }
     CGImageRef imageRef = image.CGImage;
     if (!imageRef) {
         // Earily return, supports CGImage only
         return nil;
     }
     
-    if (format != self.class.imageFormat) {
-        return nil;
-    }
-    
     NSMutableData *imageData = [NSMutableData data];
     CFStringRef imageUTType = [NSData sd_UTTypeFromImageFormat:format];
-    NSArray<SDImageFrame *> *frames = [SDImageCoderHelper framesFromAnimatedImage:image];
     
     // Create an image destination. Animated Image does not support EXIF image orientation TODO
     // The `CGImageDestinationCreateWithData` will log a warning when count is 0, use 1 instead.
@@ -484,6 +837,12 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         return nil;
     }
     NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+#if SD_UIKIT || SD_WATCH
+    CGImagePropertyOrientation exifOrientation = [SDImageCoderHelper exifOrientationFromImageOrientation:image.imageOrientation];
+#else
+    CGImagePropertyOrientation exifOrientation = kCGImagePropertyOrientationUp;
+#endif
+    properties[(__bridge NSString *)kCGImagePropertyOrientation] = @(exifOrientation);
     // Encoding Options
     double compressionQuality = 1;
     if (options[SDImageCoderEncodeCompressionQuality]) {
@@ -531,12 +890,11 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     properties[(__bridge NSString *)kCGImageDestinationEmbedThumbnail] = @(embedThumbnail);
     
     BOOL encodeFirstFrame = [options[SDImageCoderEncodeFirstFrameOnly] boolValue];
-    if (encodeFirstFrame || frames.count == 0) {
+    if (encodeFirstFrame || frames.count <= 1) {
         // for static single images
         CGImageDestinationAddImage(imageDestination, imageRef, (__bridge CFDictionaryRef)properties);
     } else {
         // for animated images
-        NSUInteger loopCount = image.sd_imageLoopCount;
         NSDictionary *containerProperties = @{
             self.class.dictionaryProperty: @{self.class.loopCountProperty : @(loopCount)}
         };
@@ -600,6 +958,31 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
             preserveAspectRatio = preserveAspectRatioValue.boolValue;
         }
         _preserveAspectRatio = preserveAspectRatio;
+        NSUInteger limitBytes = 0;
+        NSNumber *limitBytesValue = options[SDImageCoderDecodeScaleDownLimitBytes];
+        if (limitBytesValue != nil) {
+            limitBytes = limitBytesValue.unsignedIntegerValue;
+        }
+        _limitBytes = limitBytes;
+        // Parse the image properties
+        NSDictionary *properties = (__bridge_transfer NSDictionary *)CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
+        _width = [properties[(__bridge NSString *)kCGImagePropertyPixelWidth] doubleValue];
+        _height = [properties[(__bridge NSString *)kCGImagePropertyPixelHeight] doubleValue];
+        // Scale down to limit bytes if need
+        if (_limitBytes > 0) {
+            // Hack since ImageIO public API (not CGImageDecompressor/CMPhoto) always return back RGBA8888 CGImage
+            CGSize imageSize = CGSizeMake(_width, _height);
+            CGSize framePixelSize = [SDImageCoderHelper scaledSizeWithImageSize:imageSize limitBytes:_limitBytes bytesPerPixel:4 frameCount:_frameCount];
+            // Override thumbnail size
+            _thumbnailSize = framePixelSize;
+            _preserveAspectRatio = YES;
+        }
+        BOOL lazyDecode = NO; // Defaults NO for animated image coder
+        NSNumber *lazyDecodeValue = options[SDImageCoderDecodeUseLazyDecoding];
+        if (lazyDecodeValue != nil) {
+            lazyDecode = lazyDecodeValue.boolValue;
+        }
+        _lazyDecode = lazyDecode;
         _imageSource = imageSource;
         _imageData = data;
 #if SD_UIKIT
@@ -690,29 +1073,11 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
 }
 
 - (UIImage *)safeAnimatedImageFrameAtIndex:(NSUInteger)index {
-    NSDictionary *options;
-    BOOL forceDecode = NO;
-    if (@available(iOS 15, tvOS 15, *)) {
-        // iOS 15+, CGImageRef now retains CGImageSourceRef internally. To workaround its thread-safe issue, we have to strip CGImageSourceRef, using Force-Decode (or have to use SPI `CGImageSetImageSource`), See: https://github.com/SDWebImage/SDWebImage/issues/3273
-        forceDecode = YES;
-        options = @{
-            (__bridge NSString *)kCGImageSourceShouldCacheImmediately : @(NO),
-            (__bridge NSString *)kCGImageSourceShouldCache : @(NO)
-        };
-    } else {
-        // Animated Image should not use the CGContext solution to force decode on lower firmware. Prefers to use Image/IO built in method, which is safer and memory friendly, see https://github.com/SDWebImage/SDWebImage/issues/2961
-        forceDecode = NO;
-        options = @{
-            (__bridge NSString *)kCGImageSourceShouldCacheImmediately : @(YES),
-            (__bridge NSString *)kCGImageSourceShouldCache : @(YES) // Always cache to reduce CPU usage
-        };
-    }
-    UIImage *image = [self.class createFrameAtIndex:index source:_imageSource scale:_scale preserveAspectRatio:_preserveAspectRatio thumbnailSize:_thumbnailSize forceDecode:forceDecode options:options];
+    UIImage *image = [self.class createFrameAtIndex:index source:_imageSource scale:_scale preserveAspectRatio:_preserveAspectRatio thumbnailSize:_thumbnailSize lazyDecode:_lazyDecode animatedImage:YES];
     if (!image) {
         return nil;
     }
     image.sd_imageFormat = self.class.imageFormat;
-    image.sd_isDecoded = YES;
     return image;
 }
 

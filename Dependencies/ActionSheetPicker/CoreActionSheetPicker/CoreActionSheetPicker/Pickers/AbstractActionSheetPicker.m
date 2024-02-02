@@ -53,6 +53,9 @@ CG_INLINE BOOL isIPhone4() {
 
 @implementation MyPopoverController
 + (BOOL)canShowPopover {
+#if TARGET_OS_VISION
+    return YES;
+#else
     if (IS_IPAD) {
         if ([UITraitCollection class]) {
             UITraitCollection *traits = [UIApplication sharedApplication].keyWindow.traitCollection;
@@ -62,6 +65,7 @@ CG_INLINE BOOL isIPhone4() {
         return YES;
     }
     return NO;
+#endif
 }
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
@@ -125,13 +129,21 @@ CG_INLINE BOOL isIPhone4() {
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
         if ([UIApplication instancesRespondToSelector:@selector(supportedInterfaceOrientationsForWindow:)])
+#if TARGET_OS_VISION
+            self.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
+#else
             self.supportedInterfaceOrientations = (UIInterfaceOrientationMask) [[UIApplication sharedApplication]
                     supportedInterfaceOrientationsForWindow:
                             [UIApplication sharedApplication].keyWindow];
+#endif
         else {
             self.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
+#if TARGET_OS_VISION
+            self.supportedInterfaceOrientations |= (1 << UIInterfaceOrientationPortraitUpsideDown);
+#else
             if (IS_IPAD)
                 self.supportedInterfaceOrientations |= (1 << UIInterfaceOrientationPortraitUpsideDown);
+#endif
         }
 #pragma clang diagnostic pop
 
@@ -239,8 +251,11 @@ CG_INLINE BOOL isIPhone4() {
     
     /// Bottom padding for iPhone X style phones (adds some additional height for the home bar).
     if (@available(iOS 11.0, *)) {
+#if TARGET_OS_VISION
+#else
         UIWindow *window = UIApplication.sharedApplication.keyWindow;
         height += window.safeAreaInsets.bottom;
+#endif
     }
     
     UIView *masterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewSize.width, height)];
@@ -633,16 +648,24 @@ CG_INLINE BOOL isIPhone4() {
 #pragma mark - Utilities and Accessors
 
 - (CGSize)viewSize {
+#if TARGET_OS_VISION
+    return CGSizeMake(320, 320);
+#else
     if (IS_IPAD) {
         if (!self.popoverDisabled && [MyPopoverController canShowPopover])
             return CGSizeMake(320, 320);
         return [UIApplication sharedApplication].keyWindow.bounds.size;
     }
     return [[UIScreen mainScreen] bounds].size;
+#endif
 }
 
 - (BOOL)isViewPortrait {
+#if TARGET_OS_VISION
+    return false;
+#else
     return UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
+#endif
 }
 
 - (BOOL)isValidOrigin:(id)origin {
@@ -665,7 +688,11 @@ CG_INLINE BOOL isIPhone4() {
 }
 
 - (UIViewController *)topViewController {
+#if TARGET_OS_VISION
+    UIViewController *topController = [[UIApplication sharedApplication].windows firstObject].rootViewController;
+#else
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+#endif
     while (topController.presentedViewController) {
         topController = topController.presentedViewController;
     }
@@ -684,19 +711,22 @@ CG_INLINE BOOL isIPhone4() {
 }
 
 - (void)configureAndPresentActionSheetForView:(UIView *)aView {
+#if TARGET_OS_VISION
+#else
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
-
+    
     _actionSheet = [[SWActionSheet alloc] initWithView:aView windowLevel:self.windowLevel];
     if (self.pickerBackgroundColor) {
         _actionSheet.bgView.backgroundColor = self.pickerBackgroundColor;
     }
-
+    
     [self presentActionSheet:_actionSheet];
-
+    
     // Use beginAnimations for a smoother popup animation, otherwise the UIActionSheet pops into view
     [UIView beginAnimations:nil context:nil];
-//    _actionSheet.bounds = CGRectMake(0, 0, self.viewSize.width, sheetHeight);
+    //    _actionSheet.bounds = CGRectMake(0, 0, self.viewSize.width, sheetHeight);
     [UIView commitAnimations];
+#endif
 }
 
 - (void)didRotate:(NSNotification *)notification {

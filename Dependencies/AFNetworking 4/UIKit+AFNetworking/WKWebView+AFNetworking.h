@@ -23,7 +23,7 @@
 
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS || TARGET_OS_VISION
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>

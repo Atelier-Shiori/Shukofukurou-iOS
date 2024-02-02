@@ -75,10 +75,16 @@
     stringPicker.dataSource = self;
     [stringPicker selectRow:self.selectedIndex inComponent:0 animated:NO];
     if (self.data.count == 0) {
+#if TARGET_OS_VISION
+#else
         stringPicker.showsSelectionIndicator = NO;
+#endif
         stringPicker.userInteractionEnabled = NO;
     } else {
+#if TARGET_OS_VISION
+#else
         stringPicker.showsSelectionIndicator = YES;
+#endif
         stringPicker.userInteractionEnabled = YES;
     }
 

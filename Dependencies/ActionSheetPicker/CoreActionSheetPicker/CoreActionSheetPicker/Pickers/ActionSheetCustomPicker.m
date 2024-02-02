@@ -70,7 +70,10 @@
     // Default to our delegate being the picker's delegate and datasource
     pv.delegate = _delegate;
     pv.dataSource = _delegate;
+#if TARGET_OS_VISION
+#else
     pv.showsSelectionIndicator = YES;
+#endif
 
     if ( self.initialSelections )
     {

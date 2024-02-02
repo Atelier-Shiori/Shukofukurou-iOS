@@ -56,9 +56,11 @@
 - (void)loadimage:(NSString *)imageurl {
     if (imageurl.length > 0) {
         [_posterimage sd_setImageWithURL:[NSURL URLWithString:imageurl]];
+        _posterimage.accessibilityLabel = [NSString stringWithFormat:@"Poster image for %@", _title.text];
     }
     else {
         _posterimage.image = [UIImage new];
+        _posterimage.accessibilityLabel = @"No poster image available";
     }
 }
 
@@ -149,6 +151,7 @@
         [fstring appendFormat:@"Ep %i aired!", _nextEpisode];
     }
     _airingCountdown.text = fstring;
+    _airingCountdown.accessibilityHint = @"Next Airing Date";
 }
 
 - (void)setEpisodeText:(id)watchedepisodes withEpisodes:(id)episodes {

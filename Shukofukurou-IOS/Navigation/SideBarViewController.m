@@ -43,6 +43,10 @@ struct {
     [self.tableView selectRowAtIndexPath:[self getSidebarItemIndexForIdentifier:selectedrow] animated:NO scrollPosition:UITableViewScrollPositionNone];
     [self setselectedcellbackground];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didReceiveNotification:) name:@"SideBarSelectionChanged" object:nil];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.tableView.backgroundColor = UIColor.systemBackgroundColor;
+        self.view.backgroundColor = UIColor.systemBackgroundColor;
+    }
 }
 
 - (void)didReceiveNotification:(NSNotification *)notification {
@@ -126,6 +130,7 @@ struct {
     SideBarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     cell.titleLabel.text = cellInfo[@"title"];
+    cell.accessibilityLabel = cell.titleLabel.text;
     cell.imageView.image = cellInfo[@"image"] ? [UIImage systemImageNamed:cellInfo[@"image"]] : [UIImage new];
     //cell.separatorView.hidden = (indexPath.row <= 3 || indexPath.row == self.sidebarItems.count-1);
     return cell;

@@ -471,7 +471,7 @@
 {
     if ([image.class conformsToProtocol:@protocol(SDAnimatedImage)] && image.sd_isIncremental && [image respondsToSelector:@selector(animatedCoder)]) {
         id<SDAnimatedImageCoder> animatedCoder = [(id<SDAnimatedImage>)image animatedCoder];
-        if ([animatedCoder conformsToProtocol:@protocol(SDProgressiveImageCoder)]) {
+        if ([animatedCoder respondsToSelector:@selector(initIncrementalWithOptions:)]) {
             return (id<SDAnimatedImageCoder, SDProgressiveImageCoder>)animatedCoder;
         }
     }
@@ -500,6 +500,17 @@
         }
     }
 }
+
+#if SD_UIKIT
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    // See: #3635
+    // From iOS 17, when UIImageView entering the background, it will receive the trait collection changes, and modify the CALayer.contents by `self.image.CGImage`
+    // However, For animated image, `self.image.CGImge != self.currentFrame.CGImage`, right ?
+    // So this cause the render issue, we need to reset the CALayer.contents again
+    [super traitCollectionDidChange:previousTraitCollection];
+    [self.imageViewLayer setNeedsDisplay];
+}
+#endif
 
 #if SD_MAC
 // NSImageView use a subview. We need this subview's layer for actual rendering.

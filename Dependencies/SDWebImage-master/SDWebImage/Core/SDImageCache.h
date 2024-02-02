@@ -37,8 +37,10 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
     /**
      * By default, we will decode the image in the background during cache query and download from the network. This can help to improve performance because when rendering image on the screen, it need to be firstly decoded. But this happen on the main queue by Core Animation.
      * However, this process may increase the memory usage as well. If you are experiencing a issue due to excessive memory consumption, This flag can prevent decode the image.
+     * @note 5.14.0 introduce `SDImageCoderDecodeUseLazyDecoding`, use that for better control from codec, instead of post-processing. Which acts the similar like this option but works for SDAnimatedImage as well (this one does not)
+     * @deprecated Deprecated in v5.17.0, if you don't want force-decode, pass [.imageForceDecodePolicy] = [SDImageForceDecodePolicy.never] in context option
      */
-    SDImageCacheAvoidDecodeImage = 1 << 4,
+    SDImageCacheAvoidDecodeImage API_DEPRECATED("Use SDWebImageContextImageForceDecodePolicy instead", macos(10.10, 10.10), ios(8.0, 8.0), tvos(9.0, 9.0), watchos(2.0, 2.0)) = 1 << 4,
     /**
      * By default, we decode the animated image. This flag can force decode the first frame only and produce the static image.
      */
@@ -226,6 +228,28 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
         completion:(nullable SDWebImageNoParamsBlock)completionBlock;
 
 /**
+ * Asynchronously store an image into memory and disk cache at the given key.
+ *
+ * @param image           The image to store
+ * @param imageData       The image data as returned by the server, this representation will be used for disk storage
+ *                        instead of converting the given image object into a storable/compressed image format in order
+ *                        to save quality and CPU
+ * @param key             The unique image cache key, usually it's image absolute URL
+ * @param options A mask to specify options to use for this store
+ * @param context The context options to use. Pass `.callbackQueue` to control callback queue
+ * @param cacheType The image store op cache type
+ * @param completionBlock A block executed after the operation is finished
+ * @note If no image data is provided and encode to disk, we will try to detect the image format (using either `sd_imageFormat` or `SDAnimatedImage` protocol method) and animation status, to choose the best matched format, including GIF, JPEG or PNG.
+ */
+- (void)storeImage:(nullable UIImage *)image
+         imageData:(nullable NSData *)imageData
+            forKey:(nullable NSString *)key
+           options:(SDWebImageOptions)options
+           context:(nullable SDWebImageContext *)context
+         cacheType:(SDImageCacheType)cacheType
+        completion:(nullable SDWebImageNoParamsBlock)completionBlock;
+
+/**
  * Synchronously store an image into memory cache at the given key.
  *
  * @param image  The image to store
@@ -299,6 +323,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  * @param doneBlock The completion block. Will not get called if the operation is cancelled
  *
  * @return a SDImageCacheToken instance containing the cache operation, will callback immediately when cancelled
+ * @warning If you query with thumbnail cache key, you'd better not pass the thumbnail pixel size context, which is undefined behavior.
  */
 - (nullable SDImageCacheToken *)queryCacheOperationForKey:(nullable NSString *)key options:(SDImageCacheOptions)options done:(nullable SDImageCacheQueryCompletionBlock)doneBlock;
 
@@ -311,6 +336,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  * @param doneBlock The completion block. Will not get called if the operation is cancelled
  *
  * @return a SDImageCacheToken instance containing the cache operation, will callback immediately when cancellederation, will callback immediately when cancelled
+ * @warning If you query with thumbnail cache key, you'd better not pass the thumbnail pixel size context, which is undefined behavior.
  */
 - (nullable SDImageCacheToken *)queryCacheOperationForKey:(nullable NSString *)key options:(SDImageCacheOptions)options context:(nullable SDWebImageContext *)context done:(nullable SDImageCacheQueryCompletionBlock)doneBlock;
 
@@ -324,6 +350,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  * @param doneBlock The completion block. Will not get called if the operation is cancelled
  *
  * @return a SDImageCacheToken instance containing the cache operation, will callback immediately when cancelled
+ * @warning If you query with thumbnail cache key, you'd better not pass the thumbnail pixel size context, which is undefined behavior.
  */
 - (nullable SDImageCacheToken *)queryCacheOperationForKey:(nullable NSString *)key options:(SDImageCacheOptions)options context:(nullable SDWebImageContext *)context cacheType:(SDImageCacheType)queryCacheType done:(nullable SDImageCacheQueryCompletionBlock)doneBlock;
 

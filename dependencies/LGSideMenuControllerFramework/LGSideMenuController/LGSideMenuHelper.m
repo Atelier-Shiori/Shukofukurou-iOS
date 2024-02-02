@@ -53,11 +53,17 @@
     if (self.isViewControllerBasedStatusBarAppearance) {
         if (animated && animation != UIStatusBarAnimationNone) {
             [UIView animateWithDuration:duration animations:^{
+#if TARGET_OS_VISION
+#else
                 [viewController setNeedsStatusBarAppearanceUpdate];
+#endif
             }];
         }
         else {
+#if TARGET_OS_VISION
+#else
             [viewController setNeedsStatusBarAppearanceUpdate];
+#endif
         }
     }
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_9_0
@@ -97,18 +103,29 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
+#if TARGET_OS_VISION
+#else
         isNotRetina = (UIScreen.mainScreen.scale == 1.0);
+#endif
     });
 
     return isNotRetina;
 }
 
 + (BOOL)isPhone {
+#if TARGET_OS_VISION
+    return false;
+#else
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+#endif
 }
 
 + (BOOL)isPad {
+#if TARGET_OS_VISION
+    return false;
+#else
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+#endif
 }
 
 @end

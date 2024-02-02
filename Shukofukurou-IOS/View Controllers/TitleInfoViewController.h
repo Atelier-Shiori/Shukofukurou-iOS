@@ -10,8 +10,11 @@
 #import <SafariServices/SafariServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+#if TARGET_OS_VISION
+@interface TitleInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#else
 @interface TitleInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate>
+#endif
 @property bool selectedaired;
 @property bool selectedaircompleted;
 @property bool selectedfinished;

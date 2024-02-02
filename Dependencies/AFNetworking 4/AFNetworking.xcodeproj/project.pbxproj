@@ -7,38 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1545CC2427668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC1E27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC2527668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC1E27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h */; };
-		1545CC2627668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC1E27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC2727668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC1E27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h */; };
-		1545CC2827668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC1F27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m */; };
-		1545CC2927668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC1F27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m */; };
-		1545CC2A27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC1F27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m */; };
-		1545CC2B27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC1F27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m */; };
-		1545CC2C27668FE200D40F65 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2027668FE200D40F65 /* AFOAuth2Manager.m */; };
-		1545CC2D27668FE200D40F65 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2027668FE200D40F65 /* AFOAuth2Manager.m */; };
-		1545CC2E27668FE200D40F65 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2027668FE200D40F65 /* AFOAuth2Manager.m */; };
-		1545CC2F27668FE200D40F65 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2027668FE200D40F65 /* AFOAuth2Manager.m */; };
-		1545CC3027668FE200D40F65 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2127668FE200D40F65 /* AFOAuthCredential.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC3127668FE200D40F65 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2127668FE200D40F65 /* AFOAuthCredential.h */; };
-		1545CC3227668FE200D40F65 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2127668FE200D40F65 /* AFOAuthCredential.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC3327668FE200D40F65 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2127668FE200D40F65 /* AFOAuthCredential.h */; };
-		1545CC3427668FE200D40F65 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2227668FE200D40F65 /* AFOAuthCredential.m */; };
-		1545CC3527668FE200D40F65 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2227668FE200D40F65 /* AFOAuthCredential.m */; };
-		1545CC3627668FE200D40F65 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2227668FE200D40F65 /* AFOAuthCredential.m */; };
-		1545CC3727668FE200D40F65 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC2227668FE200D40F65 /* AFOAuthCredential.m */; };
-		1545CC3827668FE200D40F65 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2327668FE200D40F65 /* AFOAuth2Manager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC3927668FE200D40F65 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2327668FE200D40F65 /* AFOAuth2Manager.h */; };
-		1545CC3A27668FE200D40F65 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2327668FE200D40F65 /* AFOAuth2Manager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC3B27668FE200D40F65 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC2327668FE200D40F65 /* AFOAuth2Manager.h */; };
-		1545CC3F27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC3D27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC4027668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC3D27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h */; };
-		1545CC4127668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC3D27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1545CC4227668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = 1545CC3D27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h */; };
-		1545CC4327668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC3E27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m */; };
-		1545CC4427668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC3E27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m */; };
-		1545CC4527668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC3E27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m */; };
-		1545CC4627668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545CC3E27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m */; };
 		1BF9F9601C87832B00F1F35A /* AFImageResponseSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF9F95F1C87832B00F1F35A /* AFImageResponseSerializerTests.m */; };
 		1BF9F9611C87843200F1F35A /* AFImageResponseSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF9F95F1C87832B00F1F35A /* AFImageResponseSerializerTests.m */; };
 		1BF9F9621C87843300F1F35A /* AFImageResponseSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF9F95F1C87832B00F1F35A /* AFImageResponseSerializerTests.m */; };
@@ -238,6 +206,38 @@
 		E91164651DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E91164641DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m */; };
 		E91164661DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E91164641DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m */; };
 		E91164671DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E91164641DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m */; };
+		FF6A890C2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A890A2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF6A890D2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A890A2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h */; };
+		FF6A890E2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A890A2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h */; };
+		FF6A890F2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A890A2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h */; };
+		FF6A89102B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A890B2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m */; };
+		FF6A89112B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A890B2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m */; };
+		FF6A89122B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A890B2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m */; };
+		FF6A89132B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A890B2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m */; };
+		FF6A891A2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89142B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m */; };
+		FF6A891B2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89142B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m */; };
+		FF6A891C2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89142B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m */; };
+		FF6A891D2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89142B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m */; };
+		FF6A891E2B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89152B6C7EE5007EC3B8 /* AFOAuthCredential.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF6A891F2B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89152B6C7EE5007EC3B8 /* AFOAuthCredential.h */; };
+		FF6A89202B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89152B6C7EE5007EC3B8 /* AFOAuthCredential.h */; };
+		FF6A89212B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89152B6C7EE5007EC3B8 /* AFOAuthCredential.h */; };
+		FF6A89222B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89162B6C7EE5007EC3B8 /* AFOAuth2Manager.m */; };
+		FF6A89232B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89162B6C7EE5007EC3B8 /* AFOAuth2Manager.m */; };
+		FF6A89242B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89162B6C7EE5007EC3B8 /* AFOAuth2Manager.m */; };
+		FF6A89252B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89162B6C7EE5007EC3B8 /* AFOAuth2Manager.m */; };
+		FF6A89262B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89172B6C7EE5007EC3B8 /* AFOAuthCredential.m */; };
+		FF6A89272B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89172B6C7EE5007EC3B8 /* AFOAuthCredential.m */; };
+		FF6A89282B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89172B6C7EE5007EC3B8 /* AFOAuthCredential.m */; };
+		FF6A89292B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A89172B6C7EE5007EC3B8 /* AFOAuthCredential.m */; };
+		FF6A892A2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89182B6C7EE5007EC3B8 /* AFOAuth2Manager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF6A892B2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89182B6C7EE5007EC3B8 /* AFOAuth2Manager.h */; };
+		FF6A892C2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89182B6C7EE5007EC3B8 /* AFOAuth2Manager.h */; };
+		FF6A892D2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89182B6C7EE5007EC3B8 /* AFOAuth2Manager.h */; };
+		FF6A892E2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89192B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF6A892F2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89192B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h */; };
+		FF6A89302B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89192B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h */; };
+		FF6A89312B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6A89192B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,14 +265,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1545CC1E27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AFHTTPRequestSerializer+OAuth2.h"; path = "AFOAuth2Manager/AFOAuth2Manager/AFHTTPRequestSerializer+OAuth2.h"; sourceTree = "<group>"; };
-		1545CC1F27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AFHTTPRequestSerializer+OAuth2.m"; path = "AFOAuth2Manager/AFOAuth2Manager/AFHTTPRequestSerializer+OAuth2.m"; sourceTree = "<group>"; };
-		1545CC2027668FE200D40F65 /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuth2Manager.m; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuth2Manager.m; sourceTree = "<group>"; };
-		1545CC2127668FE200D40F65 /* AFOAuthCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuthCredential.h; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuthCredential.h; sourceTree = "<group>"; };
-		1545CC2227668FE200D40F65 /* AFOAuthCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuthCredential.m; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuthCredential.m; sourceTree = "<group>"; };
-		1545CC2327668FE200D40F65 /* AFOAuth2Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuth2Manager.h; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuth2Manager.h; sourceTree = "<group>"; };
-		1545CC3D27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+Synchronous.h"; sourceTree = "<group>"; };
-		1545CC3E27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+Synchronous.m"; sourceTree = "<group>"; };
 		1BF9F95F1C87832B00F1F35A /* AFImageResponseSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageResponseSerializerTests.m; sourceTree = "<group>"; };
 		1F083A4920364648004D80C7 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCompatibilityMacros.h; sourceTree = "<group>"; };
 		2960BAC21C1B2F1A00BA02F0 /* AFUIButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFUIButtonTests.m; sourceTree = "<group>"; };
@@ -366,6 +358,14 @@
 		E2B10D8C233035100004E005 /* Amazon Root CA 1.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Amazon Root CA 1.cer"; sourceTree = "<group>"; };
 		E2B10D8D233035100004E005 /* Amazon.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = Amazon.cer; sourceTree = "<group>"; };
 		E91164641DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestSerializerTests.m; sourceTree = "<group>"; };
+		FF6A890A2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AFHTTPSessionManager+Synchronous.h"; path = "AFHTTPSessionManager+Synchronous/AFHTTPSessionManager+Synchronous.h"; sourceTree = "<group>"; };
+		FF6A890B2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AFHTTPSessionManager+Synchronous.m"; path = "AFHTTPSessionManager+Synchronous/AFHTTPSessionManager+Synchronous.m"; sourceTree = "<group>"; };
+		FF6A89142B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AFHTTPRequestSerializer+OAuth2.m"; path = "AFOAuth2Manager/AFOAuth2Manager/AFHTTPRequestSerializer+OAuth2.m"; sourceTree = "<group>"; };
+		FF6A89152B6C7EE5007EC3B8 /* AFOAuthCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuthCredential.h; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuthCredential.h; sourceTree = "<group>"; };
+		FF6A89162B6C7EE5007EC3B8 /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuth2Manager.m; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuth2Manager.m; sourceTree = "<group>"; };
+		FF6A89172B6C7EE5007EC3B8 /* AFOAuthCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuthCredential.m; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuthCredential.m; sourceTree = "<group>"; };
+		FF6A89182B6C7EE5007EC3B8 /* AFOAuth2Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuth2Manager.h; path = AFOAuth2Manager/AFOAuth2Manager/AFOAuth2Manager.h; sourceTree = "<group>"; };
+		FF6A89192B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AFHTTPRequestSerializer+OAuth2.h"; path = "AFOAuth2Manager/AFOAuth2Manager/AFHTTPRequestSerializer+OAuth2.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,15 +424,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1545CC3C27668FF800D40F65 /* AFHTTPSessionManager+Synchronous */ = {
-			isa = PBXGroup;
-			children = (
-				1545CC3D27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h */,
-				1545CC3E27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m */,
-			);
-			path = "AFHTTPSessionManager+Synchronous";
-			sourceTree = "<group>";
-		};
 		298D7C561BC2C88F00FD3B3E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,13 +527,8 @@
 		2995222F1BBF104D00859F49 = {
 			isa = PBXGroup;
 			children = (
-				1545CC3C27668FF800D40F65 /* AFHTTPSessionManager+Synchronous */,
-				1545CC1E27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h */,
-				1545CC1F27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m */,
-				1545CC2327668FE200D40F65 /* AFOAuth2Manager.h */,
-				1545CC2027668FE200D40F65 /* AFOAuth2Manager.m */,
-				1545CC2127668FE200D40F65 /* AFOAuthCredential.h */,
-				1545CC2227668FE200D40F65 /* AFOAuthCredential.m */,
+				FF6A89092B6C7ECA007EC3B8 /* AFHTTPSessionManager+Synchronous */,
+				FF6A89082B6C7EBD007EC3B8 /* AFOAuth2Manager */,
 				299522451BBF125A00859F49 /* AFNetworking */,
 				299522851BBF13C700859F49 /* UIKit+AFNetworking */,
 				2995223B1BBF104D00859F49 /* Supporting Files */,
@@ -647,6 +633,28 @@
 			path = Google.com;
 			sourceTree = "<group>";
 		};
+		FF6A89082B6C7EBD007EC3B8 /* AFOAuth2Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FF6A89192B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h */,
+				FF6A89142B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m */,
+				FF6A89182B6C7EE5007EC3B8 /* AFOAuth2Manager.h */,
+				FF6A89162B6C7EE5007EC3B8 /* AFOAuth2Manager.m */,
+				FF6A89152B6C7EE5007EC3B8 /* AFOAuthCredential.h */,
+				FF6A89172B6C7EE5007EC3B8 /* AFOAuthCredential.m */,
+			);
+			name = AFOAuth2Manager;
+			sourceTree = "<group>";
+		};
+		FF6A89092B6C7ECA007EC3B8 /* AFHTTPSessionManager+Synchronous */ = {
+			isa = PBXGroup;
+			children = (
+				FF6A890A2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h */,
+				FF6A890B2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m */,
+			);
+			name = "AFHTTPSessionManager+Synchronous";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -654,11 +662,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1545CC4227668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */,
 				29D96E881BCC3D7D00F571A5 /* AFHTTPSessionManager.h in Headers */,
-				1545CC2727668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
 				29D96E891BCC3D7D00F571A5 /* AFNetworkReachabilityManager.h in Headers */,
 				29D96E8A1BCC3D7D00F571A5 /* AFSecurityPolicy.h in Headers */,
+				FF6A890F2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */,
 				29D96E8B1BCC3D7D00F571A5 /* AFURLRequestSerialization.h in Headers */,
 				29D96E8C1BCC3D7D00F571A5 /* AFURLResponseSerialization.h in Headers */,
 				29D96E8D1BCC3D7D00F571A5 /* AFURLSessionManager.h in Headers */,
@@ -667,10 +674,11 @@
 				1F96D2A7203649580085FC3F /* AFCompatibilityMacros.h in Headers */,
 				29D96E961BCC406B00F571A5 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				29D96E971BCC406B00F571A5 /* UIButton+AFNetworking.h in Headers */,
-				1545CC3327668FE200D40F65 /* AFOAuthCredential.h in Headers */,
+				FF6A89212B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */,
 				29D96E991BCC406B00F571A5 /* UIImageView+AFNetworking.h in Headers */,
 				29D96E9A1BCC406B00F571A5 /* UIProgressView+AFNetworking.h in Headers */,
-				1545CC3B27668FE200D40F65 /* AFOAuth2Manager.h in Headers */,
+				FF6A892D2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */,
+				FF6A89312B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
 				29D96E8E1BCC3D7D00F571A5 /* AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,11 +701,11 @@
 				1F96D2A4203649560085FC3F /* AFCompatibilityMacros.h in Headers */,
 				2995223D1BBF104D00859F49 /* AFNetworking.h in Headers */,
 				299522AC1BBF13C700859F49 /* UIProgressView+AFNetworking.h in Headers */,
+				FF6A890C2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */,
+				FF6A891E2B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */,
+				FF6A892A2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */,
+				FF6A892E2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
 				299522A61BBF13C700859F49 /* UIButton+AFNetworking.h in Headers */,
-				1545CC3F27668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */,
-				1545CC3027668FE200D40F65 /* AFOAuthCredential.h in Headers */,
-				1545CC3827668FE200D40F65 /* AFOAuth2Manager.h in Headers */,
-				1545CC2427668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
 				299522A01BBF13C700859F49 /* AFNetworkActivityIndicatorManager.h in Headers */,
 				299522AE1BBF13C700859F49 /* UIRefreshControl+AFNetworking.h in Headers */,
 			);
@@ -710,14 +718,14 @@
 				29D96E7A1BCC3D6000F571A5 /* AFHTTPSessionManager.h in Headers */,
 				29D96E7C1BCC3D6000F571A5 /* AFSecurityPolicy.h in Headers */,
 				1F96D2A5203649570085FC3F /* AFCompatibilityMacros.h in Headers */,
-				1545CC4027668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */,
+				FF6A892F2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
 				29D96E7D1BCC3D6000F571A5 /* AFURLRequestSerialization.h in Headers */,
-				1545CC2527668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
+				FF6A890D2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */,
 				29D96E7E1BCC3D6000F571A5 /* AFURLResponseSerialization.h in Headers */,
-				1545CC3927668FE200D40F65 /* AFOAuth2Manager.h in Headers */,
+				FF6A892B2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */,
 				29D96E7F1BCC3D6000F571A5 /* AFURLSessionManager.h in Headers */,
 				29D96E801BCC3D6000F571A5 /* AFNetworking.h in Headers */,
-				1545CC3127668FE200D40F65 /* AFOAuthCredential.h in Headers */,
+				FF6A891F2B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,18 +733,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6A890E2B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.h in Headers */,
 				29D96E811BCC3D7200F571A5 /* AFHTTPSessionManager.h in Headers */,
+				FF6A89202B6C7EE5007EC3B8 /* AFOAuthCredential.h in Headers */,
 				29D96E821BCC3D7200F571A5 /* AFNetworkReachabilityManager.h in Headers */,
+				FF6A89302B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
 				29D96E831BCC3D7200F571A5 /* AFSecurityPolicy.h in Headers */,
 				1F96D2A6203649570085FC3F /* AFCompatibilityMacros.h in Headers */,
 				29D96E841BCC3D7200F571A5 /* AFURLRequestSerialization.h in Headers */,
 				29D96E851BCC3D7200F571A5 /* AFURLResponseSerialization.h in Headers */,
-				1545CC4127668FF800D40F65 /* AFHTTPSessionManager+Synchronous.h in Headers */,
-				1545CC3227668FE200D40F65 /* AFOAuthCredential.h in Headers */,
-				1545CC2627668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.h in Headers */,
-				1545CC3A27668FE200D40F65 /* AFOAuth2Manager.h in Headers */,
 				29D96E861BCC3D7200F571A5 /* AFURLSessionManager.h in Headers */,
 				29D96E871BCC3D7200F571A5 /* AFNetworking.h in Headers */,
+				FF6A892C2B6C7EE5007EC3B8 /* AFOAuth2Manager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,19 +1058,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				2987B0BD1BC408D900179A4C /* AFNetworkReachabilityManager.m in Sources */,
+				FF6A89292B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */,
+				FF6A89252B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */,
 				2987B0BE1BC408D900179A4C /* AFSecurityPolicy.m in Sources */,
-				1545CC3727668FE200D40F65 /* AFOAuthCredential.m in Sources */,
 				2987B0BC1BC408D900179A4C /* AFHTTPSessionManager.m in Sources */,
 				2987B0C11BC408D900179A4C /* AFURLSessionManager.m in Sources */,
-				1545CC2B27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				2987B0C71BC408F900179A4C /* UIProgressView+AFNetworking.m in Sources */,
 				2987B0BF1BC408D900179A4C /* AFURLRequestSerialization.m in Sources */,
 				2987B0C21BC408F900179A4C /* AFAutoPurgingImageCache.m in Sources */,
 				2987B0C51BC408F900179A4C /* UIButton+AFNetworking.m in Sources */,
-				1545CC2F27668FE200D40F65 /* AFOAuth2Manager.m in Sources */,
+				FF6A891D2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
+				FF6A89132B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				2987B0C41BC408F900179A4C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				2987B0C01BC408D900179A4C /* AFURLResponseSerialization.m in Sources */,
-				1545CC4627668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				2987B0C61BC408F900179A4C /* UIImageView+AFNetworking.m in Sources */,
 				2987B0C31BC408F900179A4C /* AFImageDownloader.m in Sources */,
 			);
@@ -1150,18 +1158,18 @@
 				299522AF1BBF13C700859F49 /* UIRefreshControl+AFNetworking.m in Sources */,
 				299522AA1BBF13C700859F49 /* UIImageView+AFNetworking.m in Sources */,
 				299522591BBF125A00859F49 /* AFSecurityPolicy.m in Sources */,
-				1545CC3427668FE200D40F65 /* AFOAuthCredential.m in Sources */,
+				FF6A89262B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */,
 				299522A71BBF13C700859F49 /* UIButton+AFNetworking.m in Sources */,
-				1545CC2827668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				299522541BBF125A00859F49 /* AFHTTPSessionManager.m in Sources */,
+				FF6A89222B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */,
 				323D83E3231D185400C5BFC6 /* WKWebView+AFNetworking.m in Sources */,
 				2995225F1BBF125A00859F49 /* AFURLSessionManager.m in Sources */,
 				2995225B1BBF125A00859F49 /* AFURLRequestSerialization.m in Sources */,
-				1545CC4327668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				2995229D1BBF13C700859F49 /* AFAutoPurgingImageCache.m in Sources */,
 				299522A31BBF13C700859F49 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				1545CC2C27668FE200D40F65 /* AFOAuth2Manager.m in Sources */,
 				2995225D1BBF125A00859F49 /* AFURLResponseSerialization.m in Sources */,
+				FF6A891A2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
+				FF6A89102B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				2995229F1BBF13C700859F49 /* AFImageDownloader.m in Sources */,
 				299522A11BBF13C700859F49 /* AFNetworkActivityIndicatorManager.m in Sources */,
 			);
@@ -1172,13 +1180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				299522711BBF133400859F49 /* AFURLSessionManager.m in Sources */,
-				1545CC3527668FE200D40F65 /* AFOAuthCredential.m in Sources */,
+				FF6A89232B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */,
+				FF6A891B2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
+				FF6A89112B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				2995226F1BBF133400859F49 /* AFURLRequestSerialization.m in Sources */,
-				1545CC2D27668FE200D40F65 /* AFOAuth2Manager.m in Sources */,
-				1545CC2927668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
+				FF6A89272B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */,
 				2995226E1BBF133400859F49 /* AFSecurityPolicy.m in Sources */,
 				299522701BBF133400859F49 /* AFURLResponseSerialization.m in Sources */,
-				1545CC4427668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				2995226D1BBF133400859F49 /* AFHTTPSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1187,15 +1195,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6A89122B6C7ED4007EC3B8 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				299522801BBF13A100859F49 /* AFNetworkReachabilityManager.m in Sources */,
-				1545CC2E27668FE200D40F65 /* AFOAuth2Manager.m in Sources */,
-				1545CC2A27668FE200D40F65 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
-				1545CC4527668FF800D40F65 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				299522811BBF13A100859F49 /* AFSecurityPolicy.m in Sources */,
 				2995227F1BBF13A100859F49 /* AFHTTPSessionManager.m in Sources */,
-				1545CC3627668FE200D40F65 /* AFOAuthCredential.m in Sources */,
 				299522841BBF13A100859F49 /* AFURLSessionManager.m in Sources */,
 				299522821BBF13A100859F49 /* AFURLRequestSerialization.m in Sources */,
+				FF6A891C2B6C7EE5007EC3B8 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
+				FF6A89282B6C7EE5007EC3B8 /* AFOAuthCredential.m in Sources */,
+				FF6A89242B6C7EE5007EC3B8 /* AFOAuth2Manager.m in Sources */,
 				299522831BBF13A100859F49 /* AFURLResponseSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

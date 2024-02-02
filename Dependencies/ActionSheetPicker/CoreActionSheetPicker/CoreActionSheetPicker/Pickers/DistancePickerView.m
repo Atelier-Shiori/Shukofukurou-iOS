@@ -56,13 +56,19 @@
         [self addLabel:labeltext forComponent:component forLongestString:longestString];
 
         // change label during fade out/in
+#if TARGET_OS_VISION
+#else
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.75];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+#endif
         theLabel.alpha = 0.00;
         theLabel.text = labeltext;
         theLabel.alpha = 1.00;
+#if TARGET_OS_VISION
+#else
         [UIView commitAnimations];
+#endif
     }
 
 }
@@ -149,7 +155,11 @@
                  kind of a hack to be honest, might stop working if Apple decides to 
                  change the inner workings of the UIPickerView.
                  */
+#if TARGET_OS_VISION
+                if ( false )
+#else
                 if ( self.showsSelectionIndicator )
+#endif
                 {
                     // if this is the last wheel, add label as the third view from the top
                     if ( component == self.numberOfComponents - 1 )

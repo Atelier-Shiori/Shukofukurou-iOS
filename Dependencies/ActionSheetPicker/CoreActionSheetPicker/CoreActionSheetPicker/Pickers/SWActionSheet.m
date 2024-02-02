@@ -101,7 +101,10 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
 #endif
 
         if (window == nil) {
+#if TARGET_OS_VISION
+#else
             window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+#endif
         }
 
         window.windowLevel        = self.windowLevel;
@@ -197,7 +200,11 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
 
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
+#if TARGET_OS_VISION
+    return 0;
+#else
     return [UIApplication sharedApplication].statusBarStyle;
+#endif
 }
 
 - (void)setActionSheet:(SWActionSheet *)actionSheet
@@ -234,7 +241,11 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
 
 - (BOOL)prefersStatusBarHidden
 {
+#if TARGET_OS_VISION
+    return false;
+#else
 	return [UIApplication sharedApplication].statusBarHidden;
+#endif
 }
 
 - (BOOL)shouldAutorotate

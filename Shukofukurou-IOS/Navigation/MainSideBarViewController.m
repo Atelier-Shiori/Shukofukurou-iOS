@@ -40,6 +40,9 @@
     self.navigationController.toolbarHidden = NO;
     _delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
     [vcm.mvc showWhatsNew:true];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        vcm.mainsidebar.view.backgroundColor = UIColor.systemBackgroundColor;
+    }
 }
 
 /*
@@ -218,7 +221,7 @@
             default:
                 break;
         }
-        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://sakurajima.moe/@malupdaterosx"] options:@{} completionHandler:^(BOOL success) {}];
+        [UIApplication.sharedApplication openURL:[NSURL URLWithString:deleteurl] options:@{} completionHandler:^(BOOL success) {}];
     }];
     UIAlertAction *noaction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
     [prompt addAction:noaction];
@@ -305,10 +308,13 @@
     }]];
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
+#if TARGET_OS_VISION
+#else
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         options.popoverPresentationController.barButtonItem = sender;
         options.popoverPresentationController.sourceView = self.view;
     }
+#endif
     
     [self
      presentViewController:options

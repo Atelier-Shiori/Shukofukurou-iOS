@@ -87,6 +87,10 @@
             [self.menubtn setTintColor:nil];
         }
     }
+    else if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        [self.menubtn setEnabled:NO];
+        [self.menubtn setTintColor: [UIColor clearColor]];
+    }
 }
 
 - (void)receiveNotification:(NSNotification *)notification {

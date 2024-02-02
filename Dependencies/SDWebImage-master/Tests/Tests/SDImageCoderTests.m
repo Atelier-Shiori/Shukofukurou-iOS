@@ -11,12 +11,6 @@
 #import "UIColor+SDHexString.h"
 #import <SDWebImageWebPCoder/SDWebImageWebPCoder.h>
 
-@interface SDImageIOCoder ()
-
-+ (CGRect)boxRectFromPDFFData:(nonnull NSData *)data;
-
-@end
-
 @interface SDWebImageDecoderTests : SDTestCase
 
 @end
@@ -102,11 +96,13 @@
     expect(decodedImage.size.height).to.equal(1);
 }
 
-- (void)test07ThatDecodeAndScaleDownAlwaysCompleteRendering {
+-(void)test07ThatDecodeAndScaleDownAlwaysCompleteRendering {
     // Check that when the height of the image used is not evenly divisible by the height of the tile, the output image can also be rendered completely.
     
+    // Check that when the height of the image used will led to loss of precision. the output image can also be rendered completely,
+    
     UIColor *imageColor = UIColor.blackColor;
-    CGSize imageSize = CGSizeMake(3024, 4032);
+    CGSize imageSize = CGSizeMake(1029, 1029);
     CGRect imageRect = CGRectMake(0, 0, imageSize.width, imageSize.height);
     SDGraphicsImageRendererFormat *format = [[SDGraphicsImageRendererFormat alloc] init];
     format.scale = 1;
@@ -116,9 +112,11 @@
         CGContextFillRect(context, imageRect);
     }];
     
-    UIImage *decodedImage = [UIImage sd_decodedAndScaledDownImageWithImage:image limitBytes:20 * 1024 * 1024];
-    UIColor *testColor = [decodedImage sd_colorAtPoint:CGPointMake(0, decodedImage.size.height - 1)];
-    expect(testColor.sd_hexString).equal(imageColor.sd_hexString);
+    UIImage *decodedImage = [UIImage sd_decodedAndScaledDownImageWithImage:image limitBytes:1 * 1024 * 1024];
+    UIColor *testColor1 = [decodedImage sd_colorAtPoint:CGPointMake(0, decodedImage.size.height - 1)];
+    UIColor *testColor2 = [decodedImage sd_colorAtPoint:CGPointMake(0, decodedImage.size.height - 9)];
+    expect(testColor1.sd_hexString).equal(imageColor.sd_hexString);
+    expect(testColor2.sd_hexString).equal(imageColor.sd_hexString);
 }
 
 - (void)test08ThatEncodeAlphaImageToJPGWithBackgroundColor {
@@ -146,7 +144,7 @@
     expect(maxEncodedData).notTo.beNil();
     expect(maxEncodedData.length).beGreaterThan(limitFileSize);
     // 0 quality (smallest)
-    NSData *minEncodedData = [SDImageCodersManager.sharedManager encodedDataWithImage:image format:SDImageFormatJPEG options:@{SDImageCoderEncodeCompressionQuality : @(0)}];
+    NSData *minEncodedData = [SDImageCodersManager.sharedManager encodedDataWithImage:image format:SDImageFormatJPEG options:@{SDImageCoderEncodeCompressionQuality : @(0.01)}]; // Seems 0 has some bugs in old macOS
     expect(minEncodedData).notTo.beNil();
     expect(minEncodedData.length).beLessThan(limitFileSize);
     NSData *limitEncodedData = [SDImageCodersManager.sharedManager encodedDataWithImage:image format:SDImageFormatJPEG options:@{SDImageCoderEncodeMaxFileSize : @(limitFileSize)}];
@@ -396,6 +394,185 @@
     expect(size8).equal(CGSizeMake(999, 999));
 }
 
+- (void)test25ThatBMPWorks {
+    NSURL *bmpURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"TestImage" withExtension:@"bmp"];
+    [self verifyCoder:[SDImageIOCoder sharedCoder]
+    withLocalImageURL:bmpURL
+     supportsEncoding:YES
+       encodingFormat:SDImageFormatBMP
+      isAnimatedImage:NO
+        isVectorImage:NO];
+}
+
+- (void)test26ThatRawImageTypeHintWorks {
+    NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"TestImage" withExtension:@"nef"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    // 1. Test without hint will use TIFF's IFD#0, which size should always be 160x120, see: http://lclevy.free.fr/nef/
+    UIImage *image1 = [SDImageIOCoder.sharedCoder decodedImageWithData:data options:nil];
+    expect(image1.size).equal(CGSizeMake(160, 120));
+    expect(image1.sd_imageFormat).equal(SDImageFormatTIFF);
+    
+#if SD_MAC || SD_IOS
+    // 2. Test with NEF file extension should be NEF
+    UIImage *image2 = [SDImageIOCoder.sharedCoder decodedImageWithData:data options:@{SDImageCoderDecodeFileExtensionHint : @"nef"}];
+    expect(image2.size).equal(CGSizeMake(3008, 2000));
+    expect(image2.sd_imageFormat).equal(SDImageFormatRAW);
+    
+    // 3. Test with UTType hint should be NEF
+    UIImage *image3 = [SDImageIOCoder.sharedCoder decodedImageWithData:data options:@{SDImageCoderDecodeTypeIdentifierHint : @"com.nikon.raw-image"}];
+    expect(image3.size).equal(CGSizeMake(3008, 2000));
+    expect(image3.sd_imageFormat).equal(SDImageFormatRAW);
+#endif
+}
+
+- (void)test27ThatEncodeWithFramesWorks {
+    // Mock
+    NSMutableArray<SDImageFrame *> *frames = [NSMutableArray array];
+    NSUInteger frameCount = 5;
+    for (size_t i = 0; i < frameCount; i++) {
+        CGSize size = CGSizeMake(100, 100);
+        SDGraphicsImageRenderer *renderer = [[SDGraphicsImageRenderer alloc] initWithSize:size];
+        UIImage *image = [renderer imageWithActions:^(CGContextRef  _Nonnull context) {
+            CGContextSetRGBFillColor(context, 1.0 / i, 0.0, 0.0, 1.0);
+            CGContextSetRGBStrokeColor(context, 1.0 / i, 0.0, 0.0, 1.0);
+            CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
+        }];
+        SDImageFrame *frame = [SDImageFrame frameWithImage:image duration:0.1];
+        [frames addObject:frame];
+    }
+    
+    // Test old API
+    UIImage *animatedImage = [SDImageCoderHelper animatedImageWithFrames:frames];
+    NSData *data = [SDImageGIFCoder.sharedCoder encodedDataWithImage:animatedImage format:SDImageFormatGIF options:nil];
+    expect(data).notTo.beNil();
+
+#if SD_MAC
+    // Test implementation use SDAnimatedImageRep
+    SDAnimatedImageRep *rep = (SDAnimatedImageRep *)animatedImage.representations.firstObject;
+    expect([rep isKindOfClass:SDAnimatedImageRep.class]);
+    expect(rep.animatedImageData).equal(data);
+    expect(rep.animatedImageFormat).equal(SDImageFormatGIF);
+#endif
+    
+    // Test new API
+    NSData *data2 = [SDImageGIFCoder.sharedCoder encodedDataWithFrames:frames loopCount:0 format:SDImageFormatGIF options:nil];
+    expect(data2).notTo.beNil();
+}
+
+- (void)test28ThatNotTriggerCACopyImage {
+    // 10 * 8 pixels, RGBA8888
+    size_t width = 10;
+    size_t height = 8;
+    size_t bitsPerComponent = 8;
+    size_t components = 4;
+    size_t bitsPerPixel = bitsPerComponent * components;
+    size_t bytesPerRow = SDByteAlign(bitsPerPixel / 8 * width, [SDImageCoderHelper preferredPixelFormat:YES].alignment);
+    size_t size = bytesPerRow * height;
+    uint8_t bitmap[size];
+    for (size_t i = 0; i < size; i++) {
+        bitmap[i] = 255;
+    }
+    CGColorSpaceRef colorspace = [SDImageCoderHelper colorSpaceGetDeviceRGB];
+    CGBitmapInfo bitmapInfo = [SDImageCoderHelper preferredPixelFormat:YES].bitmapInfo;
+    CFDataRef data = CFDataCreate(NULL, bitmap, size);
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData(data);
+    CFRelease(data);
+    BOOL shouldInterpolate = YES;
+    CGColorRenderingIntent intent = kCGRenderingIntentDefault;
+    CGImageRef cgImage = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorspace, bitmapInfo, provider, NULL, shouldInterpolate, intent);
+    CGDataProviderRelease(provider);
+    XCTAssert(cgImage);
+    BOOL result = [SDImageCoderHelper CGImageIsHardwareSupported:cgImage];
+    // Since it's 32 bytes aligned, return true
+    XCTAssertTrue(result);
+    // Let's force-decode to check again
+#if SD_MAC
+    UIImage *image = [[UIImage alloc] initWithCGImage:cgImage scale:1 orientation:kCGImagePropertyOrientationUp];
+#else
+    UIImage *image = [[UIImage alloc] initWithCGImage:cgImage scale:1 orientation:UIImageOrientationUp];
+#endif
+    CGImageRelease(cgImage);
+    UIImage *newImage = [SDImageCoderHelper decodedImageWithImage:image policy:SDImageForceDecodePolicyAutomatic];
+    // Check policy works, since it's supported by CA hardware, which return the input image object, using pointer compare
+    XCTAssertTrue(image == newImage);
+    BOOL newResult = [SDImageCoderHelper CGImageIsHardwareSupported:newImage.CGImage];
+    XCTAssertTrue(newResult);
+}
+
+- (void)test28ThatDoTriggerCACopyImage {
+    // 10 * 8 pixels, RGBA8888
+    size_t width = 10;
+    size_t height = 8;
+    size_t bitsPerComponent = 8;
+    size_t components = 4;
+    size_t bitsPerPixel = bitsPerComponent * components;
+    size_t bytesPerRow = bitsPerPixel / 8 * width;
+    size_t size = bytesPerRow * height;
+    uint8_t bitmap[size];
+    for (size_t i = 0; i < size; i++) {
+        bitmap[i] = 255;
+    }
+    CGColorSpaceRef colorspace = [SDImageCoderHelper colorSpaceGetDeviceRGB];
+    CGBitmapInfo bitmapInfo = [SDImageCoderHelper preferredPixelFormat:YES].bitmapInfo;
+    CFDataRef data = CFDataCreate(NULL, bitmap, size);
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData(data);
+    CFRelease(data);
+    BOOL shouldInterpolate = YES;
+    CGColorRenderingIntent intent = kCGRenderingIntentDefault;
+    CGImageRef cgImage = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorspace, bitmapInfo, provider, NULL, shouldInterpolate, intent);
+    CGDataProviderRelease(provider);
+    XCTAssert(cgImage);
+    BOOL result = [SDImageCoderHelper CGImageIsHardwareSupported:cgImage];
+    // Since it's not 32 bytes aligned, return false
+    XCTAssertFalse(result);
+    // Let's force-decode to check again
+#if SD_MAC
+    UIImage *image = [[UIImage alloc] initWithCGImage:cgImage scale:1 orientation:kCGImagePropertyOrientationUp];
+#else
+    UIImage *image = [[UIImage alloc] initWithCGImage:cgImage scale:1 orientation:UIImageOrientationUp];
+#endif
+    CGImageRelease(cgImage);
+    UIImage *newImage = [SDImageCoderHelper decodedImageWithImage:image policy:SDImageForceDecodePolicyAutomatic];
+    // Check policy works, since it's not supported by CA hardware, which return the different image object
+    XCTAssertFalse(image == newImage);
+    BOOL newResult = [SDImageCoderHelper CGImageIsHardwareSupported:newImage.CGImage];
+    XCTAssertTrue(newResult);
+}
+
+- (void)test29ThatJFIFDecodeOrientationShouldNotApplyTwice {
+    NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"TestJFIF" withExtension:@"jpg"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    UIImage *image = [SDImageIOCoder.sharedCoder decodedImageWithData:data options:nil];
+#if SD_UIKIT
+    UIImageOrientation orientation = image.imageOrientation;
+    expect(orientation).equal(UIImageOrientationUp);
+#endif
+    
+    // Manual test again for Apple's API
+    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, nil);
+    NSDictionary *properties = (__bridge_transfer NSDictionary *)CGImageSourceCopyPropertiesAtIndex(source, 0, nil);
+    NSUInteger exifOrientation = [properties[(__bridge NSString *)kCGImagePropertyOrientation] unsignedIntegerValue];
+    CFRelease(source);
+    expect(exifOrientation).equal(kCGImagePropertyOrientationDown);
+}
+
+- (void)test30ThatImageIOPNGPluginBuggyWorkaround {
+    // See: #3634
+    NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"IndexedPNG" withExtension:@"png"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    UIImage *decodedImage = [SDImageIOCoder.sharedCoder decodedImageWithData:data options:nil];
+    UIColor *testColor1 = [decodedImage sd_colorAtPoint:CGPointMake(100, 1)];
+    CGFloat r1, g1, b1, a1;
+    [testColor1 getRed:&r1 green:&g1 blue:&b1 alpha:&a1];
+    expect(r1).beCloseToWithin(0.60, 0.01);
+    expect(g1).beCloseToWithin(0.91, 0.01);
+    expect(b1).beCloseToWithin(0.91, 0.01);
+    expect(a1).beCloseToWithin(0.20, 0.01);
+}
+
 #pragma mark - Utils
 
 - (void)verifyCoder:(id<SDImageCoder>)coder
@@ -445,7 +622,7 @@ withLocalImageURL:(NSURL *)imageUrl
     expect(pixelHeight).beGreaterThan(0);
     // check vector format should use 72 DPI
     if (isVector) {
-        CGRect boxRect = [SDImageIOCoder boxRectFromPDFFData:inputImageData];
+        CGRect boxRect = [self boxRectFromPDFData:inputImageData];
         expect(boxRect.size.width).beGreaterThan(0);
         expect(boxRect.size.height).beGreaterThan(0);
         // Since 72 DPI is 1:1 from inch size to pixel size
@@ -523,6 +700,31 @@ withLocalImageURL:(NSURL *)imageUrl
     NSArray *thumbnailImages = imageProperties[(__bridge NSString *)kCGImagePropertyThumbnailImages];
     
     return thumbnailImages;
+}
+
+#pragma mark - Utils
+- (CGRect)boxRectFromPDFData:(nonnull NSData *)data {
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
+    if (!provider) {
+        return CGRectZero;
+    }
+    CGPDFDocumentRef document = CGPDFDocumentCreateWithProvider(provider);
+    CGDataProviderRelease(provider);
+    if (!document) {
+        return CGRectZero;
+    }
+    
+    // `CGPDFDocumentGetPage` page number is 1-indexed.
+    CGPDFPageRef page = CGPDFDocumentGetPage(document, 1);
+    if (!page) {
+        CGPDFDocumentRelease(document);
+        return CGRectZero;
+    }
+    
+    CGRect boxRect = CGPDFPageGetBoxRect(page, kCGPDFMediaBox);
+    CGPDFDocumentRelease(document);
+    
+    return boxRect;
 }
 
 @end

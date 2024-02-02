@@ -21,7 +21,7 @@
 
 #import "AFURLRequestSerialization.h"
 
-#if TARGET_OS_IOS || TARGET_OS_WATCH || TARGET_OS_TV
+#if TARGET_OS_IOS || TARGET_OS_WATCH || TARGET_OS_TV || TARGET_OS_VISION
 #import <MobileCoreServices/MobileCoreServices.h>
 #else
 #import <CoreServices/CoreServices.h>

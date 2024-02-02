@@ -328,8 +328,11 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     CGFloat sideMenuWidth = 320.0;
 
     if (LGSideMenuHelper.isPhone) {
+#if TARGET_OS_VISION
+#else
         CGFloat minSide = MIN(CGRectGetWidth(UIScreen.mainScreen.bounds), CGRectGetHeight(UIScreen.mainScreen.bounds));
         sideMenuWidth = minSide - 44.0;
+#endif
     }
 
     // Needed to be initialized before default properties (setupDefaults)
@@ -372,8 +375,8 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     self.leftViewBackgroundBlurEffect = nil;
     self.rightViewBackgroundBlurEffect = nil;
 
-    self.leftViewBackgroundAlpha = 1.0;
-    self.rightViewBackgroundAlpha = 1.0;
+    //self.leftViewBackgroundAlpha = 1.0;
+    //self.rightViewBackgroundAlpha = 1.0;
 
     self.rootViewLayerBorderColor = nil;
     self.leftViewLayerBorderColor = nil;
@@ -579,7 +582,10 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     }
 
     if (!LGSideMenuHelper.isViewControllerBasedStatusBarAppearance) {
+#if TARGET_OS_VISION
+#else
         return UIApplication.sharedApplication.statusBarHidden;
+#endif
     }
 
     if (self.rootViewController) {
@@ -600,7 +606,10 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     }
 
     if (!LGSideMenuHelper.isViewControllerBasedStatusBarAppearance) {
+#if TARGET_OS_VISION
+#else
         return UIApplication.sharedApplication.statusBarHidden;
+#endif
     }
 
     if (self.leftViewController) {
@@ -625,7 +634,10 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     }
 
     if (!LGSideMenuHelper.isViewControllerBasedStatusBarAppearance) {
+#if TARGET_OS_VISION
+#else
         return UIApplication.sharedApplication.statusBarHidden;
+#endif
     }
 
     if (self.rightViewController) {
@@ -650,7 +662,10 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     }
 
     if (!LGSideMenuHelper.isViewControllerBasedStatusBarAppearance) {
+#if TARGET_OS_VISION
+#else
         return UIApplication.sharedApplication.statusBarStyle;
+#endif
     }
 
     if (self.rootViewController) {
@@ -671,7 +686,10 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     }
 
     if (!LGSideMenuHelper.isViewControllerBasedStatusBarAppearance) {
+#if TARGET_OS_VISION
+#else
         return UIApplication.sharedApplication.statusBarStyle;
+#endif
     }
 
     if (self.leftViewController) {
@@ -696,7 +714,10 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
     }
 
     if (!LGSideMenuHelper.isViewControllerBasedStatusBarAppearance) {
+#if TARGET_OS_VISION
+#else
         return UIApplication.sharedApplication.statusBarStyle;
+#endif
     }
 
     if (self.rightViewController) {
@@ -1184,11 +1205,19 @@ rightViewBackgroundImageFinalScale = _rightViewBackgroundImageFinalScale;
 }
 
 - (BOOL)isLeftViewAlwaysVisibleForCurrentOrientation {
+#if TARGET_OS_VISION
+    return true;
+#else
     return [self isLeftViewAlwaysVisibleForOrientation:UIApplication.sharedApplication.statusBarOrientation];
+#endif
 }
 
 - (BOOL)isRightViewAlwaysVisibleForCurrentOrientation {
+#if TARGET_OS_VISION
+    return true;
+#else
     return [self isRightViewAlwaysVisibleForOrientation:UIApplication.sharedApplication.statusBarOrientation];
+#endif
 }
 
 - (BOOL)isLeftViewAlwaysVisibleForOrientation:(UIInterfaceOrientation)orientation {

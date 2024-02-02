@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <SafariServices/SafariServices.h>
-
+#if TARGET_OS_VISION
+@interface ViewController : UITableViewController
+#else
 @interface ViewController : UITableViewController <SFSafariViewControllerDelegate>
-
+#endif
 
 @end
 

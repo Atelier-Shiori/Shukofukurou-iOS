@@ -66,11 +66,13 @@
         if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
         {
             [self becomeFirstResponder];
-            
+#if TARGET_OS_VISION
+#else
             UIMenuController *copyMenu = [UIMenuController sharedMenuController];
             [copyMenu setTargetRect:self.bounds inView:self];
             copyMenu.arrowDirection = UIMenuControllerArrowDefault;
             [copyMenu setMenuVisible:YES animated:YES];
+#endif
         }
     }
 }

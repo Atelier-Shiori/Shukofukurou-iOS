@@ -185,7 +185,7 @@ didCompleteWithError:(NSError *)error
     //Performance Improvement from #2672
     NSData *data = nil;
     if (self.mutableData) {
-        data = [self.mutableData copy];
+        data = self.mutableData;
         //We no longer need the reference, so nil it out to gain back some memory.
         self.mutableData = nil;
     }

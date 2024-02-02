@@ -135,9 +135,11 @@ static const CGFloat kFontResizingProportion = 0.42f;
 }
 
 - (UIImage *)imageSnapshotFromText:(NSString *)text backgroundColor:(UIColor *)color circular:(BOOL)isCircular textAttributes:(NSDictionary *)textAttributes {
-    
+#if TARGET_OS_VISION
+    CGFloat scale = 1;
+#else
     CGFloat scale = [UIScreen mainScreen].scale;
-    
+#endif
     CGSize size = self.bounds.size;
     if (self.contentMode == UIViewContentModeScaleToFill ||
         self.contentMode == UIViewContentModeScaleAspectFill ||

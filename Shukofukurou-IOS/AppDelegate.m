@@ -18,9 +18,6 @@
 
 #if defined(OSS)
 #else
-@import AppCenter;
-@import AppCenterAnalytics;
-@import AppCenterCrashes;
 #endif
 
 @interface AppDelegate ()
@@ -128,12 +125,6 @@
     [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"synchistorytoicloud"];
 #if defined(OSS)
 #else
-    [MSACAppCenter start:@"4e2647ac-c16c-4771-a11f-65de034d15a4" withServices:@[
-        [MSACAnalytics class],
-        [MSACCrashes class]
-    ]];
-    [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
-    [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #endif
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FixKeychainItems"]) {
         [[OAuthCredManager sharedInstance] fixkeychainaccessability];
@@ -147,7 +138,10 @@
     _autorefresh = [AutoRefreshTimer new];
     _airingnotificationmanager = [AiringNotificationManager new];
     // Set Background Fetch
+#if TARGET_OS_VISION
+#else
     [UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+#endif
     // Set Image Disk Cache Size
     SDImageCache.sharedImageCache.config.maxDiskSize = 1000000 * 96;
     [ScrobbleManager.sharedInstance checkScrobble];

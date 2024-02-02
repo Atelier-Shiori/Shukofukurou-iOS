@@ -110,6 +110,10 @@ static NSString * const reuseIdentifier = @"Cell";
             [self.menubtn setTintColor:nil];
         }
     }
+    else if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        [self.menubtn setEnabled:NO];
+        [self.menubtn setTintColor: [UIColor clearColor]];
+    }
 }
 
 - (void)reloadData:(bool)refresh {

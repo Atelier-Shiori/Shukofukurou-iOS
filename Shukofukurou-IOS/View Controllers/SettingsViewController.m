@@ -16,9 +16,6 @@
 
 #if defined(OSS)
 #else
-@import AppCenter;
-@import AppCenterAnalytics;
-@import AppCenterCrashes;
 #endif
 
 @interface SettingsViewController ()
@@ -74,6 +71,10 @@
             [self.menubtn setEnabled:YES];
             [self.menubtn setTintColor:nil];
         }
+    }
+    else if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        [self.menubtn setEnabled:NO];
+        [self.menubtn setTintColor: [UIColor clearColor]];
     }
 }
 - (void)receiveNotification:(NSNotification *)notification {
@@ -192,15 +193,6 @@
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
     [self presentViewController:svc animated:YES completion:^{
     }];
-}
-
-- (IBAction)sendstatstoggle:(id)sender {
-#if defined(OSS)
-#else
-    [NSUserDefaults.standardUserDefaults setBool:_analyticstoggle.on forKey:@"sendanalytics"];
-    [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
-    [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
-#endif
 }
 
 - (void)showopensourcemessage {

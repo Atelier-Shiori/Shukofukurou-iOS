@@ -10,8 +10,11 @@
 #import <SafariServices/SafariServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+#if TARGET_OS_VISION
+@interface SettingsViewController : UITableViewController
+#else
 @interface SettingsViewController : UITableViewController <SFSafariViewControllerDelegate>
+#endif
 @property (strong) IBOutlet UISwitch *refreshlistonstart;
 @property (strong) IBOutlet UISwitch *refreshlistautomatically;
 @property (strong, nonatomic) IBOutlet UISwitch *cachetitleinfo;

@@ -12,15 +12,15 @@ import WhatsNewKit
 
 @objc public class SWhatsNew: NSObject {
     @objc func showWhatsNew(witems : NSArray, vc : UIViewController, showAtLaunch : Bool){
-        var wnewitems = [WhatsNew.Item]()
+        var wnewitems = [WhatsNew.Feature]()
         for item in (witems as NSArray as! [NSDictionary]) {
-            wnewitems.append(WhatsNew.Item(title: item["title"] as! String, subtitle: item["description"] as! String, image: UIImage.init(systemName: item["icon"] as! String)))
+            wnewitems.append(WhatsNew.Feature.init(image: .init(systemName: item["icon"] as! String), title: .init(item["title"] as! String), subtitle: .init(item["description"] as! String)))
         }
         let whatsNew = WhatsNew(
             // The Title
             title: "What's New In Shukofukurou",
             // The features you want to showcase
-            items: wnewitems
+            features: wnewitems
         )
         let whatsNewViewController = WhatsNewViewController(
             whatsNew: whatsNew

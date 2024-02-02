@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'SDWebImage'
-  s.version = '5.13.3'
+  s.version = '5.18.10'
 
   s.osx.deployment_target = '10.11'
   s.ios.deployment_target = '9.0'
@@ -44,4 +44,5 @@ Pod::Spec.new do |s|
     mk.framework = 'MapKit'
     mk.dependency 'SDWebImage/Core'
   end
+  s.resource_bundles = {'SDWebImage' => ['WebImage/PrivacyInfo.xcprivacy']}
 end

@@ -1,14 +1,14 @@
 {
     "items" : [
     {
-        "title" : "Add Additional Related Lookup Items",
-        "description" : "You can now look up manga titles that are on BookWalker and LearnNatively.",
+        "title" : "Redesigned Charts",
+        "description" : "List stats charts now use the native charting built into iOS/iPadOS.",
         "icon" : "safari",
     },
     {
-        "title" : "Bug Fixes",
-        "description" : "Fixed some bugs involving the apps to crash when user switches lists. Fixed functionality to view other details for non-airing/nonpublishing titles",
-        "icon" : "ladybug",
+        "title" : "VisionOS Support",
+        "description" : "Add support for the Apple Vision Pro.",
+        "icon" : "safari"
     }
     ]
 }

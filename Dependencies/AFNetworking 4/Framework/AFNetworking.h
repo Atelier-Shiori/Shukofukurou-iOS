@@ -50,7 +50,7 @@ FOUNDATION_EXPORT const unsigned char AFNetworkingVersionString[];
 #import <AFNetworking/AFURLSessionManager.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
 
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
 #import <AFNetworking/AFAutoPurgingImageCache.h>
 #import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/UIActivityIndicatorView+AFNetworking.h>
@@ -59,7 +59,7 @@ FOUNDATION_EXPORT const unsigned char AFNetworkingVersionString[];
 #import <AFNetworking/UIProgressView+AFNetworking.h>
 #endif
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS || TARGET_OS_VISION
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <AFNetworking/UIRefreshControl+AFNetworking.h>
 #import <AFNetworking/WKWebView+AFNetworking.h>
