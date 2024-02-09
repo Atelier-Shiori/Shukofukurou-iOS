@@ -8,7 +8,17 @@
     {
         "title" : "VisionOS Support",
         "description" : "Add support for the Apple Vision Pro.",
-        "icon" : "safari"
+        "icon" : "eye.square.fill"
+    },
+    {
+        "title" : "Add Account Deletiont",
+        "description" : "When you log out, there is now a prompt allowing you to view the page to delete your account, if you want.",
+        "icon" : "trash"
+    },
+    {
+        "title" : "Bug Fixes",
+        "description" : "Fix various bugs.",
+        "icon" : "ladybug"
     }
     ]
 }

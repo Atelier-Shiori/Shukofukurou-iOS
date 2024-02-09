@@ -369,7 +369,7 @@
     _listselector.selectedlist = _selectedlist;
     [navcontroller setViewControllers:@[_listselector]];
     [_listselector.tableView reloadData];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         navcontroller.modalPresentationStyle = UIModalPresentationPopover;
         navcontroller.popoverPresentationController.barButtonItem = sender;
     }
@@ -633,7 +633,7 @@
             [weakSelf performViewOnListSite:((NSNumber *)entry[@"id"]).intValue];
             completionHandler(YES);
         }];
-        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
             aentrycell.adveditswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage systemImageNamed:@"pencil"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
@@ -659,7 +659,7 @@
         }];
         
         // Set Swipe Button Array
-        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
             if (aentrycell.shareswipebutton) {
                 [rightregularbuttons addObject:aentrycell.shareswipebutton];
             }
@@ -684,7 +684,7 @@
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf incrementProgress:entry];
             }];
-            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
                 if (aentrycell.incrementswipebutton) {
                     [rightregularbuttons addObject:aentrycell.incrementswipebutton];
                 }
@@ -794,7 +794,7 @@
             completionHandler(YES);
         }];
         
-        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
             mentrycell.adveditswipebutton = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"" image:[UIImage systemImageNamed:@"pencil"] backgroundColor:[UIColor colorWithRed:1.00 green:0.58 blue:0.00 alpha:1.0] handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
                 NSDictionary *entry = weakSelf.filteredlist[indexPath.row];
                 [weakSelf performAdvancedEditwithEntry:entry withType:weakSelf.listtype];
@@ -821,7 +821,7 @@
         }];
         
         // Set Swipe Button Array
-        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
             if (mentrycell.shareswipebutton) {
                 [rightregularbuttons addObject:mentrycell.shareswipebutton];
             }
@@ -852,7 +852,7 @@
                 [weakSelf performMangaIncrement:entry volumeIncrement:NO];
                 completionHandler(YES);
             }];
-            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
                 if (mentrycell.incrementswipebutton && mentrycell.incrementvolswipebutton) {
                     [rightregularbuttons addObject:mentrycell.incrementswipebutton];
                     [rightregularbuttons addObject:mentrycell.incrementvolswipebutton];
@@ -954,7 +954,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
         full = [UISwipeActionsConfiguration configurationWithActions:cell.regularswipebuttons];
         compact = [UISwipeActionsConfiguration configurationWithActions:cell.compactswipebuttons];
     }
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         bool isregular = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
         if (isregular) {
             return full;
@@ -1341,7 +1341,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
         [NSNotificationCenter.defaultCenter postNotificationName:@"EntryUpdated" object:@{@"type" : @(listtype), @"id": entry[@"id"]}];
     };
     navController.viewControllers = @[advedit];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         navController.modalPresentationStyle = UIModalPresentationFormSheet;
     }
     [self presentViewController:navController animated:YES completion:^{}];
@@ -1350,7 +1350,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)performCustomListEdit:(int)entryid withEntry:(NSDictionary *)entry {
     UINavigationController *navcontroller = [UINavigationController new];
     CustomListTableViewController *clvc = [[UIStoryboard storyboardWithName:@"CustomList" bundle:nil] instantiateViewControllerWithIdentifier:@"customlistedit"];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         navcontroller.modalPresentationStyle = UIModalPresentationFormSheet;
     }
     [navcontroller setViewControllers:@[clvc]];
@@ -1369,7 +1369,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL:titleid]]];
     UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     activityViewControntroller.excludedActivityTypes = @[];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         activityViewControntroller.popoverPresentationController.sourceView = cell;
         activityViewControntroller.popoverPresentationController.sourceRect = cell.bounds;
         activityViewControntroller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
@@ -1470,7 +1470,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
         [weakSelf reloadList];
     };
     navcontroller.viewControllers = @[sorttvc];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         navcontroller.modalPresentationStyle = UIModalPresentationPopover;
         navcontroller.popoverPresentationController.barButtonItem = sender;
     }

@@ -31,7 +31,9 @@
     [super viewDidLoad];
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.mvc = self;
-    [self setsidebar:self.view.bounds.size];
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomVision) {
+        [self setsidebar:self.view.bounds.size];
+    }
 #if defined(OSS)
     [self showopensourcemessage];
 #endif
@@ -76,7 +78,9 @@
         [NSNotificationCenter.defaultCenter postNotificationName:@"sidebarStateDidChange" object:@(_shouldHideMenuButton)];
     }
 #if TARGET_OS_VISION
-    self.leftViewWidth = 350;
+    self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
+    self.leftViewWidth = 300;
+    _shouldHideMenuButton = YES;
 #else
     else if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
         // Fixes Sidebar Width when in landscape on X models

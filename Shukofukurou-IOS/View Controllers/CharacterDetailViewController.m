@@ -481,9 +481,14 @@
 }
 
 - (void)openWebBrowserView:(NSURL *)url {
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    [self presentViewController:svc animated:YES completion:^{
-    }];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        [UIApplication.sharedApplication openURL:url options:@{} completionHandler:^(BOOL success) {}];
+    }
+    else {
+        SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+        [self presentViewController:svc animated:YES completion:^{
+        }];
+    }
 }
 
 @end

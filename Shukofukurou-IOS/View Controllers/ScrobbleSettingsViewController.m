@@ -100,9 +100,15 @@
 }
 
 - (void)performOpenScrobbleGuide {
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[[NSURL alloc] initWithString:@"https://help.malupdaterosx.moe/shukofukurou-for-ios/scrobble-manual/"]];
-    [self presentViewController:svc animated:YES completion:^{
-    }];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://help.malupdaterosx.moe/shukofukurou-for-ios/scrobble-manual/"];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        [UIApplication.sharedApplication openURL:url options:@{} completionHandler:^(BOOL success) {}];
+    }
+    else {
+        SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+        [self presentViewController:svc animated:YES completion:^{
+        }];
+    }
 }
 
 @end
