@@ -11,7 +11,7 @@
         "icon" : "eye.square.fill"
     },
     {
-        "title" : "Add Account Deletiont",
+        "title" : "Add Account Deletion",
         "description" : "When you log out, there is now a prompt allowing you to view the page to delete your account, if you want.",
         "icon" : "trash"
     },
