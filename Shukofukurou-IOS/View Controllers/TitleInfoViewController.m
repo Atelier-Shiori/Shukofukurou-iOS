@@ -289,7 +289,7 @@
                 });
             };
             navController.viewControllers = @[advedit];
-            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
                 navController.modalPresentationStyle = UIModalPresentationFormSheet;
             }
             [self presentViewController:navController animated:YES completion:^{}];
@@ -310,7 +310,7 @@
     [options addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         options.popoverPresentationController.barButtonItem = sender;
         options.popoverPresentationController.sourceView = self.view;
     }
@@ -391,7 +391,7 @@
 }
 
 - (void)setToolbar {
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         NSMutableArray *toolbarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
         if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
             if (![toolbarButtons containsObject:self.shareitembaritem]) {
@@ -1469,9 +1469,14 @@
 }
 
 - (void)openWebBrowserView:(NSURL *)url {
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-    [self presentViewController:svc animated:YES completion:^{
-    }];
+    if ( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        [UIApplication.sharedApplication openURL:url options:@{} completionHandler:^(BOOL success) {}];
+    }
+    else {
+        SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+        [self presentViewController:svc animated:YES completion:^{
+        }];
+    }
 }
 @end
 

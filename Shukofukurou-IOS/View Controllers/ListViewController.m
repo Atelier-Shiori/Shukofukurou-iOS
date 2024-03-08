@@ -50,6 +50,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     if (self.listtype == Anime) {
         self.countdowntimerrefresh = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(fireTimer) userInfo:nil repeats:YES];
         NSLog(@"Starting Timer");
@@ -369,7 +372,7 @@
     _listselector.selectedlist = _selectedlist;
     [navcontroller setViewControllers:@[_listselector]];
     [_listselector.tableView reloadData];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         navcontroller.modalPresentationStyle = UIModalPresentationPopover;
         navcontroller.popoverPresentationController.barButtonItem = sender;
     }
@@ -1369,7 +1372,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *activityItems = @[[NSURL URLWithString:[self getTitleURL:titleid]]];
     UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     activityViewControntroller.excludedActivityTypes = @[];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad  || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         activityViewControntroller.popoverPresentationController.sourceView = cell;
         activityViewControntroller.popoverPresentationController.sourceRect = cell.bounds;
         activityViewControntroller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown;
@@ -1470,7 +1473,7 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
         [weakSelf reloadList];
     };
     navcontroller.viewControllers = @[sorttvc];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         navcontroller.modalPresentationStyle = UIModalPresentationPopover;
         navcontroller.popoverPresentationController.barButtonItem = sender;
     }

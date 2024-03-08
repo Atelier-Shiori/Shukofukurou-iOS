@@ -21,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults boolForKey:@"firstload"]) {
         [self showloadingview:YES];

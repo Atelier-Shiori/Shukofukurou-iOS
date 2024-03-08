@@ -3566,7 +3566,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20230221;
+				CURRENT_PROJECT_VERSION = 20240308;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = NO;
@@ -3575,6 +3575,8 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Shukofukurou;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3586,7 +3588,7 @@
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3603,7 +3605,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20230221;
+				CURRENT_PROJECT_VERSION = 20240308;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = NO;
@@ -3612,6 +3614,8 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				INFOPLIST_FILE = "Shukofukurou-IOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Shukofukurou;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3623,7 +3627,7 @@
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

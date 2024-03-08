@@ -35,6 +35,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"searchcell"];
     __weak SearchViewController *weakSelf = self;
     _advsearchoptions = [self.storyboard instantiateViewControllerWithIdentifier:@"advsearchopt"];

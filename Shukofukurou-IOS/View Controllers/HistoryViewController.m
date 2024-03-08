@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     self.navigationController.toolbarHidden = NO;
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     HistoryRootViewController *historyroot = [vcm getHistoryRootViewController];

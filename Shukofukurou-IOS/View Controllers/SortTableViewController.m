@@ -25,7 +25,12 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.preferredContentSize = CGSizeMake(450, self.tableView.contentSize.height);
+    }
+    else {
+        self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

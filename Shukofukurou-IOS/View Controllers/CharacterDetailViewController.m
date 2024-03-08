@@ -300,7 +300,7 @@
 }
 
 - (void)setToolbar {
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         NSMutableArray *toolbarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
         if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
             if (![toolbarButtons containsObject:self.shareitembaritem]) {

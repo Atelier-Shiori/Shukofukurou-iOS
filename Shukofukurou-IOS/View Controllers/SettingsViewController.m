@@ -37,6 +37,9 @@
     
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     // Do any additional setup after loading the view.
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     _refreshlistonstart.on = [defaults boolForKey:@"refreshlistonstart"];

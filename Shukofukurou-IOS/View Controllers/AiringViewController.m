@@ -54,6 +54,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     [self.tableView registerNib:[UINib nibWithNibName:@"AiringTableViewCell" bundle:nil] forCellReuseIdentifier:@"airingcell"];
     ViewControllerManager *vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     AiringRootViewController *airingvc = [vcm getAiringRootViewController];
