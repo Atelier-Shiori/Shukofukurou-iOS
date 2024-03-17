@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListSelectorViewController : UITableViewController
+@interface ListSelectorViewController <UITableViewDelegate> : UITableViewController
 @property (nonatomic, copy) void (^listChanged)(NSString *listname, NSString *listtype);
 @property (strong) NSString *selectedlist;
 - (void)generateLists:(NSArray *)list withListType:(int)listtype;

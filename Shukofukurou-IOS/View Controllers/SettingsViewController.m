@@ -213,4 +213,17 @@
 #else
 #endif
 }
+
+#pragma mark - Table View Delegate
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        if (section == 0) {
+            return 55;
+        }
+        else {
+            return 40;
+        }
+    }
+    return tableView.sectionHeaderHeight;
+}
 @end
