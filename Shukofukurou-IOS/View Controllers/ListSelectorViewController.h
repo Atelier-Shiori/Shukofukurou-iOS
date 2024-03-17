@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+#if TARGET_OS_VISION
 @interface ListSelectorViewController <UITableViewDelegate> : UITableViewController
+#else
+@interface ListSelectorViewController : UITableViewController
+#endif
 @property (nonatomic, copy) void (^listChanged)(NSString *listname, NSString *listtype);
 @property (strong) NSString *selectedlist;
 - (void)generateLists:(NSArray *)list withListType:(int)listtype;

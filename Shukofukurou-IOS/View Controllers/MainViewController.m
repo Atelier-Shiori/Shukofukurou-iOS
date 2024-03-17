@@ -34,6 +34,9 @@
     if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomVision) {
         [self setsidebar:self.view.bounds.size];
     }
+    else {
+        self.leftViewBackgroundColor = [UIColor systemBackgroundColor];
+    }
 #if defined(OSS)
     [self showopensourcemessage];
 #endif

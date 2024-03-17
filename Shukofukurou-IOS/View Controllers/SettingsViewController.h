@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 #if TARGET_OS_VISION
-@interface SettingsViewController : UITableViewController <UITableViewDelegate>
+@interface SettingsViewController : UITableViewController
 #else
 @interface SettingsViewController : UITableViewController <SFSafariViewControllerDelegate>
 #endif
