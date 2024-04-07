@@ -31,7 +31,7 @@
     [super viewDidLoad];
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.mvc = self;
-    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomVision) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         [self setsidebar:self.view.bounds.size];
     }
     else {

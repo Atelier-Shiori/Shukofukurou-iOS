@@ -40,7 +40,9 @@
     self.navigationController.toolbarHidden = NO;
     _delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
     [vcm.mvc showWhatsNew:true];
-    vcm.mainsidebar.view.backgroundColor = UIColor.systemBackgroundColor;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomVision) {
+        vcm.mainsidebar.view.backgroundColor = UIColor.systemBackgroundColor;
+    }
 }
 
 /*
