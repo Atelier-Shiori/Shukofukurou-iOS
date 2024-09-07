@@ -1393,10 +1393,10 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         case 2: {
             if (_listtype == Anime) {
-                return [NSString stringWithFormat:@"https://kitsu.io/anime/%i",titleid];
+                return [NSString stringWithFormat:@"https://kitsu.app/anime/%i",titleid];
             }
             else {
-                return [NSString stringWithFormat:@"https://kitsu.io/manga/%i",titleid];
+                return [NSString stringWithFormat:@"https://kitsu.app/manga/%i",titleid];
             }
             
         }

@@ -213,7 +213,7 @@
                 deleteurl = @"https://myanimelist.net/editprofile.php?go=myoptions";
                 break;
             case 2:
-                deleteurl = @"https://kitsu.io/settings/account";
+                deleteurl = @"https://kitsu.app/settings/account";
                 break;
             case 3:
                 deleteurl = @"https://anilist.co/settings/account";

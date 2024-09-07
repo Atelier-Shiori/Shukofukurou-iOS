@@ -263,13 +263,13 @@
     }
     switch (sort) {
         case TrendListTypeScore:
-            return [NSString stringWithFormat:@"https://kitsu.io/api/edge/%@?page[limit]=10&sort=-averageRating", typestr];
+            return [NSString stringWithFormat:@"https://kitsu.app/api/edge/%@?page[limit]=10&sort=-averageRating", typestr];
         case TrendListTypeNew:
-            return [NSString stringWithFormat:@"https://kitsu.io/api/edge/%@?page[limit]=10&sort=-createdAt", typestr];
+            return [NSString stringWithFormat:@"https://kitsu.app/api/edge/%@?page[limit]=10&sort=-createdAt", typestr];
         case TrendListTypeTrending:
-            return [NSString stringWithFormat:@"https://kitsu.io/api/edge/trending/%@", typestr];
+            return [NSString stringWithFormat:@"https://kitsu.app/api/edge/trending/%@", typestr];
         case TrendListTypeSeasonPopular:
-            return [NSString stringWithFormat:@"https://kitsu.io/api/edge/%@?page[limit]=10&sort=popularityRank&filter[status]=current",typestr];
+            return [NSString stringWithFormat:@"https://kitsu.app/api/edge/%@?page[limit]=10&sort=popularityRank&filter[status]=current",typestr];
         default:
             break;
     }
