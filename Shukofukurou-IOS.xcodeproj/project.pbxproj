@@ -152,8 +152,8 @@
 		595A9604223FE41200E3C245 /* MediaStreamParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A9603223FE41200E3C245 /* MediaStreamParse.m */; };
 		595A9607223FE41E00E3C245 /* ezregex.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A9606223FE41E00E3C245 /* ezregex.m */; };
 		595A9611224002B600E3C245 /* MBProgressHUDFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 595A960F224002B600E3C245 /* MBProgressHUDFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		595A9614224002B600E3C245 /* MBProgressHUDFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; };
-		595A9615224002B600E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		595A9614224002B600E3C245 /* MBProgressHUDFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; platformFilters = (ios, xros, ); };
+		595A9615224002B600E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; platformFilters = (ios, xros, ); settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		595A9619224002ED00E3C245 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7E0512200B1C2002EE2EC /* MBProgressHUD.m */; };
 		595A961A2240030200E3C245 /* MBProgressHUDFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; };
 		595A961B2240030200E3C245 /* MBProgressHUDFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595A960D224002B600E3C245 /* MBProgressHUDFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -214,10 +214,10 @@
 		5962422621556514001995AD /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420C21556510001995AD /* LoadViewController.m */; };
 		5962422721556514001995AD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962420D21556510001995AD /* SearchViewController.m */; };
 		5962422821556514001995AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962421021556512001995AD /* ViewController.m */; };
-		59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; };
-		59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; };
-		59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59624235215565CC001995AD /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; platformFilters = (ios, xros, ); };
+		59624236215565CC001995AD /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241092155631F001995AD /* SAMKeychain.framework */; platformFilters = (ios, xros, ); settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59624245215565E3001995AD /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; platformFilters = (ios, xros, ); };
+		59624246215565E3001995AD /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 596241482155634A001995AD /* LGSideMenuController.framework */; platformFilters = (ios, xros, ); settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5962424D2155660C001995AD /* Airing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BB21556481001995AD /* Airing.storyboard */; };
 		5962424E2155660F001995AD /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BD21556486001995AD /* Auth.storyboard */; };
 		5962424F21556612001995AD /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596241BF21556489001995AD /* InfoView.storyboard */; };
@@ -289,8 +289,8 @@
 		59A7A7F2220F95FA009563CA /* TipJar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7A7F1220F95FA009563CA /* TipJar.m */; };
 		59B155C62301E8BF004BE7B2 /* StreamingRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B155C52301E8BF004BE7B2 /* StreamingRegionTableViewController.m */; };
 		59B155C72301E8BF004BE7B2 /* StreamingRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B155C52301E8BF004BE7B2 /* StreamingRegionTableViewController.m */; };
-		59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; };
-		59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59B22D2921FE630000627172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; platformFilters = (ios, xros, ); };
+		59B22D2A21FE630000627172 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59B22D2221FE62F400627172 /* SDWebImage.framework */; platformFilters = (ios, xros, ); settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59B3AC602209226C0050662A /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3AC5F2209226C0050662A /* StatsViewController.m */; };
 		59B3AC63220922930050662A /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B3AC61220922930050662A /* Stats.storyboard */; };
 		59B580D9220F334300EFE7AC /* UIViewThemed.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B580D8220F334300EFE7AC /* UIViewThemed.m */; };
@@ -324,8 +324,8 @@
 		F8C10F8421766DED004D4FE3 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C10F8321766DED004D4FE3 /* ReviewDetailViewController.m */; };
 		FF0B4C1326497C9A00CA5D16 /* AiringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */; };
 		FF0B4C1426497C9A00CA5D16 /* AiringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0B4C1226497C9A00CA5D16 /* AiringTableViewCell.m */; };
-		FF1B61DC2B6C8DA900D8C99B /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1B61D92B6C8D9200D8C99B /* CoreActionSheetPicker.framework */; };
-		FF1B61DD2B6C8DA900D8C99B /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1B61D92B6C8D9200D8C99B /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF1B61DC2B6C8DA900D8C99B /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1B61D92B6C8D9200D8C99B /* CoreActionSheetPicker.framework */; platformFilters = (ios, xros, ); };
+		FF1B61DD2B6C8DA900D8C99B /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1B61D92B6C8D9200D8C99B /* CoreActionSheetPicker.framework */; platformFilters = (ios, xros, ); settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF23FC0826FA4FFA0040E446 /* SafariWebExtensionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23FC0726FA4FFA0040E446 /* SafariWebExtensionHandler.m */; };
 		FF23FC0B26FA4FFA0040E446 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC0A26FA4FFA0040E446 /* _locales */; };
 		FF23FC0D26FA4FFA0040E446 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FF23FC0C26FA4FFA0040E446 /* images */; };
@@ -2977,6 +2977,10 @@
 		};
 		595A9613224002B600E3C245 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				xros,
+			);
 			target = 595A960C224002B600E3C245 /* MBProgressHUDFramework */;
 			targetProxy = 595A9612224002B600E3C245 /* PBXContainerItemProxy */;
 		};
@@ -2993,13 +2997,19 @@
 		59624238215565CC001995AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SAMKeychain-iOS";
-			platformFilter = ios;
+			platformFilters = (
+				ios,
+				xros,
+			);
 			targetProxy = 59624237215565CC001995AD /* PBXContainerItemProxy */;
 		};
 		59624248215565E3001995AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LGSideMenuController;
-			platformFilter = ios;
+			platformFilters = (
+				ios,
+				xros,
+			);
 			targetProxy = 59624247215565E3001995AD /* PBXContainerItemProxy */;
 		};
 		59C3CB0122CA81F30007786A /* PBXTargetDependency */ = {
@@ -3014,6 +3024,10 @@
 		FF1B61D22B6C8C8700D8C99B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SDWebImage;
+			platformFilters = (
+				ios,
+				xros,
+			);
 			targetProxy = FF1B61D12B6C8C8700D8C99B /* PBXContainerItemProxy */;
 		};
 		FF23FC1C26FA4FFA0040E446 /* PBXTargetDependency */ = {
@@ -3341,7 +3355,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20220426;
+				CURRENT_PROJECT_VERSION = 20241228;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3365,7 +3379,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShukofukurouScrobble/ShukofukurouScrobble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20220426;
+				CURRENT_PROJECT_VERSION = 20241228;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = ShukofukurouScrobble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3566,7 +3580,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240501;
+				CURRENT_PROJECT_VERSION = 20241228;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = NO;
@@ -3587,7 +3601,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
@@ -3606,7 +3620,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240501;
+				CURRENT_PROJECT_VERSION = 20241228;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = NO;
@@ -3627,7 +3641,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
