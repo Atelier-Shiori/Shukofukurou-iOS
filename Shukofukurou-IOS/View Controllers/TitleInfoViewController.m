@@ -355,10 +355,10 @@
         }
         case 2: {
             if (_currenttype == Anime) {
-                return [NSString stringWithFormat:@"https://kitsu.io/anime/%i", _titleid];
+                return [NSString stringWithFormat:@"https://kitsu.app/anime/%i", _titleid];
             }
             else {
-                return [NSString stringWithFormat:@"https://kitsu.io/manga/%i", _titleid];
+                return [NSString stringWithFormat:@"https://kitsu.app/manga/%i", _titleid];
             }
 
         }

@@ -40,7 +40,7 @@
     self.navigationController.toolbarHidden = NO;
     _delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
     [vcm.mvc showWhatsNew:true];
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomVision) {
         vcm.mainsidebar.view.backgroundColor = UIColor.systemBackgroundColor;
     }
 }
@@ -213,7 +213,7 @@
                 deleteurl = @"https://myanimelist.net/editprofile.php?go=myoptions";
                 break;
             case 2:
-                deleteurl = @"https://kitsu.io/settings/account";
+                deleteurl = @"https://kitsu.app/settings/account";
                 break;
             case 3:
                 deleteurl = @"https://anilist.co/settings/account";

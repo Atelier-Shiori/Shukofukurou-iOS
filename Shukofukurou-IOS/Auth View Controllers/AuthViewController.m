@@ -80,7 +80,7 @@
 - (IBAction)registeraccount:(id)sender {
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2:
-            [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://kitsu.io/"] options:@{} completionHandler:^(BOOL success) {}];
+            [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://kitsu.app/"] options:@{} completionHandler:^(BOOL success) {}];
             break;
             
         default:

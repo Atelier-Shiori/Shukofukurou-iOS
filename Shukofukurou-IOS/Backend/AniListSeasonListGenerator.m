@@ -91,7 +91,7 @@
 + (void)retrieveKitsuSeasonDataWithSeason:(NSString *)season withYear:(int)year withPage:(int)page withArray:(NSMutableArray *)array completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler
 {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime?filter[season]=%@&filter[seasonYear]=%i&fields[anime]=canonicalTitle,titles,posterImage,showType,nsfw&page[limit]=20&page[offset]=%i", season.lowercaseString, year, page] parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.app/api/edge/anime?filter[season]=%@&filter[seasonYear]=%i&fields[anime]=canonicalTitle,titles,posterImage,showType,nsfw&page[limit]=20&page[offset]=%i", season.lowercaseString, year, page] parameters:nil headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
             [array addObjectsFromArray:responseObject[@"data"]];
         }

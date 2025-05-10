@@ -149,6 +149,18 @@
     return @[];
 }
 
+#pragma mark - Table View Delegate
+#if TARGET_OS_VISION
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 55;
+    }
+    else {
+        return 40;
+    }
+}
+#endif
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _listsectionTitles.count;

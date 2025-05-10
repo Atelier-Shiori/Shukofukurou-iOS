@@ -31,8 +31,11 @@
     [super viewDidLoad];
     _vcm = [ViewControllerManager getAppDelegateViewControllerManager];
     _vcm.mvc = self;
-    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomVision) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
         [self setsidebar:self.view.bounds.size];
+    }
+    else {
+        self.leftViewBackgroundColor = [UIColor systemBackgroundColor];
     }
 #if defined(OSS)
     [self showopensourcemessage];

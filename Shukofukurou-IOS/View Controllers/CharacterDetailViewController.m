@@ -274,10 +274,10 @@
         }
         case 2: {
             if (_persontype == personTypeStaff) {
-                return [NSString stringWithFormat:@"https://kitsu.io/people/%i", _personid];
+                return [NSString stringWithFormat:@"https://kitsu.app/people/%i", _personid];
             }
             else {
-                return [NSString stringWithFormat:@"https://kitsu.io/character/%i", _personid];
+                return [NSString stringWithFormat:@"https://kitsu.app/character/%i", _personid];
             }
         }
         case 3: {
