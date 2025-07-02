@@ -14,6 +14,7 @@
 
 @property (strong) UINavigationController *mainnavcontroller;
 @property (readonly) bool shouldHideMenuButton;
+@property (strong) UIMenu *services;
 - (void)loadfromdefaults;
 - (void)hidetoolbarstate;
 - (void)showtoolbarstate;

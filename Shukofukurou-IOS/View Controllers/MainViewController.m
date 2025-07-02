@@ -23,6 +23,7 @@
 
 @interface MainViewController ()
 @property (strong) ViewControllerManager *vcm;
+@property (strong) UISplitViewController *svcontroller;
 @end
 
 @implementation MainViewController
@@ -55,30 +56,15 @@
     [self setsidebar:size];
 }
 
+- (void)createServicesMenu {
+    _services = [UIMenu menuWithTitle:@"Services" children:@[[UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Anime List"],
+                                                                        [UIKeyCommand keyCommandWithInput:@"2" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Manga List"],[UIKeyCommand keyCommandWithInput:@"3" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Search"],[UIKeyCommand keyCommandWithInput:@"4" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Seasons"],[UIKeyCommand keyCommandWithInput:@"5" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Airing"],[UIKeyCommand keyCommandWithInput:@"6" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Trending"],[UIKeyCommand keyCommandWithInput:@"R" modifierFlags:UIKeyModifierCommand action:@selector(refresh:) discoverabilityTitle:@"Refresh"],[UIKeyCommand keyCommandWithInput:@"B" modifierFlags:UIKeyModifierCommand action:@selector(goBack:) discoverabilityTitle:@"Back"]]];
+}
+
 - (void)setsidebar:(CGSize)size {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        // Always Shows Sidebar if in Landscape orientation
-        bool iOSApponMac = false; // Apple Silicon App Debugging Only
-        if (@available(iOS 14, *)) {
-            iOSApponMac = NSProcessInfo.processInfo.iOSAppOnMac;
-        }
-        if (iOSApponMac) {
-            self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnAll;
-        }
-        else if (size.width/size.height >= .75) {
-            self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnPadLandscape;
-        }
-        else {
-            self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
-        }
-        if ((size.height == 1024 && size.width <= 768) || size.height == 1112 || size.height == 1194 || size.height == 1366|| self.leftViewAlwaysVisibleOptions == LGSideMenuAlwaysVisibleOnNone) {
-            _shouldHideMenuButton = NO;
-        }
-        else {
-            _shouldHideMenuButton = YES;
-        }
-        [self setRootViewCoverColorForLeftView:UIColor.systemBackgroundColor];
-        [NSNotificationCenter.defaultCenter postNotificationName:@"sidebarStateDidChange" object:@(_shouldHideMenuButton)];
+        self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
+        _shouldHideMenuButton = YES;
     }
 #if TARGET_OS_VISION
     self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
@@ -274,8 +260,7 @@
 #if TARGET_OS_VISION
     return @[];
 #else
-    return @[[UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Anime List"],
-             [UIKeyCommand keyCommandWithInput:@"2" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Manga List"],[UIKeyCommand keyCommandWithInput:@"3" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Search"],[UIKeyCommand keyCommandWithInput:@"4" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Seasons"],[UIKeyCommand keyCommandWithInput:@"5" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Airing"],[UIKeyCommand keyCommandWithInput:@"6" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Trending"],[UIKeyCommand keyCommandWithInput:@"R" modifierFlags:UIKeyModifierCommand action:@selector(refresh:) discoverabilityTitle:@"Refresh"],[UIKeyCommand keyCommandWithInput:@"B" modifierFlags:UIKeyModifierCommand action:@selector(goBack:) discoverabilityTitle:@"Back"]];
+    return @[];
 #endif
 }
 

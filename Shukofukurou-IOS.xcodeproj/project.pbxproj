@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		586613552E1594BF0003E14C /* Main-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586613532E1594BF0003E14C /* Main-ipad.storyboard */; };
+		586613562E1594BF0003E14C /* Main-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586613532E1594BF0003E14C /* Main-ipad.storyboard */; };
 		5921475622CA8624004ADF52 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A95F8223FE37D00E3C245 /* CocoaOniguruma.framework */; };
 		5921475722CA8624004ADF52 /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595A95F8223FE37D00E3C245 /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59225B8A22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */; };
@@ -838,6 +840,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		586613542E1594BF0003E14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main-ipad.storyboard"; sourceTree = "<group>"; };
 		59225B8822A6B083000B8675 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		59282C86220F46C40017DEF4 /* TitleIDMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIDMapper.h; sourceTree = "<group>"; };
@@ -1616,6 +1619,7 @@
 		596241AB21556443001995AD /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				586613532E1594BF0003E14C /* Main-ipad.storyboard */,
 				59A0C6F2215A883E00B15F9F /* AdvancedEdit.storyboard */,
 				596241BB21556481001995AD /* Airing.storyboard */,
 				596241BD21556486001995AD /* Auth.storyboard */,
@@ -2565,6 +2569,7 @@
 				5934E275220F7539002B8311 /* Trending.storyboard in Resources */,
 				5934E276220F7539002B8311 /* Assets.xcassets in Resources */,
 				597DDB4E22B950FA00B7227C /* SearchTableViewCell.xib in Resources */,
+				586613562E1594BF0003E14C /* Main-ipad.storyboard in Resources */,
 				91DA289F22F0907A00255735 /* History.storyboard in Resources */,
 				5934E277220F7539002B8311 /* Settings.storyboard in Resources */,
 				597DDB2E22B950D500B7227C /* TitleInfoSynopsisTableViewCell.xib in Resources */,
@@ -2606,6 +2611,7 @@
 				597DDB4922B950F500B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5962424F21556612001995AD /* InfoView.storyboard in Resources */,
 				597DDB3122B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
+				586613552E1594BF0003E14C /* Main-ipad.storyboard in Resources */,
 				5962424D2155660C001995AD /* Airing.storyboard in Resources */,
 				597DDB5522B9510200B7227C /* PersonSubtitleTableViewCell.xib in Resources */,
 				59B3AC63220922930050662A /* Stats.storyboard in Resources */,
@@ -3048,6 +3054,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		586613532E1594BF0003E14C /* Main-ipad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				586613542E1594BF0003E14C /* Base */,
+			);
+			name = "Main-ipad.storyboard";
+			sourceTree = "<group>";
+		};
 		5934E29C220F833A002B8311 /* TipJar.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3596,7 +3610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -3636,7 +3650,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
