@@ -65,6 +65,8 @@
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;
         _shouldHideMenuButton = YES;
+        AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
+        [del.msvc setPrimaryBackgroundStyle:UISplitViewControllerBackgroundStyleSidebar];
     }
 #if TARGET_OS_VISION
     self.leftViewAlwaysVisibleOptions = LGSideMenuAlwaysVisibleOnNone;

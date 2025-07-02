@@ -217,6 +217,7 @@
         self.isNSFW = ((NSNumber *)titleinfo[@"isNSFW"]).boolValue;
         self.navigationitem.title = titleinfo[@"title"];
         [self.relatedtvc generateRelated:titleinfo withType:self.currenttype];
+        self.relatedtvc.titleid = self.titleid;
         if (type == 0) {
             NSString *airingstatus = titleinfo[@"status"];
             self.titlestatus.text = airingstatus;

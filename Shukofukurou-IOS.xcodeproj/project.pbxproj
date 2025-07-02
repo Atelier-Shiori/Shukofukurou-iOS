@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		586613552E1594BF0003E14C /* Main-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586613532E1594BF0003E14C /* Main-ipad.storyboard */; };
 		586613562E1594BF0003E14C /* Main-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586613532E1594BF0003E14C /* Main-ipad.storyboard */; };
+		58AAD0B02E15D16E00BA3577 /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AAD0AF2E15D16E00BA3577 /* MainSplitViewController.m */; };
+		58AAD0B12E15D16E00BA3577 /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AAD0AF2E15D16E00BA3577 /* MainSplitViewController.m */; };
 		5921475622CA8624004ADF52 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A95F8223FE37D00E3C245 /* CocoaOniguruma.framework */; };
 		5921475722CA8624004ADF52 /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595A95F8223FE37D00E3C245 /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59225B8A22A6B083000B8675 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */; };
@@ -841,6 +843,8 @@
 
 /* Begin PBXFileReference section */
 		586613542E1594BF0003E14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main-ipad.storyboard"; sourceTree = "<group>"; };
+		58AAD0AE2E15D16E00BA3577 /* MainSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainSplitViewController.h; sourceTree = "<group>"; };
+		58AAD0AF2E15D16E00BA3577 /* MainSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainSplitViewController.m; sourceTree = "<group>"; };
 		59225B8822A6B083000B8675 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		59225B8922A6B083000B8675 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		59282C86220F46C40017DEF4 /* TitleIDMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIDMapper.h; sourceTree = "<group>"; };
@@ -1767,6 +1771,8 @@
 				91A27F3522F3291600937F1E /* HistoryViewController.m */,
 				59B155C42301E8BF004BE7B2 /* StreamingRegionTableViewController.h */,
 				59B155C52301E8BF004BE7B2 /* StreamingRegionTableViewController.m */,
+				58AAD0AE2E15D16E00BA3577 /* MainSplitViewController.h */,
+				58AAD0AF2E15D16E00BA3577 /* MainSplitViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2761,6 +2767,7 @@
 				5934E255220F7539002B8311 /* TrendingRetriever.m in Sources */,
 				5934E256220F7539002B8311 /* CharacterDetailViewController.m in Sources */,
 				5934E257220F7539002B8311 /* AdvEditTableViewController.m in Sources */,
+				58AAD0B12E15D16E00BA3577 /* MainSplitViewController.m in Sources */,
 				5934E258220F7539002B8311 /* SeasonCollectionViewCell.m in Sources */,
 				5934E25A220F7539002B8311 /* ViewController.m in Sources */,
 				5934E25B220F7539002B8311 /* PersonTableViewCell.m in Sources */,
@@ -2832,6 +2839,7 @@
 				5962421821556514001995AD /* MainViewController.m in Sources */,
 				596241DF215564D1001995AD /* TitleInfoTableViewCell.m in Sources */,
 				FFB17BD4256BE98C003E2C8F /* UIContextualAction+ActionCreation.m in Sources */,
+				58AAD0B02E15D16E00BA3577 /* MainSplitViewController.m in Sources */,
 				5962419921556406001995AD /* AuthViewController.m in Sources */,
 				59FE3E3A219B287E0035E2E5 /* AiringNotifySettingsTableViewController.m in Sources */,
 				5997B4BF2162A6AA005E894A /* TopAlignedLabel.m in Sources */,
@@ -3331,7 +3339,7 @@
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-OSS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3359,7 +3367,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-OSS-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3621,7 +3629,7 @@
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
@@ -3660,7 +3668,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shukofukurou-IOS/Shukofukurou-IOS-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;

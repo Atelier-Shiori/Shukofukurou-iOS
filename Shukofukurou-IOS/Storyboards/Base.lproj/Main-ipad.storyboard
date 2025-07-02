@@ -48,7 +48,6 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="lsz-SJ-4Zd" kind="custom" identifier="root" customClass="LGSideMenuSegue" id="uSL-JQ-1ew"/>
-                        <segue destination="eDZ-WN-cI2" kind="custom" identifier="left" customClass="LGSideMenuSegue" id="YsA-pA-h9Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -446,7 +445,7 @@
         <!--Split View Controller-->
         <scene sceneID="jSJ-hb-kM1">
             <objects>
-                <splitViewController allowDoubleColumnStyle="YES" primaryBackgroundStyle="sidebar" id="kc4-q5-58a" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="splitview" allowDoubleColumnStyle="YES" primaryBackgroundStyle="sidebar" id="kc4-q5-58a" sceneMemberID="viewController">
                     <connections>
                         <segue destination="eDZ-WN-cI2" kind="relationship" relationship="masterViewController" id="igA-g7-h6u"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="vAW-ax-cdo"/>
@@ -457,9 +456,6 @@
             <point key="canvasLocation" x="817" y="-998"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="igA-g7-h6u"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Menu" width="25" height="25"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>

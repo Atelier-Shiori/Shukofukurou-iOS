@@ -11,7 +11,7 @@ import UIKit
 import WhatsNewKit
 
 @objc public class SWhatsNew: NSObject {
-    @objc func showWhatsNew(witems : NSArray, vc : UIViewController, showAtLaunch : Bool){
+    @MainActor @objc func showWhatsNew(witems : NSArray, vc : UIViewController, showAtLaunch : Bool){
         var wnewitems = [WhatsNew.Feature]()
         for item in (witems as NSArray as! [NSDictionary]) {
             wnewitems.append(WhatsNew.Feature.init(image: .init(systemName: item["icon"] as! String), title: .init(item["title"] as! String), subtitle: .init(item["description"] as! String)))

@@ -13,6 +13,7 @@
 #import "ServiceSwitcherViewDelegate.h"
 #import "MainSideBarViewDelegate.h"
 #import "AiringNotificationManager.h"
+#import "MainSplitViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, AuthViewControllerDelegate, ServiceSwitcherViewDelegate, MainSideBarViewDelegate>
 
@@ -23,6 +24,8 @@
 @property (readonly, strong) ViewControllerManager *vcmanager;
 
 @property (strong) AiringNotificationManager *airingnotificationmanager;
+
+@property (strong) MainSplitViewController *msvc;
 
 - (NSManagedObjectContext *)managedObjectContext;
 - (void)saveContext;

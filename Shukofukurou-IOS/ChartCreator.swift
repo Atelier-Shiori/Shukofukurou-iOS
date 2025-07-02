@@ -19,7 +19,7 @@ struct Datapoint: Identifiable {
 }
 
 @objc public class ChartCreator: NSObject {
-    @objc func generateBarChart(data: NSString, isScoreChart: Bool) -> UIViewController? {
+    @MainActor @objc func generateBarChart(data: NSString, isScoreChart: Bool) -> UIViewController? {
         if #available(iOS 16, *) {
             let ndata : String = data as String
             if let data = ndata.data(using: .utf8) {

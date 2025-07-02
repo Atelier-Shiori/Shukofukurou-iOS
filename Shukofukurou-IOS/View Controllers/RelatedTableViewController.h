@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 #else
 @interface RelatedTableViewController : UITableViewController <SFSafariViewControllerDelegate>
 #endif
+@property int titleid;
 - (void)generateRelated:(NSDictionary *)titleinfo withType:(int)type;
 @end
 
