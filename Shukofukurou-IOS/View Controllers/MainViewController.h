@@ -14,10 +14,12 @@
 
 @property (strong) UINavigationController *mainnavcontroller;
 @property (readonly) bool shouldHideMenuButton;
-@property (strong) UIMenu *services;
 - (void)loadfromdefaults;
 - (void)hidetoolbarstate;
 - (void)showtoolbarstate;
+- (void)toggleView:(id)sender;
+- (void)refresh:(id)sender;
+- (void)goBack:(id)sender;
 - (void)showWhatsNew:(bool)showatlaunch;
 - (UINavigationController *)currentRootView;
 @end

@@ -22,6 +22,7 @@
 
 @interface AppDelegate ()
 @property (strong) AutoRefreshTimer *autorefresh;
+@property (strong) UIMenu *serviceMenu;
 @end
 
 @implementation AppDelegate
@@ -151,6 +152,57 @@
 
 - (void)dealloc {
     [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void) buildMenuWithBuilder:(id<UIMenuBuilder>) builder {
+#if TARGET_OS_VISION
+#else
+    if (builder.system == UIMenuSystem.mainSystem) {
+        _serviceMenu = [UIMenu menuWithTitle:@"Service" children:@[
+            [UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(toggleanime:) discoverabilityTitle:@"Anime List"],
+            [UIKeyCommand keyCommandWithInput:@"2" modifierFlags:UIKeyModifierCommand action:@selector(togglemanga:) discoverabilityTitle:@"Manga List"],
+            [UIKeyCommand keyCommandWithInput:@"3" modifierFlags:UIKeyModifierCommand action:@selector(togglesearch:) discoverabilityTitle:@"Search"],
+            [UIKeyCommand keyCommandWithInput:@"4" modifierFlags:UIKeyModifierCommand action:@selector(toggleseasons:) discoverabilityTitle:@"Seasons"],
+            [UIKeyCommand keyCommandWithInput:@"5" modifierFlags:UIKeyModifierCommand action:@selector(toggleairing:) discoverabilityTitle:@"Airing"],
+            [UIKeyCommand keyCommandWithInput:@"6" modifierFlags:UIKeyModifierCommand action:@selector(toggletrending:) discoverabilityTitle:@"Trending"],
+            [UIKeyCommand keyCommandWithInput:@"R" modifierFlags:UIKeyModifierCommand action:@selector(refresh:) discoverabilityTitle:@"Refresh"],
+            [UIKeyCommand keyCommandWithInput:@"B" modifierFlags:UIKeyModifierCommand action:@selector(goBack:) discoverabilityTitle:@"Back"]
+        ]];
+                        [builder insertSiblingMenu:_serviceMenu afterMenuForIdentifier:UIMenuEdit];
+    }
+#endif
+}
+
+- (void)toggleanime:(id)sender {
+    [self.vcmanager.mvc toggleView:sender];
+}
+
+- (void)togglemanga:(id)sender {
+    [self.vcmanager.mvc toggleView:sender];
+}
+
+- (void)togglesearch:(id)sender {
+    [self.vcmanager.mvc toggleView:sender];
+}
+
+- (void)toggleseasons:(id)sender {
+    [self.vcmanager.mvc toggleView:sender];
+}
+
+- (void)toggleairing:(id)sender {
+    [self.vcmanager.mvc toggleView:sender];
+}
+
+- (void)toggletrending:(id)sender {
+    [self.vcmanager.mvc toggleView:sender];
+}
+
+- (void)refresh:(id)sender {
+    [self.vcmanager.mvc refresh:sender];
+}
+
+- (void)goBack:(id)sender {
+    [self.vcmanager.mvc goBack:sender];
 }
 
 - (void)setUserInfoFailureBlocks {

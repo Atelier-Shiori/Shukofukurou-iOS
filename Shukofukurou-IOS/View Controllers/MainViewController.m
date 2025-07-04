@@ -56,10 +56,6 @@
     [self setsidebar:size];
 }
 
-- (void)createServicesMenu {
-    _services = [UIMenu menuWithTitle:@"Services" children:@[[UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Anime List"],
-                                                                        [UIKeyCommand keyCommandWithInput:@"2" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Manga List"],[UIKeyCommand keyCommandWithInput:@"3" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Search"],[UIKeyCommand keyCommandWithInput:@"4" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Seasons"],[UIKeyCommand keyCommandWithInput:@"5" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Airing"],[UIKeyCommand keyCommandWithInput:@"6" modifierFlags:UIKeyModifierCommand action:@selector(toggleView:) discoverabilityTitle:@"Trending"],[UIKeyCommand keyCommandWithInput:@"R" modifierFlags:UIKeyModifierCommand action:@selector(refresh:) discoverabilityTitle:@"Refresh"],[UIKeyCommand keyCommandWithInput:@"B" modifierFlags:UIKeyModifierCommand action:@selector(goBack:) discoverabilityTitle:@"Back"]]];
-}
 
 - (void)setsidebar:(CGSize)size {
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
