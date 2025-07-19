@@ -132,6 +132,8 @@
     }
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LoadTheme" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"RefreshUserInfo" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ServiceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"UserLoggedOut" object:nil];
     // Override point for customization after application launch.
     [self setUserInfoFailureBlocks];
     [self checkaccountinformation];
