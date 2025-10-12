@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kc4-q5-58a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kc4-q5-58a">
     <device id="iPad13_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqy-Vi-U5T">
-                                <rect key="frame" x="0.0" y="74" width="250" height="523"/>
+                                <rect key="frame" x="0.0" y="78" width="250" height="525"/>
                                 <connections>
                                     <segue destination="e1U-ul-rkf" kind="embed" id="fpt-2U-Ibn"/>
                                 </connections>
@@ -153,7 +153,7 @@
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="250" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lgV-AP-wdk">
-                        <rect key="frame" x="0.0" y="24" width="250" height="50"/>
+                        <rect key="frame" x="0.0" y="24" width="250" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -169,7 +169,7 @@
             <objects>
                 <navigationController id="lsz-SJ-4Zd" customClass="RootViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="Menu" id="0gu-T4-uaH">
-                        <rect key="frame" x="0.0" y="24" width="1032" height="50"/>
+                        <rect key="frame" x="0.0" y="24" width="1032" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -327,7 +327,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHZ-iJ-RZf">
-                                                    <rect key="frame" x="16" y="15" width="960" height="126"/>
+                                                    <rect key="frame" x="20" y="19" width="952" height="118"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">To manage your lists, you need to login. However, you can browse and search titles without logging first. If you are new to Shukofukurou, you can read the user manuals as well to learn how to use the app. </string>
                                                     <color key="textColor" systemColor="labelColor"/>
@@ -348,14 +348,14 @@
                             <tableViewSection id="bep-u5-4Gp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="D5L-ab-ySj" style="IBUITableViewCellStyleDefault" id="ax9-G8-7FK" customClass="UITableViewCellSelBackground">
-                                        <rect key="frame" x="20" y="210" width="992" height="51.5"/>
+                                        <rect key="frame" x="20" y="210" width="992" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ax9-G8-7FK" id="Cae-1s-cls" customClass="UITableViewCellSelBackground">
-                                            <rect key="frame" x="0.0" y="0.0" width="992" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="992" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Log into X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D5L-ab-ySj">
-                                                    <rect key="frame" x="16" y="0.0" width="960" height="51.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="952" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -365,14 +365,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="4" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="cAZ-Vg-eSK" style="IBUITableViewCellStyleDefault" id="Dn2-6q-RTo" customClass="UITableViewCellSelBackground">
-                                        <rect key="frame" x="20" y="261.5" width="992" height="51.5"/>
+                                        <rect key="frame" x="20" y="269" width="992" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dn2-6q-RTo" id="39M-EM-wUM" customClass="UITableViewCellSelBackground">
-                                            <rect key="frame" x="0.0" y="0.0" width="992" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="992" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Switch Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cAZ-Vg-eSK">
-                                                    <rect key="frame" x="16" y="0.0" width="960" height="51.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="952" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -382,14 +382,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="hSc-rR-nvD" style="IBUITableViewCellStyleDefault" id="bGm-ub-gr2" customClass="UITableViewCellSelBackground">
-                                        <rect key="frame" x="20" y="313" width="992" height="51.5"/>
+                                        <rect key="frame" x="20" y="328" width="992" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bGm-ub-gr2" id="h6i-Or-8ww" customClass="UITableViewCellSelBackground">
-                                            <rect key="frame" x="0.0" y="0.0" width="992" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="992" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="View User Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hSc-rR-nvD">
-                                                    <rect key="frame" x="16" y="0.0" width="960" height="51.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="952" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -399,14 +399,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="3" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="N6P-ES-yqr" style="IBUITableViewCellStyleDefault" id="EIT-V1-efK" customClass="UITableViewCellSelBackground">
-                                        <rect key="frame" x="20" y="364.5" width="992" height="51.5"/>
+                                        <rect key="frame" x="20" y="387" width="992" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EIT-V1-efK" id="Zv7-OB-om6" customClass="UITableViewCellSelBackground">
-                                            <rect key="frame" x="0.0" y="0.0" width="992" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="992" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="View Scrobble User Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N6P-ES-yqr">
-                                                    <rect key="frame" x="16" y="0.0" width="960" height="51.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="952" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

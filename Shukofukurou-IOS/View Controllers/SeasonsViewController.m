@@ -102,19 +102,8 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)hidemenubtn {
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        if ([ViewControllerManager getAppDelegateViewControllerManager].mvc.shouldHideMenuButton) {
-            [self.menubtn setEnabled:NO];
-            [self.menubtn setTintColor: [UIColor clearColor]];
-        }
-        else {
-            [self.menubtn setEnabled:YES];
-            [self.menubtn setTintColor:nil];
-        }
-    }
-    else if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
-        [self.menubtn setEnabled:NO];
-        [self.menubtn setTintColor: [UIColor clearColor]];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad || UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomVision) {
+        self.menubtn.hidden = true;
     }
 }
 
