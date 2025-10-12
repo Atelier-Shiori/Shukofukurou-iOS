@@ -2,9 +2,9 @@
 
 ![screenshot](https://malupdaterosx.moe/wp-content/uploads/2019/02/iPhone-XSiPad-Pro-13-Landscape-Silver-1024x733.png)
 
-Shukofukurou for iOS/iPadOS/VisionOS is the iOS/iPadOS/VisionOS port of [Shukofukurou](https://github.com/Atelier-Shiori/Shukofukurou), which is a lightweight, open source, multi-service Anime and Manga library management and discovery app that works with [Kitsu](https://kitsu.io/), [AniList](https://anilist.co/), and [MyAnimeList](https://myanimelist.net). 
+Shukofukurou for iOS/iPadOS/VisionOS is the iOS/iPadOS/VisionOS port of [Shukofukurou](https://github.com/Atelier-Shiori/Shukofukurou), which is a lightweight, open source, multi-service Anime and Manga library management and discovery app that works with [Kitsu](https://kitsu.app/), [AniList](https://anilist.co/), and [MyAnimeList](https://myanimelist.net). 
 
-Requires the latest SDK (iOS 17), Xcode 14 or later. This app will only run on iOS 16 or later.
+Requires the latest SDK (iOS 26), Xcode 26 or later. This app will only run on iOS 17 or later.
 
 ## App Store Release
 Since an Apple Developer Program is required to distribute apps for iOS/iPadOS/VisionOS, Shukofukurou for iOS/iPadOS will cost $2.99 to download, which will have no restrictions and will receive lifetime updates. The proceeds will go back into supporting the development of our applications. We have to charge for the iOS/iPadOS version since the Apple Developers Program costs $99 a year and we put a lot of work in developing this App. Charging for open source software, believe it or not is [encouraged by the FSF](http://www.gnu.org/philosophy/selling.html).
@@ -13,7 +13,9 @@ However, the source code will remain free for anyone who want it. However, you w
 
 No support will be given to self-built copies. You need to specify the OAuth Client and Secret before you can compile your own version.
 
-If you want to help support continued development of this app, [become a patron](https://www.patreon.com/join/malupdaterosx) today.
+If you want to help support continued development of this app, [become a patron](https://www.patreon.com/sakurajimamastodon) today.
+
+**Note: Sakurajima Patreon supersedes the MAL Updater OS X one so I only need to manage one Patreon account**
 
 ## Compiling Instructions
 **Note: Self-compiling is meant for developers and advanced users only. Apple limits provisioning profile that allows you to run your apps on your iOS device for 7 days without a paid Apple Developer membership. If you want to use the app for more than 7 days without having to reinstall it, consider downloading it from the App Store. You can support development for our App and you don't have to buy a $99 a year Apple Developer Program membership, unless you already have one.**
