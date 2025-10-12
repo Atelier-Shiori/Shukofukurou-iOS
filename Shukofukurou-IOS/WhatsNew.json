@@ -1,19 +1,14 @@
 {
     "items" : [
     {
-        "title" : "Redesigned Charts",
-        "description" : "List stats charts now use the native charting built into iOS/iPadOS.",
-        "icon" : "safari",
+        "title" : "Improved iPad Support",
+        "description" : "iPAd version now uses the native sidebar and now have menu items.",
+        "icon" : "ipad"
     },
     {
-        "title" : "VisionOS Support",
-        "description" : "Add support for the Apple Vision Pro.",
+        "title" : "Liquid Glass",
+        "description" : "Now with support for Liquid Glass for iOS/iPadOS 26 along with a redesigned icon.",
         "icon" : "eye.square.fill"
-    },
-    {
-        "title" : "Add Account Deletion",
-        "description" : "When you log out, there is now a prompt allowing you to view the page to delete your account, if you want.",
-        "icon" : "trash"
     },
     {
         "title" : "Bug Fixes",
