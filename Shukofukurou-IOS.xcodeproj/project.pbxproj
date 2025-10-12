@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580FA81D2E9C6ABD00C87CD5 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 580FA81C2E9C6ABD00C87CD5 /* AppIcon.icon */; };
+		580FA81E2E9C6ABD00C87CD5 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 580FA81C2E9C6ABD00C87CD5 /* AppIcon.icon */; };
 		586613552E1594BF0003E14C /* Main-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586613532E1594BF0003E14C /* Main-ipad.storyboard */; };
 		586613562E1594BF0003E14C /* Main-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586613532E1594BF0003E14C /* Main-ipad.storyboard */; };
 		58AAD0B02E15D16E00BA3577 /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AAD0AF2E15D16E00BA3577 /* MainSplitViewController.m */; };
@@ -842,6 +844,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		580FA81C2E9C6ABD00C87CD5 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		586613542E1594BF0003E14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main-ipad.storyboard"; sourceTree = "<group>"; };
 		58AAD0AE2E15D16E00BA3577 /* MainSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainSplitViewController.h; sourceTree = "<group>"; };
 		58AAD0AF2E15D16E00BA3577 /* MainSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainSplitViewController.m; sourceTree = "<group>"; };
@@ -1428,6 +1431,7 @@
 				FFBF71CE2700013B00C1DA74 /* WhatsNew.json */,
 				FFBF71D02700093E00C1DA74 /* WhatsNew.swift */,
 				FF3A24AB2904F22D009546F0 /* ChartCreator.swift */,
+				580FA81C2E9C6ABD00C87CD5 /* AppIcon.icon */,
 			);
 			path = "Shukofukurou-IOS";
 			sourceTree = "<group>";
@@ -2569,6 +2573,7 @@
 				597DDB5222B950FE00B7227C /* PersonTableViewCell.xib in Resources */,
 				5934E274220F7539002B8311 /* AdvancedEdit.storyboard in Resources */,
 				597DDB5622B9510200B7227C /* PersonSubtitleTableViewCell.xib in Resources */,
+				580FA81D2E9C6ABD00C87CD5 /* AppIcon.icon in Resources */,
 				597DDB0722B93D9200B7227C /* TitleInfoStreamSiteTableViewCell.xib in Resources */,
 				597DDB3A22B950E300B7227C /* TitleInfoListEntryTableViewCell.xib in Resources */,
 				597DDB4A22B950F500B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
@@ -2616,6 +2621,7 @@
 				597DDCF5224A70EA0005C652 /* Export.storyboard in Resources */,
 				597DDB4922B950F500B7227C /* TitleInfoBasicTableViewCell.xib in Resources */,
 				5962424F21556612001995AD /* InfoView.storyboard in Resources */,
+				580FA81E2E9C6ABD00C87CD5 /* AppIcon.icon in Resources */,
 				597DDB3122B950DA00B7227C /* TitleInfoAdvScoreEntryTableViewCell.xib in Resources */,
 				586613552E1594BF0003E14C /* Main-ipad.storyboard in Resources */,
 				5962424D2155660C001995AD /* Airing.storyboard in Resources */,
