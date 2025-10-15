@@ -149,6 +149,15 @@
     SDImageCache.sharedImageCache.config.maxDiskSize = 1000000 * 96;
     [ScrobbleManager.sharedInstance checkScrobble];
     [TokenReauthManager checkRefreshOrReauth];
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        // Set min window size restrictions for now on iPad
+        UIWindowScene *windowScene = (UIWindowScene *)self.window.windowScene;
+        UISceneSizeRestrictions *sizeRestrictions = windowScene.sizeRestrictions;
+        if (sizeRestrictions != nil) {
+            CGSize minimumSize = CGSizeMake(670, 400.0); // Example: 300 points wide, 400 points high
+            sizeRestrictions.minimumSize = minimumSize;
+        }
+    }
     return YES;
 }
 
