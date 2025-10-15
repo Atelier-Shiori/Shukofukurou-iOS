@@ -445,7 +445,7 @@
         <!--Split View Controller-->
         <scene sceneID="jSJ-hb-kM1">
             <objects>
-                <splitViewController storyboardIdentifier="splitview" allowDoubleColumnStyle="YES" primaryBackgroundStyle="sidebar" id="kc4-q5-58a" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="splitview" autoresizesArchivedViewToFullSize="NO" allowDoubleColumnStyle="YES" preferredDisplayMode="beside" primaryBackgroundStyle="sidebar" id="kc4-q5-58a" sceneMemberID="viewController">
                     <connections>
                         <segue destination="eDZ-WN-cI2" kind="relationship" relationship="masterViewController" id="igA-g7-h6u"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="vAW-ax-cdo"/>

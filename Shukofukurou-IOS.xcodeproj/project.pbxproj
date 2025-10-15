@@ -3608,7 +3608,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20251013;
+				CURRENT_PROJECT_VERSION = 20251015;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = NO;
@@ -3624,7 +3624,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -3648,7 +3648,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Shukofukurou-IOS/Shukofukurou-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20251013;
+				CURRENT_PROJECT_VERSION = 20251015;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_BITCODE = NO;
@@ -3664,7 +3664,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.Shukofukurou-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -3728,7 +3728,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = HachidoriLite/HachidoriLite.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20251013;
+				CURRENT_PROJECT_VERSION = 20251015;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HachidoriLite/Info.plist;
@@ -3740,7 +3740,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -3762,7 +3762,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = HachidoriLite/HachidoriLite.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20251013;
+				CURRENT_PROJECT_VERSION = 20251015;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HachidoriLite/Info.plist;
@@ -3774,7 +3774,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,

@@ -198,6 +198,12 @@
         [self showTipJar];
     }
 #endif
+    AppDelegate *del = (AppDelegate *)UIApplication.sharedApplication.delegate;
+    UISplitViewController *svc = del.msvc;
+    NSLog(@"Main: width: %f height: %f", self.view.frame.size.width, self.view.frame.size.height);
+    NSLog(@"Root: width: %f height: %f", self.rootViewContainer.frame.size.width, self.view.frame.size.height);
+    NSLog(@"Main: width: %f height: %f", svc.view.frame.size.width, svc.view.frame.size.height);
+    [self.rootViewContainer setFrame:CGRectMake(0, 0, del.window.frame.size.width, self.rootViewContainer.frame.size.height)];
 }
 
 - (void)showAnimeListViewController {
